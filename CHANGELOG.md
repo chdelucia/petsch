@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.6](https://github.com/chdelucia/petsch/compare/v0.0.5...v0.0.6) (2026-04-07)
+
+
+### Features
+
+* **monitoring:** add GA and sentry errors ([7d60a49](https://github.com/chdelucia/petsch/commit/7d60a49f0cb31bc0869254e2be3f11170b9a8509))
+
 ### [0.0.5](https://github.com/chdelucia/petsch/compare/v0.0.4...v0.0.5) (2026-04-07)
 
 
