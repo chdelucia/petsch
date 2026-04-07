@@ -20,6 +20,10 @@
       "@petsch/shell": ["libs/product/shell/src/index.ts"],
       "@petsch/feature-product-list": [
         "libs/product/feature-product-list/src/index.ts"
+      ],
+      "@petsch/obs-api": ["libs/shared/observability/api/src/index.ts"],
+      "@petsch/obs-data-access": [
+        "libs/shared/observability/data-access/src/index.ts"
       ]
     }
   },

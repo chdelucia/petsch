@@ -3,6 +3,8 @@
 /* nx-tailwind-sources:start */
 @source "../../../libs/product/feature-product-list";
 @source "../../../libs/product/shell";
+@source "../../../libs/shared/observability/api";
+@source "../../../libs/shared/observability/data-access";
 /* nx-tailwind-sources:end */
 
 @source "./app";
