@@ -1,6 +1,6 @@
 {
   "name": "@petsch/source",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "license": "MIT",
   "scripts": {
     "prepare": "husky",
@@ -19,7 +19,8 @@
     "@juristr/nx-tailwind-sync": "^0.0.9",
     "@tailwindcss/postcss": "^4.2.2",
     "husky": "^9.1.7",
-    "rxjs": "~7.8.0"
+    "rxjs": "~7.8.0",
+    "standard-version": "^9.5.0"
   },
   "devDependencies": {
     "@analogjs/vite-plugin-angular": "~2.1.2",
