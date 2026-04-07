@@ -10,4 +10,19 @@
   <body>
     <app-root></app-root>
   </body>
+
+  <!-- Google tag (gtag.js) -->
+  <script
+    async
+    src="https://www.googletagmanager.com/gtag/js?id=G-50058KMGSE"
+  ></script>
+  <script>
+    globalThis.dataLayer = globalThis.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+
+    gtag('config', 'G-50058KMGSE');
+  </script>
 </html>
