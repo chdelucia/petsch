@@ -173,4 +173,4 @@ jobs:
 
       - run: bun install --frozen-lockfile
       - name: Build production (Vercel script)
-        run: bun run build petshop
+        run: bun nx build petshop

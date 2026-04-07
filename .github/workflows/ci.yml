@@ -164,7 +164,7 @@ jobs:
           key: ${{ runner.os }}-bun-${{ hashFiles('bun.lock') }}
       - run: bun install --frozen-lockfile
       - name: Build production (Vercel script)
-        run: bun run build petshop
+        run: bun nx build petshop
 
   release:
     if: github.event_name == 'push' && github.ref == 'refs/heads/master'
