@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.5](https://github.com/chdelucia/petsch/compare/v0.0.4...v0.0.5) (2026-04-07)
+
+
+### Features
+
+* add google tags ([4046fdb](https://github.com/chdelucia/petsch/commit/4046fdb1a253756544c040ed534991b32fdfe031))
+
 ### [0.0.4](https://github.com/chdelucia/petsch/compare/v0.0.3...v0.0.4) (2026-04-07)
 
 
