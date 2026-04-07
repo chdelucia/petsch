@@ -1,0 +1,5 @@
+@reference "../../../../../../apps/petshop/src/styles.css";
+
+.test {
+  @apply bg-amber-600 text-9xl;
+}

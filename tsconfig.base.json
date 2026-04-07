@@ -14,7 +14,14 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@petsch/api": ["libs/product/api/src/index.ts"],
+      "@petsch/data-access": ["libs/product/data-access/src/index.ts"],
+      "@petsch/shell": ["libs/product/shell/src/index.ts"],
+      "@petsch/feature-product-list": [
+        "libs/product/feature-product-list/src/index.ts"
+      ]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

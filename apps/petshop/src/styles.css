@@ -1,1 +1,8 @@
-/* You can add global styles to this file, and also import other style files */
+@import 'tailwindcss';
+
+/* nx-tailwind-sources:start */
+@source "../../../libs/product/feature-product-list";
+@source "../../../libs/product/shell";
+/* nx-tailwind-sources:end */
+
+@source "./app";
