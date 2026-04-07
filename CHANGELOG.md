@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.2](https://github.com/chdelucia/petsch/compare/v0.0.1...v0.0.2) (2026-04-07)
+
+
+### Bug Fixes
+
+* **sonar:** fix sonar config ([4bde684](https://github.com/chdelucia/petsch/commit/4bde684c628185d553dcafafdb18a94bc649e2cd))
+
 ### 0.0.1 (2026-04-07)
 
 
