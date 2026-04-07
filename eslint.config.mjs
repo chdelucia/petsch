@@ -17,8 +17,29 @@ export default [
           allow: ['^.*/eslint(\\.base)?\\.config\\.[cm]?[jt]s$'],
           depConstraints: [
             {
-              sourceTag: '*',
-              onlyDependOnLibsWithTags: ['*'],
+              sourceTag: 'type:api',
+              onlyDependOnLibsWithTags: ['type:data-access'],
+            },
+            {
+              sourceTag: 'type:data-access',
+              onlyDependOnLibsWithTags: ['type:api'],
+            },
+            {
+              sourceTag: 'type:feature',
+              onlyDependOnLibsWithTags: ['type:api', 'type:ui'],
+            },
+            {
+              sourceTag: 'scope:petshop',
+              onlyDependOnLibsWithTags: [
+                'type:api',
+                'type:ui',
+                'type:data-access',
+                'type:shell',
+              ],
+            },
+            {
+              sourceTag: 'scope:*',
+              onlyDependOnLibsWithTags: ['scope:*'],
             },
           ],
         },

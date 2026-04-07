@@ -4,7 +4,7 @@
   "projectType": "application",
   "prefix": "app",
   "sourceRoot": "apps/petshop/src",
-  "tags": [],
+  "tags": ["scope:petshop", "type:main"],
   "targets": {
     "build": {
       "executor": "@angular/build:application",
