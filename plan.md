@@ -138,7 +138,9 @@ Herramientas para control de pre-commit husky y commintlint
 
 ### Nx Boundaries
 
-Los dominios solo pueden comunicarse con /api o /shared
+- api ← data-access ← feature ← shell
+
+Los diferentes dominios solo pueden comunicarse con /api o /shared
 
 ```json
 {
