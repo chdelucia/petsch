@@ -2,6 +2,8 @@
 
 https://petsch.vercel.app/products
 
+Arquitectura basada en: https://nx.dev/blog/architecting-angular-applications
+
 ## Run tasks
 
 To run the dev server for your app, use:
