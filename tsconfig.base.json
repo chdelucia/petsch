@@ -24,7 +24,8 @@
       "@petsch/obs-api": ["libs/shared/observability/api/src/index.ts"],
       "@petsch/obs-data-access": [
         "libs/shared/observability/data-access/src/index.ts"
-      ]
+      ],
+      "@petsch/ui": ["libs/shared/ui/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

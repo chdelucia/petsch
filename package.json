@@ -5,7 +5,9 @@
   "scripts": {
     "start": "nx serve petshop",
     "prepare": "husky",
-    "unit_test": "nx run-many --all --target=test --parallel=4"
+    "unit_test": "nx run-many --all --target=test --parallel=4",
+    "uilib": "nx storybook ui",
+    "ui_test": "nx test-storybook ui"
   },
   "private": true,
   "dependencies": {
@@ -48,6 +50,9 @@
     "@oxc-project/runtime": "^0.115.0",
     "@playwright/test": "^1.36.0",
     "@schematics/angular": "~21.2.0",
+    "@storybook/addon-a11y": "10.3.4",
+    "@storybook/addon-docs": "10.3.4",
+    "@storybook/angular": "10.3.4",
     "@swc-node/register": "~1.11.1",
     "@swc/core": "~1.15.5",
     "@swc/helpers": "~0.5.18",
@@ -66,6 +71,7 @@
     "prettier": "~3.6.2",
     "storybook": "10.3.4",
     "tailwindcss": "^4.2.2",
+    "ts-node": "10.9.1",
     "tslib": "^2.3.0",
     "typescript": "~5.9.2",
     "typescript-eslint": "^8.40.0",
