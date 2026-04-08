@@ -7,7 +7,8 @@
     "prepare": "husky",
     "unit_test": "nx run-many --all --target=test --parallel=4",
     "uilib": "nx storybook ui",
-    "ui_test": "nx test-storybook ui"
+    "ui_test": "nx test-storybook ui",
+    "storybook:generate": "nx g @nx/angular:stories ui"
   },
   "private": true,
   "dependencies": {
