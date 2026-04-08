@@ -139,15 +139,10 @@ jobs:
             ~/.bun/install/cache
           key: ${{ runner.os }}-bun-${{ hashFiles('bun.lock') }}
       - run: bun install --frozen-lockfile
-      - name: Restore Cypress binary cache
-        uses: actions/cache@v5
-        with:
-          path: ~/.cache/Cypress
-          key: cypress-cache-${{ runner.os }}-${{ hashFiles('bun.lock') }}
-      - name: Install Cypress if needed
-        run: bun x cypress install
+      - name: Install playwright
+        run: npx playwright install --with-deps
       - name: Run Nx E2E (non-blocking)
-        run: bun x nx e2e e2e
+        run: bun x nx e2e petshop-e2e
         continue-on-error: true
 
   build:
