@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.7](https://github.com/chdelucia/petsch/compare/v0.0.6...v0.0.7) (2026-04-07)
+
+
+### Features
+
+* **boundaries:** add boundaries ([85ec6db](https://github.com/chdelucia/petsch/commit/85ec6db7ece7367d5cbaa389f0ca8c4d6a001b44))
+
 ### [0.0.6](https://github.com/chdelucia/petsch/compare/v0.0.5...v0.0.6) (2026-04-07)
 
 
