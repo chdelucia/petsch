@@ -17,6 +17,6 @@ export const Primary: Story = {
     color: 'Salmon',
     quantity: 1,
     imageSrc: 'https://rickandmortyapi.com/api/character/avatar/1.jpeg',
-    imageAlt: 'test foto'
+    imageAlt: 'test foto',
   },
 };

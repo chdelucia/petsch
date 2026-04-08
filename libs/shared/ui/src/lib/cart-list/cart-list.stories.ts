@@ -9,7 +9,8 @@ const mockProducts = [
     price: 90,
     quantity: 1,
     color: 'Salmon',
-    imageSrc: 'https://tailwindcss.com/plus-assets/img/ecommerce-images/shopping-cart-page-04-product-01.jpg',
+    imageSrc:
+      'https://tailwindcss.com/plus-assets/img/ecommerce-images/shopping-cart-page-04-product-01.jpg',
     imageAlt: 'Salmon orange fabric pouch with match zipper',
   },
   {
@@ -18,7 +19,8 @@ const mockProducts = [
     price: 32,
     quantity: 1,
     color: 'Blue',
-    imageSrc: 'https://tailwindcss.com/plus-assets/img/ecommerce-images/shopping-cart-page-04-product-02.jpg',
+    imageSrc:
+      'https://tailwindcss.com/plus-assets/img/ecommerce-images/shopping-cart-page-04-product-02.jpg',
     imageAlt: 'Front of satchel with blue canvas body',
   },
 ];
@@ -29,9 +31,9 @@ const meta: Meta<CartList> = {
   tags: ['autodocs'],
   decorators: [
     moduleMetadata({
-      imports: [CartItem, CartList]
-    })
-  ]
+      imports: [CartItem, CartList],
+    }),
+  ],
 };
 export default meta;
 
@@ -56,4 +58,3 @@ export const Primary: Story = {
     `,
   }),
 };
-
