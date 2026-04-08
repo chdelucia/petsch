@@ -30,15 +30,6 @@ jobs:
       - name: Install dependencies
         run: bun install --frozen-lockfile
 
-      - name: Install Cypress
-        run: bun x cypress install
-
-      - name: Cache Cypress binary
-        uses: actions/cache@v5
-        with:
-          path: ~/.cache/Cypress
-          key: cypress-cache-${{ runner.os }}-${{ hashFiles('bun.lock') }}
-
       - name: Verify Nx CLI
         run: bun x nx --version
 
@@ -140,7 +131,7 @@ jobs:
           key: ${{ runner.os }}-bun-${{ hashFiles('bun.lock') }}
       - run: bun install --frozen-lockfile
       - name: Install playwright
-        run: npx playwright install chromium
+        run: npx playwright install --with-deps
       - name: Run Nx E2E (non-blocking)
         run: bun x nx e2e petshop-e2e
         continue-on-error: true
