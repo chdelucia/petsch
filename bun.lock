@@ -15,6 +15,7 @@
         "@commitlint/config-conventional": "^20.5.0",
         "@juristr/nx-tailwind-sync": "^0.0.9",
         "@sentry/angular": "^10.47.0",
+        "@storybook/addon-styling-webpack": "^3.0.2",
         "@tailwindcss/postcss": "^4.2.2",
         "husky": "^9.1.7",
         "rxjs": "~7.8.0",
@@ -1040,6 +1041,8 @@
     "@storybook/addon-a11y": ["@storybook/addon-a11y@10.3.4", "", { "dependencies": { "@storybook/global": "^5.0.0", "axe-core": "^4.2.0" }, "peerDependencies": { "storybook": "^10.3.4" } }, "sha512-TylBS2+MUPRfgzBKiygL1JoUBnTqEKo5oCEfjHneJZKzYE1UNgdMdk/fiyanaGKTZBKBxWbShxZhT2gLs8kqMA=="],
 
     "@storybook/addon-docs": ["@storybook/addon-docs@10.3.4", "", { "dependencies": { "@mdx-js/react": "^3.0.0", "@storybook/csf-plugin": "10.3.4", "@storybook/icons": "^2.0.1", "@storybook/react-dom-shim": "10.3.4", "react": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0", "react-dom": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0", "ts-dedent": "^2.0.0" }, "peerDependencies": { "storybook": "^10.3.4" } }, "sha512-ohS8fX8UIP3LN6+mDZJLCDS4Qd2rsmGwes6V6fD0sbLOmIyCVY5y68r6NHMMGJKFRwadDQOmtOt8Vc6snExrIQ=="],
+
+    "@storybook/addon-styling-webpack": ["@storybook/addon-styling-webpack@3.0.2", "", { "peerDependencies": { "storybook": "^10.0.0 || ^10.0.0-0 || ^10.1.0-0 || ^10.2.0-0 || ^10.3.0-0 || ^10.4.0-0", "webpack": "^5.0.0" } }, "sha512-u7d5ur+It6XWSwd5yxHN6dTzIfj23as3zHJBf1IfDvi/GWmsW7zrmfsWpRIyBkIhBmdL+oSsTtLLTjuC9HeL8Q=="],
 
     "@storybook/angular": ["@storybook/angular@10.3.4", "", { "dependencies": { "@storybook/builder-webpack5": "10.3.4", "@storybook/global": "^5.0.0", "telejson": "8.0.0", "ts-dedent": "^2.0.0", "tsconfig-paths-webpack-plugin": "^4.0.1", "webpack": "5" }, "peerDependencies": { "@angular-devkit/architect": ">=0.1800.0 < 0.2200.0", "@angular-devkit/build-angular": ">=18.0.0 < 22.0.0", "@angular-devkit/core": ">=18.0.0 < 22.0.0", "@angular/animations": ">=18.0.0 < 22.0.0", "@angular/cli": ">=18.0.0 < 22.0.0", "@angular/common": ">=18.0.0 < 22.0.0", "@angular/compiler": ">=18.0.0 < 22.0.0", "@angular/compiler-cli": ">=18.0.0 < 22.0.0", "@angular/core": ">=18.0.0 < 22.0.0", "@angular/platform-browser": ">=18.0.0 < 22.0.0", "@angular/platform-browser-dynamic": ">=18.0.0 < 22.0.0", "rxjs": "^6.5.3 || ^7.4.0", "storybook": "^10.3.4", "typescript": "^4.9.0 || ^5.0.0", "zone.js": ">=0.14.0" }, "optionalPeers": ["@angular/animations", "@angular/cli", "zone.js"] }, "sha512-AXyMTx6a6voLG0xP5yTj6s6yEN40Z8n+Yjy/zpp+FMpydaMlnaQSjR0MZA3mBwTO+9ERYfELultos2o0lS6gDA=="],
 
