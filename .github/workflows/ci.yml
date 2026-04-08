@@ -93,7 +93,7 @@ jobs:
 
   sonar:
     runs-on: ubuntu-latest
-    needs: test
+    needs: install
     steps:
       - uses: actions/checkout@v6
         with:
@@ -122,10 +122,10 @@ jobs:
             ~/.bun/install/cache
           key: ${{ runner.os }}-bun-${{ hashFiles('bun.lock') }}
       - run: bun install --frozen-lockfile
-      - name: Install Playwright browsers (chromium & firefox only)
-        run: npx playwright install chromium firefox
+      - name: Install Playwright browsers
+        run: npx playwright install chromium
       - name: Run Nx E2E (non-blocking)
-        run: bun x nx e2e petshop-e2e
+        run: bun x nx e2e petshop-e2e --parallel
         continue-on-error: true
 
   build:
@@ -141,13 +141,13 @@ jobs:
             ~/.bun/install/cache
           key: ${{ runner.os }}-bun-${{ hashFiles('bun.lock') }}
       - run: bun install --frozen-lockfile
-      - name: Build production (Vercel script)
+      - name: Build production
         run: bun nx build petshop
 
   release:
     if: github.event_name == 'push' && github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
-    needs: [validate, lint, test, build] # E2E no bloquea release
+    needs: [validate, lint, test, build] # E2E y Sonar no bloquean release
     steps:
       - uses: actions/checkout@v6
         with:
