@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.12](https://github.com/chdelucia/petsch/compare/v0.0.11...v0.0.12) (2026-04-08)
+
+
+### Features
+
+* **ci:** add sonar dependency to release ([365db06](https://github.com/chdelucia/petsch/commit/365db0619a86f1e8a141c8dc3cb8031f3acf2c0b))
+
 ### [0.0.11](https://github.com/chdelucia/petsch/compare/v0.0.10...v0.0.11) (2026-04-08)
 
 
