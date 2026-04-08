@@ -10,7 +10,9 @@
       "executor": "@nx/vitest:test",
       "outputs": ["{options.reportsDirectory}"],
       "options": {
-        "reportsDirectory": "coverage/libs/shared/observability/data-access"
+        "coverage": true,
+        "reportsDirectory": "coverage/libs/shared/observability/data-access",
+        "coverageReporters": ["lcov"]
       }
     },
     "lint": {
