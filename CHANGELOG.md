@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.10](https://github.com/chdelucia/petsch/compare/v0.0.9...v0.0.10) (2026-04-08)
+
+
+### Features
+
+* **ci:** e2e test 2 ([14a10b8](https://github.com/chdelucia/petsch/commit/14a10b80a6906f217d4caadd5030f7ba2bda9092))
+
 ### [0.0.9](https://github.com/chdelucia/petsch/compare/v0.0.8...v0.0.9) (2026-04-08)
 
 
