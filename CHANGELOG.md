@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.13](https://github.com/chdelucia/petsch/compare/v0.0.12...v0.0.13) (2026-04-08)
+
+
+### Features
+
+* **ci:** reduce installations ([775199e](https://github.com/chdelucia/petsch/commit/775199e8ae5952e93a000b552301a004b4d997be))
+
 ### [0.0.12](https://github.com/chdelucia/petsch/compare/v0.0.11...v0.0.12) (2026-04-08)
 
 
