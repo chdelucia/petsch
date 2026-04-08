@@ -30,11 +30,19 @@
     },
     "@angular/build:unit-test": {
       "cache": true,
-      "inputs": ["default", "^production"]
+      "inputs": ["default", "^production"],
+      "options": {
+        "coverage": true,
+        "coverageReporters": ["lcov", "text"]
+      }
     },
     "@nx/vitest:test": {
       "cache": true,
-      "inputs": ["default", "^production"]
+      "inputs": ["default", "^production"],
+      "options": {
+        "coverage": true,
+        "coverageReporters": ["lcov", "text"]
+      }
     }
   },
   "plugins": [
