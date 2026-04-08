@@ -44,8 +44,9 @@ export const Primary: Story = {
     props: { products: mockProducts },
     template: `
       <lib-ui-cart-list>
+      <ng-container *ngFor="let product of products">
+      <li>
         <lib-ui-cart-item
-          *ngFor="let product of products"
           [imageSrc]="product.imageSrc"
           [imageAlt]="product.imageAlt"
           [name]="product.name"
@@ -54,6 +55,8 @@ export const Primary: Story = {
           [quantity]="product.quantity"
           (remove)="console.log('Remove', product.id)"
         ></lib-ui-cart-item>
+      </li>
+    </ng-container>
       </lib-ui-cart-list>
     `,
   }),

@@ -11,6 +11,7 @@ import {
   templateUrl: './cart-item.html',
   styleUrl: './cart-item.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  host: { class: '' }
 })
 export class CartItem {
   imageSrc = input.required<string>();
