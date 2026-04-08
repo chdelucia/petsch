@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.18](https://github.com/chdelucia/petsch/compare/v0.0.17...v0.0.18) (2026-04-08)
+
+
+### Bug Fixes
+
+* **sonar:** sonar exclusions ([62ae293](https://github.com/chdelucia/petsch/commit/62ae293b763a034bbff20959450100e958ddef26))
+
 ### [0.0.17](https://github.com/chdelucia/petsch/compare/v0.0.16...v0.0.17) (2026-04-08)
 
 
