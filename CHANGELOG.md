@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.16](https://github.com/chdelucia/petsch/compare/v0.0.15...v0.0.16) (2026-04-08)
+
+
+### Bug Fixes
+
+* **IA:** sonar report lcov ([4c47c67](https://github.com/chdelucia/petsch/commit/4c47c67e903e5999700d80a79da60baae6b1f248))
+* **linter:** remove last comma trail ([5d12a70](https://github.com/chdelucia/petsch/commit/5d12a709762862a25b35993ad21b86cd83af9105))
+* **sonar:** fix sonar coverage detection ([befe685](https://github.com/chdelucia/petsch/commit/befe685c46595f2a894c48dafac483c5953c8129))
+
 ### [0.0.15](https://github.com/chdelucia/petsch/compare/v0.0.14...v0.0.15) (2026-04-08)
 
 ### [0.0.14](https://github.com/chdelucia/petsch/compare/v0.0.13...v0.0.14) (2026-04-08)
