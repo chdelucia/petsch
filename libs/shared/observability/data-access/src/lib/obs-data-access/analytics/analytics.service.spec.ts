@@ -23,6 +23,10 @@ describe('AnalyticsService', () => {
     service = TestBed.inject(AnalyticsService);
   });
 
+  afterEach(() => {
+    delete (globalThis as any).gtag;
+  });
+
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
