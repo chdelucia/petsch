@@ -164,7 +164,7 @@ jobs:
   release:
     if: github.event_name == 'push' && github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
-    needs: [validate, lint, test, build]
+    needs: [validate, lint, test, build, sonar]
     steps:
       - uses: actions/checkout@v6
         with:
