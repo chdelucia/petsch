@@ -25,6 +25,7 @@ export default defineConfig(() => ({
       reportsDirectory:
         '../../../../coverage/libs/shared/observability/data-access',
       provider: 'v8' as const,
+      reporter: ['text', 'lcov'],
     },
   },
 }));
