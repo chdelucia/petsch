@@ -1,10 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
-  selector: 'lib-ui-cart-list',
+  selector: 'lib-cart-header',
   imports: [],
-  templateUrl: './cart-list.html',
-  styleUrl: './cart-list.css',
+  templateUrl: './cart-header.html',
+  styleUrl: './cart-header.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CartList {}
+export class CartHeader {}

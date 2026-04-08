@@ -31,7 +31,7 @@ const meta: Meta<CartList> = {
   tags: ['autodocs'],
   decorators: [
     moduleMetadata({
-      imports: [CartItem, CartList],
+      imports: [CartItem],
     }),
   ],
 };

@@ -1,0 +1,14 @@
+<button
+  type="button"
+  [disabled]="disabled()"
+  class="inline-flex items-center justify-center font-medium transition-colors focus:outline-none hover:cursor-pointer"
+  [ngClass]="{
+        'px-6 py-3 rounded-md bg-indigo-600 text-white hover:bg-indigo-700': variant() === 'primary',
+        'text-indigo-600 hover:text-indigo-500': variant() === 'link',
+        'w-full': fullWidth(),
+        'opacity-50 cursor-not-allowed bg-gray-500': disabled()
+      }"
+  (click)="handleClick()"
+>
+  <ng-content></ng-content>
+</button>
