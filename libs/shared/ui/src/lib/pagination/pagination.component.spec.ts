@@ -13,7 +13,7 @@ describe('PaginationComponent', () => {
     fixture = TestBed.createComponent(PaginationComponent);
     component = fixture.componentInstance;
     fixture.componentRef.setInput('page', 2);
-    fixture.componentRef.setInput('totalPages', 10)
+    fixture.componentRef.setInput('totalPages', 10);
     fixture.detectChanges();
   });
 
