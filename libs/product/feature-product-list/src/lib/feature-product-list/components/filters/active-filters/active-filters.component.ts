@@ -12,7 +12,10 @@ export class ActiveFiltersComponent {
   values = input<Filters>();
   resetFilter = output<string>();
 
-  activeFilters = computed(() => this.countActiveFilters(this.values()!));
+  activeFilters = computed(() => {
+    const value = this.values();
+    return value ? this.countActiveFilters(value) : false;
+  });
 
   deleteFilter(value: string): void {
     this.resetFilter.emit(value);

@@ -7,3 +7,7 @@ export * from './lib/button/button';
 export * from './lib/input-filter/input-filter.component';
 export * from './lib/radio-filter/radio-filter.component';
 export * from './lib/pagination/pagination.component';
+export * from './lib/product-card/product-card.component';
+export * from './lib/product-card-skeleton/product-card-skeleton.component';
+export * from './lib/product-list-view/product-list-view.component';
+export * from './lib/product-list-header/product-list-header.component';

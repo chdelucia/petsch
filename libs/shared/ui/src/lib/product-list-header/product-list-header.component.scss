@@ -1,0 +1,24 @@
+@reference "../../tailwind.storybook.css";
+
+
+.top-container {
+  @apply flex items-end justify-between border-b border-gray-200 pb-5 pt-10;
+}
+
+.top-container__filters {
+  @apply flex items-center;
+}
+
+.top-container__filters__toggleview,
+.top-container__filters__togglefilters {
+  @apply h-5 w-5 cursor-pointer;
+}
+
+.top-container__filters__toggleview.active,
+.top-container__filters__togglefilters.active {
+  @apply fill-indigo-600;
+}
+
+.top-container button {
+  @apply ml-4 p-2 text-gray-400 hover:text-gray-500 sm:ml-4;
+}

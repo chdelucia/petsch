@@ -4,12 +4,12 @@ import { RouterModule } from '@angular/router';
 import { Product } from '@petsch/api';
 
 @Component({
-  selector: 'lib-product-list-view',
-
+  selector: 'lib-ui-product-list-view',
+  standalone: true,
   imports: [CommonModule, DatePipe, RouterModule],
-  templateUrl: './list-view.component.html',
-  styleUrl: './list-view.component.scss',
+  templateUrl: './product-list-view.component.html',
+  styleUrl: './product-list-view.component.scss',
 })
-export class ListViewComponent {
-  characters = input.required<Product[]>();
+export class ProductListViewComponent {
+  products = input.required<Product[]>();
 }
