@@ -45,7 +45,7 @@ describe('Products', () => {
 
   it('should send a GET request with correct URL and return data', () => {
     const id = '123';
-    const testData: Partial<any> = { id: 3 };
+    const testData: Partial<Product> = { id: '3' };
 
     service.getDetails(id).subscribe();
     const req = httpMock.expectOne(

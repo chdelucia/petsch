@@ -3,18 +3,20 @@ import { Router, NavigationEnd } from '@angular/router';
 import { Subject } from 'rxjs';
 import { AnalyticsService } from './analytics.service';
 
+import { Event } from '@angular/router';
+
 describe('AnalyticsService', () => {
   let service: AnalyticsService;
-  let routerEvents: Subject<any>;
-  let routerMock: any;
+  let routerEvents: Subject<Event>;
+  let routerMock: Partial<Router>;
 
   beforeEach(() => {
-    routerEvents = new Subject<any>();
+    routerEvents = new Subject<Event>();
     routerMock = {
       events: routerEvents.asObservable(),
     };
 
-    (globalThis as any).gtag = vitest.fn();
+    (globalThis as unknown as { gtag: unknown }).gtag = vitest.fn();
 
     TestBed.configureTestingModule({
       providers: [AnalyticsService, { provide: Router, useValue: routerMock }],
@@ -24,7 +26,7 @@ describe('AnalyticsService', () => {
   });
 
   afterEach(() => {
-    delete (globalThis as any).gtag;
+    delete (globalThis as unknown as { gtag: unknown }).gtag;
   });
 
   it('should be created', () => {

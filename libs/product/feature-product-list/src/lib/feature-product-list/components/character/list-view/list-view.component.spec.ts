@@ -12,6 +12,7 @@ describe('ListViewComponent', () => {
 
     fixture = TestBed.createComponent(ListViewComponent);
     component = fixture.componentInstance;
+    fixture.componentRef.setInput('characters', []);
     fixture.detectChanges();
   });
 

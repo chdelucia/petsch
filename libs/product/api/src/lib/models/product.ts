@@ -39,7 +39,4 @@ export interface ProductFilter {
 export interface Filters {
   page: number;
   name: string;
-  gender: string;
-  species: string;
-  status: string;
 }

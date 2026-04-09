@@ -12,15 +12,18 @@ export class ActiveFiltersComponent {
   values = input<Filters>();
   resetFilter = output<string>();
 
-  activeFilters = computed(() => this.countActiveFilters(this.values()!));
+  activeFilters = computed(() => {
+    const values = this.values();
+    return values ? this.countActiveFilters(values) : false;
+  });
 
   deleteFilter(value: string): void {
     this.resetFilter.emit(value);
   }
 
   countActiveFilters(value: Filters): boolean {
-    const { name, status, gender, species } = value;
-    const atLeastOneFilled = name || status || gender || species;
+    const { name } = value;
+    const atLeastOneFilled = name;
     return !!atLeastOneFilled;
   }
 }

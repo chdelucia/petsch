@@ -6,7 +6,6 @@ import { Observable } from 'rxjs';
 @Injectable()
 export class ProductApi implements IProductService {
   private readonly http = inject(HttpClient);
-  private readonly base = 'https://rickandmortyapi.com/api/character';
   private readonly baseUrlAPI = 'https://api.escuelajs.co/api/v1/products';
 
   getProducts(filters: Partial<Filters>): Observable<Product[]> {

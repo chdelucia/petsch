@@ -1,7 +1,6 @@
-import { Component, effect, input, computed } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { ActiveFiltersComponent } from './active-filters/active-filters.component';
 import { Filters } from '@petsch/api';
 import { InputFilterComponent, RadioFilterComponent } from '@petsch/ui';
 
@@ -12,7 +11,6 @@ import { InputFilterComponent, RadioFilterComponent } from '@petsch/ui';
     RadioFilterComponent,
     InputFilterComponent,
     ReactiveFormsModule,
-    ActiveFiltersComponent,
   ],
   templateUrl: './filters.component.html',
   styleUrl: './filters.component.scss',
@@ -56,7 +54,7 @@ export class FiltersComponent {
   }
 
   countActiveFilters(value: Filters): boolean {
-    const { name, status, gender, species } = value;
-    return !!(name || status || gender || species);
+    const { name } = value;
+    return !!name;
   }
 }
