@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.22](https://github.com/chdelucia/petsch/compare/v0.0.21...v0.0.22) (2026-04-08)
+
+
+### Bug Fixes
+
+* cart list ([06f479e](https://github.com/chdelucia/petsch/commit/06f479ef97c14f88d7eca20cb02bc5beb0f5557d))
+* **cartlist:** add bottom borders ([549f2ac](https://github.com/chdelucia/petsch/commit/549f2acb3d88af66e6ab9bde00224c1be7cb664d))
+
 ### [0.0.21](https://github.com/chdelucia/petsch/compare/v0.0.20...v0.0.21) (2026-04-08)
 
 
