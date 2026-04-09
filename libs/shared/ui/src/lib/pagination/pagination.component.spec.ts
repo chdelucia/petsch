@@ -12,6 +12,8 @@ describe('PaginationComponent', () => {
 
     fixture = TestBed.createComponent(PaginationComponent);
     component = fixture.componentInstance;
+    fixture.componentRef.setInput('page', 2);
+    fixture.componentRef.setInput('totalPages', 10)
     fixture.detectChanges();
   });
 
@@ -21,7 +23,7 @@ describe('PaginationComponent', () => {
 
   it('should emit page change event', () => {
     const pageNumber = 3;
-    const emitSpy = jest.spyOn(component.pageChange, 'emit');
+    const emitSpy = vi.spyOn(component.pageChange, 'emit');
 
     component.emitPage(pageNumber);
 

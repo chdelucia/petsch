@@ -13,7 +13,7 @@ describe('CardComponent', () => {
 
     fixture = TestBed.createComponent(CardComponent);
     component = fixture.componentInstance;
-    component.item = charResponse.results[0] as Product;
+    fixture.componentRef.setInput('item', { name: ''})
     fixture.detectChanges();
   });
 

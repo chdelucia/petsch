@@ -12,6 +12,7 @@ describe('InputFilterComponent', () => {
 
     fixture = TestBed.createComponent(InputFilterComponent);
     component = fixture.componentInstance;
+    fixture.componentRef.setInput('title', 'gender');
     fixture.detectChanges();
   });
 
@@ -31,7 +32,7 @@ describe('InputFilterComponent', () => {
   });
 
   it('should send value from input to onChange', () => {
-    const spy = jest.spyOn(component['searchText$'], 'next');
+    const spy = vi.spyOn(component['searchText$'], 'next');
     const value = {
       target: { value: 'input-value-test' },
     } as Partial<HTMLInputElement>;

@@ -12,6 +12,8 @@ describe('RadioFilterComponent', () => {
 
     fixture = TestBed.createComponent(RadioFilterComponent);
     component = fixture.componentInstance;
+    fixture.componentRef.setInput('title', 'gender');
+    fixture.componentRef.setInput('options', []);
     fixture.detectChanges();
   });
 
@@ -20,8 +22,8 @@ describe('RadioFilterComponent', () => {
   });
 
   it('should toggle filter', () => {
-    component.isOpen = true;
+    component.isOpen.set(true);
     component.togleFilter();
-    expect(component.isOpen).toBeFalsy();
+    expect(component.isOpen()).toBeFalsy();
   });
 });

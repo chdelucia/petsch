@@ -1,9 +1,4 @@
-import {
-  Component,
-  signal,
-  output,
-  input,
-} from '@angular/core';
+import { Component, signal, output, input } from '@angular/core';
 import { CartFooter } from '../cart-footer/cart-footer';
 import { CartList } from '../cart-list/cart-list';
 

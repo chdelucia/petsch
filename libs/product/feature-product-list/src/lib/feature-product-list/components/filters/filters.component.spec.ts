@@ -1,6 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FiltersComponent } from './filters.component';
-import { getTranslocoTestingModule } from '@lib-product/shared/util-translate';
 
 describe('FiltersComponent', () => {
   let component: FiltersComponent;
@@ -8,18 +7,11 @@ describe('FiltersComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [FiltersComponent, getTranslocoTestingModule()],
+      imports: [FiltersComponent],
     }).compileComponents();
 
     fixture = TestBed.createComponent(FiltersComponent);
     component = fixture.componentInstance;
-    component.values = {
-      page: 2,
-      name: '',
-      gender: '',
-      species: '',
-      status: '',
-    };
     fixture.detectChanges();
   });
 
