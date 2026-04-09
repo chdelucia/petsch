@@ -1,0 +1,26 @@
+<form [formGroup]="form">
+  <!--<lib-product-active-filters
+    (resetFilter)="resetFilter($event)"
+  >
+  </lib-product-active-filters>-->
+
+  <lib-ui-input-filter
+    title="name"
+    formControlName="name"
+  ></lib-ui-input-filter>
+  <lib-ui-radio-filter
+    title="Status"
+    [options]="statusOptions"
+    formControlName="status"
+  ></lib-ui-radio-filter>
+  <lib-ui-radio-filter
+    title="gender"
+    [options]="genderOptions"
+    formControlName="gender"
+  ></lib-ui-radio-filter>
+  <lib-ui-radio-filter
+    title="species"
+    [options]="speciesOptions"
+    formControlName="species"
+  ></lib-ui-radio-filter>
+</form>

@@ -3,13 +3,18 @@ import {
   provideBrowserGlobalErrorListeners,
   provideZonelessChangeDetection,
 } from '@angular/core';
-import { provideRouter, withInMemoryScrolling } from '@angular/router';
+import {
+  provideRouter,
+  withInMemoryScrolling,
+  withComponentInputBinding,
+} from '@angular/router';
 import { appRoutes } from './app.routes';
-import { provideHttpClient } from '@angular/common/http';
 import {
   OBSERVABILITY_PROVIDERS,
   OBSERVABILITY_ENV_PROVIDERS,
 } from '@petsch/obs-data-access';
+import { PRODUCT_TOKEN } from '@petsch/api';
+import { ProductApi } from '@petsch/data-access';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -17,10 +22,14 @@ export const appConfig: ApplicationConfig = {
     provideRouter(
       appRoutes,
       withInMemoryScrolling({ scrollPositionRestoration: 'enabled' }),
+      withComponentInputBinding(),
     ),
     provideZonelessChangeDetection(),
-    provideHttpClient(),
     ...OBSERVABILITY_PROVIDERS,
     ...OBSERVABILITY_ENV_PROVIDERS,
+    {
+      provide: PRODUCT_TOKEN,
+      useClass: ProductApi,
+    },
   ],
 };

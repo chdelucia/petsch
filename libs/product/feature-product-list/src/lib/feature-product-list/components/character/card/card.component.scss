@@ -1,0 +1,11 @@
+@reference "../../../../../../../../../apps/petshop/src/styles.css";
+
+.favorite-icon {
+  @apply z-10 h-7 w-7 absolute top-2 right-2 text-transparent hover:text-indigo-600 stroke-indigo-600 cursor-pointer;
+  &.active {
+    @apply text-indigo-600;
+    &:hover {
+      @apply text-indigo-200;
+    }
+  }
+}

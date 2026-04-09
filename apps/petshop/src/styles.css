@@ -1,8 +1,11 @@
 @import 'tailwindcss';
 
 /* nx-tailwind-sources:start */
+@source "../../../libs/product/api";
+@source "../../../libs/product/data-access";
 @source "../../../libs/product/feature-product-list";
 @source "../../../libs/product/shell";
 @source "../../../libs/shared/observability/api";
 @source "../../../libs/shared/observability/data-access";
+@source "../../../libs/shared/ui";
 /* nx-tailwind-sources:end */

@@ -4,7 +4,7 @@
   "sourceRoot": "libs/product/api/src",
   "prefix": "lib",
   "projectType": "library",
-  "tags": ["scope:product, type:api"],
+  "tags": ["scope:product", "type:api"],
   "targets": {
     "test": {
       "executor": "@nx/vitest:test",

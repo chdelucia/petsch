@@ -1,0 +1,41 @@
+@if (activeFilters()) {
+  <section class="active-filters">
+    <h3 class="active-filters__title font-medium text-gray-900 uppercase">
+      Active filters
+    </h3>
+    <div class="active-filters__list border-b border-gray-200 py-6">
+      @for (item of values() | keyvalue; track $index) {
+        @if (item.key !== 'page' && item.value) {
+          <div
+            class="active-filters__list__item py-3 flex items-center justify-between"
+          >
+            <div>
+              <small>{{ item.key }}: </small>{{ item.value }}
+            </div>
+            <button
+              type="button"
+              class="text-gray-400 hover:text-indigo-600"
+              (click)="deleteFilter(item.key)"
+            >
+              <span class="sr-only">Close</span>
+              <svg
+                class="h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                aria-hidden="true"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            </button>
+          </div>
+        }
+      }
+    </div>
+  </section>
+}

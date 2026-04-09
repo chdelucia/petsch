@@ -1,5 +1,4 @@
 import {
-  ChangeDetectionStrategy,
   Component,
   input,
   output,
@@ -10,7 +9,6 @@ import {
   imports: [],
   templateUrl: './cart-item.html',
   styleUrl: './cart-item.css',
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CartItem {
   imageSrc = input.required<string>();

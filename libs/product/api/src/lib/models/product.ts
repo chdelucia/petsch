@@ -3,11 +3,14 @@ export interface Product {
   name: string;
   description: string;
   price: number;
-  category: string;
-  imageUrl: string;
+  category: Record<string, string>;
+  images: string[];
   inStock: boolean;
   rating: number;
   reviewCount: number;
+  slug: string;
+  title: string;
+  creationAt: Date;
 }
 
 export interface ApiResponse<T> {
@@ -31,4 +34,12 @@ export interface ProductFilter {
   maxPrice?: number;
   inStock?: boolean;
   searchTerm?: string;
+}
+
+export interface Filters {
+  page: number;
+  name: string;
+  gender: string;
+  species: string;
+  status: string;
 }

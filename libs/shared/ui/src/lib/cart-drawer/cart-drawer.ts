@@ -1,5 +1,4 @@
 import {
-  ChangeDetectionStrategy,
   Component,
   signal,
   output,
@@ -13,7 +12,6 @@ import { CartList } from '../cart-list/cart-list';
   imports: [CartFooter, CartList],
   templateUrl: './cart-drawer.html',
   styleUrl: './cart-drawer.css',
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CartDrawer {
   open = signal(true);

@@ -4,3 +4,6 @@ export * from './lib/cart-item/cart-item';
 export * from './lib/cart-footer/cart-footer';
 export * from './lib/cart-header/cart-header';
 export * from './lib/button/button';
+export * from './lib/input-filter/input-filter.component';
+export * from './lib/radio-filter/radio-filter.component';
+export * from './lib/pagination/pagination.component';

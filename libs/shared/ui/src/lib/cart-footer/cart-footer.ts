@@ -1,5 +1,4 @@
 import {
-  ChangeDetectionStrategy,
   Component,
   input,
   output,
@@ -11,7 +10,6 @@ import { Button } from '../button/button';
   imports: [Button],
   templateUrl: './cart-footer.html',
   styleUrl: './cart-footer.css',
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CartFooter {
   subtotal = input.required<number>();

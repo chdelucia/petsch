@@ -140,6 +140,18 @@ Herramientas para control de pre-commit husky y commintlint
 
 - api ← data-access ← feature ← shell
 
+```bash
+  Component
+    ↓
+  Store (feature)
+    ↓
+  Repository (token)
+    ↓
+  Service (data-access)
+    ↓
+  Backend
+```
+
 Los diferentes dominios solo pueden comunicarse con /api o /shared
 
 ```json
