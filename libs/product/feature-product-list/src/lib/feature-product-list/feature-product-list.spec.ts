@@ -15,6 +15,7 @@ describe('FeatureProductList', () => {
       providers: [
         ProductsStore,
         provideRouter([]),
+        ProductsStore,
         {
           provide: PRODUCT_TOKEN,
           useValue: {
