@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, signal, computed } from '@angular/core';
 import { ProductsStore } from './product-list.store';
 import { Filters, Product } from '@petsch/api';
 import { FiltersComponent } from './components';
@@ -10,7 +10,6 @@ import {
   ProductListViewComponent,
   UiItem,
 } from '@petsch/ui';
-import { computed } from '@angular/core';
 import { CurrentTransitionService } from './current-transition.service';
 
 @Component({
