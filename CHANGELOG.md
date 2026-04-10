@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.26](https://github.com/chdelucia/petsch/compare/v0.0.25...v0.0.26) (2026-04-10)
+
+
+### Features
+
+* **pets:** adapt api to pets ([122dc61](https://github.com/chdelucia/petsch/commit/122dc61386c59f6ad80d770058828da9572e9ba7))
+
+
+### Bug Fixes
+
+* linter ([2f5bd97](https://github.com/chdelucia/petsch/commit/2f5bd97b5370fdadc9f04bd5ab273075cdd45493))
+
 ### [0.0.25](https://github.com/chdelucia/petsch/compare/v0.0.24...v0.0.25) (2026-04-10)
 
 
