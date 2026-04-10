@@ -58,12 +58,14 @@ export class SelectComponent<T = unknown> implements ControlValueAccessor {
     const target = event.target as HTMLSelectElement;
     const value = target.value;
 
-    // Attempt to parse number if the original options have numbers
-    const selectedOption = this.options().find(opt => String(opt.value) === value);
-    const finalValue = selectedOption ? selectedOption.value : value;
+    const selectedOption = this.options().find(
+      (opt) => String(opt.value) === value,
+    );
 
-    this.value.set(finalValue);
-    this.onChange(finalValue);
+    if (selectedOption) {
+      this.value.set(selectedOption.value);
+      this.onChange(selectedOption.value);
+    }
     this.onTouched();
   }
 }

@@ -10,15 +10,20 @@ export class ProductApi implements IProductService {
   private readonly baseUrlAPI =
     'https://my-json-server.typicode.com/Feverup/fever_pets_data/pets';
 
-  getProducts(filters: Partial<Filters>): Observable<GetProductsResponse> {
+  getProducts(
+    filters: Partial<Filters> | string,
+  ): Observable<GetProductsResponse> {
+    const url = typeof filters === 'string' ? filters : this.baseUrlAPI;
     let params = new HttpParams();
 
-    Object.entries(filters).forEach(([key, value]) => {
-      if (value) params = params.set(key, value);
-    });
+    if (typeof filters !== 'string') {
+      Object.entries(filters).forEach(([key, value]) => {
+        if (value) params = params.set(key, value);
+      });
+    }
 
     return this.http
-      .get<Pet[]>(this.baseUrlAPI, {
+      .get<Pet[]>(url, {
         params,
         observe: 'response',
       })

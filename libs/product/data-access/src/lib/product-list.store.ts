@@ -70,14 +70,23 @@ export const ProductsStore = signalStore(
     const { productService } = store;
 
     return {
-      async loadProducts(filters: Partial<Filters>) {
+      async loadProducts(filters: Partial<Filters> | string) {
         const currentFilters = store.filtersApplied();
-        const nextFilters = {
-          _page: 1,
-          _limit: 5,
-          ...currentFilters,
-          ...filters,
-        };
+        let nextFilters: Partial<Filters>;
+
+        if (typeof filters === 'string') {
+          // If we load by URL, we don't know the exact filters object easily
+          // but we can at least clear the pending ones or keep current.
+          // For simplicity, we'll just use currentFilters for the state.
+          nextFilters = currentFilters;
+        } else {
+          nextFilters = {
+            _page: 1,
+            _limit: 5,
+            ...currentFilters,
+            ...filters,
+          };
+        }
 
         patchState(store, {
           filtersPending: nextFilters,
@@ -88,7 +97,7 @@ export const ProductsStore = signalStore(
 
         try {
           const result = await firstValueFrom(
-            productService.getProducts(nextFilters),
+            productService.getProducts(filters),
           );
           patchState(store, {
             products: result.products,
@@ -122,7 +131,7 @@ export const ProductsStore = signalStore(
   }),
   withHooks({
     onInit(store) {
-      store.loadProducts({});
+      store.loadProducts({ _page: 1, _limit: 20 });
     },
   }),
 );

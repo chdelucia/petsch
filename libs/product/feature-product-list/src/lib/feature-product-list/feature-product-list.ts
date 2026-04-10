@@ -70,8 +70,8 @@ export class FeatureProductList {
     this.gridView.update((v) => !v);
   }
 
-  handlePageChange(page: number): void {
-    this.store.loadProducts({ _page: page });
+  handleUrlChange(url: string): void {
+    this.store.loadProducts(url);
   }
 
   handleLimitChange(limit: number): void {

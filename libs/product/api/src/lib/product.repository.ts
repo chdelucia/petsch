@@ -7,6 +7,8 @@ export interface GetProductsResponse {
 }
 
 export interface IProductService {
-  getProducts(filters: Partial<Filters>): Observable<GetProductsResponse>;
+  getProducts(
+    filters: Partial<Filters> | string,
+  ): Observable<GetProductsResponse>;
   getDetails(id: string): Observable<Pet>;
 }

@@ -1,50 +1,35 @@
-@let pageI = page();
-@let total = totalPages();
+<div class="pagination">
+  <button
+    class="pagination__button"
+    [disabled]="!links().first"
+    (click)="emitUrl(links().first)"
+  >
+    &laquo;
+  </button>
+  <button
+    class="pagination__button"
+    [disabled]="!links().prev"
+    (click)="emitUrl(links().prev)"
+  >
+    &lsaquo;
+  </button>
 
-<ul class="pagination" aria-label="Pagination">
-  <li class="page-item xs-hide" [ngClass]="{ disabled: pageI === 1 }">
-    <button
-      class="page-link"
-      (click)="emitPage(1)"
-      data-cy="p-first"
-      [disabled]="pageI === 1"
-    >
-      First
-    </button>
-  </li>
-  <li class="page-item" [ngClass]="{ disabled: pageI === 1 }">
-    <button
-      class="page-link"
-      (click)="emitPage(pageI - 1)"
-      data-cy="p-prev"
-      [disabled]="pageI === 1"
-    >
-      Prev
-    </button>
-  </li>
-  <li class="page-item active" aria-current="page">
-    <button class="page-link" data-cy="p-number">
-      {{ page() }} of {{ total }}
-    </button>
-  </li>
-  <li class="page-item" [ngClass]="{ disabled: pageI === total }">
-    <button
-      class="page-link"
-      (click)="emitPage(pageI + 1)"
-      data-cy="p-next"
-      [disabled]="pageI === total"
-    >
-      Next
-    </button>
-  </li>
-  <li class="page-item xs-hide" [ngClass]="{ disabled: pageI === total }">
-    <button
-      class="page-link"
-      (click)="emitPage(total)"
-      data-cy="p-last"
-      [disabled]="pageI === total"
-    >
-      Last
-    </button>
-  </li>
-</ul>
+  <span class="pagination__info">
+    Page {{ page() }} of {{ totalPages() }}
+  </span>
+
+  <button
+    class="pagination__button"
+    [disabled]="!links().next"
+    (click)="emitUrl(links().next)"
+  >
+    &rsaquo;
+  </button>
+  <button
+    class="pagination__button"
+    [disabled]="!links().last"
+    (click)="emitUrl(links().last)"
+  >
+    &raquo;
+  </button>
+</div>

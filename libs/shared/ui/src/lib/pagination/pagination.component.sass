@@ -1,39 +1,28 @@
 .pagination
   display: flex
-  justify-content: center
-  list-style: none
-  padding: 0
-  font-size:.9rem
+  align-items: center
+  gap: 0.5rem
+  font-size: 0.9rem
 
-  .page-item
-    &.disabled
-      pointer-events: none
+  &__button
+    background: white
+    text-decoration: none
+    color: black
+    cursor: pointer
+    padding: 8px 15px
+    border: 1px solid #ccc
+    border-radius: 4px
+    display: flex
+    align-items: center
+    justify-content: center
+
+    &:hover:not(:disabled)
+      background-color: #f0f0f0
+
+    &:disabled
       opacity: 0.5
-    &:first-of-type
-      .page-link
-        border-radius: 4px 0 0 4px
-    &:last-of-type
-      .page-link
-        border-radius: 0 4px 4px 0
-        border-right: 1px solid #ccc
-    &.active
-      font-weight: bold
-      .page-link
-        cursor: default
-        background: #f4f4f4
-        pointer-events: none
+      cursor: not-allowed
 
-    .page-link
-      background: white
-      text-decoration: none
-      color: black
-      cursor: pointer
-      padding: 8px 15px
-      border: 1px solid #ccc
-      border-right: 0
-      &:hover
-        background-color: #f0f0f0
-
-@media all and (max-width: 800px)
-  .xs-hide
-    display: none
+  &__info
+    font-weight: 500
+    margin: 0 0.5rem

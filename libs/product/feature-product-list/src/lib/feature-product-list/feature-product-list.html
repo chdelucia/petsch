@@ -20,7 +20,8 @@
           class="chars__list__pagination"
           [page]="store.currentPage()"
           [totalPages]="store.totalPages()"
-          (pageChange)="handlePageChange($event)"
+          [links]="store.pagination()"
+          (urlChange)="handleUrlChange($event)"
         ></lib-ui-pagination>
 
         <lib-ui-select
