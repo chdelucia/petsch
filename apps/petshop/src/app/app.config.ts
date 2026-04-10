@@ -40,9 +40,7 @@ export const appConfig: ApplicationConfig = {
       withComponentInputBinding(),
       withViewTransitions({
         onViewTransitionCreated: (info) => {
-          appInjector
-            .get(CurrentTransitionService)
-            .currentTransition.set(info);
+          appInjector.get(CurrentTransitionService).currentTransition.set(info);
         },
       }),
     ),

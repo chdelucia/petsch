@@ -18,7 +18,7 @@ export default [
           depConstraints: [
             {
               sourceTag: 'type:api',
-              onlyDependOnLibsWithTags: ['type:data-access'],
+              onlyDependOnLibsWithTags: ['type:api'],
             },
             {
               sourceTag: 'type:data-access',
@@ -26,7 +26,12 @@ export default [
             },
             {
               sourceTag: 'type:feature',
-              onlyDependOnLibsWithTags: ['type:api', 'type:ui'],
+              onlyDependOnLibsWithTags: [
+                'type:api',
+                'type:ui',
+                'type:data-access',
+                'type:feature',
+              ],
             },
             {
               sourceTag: 'scope:petshop',

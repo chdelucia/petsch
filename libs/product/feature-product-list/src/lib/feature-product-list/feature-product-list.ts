@@ -1,6 +1,5 @@
 import { Component, inject, signal, computed } from '@angular/core';
-import { ProductsStore } from './product-list.store';
-import { Filters, Product, CurrentTransitionService } from '@petsch/api';
+import { Filters, CurrentTransitionService } from '@petsch/api';
 import { FiltersComponent } from './components';
 import {
   PaginationComponent,
@@ -10,6 +9,7 @@ import {
   ProductListViewComponent,
   UiItem,
 } from '@petsch/ui';
+import { ProductsStore } from '@petsch/data-access';
 
 @Component({
   selector: 'lib-feature-product-list',
@@ -23,7 +23,6 @@ import {
   ],
   templateUrl: './feature-product-list.html',
   styleUrl: './feature-product-list.css',
-  providers: [ProductsStore],
 })
 export class FeatureProductList {
   private readonly store = inject(ProductsStore);
@@ -42,8 +41,8 @@ export class FeatureProductList {
         imageUrl: p.images[0],
         creationAt: p.creationAt,
         categoryName: p.category['name'],
-      })
-    )
+      }),
+    ),
   );
 
   loading = this.store.loading;

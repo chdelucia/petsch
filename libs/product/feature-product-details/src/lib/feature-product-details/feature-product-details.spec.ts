@@ -13,12 +13,12 @@ describe('FeatureProductDetails', () => {
     price: 100,
     description: 'Test Description',
     images: ['test.jpg'],
-    category: { name: 'Test Category' }
+    category: { name: 'Test Category' },
   };
 
   const mockProductService = {
     getDetails: vi.fn().mockReturnValue(of(mockProduct)),
-    getProducts: vi.fn()
+    getProducts: vi.fn(),
   };
 
   beforeEach(async () => {
@@ -26,8 +26,8 @@ describe('FeatureProductDetails', () => {
       imports: [FeatureProductDetails],
       providers: [
         { provide: PRODUCT_TOKEN, useValue: mockProductService },
-        provideRouter([])
-      ]
+        provideRouter([]),
+      ],
     }).compileComponents();
 
     fixture = TestBed.createComponent(FeatureProductDetails);

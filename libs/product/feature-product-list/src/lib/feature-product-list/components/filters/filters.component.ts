@@ -5,8 +5,8 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { debounceTime } from 'rxjs';
 import { Filters } from '@petsch/api';
 import { InputFilterComponent, RadioFilterComponent } from '@petsch/ui';
-import { ProductsStore } from '../../product-list.store';
 import { ActiveFiltersComponent } from './active-filters/active-filters.component';
+import { ProductsStore } from '@petsch/data-access';
 
 @Component({
   selector: 'lib-product-filters',
