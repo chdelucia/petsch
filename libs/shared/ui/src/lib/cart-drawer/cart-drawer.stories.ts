@@ -3,7 +3,7 @@ import { CartDrawer } from './cart-drawer';
 
 const meta: Meta<CartDrawer> = {
   component: CartDrawer,
-  title: 'Organism/CartDrawer',
+  title: 'Organisms/CartDrawer',
   tags: ['autodocs'],
 };
 export default meta;

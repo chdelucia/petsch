@@ -1,17 +1,22 @@
-import { moduleMetadata, type Meta, type StoryObj } from '@storybook/angular';
-import { ProductListItemComponent } from './product-list-item.component';
+import {
+  applicationConfig,
+  type Meta,
+  type StoryObj,
+} from '@storybook/angular';
 import { provideRouter } from '@angular/router';
+import { ProductListItemComponent } from './product-list-item.component';
 
 const meta: Meta<ProductListItemComponent> = {
   component: ProductListItemComponent,
   title: 'Molecules/ProductListItem',
   tags: ['autodocs'],
   decorators: [
-    moduleMetadata({
+    applicationConfig({
       providers: [provideRouter([])],
     }),
   ],
 };
+
 export default meta;
 
 type Story = StoryObj<ProductListItemComponent>;
