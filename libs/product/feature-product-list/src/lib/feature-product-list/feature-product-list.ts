@@ -8,7 +8,9 @@ import {
   ProductCardSkeletonComponent,
   ProductListHeaderComponent,
   ProductListViewComponent,
+  UiItem,
 } from '@petsch/ui';
+import { computed } from '@angular/core';
 import { CurrentTransitionService } from './current-transition.service';
 
 @Component({
@@ -30,6 +32,22 @@ export class FeatureProductList {
   private readonly transitionService = inject(CurrentTransitionService);
 
   products = this.store.filteredProducts;
+
+  uiProducts = computed(() =>
+    this.products().map(
+      (p): UiItem => ({
+        id: p.id,
+        name: p.name,
+        title: p.title,
+        description: p.description,
+        price: p.price,
+        imageUrl: p.images[0],
+        creationAt: p.creationAt,
+        categoryName: p.category['name'],
+      })
+    )
+  );
+
   loading = this.store.loading;
   error = this.store.error;
 

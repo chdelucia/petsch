@@ -9,4 +9,6 @@ export * from './lib/pagination/pagination.component';
 export * from './lib/product-card/product-card.component';
 export * from './lib/product-card-skeleton/product-card-skeleton.component';
 export * from './lib/product-list-view/product-list-view.component';
+export * from './lib/product-list-item/product-list-item.component';
 export * from './lib/product-list-header/product-list-header.component';
+export * from './lib/models/ui-item.model';

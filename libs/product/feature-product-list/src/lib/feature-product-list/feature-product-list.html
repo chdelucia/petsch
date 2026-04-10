@@ -27,7 +27,12 @@
         @for (item of products(); track item.id) {
         <lib-ui-product-card
           class="card-effect"
-          [item]="item"
+          [id]="item.id"
+          [title]="item.title"
+          [name]="item.name"
+          [price]="item.price"
+          [imageUrl]="item.images[0]"
+          [categoryName]="item.category['name']"
           [viewTransitionName]="getViewTransitionName(item)"
         >
         </lib-ui-product-card>
@@ -35,7 +40,7 @@
       </section>
       } @else {
       <lib-ui-product-list-view
-        [products]="products()"
+        [products]="uiProducts()"
       ></lib-ui-product-list-view>
       } } @placeholder(minimum 1500ms) {
       <lib-ui-product-card-skeleton></lib-ui-product-card-skeleton>
