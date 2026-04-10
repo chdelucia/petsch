@@ -1,3 +1,5 @@
+export type HealthStatus = 'unhealthy' | 'healthy' | 'very healthy';
+
 export interface Pet {
   id: number;
   name: string;
@@ -8,6 +10,14 @@ export interface Pet {
   weight: number;
   height: number;
   number_of_lives?: number;
+  health?: HealthStatus;
+}
+
+export interface PaginationLinks {
+  first?: string;
+  prev?: string;
+  next?: string;
+  last?: string;
 }
 
 export interface PaginatedResponse<T> {

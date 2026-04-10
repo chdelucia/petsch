@@ -1,5 +1,5 @@
 import { computed, inject } from '@angular/core';
-import { Pet, Filters, PRODUCT_TOKEN } from '@petsch/api';
+import { Pet, Filters, PRODUCT_TOKEN, PaginationLinks } from '@petsch/api';
 import {
   signalStore,
   withProps,
@@ -13,6 +13,7 @@ import { firstValueFrom } from 'rxjs';
 
 export interface ProductsState {
   products: Pet[];
+  pagination: PaginationLinks;
   filtersApplied: Partial<Filters>;
   filtersPending: Partial<Filters>;
   loading: boolean;
@@ -21,6 +22,7 @@ export interface ProductsState {
 
 const initialState: ProductsState = {
   products: [],
+  pagination: {},
   filtersApplied: {},
   filtersPending: {},
   loading: false,
@@ -56,13 +58,18 @@ export const ProductsStore = signalStore(
         });
 
         try {
-          const result: Pet[] = await firstValueFrom(
+          const result = await firstValueFrom(
             productService.getProducts(filters),
           );
-          patchState(store, { products: result, loading: false });
+          patchState(store, {
+            products: result.products,
+            pagination: result.pagination,
+            loading: false,
+          });
         } catch (err: unknown) {
           patchState(store, {
             products: [],
+            pagination: {},
             loading: false,
             error: (err as Error)?.message ?? 'Failed to load products',
           });
