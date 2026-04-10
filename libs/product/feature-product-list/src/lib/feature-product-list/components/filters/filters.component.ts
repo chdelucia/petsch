@@ -40,10 +40,10 @@ export class FiltersComponent {
         this.store.loadProducts(value as Partial<Filters>);
       });
 
-      this.form.controls.name.valueChanges
+    this.form.controls.name.valueChanges
       .pipe(debounceTime(4), takeUntilDestroyed())
       .subscribe((value) => {
-        this.store.updateFilters({name: value || ''});
+        this.store.updateFilters({ name: value || '' });
       });
   }
 

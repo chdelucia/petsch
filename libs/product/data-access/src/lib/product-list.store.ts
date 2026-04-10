@@ -37,7 +37,9 @@ export const ProductsStore = signalStore(
       const filters = store.filtersApplied();
       const products = store.products();
       return products.filter((p) => {
-        return !filters.name || p.name.toLocaleLowerCase().includes(filters.name);
+        return (
+          !filters.name || p.name.toLocaleLowerCase().includes(filters.name)
+        );
       });
     }),
   })),
@@ -90,7 +92,7 @@ export const ProductsStore = signalStore(
   }),
   withHooks({
     onInit(store) {
-      store.loadProducts({_page: 1, limit: 20});
+      store.loadProducts({ _page: 1, limit: 20 });
     },
   }),
 );
