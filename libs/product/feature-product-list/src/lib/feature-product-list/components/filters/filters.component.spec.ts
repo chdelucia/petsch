@@ -1,5 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FiltersComponent } from './filters.component';
+import { ProductsStore } from '../../product-list.store';
+import { PRODUCT_TOKEN } from '@petsch/api';
+import { of } from 'rxjs';
 
 describe('FiltersComponent', () => {
   let component: FiltersComponent;
@@ -8,6 +11,16 @@ describe('FiltersComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [FiltersComponent],
+      providers: [
+        ProductsStore,
+        {
+          provide: PRODUCT_TOKEN,
+          useValue: {
+            getProducts: () => of([]),
+            getDetails: () => of({}),
+          },
+        },
+      ],
     }).compileComponents();
 
     fixture = TestBed.createComponent(FiltersComponent);
