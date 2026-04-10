@@ -11,6 +11,7 @@ import {
   withInMemoryScrolling,
   withComponentInputBinding,
   withViewTransitions,
+  ViewTransitionInfo,
 } from '@angular/router';
 import { appRoutes } from './app.routes';
 import {
@@ -27,22 +28,11 @@ let appInjector: EnvironmentInjector;
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
-    {
-      provide: ENVIRONMENT_INITIALIZER,
-      multi: true,
-      useValue: () => {
-        appInjector = inject(EnvironmentInjector);
-      },
-    },
     provideRouter(
       appRoutes,
       withInMemoryScrolling({ scrollPositionRestoration: 'enabled' }),
       withComponentInputBinding(),
-      withViewTransitions({
-        onViewTransitionCreated: (info) => {
-          appInjector.get(CurrentTransitionService).currentTransition.set(info);
-        },
-      }),
+      withViewTransitions({ onViewTransitionCreated })
     ),
     provideZonelessChangeDetection(),
     ...OBSERVABILITY_PROVIDERS,
@@ -57,3 +47,11 @@ export const appConfig: ApplicationConfig = {
     },
   ],
 };
+
+function onViewTransitionCreated(info: ViewTransitionInfo) {
+  const currentTransitionService = inject(CurrentTransitionService);
+  currentTransitionService.currentTransition.set(info);
+  info.transition.finished.finally(() => {
+    currentTransitionService.currentTransition.set(null);
+  });
+}
