@@ -1,5 +1,5 @@
 import { Component, input, output } from '@angular/core';
-import { CartDrawer} from '@petsch/ui';
+import { CartDrawer } from '@petsch/ui';
 
 @Component({
   selector: 'lib-feature-cart',
