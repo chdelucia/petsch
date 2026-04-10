@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.25](https://github.com/chdelucia/petsch/compare/v0.0.24...v0.0.25) (2026-04-10)
+
+
+### Bug Fixes
+
+* linter ([603d1b5](https://github.com/chdelucia/petsch/commit/603d1b5dac725b28928468c682949239e33eee6b))
+* transition view ([8d9f2f2](https://github.com/chdelucia/petsch/commit/8d9f2f2c3c8528aa04fa1deada20fbfacec2544a))
+
 ### [0.0.24](https://github.com/chdelucia/petsch/compare/v0.0.23...v0.0.24) (2026-04-10)
 
 
