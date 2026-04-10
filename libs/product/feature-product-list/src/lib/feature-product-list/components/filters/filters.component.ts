@@ -1,8 +1,9 @@
-import { Component, input, computed } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { Filters } from '@petsch/api';
 import { InputFilterComponent, RadioFilterComponent } from '@petsch/ui';
+import { ProductsStore } from '../../product-list.store';
 
 @Component({
   selector: 'lib-product-filters',
@@ -16,6 +17,8 @@ import { InputFilterComponent, RadioFilterComponent } from '@petsch/ui';
   styleUrl: './filters.component.scss',
 })
 export class FiltersComponent {
+  private readonly store = inject(ProductsStore);
+
   form = new FormGroup({
     name: new FormControl(''),
     status: new FormControl(''),
