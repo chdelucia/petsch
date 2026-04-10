@@ -1,7 +1,10 @@
-import { Component, effect, inject, input } from '@angular/core';
+import { Component, inject, input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ProductDetailsStore } from './product-details.store';
+import { toObservable, toSignal } from '@angular/core/rxjs-interop';
+import { Router } from '@angular/router';
+import { catchError, map, of, startWith, switchMap } from 'rxjs';
 import { Button } from '@petsch/ui';
+import { PRODUCT_TOKEN, CurrentTransitionService } from '@petsch/api';
 
 @Component({
   selector: 'lib-feature-product-details',
@@ -9,20 +12,39 @@ import { Button } from '@petsch/ui';
   imports: [CommonModule, Button],
   templateUrl: './feature-product-details.html',
   styleUrl: './feature-product-details.css',
-  providers: [ProductDetailsStore],
 })
 export class FeatureProductDetails {
-  private readonly store = inject(ProductDetailsStore);
+  private readonly productService = inject(PRODUCT_TOKEN);
+  protected readonly transitionService = inject(CurrentTransitionService);
+  private readonly router = inject(Router);
 
   id = input.required<string>();
 
-  product = this.store.product;
-  loading = this.store.loading;
-  error = this.store.error;
+  private readonly productResult$ = toObservable(this.id).pipe(
+    switchMap((id) =>
+      this.productService.getDetails(id).pipe(
+        map((product) => ({ product, loading: false, error: null })),
+        catchError((err) =>
+          of({
+            product: null,
+            loading: false,
+            error: err.message ?? 'Failed to load product details',
+          })
+        ),
+        startWith({ product: null, loading: true, error: null })
+      )
+    )
+  );
 
-  constructor() {
-    effect(() => {
-      this.store.loadProduct(this.id());
-    });
+  private readonly productResult = toSignal(this.productResult$, {
+    initialValue: { product: null, loading: true, error: null },
+  });
+
+  product = () => this.productResult().product;
+  loading = () => this.productResult().loading;
+  error = () => this.productResult().error;
+
+  goBack() {
+    this.router.navigate(['/products']);
   }
 }

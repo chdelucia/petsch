@@ -1,6 +1,6 @@
 import { Component, inject, signal, computed } from '@angular/core';
 import { ProductsStore } from './product-list.store';
-import { Filters, Product } from '@petsch/api';
+import { Filters, Product, CurrentTransitionService } from '@petsch/api';
 import { FiltersComponent } from './components';
 import {
   PaginationComponent,
@@ -10,7 +10,6 @@ import {
   ProductListViewComponent,
   UiItem,
 } from '@petsch/ui';
-import { CurrentTransitionService } from './current-transition.service';
 
 @Component({
   selector: 'lib-feature-product-list',
@@ -28,7 +27,7 @@ import { CurrentTransitionService } from './current-transition.service';
 })
 export class FeatureProductList {
   private readonly store = inject(ProductsStore);
-  private readonly transitionService = inject(CurrentTransitionService);
+  protected readonly transitionService = inject(CurrentTransitionService);
 
   products = this.store.filteredProducts;
 
@@ -75,15 +74,5 @@ export class FeatureProductList {
     console.log(page);
     //this.filters = { ...this.filters, page };
     //this.searchCharacters(this.filters);
-  }
-
-  getViewTransitionName(char: Product) {
-    const transition = this.transitionService.currentTransition();
-    const isBannerImg =
-      transition?.to.firstChild?.firstChild?.params['id'] ===
-        char.id.toString() ||
-      transition?.from.firstChild?.firstChild?.params['id'] ===
-        char.id.toString();
-    return isBannerImg ? 'banner-img' : '';
   }
 }
