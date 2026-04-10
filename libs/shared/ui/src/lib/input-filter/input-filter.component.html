@@ -60,7 +60,7 @@
       </svg>
     </div>
     <input
-      (input)="getValue($event)"
+      (keyup)="getValue($event)"
       (focus)="openLastsearch()"
       (click)="openLastsearch()"
       [value]="value"
