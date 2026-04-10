@@ -1,3 +1,14 @@
-:host {
-  display: block;
+.banner-img img {
+  view-transition-name: banner-img;
+  contain: layout;
+}
+
+::view-transition-old(banner-img),
+::view-transition-new(banner-img) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+::view-transition-image-pair(banner-img) {
+  isolation: none;
 }

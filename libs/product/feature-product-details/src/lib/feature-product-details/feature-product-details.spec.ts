@@ -7,15 +7,17 @@ import { provideRouter } from '@angular/router';
 describe('FeatureProductDetails', () => {
   let component: FeatureProductDetails;
   let fixture: ComponentFixture<FeatureProductDetails>;
+  const mockProduct = {
+    id: '1',
+    title: 'Test Product',
+    price: 100,
+    description: 'Test Description',
+    images: ['test.jpg'],
+    category: { name: 'Test Category' }
+  };
+
   const mockProductService = {
-    getDetails: vi.fn().mockReturnValue(of({
-      id: '1',
-      title: 'Test Product',
-      price: 100,
-      description: 'Test Description',
-      images: ['test.jpg'],
-      category: { name: 'Test Category' }
-    })),
+    getDetails: vi.fn().mockReturnValue(of(mockProduct)),
     getProducts: vi.fn()
   };
 
@@ -31,14 +33,11 @@ describe('FeatureProductDetails', () => {
     fixture = TestBed.createComponent(FeatureProductDetails);
     component = fixture.componentInstance;
     fixture.componentRef.setInput('id', '1');
+    fixture.componentRef.setInput('product', mockProduct);
     fixture.detectChanges();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
-  });
-
-  it('should load product on init', () => {
-    expect(mockProductService.getDetails).toHaveBeenCalledWith('1');
   });
 });

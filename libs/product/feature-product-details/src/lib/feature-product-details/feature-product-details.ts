@@ -1,7 +1,8 @@
-import { Component, effect, inject, input } from '@angular/core';
+import { Component, inject, input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ProductDetailsStore } from './product-details.store';
+import { Router } from '@angular/router';
 import { Button } from '@petsch/ui';
+import { Product, CurrentTransitionService } from '@petsch/api';
 
 @Component({
   selector: 'lib-feature-product-details',
@@ -9,20 +10,18 @@ import { Button } from '@petsch/ui';
   imports: [CommonModule, Button],
   templateUrl: './feature-product-details.html',
   styleUrl: './feature-product-details.css',
-  providers: [ProductDetailsStore],
 })
 export class FeatureProductDetails {
-  private readonly store = inject(ProductDetailsStore);
+  protected readonly transitionService = inject(CurrentTransitionService);
+  private readonly router = inject(Router);
 
   id = input.required<string>();
+  product = input.required<Product>();
 
-  product = this.store.product;
-  loading = this.store.loading;
-  error = this.store.error;
+  loading = () => false;
+  error = () => null;
 
-  constructor() {
-    effect(() => {
-      this.store.loadProduct(this.id());
-    });
+  goBack() {
+    this.router.navigate(['/products']);
   }
 }

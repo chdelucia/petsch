@@ -33,7 +33,7 @@
           [price]="item.price"
           [imageUrl]="item.images[0]"
           [categoryName]="item.category['name']"
-          [viewTransitionName]="getViewTransitionName(item)"
+          [viewTransitionName]="transitionService.getViewTransitionName(item.id)"
         >
         </lib-ui-product-card>
         }

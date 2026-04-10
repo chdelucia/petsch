@@ -1,4 +1,10 @@
 <div class="container mx-auto px-4 py-8">
+  <div class="mb-6">
+    <lib-ui-button (click)="goBack()" [variant]="'primary'">
+      &larr; Back to listing
+    </lib-ui-button>
+  </div>
+
   @if (loading()) {
     <div class="flex justify-center items-center h-64">
       <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-gray-900"></div>
@@ -12,8 +18,13 @@
     <div class="lg:flex lg:items-start lg:gap-x-12">
       <!-- Image gallery -->
       <div class="lg:w-1/2">
-        <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg">
-          <img [src]="item.images[0]" [alt]="item.title" class="h-full w-full object-cover object-center">
+        <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg banner-img">
+          <img
+            [src]="item.images[0]"
+            [alt]="item.title"
+            class="h-full w-full object-cover object-center"
+            [style.viewTransitionName]="transitionService.getViewTransitionName(id())"
+          >
         </div>
         <div class="mt-4 grid grid-cols-4 gap-4">
           @for (image of item.images; track image) {
