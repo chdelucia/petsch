@@ -20,10 +20,8 @@ type Story = StoryObj<ProductCardComponent>;
 
 export const Default: Story = {
   args: {
-    id: '1',
+    id: 1,
     name: 'Product Name',
-    title: 'Product Title',
-    price: 100,
     imageUrl: 'https://placehold.co/600x400',
     categoryName: 'Category Name',
     viewTransitionName: '',

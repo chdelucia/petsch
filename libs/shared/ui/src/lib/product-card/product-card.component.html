@@ -17,14 +17,13 @@
             aria-hidden="true"
             class="absolute inset-0 container__card__name"
           ></span>
-          {{ title() }}
+          {{ name() }}
         </a>
       </h3>
       <div class="flex justify-between">
-        <span>{{ categoryName() }}</span>
-        <span class="text-3xl">{{ price() }} €</span>
+        <span>Category: {{ categoryName() }}</span>
       </div>
     </div>
   </div>
 </div>
-<lib-ui-button [fullWidth]="true">Add to cart</lib-ui-button>
+<lib-ui-button [fullWidth]="true">Add as 'Pet of the day'</lib-ui-button>

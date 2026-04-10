@@ -1,5 +1,5 @@
 import { computed, inject } from '@angular/core';
-import { Product, Filters, PRODUCT_TOKEN } from '@petsch/api';
+import { Pet, Filters, PRODUCT_TOKEN } from '@petsch/api';
 import {
   signalStore,
   withProps,
@@ -12,7 +12,7 @@ import {
 import { firstValueFrom } from 'rxjs';
 
 export interface ProductsState {
-  products: Product[];
+  products: Pet[];
   filtersApplied: Partial<Filters>;
   filtersPending: Partial<Filters>;
   loading: boolean;
@@ -37,13 +37,7 @@ export const ProductsStore = signalStore(
       const filters = store.filtersApplied();
       const products = store.products();
       return products.filter((p) => {
-        return !filters.name || p.title.includes(filters.name);
-        /**return (
-          (!filters.name || p.name.includes(filters.name)) &&
-          (!filters.gender || p.gender === filters.gender) &&
-          (!filters.species || p.species === filters.species) &&
-          (!filters.status || p.status === filters.status)
-        );*/
+        return !filters.name || p.name.includes(filters.name);
       });
     }),
   })),
@@ -62,7 +56,7 @@ export const ProductsStore = signalStore(
         });
 
         try {
-          const result: Product[] = await firstValueFrom(
+          const result: Pet[] = await firstValueFrom(
             productService.getProducts(filters),
           );
           patchState(store, { products: result, loading: false });
