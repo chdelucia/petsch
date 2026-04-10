@@ -4,7 +4,7 @@ import { provideRouter } from '@angular/router';
 import { applicationConfig } from '@storybook/angular';
 
 const meta: Meta<ProductListViewComponent> = {
-  title: 'Molecules/ProductListView',
+  title: 'Organisms/ProductListView',
   component: ProductListViewComponent,
   tags: ['autodocs'],
   decorators: [
@@ -27,12 +27,8 @@ export const Default: Story = {
         title: 'Title 1',
         description: 'Description 1',
         price: 10,
-        images: ['https://placehold.co/100'],
-        category: { name: 'Cat 1' },
-        inStock: true,
-        rating: 4,
-        reviewCount: 5,
-        slug: 'slug-1',
+        imageUrl: 'https://placehold.co/100',
+        categoryName: 'Cat 1',
         creationAt: new Date(),
       },
       {
@@ -41,12 +37,8 @@ export const Default: Story = {
         title: 'Title 2',
         description: 'Description 2',
         price: 20,
-        images: ['https://placehold.co/100'],
-        category: { name: 'Cat 2' },
-        inStock: true,
-        rating: 5,
-        reviewCount: 8,
-        slug: 'slug-2',
+        imageUrl: 'https://placehold.co/100',
+        categoryName: 'Cat 2',
         creationAt: new Date(),
       },
     ],

@@ -3,8 +3,8 @@
     class="container__card__img aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none lg:h-80"
   >
     <img
-      [src]="item().images[0]"
-      [alt]="item().name"
+      [src]="imageUrl()"
+      [alt]="name()"
       [style.viewTransitionName]="viewTransitionName()"
       class="h-full w-full object-cover object-center lg:h-full lg:w-full group-hover:opacity-75"
     />
@@ -17,12 +17,12 @@
             aria-hidden="true"
             class="absolute inset-0 container__card__name"
           ></span>
-          {{ item().title }}
+          {{ title() }}
         </a>
       </h3>
       <div class="flex justify-between">
-        <span>{{ item().category['name'] }}</span>
-        <span class="text-3xl">{{ item().price }} €</span>
+        <span>{{ categoryName() }}</span>
+        <span class="text-3xl">{{ price() }} €</span>
       </div>
     </div>
   </div>
