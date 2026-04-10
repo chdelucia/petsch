@@ -1,16 +1,16 @@
+export type HealthStatus = 'unhealthy' | 'healthy' | 'very healthy';
+
 export interface Product {
-  id: string;
+  id: number;
   name: string;
+  kind: string;
+  weight: number;
+  height: number;
+  length: number;
+  photo_url: string;
   description: string;
-  price: number;
-  category: Record<string, string>;
-  images: string[];
-  inStock: boolean;
-  rating: number;
-  reviewCount: number;
-  slug: string;
-  title: string;
-  creationAt: Date;
+  number_of_lives?: number;
+  health: HealthStatus;
 }
 
 export interface ApiResponse<T> {
@@ -38,8 +38,7 @@ export interface ProductFilter {
 
 export interface Filters {
   page: number;
+  limit: number;
   name: string;
-  gender: string;
-  species: string;
-  status: string;
+  kind: string;
 }

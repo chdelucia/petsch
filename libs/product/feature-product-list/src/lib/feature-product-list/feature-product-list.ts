@@ -33,14 +33,14 @@ export class FeatureProductList {
   uiProducts = computed(() =>
     this.products().map(
       (p): UiItem => ({
-        id: p.id,
+        id: p.id.toString(),
         name: p.name,
-        title: p.title,
+        title: p.name,
         description: p.description,
-        price: p.price,
-        imageUrl: p.images[0],
-        creationAt: p.creationAt,
-        categoryName: p.category['name'],
+        price: 0, // Pets don't have price in the new API
+        imageUrl: p.photo_url,
+        creationAt: new Date(),
+        categoryName: p.kind,
       }),
     ),
   );

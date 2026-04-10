@@ -27,31 +27,66 @@ describe('Products', () => {
   });
 
   it('should send a GET request with correct filter parameters', () => {
-    const name = 'Batman';
-    const page = 1;
+    const name = 'Jade';
+    const kind = 'dog';
 
-    service.getProducts({ name, page }).subscribe();
+    service.getProducts({ name, kind }).subscribe();
 
     const req = httpMock.expectOne((req) => req.url.includes(service['baseUrlAPI']));
     expect(req.request.url).toEqual(
-      'https://api.escuelajs.co/api/v1/products?limit=30&offset=1',
+      'https://my-json-server.typicode.com/Feverup/fever_pets_data/pets',
     );
-    expect(req.request.params.get('name')).toEqual('Batman');
-    expect(req.request.params.get('page')).toEqual('1');
+    expect(req.request.params.get('name_like')).toEqual('Jade');
+    expect(req.request.params.get('kind')).toEqual('dog');
     expect(req.request.method).toBe('GET');
 
-    req.flush({} as Product);
+    req.flush([]);
   });
 
-  it('should send a GET request with correct URL and return data', () => {
-    const id = '123';
-    const testData: Partial<any> = { id: 3 };
+  it('should calculate health correctly when mapping response', () => {
+    const mockPets = [
+      {
+        id: 1,
+        name: 'Jade',
+        kind: 'dog',
+        weight: 2741,
+        height: 20,
+        length: 35,
+        photo_url: 'url',
+        description: 'desc'
+      }
+    ];
 
-    service.getDetails(id).subscribe();
+    service.getProducts({}).subscribe(products => {
+      expect(products[0].health).toBe('healthy'); // 2741 / (20 * 35) = 3.91
+    });
+
+    const req = httpMock.expectOne((req) => req.url.includes(service['baseUrlAPI']));
+    req.flush(mockPets);
+  });
+
+  it('should send a GET request with correct URL for details and return mapped data', () => {
+    const id = '1';
+    const mockPet = {
+      id: 1,
+      name: 'Stinky',
+      kind: 'cat',
+      weight: 6712,
+      height: 25,
+      length: 52,
+      photo_url: 'url',
+      description: 'desc',
+      number_of_lives: 5
+    };
+
+    service.getDetails(id).subscribe(product => {
+      expect(product.name).toBe('Stinky');
+      expect(product.health).toBe('unhealthy'); // 6712 / (25 * 52) = 5.16
+    });
     const req = httpMock.expectOne(
-      `https://api.escuelajs.co/api/v1/products/${id}`,
+      `https://my-json-server.typicode.com/Feverup/fever_pets_data/pets/${id}`,
     );
     expect(req.request.method).toBe('GET');
-    req.flush(testData);
+    req.flush(mockPet);
   });
 });

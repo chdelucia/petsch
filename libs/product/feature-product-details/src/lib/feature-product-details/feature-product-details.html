@@ -27,34 +27,32 @@
         class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg banner-img"
       >
         <img
-          [src]="item.images[0]"
-          [alt]="item.title"
+          [src]="item.photo_url"
+          [alt]="item.name"
           class="h-full w-full object-cover object-center"
           [style.viewTransitionName]="transitionService.getViewTransitionName(id())"
         />
-      </div>
-      <div class="mt-4 grid grid-cols-4 gap-4">
-        @for (image of item.images; track image) {
-        <div class="aspect-h-1 aspect-w-1 overflow-hidden rounded-lg">
-          <img
-            [src]="image"
-            [alt]="item.title"
-            class="h-full w-full object-cover object-center"
-          />
-        </div>
-        }
       </div>
     </div>
 
     <!-- Product info -->
     <div class="mt-10 px-4 sm:mt-16 sm:px-0 lg:mt-0 lg:w-1/2">
       <h1 class="text-3xl font-bold tracking-tight text-gray-900">
-        {{ item.title }}
+        {{ item.name }}
       </h1>
 
-      <div class="mt-3">
-        <h2 class="sr-only">Product information</h2>
-        <p class="text-3xl tracking-tight text-gray-900">{{ item.price }} €</p>
+      <div class="mt-3 flex items-center gap-2">
+        <h2 class="sr-only">Health information</h2>
+        <span
+          class="inline-flex items-center rounded-md px-2 py-1 text-sm font-medium ring-1 ring-inset"
+          [ngClass]="{
+            'bg-green-50 text-green-700 ring-green-600/20': item.health === 'very healthy',
+            'bg-blue-50 text-blue-700 ring-blue-600/20': item.health === 'healthy',
+            'bg-red-50 text-red-700 ring-red-600/20': item.health === 'unhealthy'
+          }"
+        >
+          {{ item.health | titlecase }}
+        </span>
       </div>
 
       <div class="mt-6">
@@ -64,17 +62,29 @@
         </div>
       </div>
 
-      <div class="mt-10">
-        <div class="flex items-center">
-          <h3 class="text-sm font-medium text-gray-900">Category:</h3>
-          <span class="ml-2 text-sm text-gray-500"
-            >{{ item.category['name'] }}</span
-          >
+      <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-4 sm:grid-cols-2">
+        <div class="border-t border-gray-200 pt-4">
+          <dt class="font-medium text-gray-900">Kind</dt>
+          <dd class="mt-2 text-sm text-gray-500">{{ item.kind | titlecase }}</dd>
         </div>
+        <div class="border-t border-gray-200 pt-4">
+          <dt class="font-medium text-gray-900">Weight</dt>
+          <dd class="mt-2 text-sm text-gray-500">{{ item.weight }} g</dd>
+        </div>
+        <div class="border-t border-gray-200 pt-4">
+          <dt class="font-medium text-gray-900">Dimensions</dt>
+          <dd class="mt-2 text-sm text-gray-500">{{ item.height }}cm (H) x {{ item.length }}cm (L)</dd>
+        </div>
+        @if (item.kind === 'cat') {
+          <div class="border-t border-gray-200 pt-4">
+            <dt class="font-medium text-gray-900">Number of lives</dt>
+            <dd class="mt-2 text-sm text-gray-500">{{ item.number_of_lives }}</dd>
+          </div>
+        }
       </div>
 
       <div class="mt-10 flex">
-        <lib-ui-button [fullWidth]="true">Add to cart</lib-ui-button>
+        <lib-ui-button [fullWidth]="true">Adopt {{ item.name }}</lib-ui-button>
       </div>
     </div>
   </div>

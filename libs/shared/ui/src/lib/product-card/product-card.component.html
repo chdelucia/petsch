@@ -22,9 +22,13 @@
       </h3>
       <div class="flex justify-between">
         <span>{{ categoryName() }}</span>
-        <span class="text-3xl">{{ price() }} €</span>
+        @if (price() > 0) {
+          <span class="text-3xl">{{ price() }} €</span>
+        }
       </div>
     </div>
   </div>
 </div>
-<lib-ui-button [fullWidth]="true">Add to cart</lib-ui-button>
+<lib-ui-button [fullWidth]="true">
+  {{ price() > 0 ? 'Add to cart' : 'Adopt' }}
+</lib-ui-button>

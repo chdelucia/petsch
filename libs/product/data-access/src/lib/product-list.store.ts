@@ -37,13 +37,10 @@ export const ProductsStore = signalStore(
       const filters = store.filtersApplied();
       const products = store.products();
       return products.filter((p) => {
-        return !filters.name || p.title.includes(filters.name);
-        /**return (
-          (!filters.name || p.name.includes(filters.name)) &&
-          (!filters.gender || p.gender === filters.gender) &&
-          (!filters.species || p.species === filters.species) &&
-          (!filters.status || p.status === filters.status)
-        );*/
+        const matchesName = !filters.name || p.name.toLowerCase().includes(filters.name.toLowerCase());
+        const matchesKind = !filters.kind || p.kind.toLowerCase() === filters.kind.toLowerCase();
+
+        return matchesName && matchesKind;
       });
     }),
   })),

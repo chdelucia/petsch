@@ -25,35 +25,12 @@ export class FiltersComponent {
 
   form = new FormGroup({
     name: new FormControl(''),
-    status: new FormControl(''),
-    gender: new FormControl(''),
-    species: new FormControl(''),
+    kind: new FormControl(''),
   });
 
-  statusOptions = [
-    { value: 'alive', text: 'Alive' },
-    { value: 'dead', text: 'Dead' },
-    { value: 'unknown', text: 'Unknown' },
-  ];
-
-  genderOptions = [
-    { value: 'female', text: 'FEMALE' },
-    { value: 'male', text: 'MALE' },
-    { value: 'genderless', text: 'GENDERLESS' },
-    { value: 'unknown', text: 'UNKNOWN' },
-  ];
-
-  speciesOptions = [
-    { value: 'human', text: 'Human' },
-    { value: 'humanoid', text: 'Humanoid' },
-    { value: 'alien', text: 'Alien' },
-    { value: 'disease', text: 'Disease' },
-    { value: 'cronenberg', text: 'Cronenberg' },
-    { value: 'poopybutthole', text: 'Poopybutthole' },
-    { value: 'mythological', text: 'Mythological' },
-    { value: 'robot', text: 'Robot' },
-    { value: 'animal', text: 'Animal' },
-    { value: 'unknown', text: 'UNKNOWN' },
+  kindOptions = [
+    { value: 'dog', text: 'Dog' },
+    { value: 'cat', text: 'Cat' },
   ];
 
   constructor() {
@@ -69,7 +46,7 @@ export class FiltersComponent {
   }
 
   countActiveFilters(value: Partial<Filters>): boolean {
-    const { name, status, gender, species } = value;
-    return !!(name || status || gender || species);
+    const { name, kind } = value;
+    return !!(name || kind);
   }
 }
