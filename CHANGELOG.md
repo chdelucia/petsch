@@ -2,6 +2,28 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.24](https://github.com/chdelucia/petsch/compare/v0.0.23...v0.0.24) (2026-04-10)
+
+
+### Features
+
+* add store instance to filters ([7a08db8](https://github.com/chdelucia/petsch/commit/7a08db84806e8e664416b4e59f08d81dd976e7dd))
+* add store to route to keep cache ([8b0e1c2](https://github.com/chdelucia/petsch/commit/8b0e1c2ef3a60f25373ed75a1fbf9c4d11ff60ae))
+* **cart:** add cart feature ([0e1c9e9](https://github.com/chdelucia/petsch/commit/0e1c9e931d4ce183bc8f26311fa662827adbe000))
+* change details css ([2f8e9a3](https://github.com/chdelucia/petsch/commit/2f8e9a3863a4883135eec3f6aa24e8cff77b29b5))
+* **product:** implement reactive filter updates and active filters UI ([b79523a](https://github.com/chdelucia/petsch/commit/b79523a49d02415517d7f5a000aa4f7a3bdce50e))
+
+
+### Bug Fixes
+
+* filter and css ([9119af8](https://github.com/chdelucia/petsch/commit/9119af8f66d386fbe356111e3d5fc60d1f57eb6e))
+* linter ([61784bd](https://github.com/chdelucia/petsch/commit/61784bd82ef5367ae2ac7e66d08eb08f3e14a69c))
+* linter ([4fd8f51](https://github.com/chdelucia/petsch/commit/4fd8f5195289e434fa969c752ecda67c7f842494))
+* robust view transition name lookup for product images ([da4c771](https://github.com/chdelucia/petsch/commit/da4c7712ee2decb8babb39f7db3622470dab934b))
+* **storybook:** add dependencies ([d9b9d11](https://github.com/chdelucia/petsch/commit/d9b9d112b2c725e796aa6722d105b6b3d32c09fb))
+* **test:** fix unit test ([c4e58d1](https://github.com/chdelucia/petsch/commit/c4e58d1d131730aa10e6eb2fd844794c013c65d2))
+* **ui:** refactor input-filter to signals and fix functionality ([b345b2a](https://github.com/chdelucia/petsch/commit/b345b2a911fe03af4d6ac1b7d57bd307ba9ba449))
+
 ### [0.0.23](https://github.com/chdelucia/petsch/compare/v0.0.22...v0.0.23) (2026-04-10)
 
 
