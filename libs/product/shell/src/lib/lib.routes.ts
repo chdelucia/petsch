@@ -6,4 +6,11 @@ export const shellRoutes: Route[] = [
     loadComponent: () =>
       import('@petsch/feature-product-list').then((m) => m.FeatureProductList),
   },
+  {
+    path: 'details/:id',
+    loadComponent: () =>
+      import('@petsch/feature-product-details').then(
+        (m) => m.FeatureProductDetails,
+      ),
+  },
 ];
