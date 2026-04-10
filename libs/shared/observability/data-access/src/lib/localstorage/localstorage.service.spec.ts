@@ -5,7 +5,9 @@ describe('LocalstorageService', () => {
   let service: LocalstorageService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({
+      providers: [LocalstorageService],
+    });
     service = TestBed.inject(LocalstorageService);
     localStorage.clear();
     vi.clearAllMocks();

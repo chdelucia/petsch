@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FiltersComponent } from './filters.component';
-import { ProductsStore } from '../../product-list.store';
+import { ProductsStore } from '@petsch/data-access';
 import { PRODUCT_TOKEN } from '@petsch/api';
 import { of } from 'rxjs';
 
