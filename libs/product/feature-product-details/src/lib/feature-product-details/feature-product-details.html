@@ -18,11 +18,11 @@
     <div class="lg:flex lg:items-start lg:gap-x-12">
       <!-- Image gallery -->
       <div class="lg:w-1/2">
-        <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg">
+        <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg banner-img">
           <img
             [src]="item.images[0]"
             [alt]="item.title"
-            class="h-full w-full object-cover object-center banner-img"
+            class="h-full w-full object-cover object-center"
             [style.viewTransitionName]="transitionService.getViewTransitionName(id())"
           >
         </div>
