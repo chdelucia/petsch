@@ -1,8 +1,7 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Filters, IProductService, Pet, GetProductsResponse } from '@petsch/api';
+import { Filters, IProductService, Pet, GetProductsResponse, enrichPetWithHealth } from '@petsch/api';
 import { Observable, map } from 'rxjs';
-import { enrichPetWithHealth } from '@petsch/api'; // I need to make sure this is exported or import relatively
 import { parseLinkHeader } from './utils/link-header-parser';
 
 @Injectable()
