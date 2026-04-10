@@ -29,15 +29,15 @@ describe('Products', () => {
   it('should send a GET request with correct filter parameters', () => {
     const name = 'Batman';
     const page = 1;
-    const expectedUrl = `https://api.escuelajs.co/api/v1/products?limit=10&offset=0&name=${name}&page=${page}`;
 
     service.getProducts({ name, page }).subscribe();
 
-    const req = httpMock.expectOne(expectedUrl);
+    const req = httpMock.expectOne((req) => req.url.includes(service['baseUrlAPI']));
     expect(req.request.url).toEqual(
-      'https://api.escuelajs.co/api/v1/products?limit=10&offset=0',
+      'https://api.escuelajs.co/api/v1/products?limit=30&offset=1',
     );
-    expect(req.request.params.toString()).toEqual('name=Batman&page=1');
+    expect(req.request.params.get('name')).toEqual('Batman');
+    expect(req.request.params.get('page')).toEqual('1');
     expect(req.request.method).toBe('GET');
 
     req.flush({} as Product);

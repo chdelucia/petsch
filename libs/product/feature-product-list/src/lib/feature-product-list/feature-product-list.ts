@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, signal, computed } from '@angular/core';
 import { ProductsStore } from './product-list.store';
 import { Filters, Product } from '@petsch/api';
 import { FiltersComponent } from './components';
@@ -8,6 +8,7 @@ import {
   ProductCardSkeletonComponent,
   ProductListHeaderComponent,
   ProductListViewComponent,
+  UiItem,
 } from '@petsch/ui';
 import { CurrentTransitionService } from './current-transition.service';
 
@@ -30,6 +31,22 @@ export class FeatureProductList {
   private readonly transitionService = inject(CurrentTransitionService);
 
   products = this.store.filteredProducts;
+
+  uiProducts = computed(() =>
+    this.products().map(
+      (p): UiItem => ({
+        id: p.id,
+        name: p.name,
+        title: p.title,
+        description: p.description,
+        price: p.price,
+        imageUrl: p.images[0],
+        creationAt: p.creationAt,
+        categoryName: p.category['name'],
+      })
+    )
+  );
+
   loading = this.store.loading;
   error = this.store.error;
 

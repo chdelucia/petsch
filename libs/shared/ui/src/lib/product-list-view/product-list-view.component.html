@@ -1,32 +1,13 @@
 <ul class="divide-y divide-gray-100">
   @for (item of products(); track item.id) {
-    <li
-      class="flex justify-between gap-x-6 py-5 cursor-pointer hover:font-extrabold"
-      [routerLink]="['details', item.id]"
-      [state]="item"
-    >
-      <div class="flex min-w-0 gap-x-4">
-        <img
-          class="h-12 w-12 flex-none rounded-full bg-gray-50"
-          [src]="item.images[0]"
-          [alt]="item.name"
-        />
-        <div class="min-w-0 flex-auto">
-          <p class="text-sm font-semibold leading-6 text-gray-900">
-            {{ item.title }}
-          </p>
-          <p class="mt-1 truncate text-xs leading-5 text-gray-500">
-            {{ item.description }}
-          </p>
-        </div>
-      </div>
-      <div class="hidden shrink-0 sm:flex sm:flex-col sm:items-end">
-        <p class="text-sm leading-6 text-gray-900">{{ item.name }}</p>
-        <p class="mt-1 text-xs leading-5 text-gray-500">
-          Create at {{ item.creationAt | date: 'medium' }}<br />
-          <b>{{ item.price }}€</b>
-        </p>
-      </div>
-    </li>
+  <lib-ui-product-list-item
+    [id]="item.id"
+    [name]="item.name"
+    [title]="item.title"
+    [description]="item.description"
+    [price]="item.price"
+    [imageUrl]="item.imageUrl"
+    [creationAt]="item.creationAt"
+  ></lib-ui-product-list-item>
   }
 </ul>

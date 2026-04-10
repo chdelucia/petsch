@@ -1,6 +1,5 @@
 import { Component, input } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { Product } from '@petsch/api';
 import { Button } from '../button/button';
 
 @Component({
@@ -11,6 +10,11 @@ import { Button } from '../button/button';
   styleUrl: './product-card.component.scss',
 })
 export class ProductCardComponent {
-  item = input.required<Product>();
+  id = input.required<string>();
+  title = input.required<string>();
+  name = input.required<string>();
+  price = input.required<number>();
+  imageUrl = input.required<string>();
+  categoryName = input.required<string>();
   viewTransitionName = input<string>('');
 }
