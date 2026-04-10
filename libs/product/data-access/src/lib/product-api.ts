@@ -6,7 +6,6 @@ import { Observable } from 'rxjs';
 @Injectable()
 export class ProductApi implements IProductService {
   private readonly http = inject(HttpClient);
-  private readonly base = 'https://rickandmortyapi.com/api/character';
   private readonly baseUrlAPI = 'https://api.escuelajs.co/api/v1/products';
 
   getProducts(filters: Partial<Filters>): Observable<Product[]> {
@@ -16,7 +15,7 @@ export class ProductApi implements IProductService {
       if (value) params = params.set(key, value);
     });
 
-    return this.http.get<Product[]>(this.baseUrlAPI + '?limit=10&offset=0', {
+    return this.http.get<Product[]>(this.baseUrlAPI + '?limit=30&offset=1', {
       params,
     });
   }
