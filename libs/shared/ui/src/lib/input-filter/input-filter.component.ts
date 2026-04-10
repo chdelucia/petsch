@@ -1,16 +1,18 @@
 import {
   Component,
+  DestroyRef,
   ElementRef,
   HostListener,
-  Input,
-  OnDestroy,
   OnInit,
   forwardRef,
   inject,
+  input,
+  signal,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { Subject, debounceTime, distinctUntilChanged, takeUntil } from 'rxjs';
+import { Subject, debounceTime, distinctUntilChanged } from 'rxjs';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { Button } from '../button/button';
 
 @Component({
@@ -26,21 +28,19 @@ import { Button } from '../button/button';
   templateUrl: './input-filter.component.html',
   styleUrl: './input-filter.component.scss',
 })
-export class InputFilterComponent
-  implements ControlValueAccessor, OnInit, OnDestroy
-{
-  @Input({ required: true }) title!: string;
+export class InputFilterComponent implements ControlValueAccessor, OnInit {
+  title = input.required<string>();
 
-  isfilterOpen = true;
-  isLastSearchOpen = false;
+  isfilterOpen = signal(true);
+  isLastSearchOpen = signal(false);
 
-  value = '';
-  lastSearch: Array<string> = [];
+  value = signal('');
+  lastSearch = signal<Array<string>>([]);
 
   private searchText$ = new Subject<string>();
-  private destroy$ = new Subject<void>();
 
   private readonly elementRef = inject(ElementRef);
+  private readonly destroyRef = inject(DestroyRef);
 
   @HostListener('document:click', ['$event'])
   onClick(event: MouseEvent) {
@@ -56,7 +56,11 @@ export class InputFilterComponent
 
   ngOnInit(): void {
     this.searchText$
-      .pipe(debounceTime(700), distinctUntilChanged(), takeUntil(this.destroy$))
+      .pipe(
+        debounceTime(700),
+        distinctUntilChanged(),
+        takeUntilDestroyed(this.destroyRef)
+      )
       .subscribe((value) => {
         this.addSearch(value);
         this.onChange(value);
@@ -64,19 +68,11 @@ export class InputFilterComponent
       });
   }
 
-  ngOnDestroy(): void {
-    this.destroy$.next();
-    this.destroy$.complete();
-  }
-
   writeValue(value: string): void {
-    this.value = value;
-    this.addSearch(value);
-    this.onChange(value);
-    this.onTouched();
+    this.value.set(value || '');
   }
 
-  registerOnChange(fn: () => void): void {
+  registerOnChange(fn: (value: string) => void): void {
     this.onChange = fn;
   }
 
@@ -86,40 +82,46 @@ export class InputFilterComponent
 
   getValue(event: Event): void {
     const name = (event.target as HTMLInputElement).value;
+    this.value.set(name);
     this.searchText$.next(name);
   }
 
   togleFilter() {
-    this.isfilterOpen = !this.isfilterOpen;
+    this.isfilterOpen.update((open) => !open);
   }
 
   openLastsearch(): void {
-    if (this.lastSearch.length) {
-      this.isLastSearchOpen = true;
+    if (this.lastSearch().length) {
+      this.isLastSearchOpen.set(true);
     }
   }
 
   closeLastSearch(): void {
-    this.isLastSearchOpen = false;
+    this.isLastSearchOpen.set(false);
   }
 
   addSearch(value: string): void {
-    const alredyExist = this.lastSearch.find((item) => item === value);
-    if (!alredyExist && value) {
-      this.lastSearch.unshift(value);
+    const alreadyExists = this.lastSearch().find((item) => item === value);
+    if (!alreadyExists && value) {
+      this.lastSearch.update((searches) => [value, ...searches]);
     }
   }
 
   removeSearch(index: number, e: Event): void {
     e.stopPropagation();
     e.preventDefault();
-    this.lastSearch.splice(index, 1);
+    this.lastSearch.update((searches) => {
+      const newSearches = [...searches];
+      newSearches.splice(index, 1);
+      return newSearches;
+    });
   }
 
   searchByOldValue(value: string): void {
-    if (value !== this.value) {
-      this.value = value;
+    if (value !== this.value()) {
+      this.value.set(value);
       this.onChange(value);
+      this.onTouched();
       this.closeLastSearch();
     }
   }

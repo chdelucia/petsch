@@ -6,13 +6,13 @@
       type="button"
       class="flex w-full items-center justify-between bg-white py-3 text-sm text-gray-400 hover:text-indigo-600 cursor-pointer"
       aria-controls="filter-section-0"
-      aria-expanded="false"
+      [attr.aria-expanded]="isfilterOpen()"
     >
-      <span class="font-medium text-gray-900"> {{ title | uppercase }}</span>
+      <span class="font-medium text-gray-900"> {{ title() | uppercase }}</span>
       <span class="ml-6 flex items-center">
         <svg
           class="h-5 w-5"
-          [class.hidden]="isfilterOpen"
+          [class.hidden]="isfilterOpen()"
           viewBox="0 0 20 20"
           fill="currentColor"
           aria-hidden="true"
@@ -24,7 +24,7 @@
 
         <svg
           class="h-5 w-5"
-          [class.hidden]="!isfilterOpen"
+          [class.hidden]="!isfilterOpen()"
           viewBox="0 0 20 20"
           fill="currentColor"
           aria-hidden="true"
@@ -39,7 +39,7 @@
     </button>
   </h3>
 
-  <div class="relative rounded-md shadow-sm" [class.hidden]="!isfilterOpen">
+  <div class="relative rounded-md shadow-sm" [class.hidden]="!isfilterOpen()">
     <div
       class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none"
     >
@@ -60,10 +60,10 @@
       </svg>
     </div>
     <input
-      (keyup)="getValue($event)"
+      (input)="getValue($event)"
       (focus)="openLastsearch()"
       (click)="openLastsearch()"
-      [value]="value"
+      [value]="value()"
       name="price"
       type="text"
       class="block w-full rounded-md border-0 py-1.5 pl-9 pr text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
@@ -71,13 +71,13 @@
     />
   </div>
 
-  @if (lastSearch.length) {
+  @if (lastSearch().length) {
     <div
       class="last-searches flex flex-col gap-2 py-2 rounded-b-md shadow-sm border-x-2 border-b-2 text-sm leading-6"
-      [class.hidden]="!isLastSearchOpen"
+      [class.hidden]="!isLastSearchOpen()"
     >
       <small class="text-center">Last searches</small>
-      @for (item of lastSearch | slice: 0 : 3; track item) {
+      @for (item of lastSearch() | slice: 0 : 3; track item) {
         <div class="flex justify-between px-2 cursor-pointer">
           <lib-ui-button
             variant="link"

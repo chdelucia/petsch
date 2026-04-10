@@ -21,22 +21,36 @@ describe('InputFilterComponent', () => {
   });
 
   it('should toggle filter', () => {
-    component.isfilterOpen = true;
+    component.isfilterOpen.set(true);
     component.togleFilter();
-    expect(component.isfilterOpen).toBeFalsy();
+    expect(component.isfilterOpen()).toBeFalsy();
   });
 
   it('should write value', () => {
     component.writeValue('test');
-    expect(component.value).toBe('test');
+    expect(component.value()).toBe('test');
   });
 
-  it('should send value from input to onChange', () => {
+  it('should send value from input to searchText$', () => {
     const spy = vi.spyOn(component['searchText$'], 'next');
     const value = {
       target: { value: 'input-value-test' },
     } as Partial<HTMLInputElement>;
     component.getValue(value as Event);
+    expect(component.value()).toBe('input-value-test');
     expect(spy).toHaveBeenCalledWith('input-value-test');
+  });
+
+  it('should add search to lastSearch', () => {
+    component.addSearch('test-search');
+    expect(component.lastSearch()).toContain('test-search');
+  });
+
+  it('should remove search from lastSearch', () => {
+    component.lastSearch.set(['test1', 'test2']);
+    const event = new MouseEvent('click');
+    component.removeSearch(0, event);
+    expect(component.lastSearch()).not.toContain('test1');
+    expect(component.lastSearch()).toContain('test2');
   });
 });
