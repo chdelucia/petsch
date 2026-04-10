@@ -1,5 +1,7 @@
 import {
   ApplicationConfig,
+  ENVIRONMENT_INITIALIZER,
+  EnvironmentInjector,
   inject,
   provideBrowserGlobalErrorListeners,
   provideZonelessChangeDetection,
@@ -20,17 +22,27 @@ import { PRODUCT_TOKEN, CurrentTransitionService } from '@petsch/api';
 import { ProductApi } from '@petsch/data-access';
 import { LOCALSTORAGE_TOKEN } from '@petsch/obs-api';
 
+let appInjector: EnvironmentInjector;
+
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
+    {
+      provide: ENVIRONMENT_INITIALIZER,
+      multi: true,
+      useValue: () => {
+        appInjector = inject(EnvironmentInjector);
+      },
+    },
     provideRouter(
       appRoutes,
       withInMemoryScrolling({ scrollPositionRestoration: 'enabled' }),
       withComponentInputBinding(),
       withViewTransitions({
-        onViewTransitionCreated: ({ transition, to, from }) => {
-          const service = inject(CurrentTransitionService);
-          service.currentTransition.set({ transition, to, from });
+        onViewTransitionCreated: (info) => {
+          appInjector
+            .get(CurrentTransitionService)
+            .currentTransition.set(info);
         },
       }),
     ),
