@@ -1,22 +1,25 @@
 import { Component, inject, signal } from '@angular/core';
 import { ProductsStore } from './product-list.store';
-import { Filters } from '@petsch/api';
+import { Filters, Product } from '@petsch/api';
+import { FiltersComponent } from './components';
 import {
-  CardComponent,
-  CardSkeletonComponent,
-  FiltersComponent,
-  ListViewComponent,
-} from './components';
-import { PaginationComponent } from '@petsch/ui';
+  PaginationComponent,
+  ProductCardComponent,
+  ProductCardSkeletonComponent,
+  ProductListHeaderComponent,
+  ProductListViewComponent,
+} from '@petsch/ui';
+import { CurrentTransitionService } from './current-transition.service';
 
 @Component({
   selector: 'lib-feature-product-list',
   imports: [
     FiltersComponent,
-    CardSkeletonComponent,
-    ListViewComponent,
-    CardComponent,
+    ProductCardSkeletonComponent,
+    ProductListViewComponent,
+    ProductCardComponent,
     PaginationComponent,
+    ProductListHeaderComponent,
   ],
   templateUrl: './feature-product-list.html',
   styleUrl: './feature-product-list.css',
@@ -24,6 +27,7 @@ import { PaginationComponent } from '@petsch/ui';
 })
 export class FeatureProductList {
   private readonly store = inject(ProductsStore);
+  private readonly transitionService = inject(CurrentTransitionService);
 
   products = this.store.filteredProducts;
   loading = this.store.loading;
@@ -54,5 +58,15 @@ export class FeatureProductList {
     console.log(page);
     //this.filters = { ...this.filters, page };
     //this.searchCharacters(this.filters);
+  }
+
+  getViewTransitionName(char: Product) {
+    const transition = this.transitionService.currentTransition();
+    const isBannerImg =
+      transition?.to.firstChild?.firstChild?.params['id'] ===
+        char.id.toString() ||
+      transition?.from.firstChild?.firstChild?.params['id'] ===
+        char.id.toString();
+    return isBannerImg ? 'banner-img' : '';
   }
 }
