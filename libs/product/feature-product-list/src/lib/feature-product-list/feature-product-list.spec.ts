@@ -3,6 +3,7 @@ import { FeatureProductList } from './feature-product-list';
 import { provideRouter } from '@angular/router';
 import { of } from 'rxjs';
 import { PRODUCT_TOKEN } from '@petsch/api';
+import { ProductsStore } from '@petsch/data-access';
 
 describe('FeatureProductList', () => {
   let component: FeatureProductList;
@@ -13,6 +14,7 @@ describe('FeatureProductList', () => {
       imports: [FeatureProductList],
       providers: [
         provideRouter([]),
+        ProductsStore,
         {
           provide: PRODUCT_TOKEN,
           useValue: {
