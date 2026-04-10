@@ -9,7 +9,7 @@ import { Filters } from '@petsch/api';
   styleUrl: './active-filters.component.scss',
 })
 export class ActiveFiltersComponent {
-  values = input<Filters>();
+  values = input<Partial<Filters>>();
   resetFilter = output<string>();
 
   activeFilters = computed(() => {
@@ -21,7 +21,7 @@ export class ActiveFiltersComponent {
     this.resetFilter.emit(value);
   }
 
-  countActiveFilters(value: Filters): boolean {
+  countActiveFilters(value: Partial<Filters>): boolean {
     const { name, status, gender, species } = value;
     const atLeastOneFilled = name || status || gender || species;
     return !!atLeastOneFilled;

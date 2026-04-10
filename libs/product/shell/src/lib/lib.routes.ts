@@ -1,5 +1,5 @@
 import { Route } from '@angular/router';
-import { ProductsStore } from '@petsch/data-access';
+import { productResolver, ProductsStore } from '@petsch/data-access';
 
 export const shellRoutes: Route[] = [
   {
@@ -15,6 +15,7 @@ export const shellRoutes: Route[] = [
       },
       {
         path: 'details/:id',
+        resolve: { product: productResolver },
         loadComponent: () =>
           import('@petsch/feature-product-details').then(
             (m) => m.FeatureProductDetails,
