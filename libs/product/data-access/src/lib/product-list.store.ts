@@ -15,7 +15,6 @@ export interface ProductsState {
   products: Pet[];
   pagination: PaginationLinks;
   filtersApplied: Partial<Filters>;
-  filtersPending: Partial<Filters>;
   loading: boolean;
   error: string | null;
 }
@@ -24,7 +23,6 @@ const initialState: ProductsState = {
   products: [],
   pagination: {},
   filtersApplied: {},
-  filtersPending: {},
   loading: false,
   error: null,
 };
@@ -39,7 +37,7 @@ export const ProductsStore = signalStore(
       const filters = store.filtersApplied();
       const products = store.products();
       return products.filter((p) => {
-        return !filters.name || p.name.includes(filters.name);
+        return !filters.name || p.name.toLocaleLowerCase().includes(filters.name);
       });
     }),
   })),
@@ -49,7 +47,6 @@ export const ProductsStore = signalStore(
     return {
       async loadProducts(filters: Partial<Filters>) {
         patchState(store, {
-          filtersPending: filters,
           loading: true,
           error: null,
         });
@@ -78,7 +75,7 @@ export const ProductsStore = signalStore(
 
       updateFilters(filters: Partial<Filters>) {
         patchState(store, {
-          filtersPending: { ...store.filtersPending(), ...filters },
+          filtersApplied: { ...store.filtersApplied(), ...filters },
         });
       },
 
@@ -93,7 +90,7 @@ export const ProductsStore = signalStore(
   }),
   withHooks({
     onInit(store) {
-      store.loadProducts({});
+      store.loadProducts({_page: 1, limit: 20});
     },
   }),
 );
