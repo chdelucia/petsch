@@ -26,7 +26,12 @@ export default [
             },
             {
               sourceTag: 'type:feature',
-              onlyDependOnLibsWithTags: ['type:api', 'type:ui', 'type:data-access', 'type:feature'],
+              onlyDependOnLibsWithTags: [
+                'type:api',
+                'type:ui',
+                'type:data-access',
+                'type:feature',
+              ],
             },
             {
               sourceTag: 'scope:petshop',

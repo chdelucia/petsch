@@ -42,8 +42,8 @@ export class FeatureProductList {
         imageUrl: p.images[0],
         creationAt: p.creationAt,
         categoryName: p.category['name'],
-      })
-    )
+      }),
+    ),
   );
 
   loading = this.store.loading;
