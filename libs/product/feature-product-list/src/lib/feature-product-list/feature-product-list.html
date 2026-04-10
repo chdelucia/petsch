@@ -15,12 +15,21 @@
 
     <div class="chars__list" [class.no-filters]="!showFilters()">
       @defer(when !loading()) {
-      <lib-ui-pagination
-        class="chars__list__pagination"
-        [page]="1"
-        [totalPages]="10"
-        (pageChange)="handlePageChange($event)"
-      ></lib-ui-pagination>
+      <div class="chars__list__pagination-container">
+        <lib-ui-pagination
+          class="chars__list__pagination"
+          [page]="store.currentPage()"
+          [totalPages]="store.totalPages()"
+          (pageChange)="handlePageChange($event)"
+        ></lib-ui-pagination>
+
+        <lib-ui-select
+          [label]="'Items per page'"
+          [options]="limitOptions"
+          [ngModel]="store.filtersApplied()._limit || 5"
+          (ngModelChange)="handleLimitChange($event)"
+        ></lib-ui-select>
+      </div>
 
       @if (gridView()) {
       <section class="char-grid" [class.no-filters]="!showFilters()">

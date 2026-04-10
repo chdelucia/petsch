@@ -45,8 +45,12 @@ fullangulardeveloper-sort-by {
   @apply lg:col-span-10;
 }
 
+.chars__list__pagination-container {
+  @apply flex items-center justify-end gap-4 mb-4;
+}
+
 .chars__list__pagination {
-  @apply flex items-center justify-end mb-4;
+  @apply mb-0;
 }
 
 .char-grid {

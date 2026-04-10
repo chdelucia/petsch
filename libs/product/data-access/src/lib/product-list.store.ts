@@ -42,24 +42,53 @@ export const ProductsStore = signalStore(
         return !filters.name || p.name.includes(filters.name);
       });
     }),
+    currentPage: computed(() => {
+      const pagination = store.pagination();
+      if (pagination.next) {
+        const url = new URL(pagination.next);
+        const page = url.searchParams.get('_page');
+        return page ? parseInt(page) - 1 : 1;
+      }
+      if (pagination.prev) {
+        const url = new URL(pagination.prev);
+        const page = url.searchParams.get('_page');
+        return page ? parseInt(page) + 1 : 1;
+      }
+      return 1;
+    }),
+    totalPages: computed(() => {
+      const pagination = store.pagination();
+      if (pagination.last) {
+        const url = new URL(pagination.last);
+        const page = url.searchParams.get('_page');
+        return page ? parseInt(page) : 1;
+      }
+      return 1;
+    }),
   })),
   withMethods((store) => {
     const { productService } = store;
 
     return {
       async loadProducts(filters: Partial<Filters>) {
+        const currentFilters = store.filtersApplied();
+        const nextFilters = {
+          _page: 1,
+          _limit: 5,
+          ...currentFilters,
+          ...filters,
+        };
+
         patchState(store, {
-          filtersPending: filters,
+          filtersPending: nextFilters,
+          filtersApplied: nextFilters,
           loading: true,
           error: null,
-        });
-        patchState(store, {
-          filtersApplied: { ...store.filtersApplied(), ...filters },
         });
 
         try {
           const result = await firstValueFrom(
-            productService.getProducts(filters),
+            productService.getProducts(nextFilters),
           );
           patchState(store, {
             products: result.products,

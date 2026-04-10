@@ -6,6 +6,7 @@ export * from './lib/cart-drawer/cart-drawer';
 export * from './lib/button/button';
 export * from './lib/input-filter/input-filter.component';
 export * from './lib/radio-filter/radio-filter.component';
+export * from './lib/select/select.component';
 export * from './lib/pagination/pagination.component';
 export * from './lib/product-card/product-card.component';
 export * from './lib/product-card-skeleton/product-card-skeleton.component';

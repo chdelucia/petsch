@@ -1,4 +1,5 @@
 import { Component, inject, signal, computed } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { Filters, CurrentTransitionService } from '@petsch/api';
 import { FiltersComponent } from './components';
 import {
@@ -7,6 +8,7 @@ import {
   ProductCardSkeletonComponent,
   ProductListHeaderComponent,
   ProductListViewComponent,
+  SelectComponent,
   UiItem,
 } from '@petsch/ui';
 import { ProductsStore } from '@petsch/data-access';
@@ -15,17 +17,19 @@ import { ProductsStore } from '@petsch/data-access';
   selector: 'lib-feature-product-list',
   imports: [
     FiltersComponent,
+    FormsModule,
     ProductCardSkeletonComponent,
     ProductListViewComponent,
     ProductCardComponent,
     PaginationComponent,
     ProductListHeaderComponent,
+    SelectComponent,
   ],
   templateUrl: './feature-product-list.html',
   styleUrl: './feature-product-list.css',
 })
 export class FeatureProductList {
-  private readonly store = inject(ProductsStore);
+  protected readonly store = inject(ProductsStore);
   protected readonly transitionService = inject(CurrentTransitionService);
 
   products = this.store.filteredProducts;
@@ -67,8 +71,16 @@ export class FeatureProductList {
   }
 
   handlePageChange(page: number): void {
-    console.log(page);
-    //this.filters = { ...this.filters, page };
-    //this.searchCharacters(this.filters);
+    this.store.loadProducts({ _page: page });
   }
+
+  handleLimitChange(limit: number): void {
+    this.store.loadProducts({ _limit: limit, _page: 1 });
+  }
+
+  protected readonly limitOptions = [
+    { value: 5, label: '5' },
+    { value: 10, label: '10' },
+    { value: 20, label: '20' },
+  ];
 }
