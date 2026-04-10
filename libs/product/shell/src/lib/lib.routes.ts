@@ -1,5 +1,6 @@
 import { Route } from '@angular/router';
-import { productResolver, ProductsStore } from '@petsch/data-access';
+import { ProductsStore } from '@petsch/data-access';
+import { productResolver } from './product-details.resolver';
 
 export const shellRoutes: Route[] = [
   {

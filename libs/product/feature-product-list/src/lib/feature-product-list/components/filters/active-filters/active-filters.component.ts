@@ -22,8 +22,8 @@ export class ActiveFiltersComponent {
   }
 
   countActiveFilters(value: Partial<Filters>): boolean {
-    const { name, status, gender, species } = value;
-    const atLeastOneFilled = name || status || gender || species;
+    const { name, kind } = value;
+    const atLeastOneFilled = name || kind;
     return !!atLeastOneFilled;
   }
 }

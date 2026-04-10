@@ -23,12 +23,9 @@ type Story = StoryObj<ProductListItemComponent>;
 
 export const Primary: Story = {
   args: {
-    id: '1',
+    id: 1,
     name: 'Product Name',
-    title: 'Product Title',
     description: 'This is a product description.',
-    price: 99.99,
     imageUrl: 'https://via.placeholder.com/150',
-    creationAt: new Date(),
   },
 };

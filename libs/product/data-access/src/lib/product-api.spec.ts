@@ -4,7 +4,7 @@ import {
   HttpTestingController,
 } from '@angular/common/http/testing';
 import { ProductApi } from './product-api';
-import { Product } from '@petsch/api';
+import { Pet } from '@petsch/api';
 
 describe('Products', () => {
   let service: ProductApi;
@@ -32,15 +32,17 @@ describe('Products', () => {
 
     service.getProducts({ name, page }).subscribe();
 
-    const req = httpMock.expectOne((req) => req.url.includes(service['baseUrlAPI']));
+    const req = httpMock.expectOne((req) =>
+      req.url.includes(service['baseUrlAPI']),
+    );
     expect(req.request.url).toEqual(
-      'https://api.escuelajs.co/api/v1/products?limit=30&offset=1',
+      'https://my-json-server.typicode.com/Feverup/fever_pets_data/pets',
     );
     expect(req.request.params.get('name')).toEqual('Batman');
     expect(req.request.params.get('page')).toEqual('1');
     expect(req.request.method).toBe('GET');
 
-    req.flush({} as Product);
+    req.flush({} as Pet);
   });
 
   it('should send a GET request with correct URL and return data', () => {
@@ -49,7 +51,7 @@ describe('Products', () => {
 
     service.getDetails(id).subscribe();
     const req = httpMock.expectOne(
-      `https://api.escuelajs.co/api/v1/products/${id}`,
+      `https://my-json-server.typicode.com/Feverup/fever_pets_data/pets/${id}`,
     );
     expect(req.request.method).toBe('GET');
     req.flush(testData);

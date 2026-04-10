@@ -2,7 +2,7 @@ import { Component, inject, input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { Button } from '@petsch/ui';
-import { Product, CurrentTransitionService } from '@petsch/api';
+import { Pet, CurrentTransitionService } from '@petsch/api';
 
 @Component({
   selector: 'lib-feature-product-details',
@@ -16,7 +16,7 @@ export class FeatureProductDetails {
   private readonly router = inject(Router);
 
   id = input.required<string>();
-  product = input.required<Product>();
+  product = input.required<Pet>();
 
   loading = () => false;
   error = () => null;
