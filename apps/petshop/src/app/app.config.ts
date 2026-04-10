@@ -32,7 +32,7 @@ export const appConfig: ApplicationConfig = {
       appRoutes,
       withInMemoryScrolling({ scrollPositionRestoration: 'enabled' }),
       withComponentInputBinding(),
-      withViewTransitions({ onViewTransitionCreated })
+      withViewTransitions({ onViewTransitionCreated }),
     ),
     provideZonelessChangeDetection(),
     ...OBSERVABILITY_PROVIDERS,
