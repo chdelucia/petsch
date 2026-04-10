@@ -3,7 +3,7 @@ import { CartFooter } from './cart-footer';
 
 const meta: Meta<CartFooter> = {
   component: CartFooter,
-  title: 'Molecule/CartFooter',
+  title: 'Molecules/CartFooter',
   tags: ['autodocs'],
 };
 export default meta;

@@ -66,11 +66,11 @@ export const ProductsStore = signalStore(
             productService.getProducts(filters),
           );
           patchState(store, { products: result, loading: false });
-        } catch (err: any) {
+        } catch (err: unknown) {
           patchState(store, {
             products: [],
             loading: false,
-            error: err?.message ?? 'Failed to load products',
+            error: (err as Error)?.message ?? 'Failed to load products',
           });
         }
       },

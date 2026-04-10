@@ -1,5 +1,6 @@
 import { Injectable, inject } from '@angular/core';
-import { ANALYTICS_TOKEN, MONITORING_TOKEN } from './observability.interface';
+import { ANALYTICS_TOKEN } from '../analitic.token';
+import { MONITORING_TOKEN } from '../monitoring.token';
 
 @Injectable({ providedIn: 'root' })
 export class ObservabilityFacade {

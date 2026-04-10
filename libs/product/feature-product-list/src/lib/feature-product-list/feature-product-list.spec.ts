@@ -1,8 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FeatureProductList } from './feature-product-list';
-import { PRODUCT_TOKEN } from '@petsch/api';
-import { of } from 'rxjs';
 import { provideRouter } from '@angular/router';
+import { of } from 'rxjs';
+import { PRODUCT_TOKEN } from '@petsch/api';
 
 describe('FeatureProductList', () => {
   let component: FeatureProductList;

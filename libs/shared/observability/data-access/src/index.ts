@@ -1,2 +1,3 @@
-export * from './lib/obs-data-access/analytics/analytics.service';
-export * from './lib/obs-data-access/observability.providers';
+export * from './lib/analytics/analytics.service';
+export * from './lib/observability.providers';
+export * from './lib/localstorage/localstorage.service';

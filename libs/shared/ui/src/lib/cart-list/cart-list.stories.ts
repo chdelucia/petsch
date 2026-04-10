@@ -27,7 +27,7 @@ const mockProducts = [
 
 const meta: Meta<CartList> = {
   component: CartList,
-  title: 'Molecule/CartList',
+  title: 'Molecules/CartList',
   tags: ['autodocs'],
   decorators: [
     moduleMetadata({

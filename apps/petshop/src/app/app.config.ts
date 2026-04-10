@@ -12,9 +12,11 @@ import { appRoutes } from './app.routes';
 import {
   OBSERVABILITY_PROVIDERS,
   OBSERVABILITY_ENV_PROVIDERS,
+  LocalstorageService,
 } from '@petsch/obs-data-access';
 import { PRODUCT_TOKEN } from '@petsch/api';
 import { ProductApi } from '@petsch/data-access';
+import { LOCALSTORAGE_TOKEN } from '@petsch/obs-api';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -30,6 +32,10 @@ export const appConfig: ApplicationConfig = {
     {
       provide: PRODUCT_TOKEN,
       useClass: ProductApi,
+    },
+    {
+      provide: LOCALSTORAGE_TOKEN,
+      useClass: LocalstorageService,
     },
   ],
 };

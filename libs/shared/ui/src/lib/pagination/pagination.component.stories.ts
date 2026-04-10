@@ -3,7 +3,7 @@ import { PaginationComponent } from './pagination.component';
 
 const meta: Meta<PaginationComponent> = {
   component: PaginationComponent,
-  title: 'molecule/PaginationComponent',
+  title: 'Molecules/PaginationComponent',
 };
 export default meta;
 
