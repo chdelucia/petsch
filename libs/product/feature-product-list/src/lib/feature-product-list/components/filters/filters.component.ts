@@ -30,8 +30,8 @@ export class FiltersComponent {
     species: '',
   });
 
-  form = form(this.filterModel, () => {
-    debounce(this.form.name, 300);
+  form = form(this.filterModel, (p) => {
+    debounce(p.name, 300);
   });
 
   statusOptions = [
