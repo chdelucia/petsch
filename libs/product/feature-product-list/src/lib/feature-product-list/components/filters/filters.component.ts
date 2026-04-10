@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { Filters } from '@petsch/api';
 import { InputFilterComponent, RadioFilterComponent } from '@petsch/ui';
-import { ProductsStore } from '../../product-list.store';
+import { ProductsStore } from '@petsch/data-access';
 
 @Component({
   selector: 'lib-product-filters',

@@ -1,5 +1,5 @@
 import { Component, inject, signal, computed } from '@angular/core';
-import { ProductsStore } from './product-list.store';
+import { ProductsStore } from '@petsch/data-access';
 import { Filters, Product } from '@petsch/api';
 import { FiltersComponent } from './components';
 import {
@@ -24,7 +24,6 @@ import { CurrentTransitionService } from './current-transition.service';
   ],
   templateUrl: './feature-product-list.html',
   styleUrl: './feature-product-list.css',
-  providers: [ProductsStore],
 })
 export class FeatureProductList {
   private readonly store = inject(ProductsStore);
