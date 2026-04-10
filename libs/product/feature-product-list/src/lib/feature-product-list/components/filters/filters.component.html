@@ -1,4 +1,4 @@
-<form [formGroup]="form">
+<form [formRoot]="form">
   <lib-product-active-filters
     [values]="store.filtersApplied()"
     (resetFilter)="resetFilter($event)"
@@ -7,21 +7,21 @@
 
   <lib-ui-input-filter
     title="name"
-    formControlName="name"
+    [formField]="form.name"
   ></lib-ui-input-filter>
   <lib-ui-radio-filter
     title="Status"
     [options]="statusOptions"
-    formControlName="status"
+    [formField]="form.status"
   ></lib-ui-radio-filter>
   <lib-ui-radio-filter
     title="gender"
     [options]="genderOptions"
-    formControlName="gender"
+    [formField]="form.gender"
   ></lib-ui-radio-filter>
   <lib-ui-radio-filter
     title="species"
     [options]="speciesOptions"
-    formControlName="species"
+    [formField]="form.species"
   ></lib-ui-radio-filter>
 </form>

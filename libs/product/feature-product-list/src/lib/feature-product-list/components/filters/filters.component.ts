@@ -1,8 +1,6 @@
-import { Component, inject } from '@angular/core';
+import { Component, effect, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { debounceTime } from 'rxjs';
+import { debounce, form, FormField, FormRoot } from '@angular/forms/signals';
 import { Filters } from '@petsch/api';
 import { InputFilterComponent, RadioFilterComponent } from '@petsch/ui';
 import { ActiveFiltersComponent } from './active-filters/active-filters.component';
@@ -14,8 +12,9 @@ import { ProductsStore } from '@petsch/data-access';
     CommonModule,
     RadioFilterComponent,
     InputFilterComponent,
-    ReactiveFormsModule,
     ActiveFiltersComponent,
+    FormRoot,
+    FormField,
   ],
   templateUrl: './filters.component.html',
   styleUrl: './filters.component.scss',
@@ -23,11 +22,16 @@ import { ProductsStore } from '@petsch/data-access';
 export class FiltersComponent {
   readonly store = inject(ProductsStore);
 
-  form = new FormGroup({
-    name: new FormControl(''),
-    status: new FormControl(''),
-    gender: new FormControl(''),
-    species: new FormControl(''),
+  filterModel = signal<Filters>({
+    page: 1,
+    name: '',
+    status: '',
+    gender: '',
+    species: '',
+  });
+
+  form = form(this.filterModel, () => {
+    debounce(this.form.name, 300);
   });
 
   statusOptions = [
@@ -57,15 +61,17 @@ export class FiltersComponent {
   ];
 
   constructor() {
-    this.form.valueChanges
-      .pipe(debounceTime(300), takeUntilDestroyed())
-      .subscribe((value) => {
-        this.store.loadProducts(value as Partial<Filters>);
-      });
+    effect(() => {
+      const value = this.filterModel();
+      this.store.loadProducts(value as Partial<Filters>);
+    });
   }
 
-  resetFilter(value: string): void {
-    this.form.get(value)?.setValue('');
+  resetFilter(key: string): void {
+    this.filterModel.update((filters) => ({
+      ...filters,
+      [key]: key === 'page' ? 1 : '',
+    }));
   }
 
   countActiveFilters(value: Partial<Filters>): boolean {
