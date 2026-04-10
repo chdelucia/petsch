@@ -1,0 +1,20 @@
+{
+  "name": "feature-cart",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/cart/feature-cart/src",
+  "prefix": "lib",
+  "projectType": "library",
+  "tags": ["scope:cart", "type:feature"],
+  "targets": {
+    "test": {
+      "executor": "@nx/vitest:test",
+      "outputs": ["{options.reportsDirectory}"],
+      "options": {
+        "reportsDirectory": "coverage/libs/cart/feature-cart"
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    }
+  }
+}

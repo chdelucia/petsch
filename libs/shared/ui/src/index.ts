@@ -2,6 +2,7 @@ export * from './lib/cart-list/cart-list';
 export * from './lib/cart-item/cart-item';
 export * from './lib/cart-footer/cart-footer';
 export * from './lib/cart-header/cart-header';
+export * from './lib/cart-drawer/cart-drawer';
 export * from './lib/button/button';
 export * from './lib/input-filter/input-filter.component';
 export * from './lib/radio-filter/radio-filter.component';

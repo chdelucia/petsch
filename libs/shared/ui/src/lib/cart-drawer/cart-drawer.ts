@@ -9,13 +9,14 @@ import { CartList } from '../cart-list/cart-list';
   styleUrl: './cart-drawer.css',
 })
 export class CartDrawer {
-  open = signal(true);
+  open = input<boolean>(true);
+  openChange = output<boolean>();
 
   subtotal = input.required<number>();
   checkoutClick = output<void>();
 
   closeDrawer() {
-    this.open.set(false);
+    this.openChange.emit(false);
   }
 
   checkout() {
