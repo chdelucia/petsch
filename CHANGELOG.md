@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.27](https://github.com/chdelucia/petsch/compare/v0.0.26...v0.0.27) (2026-04-10)
+
+
+### Features
+
+* **product:** implement pagination and pet health calculation strategy ([7f39587](https://github.com/chdelucia/petsch/commit/7f39587c9a8a208628a42b9bd9ed7b86e4888f3e))
+
 ### [0.0.26](https://github.com/chdelucia/petsch/compare/v0.0.25...v0.0.26) (2026-04-10)
 
 
