@@ -2,6 +2,26 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.23](https://github.com/chdelucia/petsch/compare/v0.0.22...v0.0.23) (2026-04-10)
+
+
+### Features
+
+* **localstorage:** add localstorage service ([f411e96](https://github.com/chdelucia/petsch/commit/f411e9640656ae7c383e5b3627785b0e04b640c6))
+* **product:** implement product details feature ([a79c2e5](https://github.com/chdelucia/petsch/commit/a79c2e59f6f1b2467fbfddef46e48014ff33ce14))
+* **products:** add products ([5f509c6](https://github.com/chdelucia/petsch/commit/5f509c6fbb1f11705f4acd7ae6f86c773601af51))
+* **products:** added add to cart button ([b751c76](https://github.com/chdelucia/petsch/commit/b751c7652c4604163db0c4838fb0448ee1486bc1))
+
+
+### Bug Fixes
+
+* cositas ([a7ef086](https://github.com/chdelucia/petsch/commit/a7ef08696523f00b09f97add5a3e18cb53523236))
+* linter ([0da859a](https://github.com/chdelucia/petsch/commit/0da859aed3874a2314259680ce1a815c2ceeb9be))
+* linter ([f6a2377](https://github.com/chdelucia/petsch/commit/f6a237703cbbe0532f3eec5034bb76eee03cec84))
+* linter ([ceeda3f](https://github.com/chdelucia/petsch/commit/ceeda3f82521cb1333e7094b52656f1ff76c7bf3))
+* linter ([27d1fb4](https://github.com/chdelucia/petsch/commit/27d1fb4b5bd3570f11858ac86687dc667a07b479))
+* linter ([332a17b](https://github.com/chdelucia/petsch/commit/332a17b4641044847f375560a26915d62de3ce04))
+
 ### [0.0.22](https://github.com/chdelucia/petsch/compare/v0.0.21...v0.0.22) (2026-04-08)
 
 
