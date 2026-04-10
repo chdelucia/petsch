@@ -59,7 +59,7 @@ export class InputFilterComponent implements ControlValueAccessor, OnInit {
       .pipe(
         debounceTime(700),
         distinctUntilChanged(),
-        takeUntilDestroyed(this.destroyRef)
+        takeUntilDestroyed(this.destroyRef),
       )
       .subscribe((value) => {
         this.addSearch(value);

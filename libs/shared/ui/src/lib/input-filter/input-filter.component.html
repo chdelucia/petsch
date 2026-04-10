@@ -1,4 +1,4 @@
-<div class="border-b border-gray-200 py-6">
+<div class="border-b border-gray-200 py-6 relative">
   <h3 class="my-3 flow-root">
     <button
       (click)="togleFilter()"
@@ -63,6 +63,7 @@
       (input)="getValue($event)"
       (focus)="openLastsearch()"
       (click)="openLastsearch()"
+      autocomplete="off"
       [value]="value()"
       name="price"
       type="text"
