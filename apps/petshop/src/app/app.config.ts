@@ -35,7 +35,7 @@ export const appConfig: ApplicationConfig = {
     },
     {
       provide: LOCALSTORAGE_TOKEN,
-      useClass: LocalstorageService
-    }
+      useClass: LocalstorageService,
+    },
   ],
 };
