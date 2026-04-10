@@ -13,6 +13,7 @@ describe('FeatureProductList', () => {
     await TestBed.configureTestingModule({
       imports: [FeatureProductList],
       providers: [
+        ProductsStore,
         provideRouter([]),
         ProductsStore,
         {
