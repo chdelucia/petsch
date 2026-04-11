@@ -57,6 +57,7 @@
     "@storybook/addon-a11y": "10.3.4",
     "@storybook/addon-docs": "10.3.4",
     "@storybook/angular": "10.3.4",
+    "@storybook/test-runner": "^0.24.3",
     "@swc-node/register": "~1.11.1",
     "@swc/core": "~1.15.5",
     "@swc/helpers": "~0.5.18",
