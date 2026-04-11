@@ -1,5 +1,5 @@
 import { computed, inject } from '@angular/core';
-import { Product, Filters, PRODUCT_TOKEN } from '@petsch/api';
+import { Pet, Filters, PRODUCT_TOKEN, PaginationLinks } from '@petsch/api';
 import {
   signalStore,
   withProps,
@@ -12,17 +12,17 @@ import {
 import { firstValueFrom } from 'rxjs';
 
 export interface ProductsState {
-  products: Product[];
+  products: Pet[];
+  pagination: PaginationLinks;
   filtersApplied: Partial<Filters>;
-  filtersPending: Partial<Filters>;
   loading: boolean;
   error: string | null;
 }
 
 const initialState: ProductsState = {
   products: [],
+  pagination: {},
   filtersApplied: {},
-  filtersPending: {},
   loading: false,
   error: null,
 };
@@ -37,13 +37,9 @@ export const ProductsStore = signalStore(
       const filters = store.filtersApplied();
       const products = store.products();
       return products.filter((p) => {
-        return !filters.name || p.title.includes(filters.name);
-        /**return (
-          (!filters.name || p.name.includes(filters.name)) &&
-          (!filters.gender || p.gender === filters.gender) &&
-          (!filters.species || p.species === filters.species) &&
-          (!filters.status || p.status === filters.status)
-        );*/
+        return (
+          !filters.name || p.name.toLocaleLowerCase().includes(filters.name)
+        );
       });
     }),
   })),
@@ -53,7 +49,6 @@ export const ProductsStore = signalStore(
     return {
       async loadProducts(filters: Partial<Filters>) {
         patchState(store, {
-          filtersPending: filters,
           loading: true,
           error: null,
         });
@@ -62,13 +57,18 @@ export const ProductsStore = signalStore(
         });
 
         try {
-          const result: Product[] = await firstValueFrom(
+          const result = await firstValueFrom(
             productService.getProducts(filters),
           );
-          patchState(store, { products: result, loading: false });
+          patchState(store, {
+            products: result.products,
+            pagination: result.pagination,
+            loading: false,
+          });
         } catch (err: unknown) {
           patchState(store, {
             products: [],
+            pagination: {},
             loading: false,
             error: (err as Error)?.message ?? 'Failed to load products',
           });
@@ -77,7 +77,7 @@ export const ProductsStore = signalStore(
 
       updateFilters(filters: Partial<Filters>) {
         patchState(store, {
-          filtersPending: { ...store.filtersPending(), ...filters },
+          filtersApplied: { ...store.filtersApplied(), ...filters },
         });
       },
 
@@ -92,7 +92,7 @@ export const ProductsStore = signalStore(
   }),
   withHooks({
     onInit(store) {
-      store.loadProducts({});
+      store.loadProducts({ _page: 1, limit: 20 });
     },
   }),
 );

@@ -12,14 +12,13 @@
       <h3 class="product-card__title">
         <a [routerLink]="['/products/details', id()]">
           <span aria-hidden="true" class="product-card__link-overlay"></span>
-          {{ title() }}
+          {{ name() }}
         </a>
       </h3>
       <div class="product-card__meta">
-        <span>{{ categoryName() }}</span>
-        <span class="product-card__price">{{ price() }} €</span>
+        <span>Category: {{ categoryName() }}</span>
       </div>
     </div>
   </div>
 </div>
-<lib-ui-button [fullWidth]="true">Add to cart</lib-ui-button>
+<lib-ui-button [fullWidth]="true">Add as 'Pet of the day'</lib-ui-button>

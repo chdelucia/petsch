@@ -1,23 +1,23 @@
-export interface Product {
-  id: string;
+export type HealthStatus = 'unhealthy' | 'healthy' | 'very healthy';
+
+export interface Pet {
+  id: number;
   name: string;
   description: string;
-  price: number;
-  category: Record<string, string>;
-  images: string[];
-  inStock: boolean;
-  rating: number;
-  reviewCount: number;
-  slug: string;
-  title: string;
-  creationAt: Date;
+  length: number;
+  kind: string;
+  photo_url: string;
+  weight: number;
+  height: number;
+  number_of_lives?: number;
+  health?: HealthStatus;
 }
 
-export interface ApiResponse<T> {
-  data: T;
-  success: boolean;
-  message?: string;
-  error?: string;
+export interface PaginationLinks {
+  first?: string;
+  prev?: string;
+  next?: string;
+  last?: string;
 }
 
 export interface PaginatedResponse<T> {
@@ -28,18 +28,12 @@ export interface PaginatedResponse<T> {
   totalPages: number;
 }
 
-export interface ProductFilter {
-  category?: string;
-  minPrice?: number;
-  maxPrice?: number;
-  inStock?: boolean;
-  searchTerm?: string;
-}
-
 export interface Filters {
-  page: number;
+  _page: number;
+  limit: number;
   name: string;
-  gender: string;
-  species: string;
-  status: string;
+  kind: string;
+  weight: number;
+  length: number;
+  height: number;
 }

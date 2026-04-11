@@ -10,10 +10,8 @@ import { Button } from '../button/button';
   styleUrl: './product-card.component.scss',
 })
 export class ProductCardComponent {
-  id = input.required<string>();
-  title = input.required<string>();
+  id = input.required<number>();
   name = input.required<string>();
-  price = input.required<number>();
   imageUrl = input.required<string>();
   categoryName = input.required<string>();
   viewTransitionName = input<string>('');

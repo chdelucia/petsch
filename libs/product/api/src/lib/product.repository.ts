@@ -1,7 +1,12 @@
 import { Observable } from 'rxjs';
-import { Filters, PaginatedResponse, Product } from './models/product';
+import { Filters, Pet, PaginationLinks } from './models/product';
+
+export interface GetProductsResponse {
+  products: Pet[];
+  pagination: PaginationLinks;
+}
 
 export interface IProductService {
-  getProducts(filters: Partial<Filters>): Observable<Product[]>;
-  getDetails(id: string): Observable<Product>;
+  getProducts(filters: Partial<Filters>): Observable<GetProductsResponse>;
+  getDetails(id: string): Observable<Pet>;
 }

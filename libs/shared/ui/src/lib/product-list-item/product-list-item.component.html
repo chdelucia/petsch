@@ -10,7 +10,7 @@
     />
     <div class="product-list-item__info">
       <p class="product-list-item__title">
-        {{ title() }}
+        {{ name() }}
       </p>
       <p class="product-list-item__desc">
         {{ description() }}
@@ -20,8 +20,8 @@
   <div class="product-list-item__side">
     <p class="product-list-item__name">{{ name() }}</p>
     <p class="product-list-item__meta">
-      Create at {{ creationAt() | date: 'medium' }}<br />
-      <b>{{ price() }}€</b>
+      Create at {{ name() }}<br />
+      <b>{{ name() }}€</b>
     </p>
   </div>
 </li>

@@ -35,20 +35,15 @@ export class FeatureProductList {
       (p): UiItem => ({
         id: p.id,
         name: p.name,
-        title: p.title,
         description: p.description,
-        price: p.price,
-        imageUrl: p.images[0],
-        creationAt: p.creationAt,
-        categoryName: p.category['name'],
+        imageUrl: p.photo_url,
+        categoryName: p.kind,
       }),
     ),
   );
 
   loading = this.store.loading;
   error = this.store.error;
-
-  filtersPending = this.store.filtersPending;
 
   showFilters = signal(true);
   gridView = signal(true);

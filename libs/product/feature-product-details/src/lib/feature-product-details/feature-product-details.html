@@ -27,40 +27,30 @@
         class="product-details__main-img-container banner-img"
       >
         <img
-          [src]="item.images[0]"
+          [src]="item.photo_url"
           [alt]="item.title"
           class="product-details__main-img"
           [style.viewTransitionName]="transitionService.getViewTransitionName(id())"
         />
       </div>
-      <div class="product-details__thumbnails">
-        @for (image of item.images; track image) {
-        <div class="product-details__thumb-container">
-          <img
-            [src]="image"
-            [alt]="item.title"
-            class="product-details__thumb-img"
-          />
-        </div>
-        }
-      </div>
     </div>
 
-    <!-- Product info -->
     <div class="product-details__info">
       <h1 class="product-details__title">
-        {{ item.title }}
+        {{ item.name }}
       </h1>
 
       <div class="product-details__price-container">
-        <h2 class="product-details__sr">Product information</h2>
-        <p class="product-details__price">{{ item.price }} €</p>
+        <p class="product-details__price">{{ item.kind }} €</p>
       </div>
 
       <div class="product-details__description-container">
         <h3 class="product-details__sr">Description</h3>
         <div class="product-details__description">
           <p>{{ item.description }}</p>
+          <p>height: {{ item.height }} grams</p>
+          <p>weight: {{ item.weight }} centimeters</p>
+          <p>Lives: {{ item.number_of_lives}}</p>
         </div>
       </div>
 
@@ -68,13 +58,13 @@
         <div class="product-details__meta-item">
           <h3 class="product-details__meta-label">Category:</h3>
           <span class="product-details__meta-value"
-            >{{ item.category['name'] }}</span
+            >{{ item.kind }}</span
           >
         </div>
       </div>
 
       <div class="product-details__actions">
-        <lib-ui-button [fullWidth]="true">Add to cart</lib-ui-button>
+        <lib-ui-button [fullWidth]="true">Add as pet of the day</lib-ui-button>
       </div>
     </div>
   </div>

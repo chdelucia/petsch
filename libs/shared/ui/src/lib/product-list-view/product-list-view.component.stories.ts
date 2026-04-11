@@ -22,24 +22,18 @@ export const Default: Story = {
   args: {
     products: [
       {
-        id: '1',
+        id: 1,
         name: 'Product 1',
-        title: 'Title 1',
         description: 'Description 1',
-        price: 10,
         imageUrl: 'https://placehold.co/100',
         categoryName: 'Cat 1',
-        creationAt: new Date(),
       },
       {
-        id: '2',
+        id: 2,
         name: 'Product 2',
-        title: 'Title 2',
         description: 'Description 2',
-        price: 20,
         imageUrl: 'https://placehold.co/100',
         categoryName: 'Cat 2',
-        creationAt: new Date(),
       },
     ],
   },
