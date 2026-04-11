@@ -1,0 +1,5 @@
+@reference "../styles.css";
+
+.main-content {
+  @apply min-h-screen bg-white;
+}
