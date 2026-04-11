@@ -14,6 +14,7 @@
             </div>
             <button
               type="button"
+              [attr.data-cy]="'clear-filter-' + item.key"
               class="text-gray-400 hover:text-indigo-600"
               (click)="deleteFilter(item.key)"
             >

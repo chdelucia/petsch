@@ -1,4 +1,4 @@
-<div class="group relative container__car">
+<div class="group relative container__car" data-cy="product-card">
   <div
     class="container__card__img aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none lg:h-80"
   >
@@ -21,7 +21,7 @@
         </a>
       </h3>
       <div class="flex justify-between">
-        <span>Category: {{ categoryName() }}</span>
+        <span data-cy="product-category">Category: {{ categoryName() }}</span>
       </div>
     </div>
   </div>

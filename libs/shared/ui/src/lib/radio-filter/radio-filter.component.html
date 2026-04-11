@@ -3,6 +3,7 @@
     <button
       (click)="togleFilter()"
       type="button"
+      data-cy="filter-toggle"
       class="flex w-full items-center justify-between bg-white py-3 text-sm text-gray-400 hover:text-indigo-600 cursor-pointer"
       aria-controls="filter-section-0"
       aria-expanded="false"
@@ -49,6 +50,7 @@
             [id]="title() + $index"
             [name]="title()"
             [value]="item.value"
+            [attr.data-cy]="'radio-option-' + item.value"
             type="radio"
             class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500 hover:cursor-pointer accent-indigo-600"
           />

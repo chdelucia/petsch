@@ -26,11 +26,11 @@ export class FiltersComponent {
   form = new FormGroup({
     name: new FormControl(''),
     status: new FormControl(''),
-    gender: new FormControl(''),
+    kind: new FormControl(''),
     species: new FormControl(''),
   });
 
-  genderOptions = [
+  kindOptions = [
     { value: 'dog', text: 'DOG' },
     { value: 'cat', text: 'CAT' },
   ];

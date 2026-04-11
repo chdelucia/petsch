@@ -39,7 +39,11 @@ export const ProductsStore = signalStore(
       const filters = store.filtersApplied();
       const products = store.products();
       return products.filter((p) => {
-        return !filters.name || p.name.includes(filters.name);
+        const nameMatch =
+          !filters.name ||
+          p.name.toLowerCase().includes(filters.name.toLowerCase());
+        const kindMatch = !filters.kind || p.kind === filters.kind;
+        return nameMatch && kindMatch;
       });
     }),
   })),
