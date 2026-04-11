@@ -58,8 +58,8 @@ export class FeatureProductList {
   }
 
   handlePageChange(page: number): void {
-    console.log(page)
+    console.log(page);
     const filters = this.store.filtersApplied();
-    this.store.loadProducts({...filters, _page: page})
+    this.store.loadProducts({ ...filters, _page: page });
   }
 }

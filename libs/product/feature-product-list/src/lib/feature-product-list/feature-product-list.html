@@ -22,7 +22,6 @@
         (pageChange)="handlePageChange($event)"
       ></lib-ui-pagination>
 
-
       <section class="char-grid" [class.no-filters]="!showFilters()">
         @for (item of products(); track item.id) {
         <lib-ui-product-card

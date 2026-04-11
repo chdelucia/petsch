@@ -92,7 +92,7 @@ export const ProductsStore = signalStore(
   }),
   withHooks({
     onInit(store) {
-      store.loadProducts({_page: 1, limit: 20 });
+      store.loadProducts({ _page: 1, limit: 20 });
     },
   }),
 );
