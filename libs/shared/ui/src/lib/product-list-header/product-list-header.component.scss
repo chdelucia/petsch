@@ -4,9 +4,18 @@
   @apply flex items-end justify-between border-b border-gray-200 pb-5 pt-10;
 }
 
+.top-container__title {
+  @apply text-2xl font-bold tracking-tight text-gray-900;
+}
+
 .top-container__filters {
   @apply flex items-center;
 }
+
+.top-container__filters__btn {
+  @apply ml-4 p-2 text-gray-400 hover:text-gray-500 sm:ml-4;
+}
+
 
 .top-container__filters__toggleview,
 .top-container__filters__togglefilters {
@@ -18,6 +27,6 @@
   @apply fill-indigo-600;
 }
 
-.top-container button {
-  @apply ml-4 p-2 text-gray-400 hover:text-gray-500 sm:ml-4;
+.top-container__filters__sr {
+  @apply sr-only;
 }

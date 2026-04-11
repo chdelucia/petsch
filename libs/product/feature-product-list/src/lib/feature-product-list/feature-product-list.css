@@ -34,14 +34,20 @@ fullangulardeveloper-sort-by {
   @apply grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-10;
 }
 
+
 .chars__filters {
   @apply col-span-2;
 }
+
+.chars__filters--hidden {
+  @apply hidden;
+}
+
 .chars__list {
   @apply lg:col-span-8;
 }
 
-.chars__list.no-filters {
+.chars__list--no-filters {
   @apply lg:col-span-10;
 }
 
@@ -54,7 +60,7 @@ fullangulardeveloper-sort-by {
   perspective: 1000px;
 }
 
-.char-grid.no-filters {
+.char-grid--no-filters {
   @apply lg:grid-cols-4 xl:grid-cols-5;
 }
 

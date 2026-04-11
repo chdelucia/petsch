@@ -35,7 +35,7 @@ export class FeatureProductList {
     return match ? Number(match[1]) : 10;
   });
 
-  loading = this.store.loading;
+  loading = computed(() => this.store.loading());
   error = this.store.error;
 
   showFilters = signal(true);
@@ -58,7 +58,6 @@ export class FeatureProductList {
   }
 
   handlePageChange(page: number): void {
-    console.log(page);
     const filters = this.store.filtersApplied();
     this.store.loadProducts({ ...filters, _page: page });
   }

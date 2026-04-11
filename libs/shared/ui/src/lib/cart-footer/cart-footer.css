@@ -1,0 +1,17 @@
+@reference "../../tailwind.storybook.css";
+
+.cart-footer {
+  @apply border-t px-4 py-6 sm:px-6;
+}
+
+.cart-footer__subtotal {
+  @apply flex justify-between text-base font-medium text-gray-900;
+}
+
+.cart-footer__checkout {
+  @apply mt-6;
+}
+
+.cart-footer__continue {
+  @apply mt-6 text-center text-sm text-gray-500;
+}
