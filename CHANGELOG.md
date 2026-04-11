@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.32](https://github.com/chdelucia/petsch/compare/v0.0.31...v0.0.32) (2026-04-11)
+
+
+### Bug Fixes
+
+* prevent security problems ([cc875b1](https://github.com/chdelucia/petsch/commit/cc875b17f3908dd9307184fe5705a6008ae1a1da))
+
 ### [0.0.31](https://github.com/chdelucia/petsch/compare/v0.0.30...v0.0.31) (2026-04-11)
 
 
