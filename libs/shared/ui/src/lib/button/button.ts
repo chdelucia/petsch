@@ -11,7 +11,6 @@ export class Button {
   variant = input<'primary' | 'link'>('primary');
   fullWidth = input<boolean>(false);
   disabled = input<boolean>(false);
-  dataCy = input<string>('ui-button');
 
   clicked = output<void>();
 
