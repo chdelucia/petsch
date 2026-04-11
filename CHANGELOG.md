@@ -2,6 +2,30 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.29](https://github.com/chdelucia/petsch/compare/v0.0.28...v0.0.29) (2026-04-11)
+
+
+### Features
+
+* **header:** add titles ([82f735e](https://github.com/chdelucia/petsch/commit/82f735e3227b97753755617a147bcec59c220fb3))
+* increase unit test coverage to minimum 80% per file ([c7dc9d0](https://github.com/chdelucia/petsch/commit/c7dc9d02ccdcb605776a1c719770b1178f659bfa))
+* increase unit test coverage to minimum 80% per file without zone.js ([38c9630](https://github.com/chdelucia/petsch/commit/38c963090e60fddb7e9d46622cf1c8a386c83d68))
+* **pagination:** add pagination ([9d0f579](https://github.com/chdelucia/petsch/commit/9d0f57956ab64b343277c603bc292d995468666d))
+
+
+### Bug Fixes
+
+* **filters:** add default page ([467b040](https://github.com/chdelucia/petsch/commit/467b040ff7478f62e0fe00d6384c17d54bca3a6d))
+* **filters:** fix resetFilters ([d6866db](https://github.com/chdelucia/petsch/commit/d6866dbcb54a7c0f7870c0e269d70fabcad629b9))
+* **filters:** reset page on reset filter ([fd6c30e](https://github.com/chdelucia/petsch/commit/fd6c30e614748a4bfabcf6fea463abbf5ac05897))
+* linter ([4c009d8](https://github.com/chdelucia/petsch/commit/4c009d8925d066ebd19cc5ef67ee0e3387684eee))
+* linter ([099328c](https://github.com/chdelucia/petsch/commit/099328cc65b8b3faffd47d375db13947ebc4f1eb))
+* linter ([4cba8cf](https://github.com/chdelucia/petsch/commit/4cba8cf71d46a78b6ecf7da42b0b3fda6fa39ba6))
+* linter ([112c730](https://github.com/chdelucia/petsch/commit/112c73030bddc4a124f1d855f5477e25fadbd978))
+* linter ([da6018d](https://github.com/chdelucia/petsch/commit/da6018d40c066f72262bf918c762d781a18650f9))
+* linter ([14cd4df](https://github.com/chdelucia/petsch/commit/14cd4df3fbf75b2ec06e46793eb8c6f0f491377b))
+* **pagination:** limit filter ([685c30b](https://github.com/chdelucia/petsch/commit/685c30b4898f539a2ab4af7d661a636ae5b65752))
+
 ### [0.0.28](https://github.com/chdelucia/petsch/compare/v0.0.27...v0.0.28) (2026-04-10)
 
 
