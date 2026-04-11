@@ -1,20 +1,16 @@
 <div class="cart-item" *transloco="let t">
   <div class="cart-item__img-container">
-    <img [src]="imageSrc()" [alt]="imageAlt()" class="cart-item__img" />
+    <img [src]="imageSrc()" [alt]="name()" class="cart-item__img" />
   </div>
 
   <div class="cart-item__content">
     <div class="cart-item__header">
       <h3>{{ name() }}</h3>
-      <p>{{ price() }} €</p>
     </div>
 
-    @if (color()) {
-    <p class="cart-item__color">{{ color() }}</p>
-    }
-    <div class="cart-item__footer">
-      <p class="cart-item__qty">{{ t('qty') }} {{ quantity() }}</p>
+    <p class="cart-item__color">{{ day() }}</p>
 
+    <div class="cart-item__footer">
       <button type="button" (click)="remove.emit()" class="cart-item__remove">
         {{ t('remove') }}
       </button>

@@ -1,41 +1,30 @@
-import { Component, inject, signal, computed } from '@angular/core';
-import { Filters, CurrentTransitionService } from '@petsch/api';
-import { FiltersComponent } from './components';
+import { Component, inject, computed, input } from '@angular/core';
 import {
-  Button,
-  CartDrawer,
-  Pagination,
-  Card,
-  CardSkeleton,
-  ListHeader,
-} from '@petsch/ui';
-import { ProductsStore } from '@petsch/data-access';
+  Pet,
+  CurrentTransitionService,
+  PETLIST_STORE,
+  PETOFDAY_STORE,
+} from '@petsch/api';
+import { Button, Pagination, Card, CardSkeleton } from '@petsch/ui';
+
 import { TranslocoDirective } from '@jsverse/transloco';
 
 @Component({
   selector: 'lib-feature-product-list',
-  imports: [
-    FiltersComponent,
-    CardSkeleton,
-    Card,
-    Pagination,
-    ListHeader,
-    CartDrawer,
-    Button,
-    TranslocoDirective,
-  ],
+  imports: [CardSkeleton, Card, Pagination, Button, TranslocoDirective],
   templateUrl: './feature-product-list.html',
   styleUrl: './feature-product-list.css',
 })
 export class FeatureProductList {
-  private readonly store = inject(ProductsStore);
+  private readonly store = inject(PETLIST_STORE);
+  protected readonly potdStore = inject(PETOFDAY_STORE);
   protected readonly transitionService = inject(CurrentTransitionService);
+
+  showFilters = input.required<boolean>();
 
   products = this.store.filteredProducts;
 
   currentPage = computed(() => this.store.filtersApplied()._page ?? 1);
-
-  open = signal(false);
 
   totalPages = computed(() => {
     const last = this.store.pagination().last;
@@ -46,27 +35,22 @@ export class FeatureProductList {
   loading = computed(() => this.store.loading());
   error = this.store.error;
 
-  showFilters = signal(true);
-  gridView = signal(true);
-
-  updateFilter(partial: Partial<Filters>) {
-    this.store.updateFilters(partial);
-  }
-
-  clearFilters(): void {
-    this.store.clearProducts();
-  }
-
-  toggleFilters(): void {
-    this.showFilters.update((v) => !v);
-  }
-
-  toggleView(): void {
-    this.gridView.update((v) => !v);
-  }
-
   handlePageChange(page: number): void {
     const filters = this.store.filtersApplied();
     this.store.loadProducts({ ...filters, _page: page });
+  }
+
+  getButtonText(): string {
+    return this.potdStore.isPetAddedToday()
+      ? 'Ver la mascota del día'
+      : 'addAsPetOfTheDay';
+  }
+
+  handlePotdClick(pet: Pet): void {
+    if (this.potdStore.isPetAddedToday()) {
+      this.potdStore.togglePoT(true);
+    } else {
+      this.potdStore.addPet(pet);
+    }
   }
 }

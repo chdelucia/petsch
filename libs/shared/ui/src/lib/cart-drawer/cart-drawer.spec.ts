@@ -14,6 +14,7 @@ describe('CartDrawer', () => {
     fixture = TestBed.createComponent(CartDrawer);
     component = fixture.componentInstance;
     fixture.componentRef.setInput('subtotal', 0);
+    fixture.componentRef.setInput('titleLabel', 'pet of the day');
     fixture.detectChanges();
   });
 

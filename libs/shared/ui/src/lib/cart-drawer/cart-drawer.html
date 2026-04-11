@@ -8,10 +8,10 @@
         class="cart-drawer-panel"
         [class.cart-drawer-panel--closed]="!open()"
       >
-        <div class="cart-drawer-content" *transloco="let t">
+        <div class="cart-drawer-content">
           <div class="cart-drawer-body">
             <div class="cart-drawer-header">
-              <h2 class="cart-drawer-title">{{ t('shoppingCart') }}</h2>
+              <h2 class="cart-drawer-title">{{ titleLabel() }}</h2>
               <button
                 type="button"
                 class="cart-drawer-close"
@@ -26,11 +26,11 @@
             </lib-ui-cart-list>
           </div>
 
+          @if (showFooter()) {
           <lib-ui-cart-footer
-            [subtotal]="subtotal()"
-            (checkout)="checkout()"
             (closeDrawer)="closeDrawer()"
           ></lib-ui-cart-footer>
+          }
         </div>
       </div>
     </div>

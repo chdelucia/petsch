@@ -3,15 +3,15 @@ import { Route } from '@angular/router';
 export const appRoutes: Route[] = [
   {
     path: '',
-    redirectTo: 'products',
+    redirectTo: 'pets',
     pathMatch: 'full',
   },
   {
-    path: 'products',
+    path: 'pets',
     loadChildren: () => import('@petsch/shell').then((m) => m.shellRoutes),
   },
   {
     path: '**',
-    redirectTo: 'products',
+    redirectTo: 'pets',
   },
 ];

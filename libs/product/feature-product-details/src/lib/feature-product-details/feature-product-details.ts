@@ -1,9 +1,9 @@
-import { Component, inject, input } from '@angular/core';
+import { Component, inject, input, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
+import { TranslocoDirective } from '@jsverse/transloco';
 import { Button } from '@petsch/ui';
 import { Pet, CurrentTransitionService } from '@petsch/api';
-import { TranslocoDirective } from '@jsverse/transloco';
 
 @Component({
   selector: 'lib-feature-product-details',
@@ -17,6 +17,8 @@ export class FeatureProductDetails {
 
   id = input.required<string>();
   product = input.required<Pet>();
+
+  showPotdDrawer = signal(false);
 
   loading = () => false;
   error = () => null;

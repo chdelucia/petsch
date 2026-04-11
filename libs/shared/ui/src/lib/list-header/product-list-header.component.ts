@@ -10,9 +10,7 @@ import { TranslocoDirective } from '@jsverse/transloco';
 })
 export class ListHeader {
   text = input.required<string>();
-  gridView = input.required<boolean>();
   showFilters = input.required<boolean>();
 
-  toggleView = output<void>();
   toggleFilters = output<void>();
 }

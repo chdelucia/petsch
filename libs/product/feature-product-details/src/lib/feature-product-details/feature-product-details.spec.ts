@@ -4,6 +4,7 @@ import { FeatureProductDetails } from './feature-product-details';
 import { PRODUCT_TOKEN } from '@petsch/api';
 import { of } from 'rxjs';
 import { provideRouter } from '@angular/router';
+import { LocalstorageService } from '@petsch/obs-data-access';
 
 describe('FeatureProductDetails', () => {
   let component: FeatureProductDetails;
@@ -28,6 +29,7 @@ describe('FeatureProductDetails', () => {
       providers: [
         { provide: PRODUCT_TOKEN, useValue: mockProductService },
         provideRouter([]),
+        LocalstorageService,
       ],
     }).compileComponents();
 

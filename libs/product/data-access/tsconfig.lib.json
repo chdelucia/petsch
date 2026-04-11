@@ -7,7 +7,11 @@
     "inlineSources": true,
     "types": []
   },
-  "include": ["src/**/*.ts"],
+  "include": [
+    "src/**/*.ts",
+    "../feature-product-list/src/lib/product-list.store.ts",
+    "../feature-pet-of-day/src/lib/pet-of-the-day.store.ts"
+  ],
   "exclude": [
     "src/**/*.spec.ts",
     "src/**/*.test.ts",

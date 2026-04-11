@@ -43,6 +43,10 @@ export default [
               ],
             },
             {
+              sourceTag: 'scope:product',
+              onlyDependOnLibsWithTags: ['scope:product', 'scope:shared'],
+            },
+            {
               sourceTag: 'scope:*',
               onlyDependOnLibsWithTags: ['scope:*'],
             },

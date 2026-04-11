@@ -4,29 +4,25 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### [0.0.33](https://github.com/chdelucia/petsch/compare/v0.0.32...v0.0.33) (2026-04-11)
 
-
 ### Features
 
-* **filters:** scalability ([c737501](https://github.com/chdelucia/petsch/commit/c737501a637804490a7e01aa4460429a337eee6b))
-
+- **filters:** scalability ([c737501](https://github.com/chdelucia/petsch/commit/c737501a637804490a7e01aa4460429a337eee6b))
 
 ### Bug Fixes
 
-* linter ([a707113](https://github.com/chdelucia/petsch/commit/a707113c23bf666896e1da0758df6f87cdf478af))
+- linter ([a707113](https://github.com/chdelucia/petsch/commit/a707113c23bf666896e1da0758df6f87cdf478af))
 
 ### [0.0.32](https://github.com/chdelucia/petsch/compare/v0.0.31...v0.0.32) (2026-04-11)
 
-
 ### Bug Fixes
 
-* prevent security problems ([cc875b1](https://github.com/chdelucia/petsch/commit/cc875b17f3908dd9307184fe5705a6008ae1a1da))
+- prevent security problems ([cc875b1](https://github.com/chdelucia/petsch/commit/cc875b17f3908dd9307184fe5705a6008ae1a1da))
 
 ### [0.0.31](https://github.com/chdelucia/petsch/compare/v0.0.30...v0.0.31) (2026-04-11)
 
-
 ### Bug Fixes
 
-* linter ([ddd3a50](https://github.com/chdelucia/petsch/commit/ddd3a50c93574060d059ac41b4a36fd04a9a1301))
+- linter ([ddd3a50](https://github.com/chdelucia/petsch/commit/ddd3a50c93574060d059ac41b4a36fd04a9a1301))
 
 ### [0.0.30](https://github.com/chdelucia/petsch/compare/v0.0.29...v0.0.30) (2026-04-11)
 
