@@ -53,9 +53,33 @@
       </div>
 
       <div class="product-details__actions">
-        <lib-ui-button [fullWidth]="true">Add as pet of the day</lib-ui-button>
+        <lib-ui-button [fullWidth]="true" (clicked)="handlePotdClick()">{{ buttonText() }}</lib-ui-button>
       </div>
     </div>
   </div>
   }
 </div>
+
+<lib-ui-cart-drawer
+  [open]="showPotdDrawer()"
+  (openChange)="showPotdDrawer.set($event)"
+  title="Mascotas del día"
+  [subtotal]="0"
+  [showSubtotal]="false"
+  checkoutLabel="Cerrar"
+  closeLabel="Seguir navegando"
+  (checkoutClick)="showPotdDrawer.set(false)"
+>
+  @for (entry of potdStore.sortedEntries(); track entry.date) {
+    <li>
+      <lib-ui-cart-item
+        [imageSrc]="entry.pet.photo_url"
+        [imageAlt]="entry.pet.name"
+        [name]="entry.pet.name"
+        [price]="0"
+        [color]="entry.date"
+        [quantity]="1"
+      ></lib-ui-cart-item>
+    </li>
+  }
+</lib-ui-cart-drawer>

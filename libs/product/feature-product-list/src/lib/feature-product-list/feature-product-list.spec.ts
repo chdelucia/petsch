@@ -4,6 +4,7 @@ import { provideRouter } from '@angular/router';
 import { of } from 'rxjs';
 import { PRODUCT_TOKEN } from '@petsch/api';
 import { ProductsStore } from '@petsch/data-access';
+import { LocalstorageService } from '@petsch/obs-data-access';
 
 describe('FeatureProductList', () => {
   let component: FeatureProductList;
@@ -16,6 +17,7 @@ describe('FeatureProductList', () => {
       providers: [
         ProductsStore,
         provideRouter([]),
+        LocalstorageService,
         {
           provide: PRODUCT_TOKEN,
           useValue: {

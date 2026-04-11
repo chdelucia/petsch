@@ -23,4 +23,4 @@
 </div>
 
 <ng-content select="lib-ui-button"></ng-content>
-<lib-ui-button [fullWidth]="true">Add as 'Pet of the day'</lib-ui-button>
+<lib-ui-button [fullWidth]="true" (clicked)="buttonClick.emit()">{{ buttonText() }}</lib-ui-button>

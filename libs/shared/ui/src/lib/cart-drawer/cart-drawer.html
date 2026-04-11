@@ -12,7 +12,7 @@
         <div class="cart-drawer-content">
           <div class="cart-drawer-body">
             <div class="cart-drawer-header">
-              <h2 class="cart-drawer-title">Shopping Cart</h2>
+              <h2 class="cart-drawer-title">{{ title() }}</h2>
               <button
                 type="button"
                 class="cart-drawer-close"
@@ -27,11 +27,17 @@
             </lib-ui-cart-list>
           </div>
 
+          @if (showFooter()) {
           <lib-ui-cart-footer
             [subtotal]="subtotal()"
+            [showSubtotal]="showSubtotal()"
+            [subtotalLabel]="subtotalLabel()"
+            [checkoutLabel]="checkoutLabel()"
+            [closeLabel]="closeLabel()"
             (checkout)="checkout()"
             (closeDrawer)="closeDrawer()"
           ></lib-ui-cart-footer>
+          }
         </div>
       </div>
     </div>

@@ -1,6 +1,8 @@
 import { Injectable, isDevMode } from '@angular/core';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class LocalstorageService {
   getValue<T>(key: string): T | null {
     const item = localStorage.getItem(key);

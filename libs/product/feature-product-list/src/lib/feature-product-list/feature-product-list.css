@@ -50,6 +50,10 @@ fullangulardeveloper-sort-by {
   @apply lg:col-span-10;
 }
 
+.potd-actions {
+  @apply flex justify-end p-4;
+}
+
 .chars__list__pagination {
   @apply flex items-center justify-end mb-4;
 }

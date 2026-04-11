@@ -29,7 +29,10 @@
         "libs/shared/observability/data-access/src/index.ts"
       ],
       "@petsch/ui": ["libs/shared/ui/src/index.ts"],
-      "@petsch/feature-cart": ["libs/cart/feature-cart/src/index.ts"]
+      "@petsch/feature-cart": ["libs/cart/feature-cart/src/index.ts"],
+      "@petsch/pet-of-the-day-data-access": [
+        "libs/product/pet-of-the-day/data-access/src/index.ts"
+      ]
     }
   },
   "exclude": ["node_modules", "tmp"]

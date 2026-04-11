@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { Button } from '../button/button';
 
@@ -16,4 +16,7 @@ export class ProductCardComponent {
   categoryName = input.required<string>();
   viewTransitionName = input<string>('');
   status = input.required<string>();
+  buttonText = input<string>("Add as 'Pet of the day'");
+
+  buttonClick = output<void>();
 }

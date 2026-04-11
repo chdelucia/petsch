@@ -22,7 +22,7 @@ export default [
             },
             {
               sourceTag: 'type:data-access',
-              onlyDependOnLibsWithTags: ['type:api'],
+              onlyDependOnLibsWithTags: ['type:api', 'type:data-access'],
             },
             {
               sourceTag: 'type:feature',
@@ -41,6 +41,10 @@ export default [
                 'type:data-access',
                 'type:shell',
               ],
+            },
+            {
+              sourceTag: 'scope:product',
+              onlyDependOnLibsWithTags: ['scope:product', 'scope:shared'],
             },
             {
               sourceTag: 'scope:*',
