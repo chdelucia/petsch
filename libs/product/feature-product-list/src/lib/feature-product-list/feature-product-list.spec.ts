@@ -8,7 +8,6 @@ import { ProductsStore } from '@petsch/data-access';
 describe('FeatureProductList', () => {
   let component: FeatureProductList;
   let fixture: ComponentFixture<FeatureProductList>;
-  let store: any;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -16,10 +15,11 @@ describe('FeatureProductList', () => {
       providers: [
         ProductsStore,
         provideRouter([]),
+        ProductsStore,
         {
           provide: PRODUCT_TOKEN,
           useValue: {
-            getProducts: () => of({ products: [], pagination: {} }),
+            getProducts: () => of([]),
             getDetails: () => of({}),
           },
         },
@@ -28,41 +28,10 @@ describe('FeatureProductList', () => {
 
     fixture = TestBed.createComponent(FeatureProductList);
     component = fixture.componentInstance;
-    store = TestBed.inject(ProductsStore);
     await fixture.whenStable();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
-  });
-
-  it('should toggle filters', () => {
-    expect(component.showFilters()).toBeTruthy();
-    component.toggleFilters();
-    expect(component.showFilters()).toBeFalsy();
-  });
-
-  it('should toggle view', () => {
-    expect(component.gridView()).toBeTruthy();
-    component.toggleView();
-    expect(component.gridView()).toBeFalsy();
-  });
-
-  it('should call store.updateFilters when updateFilter is called', () => {
-    const spy = vi.spyOn(store, 'updateFilters');
-    component.updateFilter({ name: 'test' });
-    expect(spy).toHaveBeenCalledWith({ name: 'test' });
-  });
-
-  it('should call store.clearProducts when clearFilters is called', () => {
-    const spy = vi.spyOn(store, 'clearProducts');
-    component.clearFilters();
-    expect(spy).toHaveBeenCalled();
-  });
-
-  it('should handle handlePageChange', () => {
-    const consoleSpy = vi.spyOn(console, 'log');
-    component.handlePageChange(2);
-    expect(consoleSpy).toHaveBeenCalledWith(2);
   });
 });

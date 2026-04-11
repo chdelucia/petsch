@@ -37,11 +37,6 @@ fullangulardeveloper-sort-by {
 .chars__filters {
   @apply col-span-2;
 }
-
-.chars__filters--hidden {
-  @apply hidden;
-}
-
 .chars__list {
   @apply lg:col-span-8;
 }

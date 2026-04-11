@@ -1,10 +1,10 @@
-<div class="cart-footer">
-  <div class="cart-footer__subtotal">
+<div class="border-t px-4 py-6 sm:px-6">
+  <div class="flex justify-between text-base font-medium text-gray-900">
     <p>Subtotal</p>
     <p>{{ subtotal() }} €</p>
   </div>
 
-  <div class="cart-footer__checkout">
+  <div class="mt-6">
     <lib-ui-button
       variant="primary"
       [fullWidth]="true"
@@ -14,7 +14,7 @@
     </lib-ui-button>
   </div>
 
-  <div class="cart-footer__continue">
+  <div class="mt-6 text-center text-sm text-gray-500">
     <lib-ui-button variant="link" (clicked)="closeDrawer.emit()">
       Continue Shopping →
     </lib-ui-button>

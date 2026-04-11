@@ -1,17 +1,17 @@
-<div class="input-filter">
-  <h3 class="input-filter__header">
+<div class="border-b border-gray-200 py-6 relative">
+  <h3 class="my-3 flow-root">
     <button
       (click)="togleFilter()"
       (keypress)="togleFilter()"
       type="button"
-      class="input-filter__button"
+      class="flex w-full items-center justify-between bg-white py-3 text-sm text-gray-400 hover:text-indigo-600 cursor-pointer"
       aria-controls="filter-section-0"
       [attr.aria-expanded]="isfilterOpen()"
     >
-      <span class="input-filter__title"> {{ title() | uppercase }}</span>
-      <span class="input-filter__icon-container">
+      <span class="font-medium text-gray-900"> {{ title() | uppercase }}</span>
+      <span class="ml-6 flex items-center">
         <svg
-          class="input-filter__icon"
+          class="h-5 w-5"
           [class.hidden]="isfilterOpen()"
           viewBox="0 0 20 20"
           fill="currentColor"
@@ -23,7 +23,7 @@
         </svg>
 
         <svg
-          class="input-filter__icon"
+          class="h-5 w-5"
           [class.hidden]="!isfilterOpen()"
           viewBox="0 0 20 20"
           fill="currentColor"
@@ -39,10 +39,12 @@
     </button>
   </h3>
 
-  <div class="input-filter__content" [class.hidden]="!isfilterOpen()">
-    <div class="input-filter__input-container">
+  <div class="relative rounded-md shadow-sm" [class.hidden]="!isfilterOpen()">
+    <div
+      class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none"
+    >
       <svg
-        class="input-filter__search-icon"
+        class="w-4 h-4 text-gray-500 dark:text-gray-400"
         aria-hidden="true"
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
@@ -65,36 +67,36 @@
       [value]="value()"
       name="price"
       type="text"
-      [attr.data-cy]="'input-filter-' + title()"
-      class="input-filter__input"
+      data-cy="input-filter-field"
+      class="block w-full rounded-md border-0 py-1.5 pl-9 pr text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
       placeholder="Search by name"
     />
   </div>
 
   @if (lastSearch().length) {
     <div
-      class="input-filter__last-searches"
+      class="last-searches flex flex-col gap-2 py-2 rounded-b-md shadow-sm border-x-2 border-b-2 text-sm leading-6"
       [class.hidden]="!isLastSearchOpen()"
     >
-      <small class="input-filter__last-searches-title">Last searches</small>
+      <small class="text-center">Last searches</small>
       @for (item of lastSearch() | slice: 0 : 3; track item) {
-        <div class="input-filter__last-search-item">
+        <div class="flex justify-between px-2 cursor-pointer">
           <lib-ui-button
             variant="link"
             (click)="searchByOldValue(item)"
             (keydown)="searchByOldValue(item)"
-            class="input-filter__last-search-text"
+            class="w-11/12 hover:text-indigo-600 hover:font-bold"
           >
             {{ item }}
           </lib-ui-button>
           <button
             type="button"
-            class="input-filter__last-search-remove"
+            class="text-gray-400 hover:text-indigo-600 hover:font-bold"
             (click)="removeSearch($index, $event)"
           >
-            <span class="input-filter__sr">Close</span>
+            <span class="sr-only">Close</span>
             <svg
-              class="input-filter__close-icon"
+              class="h-6 w-6"
               fill="none"
               viewBox="0 0 24 24"
               stroke-width="1.5"

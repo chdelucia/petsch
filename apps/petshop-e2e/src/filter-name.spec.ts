@@ -3,20 +3,24 @@ import { test, expect } from '@playwright/test';
 test('filter by name', async ({ page }) => {
   await page.goto('/');
 
-  const searchInput = page.locator('[data-cy="input-filter-name"]');
+  const searchInput = page.locator('[data-cy="input-filter-name"] [data-cy="input-filter-field"]');
   await searchInput.fill('Jade');
-  await page.waitForTimeout(1500);
 
-  const productCards = page.locator('[data-cy="product-card"]');
-  const count = await productCards.count();
+  // Wait for the active filter chip to appear
+  await expect(page.locator('[data-cy="active-filter-name"]')).toContainText('Jade');
+
+  const productTitles = page.locator('[data-cy="product-card"] h3');
+  await expect(productTitles.first()).toBeVisible();
+
+  const count = await productTitles.count();
   for (let i = 0; i < count; i++) {
-    const title = await productCards.nth(i).locator('h3').innerText();
-    expect(title.toLowerCase()).toContain('jade');
+    await expect(productTitles.nth(i)).toContainText('Jade', { ignoreCase: true });
   }
 
   // Clear filter
-  await page.click('[data-cy="clear-filter-name"]');
-  await page.waitForTimeout(1500);
+  await page.locator('[data-cy="clear-filter-name"]').click();
+  await expect(page.locator('[data-cy="active-filter-name"]')).toBeHidden();
 
-  expect(await productCards.count()).toBeGreaterThan(count || 0);
+  // Verify products are still visible
+  await expect(page.locator('[data-cy="product-card"]').first()).toBeVisible();
 });

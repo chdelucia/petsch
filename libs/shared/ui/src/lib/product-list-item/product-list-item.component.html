@@ -1,25 +1,25 @@
 <li
-  class="product-list-item"
+  class="flex justify-between gap-x-6 py-5 cursor-pointer hover:font-extrabold"
   [routerLink]="['details', id()]"
 >
-  <div class="product-list-item__main">
+  <div class="flex min-w-0 gap-x-4">
     <img
-      class="product-list-item__img"
+      class="h-12 w-12 flex-none rounded-full bg-gray-50"
       [src]="imageUrl()"
       [alt]="name()"
     />
-    <div class="product-list-item__info">
-      <p class="product-list-item__title">
+    <div class="min-w-0 flex-auto">
+      <p class="text-sm font-semibold leading-6 text-gray-900">
         {{ name() }}
       </p>
-      <p class="product-list-item__desc">
+      <p class="mt-1 truncate text-xs leading-5 text-gray-500">
         {{ description() }}
       </p>
     </div>
   </div>
-  <div class="product-list-item__side">
-    <p class="product-list-item__name">{{ name() }}</p>
-    <p class="product-list-item__meta">
+  <div class="hidden shrink-0 sm:flex sm:flex-col sm:items-end">
+    <p class="text-sm leading-6 text-gray-900">{{ name() }}</p>
+    <p class="mt-1 text-xs leading-5 text-gray-500">
       Create at {{ name() }}<br />
       <b>{{ name() }}€</b>
     </p>

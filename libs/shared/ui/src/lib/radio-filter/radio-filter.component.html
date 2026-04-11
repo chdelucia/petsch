@@ -1,17 +1,17 @@
-<div class="filter-container">
-  <h3 class="filter-container__header">
+<div class="border-b border-gray-200 py-6">
+  <h3 class="-my-3 flow-root">
     <button
       (click)="togleFilter()"
       type="button"
       data-cy="filter-toggle"
-      class="filter-container__button"
+      class="flex w-full items-center justify-between bg-white py-3 text-sm text-gray-400 hover:text-indigo-600 cursor-pointer"
       aria-controls="filter-section-0"
       aria-expanded="false"
     >
-      <span class="filter-container__title"> {{ title() | uppercase }}</span>
-      <span class="filter-container__icon-container">
+      <span class="font-medium text-gray-900"> {{ title() | uppercase }}</span>
+      <span class="ml-6 flex items-center">
         <svg
-          class="filter-container__icon"
+          class="h-5 w-5"
           [class.hidden]="isOpen()"
           viewBox="0 0 20 20"
           fill="currentColor"
@@ -23,7 +23,7 @@
         </svg>
 
         <svg
-          class="filter-container__icon"
+          class="h-5 w-5"
           [class.hidden]="!isOpen()"
           viewBox="0 0 20 20"
           fill="currentColor"
@@ -39,10 +39,10 @@
     </button>
   </h3>
 
-  <div class="filter-container__section" id="filter-section-0" [class.hidden]="!isOpen()">
-    <div class="filter-container__list">
+  <div class="pt-6" id="filter-section-0" [class.hidden]="!isOpen()">
+    <div class="space-y-4">
       @for (item of options(); track $index) {
-        <div class="filter-container__item">
+        <div class="flex items-center hover:cursor-pointe">
           <input
             (click)="getValue($event)"
             (keydown)="getValue($event)"
@@ -52,11 +52,11 @@
             [value]="item.value"
             [attr.data-cy]="'radio-option-' + item.value"
             type="radio"
-            class="filter-container__input"
+            class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500 hover:cursor-pointer accent-indigo-600"
           />
           <label
             [for]="title() + $index"
-            class="filter-container__label"
+            class="ml-3 text-sm text-gray-600 hover:cursor-pointer hover:text-indigo-600 hover:font-bold"
             >{{ item.text }}</label
           >
         </div>

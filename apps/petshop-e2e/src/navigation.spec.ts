@@ -10,8 +10,7 @@ test('navigate to details and back', async ({ page }) => {
 
   // Check we are on details page
   await expect(page).toHaveURL(/\/products\/details\/\d+/);
-  const detailsTitle = await page.locator('h1').innerText();
-  expect(detailsTitle).toBe(productName);
+  await expect(page.locator('h1')).toHaveText(productName);
 
   // Go back
   await page.click('[data-cy="back-to-list"]');

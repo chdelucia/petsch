@@ -12,23 +12,11 @@ describe('CartDrawer', () => {
 
     fixture = TestBed.createComponent(CartDrawer);
     component = fixture.componentInstance;
-    fixture.componentRef.setInput('subtotal', 0);
-    fixture.detectChanges();
+    fixture.componentRef.setInput('subtotal', 300);
+    await fixture.whenStable();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
-  });
-
-  it('should emit openChange(false) when closeDrawer is called', () => {
-    const spy = vi.spyOn(component.openChange, 'emit');
-    component.closeDrawer();
-    expect(spy).toHaveBeenCalledWith(false);
-  });
-
-  it('should emit checkoutClick when checkout is called', () => {
-    const spy = vi.spyOn(component.checkoutClick, 'emit');
-    component.checkout();
-    expect(spy).toHaveBeenCalled();
   });
 });

@@ -2,18 +2,6 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-### [0.0.28](https://github.com/chdelucia/petsch/compare/v0.0.27...v0.0.28) (2026-04-10)
-
-
-### Features
-
-* **filters:** add kind and name filters ([6758b8f](https://github.com/chdelucia/petsch/commit/6758b8f0e302a0926dface030261a5d641f5a6a4))
-
-
-### Bug Fixes
-
-* linter ([f177e43](https://github.com/chdelucia/petsch/commit/f177e43db4a9e88e73b340b11b51d8f0599514ea))
-
 ### [0.0.27](https://github.com/chdelucia/petsch/compare/v0.0.26...v0.0.27) (2026-04-10)
 
 

@@ -25,7 +25,9 @@ export class FiltersComponent {
 
   form = new FormGroup({
     name: new FormControl(''),
+    status: new FormControl(''),
     kind: new FormControl(''),
+    species: new FormControl(''),
   });
 
   kindOptions = [
@@ -34,16 +36,10 @@ export class FiltersComponent {
   ];
 
   constructor() {
-    this.form.controls.kind.valueChanges
-      .pipe(debounceTime(400), takeUntilDestroyed())
+    this.form.valueChanges
+      .pipe(debounceTime(300), takeUntilDestroyed())
       .subscribe((value) => {
         this.store.loadProducts(value as Partial<Filters>);
-      });
-
-    this.form.controls.name.valueChanges
-      .pipe(debounceTime(4), takeUntilDestroyed())
-      .subscribe((value) => {
-        this.store.updateFilters({ name: value || '' });
       });
   }
 
