@@ -37,7 +37,7 @@ export class FiltersComponent {
     this.form.controls.kind.valueChanges
       .pipe(debounceTime(400), takeUntilDestroyed())
       .subscribe((value) => {
-        if (value) this.store.loadProducts({ kind: value });
+        if (value) this.store.loadProducts({ kind: value, _page:1 });
       });
 
     this.form.controls.name.valueChanges
