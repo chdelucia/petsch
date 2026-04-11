@@ -9,6 +9,14 @@ import { ActiveFiltersComponent } from './active-filters/active-filters.componen
 import { ProductsStore } from '@petsch/data-access';
 import { TranslocoDirective, TranslocoService } from '@jsverse/transloco';
 
+interface FilterConfig {
+  key: keyof Filters;
+  type: 'input' | 'radio';
+  options: { value: string; text: string }[];
+  debounceTime: number;
+  triggersLoad: boolean;
+}
+
 @Component({
   selector: 'lib-product-filters',
   imports: [
@@ -25,41 +33,64 @@ import { TranslocoDirective, TranslocoService } from '@jsverse/transloco';
 export class FiltersComponent {
   readonly store = inject(ProductsStore);
 
-  form = new FormGroup({
-    name: new FormControl(''),
-    kind: new FormControl(''),
-  });
+  form = new FormGroup({});
 
   private readonly transloco = inject(TranslocoService);
 
-  genderOptions = [
-    { value: 'dog', text: this.transloco.translate('dog') },
-    { value: 'cat', text: this.transloco.translate('cat') },
+  readonly filterConfigs: FilterConfig[] = [
+    {
+      key: 'name',
+      type: 'input',
+      options: [],
+      debounceTime: 0,
+      triggersLoad: false,
+    },
+    {
+      key: 'kind',
+      type: 'radio',
+      options: [
+        { value: 'dog', text: this.transloco.translate('dog') },
+        { value: 'cat', text: this.transloco.translate('cat') },
+      ],
+      debounceTime: 0,
+      triggersLoad: true,
+    },
   ];
 
   constructor() {
-    this.form.controls.kind.valueChanges
-      .pipe(debounceTime(400), takeUntilDestroyed())
-      .subscribe((value) => {
-        if (value) this.store.loadProducts({ kind: value, _page: 1 });
-      });
+    this.filterConfigs.forEach((config) => {
+      this.form.addControl(config.key as string, new FormControl(''));
 
-    this.form.controls.name.valueChanges
-      .pipe(debounceTime(4), takeUntilDestroyed())
-      .subscribe((value) => {
-        this.store.updateFilters({ name: value || '' });
-      });
+      (this.form.get(config.key as string) as FormControl).valueChanges
+        .pipe(debounceTime(config.debounceTime), takeUntilDestroyed())
+        .subscribe((value: string) => {
+          if (config.key === 'name') {
+            this.store.setFilterName(value || '');
+          } else {
+            this.store.updateFilters({ [config.key]: value || '' });
+          }
+          if (config.triggersLoad) {
+            const filters = { ...this.store.filtersApplied() };
+            delete filters.name;
+            this.store.loadProducts({ ...filters, _page: 1 });
+          }
+        });
+    });
   }
 
   resetFilter(value: string): void {
     this.form.get(value)?.setValue('');
     const filterKey = value as keyof Filters;
     this.store.removeFilter(filterKey);
-    this.store.loadProducts({ ...this.store.filtersApplied(), _page: 1 });
+  }
+
+  get activeFilters(): Partial<Filters> {
+    const { name, ...others } = this.form.value as Partial<Filters>;
+    return others;
   }
 
   countActiveFilters(value: Partial<Filters>): boolean {
-    const { name, kind } = value;
-    return !!(name || kind);
+    const { kind } = value;
+    return !!kind;
   }
 }

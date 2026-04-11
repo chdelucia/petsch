@@ -1,18 +1,24 @@
 <form [formGroup]="form" *transloco="let t">
   <lib-product-active-filters
-    [values]="store.filtersApplied()"
+    [values]="activeFilters"
     (resetFilter)="resetFilter($event)"
   >
   </lib-product-active-filters>
 
-  <lib-ui-input-filter
-    [title]="t('name')"
-    formControlName="name"
-  ></lib-ui-input-filter>
+  @for (config of filterConfigs; track config.key) {
+    @if (config.type === 'input') {
+      <lib-ui-input-filter
+        [title]="t(config.key)"
+        [formControlName]="config.key"
+      ></lib-ui-input-filter>
+    }
 
-  <lib-ui-radio-filter
-    [title]="t('kind')"
-    [options]="genderOptions"
-    formControlName="kind"
-  ></lib-ui-radio-filter>
+    @if (config.type === 'radio') {
+      <lib-ui-radio-filter
+        [title]="t(config.key)"
+        [options]="config.options"
+        [formControlName]="config.key"
+      ></lib-ui-radio-filter>
+    }
+  }
 </form>
