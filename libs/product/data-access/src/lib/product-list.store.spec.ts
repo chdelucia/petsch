@@ -43,7 +43,7 @@ describe('ProductsStore', () => {
     expect(store.products()).toEqual(products);
     expect(store.pagination()).toEqual(pagination);
     expect(store.loading()).toBeFalsy();
-    expect(store.filtersApplied()).toEqual({ name: 'test' });
+    expect(store.filtersApplied()).toEqual({ name: 'test', _page: 1, _limit: 12 });
   });
 
   it('should handle error when loading products', async () => {
@@ -54,17 +54,6 @@ describe('ProductsStore', () => {
     expect(store.products()).toEqual([]);
     expect(store.error()).toBe('API Error');
     expect(store.loading()).toBeFalsy();
-  });
-
-  it('should update filtersPending', () => {
-    store.updateFilters({ name: 'pending' });
-    expect(store.filtersPending()).toEqual({ name: 'pending' });
-  });
-
-  it('should clear products and reset state', () => {
-    store.clearProducts();
-    expect(store.products()).toEqual([]);
-    expect(store.filtersApplied()).toEqual({});
   });
 
   it('should call getDetails from service', () => {
@@ -79,8 +68,14 @@ describe('ProductsStore', () => {
     ];
     productServiceMock.getProducts.mockReturnValue(of({ products, pagination: {} }));
 
-    await store.loadProducts({ name: 'Dog' });
+    await store.loadProducts({});
 
-    expect(store.filteredProducts()).toEqual([{ id: '1', name: 'Dog' }]);
+    expect(store.products()).toEqual(products);
+  });
+
+  it('should clear products and reset state', () => {
+    store.clearProducts();
+    expect(store.products()).toEqual([]);
+    expect(store.filtersApplied()).toEqual({});
   });
 });

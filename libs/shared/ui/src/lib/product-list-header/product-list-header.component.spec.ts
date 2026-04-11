@@ -12,7 +12,7 @@ describe('ProductListHeaderComponent', () => {
 
     fixture = TestBed.createComponent(ProductListHeaderComponent);
     component = fixture.componentInstance;
-    fixture.componentRef.setInput('title', 'Test Title');
+    fixture.componentRef.setInput('text', 'Test Title');
     fixture.componentRef.setInput('gridView', true);
     fixture.componentRef.setInput('showFilters', true);
     fixture.detectChanges();
