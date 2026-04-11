@@ -6,7 +6,7 @@ import { TranslocoDirective } from '@jsverse/transloco';
   selector: 'lib-ui-pagination',
   imports: [NgClass, TranslocoDirective],
   templateUrl: './pagination.component.html',
-  styleUrl: './pagination.component.sass',
+  styleUrl: './pagination.component.css',
 })
 export class Pagination {
   page = input.required<number>();

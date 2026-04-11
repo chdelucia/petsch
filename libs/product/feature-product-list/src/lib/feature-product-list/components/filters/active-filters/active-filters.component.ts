@@ -7,7 +7,7 @@ import { TranslocoDirective } from '@jsverse/transloco';
   selector: 'lib-product-active-filters',
   imports: [CommonModule, TranslocoDirective],
   templateUrl: './active-filters.component.html',
-  styleUrl: './active-filters.component.scss',
+  styleUrl: './active-filters.component.css',
 })
 export class ActiveFiltersComponent {
   values = input<Partial<Filters>>();

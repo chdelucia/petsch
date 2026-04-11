@@ -1,0 +1,55 @@
+@reference "../../tailwind.storybook.css";
+
+.favorite-icon {
+  @apply z-10 h-7 w-7 absolute top-2 right-2 text-transparent stroke-indigo-600 cursor-pointer;
+  &:hover {
+    @apply text-indigo-600;
+  }
+  &.active {
+    @apply text-indigo-600;
+    &:hover {
+      @apply text-indigo-200;
+    }
+  }
+}
+
+.product-card {
+  @apply relative;
+}
+
+.product-card__img-container {
+  @apply w-full h-72 overflow-hidden rounded-md bg-gray-200;
+  aspect-ratio: 1 / 1;
+}
+
+.product-card__img {
+  @apply h-full w-full object-cover object-center transition-opacity;
+
+  .product-card:hover & {
+    @apply opacity-75;
+  }
+}
+
+.product-card__info {
+  @apply mt-2 flex justify-between;
+}
+
+.product-card__details {
+  @apply overflow-hidden pb-2;
+}
+
+.product-card__title {
+  @apply text-2xl truncate text-gray-700 mb-3;
+}
+
+.product-card__link-overlay {
+  @apply absolute inset-0;
+}
+
+.product-card__meta {
+  @apply flex justify-between;
+}
+
+.product-card__price {
+  @apply text-3xl;
+}

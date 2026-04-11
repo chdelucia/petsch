@@ -20,7 +20,7 @@ import { TranslocoDirective, TranslocoService } from '@jsverse/transloco';
     TranslocoDirective,
   ],
   templateUrl: './filters.component.html',
-  styleUrl: './filters.component.scss',
+  styleUrl: './filters.component.css',
 })
 export class FiltersComponent {
   readonly store = inject(ProductsStore);
