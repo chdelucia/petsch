@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.33](https://github.com/chdelucia/petsch/compare/v0.0.32...v0.0.33) (2026-04-11)
+
+
+### Features
+
+* **filters:** scalability ([c737501](https://github.com/chdelucia/petsch/commit/c737501a637804490a7e01aa4460429a337eee6b))
+
+
+### Bug Fixes
+
+* linter ([a707113](https://github.com/chdelucia/petsch/commit/a707113c23bf666896e1da0758df6f87cdf478af))
+
 ### [0.0.32](https://github.com/chdelucia/petsch/compare/v0.0.31...v0.0.32) (2026-04-11)
 
 
