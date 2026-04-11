@@ -9,7 +9,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './product-list-header.component.scss',
 })
 export class ProductListHeaderComponent {
-  title = input.required<string>();
+  text = input.required<string>();
   gridView = input.required<boolean>();
   showFilters = input.required<boolean>();
 
