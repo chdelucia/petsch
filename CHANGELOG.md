@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.31](https://github.com/chdelucia/petsch/compare/v0.0.30...v0.0.31) (2026-04-11)
+
+
+### Bug Fixes
+
+* linter ([ddd3a50](https://github.com/chdelucia/petsch/commit/ddd3a50c93574060d059ac41b4a36fd04a9a1301))
+
 ### [0.0.30](https://github.com/chdelucia/petsch/compare/v0.0.29...v0.0.30) (2026-04-11)
 
 ### Features
