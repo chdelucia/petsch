@@ -16,8 +16,7 @@ describe('ProductCardComponent', () => {
     component = fixture.componentInstance;
     fixture.componentRef.setInput('id', '1');
     fixture.componentRef.setInput('name', 'Product Name');
-    fixture.componentRef.setInput('title', 'Product Title');
-    fixture.componentRef.setInput('price', 100);
+    fixture.componentRef.setInput('status', 'Product Title');
     fixture.componentRef.setInput('imageUrl', 'https://placehold.co/600x400');
     fixture.componentRef.setInput('categoryName', 'Category Name');
     fixture.detectChanges();

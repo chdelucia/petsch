@@ -10,7 +10,7 @@ export interface Pet {
   weight: number;
   height: number;
   number_of_lives?: number;
-  health?: HealthStatus;
+  health: HealthStatus;
 }
 
 export interface PaginationLinks {
@@ -30,7 +30,7 @@ export interface PaginatedResponse<T> {
 
 export interface Filters {
   _page: number;
-  limit: number;
+  _limit: number;
   name: string;
   kind: string;
   weight: number;

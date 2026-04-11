@@ -38,7 +38,11 @@
     </button>
   </h3>
 
-  <div class="filter-container__section" id="filter-section-0" [class.hidden]="!isOpen()">
+  <div
+    class="filter-container__section"
+    id="filter-section-0"
+    [class.hidden]="!isOpen()"
+  >
     <div class="filter-container__list">
       @for (item of options(); track $index) {
         <div class="filter-container__item">
@@ -52,11 +56,9 @@
             type="radio"
             class="filter-container__input"
           />
-          <label
-            [for]="title() + $index"
-            class="filter-container__label"
-            >{{ item.text }}</label
-          >
+          <label [for]="title() + $index" class="filter-container__label">{{
+            item.text
+          }}</label>
         </div>
       }
     </div>

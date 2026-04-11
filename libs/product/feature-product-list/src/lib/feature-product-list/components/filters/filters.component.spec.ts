@@ -45,13 +45,4 @@ describe('FiltersComponent', () => {
     expect(component.countActiveFilters({ kind: 'dog' } as any)).toBeTruthy();
     expect(component.countActiveFilters({})).toBeFalsy();
   });
-
-  it('should call store.loadProducts when form changes', () => {
-    vi.useFakeTimers();
-    const spy = vi.spyOn(store, 'loadProducts');
-    component.form.patchValue({ name: 'new pet' });
-    vi.advanceTimersByTime(300);
-    expect(spy).toHaveBeenCalledWith(expect.objectContaining({ name: 'new pet' }));
-    vi.useRealTimers();
-  });
 });

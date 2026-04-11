@@ -3,7 +3,7 @@
 .favorite-icon {
   @apply z-10 h-7 w-7 absolute top-2 right-2 text-transparent stroke-indigo-600 cursor-pointer;
   &:hover {
-     @apply text-indigo-600;
+    @apply text-indigo-600;
   }
   &.active {
     @apply text-indigo-600;
@@ -17,12 +17,8 @@
   @apply relative;
 
   &__img-container {
-    @apply w-full overflow-hidden rounded-md bg-gray-200;
+    @apply w-full h-72 overflow-hidden rounded-md bg-gray-200;
     aspect-ratio: 1 / 1;
-
-    @media (min-width: 1024px) {
-      aspect-ratio: auto;
-    }
   }
 
   &__img {

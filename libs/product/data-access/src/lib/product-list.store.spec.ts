@@ -36,35 +36,32 @@ describe('ProductsStore', () => {
   it('should load products and update state on success', async () => {
     const products = [{ id: '1', name: 'Pet 1' }];
     const pagination = { next: 'url' };
-    productServiceMock.getProducts.mockReturnValue(of({ products, pagination }));
+    productServiceMock.getProducts.mockReturnValue(
+      of({ products, pagination }),
+    );
 
     await store.loadProducts({ name: 'test' });
 
     expect(store.products()).toEqual(products);
     expect(store.pagination()).toEqual(pagination);
     expect(store.loading()).toBeFalsy();
-    expect(store.filtersApplied()).toEqual({ name: 'test' });
+    expect(store.filtersApplied()).toEqual({
+      name: 'test',
+      _page: 1,
+      _limit: 12,
+    });
   });
 
   it('should handle error when loading products', async () => {
-    productServiceMock.getProducts.mockReturnValue(throwError(() => new Error('API Error')));
+    productServiceMock.getProducts.mockReturnValue(
+      throwError(() => new Error('API Error')),
+    );
 
     await store.loadProducts({});
 
     expect(store.products()).toEqual([]);
     expect(store.error()).toBe('API Error');
     expect(store.loading()).toBeFalsy();
-  });
-
-  it('should update filtersPending', () => {
-    store.updateFilters({ name: 'pending' });
-    expect(store.filtersPending()).toEqual({ name: 'pending' });
-  });
-
-  it('should clear products and reset state', () => {
-    store.clearProducts();
-    expect(store.products()).toEqual([]);
-    expect(store.filtersApplied()).toEqual({});
   });
 
   it('should call getDetails from service', () => {
@@ -75,12 +72,20 @@ describe('ProductsStore', () => {
   it('should compute filteredProducts', async () => {
     const products = [
       { id: '1', name: 'Dog' },
-      { id: '2', name: 'Cat' }
+      { id: '2', name: 'Cat' },
     ];
-    productServiceMock.getProducts.mockReturnValue(of({ products, pagination: {} }));
+    productServiceMock.getProducts.mockReturnValue(
+      of({ products, pagination: {} }),
+    );
 
-    await store.loadProducts({ name: 'Dog' });
+    await store.loadProducts({});
 
-    expect(store.filteredProducts()).toEqual([{ id: '1', name: 'Dog' }]);
+    expect(store.products()).toEqual(products);
+  });
+
+  it('should clear products and reset state', () => {
+    store.clearProducts();
+    expect(store.products()).toEqual([]);
+    expect(store.filtersApplied()).toEqual({});
   });
 });

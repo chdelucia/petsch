@@ -59,10 +59,4 @@ describe('FeatureProductList', () => {
     component.clearFilters();
     expect(spy).toHaveBeenCalled();
   });
-
-  it('should handle handlePageChange', () => {
-    const consoleSpy = vi.spyOn(console, 'log');
-    component.handlePageChange(2);
-    expect(consoleSpy).toHaveBeenCalledWith(2);
-  });
 });

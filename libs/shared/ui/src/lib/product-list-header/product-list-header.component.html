@@ -1,8 +1,12 @@
 <section class="top-container">
-  <div class="top-container__title">{{ title() }}</div>
+  <div class="top-container__title">{{ text() }}</div>
 
   <div class="top-container__filters">
-    <button class="top-container__filters__btn" (click)="toggleView.emit()">
+    <button
+      class="top-container__filters__btn"
+      (click)="toggleView.emit()"
+      title="change grid"
+    >
       <span class="top-container__filters__sr">View grid</span>
       <svg
         class="top-container__filters__toggleview"
@@ -19,7 +23,11 @@
       </svg>
     </button>
 
-    <button class="top-container__filters__btn top-container__filters__btn--mobile" (click)="toggleFilters.emit()">
+    <button
+      title="toggle filters"
+      class="top-container__filters__btn top-container__filters__btn--mobile"
+      (click)="toggleFilters.emit()"
+    >
       <span class="top-container__filters__sr">Filters</span>
       <svg
         class="top-container__filters__togglefilters"

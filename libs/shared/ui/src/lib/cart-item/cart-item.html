@@ -15,11 +15,7 @@
     <div class="cart-item__footer">
       <p class="cart-item__qty">Qty {{ quantity() }}</p>
 
-      <button
-        type="button"
-        (click)="remove.emit()"
-        class="cart-item__remove"
-      >
+      <button type="button" (click)="remove.emit()" class="cart-item__remove">
         Remove
       </button>
     </div>

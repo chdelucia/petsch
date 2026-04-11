@@ -6,8 +6,6 @@ import {
   ProductCardComponent,
   ProductCardSkeletonComponent,
   ProductListHeaderComponent,
-  ProductListViewComponent,
-  UiItem,
 } from '@petsch/ui';
 import { ProductsStore } from '@petsch/data-access';
 
@@ -16,7 +14,6 @@ import { ProductsStore } from '@petsch/data-access';
   imports: [
     FiltersComponent,
     ProductCardSkeletonComponent,
-    ProductListViewComponent,
     ProductCardComponent,
     PaginationComponent,
     ProductListHeaderComponent,
@@ -30,19 +27,15 @@ export class FeatureProductList {
 
   products = this.store.filteredProducts;
 
-  uiProducts = computed(() =>
-    this.products().map(
-      (p): UiItem => ({
-        id: p.id,
-        name: p.name,
-        description: p.description,
-        imageUrl: p.photo_url,
-        categoryName: p.kind,
-      }),
-    ),
-  );
+  currentPage = computed(() => this.store.filtersApplied()._page ?? 1);
 
-  loading = this.store.loading;
+  totalPages = computed(() => {
+    const last = this.store.pagination().last;
+    const match = last?.match(/_page=(\d+)(?:&|$)/);
+    return match ? Number(match[1]) : 10;
+  });
+
+  loading = computed(() => this.store.loading());
   error = this.store.error;
 
   showFilters = signal(true);
@@ -65,8 +58,7 @@ export class FeatureProductList {
   }
 
   handlePageChange(page: number): void {
-    console.log(page);
-    //this.filters = { ...this.filters, page };
-    //this.searchCharacters(this.filters);
+    const filters = this.store.filtersApplied();
+    this.store.loadProducts({ ...filters, _page: page });
   }
 }

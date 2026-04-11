@@ -37,7 +37,7 @@ export class FiltersComponent {
     this.form.controls.kind.valueChanges
       .pipe(debounceTime(400), takeUntilDestroyed())
       .subscribe((value) => {
-        this.store.loadProducts(value as Partial<Filters>);
+        if (value) this.store.loadProducts({ kind: value, _page: 1 });
       });
 
     this.form.controls.name.valueChanges
@@ -49,6 +49,9 @@ export class FiltersComponent {
 
   resetFilter(value: string): void {
     this.form.get(value)?.setValue('');
+    const filterKey = value as keyof Filters;
+    this.store.removeFilter(filterKey);
+    this.store.loadProducts({ ...this.store.filtersApplied(), _page: 1 });
   }
 
   countActiveFilters(value: Partial<Filters>): boolean {

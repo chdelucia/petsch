@@ -16,9 +16,11 @@
         </a>
       </h3>
       <div class="product-card__meta">
-        <span>Category: {{ categoryName() }}</span>
+        <span>{{ categoryName() }} {{ status() }}</span>
       </div>
     </div>
   </div>
 </div>
+
+<ng-content select="lib-ui-button"></ng-content>
 <lib-ui-button [fullWidth]="true">Add as 'Pet of the day'</lib-ui-button>

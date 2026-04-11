@@ -46,7 +46,7 @@ fullangulardeveloper-sort-by {
   @apply lg:col-span-8;
 }
 
-.chars__list.no-filters {
+.chars__list--no-filters {
   @apply lg:col-span-10;
 }
 
@@ -59,7 +59,7 @@ fullangulardeveloper-sort-by {
   perspective: 1000px;
 }
 
-.char-grid.no-filters {
+.char-grid--no-filters {
   @apply lg:grid-cols-4 xl:grid-cols-5;
 }
 

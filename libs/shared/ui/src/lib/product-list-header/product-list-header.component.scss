@@ -16,10 +16,6 @@
   @apply ml-4 p-2 text-gray-400 hover:text-gray-500 sm:ml-4;
 }
 
-.top-container__filters__btn--mobile {
-  @apply lg:hidden;
-}
-
 .top-container__filters__toggleview,
 .top-container__filters__togglefilters {
   @apply h-5 w-5 cursor-pointer;
