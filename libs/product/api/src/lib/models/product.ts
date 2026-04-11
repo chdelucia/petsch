@@ -30,7 +30,7 @@ export interface PaginatedResponse<T> {
 
 export interface Filters {
   _page: number;
-  limit: number;
+  _limit: number;
   name: string;
   kind: string;
   weight: number;
