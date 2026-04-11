@@ -49,6 +49,9 @@ export class FiltersComponent {
 
   resetFilter(value: string): void {
     this.form.get(value)?.setValue('');
+    const filterKey = value as keyof Filters;
+    this.store.removeFilter(filterKey);
+    this.store.loadProducts({...this.store.filtersApplied()});
   }
 
   countActiveFilters(value: Partial<Filters>): boolean {

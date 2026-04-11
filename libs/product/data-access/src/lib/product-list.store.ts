@@ -81,6 +81,16 @@ export const ProductsStore = signalStore(
         });
       },
 
+      removeFilter<K extends keyof Filters>(key: K) {
+        const current = store.filtersApplied();
+
+        const { [key]: _, ...rest } = current;
+
+        patchState(store, {
+          filtersApplied: rest,
+        })
+      },
+
       clearProducts() {
         patchState(store, initialState);
       },
