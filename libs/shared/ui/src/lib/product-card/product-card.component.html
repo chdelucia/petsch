@@ -1,26 +1,21 @@
-<div class="group relative container__car" data-cy="product-card">
-  <div
-    class="container__card__img aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none lg:h-80"
-  >
+<div class="product-card"  data-cy="product-card">
+  <div class="product-card__img-container">
     <img
       [src]="imageUrl()"
       [alt]="name()"
       [style.viewTransitionName]="viewTransitionName()"
-      class="h-full w-full object-cover object-center lg:h-full lg:w-full group-hover:opacity-75"
+      class="product-card__img"
     />
   </div>
-  <div class="mt-2 flex justify-between">
-    <div class="overflow-hidden pb-2">
-      <h3 class="text-2xl truncate text-gray-700 mb-3">
+  <div class="product-card__info">
+    <div class="product-card__details">
+      <h3 class="product-card__title">
         <a [routerLink]="['/products/details', id()]">
-          <span
-            aria-hidden="true"
-            class="absolute inset-0 container__card__name"
-          ></span>
+          <span aria-hidden="true" class="product-card__link-overlay"></span>
           {{ name() }}
         </a>
       </h3>
-      <div class="flex justify-between">
+      <div class="product-card__meta">
         <span data-cy="product-category">Category: {{ categoryName() }}</span>
       </div>
     </div>

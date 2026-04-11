@@ -45,8 +45,6 @@ export class FeatureProductList {
   loading = this.store.loading;
   error = this.store.error;
 
-  filtersPending = this.store.filtersPending;
-
   showFilters = signal(true);
   gridView = signal(true);
 

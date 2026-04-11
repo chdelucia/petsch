@@ -1,4 +1,4 @@
-import { Component, inject, input } from '@angular/core';
+import { Component, inject, input } from "@angular/core";
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { Button } from '@petsch/ui';

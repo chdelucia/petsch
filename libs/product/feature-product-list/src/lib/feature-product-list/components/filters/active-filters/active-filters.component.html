@@ -1,26 +1,26 @@
 @if (activeFilters()) {
   <section class="active-filters">
-    <h3 class="active-filters__title font-medium text-gray-900 uppercase">
+    <h3 class="active-filters__title">
       Active filters
     </h3>
-    <div class="active-filters__list border-b border-gray-200 py-6">
+    <div class="active-filters__list">
       @for (item of values() | keyvalue; track $index) {
         @if (item.key !== 'page' && item.value) {
           <div
-            class="active-filters__list__item py-3 flex items-center justify-between"
+            class="active-filters__item"
           >
-            <div>
+            <div class="active-filters__label">
               <small>{{ item.key }}: </small>{{ item.value }}
             </div>
             <button
               type="button"
               [attr.data-cy]="'clear-filter-' + item.key"
-              class="text-gray-400 hover:text-indigo-600"
+              class="active-filters__remove"
               (click)="deleteFilter(item.key)"
             >
-              <span class="sr-only">Close</span>
+              <span class="active-filters__sr">Close</span>
               <svg
-                class="h-6 w-6"
+                class="active-filters__remove-icon"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke-width="1.5"
