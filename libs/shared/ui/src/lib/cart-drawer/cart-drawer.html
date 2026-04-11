@@ -8,10 +8,10 @@
         class="cart-drawer-panel"
         [class.cart-drawer-panel--closed]="!open()"
       >
-        <div class="cart-drawer-content">
+        <div class="cart-drawer-content" *transloco="let t">
           <div class="cart-drawer-body">
             <div class="cart-drawer-header">
-              <h2 class="cart-drawer-title">Shopping Cart</h2>
+              <h2 class="cart-drawer-title">{{ t('shoppingCart') }}</h2>
               <button
                 type="button"
                 class="cart-drawer-close"

@@ -10,6 +10,7 @@ import {
   ListHeader,
 } from '@petsch/ui';
 import { ProductsStore } from '@petsch/data-access';
+import { TranslocoDirective } from '@jsverse/transloco';
 
 @Component({
   selector: 'lib-feature-product-list',
@@ -21,6 +22,7 @@ import { ProductsStore } from '@petsch/data-access';
     ListHeader,
     CartDrawer,
     Button,
+    TranslocoDirective
   ],
   templateUrl: './feature-product-list.html',
   styleUrl: './feature-product-list.css',

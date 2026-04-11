@@ -1,6 +1,6 @@
-<div class="cart-footer">
+<div class="cart-footer" *transloco="let t">
   <div class="cart-footer__subtotal">
-    <p>Subtotal</p>
+    <p>{{ t('subtotal') }}</p>
     <p>{{ subtotal() }} €</p>
   </div>
 
@@ -10,13 +10,13 @@
       [fullWidth]="true"
       (clicked)="checkout.emit()"
     >
-      Checkout
+      {{ t('checkout') }}
     </lib-ui-button>
   </div>
 
   <div class="cart-footer__continue">
     <lib-ui-button variant="link" (clicked)="closeDrawer.emit()">
-      Continue Shopping →
+      {{ t('continueShopping') }} →
     </lib-ui-button>
   </div>
 </div>

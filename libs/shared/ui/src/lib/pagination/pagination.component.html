@@ -1,7 +1,7 @@
 @let pageI = page();
 @let total = totalPages();
 
-<ul class="pagination" aria-label="Pagination">
+<ul class="pagination" aria-label="Pagination" *transloco="let t">
   <li class="page-item xs-hide" [ngClass]="{ disabled: pageI === 1 }">
     <button
       class="page-link"
@@ -9,7 +9,7 @@
       data-cy="p-first"
       [disabled]="pageI === 1"
     >
-      First
+      {{ t('first') }}
     </button>
   </li>
   <li class="page-item" [ngClass]="{ disabled: pageI === 1 }">
@@ -19,12 +19,12 @@
       data-cy="p-prev"
       [disabled]="pageI === 1"
     >
-      Prev
+      {{ t('prev') }}
     </button>
   </li>
   <li class="page-item active" aria-current="page">
     <button class="page-link" data-cy="p-number">
-      {{ page() }} of {{ total }}
+      {{ page() }} {{ t('of') }} {{ total }}
     </button>
   </li>
   <li class="page-item" [ngClass]="{ disabled: pageI === total }">
@@ -34,7 +34,7 @@
       data-cy="p-next"
       [disabled]="pageI === total"
     >
-      Next
+      {{ t('next') }}
     </button>
   </li>
   <li class="page-item xs-hide" [ngClass]="{ disabled: pageI === total }">
@@ -44,7 +44,7 @@
       data-cy="p-last"
       [disabled]="pageI === total"
     >
-      Last
+      {{ t('last') }}
     </button>
   </li>
 </ul>

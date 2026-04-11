@@ -1,3 +1,4 @@
+import { getTranslocoTestingModule } from '@petsch/shared-utils';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Pagination } from './pagination.component';
 
@@ -7,7 +8,7 @@ describe('Pagination', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [Pagination],
+      imports: [Pagination, getTranslocoTestingModule()],
     }).compileComponents();
 
     fixture = TestBed.createComponent(Pagination);

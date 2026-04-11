@@ -1,3 +1,4 @@
+import { getTranslocoTestingModule } from '@petsch/shared-utils';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ListHeader } from './product-list-header.component';
 
@@ -7,7 +8,7 @@ describe('ListHeader', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ListHeader],
+      imports: [ListHeader, getTranslocoTestingModule()],
     }).compileComponents();
 
     fixture = TestBed.createComponent(ListHeader);

@@ -1,6 +1,6 @@
 {
   "name": "@petsch/source",
-  "version": "0.0.29",
+  "version": "0.0.30",
   "license": "MIT",
   "scripts": {
     "start": "nx serve petshop",
@@ -20,6 +20,7 @@
     "@angular/router": "~21.2.0",
     "@commitlint/cli": "^20.5.0",
     "@commitlint/config-conventional": "^20.5.0",
+    "@jsverse/transloco": "^8.3.0",
     "@juristr/nx-tailwind-sync": "^0.0.9",
     "@ngrx/signals": "^21.1.0",
     "@sentry/angular": "^10.47.0",

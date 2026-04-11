@@ -1,4 +1,4 @@
-<form [formGroup]="form">
+<form [formGroup]="form" *transloco="let t">
   <lib-product-active-filters
     [values]="store.filtersApplied()"
     (resetFilter)="resetFilter($event)"
@@ -6,12 +6,12 @@
   </lib-product-active-filters>
 
   <lib-ui-input-filter
-    title="name"
+    [title]="t('name')"
     formControlName="name"
   ></lib-ui-input-filter>
 
   <lib-ui-radio-filter
-    title="kind"
+    [title]="t('kind')"
     [options]="genderOptions"
     formControlName="kind"
   ></lib-ui-radio-filter>

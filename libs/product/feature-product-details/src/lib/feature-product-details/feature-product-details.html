@@ -1,7 +1,7 @@
-<div class="product-details">
+<div class="product-details" *transloco="let t">
   <div class="product-details__back-link">
     <lib-ui-button (clicked)="goBack()" [variant]="'link'">
-      &larr; Back to listing
+      &larr; {{ t('backToListing') }}
     </lib-ui-button>
   </div>
 
@@ -11,7 +11,7 @@
   </div>
   } @else if (error()) {
   <div class="product-details__error" role="alert">
-    <strong class="product-details__error-title">Error!</strong>
+    <strong class="product-details__error-title">{{ t('error') }}</strong>
     <span class="product-details__error-msg"> {{ error() }}</span>
   </div>
   } @else if (product(); as item) {
@@ -36,24 +36,24 @@
       </div>
 
       <div class="product-details__description-container">
-        <h3 class="product-details__sr">Description</h3>
+        <h3 class="product-details__sr">{{ t('description') }}</h3>
         <div class="product-details__description">
           <p>{{ item.description }}</p>
-          <p>height: {{ item.height }} grams</p>
-          <p>weight: {{ item.weight }} centimeters</p>
-          <p>Lives: {{ item.number_of_lives}}</p>
+          <p>{{ t('height') }}: {{ item.height }} {{ t('grams') }}</p>
+          <p>{{ t('weight') }}: {{ item.weight }} {{ t('centimeters') }}</p>
+          <p>{{ t('lives') }}: {{ item.number_of_lives}}</p>
         </div>
       </div>
 
       <div class="product-details__meta">
         <div class="product-details__meta-item">
-          <h3 class="product-details__meta-label">Category:</h3>
+          <h3 class="product-details__meta-label">{{ t('category') }}:</h3>
           <span class="product-details__meta-value">{{ item.kind }}</span>
         </div>
       </div>
 
       <div class="product-details__actions">
-        <lib-ui-button [fullWidth]="true">Add as pet of the day</lib-ui-button>
+        <lib-ui-button [fullWidth]="true">{{ t('addAsPetOfTheDay') }}</lib-ui-button>
       </div>
     </div>
   </div>
