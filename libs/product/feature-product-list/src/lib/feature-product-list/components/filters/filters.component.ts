@@ -85,7 +85,6 @@ export class FiltersComponent {
   }
 
   get activeFilters(): Partial<Filters> {
-    return this.form.value as Partial<Filters>;;
+    return this.form.value as Partial<Filters>;
   }
-
 }
