@@ -10,20 +10,20 @@
   <div class="chars__grid">
     <lib-product-filters
       class="chars__filters"
-      [class.hidden]="!showFilters()"
+      [class.chars__filters--hidden]="!showFilters()"
     ></lib-product-filters>
 
-    <div class="chars__list" [class.no-filters]="!showFilters()">
+    <div class="chars__list" [class.chars__list--no-filters]="!showFilters()">
       @defer(when !loading()) {
       <lib-ui-pagination
         class="chars__list__pagination"
         [page]="1"
         [totalPages]="10"
-        (pageChange)="handlePageChange($event)"
+         (pageChange)="handlePageChange($event)"
       ></lib-ui-pagination>
 
       @if (gridView()) {
-      <section class="char-grid" [class.no-filters]="!showFilters()">
+      <section class="char-grid" [class.char-grid--no-filters]="!showFilters()">
         @for (item of products(); track item.id) {
         <lib-ui-product-card
           class="card-effect"

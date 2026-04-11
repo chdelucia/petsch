@@ -1,26 +1,24 @@
-<div class="flex py-6">
-  <div
-    class="size-24 shrink-0 overflow-hidden rounded-md border border-gray-200"
-  >
-    <img [src]="imageSrc()" [alt]="imageAlt()" class="size-full object-cover" />
+<div class="cart-item">
+  <div class="cart-item__img-container">
+    <img [src]="imageSrc()" [alt]="imageAlt()" class="cart-item__img" />
   </div>
 
-  <div class="ml-4 flex flex-1 flex-col">
-    <div class="flex justify-between text-base font-medium text-gray-900">
+  <div class="cart-item__content">
+    <div class="cart-item__header">
       <h3>{{ name() }}</h3>
       <p>{{ price() }} €</p>
     </div>
 
     @if (color()) {
-    <p class="mt-1 text-sm text-gray-500">{{ color() }}</p>
+    <p class="cart-item__color">{{ color() }}</p>
     }
-    <div class="flex flex-1 items-end justify-between text-sm">
-      <p class="text-gray-500">Qty {{ quantity() }}</p>
+    <div class="cart-item__footer">
+      <p class="cart-item__qty">Qty {{ quantity() }}</p>
 
       <button
         type="button"
         (click)="remove.emit()"
-        class="font-medium text-indigo-600 hover:text-indigo-500"
+        class="cart-item__remove"
       >
         Remove
       </button>

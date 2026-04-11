@@ -1,39 +1,27 @@
+@reference "../../tailwind.storybook.css"
+
 .pagination
-  display: flex
-  justify-content: center
-  list-style: none
-  padding: 0
-  font-size:.9rem
+  @apply flex justify-center p-0 list-none text-sm
 
   .page-item
     &.disabled
-      pointer-events: none
-      opacity: 0.5
+      @apply pointer-events-none opacity-50
     &:first-of-type
       .page-link
-        border-radius: 4px 0 0 4px
+        @apply rounded-l
     &:last-of-type
       .page-link
-        border-radius: 0 4px 4px 0
-        border-right: 1px solid #ccc
+        @apply rounded-r border-r
     &.active
-      font-weight: bold
+      @apply font-bold
       .page-link
-        cursor: default
-        background: #f4f4f4
-        pointer-events: none
+        @apply cursor-default bg-gray-100 pointer-events-none
 
     .page-link
-      background: white
-      text-decoration: none
-      color: black
-      cursor: pointer
-      padding: 8px 15px
-      border: 1px solid #ccc
-      border-right: 0
+      @apply bg-white no-underline text-black cursor-pointer px-4 py-2 border border-gray-300 border-r-0
       &:hover
-        background-color: #f0f0f0
+        @apply bg-gray-100
 
 @media all and (max-width: 800px)
   .xs-hide
-    display: none
+    @apply hidden
