@@ -3,11 +3,12 @@ import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { Button } from '@petsch/ui';
 import { Pet, CurrentTransitionService } from '@petsch/api';
+import { TranslocoDirective } from '@jsverse/transloco';
 
 @Component({
   selector: 'lib-feature-product-details',
   standalone: true,
-  imports: [CommonModule, Button],
+  imports: [CommonModule, Button, TranslocoDirective],
   templateUrl: './feature-product-details.html',
   styleUrl: './feature-product-details.css',
 })

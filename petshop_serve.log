@@ -1,0 +1,41 @@
+
+> nx run petshop:serve:development
+
+[33m❯[39m Building...
+[32m✔[39m Building...
+[37m[1mInitial chunk files[22m[2m | [22m[1mNames[22m        [2m | [22m [1mRaw size[22m
+[32mmain.js[37m            [2m | [22m[2mmain[22m         [2m | [22m [36m11.22 kB[37m[2m | [22m
+[32mstyles.css[37m         [2m | [22m[2mstyles[22m       [2m | [22m  [36m8.11 kB[37m[2m | [22m
+[32mchunk-2SZXNUPS.js[37m  [2m | [22m[2m-[22m            [2m | [22m  [36m4.55 kB[37m[2m | [22m
+[32mchunk-4K6ZPUYX.js[37m  [2m | [22m[2m-[22m            [2m | [22m  [36m4.21 kB[37m[2m | [22m
+[1m [22m                  [2m | [22m[1mInitial total[22m[2m | [22m [1m28.10 kB[22m
+[1mLazy chunk files[22m   [2m | [22m[1mNames[22m        [2m | [22m [1mRaw size[22m
+[32mchunk-KP3RUDDA.js[37m  [2m | [22m[2m-[22m            [2m | [22m[36m179.33 kB[37m[2m | [22m
+[32mchunk-IO63OECD.js[37m  [2m | [22m[2mindex[22m        [2m | [22m [36m35.91 kB[37m[2m | [22m
+[32mchunk-DX6HFG2C.js[37m  [2m | [22m[2mindex[22m        [2m | [22m [36m27.11 kB[37m[2m | [22m
+[32mchunk-N63GC6SV.js[37m  [2m | [22m[2mindex[22m        [2m | [22m[36m903 bytes[37m[2m | [22m
+Application bundle generation complete. [5.743 seconds] - 2026-04-11T13:27:53.984Z
+[39m
+[37mWatch mode enabled. Watching for file changes...[39m
+[37mNOTE: Raw file sizes do not reflect development server per-request transformations.[39m
+  [32m➜[39m  [1mLocal[22m:   [36mhttp://localhost:[1m4200[22m/[39m
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+[37m[1mInitial chunk files[22m[2m | [22m[1mNames[22m        [2m | [22m [1mRaw size[22m
+[32mmain.js[37m            [2m | [22m[2mmain[22m         [2m | [22m [36m11.22 kB[37m[2m | [22m
+[32mstyles.css[37m         [2m | [22m[2mstyles[22m       [2m | [22m  [36m8.11 kB[37m[2m | [22m
+[32mchunk-2SZXNUPS.js[37m  [2m | [22m[2m-[22m            [2m | [22m  [36m4.55 kB[37m[2m | [22m
+[32mchunk-4K6ZPUYX.js[37m  [2m | [22m[2m-[22m            [2m | [22m  [36m4.21 kB[37m[2m | [22m
+[1m [22m                  [2m | [22m[1mInitial total[22m[2m | [22m [1m28.10 kB[22m
+[1mLazy chunk files[22m   [2m | [22m[1mNames[22m        [2m | [22m [1mRaw size[22m
+[32mchunk-KP3RUDDA.js[37m  [2m | [22m[2m-[22m            [2m | [22m[36m179.33 kB[37m[2m | [22m
+[32mchunk-IO63OECD.js[37m  [2m | [22m[2mindex[22m        [2m | [22m [36m35.91 kB[37m[2m | [22m
+[32mchunk-DX6HFG2C.js[37m  [2m | [22m[2mindex[22m        [2m | [22m [36m27.11 kB[37m[2m | [22m
+[32mchunk-N63GC6SV.js[37m  [2m | [22m[2mindex[22m        [2m | [22m[36m903 bytes[37m[2m | [22m
+Application bundle generation complete. [0.372 seconds] - 2026-04-11T13:38:17.745Z
+[39m
+[37mPage reload sent to client(s).[39m
+
+
+
+ NX   Successfully ran target serve for project petshop

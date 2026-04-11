@@ -1,10 +1,12 @@
-<lib-ui-product-list-header
-  text="Productos"
-  [gridView]="gridView()"
-  [showFilters]="showFilters()"
-  (toggleView)="toggleView()"
-  (toggleFilters)="toggleFilters()"
-></lib-ui-product-list-header>
+<ng-container *transloco="let t">
+  <lib-ui-product-list-header
+    [text]="t('products')"
+    [gridView]="gridView()"
+    [showFilters]="showFilters()"
+    (toggleView)="toggleView()"
+    (toggleFilters)="toggleFilters()"
+  ></lib-ui-product-list-header>
+</ng-container>
 
 <section aria-labelledby="products-heading" class="chars">
   <div class="chars__grid">

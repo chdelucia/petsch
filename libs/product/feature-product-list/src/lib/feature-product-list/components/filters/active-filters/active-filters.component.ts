@@ -1,10 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { Component, computed, input, output } from '@angular/core';
 import { Filters } from '@petsch/api';
+import { TranslocoDirective } from '@jsverse/transloco';
 
 @Component({
   selector: 'lib-product-active-filters',
-  imports: [CommonModule],
+  imports: [CommonModule, TranslocoDirective],
   templateUrl: './active-filters.component.html',
   styleUrl: './active-filters.component.scss',
 })

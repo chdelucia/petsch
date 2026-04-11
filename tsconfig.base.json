@@ -29,6 +29,7 @@
         "libs/shared/observability/data-access/src/index.ts"
       ],
       "@petsch/ui": ["libs/shared/ui/src/index.ts"],
+      "@petsch/shared-utils": ["libs/shared/utils/src/index.ts"],
       "@petsch/feature-cart": ["libs/cart/feature-cart/src/index.ts"]
     }
   },

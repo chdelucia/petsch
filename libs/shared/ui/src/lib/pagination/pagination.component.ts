@@ -1,9 +1,10 @@
 import { Component, input, output } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { TranslocoDirective } from '@jsverse/transloco';
 
 @Component({
   selector: 'lib-ui-pagination',
-  imports: [CommonModule],
+  imports: [CommonModule, TranslocoDirective],
   templateUrl: './pagination.component.html',
   styleUrl: './pagination.component.sass',
 })

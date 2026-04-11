@@ -7,6 +7,7 @@ import { Filters } from '@petsch/api';
 import { InputFilterComponent, RadioFilterComponent } from '@petsch/ui';
 import { ActiveFiltersComponent } from './active-filters/active-filters.component';
 import { ProductsStore } from '@petsch/data-access';
+import { TranslocoDirective, TranslocoService } from '@jsverse/transloco';
 
 @Component({
   selector: 'lib-product-filters',
@@ -16,6 +17,7 @@ import { ProductsStore } from '@petsch/data-access';
     InputFilterComponent,
     ReactiveFormsModule,
     ActiveFiltersComponent,
+    TranslocoDirective,
   ],
   templateUrl: './filters.component.html',
   styleUrl: './filters.component.scss',
@@ -28,9 +30,11 @@ export class FiltersComponent {
     kind: new FormControl(''),
   });
 
+  private readonly transloco = inject(TranslocoService);
+
   genderOptions = [
-    { value: 'dog', text: 'DOG' },
-    { value: 'cat', text: 'CAT' },
+    { value: 'dog', text: this.transloco.translate('dog') },
+    { value: 'cat', text: this.transloco.translate('cat') },
   ];
 
   constructor() {

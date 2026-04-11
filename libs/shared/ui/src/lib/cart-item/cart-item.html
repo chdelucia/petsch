@@ -1,4 +1,4 @@
-<div class="cart-item">
+<div class="cart-item" *transloco="let t">
   <div class="cart-item__img-container">
     <img [src]="imageSrc()" [alt]="imageAlt()" class="cart-item__img" />
   </div>
@@ -13,10 +13,10 @@
     <p class="cart-item__color">{{ color() }}</p>
     }
     <div class="cart-item__footer">
-      <p class="cart-item__qty">Qty {{ quantity() }}</p>
+      <p class="cart-item__qty">{{ t('qty') }} {{ quantity() }}</p>
 
       <button type="button" (click)="remove.emit()" class="cart-item__remove">
-        Remove
+        {{ t('remove') }}
       </button>
     </div>
   </div>

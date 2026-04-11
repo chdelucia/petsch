@@ -1,4 +1,4 @@
-<section class="top-container">
+<section class="top-container" *transloco="let t">
   <div class="top-container__title">{{ text() }}</div>
 
   <div class="top-container__filters">
@@ -7,7 +7,7 @@
       (click)="toggleView.emit()"
       title="change grid"
     >
-      <span class="top-container__filters__sr">View grid</span>
+      <span class="top-container__filters__sr">{{ t('viewGrid') }}</span>
       <svg
         class="top-container__filters__toggleview"
         [class.active]="gridView()"
@@ -28,7 +28,7 @@
       class="top-container__filters__btn top-container__filters__btn--mobile"
       (click)="toggleFilters.emit()"
     >
-      <span class="top-container__filters__sr">Filters</span>
+      <span class="top-container__filters__sr">{{ t('filters') }}</span>
       <svg
         class="top-container__filters__togglefilters"
         [class.active]="showFilters()"
