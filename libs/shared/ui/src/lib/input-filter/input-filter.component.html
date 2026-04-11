@@ -75,7 +75,9 @@
       class="input-filter__last-searches"
       [class.hidden]="!isLastSearchOpen()"
     >
-      <small class="input-filter__last-searches-title">{{ t('lastSearches') }}</small>
+      <small class="input-filter__last-searches-title">{{
+        t('lastSearches')
+      }}</small>
       @for (item of lastSearch() | slice: 0 : 3; track item) {
         <div class="input-filter__last-search-item">
           <lib-ui-button

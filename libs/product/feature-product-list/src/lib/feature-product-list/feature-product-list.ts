@@ -22,7 +22,7 @@ import { TranslocoDirective } from '@jsverse/transloco';
     ListHeader,
     CartDrawer,
     Button,
-    TranslocoDirective
+    TranslocoDirective,
   ],
   templateUrl: './feature-product-list.html',
   styleUrl: './feature-product-list.css',
