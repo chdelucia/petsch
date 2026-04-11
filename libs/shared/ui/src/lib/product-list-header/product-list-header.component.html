@@ -2,7 +2,11 @@
   <div class="top-container__title">{{ text() }}</div>
 
   <div class="top-container__filters">
-    <button class="top-container__filters__btn" (click)="toggleView.emit()" title="change grid">
+    <button
+      class="top-container__filters__btn"
+      (click)="toggleView.emit()"
+      title="change grid"
+    >
       <span class="top-container__filters__sr">View grid</span>
       <svg
         class="top-container__filters__toggleview"
