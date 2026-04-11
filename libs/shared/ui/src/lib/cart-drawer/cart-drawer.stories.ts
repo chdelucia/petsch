@@ -12,6 +12,8 @@ type Story = StoryObj<CartDrawer>;
 
 export const Primary: Story = {
   args: {
-    subtotal: 59.99,
+    open: true,
+    titleLabel: 'Pet of the day',
+    showFooter: true,
   },
 };

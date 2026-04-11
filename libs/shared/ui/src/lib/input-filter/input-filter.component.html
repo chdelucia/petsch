@@ -1,4 +1,4 @@
-<div class="input-filter">
+<div class="input-filter" *transloco="let t">
   <h3 class="input-filter__header">
     <button
       (click)="togleFilter()"
@@ -75,7 +75,9 @@
       class="input-filter__last-searches"
       [class.hidden]="!isLastSearchOpen()"
     >
-      <small class="input-filter__last-searches-title">Last searches</small>
+      <small class="input-filter__last-searches-title">{{
+        t('lastSearches')
+      }}</small>
       @for (item of lastSearch() | slice: 0 : 3; track item) {
         <div class="input-filter__last-search-item">
           <lib-ui-button
@@ -91,7 +93,7 @@
             class="input-filter__last-search-remove"
             (click)="removeSearch($index, $event)"
           >
-            <span class="input-filter__sr">Close</span>
+            <span class="input-filter__sr">{{ t('close') }}</span>
             <svg
               class="input-filter__close-icon"
               fill="none"

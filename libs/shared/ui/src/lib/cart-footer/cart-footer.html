@@ -1,24 +1,5 @@
-<div class="cart-footer">
-  @if (showSubtotal()) {
-  <div class="cart-footer__subtotal">
-    <p>{{ subtotalLabel() }}</p>
-    <p>{{ subtotal() }} €</p>
-  </div>
-  }
-
-  <div class="cart-footer__checkout">
-    <lib-ui-button
-      variant="primary"
-      [fullWidth]="true"
-      (clicked)="checkout.emit()"
-    >
-      {{ checkoutLabel() }}
-    </lib-ui-button>
-  </div>
-
-  <div class="cart-footer__continue">
-    <lib-ui-button variant="link" (clicked)="closeDrawer.emit()">
-      {{ closeLabel() }}
-    </lib-ui-button>
-  </div>
+<div class="cart-footer" *transloco="let t">
+  <lib-ui-button variant="link" (clicked)="closeDrawer.emit()">
+    {{ t('continueShopping') }} →
+  </lib-ui-button>
 </div>

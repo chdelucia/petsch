@@ -1,61 +1,11 @@
 @reference "../../../../../../apps/petshop/src/styles.css";
 
-.top-container {
-  @apply flex items-end justify-between border-b border-gray-200 pb-5 pt-10;
-}
-
-.top-container__filters {
-  @apply flex items-center;
-}
-
-.top-container__filters__toggleview,
-.top-container__filters__togglefilters {
-  @apply h-5 w-5 cursor-pointer;
-}
-
-.top-container__filters__toggleview.active,
-.top-container__filters__togglefilters.active {
-  @apply fill-indigo-600;
-}
-
-fullangulardeveloper-sort-by {
-  @apply mr-5;
-}
-
-.top-container button {
-  @apply ml-4 p-2 text-gray-400 hover:text-gray-500 sm:ml-4;
-}
-
-.chars {
-  @apply pb-12 pt-6;
-}
-
-.chars__grid {
-  @apply grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-10;
-}
-
-.chars__filters {
-  @apply col-span-2;
-}
-
-.chars__filters--hidden {
-  @apply hidden;
-}
-
-.chars__list {
-  @apply lg:col-span-8;
-}
-
-.chars__list--no-filters {
-  @apply lg:col-span-10;
-}
-
-.potd-actions {
-  @apply flex justify-end p-4;
-}
-
 .chars__list__pagination {
   @apply flex items-center justify-end mb-4;
+}
+
+.card-effect {
+  transition: transform 1s;
 }
 
 .char-grid {

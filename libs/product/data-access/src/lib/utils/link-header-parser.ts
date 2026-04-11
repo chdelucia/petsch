@@ -1,21 +1,45 @@
 import { PaginationLinks } from '@petsch/api';
 
+const LINK_PARTS_SPLIT_REGEX = /,(?=\s*<)/;
+const URL_REGEX = /<([^>]+)>/;
+const REL_REGEX = /rel="([^"]+)"/i;
+
+const VALID_RELS = new Set<keyof PaginationLinks>([
+  'first',
+  'prev',
+  'next',
+  'last',
+]);
+
 export function parseLinkHeader(header: string): PaginationLinks {
-  const links: PaginationLinks = {};
-  const parts = header.split(',');
+  if (!header) return {};
 
-  parts.forEach((part) => {
-    const section = part.split(';');
-    if (section.length !== 2) return;
+  const parts = header.split(LINK_PARTS_SPLIT_REGEX);
 
-    const url = section[0].replace(/<(.*)>/, '$1').trim();
-    const name = section[1].replace(/rel="(.*)"/, '$1').trim();
+  return parts.reduce<PaginationLinks>((acc, part) => {
+    const parsed = parsePart(part);
+    if (!parsed) return acc;
 
-    if (name === 'first') links.first = url;
-    if (name === 'prev') links.prev = url;
-    if (name === 'next') links.next = url;
-    if (name === 'last') links.last = url;
-  });
+    const { url, rels } = parsed;
 
-  return links;
+    for (const rel of rels) {
+      if (VALID_RELS.has(rel as keyof PaginationLinks)) {
+        acc[rel as keyof PaginationLinks] = url;
+      }
+    }
+
+    return acc;
+  }, {});
+}
+
+function parsePart(part: string): { url: string; rels: string[] } | null {
+  const urlMatch = URL_REGEX.exec(part);
+  const relMatch = REL_REGEX.exec(part);
+
+  if (!urlMatch || !relMatch) return null;
+
+  return {
+    url: urlMatch[1].trim(),
+    rels: relMatch[1].toLowerCase().split(/\s+/),
+  };
 }

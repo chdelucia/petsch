@@ -1,0 +1,15 @@
+import { Component, input } from '@angular/core';
+import { RouterLink } from '@angular/router';
+
+@Component({
+  selector: 'lib-ui-card',
+  imports: [RouterLink],
+  templateUrl: './product-card.component.html',
+  styleUrl: './product-card.component.scss',
+})
+export class Card {
+  id = input.required<number>();
+  name = input.required<string>();
+  imageUrl = input.required<string>();
+  viewTransitionName = input<string>('');
+}

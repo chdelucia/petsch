@@ -1,37 +1,26 @@
-import { Component, inject, signal, computed } from '@angular/core';
-import { Pet, Filters, CurrentTransitionService } from '@petsch/api';
-import { FiltersComponent } from './components';
+import { Component, inject, computed, input } from '@angular/core';
 import {
-  PaginationComponent,
-  ProductCardComponent,
-  ProductCardSkeletonComponent,
-  ProductListHeaderComponent,
-  CartDrawer,
-  CartItem,
-  Button,
-} from '@petsch/ui';
-import { ProductsStore } from '@petsch/data-access';
-import { PetOfTheDayStore } from '@petsch/pet-of-the-day-data-access';
+  Pet,
+  CurrentTransitionService,
+  PETLIST_STORE,
+  PETOFDAY_STORE,
+} from '@petsch/api';
+import { Button, Pagination, Card, CardSkeleton } from '@petsch/ui';
+
+import { TranslocoDirective } from '@jsverse/transloco';
 
 @Component({
   selector: 'lib-feature-product-list',
-  imports: [
-    FiltersComponent,
-    ProductCardSkeletonComponent,
-    ProductCardComponent,
-    PaginationComponent,
-    ProductListHeaderComponent,
-    CartDrawer,
-    CartItem,
-    Button,
-  ],
+  imports: [CardSkeleton, Card, Pagination, Button, TranslocoDirective],
   templateUrl: './feature-product-list.html',
   styleUrl: './feature-product-list.css',
 })
 export class FeatureProductList {
-  private readonly store = inject(ProductsStore);
-  protected readonly potdStore = inject(PetOfTheDayStore);
+  private readonly store = inject(PETLIST_STORE);
+  protected readonly potdStore = inject(PETOFDAY_STORE);
   protected readonly transitionService = inject(CurrentTransitionService);
+
+  showFilters = input.required<boolean>();
 
   products = this.store.filteredProducts;
 
@@ -46,46 +35,22 @@ export class FeatureProductList {
   loading = computed(() => this.store.loading());
   error = this.store.error;
 
-  showFilters = signal(true);
-  gridView = signal(true);
-  showPotdDrawer = signal(false);
-
-  updateFilter(partial: Partial<Filters>) {
-    this.store.updateFilters(partial);
-  }
-
-  clearFilters(): void {
-    this.store.clearProducts();
-  }
-
-  toggleFilters(): void {
-    this.showFilters.update((v) => !v);
-  }
-
-  toggleView(): void {
-    this.gridView.update((v) => !v);
-  }
-
   handlePageChange(page: number): void {
     const filters = this.store.filtersApplied();
     this.store.loadProducts({ ...filters, _page: page });
   }
 
-  getButtonText() {
+  getButtonText(): string {
     return this.potdStore.isPetAddedToday()
       ? 'Ver la mascota del día'
-      : 'Add as pet of the day';
+      : 'addAsPetOfTheDay';
   }
 
-  handlePotdClick(pet: Pet) {
+  handlePotdClick(pet: Pet): void {
     if (this.potdStore.isPetAddedToday()) {
-      this.showPotdDrawer.set(true);
+      this.potdStore.togglePoT(true);
     } else {
       this.potdStore.addPet(pet);
     }
-  }
-
-  togglePotdDrawer() {
-    this.showPotdDrawer.update((v) => !v);
   }
 }

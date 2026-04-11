@@ -1,13 +1,13 @@
 import type { Meta, StoryObj } from '@storybook/angular';
-import { PaginationComponent } from './pagination.component';
+import { Pagination } from './pagination.component';
 
-const meta: Meta<PaginationComponent> = {
-  component: PaginationComponent,
-  title: 'Molecules/PaginationComponent',
+const meta: Meta<Pagination> = {
+  component: Pagination,
+  title: 'Molecules/Pagination',
 };
 export default meta;
 
-type Story = StoryObj<PaginationComponent>;
+type Story = StoryObj<Pagination>;
 
 export const Primary: Story = {
   args: {

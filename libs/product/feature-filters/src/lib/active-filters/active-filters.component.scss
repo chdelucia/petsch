@@ -1,0 +1,33 @@
+@reference "../../../../../../apps/petshop/src/styles.css";
+
+.active-filters {
+  @apply mt-4;
+}
+
+.active-filters__title {
+  @apply font-medium text-gray-900 uppercase;
+}
+
+.active-filters__list {
+  @apply border-b border-gray-200 py-6;
+}
+
+.active-filters__item {
+  @apply py-3 flex items-center justify-between;
+}
+
+.active-filters__label {
+  @apply text-sm text-gray-700;
+}
+
+.active-filters__remove {
+  @apply text-gray-400 hover:text-indigo-600;
+}
+
+.active-filters__remove-icon {
+  @apply h-6 w-6;
+}
+
+.active-filters__sr {
+  @apply sr-only;
+}

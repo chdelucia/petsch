@@ -29,10 +29,12 @@
         "libs/shared/observability/data-access/src/index.ts"
       ],
       "@petsch/ui": ["libs/shared/ui/src/index.ts"],
-      "@petsch/feature-cart": ["libs/cart/feature-cart/src/index.ts"],
-      "@petsch/pet-of-the-day-data-access": [
-        "libs/product/pet-of-the-day/data-access/src/index.ts"
-      ]
+      "@petsch/shared-utils": ["libs/shared/utils/src/index.ts"],
+      "@petsch/feature-pet-of-day": [
+        "libs/product/feature-pet-of-day/src/index.ts"
+      ],
+      "@petsch/feature-page": ["libs/product/feature-page/src/index.ts"],
+      "@petsch/feature-filters": ["libs/product/feature-filters/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

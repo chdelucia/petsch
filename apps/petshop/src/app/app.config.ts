@@ -5,6 +5,7 @@ import {
   inject,
   provideBrowserGlobalErrorListeners,
   provideZonelessChangeDetection,
+  isDevMode,
 } from '@angular/core';
 import {
   provideRouter,
@@ -22,6 +23,9 @@ import {
 import { PRODUCT_TOKEN, CurrentTransitionService } from '@petsch/api';
 import { ProductApi } from '@petsch/data-access';
 import { LOCALSTORAGE_TOKEN } from '@petsch/obs-api';
+import { provideHttpClient } from '@angular/common/http';
+import { TranslocoHttpLoader } from './transloco-loader';
+import { provideTransloco } from '@jsverse/transloco';
 
 let appInjector: EnvironmentInjector;
 
@@ -45,6 +49,17 @@ export const appConfig: ApplicationConfig = {
       provide: LOCALSTORAGE_TOKEN,
       useClass: LocalstorageService,
     },
+    provideHttpClient(),
+    provideTransloco({
+      config: {
+        availableLangs: ['en', 'es'],
+        defaultLang: 'en',
+        // Remove this option if your application doesn't support changing language in runtime.
+        reRenderOnLangChange: true,
+        prodMode: !isDevMode(),
+      },
+      loader: TranslocoHttpLoader,
+    }),
   ],
 };
 

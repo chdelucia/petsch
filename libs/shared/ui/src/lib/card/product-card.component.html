@@ -1,0 +1,24 @@
+<div class="product-card">
+  <div class="product-card__img-container">
+    <img
+      [src]="imageUrl()"
+      [alt]="name()"
+      [style.viewTransitionName]="viewTransitionName()"
+      class="product-card__img"
+    />
+  </div>
+  <div class="product-card__info">
+    <div class="product-card__details">
+      <h3 class="product-card__title">
+        <a [routerLink]="['/pets', id()]">
+          <span aria-hidden="true" class="product-card__link-overlay"></span>
+          {{ name() }}
+        </a>
+      </h3>
+      <div class="product-card__meta">
+        <ng-content select="[info]"></ng-content>
+      </div>
+    </div>
+  </div>
+</div>
+<ng-content select="lib-ui-button"></ng-content>

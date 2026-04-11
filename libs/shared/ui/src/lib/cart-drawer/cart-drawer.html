@@ -1,6 +1,5 @@
 @if (open()) {
 <div class="cart-drawer-overlay"></div>
-}
 
 <div class="cart-drawer-container">
   <div class="cart-drawer-inner">
@@ -12,7 +11,7 @@
         <div class="cart-drawer-content">
           <div class="cart-drawer-body">
             <div class="cart-drawer-header">
-              <h2 class="cart-drawer-title">{{ title() }}</h2>
+              <h2 class="cart-drawer-title">{{ titleLabel() }}</h2>
               <button
                 type="button"
                 class="cart-drawer-close"
@@ -29,12 +28,6 @@
 
           @if (showFooter()) {
           <lib-ui-cart-footer
-            [subtotal]="subtotal()"
-            [showSubtotal]="showSubtotal()"
-            [subtotalLabel]="subtotalLabel()"
-            [checkoutLabel]="checkoutLabel()"
-            [closeLabel]="closeLabel()"
-            (checkout)="checkout()"
             (closeDrawer)="closeDrawer()"
           ></lib-ui-cart-footer>
           }
@@ -43,3 +36,4 @@
     </div>
   </div>
 </div>
+}
