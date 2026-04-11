@@ -17,12 +17,12 @@
       @defer(when !loading()) {
       <lib-ui-pagination
         class="chars__list__pagination"
-        [page]="1"
-        [totalPages]="10"
+        [page]="currentPage()"
+        [totalPages]="totalPages()"
         (pageChange)="handlePageChange($event)"
       ></lib-ui-pagination>
 
-      @if (gridView()) {
+
       <section class="char-grid" [class.no-filters]="!showFilters()">
         @for (item of products(); track item.id) {
         <lib-ui-product-card
@@ -31,16 +31,13 @@
           [name]="item.name"
           [imageUrl]="item.photo_url"
           [categoryName]="item.kind"
+          [status]="item.health"
           [viewTransitionName]="transitionService.getViewTransitionName(item.id)"
         >
         </lib-ui-product-card>
         }
       </section>
-      } @else {
-      <lib-ui-product-list-view
-        [products]="uiProducts()"
-      ></lib-ui-product-list-view>
-      } } @placeholder(minimum 1000ms) {
+      } @placeholder(minimum 500ms) {
       <lib-ui-product-card-skeleton></lib-ui-product-card-skeleton>
       }
     </div>

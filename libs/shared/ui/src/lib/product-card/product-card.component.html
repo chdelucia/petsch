@@ -21,9 +21,12 @@
         </a>
       </h3>
       <div class="flex justify-between">
-        <span>Category: {{ categoryName() }}</span>
+        <ng-content select="extra"></ng-content>
+        <span>{{ categoryName() }} {{status()}}</span>
       </div>
     </div>
   </div>
 </div>
+
+<ng-content select="lib-ui-button"></ng-content>
 <lib-ui-button [fullWidth]="true">Add as 'Pet of the day'</lib-ui-button>

@@ -15,4 +15,5 @@ export class ProductCardComponent {
   imageUrl = input.required<string>();
   categoryName = input.required<string>();
   viewTransitionName = input<string>('');
+  status = input.required<string>();
 }
