@@ -4,7 +4,8 @@ import {
   EnvironmentInjector,
   inject,
   provideBrowserGlobalErrorListeners,
-  provideZonelessChangeDetection, isDevMode,
+  provideZonelessChangeDetection,
+  isDevMode,
 } from '@angular/core';
 import {
   provideRouter,
@@ -47,16 +48,18 @@ export const appConfig: ApplicationConfig = {
     {
       provide: LOCALSTORAGE_TOKEN,
       useClass: LocalstorageService,
-    }, provideHttpClient(), provideTransloco({
-        config: {
-          availableLangs: ['en', 'es'],
-          defaultLang: 'en',
-          // Remove this option if your application doesn't support changing language in runtime.
-          reRenderOnLangChange: true,
-          prodMode: !isDevMode(),
-        },
-        loader: TranslocoHttpLoader
-      }),
+    },
+    provideHttpClient(),
+    provideTransloco({
+      config: {
+        availableLangs: ['en', 'es'],
+        defaultLang: 'en',
+        // Remove this option if your application doesn't support changing language in runtime.
+        reRenderOnLangChange: true,
+        prodMode: !isDevMode(),
+      },
+      loader: TranslocoHttpLoader,
+    }),
   ],
 };
 

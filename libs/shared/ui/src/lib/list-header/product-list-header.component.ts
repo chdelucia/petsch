@@ -4,12 +4,11 @@ import { TranslocoDirective } from '@jsverse/transloco';
 
 @Component({
   selector: 'lib-ui-product-list-header',
-  standalone: true,
   imports: [CommonModule, TranslocoDirective],
   templateUrl: './product-list-header.component.html',
   styleUrl: './product-list-header.component.scss',
 })
-export class ProductListHeaderComponent {
+export class ListHeader {
   text = input.required<string>();
   gridView = input.required<boolean>();
   showFilters = input.required<boolean>();

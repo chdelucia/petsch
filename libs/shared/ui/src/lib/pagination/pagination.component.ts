@@ -1,14 +1,14 @@
 import { Component, input, output } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { NgClass } from '@angular/common';
 import { TranslocoDirective } from '@jsverse/transloco';
 
 @Component({
   selector: 'lib-ui-pagination',
-  imports: [CommonModule, TranslocoDirective],
+  imports: [NgClass, TranslocoDirective],
   templateUrl: './pagination.component.html',
   styleUrl: './pagination.component.sass',
 })
-export class PaginationComponent {
+export class Pagination {
   page = input.required<number>();
 
   totalPages = input.required<number>();

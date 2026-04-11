@@ -7,7 +7,6 @@ import { TranslocoDirective } from '@jsverse/transloco';
 
 @Component({
   selector: 'lib-feature-product-details',
-  standalone: true,
   imports: [CommonModule, Button, TranslocoDirective],
   templateUrl: './feature-product-details.html',
   styleUrl: './feature-product-details.css',

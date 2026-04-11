@@ -1,17 +1,17 @@
 import { getTranslocoTestingModule } from '@petsch/shared-utils';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { PaginationComponent } from './pagination.component';
+import { Pagination } from './pagination.component';
 
-describe('PaginationComponent', () => {
-  let component: PaginationComponent;
-  let fixture: ComponentFixture<PaginationComponent>;
+describe('Pagination', () => {
+  let component: Pagination;
+  let fixture: ComponentFixture<Pagination>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [getTranslocoTestingModule(), PaginationComponent],
+      imports: [Pagination, getTranslocoTestingModule()],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(PaginationComponent);
+    fixture = TestBed.createComponent(Pagination);
     component = fixture.componentInstance;
     fixture.componentRef.setInput('page', 2);
     fixture.componentRef.setInput('totalPages', 10);

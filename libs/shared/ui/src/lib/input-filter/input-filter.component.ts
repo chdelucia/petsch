@@ -22,14 +22,14 @@ import { TranslocoDirective } from '@jsverse/transloco';
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => InputFilterComponent),
+      useExisting: forwardRef(() => InputFilter),
       multi: true,
     },
   ],
   templateUrl: './input-filter.component.html',
   styleUrl: './input-filter.component.scss',
 })
-export class InputFilterComponent implements ControlValueAccessor, OnInit {
+export class InputFilter implements ControlValueAccessor, OnInit {
   title = input.required<string>();
 
   isfilterOpen = signal(true);
@@ -38,7 +38,7 @@ export class InputFilterComponent implements ControlValueAccessor, OnInit {
   value = signal('');
   lastSearch = signal<Array<string>>([]);
 
-  private searchText$ = new Subject<string>();
+  private readonly searchText$ = new Subject<string>();
 
   private readonly elementRef = inject(ElementRef);
   private readonly destroyRef = inject(DestroyRef);
