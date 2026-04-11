@@ -59,5 +59,4 @@ describe('FeatureProductList', () => {
     component.clearFilters();
     expect(spy).toHaveBeenCalled();
   });
-
 });
