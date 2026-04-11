@@ -5,7 +5,7 @@ import { RouterLink } from '@angular/router';
   selector: 'lib-ui-card',
   imports: [RouterLink],
   templateUrl: './product-card.component.html',
-  styleUrl: './product-card.component.scss',
+  styleUrl: './product-card.component.css',
 })
 export class Card {
   id = input.required<number>();

@@ -85,6 +85,7 @@
     },
     "@nx/angular:library": {
       "linter": "eslint",
+      "style": "css",
       "unitTestRunner": "vitest-analog"
     },
     "@nx/angular:component": {

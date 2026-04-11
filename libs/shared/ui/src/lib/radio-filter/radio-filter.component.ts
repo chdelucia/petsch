@@ -13,7 +13,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
     },
   ],
   templateUrl: './radio-filter.component.html',
-  styleUrl: './radio-filter.component.scss',
+  styleUrl: './radio-filter.component.css',
 })
 export class RadioFilter implements ControlValueAccessor {
   title = input.required<string>();

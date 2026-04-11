@@ -5,6 +5,6 @@ import { CommonModule } from '@angular/common';
   selector: 'lib-ui-card-skeleton',
   imports: [CommonModule],
   templateUrl: './product-card-skeleton.component.html',
-  styleUrl: './product-card-skeleton.component.scss',
+  styleUrl: './product-card-skeleton.component.css',
 })
 export class CardSkeleton {}

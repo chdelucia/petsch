@@ -27,7 +27,7 @@ import { TranslocoDirective } from '@jsverse/transloco';
     },
   ],
   templateUrl: './input-filter.component.html',
-  styleUrl: './input-filter.component.scss',
+  styleUrl: './input-filter.component.css',
 })
 export class InputFilter implements ControlValueAccessor, OnInit {
   title = input.required<string>();
