@@ -85,12 +85,7 @@ export class FiltersComponent {
   }
 
   get activeFilters(): Partial<Filters> {
-    const { name, ...others } = this.form.value as Partial<Filters>;
-    return others;
+    return this.form.value as Partial<Filters>;;
   }
 
-  countActiveFilters(value: Partial<Filters>): boolean {
-    const { kind } = value;
-    return !!kind;
-  }
 }

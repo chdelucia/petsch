@@ -103,12 +103,6 @@ describe('FiltersComponent', () => {
     expect(store.loadProducts).toHaveBeenCalledWith({ _page: 1 });
   });
 
-  it('should count active filters correctly', () => {
-    expect(component.countActiveFilters({ kind: 'dog' })).toBeTruthy();
-    expect(component.countActiveFilters({})).toBeFalsy();
-    expect(component.countActiveFilters({ kind: '' })).toBeFalsy();
-  });
-
   it('should return activeFilters excluding name', () => {
     component.form.get('name')?.setValue('test');
     component.form.get('kind')?.setValue('dog');
