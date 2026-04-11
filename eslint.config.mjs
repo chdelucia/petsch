@@ -22,7 +22,7 @@ export default [
             },
             {
               sourceTag: 'type:data-access',
-              onlyDependOnLibsWithTags: ['type:api', 'type:data-access'],
+              onlyDependOnLibsWithTags: ['type:api'],
             },
             {
               sourceTag: 'type:feature',
