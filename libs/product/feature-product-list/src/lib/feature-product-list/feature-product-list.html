@@ -24,21 +24,35 @@
 
       <section class="char-grid" [class.char-grid--no-filters]="!showFilters()">
         @for (item of products(); track item.id) {
-        <lib-ui-product-card
+        <lib-ui-card
           class="card-effect"
           [id]="item.id"
           [name]="item.name"
           [imageUrl]="item.photo_url"
-          [categoryName]="item.kind"
-          [status]="item.health"
           [viewTransitionName]="transitionService.getViewTransitionName(item.id)"
         >
-        </lib-ui-product-card>
+          <div info>
+            <p>{{ item.kind }} {{ item.health }}</p>
+            <p>{{ item.height }}cm {{item.length}}cm {{ item.weight }}g</p>
+          </div>
+          <lib-ui-button [fullWidth]="true" (clicked)="open.set(true)"
+            >Add as 'Pet of the day'</lib-ui-button
+          >
+        </lib-ui-card>
         }
       </section>
       } @else {
-      <lib-ui-product-card-skeleton></lib-ui-product-card-skeleton>
+      <lib-ui-card-skeleton></lib-ui-card-skeleton>
       }
     </div>
   </div>
 </section>
+
+<lib-ui-cart-drawer
+  [open]="open()"
+  (openChange)="open.set($event)"
+  [subtotal]="200"
+>
+  <li>Item 1</li>
+  <li>Item 2</li>
+</lib-ui-cart-drawer>

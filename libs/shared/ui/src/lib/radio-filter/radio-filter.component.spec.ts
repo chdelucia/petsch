@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { RadioFilterComponent } from './radio-filter.component';
+import { RadioFilter } from './radio-filter.component';
 
-describe('RadioFilterComponent', () => {
-  let component: RadioFilterComponent;
-  let fixture: ComponentFixture<RadioFilterComponent>;
+describe('RadioFilter', () => {
+  let component: RadioFilter;
+  let fixture: ComponentFixture<RadioFilter>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [RadioFilterComponent],
+      imports: [RadioFilter],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(RadioFilterComponent);
+    fixture = TestBed.createComponent(RadioFilter);
     component = fixture.componentInstance;
     fixture.componentRef.setInput('title', 'gender');
     fixture.componentRef.setInput('options', [{ value: 'dog', text: 'DOG' }]);

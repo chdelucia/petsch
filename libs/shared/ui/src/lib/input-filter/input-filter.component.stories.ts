@@ -1,14 +1,14 @@
 import type { Meta, StoryObj } from '@storybook/angular';
-import { InputFilterComponent } from './input-filter.component';
+import { InputFilter } from './input-filter.component';
 
-const meta: Meta<InputFilterComponent> = {
-  component: InputFilterComponent,
-  title: 'atoms/InputFilterComponent',
+const meta: Meta<InputFilter> = {
+  component: InputFilter,
+  title: 'atoms/InputFilter',
   tags: ['autodocs'],
 };
 export default meta;
 
-type Story = StoryObj<InputFilterComponent>;
+type Story = StoryObj<InputFilter>;
 
 export const Primary: Story = {
   args: {

@@ -4,7 +4,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { debounceTime } from 'rxjs';
 import { Filters } from '@petsch/api';
-import { InputFilterComponent, RadioFilterComponent } from '@petsch/ui';
+import { InputFilter, RadioFilter } from '@petsch/ui';
 import { ActiveFiltersComponent } from './active-filters/active-filters.component';
 import { ProductsStore } from '@petsch/data-access';
 
@@ -12,8 +12,8 @@ import { ProductsStore } from '@petsch/data-access';
   selector: 'lib-product-filters',
   imports: [
     CommonModule,
-    RadioFilterComponent,
-    InputFilterComponent,
+    RadioFilter,
+    InputFilter,
     ReactiveFormsModule,
     ActiveFiltersComponent,
   ],

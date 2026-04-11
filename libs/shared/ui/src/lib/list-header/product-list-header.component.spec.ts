@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { ProductListHeaderComponent } from './product-list-header.component';
+import { ListHeader } from './product-list-header.component';
 
-describe('ProductListHeaderComponent', () => {
-  let component: ProductListHeaderComponent;
-  let fixture: ComponentFixture<ProductListHeaderComponent>;
+describe('ListHeader', () => {
+  let component: ListHeader;
+  let fixture: ComponentFixture<ListHeader>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ProductListHeaderComponent],
+      imports: [ListHeader],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(ProductListHeaderComponent);
+    fixture = TestBed.createComponent(ListHeader);
     component = fixture.componentInstance;
     fixture.componentRef.setInput('text', 'Test Title');
     fixture.componentRef.setInput('gridView', true);

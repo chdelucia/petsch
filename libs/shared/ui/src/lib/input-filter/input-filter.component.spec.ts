@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { InputFilterComponent } from './input-filter.component';
+import { InputFilter } from './input-filter.component';
 import { Subject } from 'rxjs';
 
-describe('InputFilterComponent', () => {
-  let component: InputFilterComponent;
-  let fixture: ComponentFixture<InputFilterComponent>;
+describe('InputFilter', () => {
+  let component: InputFilter;
+  let fixture: ComponentFixture<InputFilter>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [InputFilterComponent],
+      imports: [InputFilter],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(InputFilterComponent);
+    fixture = TestBed.createComponent(InputFilter);
     component = fixture.componentInstance;
     fixture.componentRef.setInput('title', 'gender');
     fixture.detectChanges();
@@ -109,7 +109,9 @@ describe('InputFilterComponent', () => {
 
   it('should NOT close last search when clicking inside component', () => {
     component.isLastSearchOpen.set(true);
-    fixture.nativeElement.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+    fixture.nativeElement.dispatchEvent(
+      new MouseEvent('click', { bubbles: true }),
+    );
     expect(component.isLastSearchOpen()).toBeTruthy();
   });
 

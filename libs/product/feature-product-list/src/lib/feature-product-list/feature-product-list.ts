@@ -2,10 +2,12 @@ import { Component, inject, signal, computed } from '@angular/core';
 import { Filters, CurrentTransitionService } from '@petsch/api';
 import { FiltersComponent } from './components';
 import {
-  PaginationComponent,
-  ProductCardComponent,
-  ProductCardSkeletonComponent,
-  ProductListHeaderComponent,
+  Button,
+  CartDrawer,
+  Pagination,
+  Card,
+  CardSkeleton,
+  ListHeader,
 } from '@petsch/ui';
 import { ProductsStore } from '@petsch/data-access';
 
@@ -13,10 +15,12 @@ import { ProductsStore } from '@petsch/data-access';
   selector: 'lib-feature-product-list',
   imports: [
     FiltersComponent,
-    ProductCardSkeletonComponent,
-    ProductCardComponent,
-    PaginationComponent,
-    ProductListHeaderComponent,
+    CardSkeleton,
+    Card,
+    Pagination,
+    ListHeader,
+    CartDrawer,
+    Button,
   ],
   templateUrl: './feature-product-list.html',
   styleUrl: './feature-product-list.css',
@@ -28,6 +32,8 @@ export class FeatureProductList {
   products = this.store.filteredProducts;
 
   currentPage = computed(() => this.store.filtersApplied()._page ?? 1);
+
+  open = signal(false);
 
   totalPages = computed(() => {
     const last = this.store.pagination().last;
