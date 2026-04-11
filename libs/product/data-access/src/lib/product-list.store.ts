@@ -39,9 +39,7 @@ export const ProductsStore = signalStore(
       const filterName = store.filterName();
       const products = store.products();
       return products.filter((p) => {
-        return (
-          !filterName || p.name.toLocaleLowerCase().includes(filterName)
-        );
+        return !filterName || p.name.toLocaleLowerCase().includes(filterName);
       });
     }),
   })),

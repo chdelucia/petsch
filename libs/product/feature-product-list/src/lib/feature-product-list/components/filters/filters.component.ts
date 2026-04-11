@@ -58,7 +58,7 @@ export class FiltersComponent {
   ];
 
   constructor() {
-    this.filterConfigs.forEach(config => {
+    this.filterConfigs.forEach((config) => {
       this.form.addControl(config.key as string, new FormControl(''));
 
       (this.form.get(config.key as string) as FormControl).valueChanges
