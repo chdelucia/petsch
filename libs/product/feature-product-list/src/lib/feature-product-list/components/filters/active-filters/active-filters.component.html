@@ -1,6 +1,6 @@
 @if (activeFilters()) {
-  <section class="active-filters">
-    <h3 class="active-filters__title">Active filters</h3>
+  <section class="active-filters" *transloco="let t">
+    <h3 class="active-filters__title">{{ t('activeFilters') }}</h3>
     <div class="active-filters__list">
       @for (item of values() | keyvalue; track $index) {
         @if (item.key !== 'page' && item.value) {
@@ -13,7 +13,7 @@
               class="active-filters__remove"
               (click)="deleteFilter(item.key)"
             >
-              <span class="active-filters__sr">Close</span>
+              <span class="active-filters__sr">{{ t('close') }}</span>
               <svg
                 class="active-filters__remove-icon"
                 fill="none"

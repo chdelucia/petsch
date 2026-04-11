@@ -1,8 +1,9 @@
 import { Component, input, output } from '@angular/core';
+import { TranslocoDirective } from '@jsverse/transloco';
 
 @Component({
   selector: 'lib-ui-cart-item',
-  imports: [],
+  imports: [TranslocoDirective],
   templateUrl: './cart-item.html',
   styleUrl: './cart-item.css',
 })

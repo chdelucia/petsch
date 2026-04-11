@@ -1,26 +1,28 @@
-<div class="product-card">
-  <div class="product-card__img-container">
-    <img
-      [src]="imageUrl()"
-      [alt]="name()"
-      [style.viewTransitionName]="viewTransitionName()"
-      class="product-card__img"
-    />
-  </div>
-  <div class="product-card__info">
-    <div class="product-card__details">
-      <h3 class="product-card__title">
-        <a [routerLink]="['/products/details', id()]">
-          <span aria-hidden="true" class="product-card__link-overlay"></span>
-          {{ name() }}
-        </a>
-      </h3>
-      <div class="product-card__meta">
-        <span>{{ categoryName() }} {{ status() }}</span>
+<ng-container *transloco="let t">
+  <div class="product-card">
+    <div class="product-card__img-container">
+      <img
+        [src]="imageUrl()"
+        [alt]="name()"
+        [style.viewTransitionName]="viewTransitionName()"
+        class="product-card__img"
+      />
+    </div>
+    <div class="product-card__info">
+      <div class="product-card__details">
+        <h3 class="product-card__title">
+          <a [routerLink]="['/products/details', id()]">
+            <span aria-hidden="true" class="product-card__link-overlay"></span>
+            {{ name() }}
+          </a>
+        </h3>
+        <div class="product-card__meta">
+          <span>{{ categoryName() }} {{ status() }}</span>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
-<ng-content select="lib-ui-button"></ng-content>
-<lib-ui-button [fullWidth]="true">Add as 'Pet of the day'</lib-ui-button>
+  <ng-content select="lib-ui-button"></ng-content>
+  <lib-ui-button [fullWidth]="true">{{ t('addAsPetOfTheDay') }}</lib-ui-button>
+</ng-container>

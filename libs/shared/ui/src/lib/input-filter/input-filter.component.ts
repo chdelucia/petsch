@@ -14,10 +14,11 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Subject, debounceTime, distinctUntilChanged } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { Button } from '../button/button';
+import { TranslocoDirective } from '@jsverse/transloco';
 
 @Component({
   selector: 'lib-ui-input-filter',
-  imports: [CommonModule, Button],
+  imports: [CommonModule, Button, TranslocoDirective],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,

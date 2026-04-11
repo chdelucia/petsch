@@ -1,3 +1,4 @@
+import { getTranslocoTestingModule } from '@petsch/shared-utils';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { InputFilterComponent } from './input-filter.component';
 import { Subject } from 'rxjs';
@@ -8,7 +9,7 @@ describe('InputFilterComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [InputFilterComponent],
+      imports: [getTranslocoTestingModule(), InputFilterComponent],
     }).compileComponents();
 
     fixture = TestBed.createComponent(InputFilterComponent);

@@ -1,3 +1,4 @@
+import { getTranslocoTestingModule } from '@petsch/shared-utils';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FeatureProductList } from './feature-product-list';
 import { provideRouter } from '@angular/router';
@@ -12,7 +13,7 @@ describe('FeatureProductList', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [FeatureProductList],
+      imports: [getTranslocoTestingModule(), FeatureProductList],
       providers: [
         ProductsStore,
         provideRouter([]),

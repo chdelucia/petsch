@@ -1,3 +1,4 @@
+import { getTranslocoTestingModule } from '@petsch/shared-utils';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ProductCardComponent } from './product-card.component';
 import { provideRouter } from '@angular/router';
@@ -8,7 +9,7 @@ describe('ProductCardComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ProductCardComponent],
+      imports: [getTranslocoTestingModule(), ProductCardComponent],
       providers: [provideRouter([])],
     }).compileComponents();
 

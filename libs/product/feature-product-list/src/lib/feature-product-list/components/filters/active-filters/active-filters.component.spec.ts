@@ -1,3 +1,4 @@
+import { getTranslocoTestingModule } from '@petsch/shared-utils';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ActiveFiltersComponent } from './active-filters.component';
 
@@ -7,7 +8,7 @@ describe('ActiveFiltersComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ActiveFiltersComponent],
+      imports: [getTranslocoTestingModule(), ActiveFiltersComponent],
     }).compileComponents();
 
     fixture = TestBed.createComponent(ActiveFiltersComponent);

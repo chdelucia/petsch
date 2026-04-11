@@ -1,3 +1,4 @@
+import { getTranslocoTestingModule } from '@petsch/shared-utils';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FeatureProductDetails } from './feature-product-details';
 import { PRODUCT_TOKEN } from '@petsch/api';
@@ -23,7 +24,7 @@ describe('FeatureProductDetails', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [FeatureProductDetails],
+      imports: [getTranslocoTestingModule(), FeatureProductDetails],
       providers: [
         { provide: PRODUCT_TOKEN, useValue: mockProductService },
         provideRouter([]),

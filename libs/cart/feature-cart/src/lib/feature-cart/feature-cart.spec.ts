@@ -1,3 +1,4 @@
+import { getTranslocoTestingModule } from '@petsch/shared-utils';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FeatureCart } from './feature-cart';
 
@@ -7,7 +8,7 @@ describe('FeatureCart', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [FeatureCart],
+      imports: [getTranslocoTestingModule(), FeatureCart],
     }).compileComponents();
 
     fixture = TestBed.createComponent(FeatureCart);

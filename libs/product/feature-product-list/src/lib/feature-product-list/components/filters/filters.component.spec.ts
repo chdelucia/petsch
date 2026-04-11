@@ -1,3 +1,4 @@
+import { getTranslocoTestingModule } from '@petsch/shared-utils';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FiltersComponent } from './filters.component';
 import { PRODUCT_TOKEN } from '@petsch/api';
@@ -11,7 +12,7 @@ describe('FiltersComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [FiltersComponent],
+      imports: [getTranslocoTestingModule(), FiltersComponent],
       providers: [
         ProductsStore,
         {
