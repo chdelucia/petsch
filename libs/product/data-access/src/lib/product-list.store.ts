@@ -88,7 +88,7 @@ export const ProductsStore = signalStore(
 
         patchState(store, {
           filtersApplied: rest,
-        })
+        });
       },
 
       clearProducts() {

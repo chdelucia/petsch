@@ -51,7 +51,7 @@ export class FiltersComponent {
     this.form.get(value)?.setValue('');
     const filterKey = value as keyof Filters;
     this.store.removeFilter(filterKey);
-    this.store.loadProducts({...this.store.filtersApplied()});
+    this.store.loadProducts({ ...this.store.filtersApplied(), _page:1 });
   }
 
   countActiveFilters(value: Partial<Filters>): boolean {

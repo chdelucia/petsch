@@ -45,5 +45,4 @@ describe('FiltersComponent', () => {
     expect(component.countActiveFilters({ kind: 'dog' } as any)).toBeTruthy();
     expect(component.countActiveFilters({})).toBeFalsy();
   });
-
 });
