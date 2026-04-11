@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.30](https://github.com/chdelucia/petsch/compare/v0.0.29...v0.0.30) (2026-04-11)
+
+
+### Features
+
+* install and configure Transloco for 'en' and 'es' ([4d76b40](https://github.com/chdelucia/petsch/commit/4d76b4047fadc0aee9ca2bf0a88647cb63a4709a))
+
 ### [0.0.29](https://github.com/chdelucia/petsch/compare/v0.0.28...v0.0.29) (2026-04-11)
 
 
