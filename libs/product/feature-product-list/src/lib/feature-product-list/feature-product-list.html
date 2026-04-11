@@ -19,7 +19,7 @@
         class="chars__list__pagination"
         [page]="currentPage()"
         [totalPages]="totalPages()"
-         (pageChange)="handlePageChange($event)"
+        (pageChange)="handlePageChange($event)"
       ></lib-ui-pagination>
 
       <section class="char-grid" [class.char-grid--no-filters]="!showFilters()">

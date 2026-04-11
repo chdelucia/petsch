@@ -1,14 +1,10 @@
 @if (activeFilters()) {
   <section class="active-filters">
-    <h3 class="active-filters__title">
-      Active filters
-    </h3>
+    <h3 class="active-filters__title">Active filters</h3>
     <div class="active-filters__list">
       @for (item of values() | keyvalue; track $index) {
         @if (item.key !== 'page' && item.value) {
-          <div
-            class="active-filters__item"
-          >
+          <div class="active-filters__item">
             <div class="active-filters__label">
               <small>{{ item.key }}: </small>{{ item.value }}
             </div>

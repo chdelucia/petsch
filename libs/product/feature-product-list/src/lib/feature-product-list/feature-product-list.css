@@ -34,7 +34,6 @@ fullangulardeveloper-sort-by {
   @apply grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-10;
 }
 
-
 .chars__filters {
   @apply col-span-2;
 }

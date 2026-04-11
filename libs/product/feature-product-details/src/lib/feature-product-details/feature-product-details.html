@@ -7,15 +7,10 @@
 
   @if (loading()) {
   <div class="product-details__loading">
-    <div
-      class="product-details__spinner"
-    ></div>
+    <div class="product-details__spinner"></div>
   </div>
   } @else if (error()) {
-  <div
-    class="product-details__error"
-    role="alert"
-  >
+  <div class="product-details__error" role="alert">
     <strong class="product-details__error-title">Error!</strong>
     <span class="product-details__error-msg"> {{ error() }}</span>
   </div>
@@ -23,9 +18,7 @@
   <div class="product-details__grid">
     <!-- Image gallery -->
     <div class="product-details__gallery">
-      <div
-        class="product-details__main-img-container banner-img"
-      >
+      <div class="product-details__main-img-container banner-img">
         <img
           [src]="item.photo_url"
           [alt]="item.name"
@@ -36,9 +29,7 @@
     </div>
 
     <div class="product-details__info">
-      <h1 class="product-details__title">
-        {{ item.name }}
-      </h1>
+      <h1 class="product-details__title">{{ item.name }}</h1>
 
       <div class="product-details__price-container">
         <p class="product-details__price">{{ item.kind }} €</p>
@@ -57,9 +48,7 @@
       <div class="product-details__meta">
         <div class="product-details__meta-item">
           <h3 class="product-details__meta-label">Category:</h3>
-          <span class="product-details__meta-value"
-            >{{ item.kind }}</span
-          >
+          <span class="product-details__meta-value">{{ item.kind }}</span>
         </div>
       </div>
 

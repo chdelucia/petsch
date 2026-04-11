@@ -1,13 +1,6 @@
-<li
-  class="product-list-item"
-  [routerLink]="['details', id()]"
->
+<li class="product-list-item" [routerLink]="['details', id()]">
   <div class="product-list-item__main">
-    <img
-      class="product-list-item__img"
-      [src]="imageUrl()"
-      [alt]="name()"
-    />
+    <img class="product-list-item__img" [src]="imageUrl()" [alt]="name()" />
     <div class="product-list-item__info">
       <p class="product-list-item__title">
         {{ name() }}
