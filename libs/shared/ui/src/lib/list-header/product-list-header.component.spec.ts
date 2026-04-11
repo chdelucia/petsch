@@ -14,7 +14,6 @@ describe('ListHeader', () => {
     fixture = TestBed.createComponent(ListHeader);
     component = fixture.componentInstance;
     fixture.componentRef.setInput('text', 'Test Title');
-    fixture.componentRef.setInput('gridView', true);
     fixture.componentRef.setInput('showFilters', true);
     fixture.detectChanges();
   });

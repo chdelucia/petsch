@@ -11,7 +11,5 @@ export default meta;
 type Story = StoryObj<CartFooter>;
 
 export const Primary: Story = {
-  args: {
-    subtotal: 150,
-  },
+  args: {},
 };

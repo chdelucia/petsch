@@ -1,22 +1,5 @@
 <div class="cart-footer" *transloco="let t">
-  <div class="cart-footer__subtotal">
-    <p>{{ t('subtotal') }}</p>
-    <p>{{ subtotal() }} €</p>
-  </div>
-
-  <div class="cart-footer__checkout">
-    <lib-ui-button
-      variant="primary"
-      [fullWidth]="true"
-      (clicked)="checkout.emit()"
-    >
-      {{ t('checkout') }}
-    </lib-ui-button>
-  </div>
-
-  <div class="cart-footer__continue">
-    <lib-ui-button variant="link" (clicked)="closeDrawer.emit()">
-      {{ t('continueShopping') }} →
-    </lib-ui-button>
-  </div>
+  <lib-ui-button variant="link" (clicked)="closeDrawer.emit()">
+    {{ t('continueShopping') }} →
+  </lib-ui-button>
 </div>

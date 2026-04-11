@@ -9,11 +9,8 @@ import { TranslocoDirective } from '@jsverse/transloco';
 })
 export class CartItem {
   imageSrc = input.required<string>();
-  imageAlt = input.required<string>();
   name = input.required<string>();
-  price = input.required<number>();
-  color = input<string>();
-  quantity = input<number>(1);
+  day = input<string>();
 
   remove = output<void>();
 }

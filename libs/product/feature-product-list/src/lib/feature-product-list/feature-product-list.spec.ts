@@ -3,8 +3,8 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FeatureProductList } from './feature-product-list';
 import { provideRouter } from '@angular/router';
 import { of } from 'rxjs';
-import { PRODUCT_TOKEN } from '@petsch/api';
-import { ProductsStore } from '@petsch/data-access';
+import { PETLIST_STORE, PRODUCT_TOKEN } from '@petsch/api';
+import { LocalstorageService } from '@petsch/obs-data-access';
 
 describe('FeatureProductList', () => {
   let component: FeatureProductList;
@@ -15,8 +15,9 @@ describe('FeatureProductList', () => {
     await TestBed.configureTestingModule({
       imports: [getTranslocoTestingModule(), FeatureProductList],
       providers: [
-        ProductsStore,
+        PETLIST_STORE,
         provideRouter([]),
+        LocalstorageService,
         {
           provide: PRODUCT_TOKEN,
           useValue: {
@@ -29,7 +30,7 @@ describe('FeatureProductList', () => {
 
     fixture = TestBed.createComponent(FeatureProductList);
     component = fixture.componentInstance;
-    store = TestBed.inject(ProductsStore);
+    store = TestBed.inject(PETLIST_STORE);
     await fixture.whenStable();
   });
 

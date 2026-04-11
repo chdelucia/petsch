@@ -10,7 +10,7 @@
   <div class="product-card__info">
     <div class="product-card__details">
       <h3 class="product-card__title">
-        <a [routerLink]="['/products/details', id()]">
+        <a [routerLink]="['/pets', id()]">
           <span aria-hidden="true" class="product-card__link-overlay"></span>
           {{ name() }}
         </a>
@@ -20,6 +20,5 @@
       </div>
     </div>
   </div>
-
-  <ng-content select="lib-ui-button"></ng-content>
 </div>
+<ng-content select="lib-ui-button"></ng-content>

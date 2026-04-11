@@ -5,7 +5,7 @@
 }
 
 .cart-drawer-container {
-  @apply fixed inset-0 overflow-hidden;
+  @apply fixed inset-0 overflow-hidden pointer-events-none;
 }
 
 .cart-drawer-inner {
