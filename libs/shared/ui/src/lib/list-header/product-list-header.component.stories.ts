@@ -14,7 +14,6 @@ type Story = StoryObj<ListHeader>;
 export const Default: Story = {
   args: {
     text: 'Productos',
-    gridView: true,
     showFilters: true,
   },
 };
