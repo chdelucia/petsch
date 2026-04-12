@@ -1,0 +1,25 @@
+<ng-container *transloco="let t">
+  <lib-ch-ui-cart-drawer
+    testId="cart-drawer"
+    [open]="potdStore.isOpen()"
+    (openChange)="potdStore.togglePoT($event)"
+    [titleLabel]="t('petOfTheDay')"
+  >
+    <div class="ch-cart-list">
+      <ul class="ch-cart-list__items">
+        @for (entry of potdStore.sortedEntries(); track entry.date) {
+        <li>
+          <lib-ch-ui-cart-item
+            testId="cart-item"
+            [imageSrc]="entry.pet.photo_url"
+            [name]="entry.pet.name"
+            [day]="entry.date"
+            [description]="entry.pet.description"
+            (remove)="potdStore.removePet(entry.date)"
+          ></lib-ch-ui-cart-item>
+        </li>
+        }
+      </ul>
+    </div>
+  </lib-ch-ui-cart-drawer>
+</ng-container>

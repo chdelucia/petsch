@@ -2,44 +2,61 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.5.2](https://github.com/chdelucia/petsch/compare/v1.5.1...v1.5.2) (2026-04-12)
+
+### Bug Fixes
+
+- **sonar:** add e2e exclusions ([b9b5416](https://github.com/chdelucia/petsch/commit/b9b5416f7d5c8cf07e3e9fbf8bd073342e2f113c))
+
+### [1.5.1](https://github.com/chdelucia/petsch/compare/v1.5.0...v1.5.1) (2026-04-12)
+
+### Bug Fixes
+
+- linter ([36f8834](https://github.com/chdelucia/petsch/commit/36f883469e1a9c66cf1e9833a37ac225bdd6575f))
+- linter ([f851425](https://github.com/chdelucia/petsch/commit/f851425ba4224eca250a9467eaa52242e04466ff))
+- **sonar:** remove unused ([7797410](https://github.com/chdelucia/petsch/commit/77974102f0b55277a9ea016e2ff633e6c26aa9c9))
+
+## [1.5.0](https://github.com/chdelucia/petsch/compare/v1.4.1...v1.5.0) (2026-04-12)
+
+### Features
+
+- **ui:** improve cart drawer animation and overlay interactivity ([e837975](https://github.com/chdelucia/petsch/commit/e8379758eeba22921fedf69e84b357c9096998a2))
+- **ui:** improve cart drawer animation, accessibility and overlay behavior ([b9b5681](https://github.com/chdelucia/petsch/commit/b9b56816d28939299f835d2e7621d434614c934b))
+
 ### [1.4.1](https://github.com/chdelucia/petsch/compare/v1.4.0...v1.4.1) (2026-04-12)
 
 ## [1.4.0](https://github.com/chdelucia/petsch/compare/v1.3.6...v1.4.0) (2026-04-12)
 
-
 ### Features
 
-* extend E2E test suite with pagination, sorting, and combined filters ([44648d1](https://github.com/chdelucia/petsch/commit/44648d1954e0c906476cc5541e1b57e309ffa1f1))
-* implement Playwright E2E testing strategy with domain-based selectors ([209111b](https://github.com/chdelucia/petsch/commit/209111b2f4949abbe661f292337adb6eef8dc280))
-* improve card ([4664dfe](https://github.com/chdelucia/petsch/commit/4664dfe073c73160d81034cd5c8ba26f33cee3be))
-* merge ([d114fd8](https://github.com/chdelucia/petsch/commit/d114fd804e0c8af111d55cb3aa74f37631051c35))
-
+- extend E2E test suite with pagination, sorting, and combined filters ([44648d1](https://github.com/chdelucia/petsch/commit/44648d1954e0c906476cc5541e1b57e309ffa1f1))
+- implement Playwright E2E testing strategy with domain-based selectors ([209111b](https://github.com/chdelucia/petsch/commit/209111b2f4949abbe661f292337adb6eef8dc280))
+- improve card ([4664dfe](https://github.com/chdelucia/petsch/commit/4664dfe073c73160d81034cd5c8ba26f33cee3be))
+- merge ([d114fd8](https://github.com/chdelucia/petsch/commit/d114fd804e0c8af111d55cb3aa74f37631051c35))
 
 ### Bug Fixes
 
-* linter ([c008cfb](https://github.com/chdelucia/petsch/commit/c008cfb46cff5db888f929b4af4464ce5dd71b39))
-* remove comments ([23b9b9a](https://github.com/chdelucia/petsch/commit/23b9b9a52e73d0f12ef477272e08bacde7980075))
-* remove comments ([b7553dc](https://github.com/chdelucia/petsch/commit/b7553dcd5729a8b12becf2a991435c78ae4a3f24))
-* **sonar:** e2e exclusions ([0069966](https://github.com/chdelucia/petsch/commit/0069966a7ed1e97cd4e2a73d284c9758e1c10b6d))
-* **sonar:** exclusions ([cb5df2b](https://github.com/chdelucia/petsch/commit/cb5df2b8e7c21a9704f37e5a4fd6067a0ad1df93))
-* **sonar:** issues ([2fb5433](https://github.com/chdelucia/petsch/commit/2fb5433677004ee6a42176164b555de8df70a461))
-* unit test ([ba89129](https://github.com/chdelucia/petsch/commit/ba891291feeb249bebe1c8bff5d414084a8d2fd5))
+- linter ([c008cfb](https://github.com/chdelucia/petsch/commit/c008cfb46cff5db888f929b4af4464ce5dd71b39))
+- remove comments ([23b9b9a](https://github.com/chdelucia/petsch/commit/23b9b9a52e73d0f12ef477272e08bacde7980075))
+- remove comments ([b7553dc](https://github.com/chdelucia/petsch/commit/b7553dcd5729a8b12becf2a991435c78ae4a3f24))
+- **sonar:** e2e exclusions ([0069966](https://github.com/chdelucia/petsch/commit/0069966a7ed1e97cd4e2a73d284c9758e1c10b6d))
+- **sonar:** exclusions ([cb5df2b](https://github.com/chdelucia/petsch/commit/cb5df2b8e7c21a9704f37e5a4fd6067a0ad1df93))
+- **sonar:** issues ([2fb5433](https://github.com/chdelucia/petsch/commit/2fb5433677004ee6a42176164b555de8df70a461))
+- unit test ([ba89129](https://github.com/chdelucia/petsch/commit/ba891291feeb249bebe1c8bff5d414084a8d2fd5))
 
 ### [1.3.6](https://github.com/chdelucia/petsch/compare/v1.3.5...v1.3.6) (2026-04-12)
 
-
 ### Bug Fixes
 
-* linter ([52a3465](https://github.com/chdelucia/petsch/commit/52a3465ad3dd5d8bcdc932cd2a063ea72239fcb3))
+- linter ([52a3465](https://github.com/chdelucia/petsch/commit/52a3465ad3dd5d8bcdc932cd2a063ea72239fcb3))
 
 ### [1.3.5](https://github.com/chdelucia/petsch/compare/v1.3.4...v1.3.5) (2026-04-12)
 
 ### [1.3.4](https://github.com/chdelucia/petsch/compare/v1.3.3...v1.3.4) (2026-04-12)
 
-
 ### Bug Fixes
 
-* linter ([b61b4ae](https://github.com/chdelucia/petsch/commit/b61b4aea0de1583bbb4d17fa285255828a9ddcd1))
+- linter ([b61b4ae](https://github.com/chdelucia/petsch/commit/b61b4aea0de1583bbb4d17fa285255828a9ddcd1))
 
 ### [1.3.3](https://github.com/chdelucia/petsch/compare/v1.3.2...v1.3.3) (2026-04-12)
 
@@ -49,50 +66,43 @@ All notable changes to this project will be documented in this file. See [standa
 
 ## [1.3.0](https://github.com/chdelucia/petsch/compare/v1.2.0...v1.3.0) (2026-04-12)
 
-
 ### Features
 
-* **ui:** improve product list and details with labels and health badges ([0d8e71f](https://github.com/chdelucia/petsch/commit/0d8e71f93857e2abe6a2f545bf9478a6e27fa501))
-* **ui:** improve product list and details with labels and health badges ([b8f9b05](https://github.com/chdelucia/petsch/commit/b8f9b055bd8d55048ef1024a7b06e01f8058b719))
+- **ui:** improve product list and details with labels and health badges ([0d8e71f](https://github.com/chdelucia/petsch/commit/0d8e71f93857e2abe6a2f545bf9478a6e27fa501))
+- **ui:** improve product list and details with labels and health badges ([b8f9b05](https://github.com/chdelucia/petsch/commit/b8f9b055bd8d55048ef1024a7b06e01f8058b719))
 
 ## [1.2.0](https://github.com/chdelucia/petsch/compare/v1.1.1...v1.2.0) (2026-04-12)
 
-
 ### Features
 
-* improve potd ([1a2dc5f](https://github.com/chdelucia/petsch/commit/1a2dc5fdd40966cf737d039b8354e49e64f82d29))
-
+- improve potd ([1a2dc5f](https://github.com/chdelucia/petsch/commit/1a2dc5fdd40966cf737d039b8354e49e64f82d29))
 
 ### Bug Fixes
 
-* test ([f74a6d6](https://github.com/chdelucia/petsch/commit/f74a6d62d9b7f2313cfcfb6412e1ae996a7ad532))
-* unit test ([6afb333](https://github.com/chdelucia/petsch/commit/6afb333dc41937fc9b3eadf563f8b8586041efd1))
+- test ([f74a6d6](https://github.com/chdelucia/petsch/commit/f74a6d62d9b7f2313cfcfb6412e1ae996a7ad532))
+- unit test ([6afb333](https://github.com/chdelucia/petsch/commit/6afb333dc41937fc9b3eadf563f8b8586041efd1))
 
 ### [1.1.1](https://github.com/chdelucia/petsch/compare/v1.1.0...v1.1.1) (2026-04-12)
 
-
 ### Bug Fixes
 
-* linter ([08833ba](https://github.com/chdelucia/petsch/commit/08833ba443103d0aeb2d76619e531f26c2a1419a))
-* linter ([3b9757e](https://github.com/chdelucia/petsch/commit/3b9757ebef1bbd9b7b30b9b280ac8bdb75121cd7))
-* linter ([ac59f6b](https://github.com/chdelucia/petsch/commit/ac59f6b9098be59a946634b07746f6b54ec634d0))
+- linter ([08833ba](https://github.com/chdelucia/petsch/commit/08833ba443103d0aeb2d76619e531f26c2a1419a))
+- linter ([3b9757e](https://github.com/chdelucia/petsch/commit/3b9757ebef1bbd9b7b30b9b280ac8bdb75121cd7))
+- linter ([ac59f6b](https://github.com/chdelucia/petsch/commit/ac59f6b9098be59a946634b07746f6b54ec634d0))
 
 ## [1.1.0](https://github.com/chdelucia/petsch/compare/v0.0.43...v1.1.0) (2026-04-12)
 
-
 ### Features
 
-* **ci:** improve ci ([a61ebcd](https://github.com/chdelucia/petsch/commit/a61ebcd7543ebec7b8410d1e052fe3a35b712136))
+- **ci:** improve ci ([a61ebcd](https://github.com/chdelucia/petsch/commit/a61ebcd7543ebec7b8410d1e052fe3a35b712136))
 
 ## [1.0.0](https://github.com/chdelucia/petsch/compare/v0.0.42...v1.0.0) (2026-04-12)
 
-
 ### Features
 
-* try chromatic CI ([9fa4201](https://github.com/chdelucia/petsch/commit/9fa4201c27924139ddc6339242e0da116edb3a7f))
+- try chromatic CI ([9fa4201](https://github.com/chdelucia/petsch/commit/9fa4201c27924139ddc6339242e0da116edb3a7f))
 
 ### [0.0.42](https://github.com/chdelucia/petsch/compare/v0.0.41...v0.0.42) (2026-04-12)
-
 
 ### Features
 

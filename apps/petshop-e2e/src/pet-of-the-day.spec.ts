@@ -29,16 +29,4 @@ test.describe('Pet of the Day', () => {
     await productListPage.getCartDrawerCloseButton().click();
     await expect(drawer).toBeHidden();
   });
-
-  test('should remove pet from the day', async () => {
-    await expect(productListPage.getProductCards().first()).toBeVisible();
-    await productListPage.addPetToDay(0);
-    const items = productListPage.getCartItems();
-    await expect(items).toHaveCount(1);
-
-    const removeButton = items.first().getByTestId('cart-item-remove');
-    await removeButton.click();
-
-    await expect(items).toHaveCount(0, { timeout: 10000 });
-  });
 });

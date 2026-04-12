@@ -1,6 +1,6 @@
 {
   "name": "@petsch/source",
-  "version": "1.4.1",
+  "version": "1.5.2",
   "license": "MIT",
   "scripts": {
     "start": "nx serve petshop",
@@ -10,6 +10,8 @@
     "ui_test": "nx test-storybook ui",
     "storybook:generate": "nx g @nx/angular:stories ui",
     "build-storybook": "nx build-storybook ui",
+    "e2e": "nx e2e petshop-e2e",
+    "e2e:ui": "nx e2e petshop-e2e --ui",
     "release": "standard-version",
     "mayor": "standard-version --release-as major"
   },

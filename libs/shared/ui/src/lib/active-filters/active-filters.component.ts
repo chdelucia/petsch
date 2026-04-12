@@ -10,6 +10,7 @@ import { TranslocoDirective } from '@jsverse/transloco';
   styleUrl: './active-filters.component.css',
 })
 export class ChActiveFiltersComponent {
+  testId = input<string>('');
   values = input<Partial<Filters>>();
   resetFilter = output<string>();
 

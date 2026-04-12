@@ -1,12 +1,24 @@
-@if (open()) {
-<div class="ch-cart-drawer-overlay"></div>
+<div
+  class="ch-cart-drawer-overlay"
+  [class.ch-cart-drawer-overlay--open]="open()"
+  (click)="closeDrawer()"
+  (keydown)="closeDrawer()"
+  role="button"
+  tabindex="-1"
+  aria-hidden="true"
+></div>
 
-<div class="ch-cart-drawer-container" *transloco="let t">
+<div
+  class="ch-cart-drawer-container"
+  *transloco="let t"
+  [attr.data-testid]="testId()"
+  [class.ch-cart-drawer-container--open]="open()"
+>
   <div class="ch-cart-drawer-inner">
     <div class="ch-cart-drawer-panel-container">
       <div
         class="ch-cart-drawer-panel"
-        [class.ch-cart-drawer-panel--closed]="!open()"
+        [class.ch-cart-drawer-panel--open]="open()"
       >
         <div class="ch-cart-drawer-content">
           <div class="ch-cart-drawer-body">
@@ -17,6 +29,7 @@
                 class="ch-cart-drawer-close"
                 (click)="closeDrawer()"
                 [attr.aria-label]="t('close')"
+                [attr.data-testid]="testId() + '-close'"
               >
                 ✕
               </button>
@@ -35,4 +48,3 @@
     </div>
   </div>
 </div>
-}

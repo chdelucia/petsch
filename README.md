@@ -1,15 +1,17 @@
+[English version](./READMEEN.md)
+
+---
+
 Live: https://petsch.vercel.app/
 
 <br>
 
-> **IMPORTANT:** No tengo una PR inicial pero si un sistema de releases estrictos donde podeis ver la config Inicial
-> aqui en la [release 0.0.19](https://github.com/chdelucia/petsch/releases/tag/v0.0.19)
-> o aqui en la [rama directamente](https://github.com/chdelucia/petsch/tree/first-pr)
+> **IMPORTANTE:** No tengo una PR inicial, pero sí un sistema de releases estrictos donde podéis ver la configuración inicial  
+> aquí en la [release 0.0.19](https://github.com/chdelucia/petsch/releases/tag/v0.0.19)  
+> o aquí en la [rama directamente](https://github.com/chdelucia/petsch/tree/first-pr)
 
-El desarrollo ha sido parcialmente hecho por IA aqui podeis ver la documentación de su uso:
+El desarrollo ha sido parcialmente realizado por IA desde la versión 0.0.20. Aquí podéis ver la documentación de su uso:  
 [Ver el blog de la IA](/IATACORA.md)
-
-<br>
 
 # 🧠 Idea clave / Trade-offs generales
 
