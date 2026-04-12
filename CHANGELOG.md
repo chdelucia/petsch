@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.43](https://github.com/chdelucia/petsch/compare/v0.0.42...v0.0.43) (2026-04-12)
+
+
+### Features
+
+* try chromatic CI ([9fa4201](https://github.com/chdelucia/petsch/commit/9fa4201c27924139ddc6339242e0da116edb3a7f))
+
 ### [0.0.42](https://github.com/chdelucia/petsch/compare/v0.0.41...v0.0.42) (2026-04-12)
 
 
