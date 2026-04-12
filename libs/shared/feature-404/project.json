@@ -4,7 +4,7 @@
   "sourceRoot": "libs/shared/feature-404/src",
   "prefix": "petsch",
   "projectType": "library",
-  "tags": ["type:feature"],
+  "tags": ["scope:shared", "type:feature"],
   "targets": {
     "test": {
       "executor": "@nx/vitest:test",
