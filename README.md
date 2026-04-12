@@ -52,7 +52,7 @@ Cada cambio pasa por la siguiente cadena de validaciones:
 - 🐞 **Sentry**
   - Monitorización de errores en tiempo real y trazabilidad de excepciones.
 
-Todo el flujo está completamente automatizado y orquestado mediante:
+Todo el flujo está completamente automatizado y orquestado mediante: [Ver workflow CI](.github/workflows/ci.yml)
 
 - ⚡ **GitHub Actions**
   - Pipeline central de CI/CD
