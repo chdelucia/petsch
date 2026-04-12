@@ -58,14 +58,15 @@ Todo el flujo está completamente automatizado y orquestado mediante:
   - Pipeline central de CI/CD
   - Ejecución de validaciones, tests, análisis y despliegues
 
----
 
-## 🛡️ Resultado
+### 🛡️ Resultado
 
 ✔ Calidad garantizada desde el primer commit  
 ✔ Reglas estrictas de integración continua  
 ✔ Observabilidad completa del sistema  
 ✔ Entregas controladas, seguras y reproducibles
+
+<br>
 
 # Arquitectura por Dominios
 
