@@ -4,10 +4,9 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### [1.3.4](https://github.com/chdelucia/petsch/compare/v1.3.3...v1.3.4) (2026-04-12)
 
-
 ### Bug Fixes
 
-* linter ([b61b4ae](https://github.com/chdelucia/petsch/commit/b61b4aea0de1583bbb4d17fa285255828a9ddcd1))
+- linter ([b61b4ae](https://github.com/chdelucia/petsch/commit/b61b4aea0de1583bbb4d17fa285255828a9ddcd1))
 
 ### [1.3.3](https://github.com/chdelucia/petsch/compare/v1.3.2...v1.3.3) (2026-04-12)
 
@@ -17,50 +16,43 @@ All notable changes to this project will be documented in this file. See [standa
 
 ## [1.3.0](https://github.com/chdelucia/petsch/compare/v1.2.0...v1.3.0) (2026-04-12)
 
-
 ### Features
 
-* **ui:** improve product list and details with labels and health badges ([0d8e71f](https://github.com/chdelucia/petsch/commit/0d8e71f93857e2abe6a2f545bf9478a6e27fa501))
-* **ui:** improve product list and details with labels and health badges ([b8f9b05](https://github.com/chdelucia/petsch/commit/b8f9b055bd8d55048ef1024a7b06e01f8058b719))
+- **ui:** improve product list and details with labels and health badges ([0d8e71f](https://github.com/chdelucia/petsch/commit/0d8e71f93857e2abe6a2f545bf9478a6e27fa501))
+- **ui:** improve product list and details with labels and health badges ([b8f9b05](https://github.com/chdelucia/petsch/commit/b8f9b055bd8d55048ef1024a7b06e01f8058b719))
 
 ## [1.2.0](https://github.com/chdelucia/petsch/compare/v1.1.1...v1.2.0) (2026-04-12)
 
-
 ### Features
 
-* improve potd ([1a2dc5f](https://github.com/chdelucia/petsch/commit/1a2dc5fdd40966cf737d039b8354e49e64f82d29))
-
+- improve potd ([1a2dc5f](https://github.com/chdelucia/petsch/commit/1a2dc5fdd40966cf737d039b8354e49e64f82d29))
 
 ### Bug Fixes
 
-* test ([f74a6d6](https://github.com/chdelucia/petsch/commit/f74a6d62d9b7f2313cfcfb6412e1ae996a7ad532))
-* unit test ([6afb333](https://github.com/chdelucia/petsch/commit/6afb333dc41937fc9b3eadf563f8b8586041efd1))
+- test ([f74a6d6](https://github.com/chdelucia/petsch/commit/f74a6d62d9b7f2313cfcfb6412e1ae996a7ad532))
+- unit test ([6afb333](https://github.com/chdelucia/petsch/commit/6afb333dc41937fc9b3eadf563f8b8586041efd1))
 
 ### [1.1.1](https://github.com/chdelucia/petsch/compare/v1.1.0...v1.1.1) (2026-04-12)
 
-
 ### Bug Fixes
 
-* linter ([08833ba](https://github.com/chdelucia/petsch/commit/08833ba443103d0aeb2d76619e531f26c2a1419a))
-* linter ([3b9757e](https://github.com/chdelucia/petsch/commit/3b9757ebef1bbd9b7b30b9b280ac8bdb75121cd7))
-* linter ([ac59f6b](https://github.com/chdelucia/petsch/commit/ac59f6b9098be59a946634b07746f6b54ec634d0))
+- linter ([08833ba](https://github.com/chdelucia/petsch/commit/08833ba443103d0aeb2d76619e531f26c2a1419a))
+- linter ([3b9757e](https://github.com/chdelucia/petsch/commit/3b9757ebef1bbd9b7b30b9b280ac8bdb75121cd7))
+- linter ([ac59f6b](https://github.com/chdelucia/petsch/commit/ac59f6b9098be59a946634b07746f6b54ec634d0))
 
 ## [1.1.0](https://github.com/chdelucia/petsch/compare/v0.0.43...v1.1.0) (2026-04-12)
 
-
 ### Features
 
-* **ci:** improve ci ([a61ebcd](https://github.com/chdelucia/petsch/commit/a61ebcd7543ebec7b8410d1e052fe3a35b712136))
+- **ci:** improve ci ([a61ebcd](https://github.com/chdelucia/petsch/commit/a61ebcd7543ebec7b8410d1e052fe3a35b712136))
 
 ## [1.0.0](https://github.com/chdelucia/petsch/compare/v0.0.42...v1.0.0) (2026-04-12)
 
-
 ### Features
 
-* try chromatic CI ([9fa4201](https://github.com/chdelucia/petsch/commit/9fa4201c27924139ddc6339242e0da116edb3a7f))
+- try chromatic CI ([9fa4201](https://github.com/chdelucia/petsch/commit/9fa4201c27924139ddc6339242e0da116edb3a7f))
 
 ### [0.0.42](https://github.com/chdelucia/petsch/compare/v0.0.41...v0.0.42) (2026-04-12)
-
 
 ### Features
 

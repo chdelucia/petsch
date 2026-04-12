@@ -29,7 +29,8 @@
         <div info>
           <div class="mb-2">
             <lib-ch-ui-badge [status]="item.health">
-              {{ t(item.health === 'very healthy' ? 'veryHealthy' : item.health) }}
+              {{ t(item.health === 'very healthy' ? 'veryHealthy' : item.health)
+              }}
             </lib-ch-ui-badge>
           </div>
           <p class="text-sm text-gray-600">{{ t(item.kind.toLowerCase()) }}</p>

@@ -21,6 +21,8 @@ test.describe('Product Details', () => {
   test.skip('should show error for non-existent product', async () => {
     // Resolver might be failing before reaching the component or handles errors differently
     await productDetailsPage.gotoProduct(999999);
-    await expect(productDetailsPage.page.getByTestId('error-alert')).toBeVisible();
+    await expect(
+      productDetailsPage.page.getByTestId('error-alert'),
+    ).toBeVisible();
   });
 });

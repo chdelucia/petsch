@@ -56,7 +56,9 @@
             [value]="item.value"
             type="radio"
             class="ch-filter-container__input"
-            [attr.data-testid]="testId() ? testId() + '-option-' + item.value : null"
+            [attr.data-testid]="
+              testId() ? testId() + '-option-' + item.value : null
+            "
           />
           <label [for]="title() + $index" class="ch-filter-container__label">{{
             item.text
