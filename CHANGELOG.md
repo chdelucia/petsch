@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.42](https://github.com/chdelucia/petsch/compare/v0.0.41...v0.0.42) (2026-04-12)
+
+
+### Features
+
+* filters ([b7c14ca](https://github.com/chdelucia/petsch/commit/b7c14ca35528a4d0d5782e040080ce6cae451e8d))
+* sort by ([20d0e28](https://github.com/chdelucia/petsch/commit/20d0e28d8f87882363a928fd499399e94dd87e07))
+
+
+### Bug Fixes
+
+* **test:** resolve failing unit tests in product feature-page and shared ui ([26dab03](https://github.com/chdelucia/petsch/commit/26dab03123b746ecc1177474ed979db937ecdc29))
+
 ### [0.0.41](https://github.com/chdelucia/petsch/compare/v0.0.40...v0.0.41) (2026-04-12)
 
 ### [0.0.40](https://github.com/chdelucia/petsch/compare/v0.0.39...v0.0.40) (2026-04-12)
