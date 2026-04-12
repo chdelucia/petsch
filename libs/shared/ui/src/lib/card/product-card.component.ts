@@ -1,9 +1,10 @@
 import { Component, input } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { NgOptimizedImage } from '@angular/common';
 
 @Component({
   selector: 'lib-ui-card',
-  imports: [RouterLink],
+  imports: [RouterLink, NgOptimizedImage],
   templateUrl: './product-card.component.html',
   styleUrl: './product-card.component.css',
 })
@@ -12,4 +13,5 @@ export class Card {
   name = input.required<string>();
   imageUrl = input.required<string>();
   viewTransitionName = input<string>('');
+  priority = input<boolean>(false);
 }

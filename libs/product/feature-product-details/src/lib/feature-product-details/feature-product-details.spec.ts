@@ -10,12 +10,14 @@ describe('FeatureProductDetails', () => {
   let component: FeatureProductDetails;
   let fixture: ComponentFixture<FeatureProductDetails>;
   const mockProduct = {
-    id: '1',
-    title: 'Test Product',
-    price: 100,
+    id: 1,
+    name: 'Test Product',
+    photo_url: 'https://example.com/test.jpg',
+    kind: 'dog',
+    weight: 1000,
+    height: 10,
+    length: 10,
     description: 'Test Description',
-    images: ['test.jpg'],
-    category: { name: 'Test Category' },
   };
 
   const mockProductService = {
