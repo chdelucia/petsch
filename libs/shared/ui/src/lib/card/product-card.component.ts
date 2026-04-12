@@ -7,6 +7,9 @@ import { NgOptimizedImage } from '@angular/common';
   imports: [RouterLink, NgOptimizedImage],
   templateUrl: './product-card.component.html',
   styleUrl: './product-card.component.css',
+  host: {
+    '[attr.data-testid]': 'testId()',
+  },
 })
 export class ChCard {
   id = input.required<number>();
@@ -14,4 +17,5 @@ export class ChCard {
   imageUrl = input.required<string>();
   viewTransitionName = input<string>('');
   priority = input<boolean>(false);
+  testId = input<string>();
 }

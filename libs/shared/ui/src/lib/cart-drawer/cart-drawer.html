@@ -1,7 +1,11 @@
 @if (open()) {
 <div class="ch-cart-drawer-overlay"></div>
 
-<div class="ch-cart-drawer-container" *transloco="let t">
+<div
+  class="ch-cart-drawer-container"
+  *transloco="let t"
+  [attr.data-testid]="testId()"
+>
   <div class="ch-cart-drawer-inner">
     <div class="ch-cart-drawer-panel-container">
       <div
@@ -17,16 +21,21 @@
                 class="ch-cart-drawer-close"
                 (click)="closeDrawer()"
                 [attr.aria-label]="t('close')"
+                [attr.data-testid]="testId() ? testId() + '-close' : null"
               >
                 ✕
               </button>
             </div>
-            <ng-content></ng-content>
+
+            <lib-ch-ui-cart-list>
+              <ng-content></ng-content>
+            </lib-ch-ui-cart-list>
           </div>
 
           @if (showFooter()) {
           <lib-ch-ui-cart-footer
             [closeLabel]="closeLabel()"
+            [testId]="testId() ? testId() + '-footer' : undefined"
             (closeDrawer)="closeDrawer()"
           ></lib-ch-ui-cart-footer>
           }

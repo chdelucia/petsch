@@ -1,5 +1,9 @@
-<div class="ch-cart-footer" *transloco="let t">
-  <lib-ch-ui-button variant="link" (clicked)="closeDrawer.emit()">
+<div class="ch-cart-footer" *transloco="let t" [attr.data-testid]="testId()">
+  <lib-ch-ui-button
+    variant="link"
+    (clicked)="closeDrawer.emit()"
+    [testId]="testId() ? testId() + '-close' : undefined"
+  >
     {{ closeLabel() || t('continueShopping') }} →
   </lib-ch-ui-button>
 </div>

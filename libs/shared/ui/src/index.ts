@@ -12,4 +12,3 @@ export * from './lib/card-skeleton/product-card-skeleton.component';
 export * from './lib/list-header/product-list-header.component';
 export * from './lib/dropdown-filter/dropdown-filter.component';
 export * from './lib/active-filters/active-filters.component';
-export * from './lib/badge/badge';

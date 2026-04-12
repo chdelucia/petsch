@@ -20,8 +20,7 @@
   @apply flex justify-between text-base font-medium text-gray-900;
 }
 
-.ch-cart-item__date,
-.ch-cart-item__desc {
+.ch-cart-item__color {
   @apply mt-1 text-sm text-gray-500;
 }
 

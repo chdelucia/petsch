@@ -49,10 +49,10 @@ describe('ChInputFilter', () => {
   it('should add search to lastSearch', () => {
     component.addSearch('test-search');
     expect(component.lastSearch()).toContain('test-search');
-    // should not add duplicate
+
     component.addSearch('test-search');
     expect(component.lastSearch().length).toBe(1);
-    // should not add empty
+
     component.addSearch('');
     expect(component.lastSearch().length).toBe(1);
   });
