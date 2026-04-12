@@ -1,7 +1,7 @@
 @if (open()) {
 <div class="cart-drawer-overlay"></div>
 
-<div class="cart-drawer-container">
+<div class="cart-drawer-container" *transloco="let t">
   <div class="cart-drawer-inner">
     <div class="cart-drawer-panel-container">
       <div
@@ -16,6 +16,7 @@
                 type="button"
                 class="cart-drawer-close"
                 (click)="closeDrawer()"
+                [attr.aria-label]="t('close')"
               >
                 ✕
               </button>
