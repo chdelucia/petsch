@@ -28,6 +28,7 @@ export class ChDropdownFilter {
     { key: 'length', order: 'asc', text: 'Length: Asc' },
     { key: 'length', order: 'desc', text: 'Length: Desc' },
   ]);
+  testId = input<string>();
 
   sortbyChange = output<{ key: string; order: string }>();
 

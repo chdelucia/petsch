@@ -10,6 +10,7 @@ import { TranslocoDirective } from '@jsverse/transloco';
 })
 export class ChCartFooter {
   closeLabel = input<string>();
+  testId = input<string>();
 
   closeDrawer = output<void>();
 }

@@ -13,7 +13,9 @@ describe('productResolver', () => {
     };
 
     TestBed.configureTestingModule({
-      providers: [{ provide: PRODUCT_TOKEN, useValue: productServiceMock }],
+      providers: [
+        { provide: PRODUCT_TOKEN, useValue: productServiceMock },
+      ],
     });
   });
 

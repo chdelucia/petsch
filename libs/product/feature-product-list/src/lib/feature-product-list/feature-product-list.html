@@ -7,10 +7,15 @@
       class="chars__list__pagination"
       [page]="currentPage()"
       [totalPages]="totalPages()"
+      testId="product-list-pagination"
       (pageChange)="handlePageChange($event)"
     ></lib-ch-ui-pagination>
 
-    <section class="char-grid" [class.char-grid--no-filters]="!showFilters()">
+    <section
+      class="char-grid"
+      [class.char-grid--no-filters]="!showFilters()"
+      data-testid="product-list"
+    >
       @for (item of products(); track item.id; let index = $index) {
       <lib-ch-ui-card
         class="card-effect"
@@ -19,6 +24,7 @@
         [imageUrl]="item.photo_url"
         [viewTransitionName]="transitionService.getViewTransitionName(item.id)"
         [priority]="index < 8"
+        testId="product-card"
       >
         <div info>
           <div class="mb-2">
@@ -35,7 +41,7 @@
           </div>
         </div>
 
-        <lib-ch-ui-button fullWidth (clicked)="handlePotdClick(item)"
+        <lib-ch-ui-button fullWidth (clicked)="handlePotdClick(item)" testId="product-add-button"
           >{{t(getButtonText())}}</lib-ch-ui-button
         >
       </lib-ch-ui-card>
