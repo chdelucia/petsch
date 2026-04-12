@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.3.0](https://github.com/chdelucia/petsch/compare/v1.2.0...v1.3.0) (2026-04-12)
+
+
+### Features
+
+* **ui:** improve product list and details with labels and health badges ([0d8e71f](https://github.com/chdelucia/petsch/commit/0d8e71f93857e2abe6a2f545bf9478a6e27fa501))
+* **ui:** improve product list and details with labels and health badges ([b8f9b05](https://github.com/chdelucia/petsch/commit/b8f9b055bd8d55048ef1024a7b06e01f8058b719))
+
 ## [1.2.0](https://github.com/chdelucia/petsch/compare/v1.1.1...v1.2.0) (2026-04-12)
 
 
