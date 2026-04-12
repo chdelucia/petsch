@@ -29,5 +29,4 @@ test.describe('Pet of the Day', () => {
     await productListPage.getCartDrawerCloseButton().click();
     await expect(drawer).toBeHidden();
   });
-
 });
