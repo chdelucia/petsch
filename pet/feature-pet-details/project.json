@@ -1,5 +1,5 @@
 {
-  "name": "feature-product-details",
+  "name": "feature-pet-details",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "pet/feature-pet-details/src",
   "prefix": "lib",
