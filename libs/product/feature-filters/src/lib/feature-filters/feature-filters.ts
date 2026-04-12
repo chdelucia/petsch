@@ -42,9 +42,9 @@ export class FeatureFilters {
 
   private readonly translations = toSignal(
     this.transloco.selectTranslateObject(
-      this.kindOptions
+      this.kindOptions,
     ) as unknown as Observable<Record<KindKey, string>>,
-    { initialValue: {} as Record<KindKey, string> }
+    { initialValue: {} as Record<KindKey, string> },
   );
 
   readonly filterConfigs = computed<FilterConfig[]>(() => {

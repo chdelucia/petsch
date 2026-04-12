@@ -93,7 +93,7 @@ export const ProductsStore = signalStore(
 
       applyFilters(filters: Partial<Filters>) {
         const { name, ...rest } = filters;
-        patchState(store, { filtersApplied: buildQuery(rest)});
+        patchState(store, { filtersApplied: buildQuery(rest) });
 
         return this.loadProducts({ ...filters, _page: 1 });
       },
