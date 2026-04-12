@@ -22,7 +22,7 @@ describe('FeatureProductList', () => {
       loading: signal(false),
       error: signal(null),
       pagination: signal({}),
-      filtersApplied: signal({}),
+      filters: signal({}),
       loadProducts: vi.fn(),
       applyPagination: vi.fn(),
     };
@@ -71,7 +71,7 @@ describe('FeatureProductList', () => {
   });
 
   it('should call handlePageChange and call store.loadProducts', () => {
-    store.filtersApplied.set({ name: 'test' });
+    store.filters.set({ name: 'test' });
     component.handlePageChange(2);
     expect(store.applyPagination).toHaveBeenCalledWith(2);
   });

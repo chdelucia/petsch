@@ -1,20 +1,20 @@
 import { computed, inject } from '@angular/core';
-import { Pet, Filters, PRODUCT_TOKEN, PaginationLinks } from '@petsch/api';
 import {
   signalStore,
-  withProps,
+  withState,
   withComputed,
   withMethods,
   withHooks,
   patchState,
-  withState,
 } from '@ngrx/signals';
-import { firstValueFrom } from 'rxjs';
+import { toObservable } from '@angular/core/rxjs-interop';
+import { switchMap, catchError, of } from 'rxjs';
+import { PRODUCT_TOKEN, Filters, Pet, PaginationLinks } from '@petsch/api';
 
 export interface ProductsState {
   products: Pet[];
   pagination: PaginationLinks;
-  filtersApplied: Partial<Filters>;
+  filters: Partial<Filters>;
   filterName: string;
   loading: boolean;
   error: string | null;
@@ -23,7 +23,7 @@ export interface ProductsState {
 const initialState: ProductsState = {
   products: [],
   pagination: {},
-  filtersApplied: {},
+  filters: { _page: 1, _limit: 12 },
   filterName: '',
   loading: false,
   error: null,
@@ -31,10 +31,12 @@ const initialState: ProductsState = {
 
 export const ProductsStore = signalStore(
   withState(initialState),
-  withProps(() => ({
-    productService: inject(PRODUCT_TOKEN),
-  })),
+
   withComputed((store) => ({
+    query: () => ({
+      ...store.filters(),
+      ...(store.filterName() ? { name: store.filterName() } : {}),
+    }),
     filteredProducts: computed(() => {
       const filterName = store.filterName();
       const products = store.products();
@@ -43,27 +45,21 @@ export const ProductsStore = signalStore(
       });
     }),
   })),
-  withMethods((store) => {
-    const { productService } = store;
 
-    const buildQuery = (overrides: Partial<Filters>) => {
-      return {
-        ...store.filtersApplied(),
-        ...overrides,
-      };
-    };
+  withMethods((store) => {
+    const productService = inject(PRODUCT_TOKEN);
 
     const setLoading = (loading: boolean) =>
       patchState(store, { loading, error: null });
 
-    const setError = (error: string) =>
+    const setError = (message: string) =>
       patchState(store, {
         loading: false,
-        error,
+        error: message,
         products: [],
       });
 
-    const setProducts = (result: any) =>
+    const setResult = (result: any) =>
       patchState(store, {
         products: result.products,
         pagination: result.pagination,
@@ -71,40 +67,30 @@ export const ProductsStore = signalStore(
       });
 
     return {
-      async loadProducts(filters: Partial<Filters>) {
-        setLoading(true);
-
-        const query = buildQuery(filters);
-
-        patchState(store, {
-          filtersApplied: query,
-        });
-
-        try {
-          const result = await firstValueFrom(
-            productService.getProducts(query),
-          );
-
-          setProducts(result);
-        } catch (err: unknown) {
-          setError((err as Error)?.message ?? 'Failed to load products');
-        }
+      setFilterName(value: string) {
+        patchState(store, { filterName: value });
       },
 
-      applyFilters(filters: Partial<Filters>) {
-        const { name, ...rest } = filters;
-        patchState(store, { filtersApplied: buildQuery(rest) });
-
-        return this.loadProducts({ ...filters, _page: 1 });
+      applyFilters(partial: Partial<Filters>) {
+        patchState(store, {
+          filters: { ...store.filters(), ...partial, _page: 1 },
+        });
       },
 
       applyPagination(page: number) {
-        const filters = store.filtersApplied();
-        return this.loadProducts({ ...filters, _page: page });
+        patchState(store, {
+          filters: { ...store.filters(), _page: page },
+        });
       },
 
-      setFilterName(value: string) {
-        patchState(store, { filterName: value });
+      applySort(sort: { key: string; order: string }) {
+        patchState(store, {
+          filters: {
+            ...store.filters(),
+            _sort: sort.key,
+            _order: sort.order,
+          },
+        });
       },
 
       removeFilter(key: keyof Filters) {
@@ -112,35 +98,39 @@ export const ProductsStore = signalStore(
           patchState(store, { filterName: '' });
           return;
         }
-
-        const current = store.filtersApplied();
+        const current = store.filters();
         const { [key]: _, ...rest } = current;
-
-        patchState(store, {
-          filtersApplied: rest,
-        });
+        patchState(store, { filters: rest });
       },
 
-      clearProducts() {
+      clear() {
         patchState(store, initialState);
       },
 
-      applySort(sort: { key: string; order: string }) {
-        const query = buildQuery({
-          _page: 1,
-          _sort: sort.key,
-          _order: sort.order,
-        });
+      loadProducts() {
+        setLoading(true);
 
-        patchState(store, { filtersApplied: query });
+        const query = store.query();
 
-        return this.loadProducts(query);
+        productService
+          .getProducts(query)
+          .pipe(
+            catchError((err) => {
+              setError(err?.message ?? 'Failed to load products');
+              return of(null);
+            }),
+          )
+          .subscribe((result) => {
+            if (!result) return;
+            setResult(result);
+          });
       },
     };
   }),
+
   withHooks({
     onInit(store) {
-      store.loadProducts({ _page: 1, _limit: 12 });
+      store.loadProducts();
     },
   }),
 );

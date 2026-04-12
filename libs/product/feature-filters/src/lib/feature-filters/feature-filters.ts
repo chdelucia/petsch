@@ -83,6 +83,7 @@ export class FeatureFilters {
           }
           if (config.triggersLoad) {
             this.store.applyFilters({ [config.key]: value || '' });
+            this.store.loadProducts();
           }
         });
     });

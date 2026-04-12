@@ -45,7 +45,7 @@ describe('ProductsStore', () => {
     expect(store.products()).toEqual(products);
     expect(store.pagination()).toEqual(pagination);
     expect(store.loading()).toBeFalsy();
-    expect(store.filtersApplied()).toEqual({
+    expect(store.filters()).toEqual({
       name: 'test',
       _page: 1,
       _limit: 12,
@@ -89,7 +89,7 @@ describe('ProductsStore', () => {
 
   it('should update filters', () => {
     store.applyFilters({ kind: 'dog' });
-    expect(store.filtersApplied()).toEqual({
+    expect(store.filters()).toEqual({
       kind: 'dog',
       _page: 1,
       _limit: 12,
@@ -99,7 +99,7 @@ describe('ProductsStore', () => {
   it('should remove filter', () => {
     store.applyFilters({ kind: 'dog' });
     store.removeFilter('kind');
-    expect(store.filtersApplied()).toEqual({ _page: 1, _limit: 12 });
+    expect(store.filters()).toEqual({ _page: 1, _limit: 12 });
 
     store.setFilterName('test');
     expect(store.filterName()).toBe('test');
@@ -110,6 +110,6 @@ describe('ProductsStore', () => {
   it('should clear products and reset state', () => {
     store.clearProducts();
     expect(store.products()).toEqual([]);
-    expect(store.filtersApplied()).toEqual({});
+    expect(store.filters()).toEqual({});
   });
 });

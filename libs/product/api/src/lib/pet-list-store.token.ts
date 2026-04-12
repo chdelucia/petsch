@@ -7,12 +7,12 @@ export interface ProductsStoreContract {
   loading: Signal<boolean>;
   error: Signal<string | null>;
   pagination: Signal<PaginationLinks>;
-  filtersApplied: Signal<Partial<Filters>>;
+  filters: Signal<Partial<Filters>>;
   filterName: Signal<string>;
-  loadProducts(filters: Partial<Filters>): Promise<void>;
-  applySort(sort: { key: string; order: string }): Promise<void>;
-  applyFilters(filters: Partial<Filters>): Promise<void>;
-  applyPagination(page: number): Promise<void>;
+  loadProducts(): Promise<void>;
+  applySort(sort: { key: string; order: string }): void;
+  applyFilters(filters: Partial<Filters>): void;
+  applyPagination(page: number): void;
   setFilterName(value: string): void;
   removeFilter<K extends keyof Filters>(key: K): void;
 }
