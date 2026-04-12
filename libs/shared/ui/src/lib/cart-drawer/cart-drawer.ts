@@ -1,4 +1,4 @@
-import { Component, output, input, HostListener } from '@angular/core';
+import { Component, output, input } from '@angular/core';
 import { ChCartFooter } from '../cart-footer/cart-footer';
 import { TranslocoDirective } from '@jsverse/transloco';
 
@@ -18,13 +18,6 @@ export class ChCartDrawer {
   closeLabel = input<string>();
 
   openChange = output<boolean>();
-
-  @HostListener('window:keydown.escape', ['$event'])
-  onEscape(): void {
-    if (this.open()) {
-      this.closeDrawer();
-    }
-  }
 
   closeDrawer(): void {
     this.openChange.emit(false);
