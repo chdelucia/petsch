@@ -1,0 +1,21 @@
+{
+  "name": "shell",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "pet/shell/src",
+  "prefix": "lib",
+  "projectType": "library",
+  "tags": ["scope:product", "type:shell"],
+  "targets": {
+    "test": {
+      "executor": "@nx/vitest:test",
+      "outputs": ["{options.reportsDirectory}"],
+      "options": {
+        "reportsDirectory": "coverage/pet/shell",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    }
+  }
+}
