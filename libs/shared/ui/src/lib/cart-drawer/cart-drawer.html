@@ -2,6 +2,11 @@
   class="ch-cart-drawer-overlay"
   [class.ch-cart-drawer-overlay--open]="open()"
   (click)="closeDrawer()"
+  (keydown.enter)="closeDrawer()"
+  (keydown.space)="closeDrawer()"
+  role="button"
+  tabindex="-1"
+  aria-hidden="true"
 ></div>
 
 <div
