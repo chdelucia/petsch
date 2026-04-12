@@ -25,7 +25,6 @@ interface FilterConfig {
     TranslocoDirective,
   ],
   templateUrl: './feature-filters.html',
-  styleUrl: './feature-filters.css',
 })
 export class FeatureFilters {
   readonly store = inject(PETLIST_STORE);
