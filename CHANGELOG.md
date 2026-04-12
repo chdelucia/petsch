@@ -2,6 +2,27 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.4.0](https://github.com/chdelucia/petsch/compare/v1.3.6...v1.4.0) (2026-04-12)
+
+
+### Features
+
+* extend E2E test suite with pagination, sorting, and combined filters ([44648d1](https://github.com/chdelucia/petsch/commit/44648d1954e0c906476cc5541e1b57e309ffa1f1))
+* implement Playwright E2E testing strategy with domain-based selectors ([209111b](https://github.com/chdelucia/petsch/commit/209111b2f4949abbe661f292337adb6eef8dc280))
+* improve card ([4664dfe](https://github.com/chdelucia/petsch/commit/4664dfe073c73160d81034cd5c8ba26f33cee3be))
+* merge ([d114fd8](https://github.com/chdelucia/petsch/commit/d114fd804e0c8af111d55cb3aa74f37631051c35))
+
+
+### Bug Fixes
+
+* linter ([c008cfb](https://github.com/chdelucia/petsch/commit/c008cfb46cff5db888f929b4af4464ce5dd71b39))
+* remove comments ([23b9b9a](https://github.com/chdelucia/petsch/commit/23b9b9a52e73d0f12ef477272e08bacde7980075))
+* remove comments ([b7553dc](https://github.com/chdelucia/petsch/commit/b7553dcd5729a8b12becf2a991435c78ae4a3f24))
+* **sonar:** e2e exclusions ([0069966](https://github.com/chdelucia/petsch/commit/0069966a7ed1e97cd4e2a73d284c9758e1c10b6d))
+* **sonar:** exclusions ([cb5df2b](https://github.com/chdelucia/petsch/commit/cb5df2b8e7c21a9704f37e5a4fd6067a0ad1df93))
+* **sonar:** issues ([2fb5433](https://github.com/chdelucia/petsch/commit/2fb5433677004ee6a42176164b555de8df70a461))
+* unit test ([ba89129](https://github.com/chdelucia/petsch/commit/ba891291feeb249bebe1c8bff5d414084a8d2fd5))
+
 ### [1.3.6](https://github.com/chdelucia/petsch/compare/v1.3.5...v1.3.6) (2026-04-12)
 
 ### Bug Fixes
