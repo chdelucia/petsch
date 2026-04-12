@@ -1,10 +1,7 @@
 import { Component, inject, signal } from '@angular/core';
-import {
-  FeatureProductList,
-  ProductsStore,
-} from '@petsch/feature-product-list';
-import { PETLIST_STORE, PETOFDAY_STORE } from '@petsch/api';
-import { FeaturePetOfDay, PetOfTheDayStore } from '@petsch/feature-pet-of-day';
+import { FeatureProductList } from '@petsch/feature-product-list';
+import { PETLIST_STORE } from '@petsch/api';
+import { FeaturePetOfDay } from '@petsch/feature-pet-of-day';
 import { TranslocoDirective } from '@jsverse/transloco';
 import { ChDropdownFilter, ChListHeader } from '@petsch/ui';
 import { FeatureFilters } from '@petsch/feature-filters';
@@ -39,5 +36,6 @@ export class FeaturePage {
 
   sortBy(value: { key: string; order: string }): void {
     this.store.applySort(value);
+    this.store.loadProducts();
   }
 }

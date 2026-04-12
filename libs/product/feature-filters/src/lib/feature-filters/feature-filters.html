@@ -5,7 +5,7 @@
   >
   </lib-ch-ui-active-filters>
 
-  @for (config of filterConfigs; track config.key) { @if (config.type ===
+  @for (config of filterConfigs(); track config.key) { @if (config.type ===
   'input') {
   <lib-ch-ui-input-filter
     [title]="t(config.key)"

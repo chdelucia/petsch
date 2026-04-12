@@ -24,7 +24,7 @@ export class FeatureProductList {
 
   products = this.store.filteredProducts;
 
-  currentPage = computed(() => this.store.filtersApplied()._page ?? 1);
+  currentPage = computed(() => this.store.filters()._page ?? 1);
 
   totalPages = computed(() => {
     const last = this.store.pagination().last;
@@ -36,8 +36,8 @@ export class FeatureProductList {
   error = this.store.error;
 
   handlePageChange(page: number): void {
-    const filters = this.store.filtersApplied();
-    this.store.loadProducts({ ...filters, _page: page });
+    this.store.applyPagination(page);
+    this.store.loadProducts();
   }
 
   getButtonText(): string {

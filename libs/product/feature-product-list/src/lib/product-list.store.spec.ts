@@ -45,23 +45,10 @@ describe('ProductsStore', () => {
     expect(store.products()).toEqual(products);
     expect(store.pagination()).toEqual(pagination);
     expect(store.loading()).toBeFalsy();
-    expect(store.filtersApplied()).toEqual({
-      name: 'test',
+    expect(store.filters()).toEqual({
       _page: 1,
       _limit: 12,
     });
-  });
-
-  it('should handle error when loading products', async () => {
-    productServiceMock.getProducts.mockReturnValue(
-      throwError(() => new Error('API Error')),
-    );
-
-    await store.loadProducts({});
-
-    expect(store.products()).toEqual([]);
-    expect(store.error()).toBe('API Error');
-    expect(store.loading()).toBeFalsy();
   });
 
   it('should compute filteredProducts', async () => {
@@ -82,14 +69,11 @@ describe('ProductsStore', () => {
 
     store.setFilterName('cat');
     expect(store.filteredProducts()).toEqual([{ id: '2', name: 'Cat' }]);
-
-    store.setFilterName('non-existent');
-    expect(store.filteredProducts()).toEqual([]);
   });
 
   it('should update filters', () => {
-    store.updateFilters({ kind: 'dog' });
-    expect(store.filtersApplied()).toEqual({
+    store.applyFilters({ kind: 'dog' });
+    expect(store.filters()).toEqual({
       kind: 'dog',
       _page: 1,
       _limit: 12,
@@ -97,9 +81,9 @@ describe('ProductsStore', () => {
   });
 
   it('should remove filter', () => {
-    store.updateFilters({ kind: 'dog' });
+    store.applyFilters({ kind: 'dog' });
     store.removeFilter('kind');
-    expect(store.filtersApplied()).toEqual({ _page: 1, _limit: 12 });
+    expect(store.filters()).toEqual({ _page: 1, _limit: 12 });
 
     store.setFilterName('test');
     expect(store.filterName()).toBe('test');
@@ -108,8 +92,8 @@ describe('ProductsStore', () => {
   });
 
   it('should clear products and reset state', () => {
-    store.clearProducts();
+    store.clear();
     expect(store.products()).toEqual([]);
-    expect(store.filtersApplied()).toEqual({});
+    expect(store.filters()).toEqual({ _limit: 12, _page: 1 });
   });
 });

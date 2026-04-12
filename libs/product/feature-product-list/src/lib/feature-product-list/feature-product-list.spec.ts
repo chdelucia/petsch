@@ -14,7 +14,7 @@ describe('FeatureProductList', () => {
 
   beforeEach(async () => {
     store = {
-      updateFilters: vi.fn(),
+      applyFilters: vi.fn(),
       clearProducts: vi.fn(),
       showFilters: signal(true),
       gridView: signal(true),
@@ -22,8 +22,9 @@ describe('FeatureProductList', () => {
       loading: signal(false),
       error: signal(null),
       pagination: signal({}),
-      filtersApplied: signal({}),
+      filters: signal({}),
       loadProducts: vi.fn(),
+      applyPagination: vi.fn(),
     };
 
     await TestBed.configureTestingModule({
@@ -70,9 +71,9 @@ describe('FeatureProductList', () => {
   });
 
   it('should call handlePageChange and call store.loadProducts', () => {
-    store.filtersApplied.set({ name: 'test' });
+    store.filters.set({ name: 'test' });
     component.handlePageChange(2);
-    expect(store.loadProducts).toHaveBeenCalledWith({ name: 'test', _page: 2 });
+    expect(store.applyPagination).toHaveBeenCalledWith(2);
   });
 
   it('should call handlePotdClick and call potdStore.addPet if not added today', () => {
