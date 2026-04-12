@@ -2,6 +2,30 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.5.2](https://github.com/chdelucia/petsch/compare/v1.5.1...v1.5.2) (2026-04-12)
+
+
+### Bug Fixes
+
+* **sonar:** add e2e exclusions ([b9b5416](https://github.com/chdelucia/petsch/commit/b9b5416f7d5c8cf07e3e9fbf8bd073342e2f113c))
+
+### [1.5.1](https://github.com/chdelucia/petsch/compare/v1.5.0...v1.5.1) (2026-04-12)
+
+
+### Bug Fixes
+
+* linter ([36f8834](https://github.com/chdelucia/petsch/commit/36f883469e1a9c66cf1e9833a37ac225bdd6575f))
+* linter ([f851425](https://github.com/chdelucia/petsch/commit/f851425ba4224eca250a9467eaa52242e04466ff))
+* **sonar:** remove unused ([7797410](https://github.com/chdelucia/petsch/commit/77974102f0b55277a9ea016e2ff633e6c26aa9c9))
+
+## [1.5.0](https://github.com/chdelucia/petsch/compare/v1.4.1...v1.5.0) (2026-04-12)
+
+
+### Features
+
+* **ui:** improve cart drawer animation and overlay interactivity ([e837975](https://github.com/chdelucia/petsch/commit/e8379758eeba22921fedf69e84b357c9096998a2))
+* **ui:** improve cart drawer animation, accessibility and overlay behavior ([b9b5681](https://github.com/chdelucia/petsch/commit/b9b56816d28939299f835d2e7621d434614c934b))
+
 ### [1.4.1](https://github.com/chdelucia/petsch/compare/v1.4.0...v1.4.1) (2026-04-12)
 
 ## [1.4.0](https://github.com/chdelucia/petsch/compare/v1.3.6...v1.4.0) (2026-04-12)

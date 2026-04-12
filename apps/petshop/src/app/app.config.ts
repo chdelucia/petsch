@@ -20,8 +20,8 @@ import {
   OBSERVABILITY_ENV_PROVIDERS,
   LocalstorageService,
 } from '@petsch/obs-data-access';
-import { PRODUCT_TOKEN, CurrentTransitionService } from '@petsch/api';
-import { ProductApi } from '@petsch/data-access';
+import { PET_TOKEN, CurrentTransitionService } from '@petsch/api';
+import { PetApi } from '@petsch/data-access';
 import { LOCALSTORAGE_TOKEN } from '@petsch/obs-api';
 import { provideHttpClient } from '@angular/common/http';
 import { TranslocoHttpLoader } from './transloco-loader';
@@ -42,8 +42,8 @@ export const appConfig: ApplicationConfig = {
     ...OBSERVABILITY_PROVIDERS,
     ...OBSERVABILITY_ENV_PROVIDERS,
     {
-      provide: PRODUCT_TOKEN,
-      useClass: ProductApi,
+      provide: PET_TOKEN,
+      useClass: PetApi,
     },
     {
       provide: LOCALSTORAGE_TOKEN,
