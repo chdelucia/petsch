@@ -1,10 +1,9 @@
 import { Component, inject, signal } from '@angular/core';
 import {
-  FeatureProductList,
-  ProductsStore,
+  FeatureProductList
 } from '@petsch/feature-product-list';
-import { PETLIST_STORE, PETOFDAY_STORE } from '@petsch/api';
-import { FeaturePetOfDay, PetOfTheDayStore } from '@petsch/feature-pet-of-day';
+import { PETLIST_STORE } from '@petsch/api';
+import { FeaturePetOfDay } from '@petsch/feature-pet-of-day';
 import { TranslocoDirective } from '@jsverse/transloco';
 import { ChDropdownFilter, ChListHeader } from '@petsch/ui';
 import { FeatureFilters } from '@petsch/feature-filters';
