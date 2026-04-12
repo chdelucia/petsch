@@ -47,16 +47,16 @@
         <div class="product-details__description">
           <p class="mb-4">{{ item.description }}</p>
           <p>
-            <strong>{{ t('height') }}:</strong> {{ item.height }}
-            {{ t('centimeters') }}
+            <strong>{{ t('height') }}:</strong> {{ item.height }} {{
+            t('centimeters') }}
           </p>
           <p>
-            <strong>{{ t('width') }}:</strong> {{ item.length }}
-            {{ t('centimeters') }}
+            <strong>{{ t('width') }}:</strong> {{ item.length }} {{
+            t('centimeters') }}
           </p>
           <p>
-            <strong>{{ t('weight') }}:</strong> {{ item.weight }}
-            {{ t('grams') }}
+            <strong>{{ t('weight') }}:</strong> {{ item.weight }} {{ t('grams')
+            }}
           </p>
           @if (item.number_of_lives) {
           <p><strong>{{ t('lives') }}:</strong> {{ item.number_of_lives }}</p>
