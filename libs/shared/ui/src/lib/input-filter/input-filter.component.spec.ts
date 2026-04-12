@@ -1,17 +1,17 @@
 import { getTranslocoTestingModule } from '@petsch/shared-utils';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { InputFilter } from './input-filter.component';
+import { ChInputFilter } from './input-filter.component';
 
-describe('InputFilter', () => {
-  let component: InputFilter;
-  let fixture: ComponentFixture<InputFilter>;
+describe('ChInputFilter', () => {
+  let component: ChInputFilter;
+  let fixture: ComponentFixture<ChInputFilter>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [InputFilter, getTranslocoTestingModule()],
+      imports: [ChInputFilter, getTranslocoTestingModule()],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(InputFilter);
+    fixture = TestBed.createComponent(ChInputFilter);
     component = fixture.componentInstance;
     fixture.componentRef.setInput('title', 'gender');
     fixture.detectChanges();

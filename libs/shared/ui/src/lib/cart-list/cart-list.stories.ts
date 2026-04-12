@@ -1,6 +1,6 @@
 import { moduleMetadata, type Meta, type StoryObj } from '@storybook/angular';
-import { CartList } from './cart-list';
-import { CartItem } from '../cart-item/cart-item';
+import { ChCartList } from './cart-list';
+import { ChCartItem } from '../cart-item/cart-item';
 
 const mockProducts = [
   {
@@ -25,28 +25,28 @@ const mockProducts = [
   },
 ];
 
-const meta: Meta<CartList> = {
-  component: CartList,
-  title: 'Molecules/CartList',
+const meta: Meta<ChCartList> = {
+  component: ChCartList,
+  title: 'Molecules/ChCartList',
   tags: ['autodocs'],
   decorators: [
     moduleMetadata({
-      imports: [CartItem],
+      imports: [ChCartItem],
     }),
   ],
 };
 export default meta;
 
-type Story = StoryObj<CartList>;
+type Story = StoryObj<ChCartList>;
 
 export const Primary: Story = {
   render: () => ({
     props: { products: mockProducts },
     template: `
-      <lib-ui-cart-list>
+      <lib-ch-ui-cart-list>
       <ng-container *ngFor="let product of products">
       <li>
-        <lib-ui-cart-item
+        <lib-ch-ui-cart-item
           [imageSrc]="product.imageSrc"
           [imageAlt]="product.imageAlt"
           [name]="product.name"
@@ -54,10 +54,10 @@ export const Primary: Story = {
           [color]="product.color"
           [quantity]="product.quantity"
           (remove)="console.log('Remove', product.id)"
-        ></lib-ui-cart-item>
+        ></lib-ch-ui-cart-item>
       </li>
     </ng-container>
-      </lib-ui-cart-list>
+      </lib-ch-ui-cart-list>
     `,
   }),
 };

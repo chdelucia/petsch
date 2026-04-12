@@ -1,12 +1,12 @@
 <button
   type="button"
   [disabled]="disabled()"
-  class="btn"
+  class="ch-btn"
   [ngClass]="{
-        'btn--primary': variant() === 'primary',
-        'btn--link': variant() === 'link',
-        'btn--full-width': fullWidth(),
-        'btn--disabled': disabled()
+        'ch-btn--primary': variant() === 'primary',
+        'ch-btn--link': variant() === 'link',
+        'ch-btn--full-width': fullWidth(),
+        'ch-btn--disabled': disabled()
       }"
   (click)="handleClick()"
 >

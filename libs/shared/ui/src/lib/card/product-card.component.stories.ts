@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/angular';
-import { Card } from './product-card.component';
+import { ChCard } from './product-card.component';
 import { provideRouter } from '@angular/router';
 import { applicationConfig } from '@storybook/angular';
 
-const meta: Meta<Card> = {
-  title: 'Molecules/Card',
-  component: Card,
+const meta: Meta<ChCard> = {
+  title: 'Molecules/ChCard',
+  component: ChCard,
   tags: ['autodocs'],
   decorators: [
     applicationConfig({
@@ -16,7 +16,7 @@ const meta: Meta<Card> = {
 
 export default meta;
 
-type Story = StoryObj<Card>;
+type Story = StoryObj<ChCard>;
 
 export const Default: Story = {
   args: {

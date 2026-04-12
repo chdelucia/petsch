@@ -3,12 +3,12 @@ import { RouterLink } from '@angular/router';
 import { NgOptimizedImage } from '@angular/common';
 
 @Component({
-  selector: 'lib-ui-card',
+  selector: 'lib-ch-ui-card',
   imports: [RouterLink, NgOptimizedImage],
   templateUrl: './product-card.component.html',
   styleUrl: './product-card.component.css',
 })
-export class Card {
+export class ChCard {
   id = input.required<number>();
   name = input.required<string>();
   imageUrl = input.required<string>();

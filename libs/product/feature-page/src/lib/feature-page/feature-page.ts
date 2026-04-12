@@ -6,7 +6,7 @@ import {
 import { PETLIST_STORE, PETOFDAY_STORE } from '@petsch/api';
 import { FeaturePetOfDay, PetOfTheDayStore } from '@petsch/feature-pet-of-day';
 import { TranslocoDirective } from '@jsverse/transloco';
-import { ChDropdownFilter, ListHeader } from '@petsch/ui';
+import { ChDropdownFilter, ChListHeader } from '@petsch/ui';
 import { FeatureFilters } from '@petsch/feature-filters';
 
 @Component({
@@ -15,19 +15,9 @@ import { FeatureFilters } from '@petsch/feature-filters';
     FeatureProductList,
     FeaturePetOfDay,
     TranslocoDirective,
-    ListHeader,
+    ChListHeader,
     FeatureFilters,
     ChDropdownFilter,
-  ],
-  providers: [
-    {
-      provide: PETLIST_STORE,
-      useClass: ProductsStore,
-    },
-    {
-      provide: PETOFDAY_STORE,
-      useClass: PetOfTheDayStore,
-    },
   ],
   templateUrl: './feature-page.html',
   styleUrl: './feature-page.css',

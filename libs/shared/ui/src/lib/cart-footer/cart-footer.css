@@ -1,5 +1,5 @@
 @reference "../../tailwind.storybook.css";
 
-.cart-footer {
+.ch-cart-footer {
   @apply border-t px-4 py-6 sm:px-6 text-center;
 }

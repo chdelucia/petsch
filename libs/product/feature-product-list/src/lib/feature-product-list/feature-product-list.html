@@ -3,37 +3,37 @@
     @if(error()) {
     <div>Algo fue mal: {{error()}}</div>
     } @else if (!loading()) {
-    <lib-ui-pagination
+    <lib-ch-ui-pagination
       class="chars__list__pagination"
       [page]="currentPage()"
       [totalPages]="totalPages()"
       (pageChange)="handlePageChange($event)"
-    ></lib-ui-pagination>
+    ></lib-ch-ui-pagination>
 
     <section class="char-grid" [class.char-grid--no-filters]="!showFilters()">
-      @for (item of products(); track item.id; let first = $first) {
-      <lib-ui-card
+      @for (item of products(); track item.id; let index = $index) {
+      <lib-ch-ui-card
         class="card-effect"
         [id]="item.id"
         [name]="item.name"
         [imageUrl]="item.photo_url"
         [viewTransitionName]="transitionService.getViewTransitionName(item.id)"
-        [priority]="first"
+        [priority]="index < 8"
       >
         <div info>
           <p>{{ item.kind }} {{ item.health }}</p>
           <p>{{ item.height }}cm {{item.length}}cm {{ item.weight }}g</p>
         </div>
 
-        <lib-ui-button fullWidth (clicked)="handlePotdClick(item)"
-          >{{t(getButtonText())}}</lib-ui-button
+        <lib-ch-ui-button fullWidth (clicked)="handlePotdClick(item)"
+          >{{t(getButtonText())}}</lib-ch-ui-button
         >
-        >
-      </lib-ui-card>
+
+      </lib-ch-ui-card>
       }
     </section>
     } @else {
-    <lib-ui-card-skeleton></lib-ui-card-skeleton>
+    <lib-ch-ui-card-skeleton></lib-ch-ui-card-skeleton>
     }
   </div>
 </ng-container>

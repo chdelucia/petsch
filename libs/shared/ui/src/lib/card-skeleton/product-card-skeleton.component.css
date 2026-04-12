@@ -1,33 +1,33 @@
 @reference "../../tailwind.storybook.css";
 
-.skeleton-header {
+.ch-skeleton-header {
   @apply flex items-center mb-4 animate-pulse justify-end;
 }
 
-.skeleton-header__bar {
+.ch-skeleton-header__bar {
   @apply min-h-10 w-80 bg-gray-300;
 }
 
-.skeleton-grid {
+.ch-skeleton-grid {
   @apply mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 xl:gap-x-8;
 }
 
-.skeleton-card {
+.ch-skeleton-card {
   @apply max-w-sm rounded overflow-hidden shadow-lg animate-pulse;
 }
 
-.skeleton-card__img {
+.ch-skeleton-card__img {
   @apply min-h-80 bg-gray-300;
 }
 
-.skeleton-card__content {
+.ch-skeleton-card__content {
   @apply px-6 py-4;
 }
 
-.skeleton-card__title {
+.ch-skeleton-card__title {
   @apply h-7 bg-gray-300 mb-2;
 }
 
-.skeleton-card__desc {
+.ch-skeleton-card__desc {
   @apply h-4 bg-gray-300 w-2/3;
 }

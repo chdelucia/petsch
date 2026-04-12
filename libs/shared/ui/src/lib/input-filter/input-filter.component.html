@@ -1,17 +1,17 @@
-<div class="input-filter" *transloco="let t">
-  <h3 class="input-filter__header">
+<div class="ch-input-filter" *transloco="let t">
+  <h3 class="ch-input-filter__header">
     <button
       (click)="togleFilter()"
       (keypress)="togleFilter()"
       type="button"
-      class="input-filter__button"
+      class="ch-input-filter__button"
       aria-controls="filter-section-0"
       [attr.aria-expanded]="isfilterOpen()"
     >
-      <span class="input-filter__title"> {{ title() | uppercase }}</span>
-      <span class="input-filter__icon-container">
+      <span class="ch-input-filter__title"> {{ title() | uppercase }}</span>
+      <span class="ch-input-filter__icon-container">
         <svg
-          class="input-filter__icon"
+          class="ch-input-filter__icon"
           [class.hidden]="isfilterOpen()"
           viewBox="0 0 20 20"
           fill="currentColor"
@@ -23,7 +23,7 @@
         </svg>
 
         <svg
-          class="input-filter__icon"
+          class="ch-input-filter__icon"
           [class.hidden]="!isfilterOpen()"
           viewBox="0 0 20 20"
           fill="currentColor"
@@ -41,12 +41,12 @@
 
   <div
     id="filter-section-0"
-    class="input-filter__content"
+    class="ch-input-filter__content"
     [class.hidden]="!isfilterOpen()"
   >
-    <div class="input-filter__input-container">
+    <div class="ch-input-filter__input-container">
       <svg
-        class="input-filter__search-icon"
+        class="ch-input-filter__search-icon"
         aria-hidden="true"
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
@@ -69,37 +69,37 @@
       [value]="value()"
       name="price"
       type="text"
-      class="input-filter__input"
+      class="ch-input-filter__input"
       [placeholder]="t('searchByName')"
     />
   </div>
 
   @if (lastSearch().length) {
     <div
-      class="input-filter__last-searches"
+      class="ch-input-filter__last-searches"
       [class.hidden]="!isLastSearchOpen()"
     >
-      <small class="input-filter__last-searches-title">{{
+      <small class="ch-input-filter__last-searches-title">{{
         t('lastSearches')
       }}</small>
       @for (item of lastSearch() | slice: 0 : 3; track item) {
-        <div class="input-filter__last-search-item">
-          <lib-ui-button
+        <div class="ch-input-filter__last-search-item">
+          <lib-ch-ui-button
             variant="link"
             (click)="searchByOldValue(item)"
             (keydown)="searchByOldValue(item)"
-            class="input-filter__last-search-text"
+            class="ch-input-filter__last-search-text"
           >
             {{ item }}
-          </lib-ui-button>
+          </lib-ch-ui-button>
           <button
             type="button"
-            class="input-filter__last-search-remove"
+            class="ch-input-filter__last-search-remove"
             (click)="removeSearch($index, $event)"
           >
-            <span class="input-filter__sr">{{ t('close') }}</span>
+            <span class="ch-input-filter__sr">{{ t('close') }}</span>
             <svg
-              class="input-filter__close-icon"
+              class="ch-input-filter__close-icon"
               fill="none"
               viewBox="0 0 24 24"
               stroke-width="1.5"

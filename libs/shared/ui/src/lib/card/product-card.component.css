@@ -1,6 +1,6 @@
 @reference "../../tailwind.storybook.css";
 
-.favorite-icon {
+.ch-favorite-icon {
   @apply z-10 h-7 w-7 absolute top-2 right-2 text-transparent stroke-indigo-600 cursor-pointer;
   &:hover {
     @apply text-indigo-600;
@@ -13,43 +13,43 @@
   }
 }
 
-.product-card {
+.ch-product-card {
   @apply relative;
 }
 
-.product-card__img-container {
+.ch-product-card__img-container {
   @apply w-full h-72 overflow-hidden rounded-md bg-gray-200 relative;
   aspect-ratio: 1 / 1;
 }
 
-.product-card__img {
+.ch-product-card__img {
   @apply h-full w-full object-cover object-center transition-opacity;
 
-  .product-card:hover & {
+  .ch-product-card:hover & {
     @apply opacity-75;
   }
 }
 
-.product-card__info {
+.ch-product-card__info {
   @apply mt-2 flex justify-between;
 }
 
-.product-card__details {
+.ch-product-card__details {
   @apply overflow-hidden pb-2;
 }
 
-.product-card__title {
+.ch-product-card__title {
   @apply text-2xl truncate text-gray-700 mb-3;
 }
 
-.product-card__link-overlay {
+.ch-product-card__link-overlay {
   @apply absolute inset-0;
 }
 
-.product-card__meta {
+.ch-product-card__meta {
   @apply flex justify-between;
 }
 
-.product-card__price {
+.ch-product-card__price {
   @apply text-3xl;
 }

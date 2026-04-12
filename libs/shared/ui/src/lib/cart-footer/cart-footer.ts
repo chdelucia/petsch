@@ -1,14 +1,14 @@
 import { Component, input, output } from '@angular/core';
-import { Button } from '../button/button';
+import { ChButton } from '../button/button';
 import { TranslocoDirective } from '@jsverse/transloco';
 
 @Component({
-  selector: 'lib-ui-cart-footer',
-  imports: [Button, TranslocoDirective],
+  selector: 'lib-ch-ui-cart-footer',
+  imports: [ChButton, TranslocoDirective],
   templateUrl: './cart-footer.html',
   styleUrl: './cart-footer.css',
 })
-export class CartFooter {
+export class ChCartFooter {
   closeLabel = input<string>();
 
   closeDrawer = output<void>();

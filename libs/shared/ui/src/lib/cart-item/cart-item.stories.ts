@@ -1,14 +1,14 @@
 import type { Meta, StoryObj } from '@storybook/angular';
-import { CartItem } from './cart-item';
+import { ChCartItem } from './cart-item';
 
-const meta: Meta<CartItem> = {
-  component: CartItem,
-  title: 'Molecules/CartItem',
+const meta: Meta<ChCartItem> = {
+  component: ChCartItem,
+  title: 'Molecules/ChCartItem',
   tags: ['autodocs'],
 };
 export default meta;
 
-type Story = StoryObj<CartItem>;
+type Story = StoryObj<ChCartItem>;
 
 export const Primary: Story = {
   args: {
