@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file. See [standa
 
 ## [1.0.0](https://github.com/chdelucia/petsch/compare/v0.0.42...v1.0.0) (2026-04-12)
 
+
+### Features
+
+* try chromatic CI ([9fa4201](https://github.com/chdelucia/petsch/commit/9fa4201c27924139ddc6339242e0da116edb3a7f))
+
+### [0.0.42](https://github.com/chdelucia/petsch/compare/v0.0.41...v0.0.42) (2026-04-12)
+
+
 ### Features
 
 - **ci:** improve ci ([a61ebcd](https://github.com/chdelucia/petsch/commit/a61ebcd7543ebec7b8410d1e052fe3a35b712136))
