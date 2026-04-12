@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.39](https://github.com/chdelucia/petsch/compare/v0.0.38...v0.0.39) (2026-04-12)
+
+
+### Features
+
+* dropdown ([4913c11](https://github.com/chdelucia/petsch/commit/4913c119912274634d6d90bbbf1b9aa1a87bf384))
+* **uilib:** add dropbown filter ([a70d0e4](https://github.com/chdelucia/petsch/commit/a70d0e439567f9df460056d1634a93d3d7c75bf7))
+
 ### [0.0.38](https://github.com/chdelucia/petsch/compare/v0.0.37...v0.0.38) (2026-04-12)
 
 
