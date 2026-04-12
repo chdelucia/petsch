@@ -1,7 +1,5 @@
 import { Component, inject, signal } from '@angular/core';
-import {
-  FeatureProductList
-} from '@petsch/feature-product-list';
+import { FeatureProductList } from '@petsch/feature-product-list';
 import { PETLIST_STORE } from '@petsch/api';
 import { FeaturePetOfDay } from '@petsch/feature-pet-of-day';
 import { TranslocoDirective } from '@jsverse/transloco';
