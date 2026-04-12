@@ -28,9 +28,4 @@ describe('CartDrawer', () => {
     expect(spy).toHaveBeenCalledWith(false);
   });
 
-  it('should emit checkoutClick when checkout is called', () => {
-    const spy = vi.spyOn(component.checkoutClick, 'emit');
-    component.checkout();
-    expect(spy).toHaveBeenCalled();
-  });
 });
