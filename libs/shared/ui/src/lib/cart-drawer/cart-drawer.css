@@ -33,7 +33,7 @@
 }
 
 .ch-cart-drawer-header {
-  @apply flex items-start justify-between;
+  @apply flex items-start justify-between border-b border-gray-200 pb-2;
 }
 
 .ch-cart-drawer-title {

@@ -18,6 +18,7 @@ describe('FeatureProductDetails', () => {
     height: 10,
     length: 10,
     description: 'Test Description',
+    health: 'healthy',
   };
 
   const mockProductService = {

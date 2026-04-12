@@ -18,7 +18,6 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 export class ChRadioFilter implements ControlValueAccessor {
   title = input.required<string>();
   options = input.required<{ value: string; text: string }[]>();
-  testId = input<string>();
 
   isOpen = signal(true);
   value = signal('');

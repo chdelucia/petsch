@@ -42,7 +42,6 @@
     class="ch-filter-container__section"
     id="filter-section-0"
     [class.hidden]="!isOpen()"
-    [attr.data-testid]="testId()"
   >
     <div class="ch-filter-container__list">
       @for (item of options(); track $index) {
@@ -56,9 +55,6 @@
             [value]="item.value"
             type="radio"
             class="ch-filter-container__input"
-            [attr.data-testid]="
-              testId() ? testId() + '-option-' + item.value : null
-            "
           />
           <label [for]="title() + $index" class="ch-filter-container__label">{{
             item.text
