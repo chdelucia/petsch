@@ -14,7 +14,7 @@ describe('FeatureProductList', () => {
 
   beforeEach(async () => {
     store = {
-      updateFilters: vi.fn(),
+      applyFilters: vi.fn(),
       clearProducts: vi.fn(),
       showFilters: signal(true),
       gridView: signal(true),

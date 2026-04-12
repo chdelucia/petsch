@@ -91,13 +91,16 @@ export const ProductsStore = signalStore(
         }
       },
 
-      updateFilters(filters: Partial<Filters>) {
+      applyFilters(filters: Partial<Filters>) {
         const { name, ...rest } = filters;
+        patchState(store, { filtersApplied: buildQuery(rest)});
 
-        patchState(store, {
-          filtersApplied: buildQuery(rest),
-          filterName: name ?? store.filterName(),
-        });
+        return this.loadProducts({ ...filters, _page: 1 });
+      },
+
+      applyPagination(page: number) {
+        const filters = store.filtersApplied();
+        return this.loadProducts({ ...filters, _page: page });
       },
 
       setFilterName(value: string) {

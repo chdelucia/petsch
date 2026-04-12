@@ -11,7 +11,8 @@ export interface ProductsStoreContract {
   filterName: Signal<string>;
   loadProducts(filters: Partial<Filters>): Promise<void>;
   applySort(sort: { key: string; order: string }): Promise<void>;
-  updateFilters(filters: Partial<Filters>): void;
+  applyFilters(filters: Partial<Filters>): Promise<void>;
+  applyPagination(page: number): Promise<void>;
   setFilterName(value: string): void;
   removeFilter<K extends keyof Filters>(key: K): void;
 }

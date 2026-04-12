@@ -36,8 +36,7 @@ export class FeatureProductList {
   error = this.store.error;
 
   handlePageChange(page: number): void {
-    const filters = this.store.filtersApplied();
-    this.store.loadProducts({ ...filters, _page: page });
+    this.store.applyPagination(page);
   }
 
   getButtonText(): string {

@@ -1,9 +1,9 @@
-import { Component, inject } from '@angular/core';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { Component, inject, computed } from '@angular/core';
+import { takeUntilDestroyed, toSignal } from '@angular/core/rxjs-interop';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { TranslocoService, TranslocoDirective } from '@jsverse/transloco';
 import { Filters, PETLIST_STORE } from '@petsch/api';
-import { debounceTime } from 'rxjs';
+import { debounceTime, Observable } from 'rxjs';
 import {
   ChInputFilter,
   ChRadioFilter,
@@ -18,6 +18,9 @@ interface FilterConfig {
   triggersLoad: boolean;
 }
 
+const kindOptions = ['dog', 'cat'] as const;
+type KindKey = (typeof kindOptions)[number];
+
 @Component({
   selector: 'lib-feature-filters',
   imports: [
@@ -31,33 +34,45 @@ interface FilterConfig {
 })
 export class FeatureFilters {
   readonly store = inject(PETLIST_STORE);
+  private readonly transloco = inject(TranslocoService);
 
   form = new FormGroup({});
 
-  private readonly transloco = inject(TranslocoService);
+  private readonly kindOptions = kindOptions;
 
-  readonly filterConfigs: FilterConfig[] = [
-    {
-      key: 'name',
-      type: 'input',
-      options: [],
-      debounceTime: 0,
-      triggersLoad: false,
-    },
-    {
-      key: 'kind',
-      type: 'radio',
-      options: [
-        { value: 'dog', text: this.transloco.translate('dog') },
-        { value: 'cat', text: this.transloco.translate('cat') },
-      ],
-      debounceTime: 0,
-      triggersLoad: true,
-    },
-  ];
+  private readonly translations = toSignal(
+    this.transloco.selectTranslateObject(
+      this.kindOptions
+    ) as unknown as Observable<Record<KindKey, string>>,
+    { initialValue: {} as Record<KindKey, string> }
+  );
+
+  readonly filterConfigs = computed<FilterConfig[]>(() => {
+    const t = this.translations() ?? {};
+
+    return [
+      {
+        key: 'name',
+        type: 'input',
+        options: [],
+        debounceTime: 0,
+        triggersLoad: false,
+      },
+      {
+        key: 'kind',
+        type: 'radio',
+        options: this.kindOptions.map((key) => ({
+          value: key,
+          text: t[key] ?? key,
+        })),
+        debounceTime: 0,
+        triggersLoad: true,
+      },
+    ];
+  });
 
   constructor() {
-    this.filterConfigs.forEach((config) => {
+    this.filterConfigs().forEach((config) => {
       this.form.addControl(config.key as string, new FormControl(''));
 
       (this.form.get(config.key as string) as FormControl).valueChanges
@@ -65,13 +80,9 @@ export class FeatureFilters {
         .subscribe((value: string) => {
           if (config.key === 'name') {
             this.store.setFilterName(value || '');
-          } else {
-            this.store.updateFilters({ [config.key]: value || '' });
           }
           if (config.triggersLoad) {
-            const filters = { ...this.store.filtersApplied() };
-            delete filters.name;
-            this.store.loadProducts({ ...filters, _page: 1 });
+            this.store.applyFilters({ [config.key]: value || '' });
           }
         });
     });

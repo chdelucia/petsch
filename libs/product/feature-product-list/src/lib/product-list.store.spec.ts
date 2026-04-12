@@ -88,7 +88,7 @@ describe('ProductsStore', () => {
   });
 
   it('should update filters', () => {
-    store.updateFilters({ kind: 'dog' });
+    store.applyFilters({ kind: 'dog' });
     expect(store.filtersApplied()).toEqual({
       kind: 'dog',
       _page: 1,
@@ -97,7 +97,7 @@ describe('ProductsStore', () => {
   });
 
   it('should remove filter', () => {
-    store.updateFilters({ kind: 'dog' });
+    store.applyFilters({ kind: 'dog' });
     store.removeFilter('kind');
     expect(store.filtersApplied()).toEqual({ _page: 1, _limit: 12 });
 

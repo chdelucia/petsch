@@ -44,7 +44,7 @@ describe('FeaturePage', () => {
             filterName: signal(''),
             loadProducts: vi.fn(),
             applySort: vi.fn(),
-            updateFilters: vi.fn(),
+            applyFilters: vi.fn(),
             setFilterName: vi.fn(),
             removeFilter: vi.fn(),
           },
