@@ -11,13 +11,14 @@
     ></lib-ui-pagination>
 
     <section class="char-grid" [class.char-grid--no-filters]="!showFilters()">
-      @for (item of products(); track item.id) {
+      @for (item of products(); track item.id; let first = $first) {
       <lib-ui-card
         class="card-effect"
         [id]="item.id"
         [name]="item.name"
         [imageUrl]="item.photo_url"
         [viewTransitionName]="transitionService.getViewTransitionName(item.id)"
+        [priority]="first"
       >
         <div info>
           <p>{{ item.kind }} {{ item.health }}</p>

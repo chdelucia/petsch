@@ -1,9 +1,11 @@
 <div class="product-card">
   <div class="product-card__img-container">
     <img
-      [src]="imageUrl()"
+      [ngSrc]="imageUrl()"
       [alt]="name()"
       [style.viewTransitionName]="viewTransitionName()"
+      [priority]="priority()"
+      fill
       class="product-card__img"
     />
   </div>

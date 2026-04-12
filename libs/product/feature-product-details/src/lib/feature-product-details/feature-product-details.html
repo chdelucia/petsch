@@ -20,10 +20,12 @@
     <div class="product-details__gallery">
       <div class="product-details__main-img-container banner-img">
         <img
-          [src]="item.photo_url"
+          [ngSrc]="item.photo_url"
           [alt]="item.name"
           class="product-details__main-img"
           [style.viewTransitionName]="transitionService.getViewTransitionName(id())"
+          fill
+          priority
         />
       </div>
     </div>
