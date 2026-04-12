@@ -13,7 +13,6 @@ describe('ChCartFooter', () => {
 
     fixture = TestBed.createComponent(ChCartFooter);
     component = fixture.componentInstance;
-    fixture.componentRef.setInput('subtotal', 100);
     await fixture.whenStable();
   });
 
