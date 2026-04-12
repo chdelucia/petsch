@@ -9,7 +9,9 @@
     "uilib": "nx storybook ui",
     "ui_test": "nx test-storybook ui",
     "storybook:generate": "nx g @nx/angular:stories ui",
-    "build-storybook": "nx build-storybook ui"
+    "build-storybook": "nx build-storybook ui",
+    "release": "standard-version",
+    "mayor": "standard-version --release-as major"
   },
   "private": true,
   "dependencies": {
