@@ -19,9 +19,7 @@
       "@petsch/data-access": ["pet/data-access/src/index.ts"],
       "@petsch/shell": ["pet/shell/src/index.ts"],
       "@petsch/feature-pet-list": ["pet/feature-pet-list/src/index.ts"],
-      "@petsch/feature-pet-details": [
-        "pet/feature-pet-details/src/index.ts"
-      ],
+      "@petsch/feature-pet-details": ["pet/feature-pet-details/src/index.ts"],
       "@petsch/obs-api": ["libs/shared/observability/api/src/index.ts"],
       "@petsch/obs-data-access": [
         "libs/shared/observability/data-access/src/index.ts"

@@ -21,8 +21,7 @@ export default defineConfig(() => ({
     setupFiles: ['src/test-setup.ts'],
     reporters: ['default'],
     coverage: {
-      reportsDirectory:
-        '../../../coverage/libs/product/feature-pet-details',
+      reportsDirectory: '../../../coverage/libs/product/feature-pet-details',
       provider: 'v8' as const,
       reporter: ['text', 'lcov'],
     },
