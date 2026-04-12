@@ -21,19 +21,27 @@ test.describe('Sorting', () => {
 
   test('should sort by weight', async () => {
     await productListPage.selectSort('weight', 'asc');
-    await expect(productListPage.getSortDropdown()).toContainText('Weight: Asc');
+    await expect(productListPage.getSortDropdown()).toContainText(
+      'Weight: Asc',
+    );
     await expect(productListPage.getProductCards().first()).toBeVisible();
 
     await productListPage.selectSort('weight', 'desc');
-    await expect(productListPage.getSortDropdown()).toContainText('Weight: Desc');
+    await expect(productListPage.getSortDropdown()).toContainText(
+      'Weight: Desc',
+    );
     await expect(productListPage.getProductCards().first()).toBeVisible();
   });
 
   test('should sort by height', async () => {
     await productListPage.selectSort('height', 'asc');
-    await expect(productListPage.getSortDropdown()).toContainText('Height: Asc');
+    await expect(productListPage.getSortDropdown()).toContainText(
+      'Height: Asc',
+    );
 
     await productListPage.selectSort('height', 'desc');
-    await expect(productListPage.getSortDropdown()).toContainText('Height: Desc');
+    await expect(productListPage.getSortDropdown()).toContainText(
+      'Height: Desc',
+    );
   });
 });

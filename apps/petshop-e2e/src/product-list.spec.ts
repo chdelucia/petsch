@@ -20,10 +20,14 @@ test.describe('Product List', () => {
     await expect(pagination).toBeVisible();
 
     await productListPage.getPaginationNext().click();
-    await expect(productListPage.page.getByTestId('product-list-pagination-number')).toContainText('2');
+    await expect(
+      productListPage.page.getByTestId('product-list-pagination-number'),
+    ).toContainText('2');
 
     await productListPage.getPaginationPrev().click();
-    await expect(productListPage.page.getByTestId('product-list-pagination-number')).toContainText('1');
+    await expect(
+      productListPage.page.getByTestId('product-list-pagination-number'),
+    ).toContainText('1');
   });
 
   test('should sort products', async () => {

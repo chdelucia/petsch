@@ -20,6 +20,8 @@ test.describe('Product Details', () => {
 
   test.skip('should show error for non-existent product', async () => {
     await productDetailsPage.gotoProduct(999999);
-    await expect(productDetailsPage.page.getByTestId('error-alert')).toBeVisible();
+    await expect(
+      productDetailsPage.page.getByTestId('error-alert'),
+    ).toBeVisible();
   });
 });

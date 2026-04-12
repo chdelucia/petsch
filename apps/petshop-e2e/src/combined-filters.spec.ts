@@ -13,7 +13,6 @@ test.describe('Combined Filters', () => {
   });
 
   test('should apply name, kind and sort filters together', async () => {
-
     await expect(productListPage.getProductCards().first()).toBeVisible();
 
     await filtersPage.filterByName('a');
@@ -22,7 +21,9 @@ test.describe('Combined Filters', () => {
 
     await productListPage.selectSort('weight', 'desc');
 
-    await expect(productListPage.getSortDropdown()).toContainText('Weight: Desc');
+    await expect(productListPage.getSortDropdown()).toContainText(
+      'Weight: Desc',
+    );
     await expect(filtersPage.getKindFilterOption('dog')).toBeChecked();
     await expect(filtersPage.getNameFilter()).toHaveValue('a');
   });

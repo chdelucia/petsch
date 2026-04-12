@@ -36,7 +36,11 @@
           "
           (click)="emitValue(item)"
           (keypress)="emitValue(item)"
-          [attr.data-testid]="testId() ? testId() + '-option-' + item.key + '-' + item.order : null"
+          [attr.data-testid]="
+            testId()
+              ? testId() + '-option-' + item.key + '-' + item.order
+              : null
+          "
         >
           {{ item.text }}
         </span>

@@ -68,7 +68,9 @@ export const PetOfTheDayStore = signalStore(
         patchState(store, { isOpen });
       },
       removePet(date: string) {
-        const newEntries = store.entries().filter((entry) => entry.date !== date);
+        const newEntries = store
+          .entries()
+          .filter((entry) => entry.date !== date);
         patchState(store, { entries: newEntries });
         storageService.setValue(STORAGE_KEY, newEntries);
       },
