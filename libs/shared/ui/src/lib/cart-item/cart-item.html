@@ -8,16 +8,8 @@
       <h3>{{ name() }}</h3>
     </div>
 
-    <p class="ch-cart-item__color">{{ day() }}</p>
+    <p class="ch-cart-item__date">{{ day() }}</p>
+    <p class="ch-cart-item__desc">{{description()}}</p>
 
-    <div class="ch-cart-item__footer">
-      <button
-        type="button"
-        (click)="remove.emit()"
-        class="ch-cart-item__remove"
-      >
-        {{ t('remove') }}
-      </button>
-    </div>
   </div>
 </div>
