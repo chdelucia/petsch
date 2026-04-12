@@ -12,7 +12,7 @@ import { PETOFDAY_STORE } from '@petsch/api';
 export class FeaturePetOfDay {
   protected readonly potdStore = inject(PETOFDAY_STORE);
 
-    handleRemove(date: string) {
+  handleRemove(date: string) {
     this.potdStore.removePet(date);
   }
 }
