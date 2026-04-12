@@ -4,6 +4,7 @@ Live: https://petsch.vercel.app/
 
 > **IMPORTANT:** No tengo una PR inicial pero si un sistema de releases estrictos donde podeis ver la config Inicial
 > aqui en la [release 0.0.19](https://github.com/chdelucia/petsch/releases/tag/v0.0.19)
+> o aqui en la [rama directamente](https://github.com/chdelucia/petsch/tree/first-pr)
 
 <br>
 
