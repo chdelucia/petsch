@@ -4,24 +4,21 @@ All notable changes to this project will be documented in this file. See [standa
 
 ## [1.0.0](https://github.com/chdelucia/petsch/compare/v0.0.42...v1.0.0) (2026-04-12)
 
-
 ### Features
 
-* **ci:** improve ci ([a61ebcd](https://github.com/chdelucia/petsch/commit/a61ebcd7543ebec7b8410d1e052fe3a35b712136))
-* try chromatic CI ([9fa4201](https://github.com/chdelucia/petsch/commit/9fa4201c27924139ddc6339242e0da116edb3a7f))
+- **ci:** improve ci ([a61ebcd](https://github.com/chdelucia/petsch/commit/a61ebcd7543ebec7b8410d1e052fe3a35b712136))
+- try chromatic CI ([9fa4201](https://github.com/chdelucia/petsch/commit/9fa4201c27924139ddc6339242e0da116edb3a7f))
 
 ### [0.0.42](https://github.com/chdelucia/petsch/compare/v0.0.41...v0.0.42) (2026-04-12)
 
-
 ### Features
 
-* filters ([b7c14ca](https://github.com/chdelucia/petsch/commit/b7c14ca35528a4d0d5782e040080ce6cae451e8d))
-* sort by ([20d0e28](https://github.com/chdelucia/petsch/commit/20d0e28d8f87882363a928fd499399e94dd87e07))
-
+- filters ([b7c14ca](https://github.com/chdelucia/petsch/commit/b7c14ca35528a4d0d5782e040080ce6cae451e8d))
+- sort by ([20d0e28](https://github.com/chdelucia/petsch/commit/20d0e28d8f87882363a928fd499399e94dd87e07))
 
 ### Bug Fixes
 
-* **test:** resolve failing unit tests in product feature-page and shared ui ([26dab03](https://github.com/chdelucia/petsch/commit/26dab03123b746ecc1177474ed979db937ecdc29))
+- **test:** resolve failing unit tests in product feature-page and shared ui ([26dab03](https://github.com/chdelucia/petsch/commit/26dab03123b746ecc1177474ed979db937ecdc29))
 
 ### [0.0.41](https://github.com/chdelucia/petsch/compare/v0.0.40...v0.0.41) (2026-04-12)
 
