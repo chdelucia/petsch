@@ -8,7 +8,8 @@
     "unit_test": "nx run-many --all --target=test --parallel=4",
     "uilib": "nx storybook ui",
     "ui_test": "nx test-storybook ui",
-    "storybook:generate": "nx g @nx/angular:stories ui"
+    "storybook:generate": "nx g @nx/angular:stories ui",
+    "build-storybook": "nx build-storybook ui"
   },
   "private": true,
   "dependencies": {
@@ -26,6 +27,7 @@
     "@sentry/angular": "^10.47.0",
     "@storybook/addon-styling-webpack": "^3.0.2",
     "@tailwindcss/postcss": "^4.2.2",
+    "chromatic": "^16.2.0",
     "husky": "^9.1.7",
     "rxjs": "~7.8.0",
     "standard-version": "^9.5.0"
