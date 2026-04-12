@@ -17,14 +17,7 @@ describe('ChCartItem', () => {
       'imageSrc',
       'https://tailwindcss.com/plus-assets/img/ecommerce-images/shopping-cart-page-04-product-01.jpg',
     );
-    fixture.componentRef.setInput(
-      'imageAlt',
-      'Salmon orange fabric pouch with match zipper',
-    );
     fixture.componentRef.setInput('name', 'Throwback Hip Bag');
-    fixture.componentRef.setInput('price', 90);
-    fixture.componentRef.setInput('color', 'Salmon');
-    fixture.componentRef.setInput('quantity', 1);
     await fixture.whenStable();
   });
 

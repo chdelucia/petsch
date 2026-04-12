@@ -21,7 +21,8 @@ describe('ChDropdownFilter', () => {
 
   it('should emit value', () => {
     const spy = vi.spyOn(component.sortbyChange, 'emit');
-    component.emitValue('gender');
-    expect(spy).toHaveBeenCalledWith({ key: 'gender', order: '' });
+    const option = { key: 'gender', order: '', text: 'Gender' };
+    component.emitValue(option);
+    expect(spy).toHaveBeenCalledWith(option);
   });
 });
