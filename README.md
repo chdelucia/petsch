@@ -1,15 +1,14 @@
-
 Live: https://petsch.vercel.app/products
 
 Arquitectura basada en: https://nx.dev/blog/architecting-angular-applications
 
-
 > **IMPORTANT:** No tengo una PR inicial pero si un sistema de releases estrictos donde podeis ver la config Inicial
-aqui en la release 0.0.19
+> aqui en la [release 0.0.19](https://github.com/chdelucia/petsch/releases/tag/v0.0.19)
 
 # 🧠 Idea clave / Trade-offs generales
 
 Separación estricta por capas para conseguir:
+
 - Alto desacoplamiento
 - Escalabilidad
 - Testabilidad
@@ -66,11 +65,11 @@ Todo el flujo está completamente automatizado y orquestado mediante:
 ✔ Calidad garantizada desde el primer commit  
 ✔ Reglas estrictas de integración continua  
 ✔ Observabilidad completa del sistema  
-✔ Entregas controladas, seguras y reproducibles  
+✔ Entregas controladas, seguras y reproducibles
 
 # Arquitectura por Dominios
 
-Arquitectura modular basada en dominios con alto desacoplamiento y escalabilidad. 
+Arquitectura modular basada en dominios con alto desacoplamiento y escalabilidad.
 La comunicación entre capas se realiza mediante interfaces y dependency injection (injection tokens).
 
 Structure:
@@ -82,7 +81,7 @@ Domain
 ├─ feature-*    → casos de uso / lógica de aplicación
 ├─ shell        → DI container + wiring de dependencias
 
-shared/ui/ (storybook) 
+shared/ui/ (storybook)
 ├─ atoms        → Piezas básicas indivisibles (botones, inputs).
 ├─ molecules    → Grupos simples de átomos (un campo de búsqueda).
 ├─ organisms    → Secciones complejas de la UI (tarjetas de producto, filtros).
@@ -91,6 +90,7 @@ shared/ui/ (storybook)
 ## Flujo de Dependencias y Reglas de Nx
 
 He configurado reglas estrictas para evitar el "código espagueti" y dependencias circulares:
+
 1.  Un dominio solo puede comunicarse con otros dominios a través de su librería `api`.
 2.  El flujo de dependencia es unidireccional: `shell` → `feature` → `data-access` → `api`.
 3.  `shared/ui` no puede depender de ninguna librería de dominio, manteniéndose pura y agnóstica.
@@ -104,12 +104,12 @@ User Action
 → Data-access  
 → External API  
 → Store updates state  
-→ UI reacts via signals 
-
+→ UI reacts via signals
 
 ## Signal Store vs NgRx clásico
 
 ### Ventajas Signal Store
+
 - Menos complejidad
 - Integración nativa en Angular 21
 - Reactividad con signals
@@ -117,65 +117,70 @@ User Action
 - Mejor performance en updates granulares
 
 ### Inconvenientes
+
 - Menos patrones estandarizados
 - Ecosistema más pequeño
 - Requiere disciplina arquitectural
-
-
 
 ## Stores por features
 
 Cada feature tiene su propio store (no globales).
 
 ### Ventajas
+
 - Aislamiento entre features
 - Escalabilidad horizontal
 - Ownership claro por feature
 
 ### Inconvenientes
+
 - Posible duplicación de lógica
 - Más estructura inicial
-
 
 ## FeaturePage como composition root
 
 ### Responsabilidades
+
 - Composición de UI
 - Orquestación de eventos
 - Delegación al store
 
 ### Ventajas
+
 - Centraliza flujo de UI
 - Evita lógica dispersa
 - Facilita testing
 
 ### Riesgos
-- Puede crecer en exceso si no se controla
 
+- Puede crecer en exceso si no se controla
 
 ## Injection Tokens
 
 Se utilizan para desacoplar dependencias.
 
 ### Ventajas
+
 - Desacoplamiento de implementación
 - Facilita mocking
 - Permite swap de implementaciones
 
 ### Inconvenientes
+
 - Más complejidad inicial
 - Más boilerplate
 - Debug menos directo
 
-
 ## Separación UI vs Feature UI
 
 ### UI shared
+
 - Componentes puros
 - Sin estado de negocio
 - Reutilizables
 
 ### Feature UI
+
 - Conectados a store
 - Contienen lógica de interacción
 - Dependen del dominio
@@ -192,7 +197,7 @@ He tomado estas decisiones por las siguientes ventajas:
 4.  **Facilidad de Testing:** Al desacoplar la UI de la lógica y la lógica del acceso a datos, puedo realizar tests unitarios más robustos y aislados.
 5.  **Desarrollo en Paralelo:** Varios desarrolladores pueden trabajar en diferentes dominios o niveles de UI sin entrar en conflicto.
 6.  **Prevision:** Al estar todo desacoplado si algun dia cambian los servicios no afecta a la arquitectura `plug-in`.
-7.   **Crecimiento:** Cualquier dominio es fácil de ser candidato a un MFE al no estar acoplado a la app principal.
+7.  **Crecimiento:** Cualquier dominio es fácil de ser candidato a un MFE al no estar acoplado a la app principal.
 
 ## 📊 Calidad del Proyecto (SonarCloud)
 
