@@ -6,72 +6,63 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### [0.0.40](https://github.com/chdelucia/petsch/compare/v0.0.39...v0.0.40) (2026-04-12)
 
-
 ### Features
 
-* add 404 page and centralize application routes ([8fc9a48](https://github.com/chdelucia/petsch/commit/8fc9a48d4678644f44e20a58c02b3da1839b8fc5))
-
+- add 404 page and centralize application routes ([8fc9a48](https://github.com/chdelucia/petsch/commit/8fc9a48d4678644f44e20a58c02b3da1839b8fc5))
 
 ### Bug Fixes
 
-* **404:** change css ([9bbbd7c](https://github.com/chdelucia/petsch/commit/9bbbd7cbf8eba7b05e484f38bb86651719cb0825))
+- **404:** change css ([9bbbd7c](https://github.com/chdelucia/petsch/commit/9bbbd7cbf8eba7b05e484f38bb86651719cb0825))
 
 ### [0.0.39](https://github.com/chdelucia/petsch/compare/v0.0.38...v0.0.39) (2026-04-12)
 
-
 ### Features
 
-* dropdown ([4913c11](https://github.com/chdelucia/petsch/commit/4913c119912274634d6d90bbbf1b9aa1a87bf384))
-* **uilib:** add dropbown filter ([a70d0e4](https://github.com/chdelucia/petsch/commit/a70d0e439567f9df460056d1634a93d3d7c75bf7))
+- dropdown ([4913c11](https://github.com/chdelucia/petsch/commit/4913c119912274634d6d90bbbf1b9aa1a87bf384))
+- **uilib:** add dropbown filter ([a70d0e4](https://github.com/chdelucia/petsch/commit/a70d0e439567f9df460056d1634a93d3d7c75bf7))
 
 ### [0.0.38](https://github.com/chdelucia/petsch/compare/v0.0.37...v0.0.38) (2026-04-12)
 
-
 ### Features
 
-* add missing translations and implement dynamic SEO metadata ([021b539](https://github.com/chdelucia/petsch/commit/021b5390b5c7e48519dce847899dc97da125ce0c))
+- add missing translations and implement dynamic SEO metadata ([021b539](https://github.com/chdelucia/petsch/commit/021b5390b5c7e48519dce847899dc97da125ce0c))
 
 ### [0.0.37](https://github.com/chdelucia/petsch/compare/v0.0.36...v0.0.37) (2026-04-12)
 
-
 ### Features
 
-* **lang:** add lang selector ([3c54ffe](https://github.com/chdelucia/petsch/commit/3c54ffe80fbb5473ffd562def96f8736aa711bec))
-
+- **lang:** add lang selector ([3c54ffe](https://github.com/chdelucia/petsch/commit/3c54ffe80fbb5473ffd562def96f8736aa711bec))
 
 ### Bug Fixes
 
-* open ptod ([57ee93b](https://github.com/chdelucia/petsch/commit/57ee93b3cbecaec8bd0532ad75fdf922482c7df1))
+- open ptod ([57ee93b](https://github.com/chdelucia/petsch/commit/57ee93b3cbecaec8bd0532ad75fdf922482c7df1))
 
 ### [0.0.36](https://github.com/chdelucia/petsch/compare/v0.0.35...v0.0.36) (2026-04-12)
 
-
 ### Bug Fixes
 
-* **css:** remove unused css ([35b3141](https://github.com/chdelucia/petsch/commit/35b314100bb441213bcb3177c6c87edb2bcb4091))
-* remove css ([62983c3](https://github.com/chdelucia/petsch/commit/62983c36281e1c9db05e594faf184201d921adce))
+- **css:** remove unused css ([35b3141](https://github.com/chdelucia/petsch/commit/35b314100bb441213bcb3177c6c87edb2bcb4091))
+- remove css ([62983c3](https://github.com/chdelucia/petsch/commit/62983c36281e1c9db05e594faf184201d921adce))
 
 ### [0.0.35](https://github.com/chdelucia/petsch/compare/v0.0.34...v0.0.35) (2026-04-12)
 
 ### [0.0.34](https://github.com/chdelucia/petsch/compare/v0.0.33...v0.0.34) (2026-04-12)
 
-
 ### Features
 
-* 🎨 Palette: Improve i18n and accessibility ([0204923](https://github.com/chdelucia/petsch/commit/0204923ab293cd0b57f0c3090a3546cb4e8d6ab5))
-* **product:** implement Pet of the Day domain and UI integration ([2529799](https://github.com/chdelucia/petsch/commit/2529799e19dabd27b58a6504a645c0fd8e667d3f))
-
+- 🎨 Palette: Improve i18n and accessibility ([0204923](https://github.com/chdelucia/petsch/commit/0204923ab293cd0b57f0c3090a3546cb4e8d6ab5))
+- **product:** implement Pet of the Day domain and UI integration ([2529799](https://github.com/chdelucia/petsch/commit/2529799e19dabd27b58a6504a645c0fd8e667d3f))
 
 ### Bug Fixes
 
-* boundaries ([7123f3f](https://github.com/chdelucia/petsch/commit/7123f3f961cfe69b1b4bc82bf700a85bfc6b2d26))
-* conflicts ([f69f63c](https://github.com/chdelucia/petsch/commit/f69f63c6e09f246def5a30a5bebd7f441973592a))
-* delete redundant boundaries ([c16eb2e](https://github.com/chdelucia/petsch/commit/c16eb2e732344ce733235f6d7e499dd4f4a00e84))
-* **filters:** fix filter bug ([99c9cba](https://github.com/chdelucia/petsch/commit/99c9cba02f3d66af74f375035a9cb174648a8805))
-* linter ([97bcf33](https://github.com/chdelucia/petsch/commit/97bcf331e6ece17575b40bd579fde490ea4fcac9))
-* repair failing unit tests and increase coverage to 80%+ ([6dc6816](https://github.com/chdelucia/petsch/commit/6dc681656909ed300110206e28ce333879ae96c4))
-* repair failing unit tests and increase coverage to 80%+ ([898e441](https://github.com/chdelucia/petsch/commit/898e441bfe1c4701d598fcd1f848d6502af3e4e4))
-* **ui:** provide transloco testing module to storybook ([a3f912a](https://github.com/chdelucia/petsch/commit/a3f912a5ae33d8184dcba5a0f516096948dbecf7))
+- boundaries ([7123f3f](https://github.com/chdelucia/petsch/commit/7123f3f961cfe69b1b4bc82bf700a85bfc6b2d26))
+- conflicts ([f69f63c](https://github.com/chdelucia/petsch/commit/f69f63c6e09f246def5a30a5bebd7f441973592a))
+- delete redundant boundaries ([c16eb2e](https://github.com/chdelucia/petsch/commit/c16eb2e732344ce733235f6d7e499dd4f4a00e84))
+- **filters:** fix filter bug ([99c9cba](https://github.com/chdelucia/petsch/commit/99c9cba02f3d66af74f375035a9cb174648a8805))
+- linter ([97bcf33](https://github.com/chdelucia/petsch/commit/97bcf331e6ece17575b40bd579fde490ea4fcac9))
+- repair failing unit tests and increase coverage to 80%+ ([6dc6816](https://github.com/chdelucia/petsch/commit/6dc681656909ed300110206e28ce333879ae96c4))
+- repair failing unit tests and increase coverage to 80%+ ([898e441](https://github.com/chdelucia/petsch/commit/898e441bfe1c4701d598fcd1f848d6502af3e4e4))
+- **ui:** provide transloco testing module to storybook ([a3f912a](https://github.com/chdelucia/petsch/commit/a3f912a5ae33d8184dcba5a0f516096948dbecf7))
 
 ### [0.0.33](https://github.com/chdelucia/petsch/compare/v0.0.32...v0.0.33) (2026-04-11)
 
