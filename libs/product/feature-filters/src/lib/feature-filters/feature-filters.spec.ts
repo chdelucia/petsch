@@ -11,6 +11,7 @@ describe('FeatureFilters', () => {
     setFilterName: any;
     applyFilters: any;
     removeFilter: any;
+    loadProducts: any;
   };
 
   beforeEach(async () => {
@@ -20,6 +21,7 @@ describe('FeatureFilters', () => {
       setFilterName: vi.fn(),
       applyFilters: vi.fn(),
       removeFilter: vi.fn(),
+      loadProducts: vi.fn(),
     };
 
     await TestBed.configureTestingModule({
