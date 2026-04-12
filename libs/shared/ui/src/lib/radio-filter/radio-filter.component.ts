@@ -3,19 +3,19 @@ import { CommonModule } from '@angular/common';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
-  selector: 'lib-ui-radio-filter',
+  selector: 'lib-ch-ui-radio-filter',
   imports: [CommonModule],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => RadioFilter),
+      useExisting: forwardRef(() => ChRadioFilter),
       multi: true,
     },
   ],
   templateUrl: './radio-filter.component.html',
   styleUrl: './radio-filter.component.css',
 })
-export class RadioFilter implements ControlValueAccessor {
+export class ChRadioFilter implements ControlValueAccessor {
   title = input.required<string>();
   options = input.required<{ value: string; text: string }[]>();
 

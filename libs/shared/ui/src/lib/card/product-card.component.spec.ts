@@ -1,19 +1,19 @@
 import { getTranslocoTestingModule } from '@petsch/shared-utils';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { Card } from './product-card.component';
+import { ChCard } from './product-card.component';
 import { provideRouter } from '@angular/router';
 
-describe('Card', () => {
-  let component: Card;
-  let fixture: ComponentFixture<Card>;
+describe('ChCard', () => {
+  let component: ChCard;
+  let fixture: ComponentFixture<ChCard>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [Card, getTranslocoTestingModule()],
+      imports: [ChCard, getTranslocoTestingModule()],
       providers: [provideRouter([])],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(Card);
+    fixture = TestBed.createComponent(ChCard);
     component = fixture.componentInstance;
     fixture.componentRef.setInput('id', '1');
     fixture.componentRef.setInput('name', 'Product Name');

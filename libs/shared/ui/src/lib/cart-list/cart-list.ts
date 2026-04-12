@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'lib-ui-cart-list',
+  selector: 'lib-ch-ui-cart-list',
   imports: [],
   templateUrl: './cart-list.html',
   styleUrl: './cart-list.css',
 })
-export class CartList {}
+export class ChCartList {}

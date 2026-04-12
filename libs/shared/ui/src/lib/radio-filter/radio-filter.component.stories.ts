@@ -1,14 +1,14 @@
 import type { Meta, StoryObj } from '@storybook/angular';
-import { RadioFilter } from './radio-filter.component';
+import { ChRadioFilter } from './radio-filter.component';
 
-const meta: Meta<RadioFilter> = {
-  component: RadioFilter,
-  title: 'atoms/RadioFilter',
+const meta: Meta<ChRadioFilter> = {
+  component: ChRadioFilter,
+  title: 'atoms/ChRadioFilter',
   tags: ['autodocs'],
 };
 export default meta;
 
-type Story = StoryObj<RadioFilter>;
+type Story = StoryObj<ChRadioFilter>;
 
 export const Primary: Story = {
   args: {

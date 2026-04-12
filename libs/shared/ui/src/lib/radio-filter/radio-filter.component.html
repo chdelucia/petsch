@@ -1,16 +1,16 @@
-<div class="filter-container">
-  <h3 class="filter-container__header">
+<div class="ch-filter-container">
+  <h3 class="ch-filter-container__header">
     <button
       (click)="togleFilter()"
       type="button"
-      class="filter-container__button"
+      class="ch-filter-container__button"
       aria-controls="filter-section-0"
       aria-expanded="false"
     >
-      <span class="filter-container__title"> {{ title() | uppercase }}</span>
-      <span class="filter-container__icon-container">
+      <span class="ch-filter-container__title"> {{ title() | uppercase }}</span>
+      <span class="ch-filter-container__icon-container">
         <svg
-          class="filter-container__icon"
+          class="ch-filter-container__icon"
           [class.hidden]="isOpen()"
           viewBox="0 0 20 20"
           fill="currentColor"
@@ -22,7 +22,7 @@
         </svg>
 
         <svg
-          class="filter-container__icon"
+          class="ch-filter-container__icon"
           [class.hidden]="!isOpen()"
           viewBox="0 0 20 20"
           fill="currentColor"
@@ -39,13 +39,13 @@
   </h3>
 
   <div
-    class="filter-container__section"
+    class="ch-filter-container__section"
     id="filter-section-0"
     [class.hidden]="!isOpen()"
   >
-    <div class="filter-container__list">
+    <div class="ch-filter-container__list">
       @for (item of options(); track $index) {
-        <div class="filter-container__item">
+        <div class="ch-filter-container__item">
           <input
             (click)="getValue($event)"
             (keydown)="getValue($event)"
@@ -54,9 +54,9 @@
             [name]="title()"
             [value]="item.value"
             type="radio"
-            class="filter-container__input"
+            class="ch-filter-container__input"
           />
-          <label [for]="title() + $index" class="filter-container__label">{{
+          <label [for]="title() + $index" class="ch-filter-container__label">{{
             item.text
           }}</label>
         </div>

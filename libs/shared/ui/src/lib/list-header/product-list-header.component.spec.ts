@@ -1,17 +1,17 @@
 import { getTranslocoTestingModule } from '@petsch/shared-utils';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { ListHeader } from './product-list-header.component';
+import { ChListHeader } from './product-list-header.component';
 
-describe('ListHeader', () => {
-  let component: ListHeader;
-  let fixture: ComponentFixture<ListHeader>;
+describe('ChListHeader', () => {
+  let component: ChListHeader;
+  let fixture: ComponentFixture<ChListHeader>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ListHeader, getTranslocoTestingModule()],
+      imports: [ChListHeader, getTranslocoTestingModule()],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(ListHeader);
+    fixture = TestBed.createComponent(ChListHeader);
     component = fixture.componentInstance;
     fixture.componentRef.setInput('text', 'Test Title');
     fixture.componentRef.setInput('showFilters', true);

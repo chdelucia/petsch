@@ -1,17 +1,17 @@
 <ng-container *transloco="let t">
-  <lib-ui-cart-drawer
+  <lib-ch-ui-cart-drawer
     [open]="potdStore.isOpen()"
     (openChange)="potdStore.togglePoT($event)"
     [titleLabel]="t('petOfTheDay')"
   >
     @for (entry of potdStore.sortedEntries(); track entry.date) {
     <li>
-      <lib-ui-cart-item
+      <lib-ch-ui-cart-item
         [imageSrc]="entry.pet.photo_url"
         [name]="entry.pet.name"
         [day]="entry.date"
-      ></lib-ui-cart-item>
+      ></lib-ch-ui-cart-item>
     </li>
     }
-  </lib-ui-cart-drawer>
+  </lib-ch-ui-cart-drawer>
 </ng-container>

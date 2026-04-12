@@ -2,12 +2,12 @@ import { Component, inject, input, signal } from '@angular/core';
 import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { Router } from '@angular/router';
 import { TranslocoDirective } from '@jsverse/transloco';
-import { Button } from '@petsch/ui';
+import { ChButton } from '@petsch/ui';
 import { Pet, CurrentTransitionService } from '@petsch/api';
 
 @Component({
   selector: 'lib-feature-product-details',
-  imports: [CommonModule, Button, TranslocoDirective, NgOptimizedImage],
+  imports: [CommonModule, ChButton, TranslocoDirective, NgOptimizedImage],
   templateUrl: './feature-product-details.html',
   styleUrl: './feature-product-details.css',
 })

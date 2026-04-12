@@ -6,7 +6,7 @@ import {
 import { PETLIST_STORE, PETOFDAY_STORE } from '@petsch/api';
 import { FeaturePetOfDay, PetOfTheDayStore } from '@petsch/feature-pet-of-day';
 import { TranslocoDirective } from '@jsverse/transloco';
-import { ListHeader } from '@petsch/ui';
+import { ChListHeader } from '@petsch/ui';
 import { FeatureFilters } from '@petsch/feature-filters';
 
 @Component({
@@ -15,7 +15,7 @@ import { FeatureFilters } from '@petsch/feature-filters';
     FeatureProductList,
     FeaturePetOfDay,
     TranslocoDirective,
-    ListHeader,
+    ChListHeader,
     FeatureFilters,
   ],
   providers: [

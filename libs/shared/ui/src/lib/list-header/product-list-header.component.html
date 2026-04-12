@@ -1,16 +1,16 @@
-<section class="top-container" *transloco="let t">
-  <div class="top-container__title">{{ text() }}</div>
+<section class="ch-top-container" *transloco="let t">
+  <div class="ch-top-container__title">{{ text() }}</div>
 
-  <div class="top-container__filters">
+  <div class="ch-top-container__filters">
     <button
       [title]="t('toggleFilters')"
-      class="top-container__filters__btn top-container__filters__btn--mobile"
+      class="ch-top-container__filters__btn ch-top-container__filters__btn--mobile"
       (click)="toggleFilters.emit()"
     >
-      <span class="top-container__filters__sr">{{ t('filters') }}</span>
+      <span class="ch-top-container__filters__sr">{{ t('filters') }}</span>
       <svg
-        class="top-container__filters__togglefilters"
-        [class.active]="showFilters()"
+        class="ch-top-container__filters__togglefilters"
+        [class.ch-active]="showFilters()"
         aria-hidden="true"
         viewBox="0 0 20 20"
         fill="currentColor"
