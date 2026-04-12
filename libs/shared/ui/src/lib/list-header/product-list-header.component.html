@@ -2,6 +2,7 @@
   <div class="ch-top-container__title">{{ text() }}</div>
 
   <div class="ch-top-container__filters">
+    <ng-content select="lib-ch-ui-dropdown-filter"></ng-content>
     <button
       [title]="t('toggleFilters')"
       class="ch-top-container__filters__btn ch-top-container__filters__btn--mobile"

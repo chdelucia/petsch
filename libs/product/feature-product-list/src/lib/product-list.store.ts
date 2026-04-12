@@ -46,39 +46,57 @@ export const ProductsStore = signalStore(
   withMethods((store) => {
     const { productService } = store;
 
+    const buildQuery = (overrides: Partial<Filters>) => {
+      return {
+        ...store.filtersApplied(),
+        ...overrides,
+      };
+    };
+
+    const setLoading = (loading: boolean) =>
+      patchState(store, { loading, error: null });
+
+    const setError = (error: string) =>
+      patchState(store, {
+        loading: false,
+        error,
+        products: [],
+      });
+
+    const setProducts = (result: any) =>
+      patchState(store, {
+        products: result.products,
+        pagination: result.pagination,
+        loading: false,
+      });
+
     return {
       async loadProducts(filters: Partial<Filters>) {
+        setLoading(true);
+
+        const query = buildQuery(filters);
+
         patchState(store, {
-          loading: true,
-          error: null,
-        });
-        patchState(store, {
-          filtersApplied: { ...store.filtersApplied(), ...filters },
+          filtersApplied: query,
         });
 
         try {
           const result = await firstValueFrom(
-            productService.getProducts(filters),
+            productService.getProducts(query),
           );
-          patchState(store, {
-            products: result.products,
-            pagination: result.pagination,
-            loading: false,
-          });
+
+          setProducts(result);
         } catch (err: unknown) {
-          patchState(store, {
-            products: [],
-            pagination: {},
-            loading: false,
-            error: (err as Error)?.message ?? 'Failed to load products',
-          });
+          setError((err as Error)?.message ?? 'Failed to load products');
         }
       },
 
       updateFilters(filters: Partial<Filters>) {
-        const { name, ...otherFilters } = filters;
+        const { name, ...rest } = filters;
+
         patchState(store, {
-          filtersApplied: { ...store.filtersApplied(), ...otherFilters },
+          filtersApplied: buildQuery(rest),
+          filterName: name ?? store.filterName(),
         });
       },
 
@@ -86,20 +104,34 @@ export const ProductsStore = signalStore(
         patchState(store, { filterName: value });
       },
 
-      removeFilter<K extends keyof Filters>(key: K) {
+      removeFilter(key: keyof Filters) {
         if (key === 'name') {
           patchState(store, { filterName: '' });
-        } else {
-          const current = store.filtersApplied();
-          const { [key]: _, ...rest } = current;
-          patchState(store, {
-            filtersApplied: rest,
-          });
+          return;
         }
+
+        const current = store.filtersApplied();
+        const { [key]: _, ...rest } = current;
+
+        patchState(store, {
+          filtersApplied: rest,
+        });
       },
 
       clearProducts() {
         patchState(store, initialState);
+      },
+
+      applySort(sort: { key: string; order: string }) {
+        const query = buildQuery({
+          _page: 1,
+          _sort: sort.key,
+          _order: sort.order,
+        });
+
+        patchState(store, { filtersApplied: query });
+
+        return this.loadProducts(query);
       },
     };
   }),

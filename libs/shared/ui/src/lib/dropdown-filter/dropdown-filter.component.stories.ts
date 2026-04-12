@@ -12,13 +12,12 @@ type Story = StoryObj<ChDropdownFilter>;
 
 export const Primary: Story = {
   args: {
-    sortby: 'id',
     options: [
-      { value: 'id', text: 'Most Popular' },
-      { value: 'asc', text: 'Name: Asc' },
-      { value: 'desc', text: 'Name: Desc' },
-      { value: 'gender', text: 'Gender' },
-      { value: 'status', text: 'Status' },
+      { key: 'id', order: 'asc', text: 'Most Popular' },
+      { key: 'name', order: 'asc', text: 'Name: Asc' },
+      { key: 'name', order: 'desc', text: 'Name: Desc' },
+      { key: 'weight', order: 'asc', text: 'Weight: Asc' },
+      { key: 'weight', order: 'desc', text: 'Weight: Desc' },
     ],
   },
 };

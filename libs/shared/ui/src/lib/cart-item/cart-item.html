@@ -11,7 +11,11 @@
     <p class="ch-cart-item__color">{{ day() }}</p>
 
     <div class="ch-cart-item__footer">
-      <button type="button" (click)="remove.emit()" class="ch-cart-item__remove">
+      <button
+        type="button"
+        (click)="remove.emit()"
+        class="ch-cart-item__remove"
+      >
         {{ t('remove') }}
       </button>
     </div>

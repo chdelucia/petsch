@@ -1,3 +1,5 @@
+@let selected = sortby();
+
 <div class="dropdown">
   <div>
     <button
@@ -6,7 +8,7 @@
       class="dropdown-button"
       id="menu-button"
     >
-      Sort
+      Sort: {{ selected.text }}
       <svg
         [class.open]="isOpen()"
         class="dropdown-icon"
@@ -28,9 +30,11 @@
         <span
           tabindex="0"
           class="dropdown-item"
-          [class.selected]="item.value === sortby()"
-          (click)="emitValue(item.value)"
-          (keypress)="emitValue(item.value)"
+          [class.selected]="
+            item.key === selected.key && item.order === selected.order
+          "
+          (click)="emitValue(item)"
+          (keypress)="emitValue(item)"
         >
           {{ item.text }}
         </span>

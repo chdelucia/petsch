@@ -2,7 +2,10 @@
 @let total = totalPages();
 
 <ul class="ch-pagination" aria-label="Pagination" *transloco="let t">
-  <li class="ch-page-item ch-xs-hide" [ngClass]="{ 'ch-disabled': pageI === 1 }">
+  <li
+    class="ch-page-item ch-xs-hide"
+    [ngClass]="{ 'ch-disabled': pageI === 1 }"
+  >
     <button
       class="ch-page-link"
       (click)="emitPage(1)"
@@ -37,7 +40,10 @@
       {{ t('next') }}
     </button>
   </li>
-  <li class="ch-page-item ch-xs-hide" [ngClass]="{ 'ch-disabled': pageI === total }">
+  <li
+    class="ch-page-item ch-xs-hide"
+    [ngClass]="{ 'ch-disabled': pageI === total }"
+  >
     <button
       class="ch-page-link"
       (click)="emitPage(total)"

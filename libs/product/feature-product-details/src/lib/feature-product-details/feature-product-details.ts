@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { TranslocoDirective } from '@jsverse/transloco';
 import { ChButton } from '@petsch/ui';
 import { Pet, CurrentTransitionService } from '@petsch/api';
+import { APP_ROUTES } from '@petsch/shared-utils';
 
 @Component({
   selector: 'lib-feature-product-details',
@@ -24,6 +25,6 @@ export class FeatureProductDetails {
   error = () => null;
 
   goBack() {
-    this.router.navigate(['/products']);
+    this.router.navigate([APP_ROUTES.PETS]);
   }
 }

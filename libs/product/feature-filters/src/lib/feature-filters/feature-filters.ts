@@ -4,7 +4,11 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { TranslocoService, TranslocoDirective } from '@jsverse/transloco';
 import { Filters, PETLIST_STORE } from '@petsch/api';
 import { debounceTime } from 'rxjs';
-import { ChInputFilter, ChRadioFilter, ChActiveFiltersComponent } from '@petsch/ui';
+import {
+  ChInputFilter,
+  ChRadioFilter,
+  ChActiveFiltersComponent,
+} from '@petsch/ui';
 
 interface FilterConfig {
   key: keyof Filters;
