@@ -4,7 +4,7 @@ import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { Router } from '@angular/router';
 import { TranslocoDirective } from '@jsverse/transloco';
 import { Button } from '@petsch/ui';
-import { Pet } from '@petsch/api';
+import { Pet, CurrentTransitionService } from '@petsch/api';
 
 @Component({
   selector: 'lib-feature-product-details',
@@ -13,6 +13,7 @@ import { Pet } from '@petsch/api';
   styleUrl: './feature-product-details.css',
 })
 export class FeatureProductDetails {
+  protected readonly transitionService = inject(CurrentTransitionService);
   private readonly router = inject(Router);
 
   id = input.required<string>();
