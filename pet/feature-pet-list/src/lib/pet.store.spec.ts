@@ -36,9 +36,7 @@ describe('PetsStore', () => {
   it('should load products and update state on success', async () => {
     const products = [{ id: '1', name: 'Pet 1' }];
     const pagination = { next: 'url' };
-    productServiceMock.getPets.mockReturnValue(
-      of({ products, pagination }),
-    );
+    productServiceMock.getPets.mockReturnValue(of({ products, pagination }));
 
     await store.loadProducts({ name: 'test' });
 
