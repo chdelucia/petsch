@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.5.1](https://github.com/chdelucia/petsch/compare/v1.5.0...v1.5.1) (2026-04-12)
+
+
+### Bug Fixes
+
+* linter ([36f8834](https://github.com/chdelucia/petsch/commit/36f883469e1a9c66cf1e9833a37ac225bdd6575f))
+* linter ([f851425](https://github.com/chdelucia/petsch/commit/f851425ba4224eca250a9467eaa52242e04466ff))
+* **sonar:** remove unused ([7797410](https://github.com/chdelucia/petsch/commit/77974102f0b55277a9ea016e2ff633e6c26aa9c9))
+
 ## [1.5.0](https://github.com/chdelucia/petsch/compare/v1.4.1...v1.5.0) (2026-04-12)
 
 
