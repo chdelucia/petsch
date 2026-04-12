@@ -10,24 +10,20 @@ test.describe('Sorting', () => {
   });
 
   test('should sort by name ascending and descending', async () => {
-    // Sort by Name: Asc
     await productListPage.selectSort('name', 'asc');
     await expect(productListPage.getSortDropdown()).toContainText('Name: Asc');
     await expect(productListPage.getProductCards().first()).toBeVisible();
 
-    // Sort by Name: Desc
     await productListPage.selectSort('name', 'desc');
     await expect(productListPage.getSortDropdown()).toContainText('Name: Desc');
     await expect(productListPage.getProductCards().first()).toBeVisible();
   });
 
   test('should sort by weight', async () => {
-    // Sort by Weight: Asc
     await productListPage.selectSort('weight', 'asc');
     await expect(productListPage.getSortDropdown()).toContainText('Weight: Asc');
     await expect(productListPage.getProductCards().first()).toBeVisible();
 
-    // Sort by Weight: Desc
     await productListPage.selectSort('weight', 'desc');
     await expect(productListPage.getSortDropdown()).toContainText('Weight: Desc');
     await expect(productListPage.getProductCards().first()).toBeVisible();

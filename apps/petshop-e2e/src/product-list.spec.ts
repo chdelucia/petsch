@@ -27,13 +27,11 @@ test.describe('Product List', () => {
   });
 
   test('should sort products', async () => {
-    // We expect 12 products as seen in previous runs
     const firstProductBefore = productListPage.getProductCards().first();
     const firstNameBefore = await firstProductBefore.locator('h3').innerText();
 
     await productListPage.selectSort('name', 'asc');
-    // Wait for a potential change or just check the first item's name if we know the data
-    // Since we don't know the data exactly, we just check that it's still visible
+
     await expect(productListPage.getProductCards().first()).toBeVisible();
 
     await productListPage.selectSort('weight', 'desc');
