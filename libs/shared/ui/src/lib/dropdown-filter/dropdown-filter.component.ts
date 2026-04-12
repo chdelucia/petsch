@@ -15,7 +15,7 @@ import {
   styleUrl: './dropdown-filter.component.css',
 })
 export class ChDropdownFilter {
-  sortby = signal({ key: 'id', order: 'asc', text:'Most Popular'});
+  sortby = signal({ key: 'id', order: 'asc', text: 'Most Popular' });
 
   options = input([
     { key: 'id', order: 'asc', text: 'Most Popular' },
@@ -44,7 +44,7 @@ export class ChDropdownFilter {
     }
   }
 
-  emitValue(option: { key: string; order: string, text: string }): void {
+  emitValue(option: { key: string; order: string; text: string }): void {
     this.toggle();
     this.sortby.set(option);
     this.sortbyChange.emit(option);

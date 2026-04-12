@@ -17,7 +17,7 @@ import { FeatureFilters } from '@petsch/feature-filters';
     TranslocoDirective,
     ListHeader,
     FeatureFilters,
-    ChDropdownFilter
+    ChDropdownFilter,
   ],
   providers: [
     {

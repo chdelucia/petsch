@@ -42,7 +42,7 @@
 
 .input-filter__last-searches {
   @apply flex flex-col gap-2 py-2 rounded-b-md shadow-sm border-x-2 border-b-2 text-sm leading-6 absolute w-full bg-white z-50;
-  &.hidden{
+  &.hidden {
     @apply hidden;
   }
 }
