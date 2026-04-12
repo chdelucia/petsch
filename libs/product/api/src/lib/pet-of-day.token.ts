@@ -10,7 +10,6 @@ export interface PetOfDayStoreContract {
   isPetAddedToday: Signal<boolean[]>;
   addPet(pet: Pet): void;
   togglePoT(isOpen: boolean): void;
-  removePet(date: string): void;
 }
 
 export const PETOFDAY_STORE = new InjectionToken<PetOfDayStoreContract>(

@@ -55,6 +55,7 @@ describe('FeatureFilters', () => {
     expect(component.form.contains('name')).toBeTruthy();
     expect(component.form.contains('kind')).toBeTruthy();
 
+    // ⚠️ computed signal -> hay que invocarlo
     expect(component.filterConfigs().length).toBe(2);
   });
 

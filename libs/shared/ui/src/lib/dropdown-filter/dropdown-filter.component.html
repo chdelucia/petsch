@@ -1,13 +1,12 @@
 @let selected = sortby();
 
-<div class="dropdown" [attr.data-testid]="testId()">
+<div class="dropdown">
   <div>
     <button
       type="button"
       (click)="toggle()"
       class="dropdown-button"
       id="menu-button"
-      [attr.data-testid]="testId() ? testId() + '-button' : null"
     >
       Sort: {{ selected.text }}
       <svg
@@ -36,11 +35,6 @@
           "
           (click)="emitValue(item)"
           (keypress)="emitValue(item)"
-          [attr.data-testid]="
-            testId()
-              ? testId() + '-option-' + item.key + '-' + item.order
-              : null
-          "
         >
           {{ item.text }}
         </span>

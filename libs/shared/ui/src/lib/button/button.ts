@@ -11,7 +11,6 @@ export class ChButton {
   variant = input<'primary' | 'link'>('primary');
   fullWidth = input<boolean, unknown>(false, { transform: booleanAttribute });
   disabled = input<boolean>(false);
-  testId = input<string>();
 
   clicked = output<void>();
 

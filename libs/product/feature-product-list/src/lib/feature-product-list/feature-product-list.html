@@ -7,15 +7,10 @@
       class="chars__list__pagination"
       [page]="currentPage()"
       [totalPages]="totalPages()"
-      testId="product-list-pagination"
       (pageChange)="handlePageChange($event)"
     ></lib-ch-ui-pagination>
 
-    <section
-      class="char-grid"
-      [class.char-grid--no-filters]="!showFilters()"
-      data-testid="product-list"
-    >
+    <section class="char-grid" [class.char-grid--no-filters]="!showFilters()">
       @for (item of products(); track item.id; let index = $index) {
       <lib-ch-ui-card
         class="card-effect"
@@ -24,17 +19,22 @@
         [imageUrl]="item.photo_url"
         [viewTransitionName]="transitionService.getViewTransitionName(item.id)"
         [priority]="index < 8"
-        testId="product-card"
       >
         <div info>
-          <p>{{ item.kind }} {{ item.health }}</p>
-          <p>{{ item.height }}cm {{item.length}}cm {{ item.weight }}g</p>
+          <div class="mb-2">
+            <lib-ch-ui-badge [status]="item.health">
+              {{ t(item.health === 'very healthy' ? 'veryHealthy' : item.health) }}
+            </lib-ch-ui-badge>
+          </div>
+          <p class="text-sm text-gray-600">{{ t(item.kind.toLowerCase()) }}</p>
+          <div class="text-xs text-gray-500">
+            <p>{{ t('height') }}: {{ item.height }}{{ t('cm') }}</p>
+            <p>{{ t('width') }}: {{ item.length }}{{ t('cm') }}</p>
+            <p>{{ t('weight') }}: {{ item.weight }}{{ t('g') }}</p>
+          </div>
         </div>
 
-        <lib-ch-ui-button
-          fullWidth
-          (clicked)="handlePotdClick(item)"
-          testId="product-add-button"
+        <lib-ch-ui-button fullWidth (clicked)="handlePotdClick(item)"
           >{{t(getButtonText())}}</lib-ch-ui-button
         >
       </lib-ch-ui-card>

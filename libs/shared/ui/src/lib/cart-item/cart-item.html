@@ -1,4 +1,4 @@
-<div class="ch-cart-item" *transloco="let t" [attr.data-testid]="testId()">
+<div class="ch-cart-item" *transloco="let t">
   <div class="ch-cart-item__img-container">
     <img [src]="imageSrc()" [alt]="name()" class="ch-cart-item__img" />
   </div>
@@ -8,17 +8,7 @@
       <h3>{{ name() }}</h3>
     </div>
 
-    <p class="ch-cart-item__color">{{ day() }}</p>
-
-    <div class="ch-cart-item__footer">
-      <button
-        type="button"
-        (click)="remove.emit()"
-        class="ch-cart-item__remove"
-        [attr.data-testid]="testId() ? testId() + '-remove' : null"
-      >
-        {{ t('remove') }}
-      </button>
-    </div>
+    <p class="ch-cart-item__date">{{ day() }}</p>
+    <p class="ch-cart-item__desc">{{description()}}</p>
   </div>
 </div>

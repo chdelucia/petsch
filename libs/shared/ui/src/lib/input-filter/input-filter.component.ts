@@ -31,7 +31,6 @@ import { TranslocoDirective } from '@jsverse/transloco';
 })
 export class ChInputFilter implements ControlValueAccessor, OnInit {
   title = input.required<string>();
-  testId = input<string>();
 
   isfilterOpen = signal(true);
   isLastSearchOpen = signal(false);
