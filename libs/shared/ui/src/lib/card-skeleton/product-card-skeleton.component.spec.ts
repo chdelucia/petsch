@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { CardSkeleton } from './product-card-skeleton.component';
+import { ChCardSkeleton } from './product-card-skeleton.component';
 
-describe('CardSkeleton', () => {
-  let component: CardSkeleton;
-  let fixture: ComponentFixture<CardSkeleton>;
+describe('ChCardSkeleton', () => {
+  let component: ChCardSkeleton;
+  let fixture: ComponentFixture<ChCardSkeleton>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CardSkeleton],
+      imports: [ChCardSkeleton],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(CardSkeleton);
+    fixture = TestBed.createComponent(ChCardSkeleton);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

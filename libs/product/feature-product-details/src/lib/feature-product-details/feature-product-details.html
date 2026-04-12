@@ -1,8 +1,8 @@
 <div class="product-details" *transloco="let t">
   <div class="product-details__back-link">
-    <lib-ui-button (clicked)="goBack()" [variant]="'link'">
+    <lib-ch-ui-button (clicked)="goBack()" [variant]="'link'">
       &larr; {{ t('backToListing') }}
-    </lib-ui-button>
+    </lib-ch-ui-button>
   </div>
 
   @if (loading()) {

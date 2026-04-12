@@ -1,17 +1,17 @@
 import { getTranslocoTestingModule } from '@petsch/shared-utils';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { CartDrawer } from './cart-drawer';
+import { ChCartDrawer } from './cart-drawer';
 
-describe('CartDrawer', () => {
-  let component: CartDrawer;
-  let fixture: ComponentFixture<CartDrawer>;
+describe('ChCartDrawer', () => {
+  let component: ChCartDrawer;
+  let fixture: ComponentFixture<ChCartDrawer>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [getTranslocoTestingModule(), CartDrawer],
+      imports: [getTranslocoTestingModule(), ChCartDrawer],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(CartDrawer);
+    fixture = TestBed.createComponent(ChCartDrawer);
     component = fixture.componentInstance;
     fixture.componentRef.setInput('subtotal', 0);
     fixture.componentRef.setInput('titleLabel', 'pet of the day');

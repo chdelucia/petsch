@@ -3,12 +3,12 @@ import { NgClass } from '@angular/common';
 import { TranslocoDirective } from '@jsverse/transloco';
 
 @Component({
-  selector: 'lib-ui-pagination',
+  selector: 'lib-ch-ui-pagination',
   imports: [NgClass, TranslocoDirective],
   templateUrl: './pagination.component.html',
   styleUrl: './pagination.component.css',
 })
-export class Pagination {
+export class ChPagination {
   page = input.required<number>();
 
   totalPages = input.required<number>();

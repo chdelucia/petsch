@@ -2,9 +2,9 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'lib-ui-card-skeleton',
+  selector: 'lib-ch-ui-card-skeleton',
   imports: [CommonModule],
   templateUrl: './product-card-skeleton.component.html',
   styleUrl: './product-card-skeleton.component.css',
 })
-export class CardSkeleton {}
+export class ChCardSkeleton {}

@@ -9,3 +9,4 @@ export * from './lib/pagination/pagination.component';
 export * from './lib/card/product-card.component';
 export * from './lib/card-skeleton/product-card-skeleton.component';
 export * from './lib/list-header/product-list-header.component';
+export * from './lib/active-filters/active-filters.component';

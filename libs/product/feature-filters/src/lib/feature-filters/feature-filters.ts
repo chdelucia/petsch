@@ -4,8 +4,7 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { TranslocoService, TranslocoDirective } from '@jsverse/transloco';
 import { Filters, PETLIST_STORE } from '@petsch/api';
 import { debounceTime } from 'rxjs';
-import { ActiveFiltersComponent } from '../active-filters/active-filters.component';
-import { InputFilter, RadioFilter } from '@petsch/ui';
+import { ChInputFilter, ChRadioFilter, ChActiveFiltersComponent } from '@petsch/ui';
 
 interface FilterConfig {
   key: keyof Filters;
@@ -18,10 +17,10 @@ interface FilterConfig {
 @Component({
   selector: 'lib-feature-filters',
   imports: [
-    RadioFilter,
-    InputFilter,
+    ChRadioFilter,
+    ChInputFilter,
     ReactiveFormsModule,
-    ActiveFiltersComponent,
+    ChActiveFiltersComponent,
     TranslocoDirective,
   ],
   templateUrl: './feature-filters.html',

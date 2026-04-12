@@ -1,17 +1,17 @@
 import { getTranslocoTestingModule } from '@petsch/shared-utils';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { CartItem } from './cart-item';
+import { ChCartItem } from './cart-item';
 
-describe('CartItem', () => {
-  let component: CartItem;
-  let fixture: ComponentFixture<CartItem>;
+describe('ChCartItem', () => {
+  let component: ChCartItem;
+  let fixture: ComponentFixture<ChCartItem>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [getTranslocoTestingModule(), CartItem],
+      imports: [getTranslocoTestingModule(), ChCartItem],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(CartItem);
+    fixture = TestBed.createComponent(ChCartItem);
     component = fixture.componentInstance;
     fixture.componentRef.setInput(
       'imageSrc',

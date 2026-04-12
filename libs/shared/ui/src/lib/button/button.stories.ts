@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/angular';
-import { Button } from './button';
+import { ChButton } from './button';
 
-const meta: Meta<Button> = {
-  title: 'Atoms/Button',
-  component: Button,
+const meta: Meta<ChButton> = {
+  title: 'Atoms/ChButton',
+  component: ChButton,
   tags: ['autodocs'],
   argTypes: {
     variant: {
@@ -21,7 +21,7 @@ const meta: Meta<Button> = {
 
 export default meta;
 
-type Story = StoryObj<Button>;
+type Story = StoryObj<ChButton>;
 
 export const Primary: Story = {
   args: {
@@ -35,14 +35,14 @@ export const Primary: Story = {
       click: () => console.log('Primary clicked'),
     },
     template: `
-      <lib-ui-button
+      <lib-ch-ui-button
         [variant]="variant"
         [fullWidth]="fullWidth"
         [disabled]="disabled"
         (click)="click()"
       >
         Checkout
-      </lib-ui-button>
+      </lib-ch-ui-button>
     `,
   }),
 };
@@ -60,14 +60,14 @@ export const PrimaryFullWidth: Story = {
     },
     template: `
       <div style="width: 300px;">
-        <lib-ui-button
+        <lib-ch-ui-button
           [variant]="variant"
           [fullWidth]="fullWidth"
           [disabled]="disabled"
           (click)="click()"
         >
           Checkout
-        </lib-ui-button>
+        </lib-ch-ui-button>
       </div>
     `,
   }),
@@ -85,13 +85,13 @@ export const Link: Story = {
       click: () => console.log('Continue Shopping clicked'),
     },
     template: `
-      <lib-ui-button
+      <lib-ch-ui-button
         [variant]="variant"
         [disabled]="disabled"
         (click)="click()"
       >
         Continue Shopping →
-      </lib-ui-button>
+      </lib-ch-ui-button>
     `,
   }),
 };
@@ -105,13 +105,13 @@ export const Disabled: Story = {
   render: (args) => ({
     props: args,
     template: `
-      <lib-ui-button
+      <lib-ch-ui-button
         [variant]="variant"
         [fullWidth]="fullWidth"
         [disabled]="disabled"
       >
-        Disabled Button
-      </lib-ui-button>
+        Disabled ChButton
+      </lib-ch-ui-button>
     `,
   }),
 };

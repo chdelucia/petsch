@@ -13,23 +13,23 @@ import { CommonModule } from '@angular/common';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Subject, debounceTime, distinctUntilChanged } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { Button } from '../button/button';
+import { ChButton } from '../button/button';
 import { TranslocoDirective } from '@jsverse/transloco';
 
 @Component({
-  selector: 'lib-ui-input-filter',
-  imports: [CommonModule, Button, TranslocoDirective],
+  selector: 'lib-ch-ui-input-filter',
+  imports: [CommonModule, ChButton, TranslocoDirective],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => InputFilter),
+      useExisting: forwardRef(() => ChInputFilter),
       multi: true,
     },
   ],
   templateUrl: './input-filter.component.html',
   styleUrl: './input-filter.component.css',
 })
-export class InputFilter implements ControlValueAccessor, OnInit {
+export class ChInputFilter implements ControlValueAccessor, OnInit {
   title = input.required<string>();
 
   isfilterOpen = signal(true);
