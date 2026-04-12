@@ -31,5 +31,10 @@
   "grams": "gramos",
   "centimeters": "centímetros",
   "remove": "Eliminar",
-  "continueShopping": "Continuar comprando"
+  "continueShopping": "Continuar comprando",
+  "searchByName": "Buscar por nombre",
+  "toggleFilters": "Alternar filtros",
+  "homeTitle": "Pet Shop - Encuentra a tu mejor amigo",
+  "homeDescription": "Descubre una amplia variedad de mascotas disponibles para adopción. Encuentra a tu compañero perfecto hoy mismo.",
+  "detailsTitle": "Pet Shop - {{name}}"
 }

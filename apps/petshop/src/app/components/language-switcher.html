@@ -1,0 +1,9 @@
+<section class="lang-switcher-container">
+  <div class="lang-switcher">
+    <lib-ch-ui-language-switcher
+      [languages]="languages"
+      [selected]="selectedLanguage"
+      (languageSelected)="changeLanguage($event)"
+    ></lib-ch-ui-language-switcher>
+  </div>
+</section>

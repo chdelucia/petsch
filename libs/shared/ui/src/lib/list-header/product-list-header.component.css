@@ -1,7 +1,7 @@
 @reference "../../tailwind.storybook.css";
 
 .top-container {
-  @apply flex items-end justify-between border-b border-gray-200 pb-5 pt-10;
+  @apply flex items-end justify-between border-b border-gray-200 pb-3 pt-2.5;
 }
 
 .top-container__title {
@@ -13,7 +13,7 @@
 }
 
 .top-container__filters__btn {
-  @apply ml-4 p-2 text-gray-400 hover:text-gray-500 sm:ml-4;
+  @apply pr-2 text-gray-400 hover:text-gray-500;
 }
 
 .top-container__filters__toggleview,

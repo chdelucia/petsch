@@ -34,15 +34,6 @@ export default [
               ],
             },
             {
-              sourceTag: 'scope:petshop',
-              onlyDependOnLibsWithTags: [
-                'type:api',
-                'type:ui',
-                'type:data-access',
-                'type:shell',
-              ],
-            },
-            {
               sourceTag: 'scope:*',
               onlyDependOnLibsWithTags: ['scope:*'],
             },

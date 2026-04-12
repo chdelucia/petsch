@@ -53,7 +53,7 @@ export const PetOfTheDayStore = signalStore(
 
         if (!alreadyExists) {
           const newEntries = [...store.entries(), { pet, date: today }];
-          patchState(store, { entries: newEntries });
+          patchState(store, { entries: newEntries, isOpen: true });
           storageService.setValue(STORAGE_KEY, newEntries);
         }
       },
