@@ -1,6 +1,6 @@
 import { getTranslocoTestingModule } from '@petsch/shared-utils';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { FeaturePetList } from './feature-product-list';
+import { FeaturePetList } from './feature-pet-list';
 import { provideRouter } from '@angular/router';
 import { of } from 'rxjs';
 import { PETLIST_STORE, PETOFDAY_STORE, PET_TOKEN } from '@petsch/api';
