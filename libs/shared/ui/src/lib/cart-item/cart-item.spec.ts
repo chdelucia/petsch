@@ -18,6 +18,7 @@ describe('ChCartItem', () => {
       'https://tailwindcss.com/plus-assets/img/ecommerce-images/shopping-cart-page-04-product-01.jpg',
     );
     fixture.componentRef.setInput('name', 'Throwback Hip Bag');
+    fixture.componentRef.setInput('description', 'Throwback Hip Bag desc');
     await fixture.whenStable();
   });
 
