@@ -1,11 +1,11 @@
 @reference "../../../../../../apps/petshop/src/styles.css";
 
 .feature-404-host {
-  @apply fixed inset-0 z-50 overflow-auto bg-gray-900;
+  @apply fixed inset-0 z-50 overflow-auto;
 }
 
 .not-found-container {
-  @apply grid min-h-full place-items-center bg-gray-900 px-6 py-24 sm:py-32 lg:px-8;
+  @apply grid min-h-dvh place-items-center px-6 py-24 sm:py-32 lg:px-8;
 }
 
 .not-found-content {
@@ -17,7 +17,7 @@
 }
 
 .not-found-title {
-  @apply mt-4 text-5xl font-semibold tracking-tight text-balance text-white sm:text-7xl;
+  @apply mt-4 text-5xl font-semibold tracking-tight text-balance text-gray-900 sm:text-7xl;
 }
 
 .not-found-message {
