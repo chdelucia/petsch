@@ -1,10 +1,11 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FeaturePage } from './feature-page';
 import { getTranslocoTestingModule } from '@petsch/shared-utils';
-import { PRODUCT_TOKEN } from '@petsch/api';
+import { PETLIST_STORE, PETOFDAY_STORE, PRODUCT_TOKEN } from '@petsch/api';
 import { of } from 'rxjs';
 import { provideRouter } from '@angular/router';
 import { LOCALSTORAGE_TOKEN } from '@petsch/obs-api';
+import { signal } from '@angular/core';
 
 describe('FeaturePage', () => {
   let component: FeaturePage;
@@ -29,6 +30,35 @@ describe('FeaturePage', () => {
             setValue: vi.fn(),
             clearValue: vi.fn(),
             clearAll: vi.fn(),
+          },
+        },
+        {
+          provide: PETLIST_STORE,
+          useValue: {
+            products: signal([]),
+            filteredProducts: signal([]),
+            loading: signal(false),
+            error: signal(null),
+            pagination: signal({}),
+            filtersApplied: signal({}),
+            filterName: signal(''),
+            loadProducts: vi.fn(),
+            applySort: vi.fn(),
+            updateFilters: vi.fn(),
+            setFilterName: vi.fn(),
+            removeFilter: vi.fn(),
+          },
+        },
+        {
+          provide: PETOFDAY_STORE,
+          useValue: {
+            products: signal([]),
+            isOpen: signal(false),
+            entries: signal([]),
+            sortedEntries: signal([]),
+            isPetAddedToday: signal([]),
+            addPet: vi.fn(),
+            togglePoT: vi.fn(),
           },
         },
       ],
