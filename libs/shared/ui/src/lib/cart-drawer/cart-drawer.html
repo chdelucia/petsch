@@ -28,7 +28,11 @@
 
           @if (showFooter()) {
           <lib-ui-cart-footer
+            [subtotal]="subtotal()"
+            [checkoutLabel]="checkoutLabel()"
+            [closeLabel]="closeLabel()"
             (closeDrawer)="closeDrawer()"
+            (checkoutClick)="checkout()"
           ></lib-ui-cart-footer>
           }
         </div>

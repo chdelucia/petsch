@@ -1,5 +1,14 @@
 <div class="cart-footer" *transloco="let t">
+  @if (subtotal() > 0) {
+  <div class="cart-footer-subtotal">
+    <p>{{ t('subtotal') }}</p>
+    <p>{{ subtotal() | currency }}</p>
+  </div>
+  }
+  <lib-ui-button (clicked)="checkoutClick.emit()">
+    {{ checkoutLabel() || t('checkout') }}
+  </lib-ui-button>
   <lib-ui-button variant="link" (clicked)="closeDrawer.emit()">
-    {{ t('continueShopping') }} →
+    {{ closeLabel() || t('continueShopping') }} →
   </lib-ui-button>
 </div>
