@@ -10,14 +10,12 @@
   <lib-ch-ui-input-filter
     [title]="t(config.key)"
     [formControlName]="config.key"
-    [testId]="'filter-' + config.key + '-input'"
   ></lib-ch-ui-input-filter>
   } @if (config.type === 'radio') {
   <lib-ch-ui-radio-filter
     [title]="t(config.key)"
     [options]="config.options"
     [formControlName]="config.key"
-    [testId]="'filter-' + config.key + '-radio'"
   ></lib-ch-ui-radio-filter>
   } }
 </form>

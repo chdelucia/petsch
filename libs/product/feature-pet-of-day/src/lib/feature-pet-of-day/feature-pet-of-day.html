@@ -3,7 +3,6 @@
     [open]="potdStore.isOpen()"
     (openChange)="potdStore.togglePoT($event)"
     [titleLabel]="t('petOfTheDay')"
-    testId="cart-drawer"
   >
     <div class="ch-cart-list">
       <ul class="ch-cart-list__items">
@@ -14,7 +13,6 @@
             [name]="entry.pet.name"
             [day]="entry.date"
             [description]="entry.pet.description"
-            (remove)="handleRemove(entry.date)"
           ></lib-ch-ui-cart-item>
         </li>
         }

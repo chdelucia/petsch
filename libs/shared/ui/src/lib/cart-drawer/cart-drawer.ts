@@ -16,7 +16,6 @@ export class ChCartDrawer {
   showFooter = input<boolean>(true);
 
   closeLabel = input<string>();
-  testId = input<string>();
 
   openChange = output<boolean>();
 
