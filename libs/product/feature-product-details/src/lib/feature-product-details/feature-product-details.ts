@@ -5,7 +5,7 @@ import { Meta, Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { TranslocoDirective } from '@jsverse/transloco';
 import { Button } from '@petsch/ui';
-import { Pet, CurrentTransitionService } from '@petsch/api';
+import { Pet } from '@petsch/api';
 
 @Component({
   selector: 'lib-feature-product-details',
@@ -14,11 +14,7 @@ import { Pet, CurrentTransitionService } from '@petsch/api';
   styleUrl: './feature-product-details.css',
 })
 export class FeatureProductDetails {
-  protected readonly transitionService = inject(CurrentTransitionService);
   private readonly router = inject(Router);
-  private readonly titleService = inject(Title);
-  private readonly metaService = inject(Meta);
-  private readonly translocoService = inject(TranslocoService);
 
   id = input.required<string>();
   product = input.required<Pet>();
