@@ -31,5 +31,10 @@
   "grams": "grams",
   "centimeters": "centimeters",
   "remove": "Remove",
-  "continueShopping": "Continue Shopping"
+  "continueShopping": "Continue Shopping",
+  "searchByName": "Search by name",
+  "toggleFilters": "Toggle filters",
+  "homeTitle": "Pet Shop - Find your best friend",
+  "homeDescription": "Discover a wide variety of pets available for adoption. Find your perfect companion today.",
+  "detailsTitle": "Pet Shop - {{name}}"
 }
