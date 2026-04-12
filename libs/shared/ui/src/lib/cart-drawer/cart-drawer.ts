@@ -15,18 +15,11 @@ export class CartDrawer {
 
   showFooter = input<boolean>(true);
 
-  subtotal = input<number>(0);
-  checkoutLabel = input<string>();
   closeLabel = input<string>();
 
   openChange = output<boolean>();
-  checkoutClick = output<void>();
 
   closeDrawer(): void {
     this.openChange.emit(false);
-  }
-
-  checkout(): void {
-    this.checkoutClick.emit();
   }
 }
