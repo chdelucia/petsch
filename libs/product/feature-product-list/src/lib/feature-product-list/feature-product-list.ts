@@ -5,26 +5,13 @@ import {
   PETLIST_STORE,
   PETOFDAY_STORE,
 } from '@petsch/api';
-import {
-  ChButton,
-  ChPagination,
-  ChCard,
-  ChCardSkeleton,
-  ChBadge,
-} from '@petsch/ui';
+import { ChButton, ChPagination, ChCard, ChCardSkeleton } from '@petsch/ui';
 
 import { TranslocoDirective } from '@jsverse/transloco';
 
 @Component({
   selector: 'lib-feature-product-list',
-  imports: [
-    ChCardSkeleton,
-    ChCard,
-    ChPagination,
-    ChButton,
-    ChBadge,
-    TranslocoDirective,
-  ],
+  imports: [ChCardSkeleton, ChCard, ChPagination, ChButton, TranslocoDirective],
   templateUrl: './feature-product-list.html',
   styleUrl: './feature-product-list.css',
 })

@@ -10,6 +10,7 @@ test.describe('Pet of the Day', () => {
   });
 
   test('should add a pet to pet of the day and open drawer', async () => {
+    // Wait for cards to be loaded first
     await expect(productListPage.getProductCards().first()).toBeVisible();
     await productListPage.addPetToDay(0);
 
@@ -27,7 +28,7 @@ test.describe('Pet of the Day', () => {
     await expect(drawer).toBeVisible();
 
     await productListPage.getCartDrawerCloseButton().click();
-    await expect(drawer).toBeHidden();
+    await expect(drawer).not.toBeVisible();
   });
 
   test('should remove pet from the day', async () => {
@@ -36,9 +37,12 @@ test.describe('Pet of the Day', () => {
     const items = productListPage.getCartItems();
     await expect(items).toHaveCount(1);
 
+    // The remove button is inside the cart item
     const removeButton = items.first().getByTestId('cart-item-remove');
     await removeButton.click();
 
+    // Sometimes there's an animation or it stays in the list but marked as removed?
+    // Let's try to wait longer or check if it's hidden
     await expect(items).toHaveCount(0, { timeout: 10000 });
   });
 });

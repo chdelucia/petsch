@@ -26,7 +26,10 @@
                 ✕
               </button>
             </div>
-            <ng-content></ng-content>
+
+            <lib-ch-ui-cart-list>
+              <ng-content></ng-content>
+            </lib-ch-ui-cart-list>
           </div>
 
           @if (showFooter()) {

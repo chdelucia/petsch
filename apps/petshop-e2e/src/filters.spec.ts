@@ -16,12 +16,14 @@ test.describe('Filters', () => {
     const searchTerm = 'a'; // Use a common letter to ensure some results
     await filtersPage.filterByName(searchTerm);
 
+    // The name filter is local in the store, it doesn't trigger a reload nor URL update
+    // We check that the list is still there and at least one item matches (if we could check text)
     await expect(productListPage.getProductCards().first()).toBeVisible();
   });
 
   test('should filter by kind', async () => {
     await filtersPage.filterByKind('cat');
-
+    // Kind filter triggers a reload, but no URL update
     await expect(productListPage.getProductCards().first()).toBeVisible();
 
     await filtersPage.filterByKind('dog');

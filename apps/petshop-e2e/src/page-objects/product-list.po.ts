@@ -31,9 +31,7 @@ export class ProductListPage extends BasePage {
   }
 
   getSortOption(key: string, order: string): Locator {
-    return this.page.getByTestId(
-      `product-sort-dropdown-option-${key}-${order}`,
-    );
+    return this.page.getByTestId(`product-sort-dropdown-option-${key}-${order}`);
   }
 
   async selectSort(key: string, order: string) {

@@ -7,7 +7,8 @@ import {
   withHooks,
   patchState,
 } from '@ngrx/signals';
-import { catchError, of } from 'rxjs';
+import { toObservable } from '@angular/core/rxjs-interop';
+import { switchMap, catchError, of } from 'rxjs';
 import { PRODUCT_TOKEN, Filters, Pet, PaginationLinks } from '@petsch/api';
 
 export interface ProductsState {
