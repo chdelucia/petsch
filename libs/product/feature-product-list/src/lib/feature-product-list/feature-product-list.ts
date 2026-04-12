@@ -42,7 +42,7 @@ export class FeatureProductList {
 
   getButtonText(): string {
     return this.potdStore.isPetAddedToday()
-      ? 'Ver la mascota del día'
+      ? 'viewPetOfTheDay'
       : 'addAsPetOfTheDay';
   }
 
