@@ -1,4 +1,4 @@
-import { Component, input, output } from '@angular/core';
+import { booleanAttribute, Component, input, output } from '@angular/core';
 import { NgClass } from '@angular/common';
 
 @Component({
@@ -9,7 +9,7 @@ import { NgClass } from '@angular/common';
 })
 export class Button {
   variant = input<'primary' | 'link'>('primary');
-  fullWidth = input<boolean>(false);
+  fullWidth = input<boolean, unknown>(false, { transform: booleanAttribute });
   disabled = input<boolean>(false);
 
   clicked = output<void>();

@@ -10,6 +10,7 @@ export interface ProductsStoreContract {
   filtersApplied: Signal<Partial<Filters>>;
   filterName: Signal<string>;
   loadProducts(filters: Partial<Filters>): Promise<void>;
+  applySort(sort: { key: string; order: string }): Promise<void>;
   updateFilters(filters: Partial<Filters>): void;
   setFilterName(value: string): void;
   removeFilter<K extends keyof Filters>(key: K): void;

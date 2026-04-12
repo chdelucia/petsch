@@ -31,6 +31,8 @@ export interface PaginatedResponse<T> {
 export interface Filters {
   _page: number;
   _limit: number;
+  _sort: string;
+  _order: string;
   name: string;
   kind: string;
   weight: number;

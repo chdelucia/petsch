@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import {
   FeatureProductList,
   ProductsStore,
@@ -6,7 +6,7 @@ import {
 import { PETLIST_STORE, PETOFDAY_STORE } from '@petsch/api';
 import { FeaturePetOfDay, PetOfTheDayStore } from '@petsch/feature-pet-of-day';
 import { TranslocoDirective } from '@jsverse/transloco';
-import { ListHeader } from '@petsch/ui';
+import { ChDropdownFilter, ListHeader } from '@petsch/ui';
 import { FeatureFilters } from '@petsch/feature-filters';
 
 @Component({
@@ -17,6 +17,7 @@ import { FeatureFilters } from '@petsch/feature-filters';
     TranslocoDirective,
     ListHeader,
     FeatureFilters,
+    ChDropdownFilter
   ],
   providers: [
     {
@@ -36,11 +37,17 @@ export class FeaturePage {
   gridView = signal(true);
   showPotdDrawer = signal(false);
 
+  private readonly store = inject(PETLIST_STORE);
+
   toggleFilters(): void {
     this.showFilters.update((v) => !v);
   }
 
   toggleView(): void {
     this.gridView.update((v) => !v);
+  }
+
+  sortBy(value: { key: string; order: string }): void {
+    this.store.applySort(value);
   }
 }

@@ -9,7 +9,7 @@
 }
 
 .top-container__filters {
-  @apply flex items-center;
+  @apply flex items-center gap-5;
 }
 
 .top-container__filters__btn {

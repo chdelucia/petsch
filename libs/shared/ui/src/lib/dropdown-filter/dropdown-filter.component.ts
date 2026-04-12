@@ -1,4 +1,12 @@
-import { Component, input, output, signal } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  HostListener,
+  inject,
+  input,
+  output,
+  signal,
+} from '@angular/core';
 
 @Component({
   selector: 'lib-ch-ui-dropdown-filter',
@@ -7,28 +15,39 @@ import { Component, input, output, signal } from '@angular/core';
   styleUrl: './dropdown-filter.component.css',
 })
 export class ChDropdownFilter {
-  sortby = input<string>('id');
+  sortby = signal({ key: 'id', order: 'asc', text:'Most Popular'});
 
   options = input([
-    { value: 'id', text: 'Most Popular' },
-    { value: 'asc', text: 'Name: Asc' },
-    { value: 'desc', text: 'Name: Desc' },
-    { value: 'gender', text: 'Gender' },
-    { value: 'status', text: 'Status' },
+    { key: 'id', order: 'asc', text: 'Most Popular' },
+    { key: 'name', order: 'asc', text: 'Name: Asc' },
+    { key: 'name', order: 'desc', text: 'Name: Desc' },
+    { key: 'weight', order: 'asc', text: 'Weight: Asc' },
+    { key: 'weight', order: 'desc', text: 'Weight: Desc' },
+    { key: 'height', order: 'asc', text: 'Height: Asc' },
+    { key: 'height', order: 'desc', text: 'Height: Desc' },
+    { key: 'length', order: 'asc', text: 'Length: Asc' },
+    { key: 'length', order: 'desc', text: 'Length: Desc' },
   ]);
 
-  sortbyChange = output<{ key: unknown; order: unknown }>();
+  sortbyChange = output<{ key: string; order: string }>();
 
   isOpen = signal(false);
 
-  emitValue(option: string): void {
-    this.toggle();
-    const result = { key: option, order: '' };
-    if (option === 'asc' || option === 'desc') {
-      result.key = 'name';
-      result.order = option;
+  private readonly el = inject(ElementRef);
+
+  @HostListener('document:click', ['$event'])
+  onClickOutside(event: MouseEvent) {
+    const clickedInside = this.el.nativeElement.contains(event.target);
+
+    if (!clickedInside && this.isOpen()) {
+      this.isOpen.set(false);
     }
-    this.sortbyChange.emit(result);
+  }
+
+  emitValue(option: { key: string; order: string, text: string }): void {
+    this.toggle();
+    this.sortby.set(option);
+    this.sortbyChange.emit(option);
   }
 
   toggle(): void {

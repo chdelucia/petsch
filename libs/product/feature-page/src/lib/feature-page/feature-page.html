@@ -3,7 +3,10 @@
     [text]="t('products')"
     [showFilters]="showFilters()"
     (toggleFilters)="toggleFilters()"
-  ></lib-ui-product-list-header>
+  >
+    <lib-ch-ui-dropdown-filter (sortbyChange)="sortBy($event)">
+    </lib-ch-ui-dropdown-filter>
+  </lib-ui-product-list-header>
 </ng-container>
 
 <section aria-labelledby="products-heading" class="chars">
