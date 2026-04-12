@@ -14,6 +14,6 @@ export const Primary: Story = {
   args: {
     name: 'Throwback Hip Bag',
     imageSrc: 'https://rickandmortyapi.com/api/character/avatar/1.jpeg',
-    description: 'my cat fav'
+    description: 'my cat fav',
   },
 };
