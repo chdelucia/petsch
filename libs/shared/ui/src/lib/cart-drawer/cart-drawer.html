@@ -29,6 +29,7 @@
 
           @if (showFooter()) {
           <lib-ui-cart-footer
+            [closeLabel]="closeLabel()"
             (closeDrawer)="closeDrawer()"
           ></lib-ui-cart-footer>
           }

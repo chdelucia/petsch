@@ -11,6 +11,5 @@ export class CartItem {
   imageSrc = input.required<string>();
   name = input.required<string>();
   day = input<string>();
-
   remove = output<void>();
 }

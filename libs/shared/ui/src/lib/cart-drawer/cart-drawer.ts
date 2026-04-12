@@ -16,6 +16,8 @@ export class CartDrawer {
 
   showFooter = input<boolean>(true);
 
+  closeLabel = input<string>();
+
   openChange = output<boolean>();
 
   closeDrawer(): void {

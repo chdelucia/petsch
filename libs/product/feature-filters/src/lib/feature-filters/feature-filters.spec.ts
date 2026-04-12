@@ -40,7 +40,7 @@ describe('FeatureFilters', () => {
 
     fixture = TestBed.createComponent(FeatureFilters);
     component = fixture.componentInstance;
-    await fixture.whenStable();
+    fixture.detectChanges();
   });
 
   afterEach(() => {
@@ -64,10 +64,10 @@ describe('FeatureFilters', () => {
     expect(store.loadProducts).not.toHaveBeenCalled();
   });
 
-  it('should call updateFilters and loadProducts when kind filter changes, excluding name', () => {
+  it('should call updateFilters and loadProducts when kind filter changes', () => {
     store.filtersApplied.mockReturnValue({ name: 'existing' });
     component.form.get('kind')?.setValue('dog');
-    store.filtersApplied.mockReturnValue({ kind: 'dog' }); // Simulate updateFilters effect
+    store.filtersApplied.mockReturnValue({ name: 'existing', kind: 'dog' }); // Simulate updateFilters effect
     vi.runAllTimers();
     expect(store.updateFilters).toHaveBeenCalledWith({ kind: 'dog' });
     expect(store.loadProducts).toHaveBeenCalledWith({ kind: 'dog', _page: 1 });
@@ -100,9 +100,9 @@ describe('FeatureFilters', () => {
     expect(store.loadProducts).toHaveBeenCalledWith({ _page: 1 });
   });
 
-  it('should return activeFilters excluding name', () => {
+  it('should return activeFilters', () => {
     component.form.get('name')?.setValue('test');
     component.form.get('kind')?.setValue('dog');
-    expect(component.activeFilters).toEqual({ kind: 'dog' });
+    expect(component.activeFilters).toEqual({ name: 'test', kind: 'dog' });
   });
 });

@@ -76,6 +76,35 @@ describe('ProductsStore', () => {
     await store.loadProducts({});
 
     expect(store.products()).toEqual(products);
+
+    store.setFilterName('dog');
+    expect(store.filteredProducts()).toEqual([{ id: '1', name: 'Dog' }]);
+
+    store.setFilterName('cat');
+    expect(store.filteredProducts()).toEqual([{ id: '2', name: 'Cat' }]);
+
+    store.setFilterName('non-existent');
+    expect(store.filteredProducts()).toEqual([]);
+  });
+
+  it('should update filters', () => {
+    store.updateFilters({ kind: 'dog' });
+    expect(store.filtersApplied()).toEqual({
+      kind: 'dog',
+      _page: 1,
+      _limit: 12,
+    });
+  });
+
+  it('should remove filter', () => {
+    store.updateFilters({ kind: 'dog' });
+    store.removeFilter('kind');
+    expect(store.filtersApplied()).toEqual({ _page: 1, _limit: 12 });
+
+    store.setFilterName('test');
+    expect(store.filterName()).toBe('test');
+    store.removeFilter('name');
+    expect(store.filterName()).toBe('');
   });
 
   it('should clear products and reset state', () => {

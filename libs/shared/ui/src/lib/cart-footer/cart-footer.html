@@ -1,5 +1,5 @@
 <div class="cart-footer" *transloco="let t">
   <lib-ui-button variant="link" (clicked)="closeDrawer.emit()">
-    {{ t('continueShopping') }} →
+    {{ closeLabel() || t('continueShopping') }} →
   </lib-ui-button>
 </div>
