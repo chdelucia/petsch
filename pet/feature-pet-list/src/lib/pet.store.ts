@@ -7,8 +7,8 @@ import {
   withHooks,
   patchState,
 } from '@ngrx/signals';
-import { toObservable } from '@angular/core/rxjs-interop';
-import { switchMap, catchError, of } from 'rxjs';
+
+import { catchError, of } from 'rxjs';
 import { PET_TOKEN, Filters, Pet, PaginationLinks } from '@petsch/api';
 
 export interface PetsState {
