@@ -1,9 +1,4 @@
-import {
-  Component,
-  input,
-  output,
-  signal,
-} from '@angular/core';
+import { Component, input, output, signal } from '@angular/core';
 
 @Component({
   selector: 'lib-ch-ui-dropdown-filter',
