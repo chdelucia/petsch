@@ -5,16 +5,21 @@
     [titleLabel]="t('petOfTheDay')"
     testId="cart-drawer"
   >
-    @for (entry of potdStore.sortedEntries(); track entry.date) {
-    <li>
-      <lib-ch-ui-cart-item
-        [imageSrc]="entry.pet.photo_url"
-        [name]="entry.pet.name"
-        [day]="entry.date"
-        testId="cart-item"
-        (remove)="handleRemove(entry.date)"
-      ></lib-ch-ui-cart-item>
-    </li>
-    }
+    <div class="ch-cart-list">
+      <ul class="ch-cart-list__items">
+        @for (entry of potdStore.sortedEntries(); track entry.date) {
+        <li>
+          <lib-ch-ui-cart-item
+            [imageSrc]="entry.pet.photo_url"
+            [name]="entry.pet.name"
+            [day]="entry.date"
+            [description]="entry.pet.description"
+            testId="cart-item"
+            (remove)="handleRemove(entry.date)"
+          ></lib-ch-ui-cart-item>
+        </li>
+        }
+      </ul>
+    </div>
   </lib-ch-ui-cart-drawer>
 </ng-container>

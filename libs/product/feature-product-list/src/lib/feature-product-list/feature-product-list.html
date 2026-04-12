@@ -27,8 +27,17 @@
         testId="product-card"
       >
         <div info>
-          <p>{{ item.kind }} {{ item.health }}</p>
-          <p>{{ item.height }}cm {{item.length}}cm {{ item.weight }}g</p>
+          <div class="mb-2">
+            <lib-ch-ui-badge [status]="item.health">
+              {{ t(item.health === 'very healthy' ? 'veryHealthy' : item.health) }}
+            </lib-ch-ui-badge>
+          </div>
+          <p class="text-sm text-gray-600">{{ t(item.kind.toLowerCase()) }}</p>
+          <div class="text-xs text-gray-500">
+            <p>{{ t('height') }}: {{ item.height }}{{ t('cm') }}</p>
+            <p>{{ t('width') }}: {{ item.length }}{{ t('cm') }}</p>
+            <p>{{ t('weight') }}: {{ item.weight }}{{ t('g') }}</p>
+          </div>
         </div>
 
         <lib-ch-ui-button
