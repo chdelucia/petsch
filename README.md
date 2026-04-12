@@ -1,9 +1,12 @@
 Live: https://petsch.vercel.app/
 
-Arquitectura basada en: https://nx.dev/blog/architecting-angular-applications
+
+<br>
 
 > **IMPORTANT:** No tengo una PR inicial pero si un sistema de releases estrictos donde podeis ver la config Inicial
 > aqui en la [release 0.0.19](https://github.com/chdelucia/petsch/releases/tag/v0.0.19)
+
+<br>
 
 # 🧠 Idea clave / Trade-offs generales
 
@@ -68,6 +71,8 @@ Todo el flujo está completamente automatizado y orquestado mediante: [Ver workf
 <br>
 
 # Arquitectura por Dominios
+
+Arquitectura basada en: https://nx.dev/blog/architecting-angular-applications
 
 Arquitectura modular basada en dominios con alto desacoplamiento y escalabilidad.
 La comunicación entre capas se realiza mediante interfaces y dependency injection (injection tokens).
