@@ -1,11 +1,15 @@
 @reference "../../tailwind.storybook.css";
 
 .ch-cart-drawer-overlay {
-  @apply fixed inset-0 bg-gray-500/75 transition-opacity duration-500;
+  @apply fixed inset-0 bg-gray-500/0 transition-all duration-500 pointer-events-none z-40;
+}
+
+.ch-cart-drawer-overlay--open {
+  @apply bg-gray-500/75 pointer-events-auto;
 }
 
 .ch-cart-drawer-container {
-  @apply fixed inset-0 overflow-hidden pointer-events-none;
+  @apply fixed inset-0 overflow-hidden pointer-events-none z-50;
 }
 
 .ch-cart-drawer-inner {
@@ -17,11 +21,11 @@
 }
 
 .ch-cart-drawer-panel {
-  @apply pointer-events-auto w-screen max-w-md transform transition-transform duration-500 ease-in-out;
+  @apply pointer-events-auto w-screen max-w-md transform transition-transform duration-500 ease-in-out translate-x-full;
 }
 
-.ch-cart-drawer-panel--closed {
-  @apply translate-x-full;
+.ch-cart-drawer-panel--open {
+  @apply translate-x-0;
 }
 
 .ch-cart-drawer-content {
