@@ -1,4 +1,4 @@
-Live: https://petsch.vercel.app/products
+Live: https://petsch.vercel.app/
 
 Arquitectura basada en: https://nx.dev/blog/architecting-angular-applications
 
@@ -57,7 +57,6 @@ Todo el flujo está completamente automatizado y orquestado mediante: [Ver workf
 - ⚡ **GitHub Actions**
   - Pipeline central de CI/CD
   - Ejecución de validaciones, tests, análisis y despliegues
-
 
 ### 🛡️ Resultado
 
