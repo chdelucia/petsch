@@ -1,5 +1,4 @@
 import { Component, signal } from '@angular/core';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import {
   FeatureProductList,
   ProductsStore,
