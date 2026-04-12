@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.40](https://github.com/chdelucia/petsch/compare/v0.0.39...v0.0.40) (2026-04-12)
+
+
+### Features
+
+* add 404 page and centralize application routes ([8fc9a48](https://github.com/chdelucia/petsch/commit/8fc9a48d4678644f44e20a58c02b3da1839b8fc5))
+
+
+### Bug Fixes
+
+* **404:** change css ([9bbbd7c](https://github.com/chdelucia/petsch/commit/9bbbd7cbf8eba7b05e484f38bb86651719cb0825))
+
 ### [0.0.39](https://github.com/chdelucia/petsch/compare/v0.0.38...v0.0.39) (2026-04-12)
 
 
