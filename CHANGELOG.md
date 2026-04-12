@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.5.0](https://github.com/chdelucia/petsch/compare/v1.4.1...v1.5.0) (2026-04-12)
+
+
+### Features
+
+* **ui:** improve cart drawer animation and overlay interactivity ([e837975](https://github.com/chdelucia/petsch/commit/e8379758eeba22921fedf69e84b357c9096998a2))
+* **ui:** improve cart drawer animation, accessibility and overlay behavior ([b9b5681](https://github.com/chdelucia/petsch/commit/b9b56816d28939299f835d2e7621d434614c934b))
+
 ### [1.4.1](https://github.com/chdelucia/petsch/compare/v1.4.0...v1.4.1) (2026-04-12)
 
 ## [1.4.0](https://github.com/chdelucia/petsch/compare/v1.3.6...v1.4.0) (2026-04-12)
