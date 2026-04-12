@@ -12,7 +12,7 @@ Esto es importante porque condiciona directamente su efectividad: la IA no se ut
 
 ### 🧪 Testing y calidad
 
-- Verificación y corrección de tests (detección de *flaky tasks* en Nx).
+- Verificación y corrección de tests (detección de _flaky tasks_ en Nx).
 - Creación de mocks para inputs basados en signals en unit tests.
 - Generación de `data-test` attributes para e2e y organización de flujos de testing.
 - Intentos de aumento de coverage (resultado inconsistente; en algunos casos introdujo dependencias no deseadas como `zone.js`).
@@ -47,7 +47,7 @@ Esto es importante porque condiciona directamente su efectividad: la IA no se ut
 
 - Integración de Transloco (parcialmente fallida: requirió intervención manual y comandos exactos).
 - Integración de traducciones en tests unitarios.
-- Reemplazo de *magic strings* por keys de traducción (correcto).
+- Reemplazo de _magic strings_ por keys de traducción (correcto).
 
 ---
 
@@ -62,17 +62,17 @@ Esto es importante porque condiciona directamente su efectividad: la IA no se ut
 
 ## 📊 Resumen de resultados
 
-| Área | Resultado |
-|------|----------|
-| Testing y mocks | ✅ Útil en general |
-| Storybook y componentes | ⚠️ Parcial / con regresiones |
-| Arquitectura y refactors | ❌ Inconsistente |
-| Estado y routing | ❌ Problemático |
-| API / dominio | ⚠️ Parcial |
-| i18n (Transloco) | ⚠️ Requiere guía manual |
-| UI / optimización | ✅ Útil con matices |
-| E2E setup | ✅ Muy efectivo |
-| Traducciones | ✅ Correcto |
+| Área                     | Resultado                    |
+| ------------------------ | ---------------------------- |
+| Testing y mocks          | ✅ Útil en general           |
+| Storybook y componentes  | ⚠️ Parcial / con regresiones |
+| Arquitectura y refactors | ❌ Inconsistente             |
+| Estado y routing         | ❌ Problemático              |
+| API / dominio            | ⚠️ Parcial                   |
+| i18n (Transloco)         | ⚠️ Requiere guía manual      |
+| UI / optimización        | ✅ Útil con matices          |
+| E2E setup                | ✅ Muy efectivo              |
+| Traducciones             | ✅ Correcto                  |
 
 ---
 
