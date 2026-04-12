@@ -9,7 +9,6 @@ import { TranslocoDirective } from '@jsverse/transloco';
   styleUrl: './cart-footer.css',
 })
 export class CartFooter {
-  subtotal = input<number>(0);
   closeLabel = input<string>();
 
   closeDrawer = output<void>();
