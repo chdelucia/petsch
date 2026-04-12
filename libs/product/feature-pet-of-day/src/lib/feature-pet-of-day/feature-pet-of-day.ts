@@ -7,7 +7,6 @@ import { PETOFDAY_STORE } from '@petsch/api';
   selector: 'lib-feature-pet-of-day',
   imports: [CartDrawer, CartItem, TranslocoDirective],
   templateUrl: './feature-pet-of-day.html',
-  styleUrl: './feature-pet-of-day.css',
 })
 export class FeaturePetOfDay {
   protected readonly potdStore = inject(PETOFDAY_STORE);

@@ -16,7 +16,3 @@
 .char-grid--no-filters {
   @apply lg:grid-cols-4 xl:grid-cols-5;
 }
-
-.card-effect {
-  transition: transform 1s;
-}
