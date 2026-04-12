@@ -1,0 +1,20 @@
+{
+  "name": "feature-filters",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "pet/feature-filters/src",
+  "prefix": "lib",
+  "projectType": "library",
+  "tags": ["scope:product", "type:feature"],
+  "targets": {
+    "test": {
+      "executor": "@nx/vitest:test",
+      "outputs": ["{options.reportsDirectory}"],
+      "options": {
+        "reportsDirectory": "coverage/pet/feature-filters"
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    }
+  }
+}
