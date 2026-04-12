@@ -1,0 +1,56 @@
+@let pageI = page();
+@let total = totalPages();
+
+<ul class="ch-pagination" aria-label="Pagination" *transloco="let t">
+  <li
+    class="ch-page-item ch-xs-hide"
+    [ngClass]="{ 'ch-disabled': pageI === 1 }"
+  >
+    <button
+      class="ch-page-link"
+      (click)="emitPage(1)"
+      data-cy="p-first"
+      [disabled]="pageI === 1"
+    >
+      {{ t('first') }}
+    </button>
+  </li>
+  <li class="ch-page-item" [ngClass]="{ 'ch-disabled': pageI === 1 }">
+    <button
+      class="ch-page-link"
+      (click)="emitPage(pageI - 1)"
+      data-cy="p-prev"
+      [disabled]="pageI === 1"
+    >
+      {{ t('prev') }}
+    </button>
+  </li>
+  <li class="ch-page-item ch-active" aria-current="page">
+    <button class="ch-page-link" data-cy="p-number">
+      {{ page() }} {{ t('of') }} {{ total }}
+    </button>
+  </li>
+  <li class="ch-page-item" [ngClass]="{ 'ch-disabled': pageI === total }">
+    <button
+      class="ch-page-link"
+      (click)="emitPage(pageI + 1)"
+      data-cy="p-next"
+      [disabled]="pageI === total"
+    >
+      {{ t('next') }}
+    </button>
+  </li>
+  <li
+    class="ch-page-item ch-xs-hide"
+    [ngClass]="{ 'ch-disabled': pageI === total }"
+  >
+    <button
+      class="ch-page-link"
+      (click)="emitPage(total)"
+      data-cy="p-last"
+      [disabled]="pageI === total"
+    >
+      {{ t('last') }}
+    </button>
+  </li>
+</ul>

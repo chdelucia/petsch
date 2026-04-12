@@ -1,0 +1,120 @@
+<div class="ch-input-filter" *transloco="let t">
+  <h3 class="ch-input-filter__header">
+    <button
+      (click)="togleFilter()"
+      (keypress)="togleFilter()"
+      type="button"
+      class="ch-input-filter__button"
+      aria-controls="filter-section-0"
+      [attr.aria-expanded]="isfilterOpen()"
+    >
+      <span class="ch-input-filter__title"> {{ title() | uppercase }}</span>
+      <span class="ch-input-filter__icon-container">
+        <svg
+          class="ch-input-filter__icon"
+          [class.hidden]="isfilterOpen()"
+          viewBox="0 0 20 20"
+          fill="currentColor"
+          aria-hidden="true"
+        >
+          <path
+            d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z"
+          />
+        </svg>
+
+        <svg
+          class="ch-input-filter__icon"
+          [class.hidden]="!isfilterOpen()"
+          viewBox="0 0 20 20"
+          fill="currentColor"
+          aria-hidden="true"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M4 10a.75.75 0 01.75-.75h10.5a.75.75 0 010 1.5H4.75A.75.75 0 014 10z"
+            clip-rule="evenodd"
+          />
+        </svg>
+      </span>
+    </button>
+  </h3>
+
+  <div
+    id="filter-section-0"
+    class="ch-input-filter__content"
+    [class.hidden]="!isfilterOpen()"
+  >
+    <div class="ch-input-filter__input-container">
+      <svg
+        class="ch-input-filter__search-icon"
+        aria-hidden="true"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 20 20"
+      >
+        <path
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
+        />
+      </svg>
+    </div>
+    <input
+      (input)="getValue($event)"
+      (focus)="openLastsearch()"
+      (click)="openLastsearch()"
+      autocomplete="off"
+      [value]="value()"
+      name="price"
+      type="text"
+      class="ch-input-filter__input"
+      [placeholder]="t('searchByName')"
+    />
+  </div>
+
+  @if (lastSearch().length) {
+    <div
+      class="ch-input-filter__last-searches"
+      [class.hidden]="!isLastSearchOpen()"
+    >
+      <small class="ch-input-filter__last-searches-title">{{
+        t('lastSearches')
+      }}</small>
+      @for (item of lastSearch() | slice: 0 : 3; track item) {
+        <div class="ch-input-filter__last-search-item">
+          <lib-ch-ui-button
+            variant="link"
+            (click)="searchByOldValue(item)"
+            (keydown)="searchByOldValue(item)"
+            class="ch-input-filter__last-search-text"
+          >
+            {{ item }}
+          </lib-ch-ui-button>
+          <button
+            type="button"
+            class="ch-input-filter__last-search-remove"
+            (click)="removeSearch($index, $event)"
+          >
+            <span class="ch-input-filter__sr">{{ t('close') }}</span>
+            <svg
+              class="ch-input-filter__close-icon"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              aria-hidden="true"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M6 18L18 6M6 6l12 12"
+              />
+            </svg>
+          </button>
+        </div>
+      }
+    </div>
+  }
+</div>

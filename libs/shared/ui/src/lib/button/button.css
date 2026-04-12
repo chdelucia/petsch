@@ -1,0 +1,21 @@
+@reference "../../tailwind.storybook.css";
+
+.ch-btn {
+  @apply inline-flex items-center justify-center font-medium transition-colors focus:outline-none hover:cursor-pointer;
+}
+
+.ch-btn--primary {
+  @apply px-6 py-3 rounded-md bg-indigo-600 text-white hover:bg-indigo-700;
+}
+
+.ch-btn--link {
+  @apply text-indigo-600 hover:text-indigo-500;
+}
+
+.ch-btn--full-width {
+  @apply w-full;
+}
+
+.ch-btn--disabled {
+  @apply opacity-50 cursor-not-allowed bg-gray-500;
+}

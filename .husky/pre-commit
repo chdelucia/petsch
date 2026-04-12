@@ -1,0 +1,3 @@
+bunx nx format:write
+bunx nx affected -t lint --parallel
+bunx nx run-many -t build

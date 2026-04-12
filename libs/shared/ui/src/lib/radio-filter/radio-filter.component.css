@@ -1,0 +1,45 @@
+@reference "../../tailwind.storybook.css";
+
+.ch-filter-container {
+  @apply border-b border-gray-200 py-6;
+}
+
+.ch-filter-container__header {
+  @apply -my-3 flow-root;
+}
+
+.ch-filter-container__button {
+  @apply flex w-full items-center justify-between bg-white py-3 text-sm text-gray-400 hover:text-indigo-600 cursor-pointer;
+}
+
+.ch-filter-container__title {
+  @apply font-medium text-gray-900;
+}
+
+.ch-filter-container__icon-container {
+  @apply ml-6 flex items-center;
+}
+
+.ch-filter-container__icon {
+  @apply h-5 w-5;
+}
+
+.ch-filter-container__section {
+  @apply pt-6;
+}
+
+.ch-filter-container__list {
+  @apply space-y-4;
+}
+
+.ch-filter-container__item {
+  @apply flex items-center hover:cursor-pointer;
+}
+
+.ch-filter-container__input {
+  @apply h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500 hover:cursor-pointer accent-indigo-600;
+}
+
+.ch-filter-container__label {
+  @apply ml-3 text-sm text-gray-600 hover:cursor-pointer hover:text-indigo-600 hover:font-bold;
+}

@@ -1,0 +1,40 @@
+@reference "../../tailwind.storybook.css";
+
+.ch-pagination {
+  @apply flex justify-center p-0 list-none text-sm;
+
+  .ch-page-item {
+    &.ch-disabled {
+      @apply pointer-events-none opacity-50;
+    }
+    &:first-of-type {
+      .ch-page-link {
+        @apply rounded-l;
+      }
+    }
+    &:last-of-type {
+      .ch-page-link {
+        @apply rounded-r border-r;
+      }
+    }
+    &.ch-active {
+      @apply font-bold;
+      .ch-page-link {
+        @apply cursor-default bg-gray-100 pointer-events-none;
+      }
+    }
+
+    .ch-page-link {
+      @apply bg-white no-underline text-black cursor-pointer px-4 py-2 border border-gray-300 border-r-0;
+      &:hover {
+        @apply bg-gray-100;
+      }
+    }
+  }
+}
+
+@media all and (max-width: 800px) {
+  .ch-xs-hide {
+    @apply hidden;
+  }
+}

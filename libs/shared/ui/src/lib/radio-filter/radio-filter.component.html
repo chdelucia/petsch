@@ -1,0 +1,66 @@
+<div class="ch-filter-container">
+  <h3 class="ch-filter-container__header">
+    <button
+      (click)="togleFilter()"
+      type="button"
+      class="ch-filter-container__button"
+      aria-controls="filter-section-0"
+      aria-expanded="false"
+    >
+      <span class="ch-filter-container__title"> {{ title() | uppercase }}</span>
+      <span class="ch-filter-container__icon-container">
+        <svg
+          class="ch-filter-container__icon"
+          [class.hidden]="isOpen()"
+          viewBox="0 0 20 20"
+          fill="currentColor"
+          aria-hidden="true"
+        >
+          <path
+            d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z"
+          />
+        </svg>
+
+        <svg
+          class="ch-filter-container__icon"
+          [class.hidden]="!isOpen()"
+          viewBox="0 0 20 20"
+          fill="currentColor"
+          aria-hidden="true"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M4 10a.75.75 0 01.75-.75h10.5a.75.75 0 010 1.5H4.75A.75.75 0 014 10z"
+            clip-rule="evenodd"
+          />
+        </svg>
+      </span>
+    </button>
+  </h3>
+
+  <div
+    class="ch-filter-container__section"
+    id="filter-section-0"
+    [class.hidden]="!isOpen()"
+  >
+    <div class="ch-filter-container__list">
+      @for (item of options(); track $index) {
+        <div class="ch-filter-container__item">
+          <input
+            (click)="getValue($event)"
+            (keydown)="getValue($event)"
+            [checked]="item.value === value()"
+            [id]="title() + $index"
+            [name]="title()"
+            [value]="item.value"
+            type="radio"
+            class="ch-filter-container__input"
+          />
+          <label [for]="title() + $index" class="ch-filter-container__label">{{
+            item.text
+          }}</label>
+        </div>
+      }
+    </div>
+  </div>
+</div>

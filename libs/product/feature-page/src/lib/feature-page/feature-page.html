@@ -1,0 +1,26 @@
+<ng-container *transloco="let t">
+  <lib-ch-ui-product-list-header
+    [text]="t('products')"
+    [showFilters]="showFilters()"
+    (toggleFilters)="toggleFilters()"
+  >
+    <lib-ch-ui-dropdown-filter (sortbyChange)="sortBy($event)">
+    </lib-ch-ui-dropdown-filter>
+  </lib-ch-ui-product-list-header>
+</ng-container>
+
+<section aria-labelledby="products-heading" class="chars">
+  <div class="chars__grid">
+    <lib-feature-filters
+      class="chars__filters"
+      [class.chars__filters--hidden]="!showFilters()"
+    ></lib-feature-filters>
+
+    <lib-feature-product-list
+      class="chars__list"
+      [class.chars__list--no-filters]="!showFilters()"
+      [showFilters]="showFilters()"
+    ></lib-feature-product-list>
+  </div>
+</section>
+<lib-feature-pet-of-day></lib-feature-pet-of-day>

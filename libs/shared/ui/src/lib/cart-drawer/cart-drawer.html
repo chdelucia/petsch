@@ -1,0 +1,38 @@
+@if (open()) {
+<div class="ch-cart-drawer-overlay"></div>
+
+<div class="ch-cart-drawer-container" *transloco="let t">
+  <div class="ch-cart-drawer-inner">
+    <div class="ch-cart-drawer-panel-container">
+      <div
+        class="ch-cart-drawer-panel"
+        [class.ch-cart-drawer-panel--closed]="!open()"
+      >
+        <div class="ch-cart-drawer-content">
+          <div class="ch-cart-drawer-body">
+            <div class="ch-cart-drawer-header">
+              <h2 class="ch-cart-drawer-title">{{ titleLabel() }}</h2>
+              <button
+                type="button"
+                class="ch-cart-drawer-close"
+                (click)="closeDrawer()"
+                [attr.aria-label]="t('close')"
+              >
+                ✕
+              </button>
+            </div>
+            <ng-content></ng-content>
+          </div>
+
+          @if (showFooter()) {
+          <lib-ch-ui-cart-footer
+            [closeLabel]="closeLabel()"
+            (closeDrawer)="closeDrawer()"
+          ></lib-ch-ui-cart-footer>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+}

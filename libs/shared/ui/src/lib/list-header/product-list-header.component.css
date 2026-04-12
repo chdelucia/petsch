@@ -1,0 +1,31 @@
+@reference "../../tailwind.storybook.css";
+
+.ch-top-container {
+  @apply flex items-end justify-between border-b border-gray-200 pb-3 pt-2.5;
+}
+
+.ch-top-container__title {
+  @apply text-2xl font-bold tracking-tight text-gray-900;
+}
+
+.ch-top-container__filters {
+  @apply flex items-center;
+}
+
+.ch-top-container__filters__btn {
+  @apply ml-4 pr-2 text-gray-400 hover:text-gray-500 sm:ml-4;
+}
+
+.ch-top-container__filters__toggleview,
+.ch-top-container__filters__togglefilters {
+  @apply h-5 w-5 cursor-pointer;
+}
+
+.ch-top-container__filters__toggleview.ch-active,
+.ch-top-container__filters__togglefilters.ch-active {
+  @apply fill-indigo-600;
+}
+
+.ch-top-container__filters__sr {
+  @apply sr-only;
+}

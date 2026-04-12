@@ -1,0 +1,21 @@
+<form [formGroup]="form" *transloco="let t">
+  <lib-ch-ui-active-filters
+    [values]="activeFilters"
+    (resetFilter)="resetFilter($event)"
+  >
+  </lib-ch-ui-active-filters>
+
+  @for (config of filterConfigs(); track config.key) { @if (config.type ===
+  'input') {
+  <lib-ch-ui-input-filter
+    [title]="t(config.key)"
+    [formControlName]="config.key"
+  ></lib-ch-ui-input-filter>
+  } @if (config.type === 'radio') {
+  <lib-ch-ui-radio-filter
+    [title]="t(config.key)"
+    [options]="config.options"
+    [formControlName]="config.key"
+  ></lib-ch-ui-radio-filter>
+  } }
+</form>

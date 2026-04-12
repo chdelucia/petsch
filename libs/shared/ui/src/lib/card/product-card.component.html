@@ -1,0 +1,26 @@
+<div class="ch-product-card">
+  <div class="ch-product-card__img-container">
+    <img
+      [ngSrc]="imageUrl()"
+      [alt]="name()"
+      [style.viewTransitionName]="viewTransitionName()"
+      [priority]="priority()"
+      fill
+      class="ch-product-card__img"
+    />
+  </div>
+  <div class="ch-product-card__info">
+    <div class="ch-product-card__details">
+      <h3 class="ch-product-card__title">
+        <a [routerLink]="['/pets', id()]">
+          <span aria-hidden="true" class="ch-product-card__link-overlay"></span>
+          {{ name() }}
+        </a>
+      </h3>
+      <div class="ch-product-card__meta">
+        <ng-content select="[info]"></ng-content>
+      </div>
+    </div>
+  </div>
+</div>
+<ng-content select="lib-ch-ui-button"></ng-content>

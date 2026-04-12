@@ -1,0 +1,14 @@
+<div class="ch-cart-item" *transloco="let t">
+  <div class="ch-cart-item__img-container">
+    <img [src]="imageSrc()" [alt]="name()" class="ch-cart-item__img" />
+  </div>
+
+  <div class="ch-cart-item__content">
+    <div class="ch-cart-item__header">
+      <h3>{{ name() }}</h3>
+    </div>
+
+    <p class="ch-cart-item__date">{{ day() }}</p>
+    <p class="ch-cart-item__desc">{{description()}}</p>
+  </div>
+</div>

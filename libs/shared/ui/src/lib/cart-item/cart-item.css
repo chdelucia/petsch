@@ -1,0 +1,38 @@
+@reference "../../tailwind.storybook.css";
+
+.ch-cart-item {
+  @apply flex py-6;
+}
+
+.ch-cart-item__img-container {
+  @apply size-24 shrink-0 overflow-hidden rounded-md border border-gray-200;
+}
+
+.ch-cart-item__img {
+  @apply size-full object-cover;
+}
+
+.ch-cart-item__content {
+  @apply ml-4 flex flex-1 flex-col;
+}
+
+.ch-cart-item__header {
+  @apply flex justify-between text-base font-medium text-gray-900;
+}
+
+.ch-cart-item__date,
+.ch-cart-item__desc {
+  @apply mt-1 text-sm text-gray-500;
+}
+
+.ch-cart-item__footer {
+  @apply flex flex-1 items-end justify-between text-sm;
+}
+
+.ch-cart-item__qty {
+  @apply text-gray-500;
+}
+
+.ch-cart-item__remove {
+  @apply font-medium text-indigo-600 hover:text-indigo-500;
+}

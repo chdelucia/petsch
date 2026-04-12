@@ -1,0 +1,44 @@
+@let selected = sortby();
+
+<div class="dropdown">
+  <div>
+    <button
+      type="button"
+      (click)="toggle()"
+      class="dropdown-button"
+      id="menu-button"
+    >
+      Sort: {{ selected.text }}
+      <svg
+        [class.open]="isOpen()"
+        class="dropdown-icon"
+        viewBox="0 0 20 20"
+        fill="currentColor"
+      >
+        <path
+          fill-rule="evenodd"
+          d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+          clip-rule="evenodd"
+        />
+      </svg>
+    </button>
+  </div>
+
+  <div [class.hidden]="!isOpen()" class="dropdown-menu" role="menu">
+    <div class="dropdown-list">
+      @for (item of options(); track $index) {
+        <span
+          tabindex="0"
+          class="dropdown-item"
+          [class.selected]="
+            item.key === selected.key && item.order === selected.order
+          "
+          (click)="emitValue(item)"
+          (keypress)="emitValue(item)"
+        >
+          {{ item.text }}
+        </span>
+      }
+    </div>
+  </div>
+</div>
