@@ -46,9 +46,6 @@ export class FeatureProductDetails {
     let product: Pet | undefined;
     try {
       product = this.product();
-    } catch (e) {
-      // Input not ready yet
-      return;
     }
 
     if (product) {
