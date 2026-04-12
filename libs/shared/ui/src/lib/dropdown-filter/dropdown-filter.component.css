@@ -1,0 +1,43 @@
+@reference "../../tailwind.storybook.css";
+
+svg {
+  transition: all 0.5s ease;
+  .open {
+    @apply rotate-180;
+  }
+}
+span.selected {
+  @apply font-medium text-indigo-600;
+}
+
+.dropdown {
+  @apply relative inline-block text-left;
+}
+
+.dropdown-button {
+  @apply inline-flex justify-center text-sm font-medium text-gray-700 hover:text-gray-900 cursor-pointer;
+}
+
+.dropdown-icon {
+  @apply -mr-1 ml-1 h-5 w-5 shrink-0 text-gray-400 transition-transform duration-200;
+}
+
+.dropdown-icon.open {
+  @apply rotate-180;
+}
+
+.dropdown-menu {
+  @apply absolute z-10 mt-2 w-40 origin-top-right rounded-md bg-white shadow-2xl ring-1 ring-black;
+}
+
+.dropdown-list {
+  @apply py-1;
+}
+
+.dropdown-item {
+  @apply text-gray-500 block px-4 py-2 text-sm cursor-pointer hover:bg-indigo-100;
+}
+
+.dropdown-item.selected {
+  @apply font-semibold text-gray-900 bg-indigo-50;
+}
