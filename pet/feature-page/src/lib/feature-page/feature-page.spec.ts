@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FeaturePage } from './feature-page';
 import { getTranslocoTestingModule } from '@petsch/shared-utils';
-import { PETLIST_STORE, PETOFDAY_STORE, PRODUCT_TOKEN } from '@petsch/api';
+import { PETLIST_STORE, PETOFDAY_STORE, PET_TOKEN } from '@petsch/api';
 import { of } from 'rxjs';
 import { provideRouter } from '@angular/router';
 import { LOCALSTORAGE_TOKEN } from '@petsch/obs-api';
@@ -17,9 +17,9 @@ describe('FeaturePage', () => {
       providers: [
         provideRouter([]),
         {
-          provide: PRODUCT_TOKEN,
+          provide: PET_TOKEN,
           useValue: {
-            getProducts: () => of({ products: [], pagination: {} }),
+            getPets: () => of({ products: [], pagination: {} }),
             getDetails: () => of({}),
           },
         },

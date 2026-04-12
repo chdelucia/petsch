@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FeatureFilters } from './feature-filters';
-import { PETLIST_STORE, PRODUCT_TOKEN } from '@petsch/api';
+import { PETLIST_STORE, PET_TOKEN } from '@petsch/api';
 import { getTranslocoTestingModule } from '@petsch/shared-utils';
 import { of } from 'rxjs';
 
@@ -29,9 +29,9 @@ describe('FeatureFilters', () => {
       providers: [
         { provide: PETLIST_STORE, useValue: store },
         {
-          provide: PRODUCT_TOKEN,
+          provide: PET_TOKEN,
           useValue: {
-            getProducts: () => of({ products: [], pagination: {} }),
+            getPets: () => of({ products: [], pagination: {} }),
             getDetails: () => of({}),
           },
         },

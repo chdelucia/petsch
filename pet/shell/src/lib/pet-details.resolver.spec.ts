@@ -1,10 +1,10 @@
 import { TestBed } from '@angular/core/testing';
-import { productResolver } from './product-details.resolver';
-import { PRODUCT_TOKEN } from '@petsch/api';
+import { petResolver } from './pet-details.resolver';
+import { PET_TOKEN } from '@petsch/api';
 import { of } from 'rxjs';
 import { ActivatedRouteSnapshot, convertToParamMap } from '@angular/router';
 
-describe('productResolver', () => {
+describe('petResolver', () => {
   let productServiceMock: any;
 
   beforeEach(() => {
@@ -13,7 +13,7 @@ describe('productResolver', () => {
     };
 
     TestBed.configureTestingModule({
-      providers: [{ provide: PRODUCT_TOKEN, useValue: productServiceMock }],
+      providers: [{ provide: PET_TOKEN, useValue: productServiceMock }],
     });
   });
 
@@ -23,7 +23,7 @@ describe('productResolver', () => {
     } as unknown as ActivatedRouteSnapshot;
 
     const result = TestBed.runInInjectionContext(() =>
-      productResolver(route, {} as any),
+      petResolver(route, {} as any),
     );
 
     expect(productServiceMock.getDetails).toHaveBeenCalledWith('123');

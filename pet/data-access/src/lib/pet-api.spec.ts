@@ -3,18 +3,18 @@ import {
   provideHttpClientTesting,
   HttpTestingController,
 } from '@angular/common/http/testing';
-import { ProductApi } from './product-api';
+import { PetApi } from './pet-api';
 import { Pet } from '@petsch/api';
 
 describe('Products', () => {
-  let service: ProductApi;
+  let service: PetApi;
   let httpMock: HttpTestingController;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [ProductApi, provideHttpClientTesting()],
+      providers: [PetApi, provideHttpClientTesting()],
     });
-    service = TestBed.inject(ProductApi);
+    service = TestBed.inject(PetApi);
     httpMock = TestBed.inject(HttpTestingController);
   });
 
@@ -30,7 +30,7 @@ describe('Products', () => {
     const name = 'Batman';
     const page = 1;
 
-    service.getProducts({ name, page }).subscribe((response) => {
+    service.getPets({ name, page }).subscribe((response) => {
       expect(response.products.length).toBe(1);
       expect(response.products[0].name).toBe('Batman');
     });

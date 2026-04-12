@@ -16,7 +16,7 @@ import {
 import { TranslocoDirective } from '@jsverse/transloco';
 
 @Component({
-  selector: 'lib-feature-product-list',
+  selector: 'lib-feature-pet-list',
   imports: [
     ChCardSkeleton,
     ChCard,
@@ -25,10 +25,10 @@ import { TranslocoDirective } from '@jsverse/transloco';
     ChBadge,
     TranslocoDirective,
   ],
-  templateUrl: './feature-product-list.html',
-  styleUrl: './feature-product-list.css',
+  templateUrl: './feature-pet-list.html',
+  styleUrl: './feature-pet-list.css',
 })
-export class FeatureProductList {
+export class FeaturePetList {
   private readonly store = inject(PETLIST_STORE);
   protected readonly potdStore = inject(PETOFDAY_STORE);
   protected readonly transitionService = inject(CurrentTransitionService);

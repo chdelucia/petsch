@@ -1,5 +1,5 @@
 import { Component, inject, signal } from '@angular/core';
-import { FeatureProductList } from '@petsch/feature-product-list';
+import { FeaturePetList } from '@petsch/feature-product-list';
 import { PETLIST_STORE } from '@petsch/api';
 import { FeaturePetOfDay } from '@petsch/feature-pet-of-day';
 import { TranslocoDirective } from '@jsverse/transloco';
@@ -9,7 +9,7 @@ import { FeatureFilters } from '@petsch/feature-filters';
 @Component({
   selector: 'lib-feature-page',
   imports: [
-    FeatureProductList,
+    FeaturePetList,
     FeaturePetOfDay,
     TranslocoDirective,
     ChListHeader,

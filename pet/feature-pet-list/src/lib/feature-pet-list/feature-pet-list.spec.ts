@@ -1,15 +1,15 @@
 import { getTranslocoTestingModule } from '@petsch/shared-utils';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { FeatureProductList } from './feature-product-list';
+import { FeaturePetList } from './feature-product-list';
 import { provideRouter } from '@angular/router';
 import { of } from 'rxjs';
-import { PETLIST_STORE, PETOFDAY_STORE, PRODUCT_TOKEN } from '@petsch/api';
+import { PETLIST_STORE, PETOFDAY_STORE, PET_TOKEN } from '@petsch/api';
 import { LOCALSTORAGE_TOKEN } from '@petsch/obs-api';
 import { signal } from '@angular/core';
 
-describe('FeatureProductList', () => {
-  let component: FeatureProductList;
-  let fixture: ComponentFixture<FeatureProductList>;
+describe('FeaturePetList', () => {
+  let component: FeaturePetList;
+  let fixture: ComponentFixture<FeaturePetList>;
   let store: any;
 
   beforeEach(async () => {
@@ -28,7 +28,7 @@ describe('FeatureProductList', () => {
     };
 
     await TestBed.configureTestingModule({
-      imports: [getTranslocoTestingModule(), FeatureProductList],
+      imports: [getTranslocoTestingModule(), FeaturePetList],
       providers: [
         { provide: PETLIST_STORE, useValue: store },
         provideRouter([]),
@@ -42,9 +42,9 @@ describe('FeatureProductList', () => {
           },
         },
         {
-          provide: PRODUCT_TOKEN,
+          provide: PET_TOKEN,
           useValue: {
-            getProducts: () => of({ products: [], pagination: {} }),
+            getPets: () => of({ products: [], pagination: {} }),
             getDetails: () => of({}),
           },
         },
@@ -60,7 +60,7 @@ describe('FeatureProductList', () => {
       ],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(FeatureProductList);
+    fixture = TestBed.createComponent(FeaturePetList);
     component = fixture.componentInstance;
     fixture.componentRef.setInput('showFilters', true);
     await fixture.whenStable();

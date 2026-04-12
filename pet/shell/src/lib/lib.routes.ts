@@ -1,8 +1,8 @@
 import { Route } from '@angular/router';
 import { PRODUCT_ROUTES } from '@petsch/shared-utils';
-import { productResolver } from './product-details.resolver';
+import { petResolver } from './pet-details.resolver';
 import { PETLIST_STORE, PETOFDAY_STORE } from '@petsch/api';
-import { ProductsStore } from '@petsch/feature-product-list';
+import { PetsStore } from '@petsch/feature-product-list';
 import { PetOfTheDayStore } from '@petsch/feature-pet-of-day';
 
 export const shellRoutes: Route[] = [
@@ -11,7 +11,7 @@ export const shellRoutes: Route[] = [
     providers: [
       {
         provide: PETLIST_STORE,
-        useClass: ProductsStore,
+        useClass: PetsStore,
       },
       {
         provide: PETOFDAY_STORE,
@@ -26,10 +26,10 @@ export const shellRoutes: Route[] = [
       },
       {
         path: PRODUCT_ROUTES.DETAILS,
-        resolve: { product: productResolver },
+        resolve: { product: petResolver },
         loadComponent: () =>
           import('@petsch/feature-product-details').then(
-            (m) => m.FeatureProductDetails,
+            (m) => m.FeaturePetDetails,
           ),
       },
     ],

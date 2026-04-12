@@ -7,7 +7,7 @@ import { Pet, CurrentTransitionService } from '@petsch/api';
 import { APP_ROUTES } from '@petsch/shared-utils';
 
 @Component({
-  selector: 'lib-feature-product-details',
+  selector: 'lib-feature-pet-details',
   imports: [
     CommonModule,
     ChButton,
@@ -15,10 +15,10 @@ import { APP_ROUTES } from '@petsch/shared-utils';
     TranslocoDirective,
     NgOptimizedImage,
   ],
-  templateUrl: './feature-product-details.html',
-  styleUrl: './feature-product-details.css',
+  templateUrl: './feature-pet-details.html',
+  styleUrl: './feature-pet-details.css',
 })
-export class FeatureProductDetails {
+export class FeaturePetDetails {
   protected readonly transitionService = inject(CurrentTransitionService);
   private readonly router = inject(Router);
 

@@ -1,2 +1,2 @@
-export * from './lib/feature-product-list/feature-product-list';
-export * from './lib/product-list.store';
+export * from './lib/feature-pet-list/feature-pet-list';
+export * from './lib/pet.store';

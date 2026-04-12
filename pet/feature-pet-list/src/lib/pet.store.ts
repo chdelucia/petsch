@@ -9,9 +9,9 @@ import {
 } from '@ngrx/signals';
 import { toObservable } from '@angular/core/rxjs-interop';
 import { switchMap, catchError, of } from 'rxjs';
-import { PRODUCT_TOKEN, Filters, Pet, PaginationLinks } from '@petsch/api';
+import { PET_TOKEN, Filters, Pet, PaginationLinks } from '@petsch/api';
 
-export interface ProductsState {
+export interface PetsState {
   products: Pet[];
   pagination: PaginationLinks;
   filters: Partial<Filters>;
@@ -20,7 +20,7 @@ export interface ProductsState {
   error: string | null;
 }
 
-const initialState: ProductsState = {
+const initialState: PetsState = {
   products: [],
   pagination: {},
   filters: { _page: 1, _limit: 12 },
@@ -29,7 +29,7 @@ const initialState: ProductsState = {
   error: null,
 };
 
-export const ProductsStore = signalStore(
+export const PetsStore = signalStore(
   withState(initialState),
 
   withComputed((store) => ({
@@ -47,7 +47,7 @@ export const ProductsStore = signalStore(
   })),
 
   withMethods((store) => {
-    const productService = inject(PRODUCT_TOKEN);
+    const productService = inject(PET_TOKEN);
 
     const setLoading = (loading: boolean) =>
       patchState(store, { loading, error: null });
@@ -113,7 +113,7 @@ export const ProductsStore = signalStore(
         const query = store.query();
 
         productService
-          .getProducts(query)
+          .getPets(query)
           .pipe(
             catchError((err) => {
               setError(err?.message ?? 'Failed to load products');

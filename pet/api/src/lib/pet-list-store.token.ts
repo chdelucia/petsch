@@ -1,7 +1,7 @@
 import { InjectionToken, Signal } from '@angular/core';
 import { Filters, PaginationLinks, Pet } from './models/pet';
 
-export interface ProductsStoreContract {
+export interface PetsStoreContract {
   products: Signal<Pet[]>;
   filteredProducts: Signal<Pet[]>;
   loading: Signal<boolean>;
@@ -17,6 +17,6 @@ export interface ProductsStoreContract {
   removeFilter<K extends keyof Filters>(key: K): void;
 }
 
-export const PETLIST_STORE = new InjectionToken<ProductsStoreContract>(
+export const PETLIST_STORE = new InjectionToken<PetsStoreContract>(
   'PETLIST_STORE',
 );

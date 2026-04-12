@@ -1,1 +1,1 @@
-export * from './lib/feature-product-details/feature-product-details';
+export * from './lib/feature-pet-details/feature-pet-details';
