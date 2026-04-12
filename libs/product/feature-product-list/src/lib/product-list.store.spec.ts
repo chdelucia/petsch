@@ -69,7 +69,6 @@ describe('ProductsStore', () => {
 
     store.setFilterName('cat');
     expect(store.filteredProducts()).toEqual([{ id: '2', name: 'Cat' }]);
-
   });
 
   it('should update filters', () => {
@@ -95,6 +94,6 @@ describe('ProductsStore', () => {
   it('should clear products and reset state', () => {
     store.clear();
     expect(store.products()).toEqual([]);
-    expect(store.filters()).toEqual({"_limit": 12, "_page": 1});
+    expect(store.filters()).toEqual({ _limit: 12, _page: 1 });
   });
 });
