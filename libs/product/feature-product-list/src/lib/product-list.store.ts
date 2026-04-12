@@ -1,5 +1,6 @@
 import { computed, inject } from '@angular/core';
 import { Pet, Filters, PRODUCT_TOKEN, PaginationLinks } from '@petsch/api';
+import { ObservabilityFacade } from '@petsch/obs-api';
 import {
   signalStore,
   withProps,
@@ -33,6 +34,7 @@ export const ProductsStore = signalStore(
   withState(initialState),
   withProps(() => ({
     productService: inject(PRODUCT_TOKEN),
+    obsFacade: inject(ObservabilityFacade),
   })),
   withComputed((store) => ({
     filteredProducts: computed(() => {
@@ -66,11 +68,14 @@ export const ProductsStore = signalStore(
             loading: false,
           });
         } catch (err: unknown) {
+          // Log error to monitoring service for internal debugging
+          // but show a generic message to the user to avoid leaking system details
+          store.obsFacade.trackError(err);
           patchState(store, {
             products: [],
             pagination: {},
             loading: false,
-            error: (err as Error)?.message ?? 'Failed to load products',
+            error: 'Failed to load products',
           });
         }
       },

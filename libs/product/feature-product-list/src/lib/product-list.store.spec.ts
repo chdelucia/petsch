@@ -1,11 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 import { ProductsStore } from './product-list.store';
 import { PRODUCT_TOKEN } from '@petsch/api';
+import { ObservabilityFacade } from '@petsch/obs-api';
 import { of, throwError } from 'rxjs';
 
 describe('ProductsStore', () => {
   let store: any;
   let productServiceMock: any;
+  let obsFacadeMock: any;
 
   beforeEach(() => {
     productServiceMock = {
@@ -13,10 +15,15 @@ describe('ProductsStore', () => {
       getDetails: vi.fn((id: string) => of({ id })),
     };
 
+    obsFacadeMock = {
+      trackError: vi.fn(),
+    };
+
     TestBed.configureTestingModule({
       providers: [
         ProductsStore,
         { provide: PRODUCT_TOKEN, useValue: productServiceMock },
+        { provide: ObservabilityFacade, useValue: obsFacadeMock },
       ],
     });
 
@@ -57,11 +64,15 @@ describe('ProductsStore', () => {
       throwError(() => new Error('API Error')),
     );
 
+    const error = new Error('API Error');
+    productServiceMock.getProducts.mockReturnValue(throwError(() => error));
+
     await store.loadProducts({});
 
     expect(store.products()).toEqual([]);
-    expect(store.error()).toBe('API Error');
+    expect(store.error()).toBe('Failed to load products');
     expect(store.loading()).toBeFalsy();
+    expect(obsFacadeMock.trackError).toHaveBeenCalledWith(error);
   });
 
   it('should compute filteredProducts', async () => {
