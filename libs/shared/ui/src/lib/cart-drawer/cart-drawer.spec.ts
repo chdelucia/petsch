@@ -27,5 +27,4 @@ describe('CartDrawer', () => {
     component.closeDrawer();
     expect(spy).toHaveBeenCalledWith(false);
   });
-
 });
