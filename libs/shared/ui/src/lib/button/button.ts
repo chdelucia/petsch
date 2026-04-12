@@ -8,6 +8,7 @@ import { NgClass } from '@angular/common';
   styleUrl: './button.css',
 })
 export class ChButton {
+  testId = input<string>('');
   variant = input<'primary' | 'link'>('primary');
   fullWidth = input<boolean, unknown>(false, { transform: booleanAttribute });
   disabled = input<boolean>(false);

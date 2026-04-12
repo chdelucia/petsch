@@ -7,6 +7,7 @@
       (click)="toggle()"
       class="dropdown-button"
       id="menu-button"
+      [attr.data-testid]="testId() + '-button'"
     >
       Sort: {{ selected.text }}
       <svg
@@ -35,6 +36,7 @@
           "
           (click)="emitValue(item)"
           (keypress)="emitValue(item)"
+          [attr.data-testid]="testId() + '-option-' + item.key + '-' + item.order"
         >
           {{ item.text }}
         </span>

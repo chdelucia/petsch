@@ -9,6 +9,7 @@ import { TranslocoDirective } from '@jsverse/transloco';
   styleUrl: './pagination.component.css',
 })
 export class ChPagination {
+  testId = input<string>('');
   page = input.required<number>();
 
   totalPages = input.required<number>();
