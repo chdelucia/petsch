@@ -12,6 +12,7 @@ export class ChPagination {
   page = input.required<number>();
 
   totalPages = input.required<number>();
+  testId = input<string>();
 
   pageChange = output<number>();
 

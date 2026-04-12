@@ -3,6 +3,7 @@
     [open]="potdStore.isOpen()"
     (openChange)="potdStore.togglePoT($event)"
     [titleLabel]="t('petOfTheDay')"
+    testId="cart-drawer"
   >
     @for (entry of potdStore.sortedEntries(); track entry.date) {
     <li>
@@ -10,6 +11,8 @@
         [imageSrc]="entry.pet.photo_url"
         [name]="entry.pet.name"
         [day]="entry.date"
+        testId="cart-item"
+        (remove)="handleRemove(entry.date)"
       ></lib-ch-ui-cart-item>
     </li>
     }
