@@ -2,6 +2,53 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.40](https://github.com/chdelucia/petsch/compare/v0.0.39...v0.0.40) (2026-04-12)
+
+
+### Features
+
+* add 404 page and centralize application routes ([8fc9a48](https://github.com/chdelucia/petsch/commit/8fc9a48d4678644f44e20a58c02b3da1839b8fc5))
+
+
+### Bug Fixes
+
+* **404:** change css ([9bbbd7c](https://github.com/chdelucia/petsch/commit/9bbbd7cbf8eba7b05e484f38bb86651719cb0825))
+
+### [0.0.39](https://github.com/chdelucia/petsch/compare/v0.0.38...v0.0.39) (2026-04-12)
+
+
+### Features
+
+* dropdown ([4913c11](https://github.com/chdelucia/petsch/commit/4913c119912274634d6d90bbbf1b9aa1a87bf384))
+* **uilib:** add dropbown filter ([a70d0e4](https://github.com/chdelucia/petsch/commit/a70d0e439567f9df460056d1634a93d3d7c75bf7))
+
+### [0.0.38](https://github.com/chdelucia/petsch/compare/v0.0.37...v0.0.38) (2026-04-12)
+
+
+### Features
+
+* add missing translations and implement dynamic SEO metadata ([021b539](https://github.com/chdelucia/petsch/commit/021b5390b5c7e48519dce847899dc97da125ce0c))
+
+### [0.0.37](https://github.com/chdelucia/petsch/compare/v0.0.36...v0.0.37) (2026-04-12)
+
+
+### Features
+
+* **lang:** add lang selector ([3c54ffe](https://github.com/chdelucia/petsch/commit/3c54ffe80fbb5473ffd562def96f8736aa711bec))
+
+
+### Bug Fixes
+
+* open ptod ([57ee93b](https://github.com/chdelucia/petsch/commit/57ee93b3cbecaec8bd0532ad75fdf922482c7df1))
+
+### [0.0.36](https://github.com/chdelucia/petsch/compare/v0.0.35...v0.0.36) (2026-04-12)
+
+
+### Bug Fixes
+
+* **css:** remove unused css ([35b3141](https://github.com/chdelucia/petsch/commit/35b314100bb441213bcb3177c6c87edb2bcb4091))
+* remove css ([62983c3](https://github.com/chdelucia/petsch/commit/62983c36281e1c9db05e594faf184201d921adce))
+
 ### [0.0.35](https://github.com/chdelucia/petsch/compare/v0.0.34...v0.0.35) (2026-04-12)
 
 ### [0.0.34](https://github.com/chdelucia/petsch/compare/v0.0.33...v0.0.34) (2026-04-12)

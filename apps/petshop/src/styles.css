@@ -9,6 +9,7 @@
 @source "../../../libs/product/feature-product-details";
 @source "../../../libs/product/feature-product-list";
 @source "../../../libs/product/shell";
+@source "../../../libs/shared/feature-404";
 @source "../../../libs/shared/observability/api";
 @source "../../../libs/shared/observability/data-access";
 @source "../../../libs/shared/ui";

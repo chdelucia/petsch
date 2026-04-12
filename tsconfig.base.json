@@ -34,7 +34,8 @@
         "libs/product/feature-pet-of-day/src/index.ts"
       ],
       "@petsch/feature-page": ["libs/product/feature-page/src/index.ts"],
-      "@petsch/feature-filters": ["libs/product/feature-filters/src/index.ts"]
+      "@petsch/feature-filters": ["libs/product/feature-filters/src/index.ts"],
+      "@petsch/feature-404": ["libs/shared/feature-404/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
