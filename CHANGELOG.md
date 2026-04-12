@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.36](https://github.com/chdelucia/petsch/compare/v0.0.35...v0.0.36) (2026-04-12)
+
+
+### Bug Fixes
+
+* **css:** remove unused css ([35b3141](https://github.com/chdelucia/petsch/commit/35b314100bb441213bcb3177c6c87edb2bcb4091))
+* remove css ([62983c3](https://github.com/chdelucia/petsch/commit/62983c36281e1c9db05e594faf184201d921adce))
+
 ### [0.0.35](https://github.com/chdelucia/petsch/compare/v0.0.34...v0.0.35) (2026-04-12)
 
 ### [0.0.34](https://github.com/chdelucia/petsch/compare/v0.0.33...v0.0.34) (2026-04-12)
