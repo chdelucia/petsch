@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.1.0](https://github.com/chdelucia/petsch/compare/v0.0.43...v1.1.0) (2026-04-12)
+
+
+### Features
+
+* **ci:** improve ci ([a61ebcd](https://github.com/chdelucia/petsch/commit/a61ebcd7543ebec7b8410d1e052fe3a35b712136))
+
 ## [1.0.0](https://github.com/chdelucia/petsch/compare/v0.0.42...v1.0.0) (2026-04-12)
 
 
