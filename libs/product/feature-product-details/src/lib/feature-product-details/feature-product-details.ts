@@ -3,7 +3,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { Meta, Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
-import { TranslocoDirective, TranslocoService } from '@jsverse/transloco';
+import { TranslocoDirective } from '@jsverse/transloco';
 import { Button } from '@petsch/ui';
 import { Pet, CurrentTransitionService } from '@petsch/api';
 
@@ -30,32 +30,5 @@ export class FeatureProductDetails {
 
   goBack() {
     this.router.navigate(['/products']);
-  }
-
-  constructor() {
-    effect(() => {
-      this.updateSeo();
-    });
-
-    this.translocoService.langChanges$.pipe(takeUntilDestroyed()).subscribe(() => {
-      this.updateSeo();
-    });
-  }
-
-  private updateSeo(): void {
-    let product: Pet | undefined;
-    try {
-      product = this.product();
-    }
-
-    if (product) {
-      this.titleService.setTitle(
-        this.translocoService.translate('detailsTitle', { name: product.name }),
-      );
-      this.metaService.updateTag({
-        name: 'description',
-        content: product.description || '',
-      });
-    }
   }
 }
