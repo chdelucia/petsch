@@ -6,6 +6,9 @@ Live: https://petsch.vercel.app/
 > aqui en la [release 0.0.19](https://github.com/chdelucia/petsch/releases/tag/v0.0.19)
 > o aqui en la [rama directamente](https://github.com/chdelucia/petsch/tree/first-pr)
 
+El desarrollo ha sido parcialmente hecho por IA aqui podeis ver la documentación de su uso:
+[Ver el blog de la IA](/IATACORA.md)
+
 <br>
 
 # 🧠 Idea clave / Trade-offs generales
