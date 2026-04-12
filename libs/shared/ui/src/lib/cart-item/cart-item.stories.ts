@@ -13,7 +13,6 @@ type Story = StoryObj<CartItem>;
 export const Primary: Story = {
   args: {
     name: 'Throwback Hip Bag',
-    color: 'Salmon',
     imageSrc: 'https://rickandmortyapi.com/api/character/avatar/1.jpeg',
   },
 };
