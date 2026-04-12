@@ -9,6 +9,7 @@ export interface Pet {
   photo_url: string;
   weight: number;
   height: number;
+  price?: number;
   number_of_lives?: number;
   health: HealthStatus;
 }
