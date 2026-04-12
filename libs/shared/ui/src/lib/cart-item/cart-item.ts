@@ -1,9 +1,10 @@
 import { Component, input, output } from '@angular/core';
+import { NgOptimizedImage } from '@angular/common';
 import { TranslocoDirective } from '@jsverse/transloco';
 
 @Component({
   selector: 'lib-ui-cart-item',
-  imports: [TranslocoDirective],
+  imports: [TranslocoDirective, NgOptimizedImage],
   templateUrl: './cart-item.html',
   styleUrl: './cart-item.css',
 })

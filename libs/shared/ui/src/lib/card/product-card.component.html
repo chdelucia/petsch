@@ -1,10 +1,11 @@
 <div class="product-card">
-  <div class="product-card__img-container">
+  <div class="product-card__img-container" style="position: relative;">
     <img
-      [src]="imageUrl()"
+      [ngSrc]="imageUrl()"
       [alt]="name()"
       [style.viewTransitionName]="viewTransitionName()"
       class="product-card__img"
+      fill
     />
   </div>
   <div class="product-card__info">
