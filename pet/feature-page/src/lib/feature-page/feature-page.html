@@ -6,6 +6,17 @@
   >
     <lib-ch-ui-dropdown-filter
       testId="product-sort-dropdown"
+      [options]="[
+        { key: 'id', order: 'asc', text: t('sort.mostPopular') },
+        { key: 'name', order: 'asc', text: t('sort.nameAsc') },
+        { key: 'name', order: 'desc', text: t('sort.nameDesc') },
+        { key: 'weight', order: 'asc', text: t('sort.weightAsc') },
+        { key: 'weight', order: 'desc', text: t('sort.weightDesc') },
+        { key: 'height', order: 'asc', text: t('sort.heightAsc') },
+        { key: 'height', order: 'desc', text: t('sort.heightDesc') },
+        { key: 'length', order: 'asc', text: t('sort.lengthAsc') },
+        { key: 'length', order: 'desc', text: t('sort.lengthDesc') }
+      ]"
       (sortbyChange)="sortBy($event)"
     >
     </lib-ch-ui-dropdown-filter>
