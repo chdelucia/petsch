@@ -5,4 +5,5 @@
 @source "../../../libs/shared/observability/api";
 @source "../../../libs/shared/observability/data-access";
 @source "../../../libs/shared/ui";
+@source "../../../pet/api";
 /* nx-tailwind-sources:end */
