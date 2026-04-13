@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.8.1](https://github.com/chdelucia/petsch/compare/v1.8.0...v1.8.1) (2026-04-13)
+
+
+### Bug Fixes
+
+* e2e test ([dd2f921](https://github.com/chdelucia/petsch/commit/dd2f921b344b0734626d85327db098bcf3b0e01a))
+
 ## [1.8.0](https://github.com/chdelucia/petsch/compare/v1.7.1...v1.8.0) (2026-04-13)
 
 
