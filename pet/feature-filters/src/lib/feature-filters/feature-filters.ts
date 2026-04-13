@@ -7,8 +7,7 @@ import { debounceTime, Observable } from 'rxjs';
 import {
   ChInputFilter,
   ChRadioFilter,
-  ChActiveFiltersComponent,
-  ChFilterSkeleton,
+  ChActiveFiltersComponent
 } from '@petsch/ui';
 
 interface FilterConfig {
@@ -30,7 +29,6 @@ type KindKey = (typeof kindOptions)[number];
     ReactiveFormsModule,
     ChActiveFiltersComponent,
     TranslocoDirective,
-    ChFilterSkeleton,
   ],
   templateUrl: './feature-filters.html',
 })

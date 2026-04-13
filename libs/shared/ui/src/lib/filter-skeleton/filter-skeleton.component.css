@@ -1,17 +1,9 @@
 @reference "../../tailwind.storybook.css";
 
 .ch-skeleton-filters {
-  @apply flex flex-col gap-y-4 animate-pulse;
+  @apply flex items-center mb-4 animate-pulse justify-end;
 }
 
-.ch-skeleton-filters__item {
-  @apply flex flex-col gap-y-2;
-}
-
-.ch-skeleton-filters__title {
-  @apply h-6 w-24 bg-gray-300 rounded;
-}
-
-.ch-skeleton-filters__content {
-  @apply h-10 w-full bg-gray-200 rounded;
+.ch-skeleton-filters__bar {
+  @apply min-h-10 w-80 bg-gray-300;
 }
