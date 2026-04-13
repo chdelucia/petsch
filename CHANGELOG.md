@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.5.5](https://github.com/chdelucia/petsch/compare/v1.5.4...v1.5.5) (2026-04-13)
+
+
+### Bug Fixes
+
+* ci e2e ([b9a0742](https://github.com/chdelucia/petsch/commit/b9a0742b4160edc958befa987819e4af239cfd17))
+
 ### [1.5.4](https://github.com/chdelucia/petsch/compare/v1.5.3...v1.5.4) (2026-04-13)
 
 
