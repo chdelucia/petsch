@@ -46,5 +46,16 @@
   "toggleFilters": "Toggle filters",
   "homeTitle": "Pet Shop - Find your best friend",
   "homeDescription": "Discover a wide variety of pets available for adoption. Find your perfect companion today.",
-  "detailsTitle": "Pet Shop - {{name}}"
+  "detailsTitle": "Pet Shop - {{name}}",
+  "sort": {
+    "mostPopular": "Most Popular",
+    "nameAsc": "Name: Asc",
+    "nameDesc": "Name: Desc",
+    "weightAsc": "Weight: Asc",
+    "weightDesc": "Weight: Desc",
+    "heightAsc": "Height: Asc",
+    "heightDesc": "Height: Desc",
+    "lengthAsc": "Length: Asc",
+    "lengthDesc": "Length: Desc"
+  }
 }
