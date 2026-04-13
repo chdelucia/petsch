@@ -1,7 +1,7 @@
 <ng-container *transloco="let t">
   <div data-testid="product-list">
     @if(error()) {
-    <div>Algo fue mal: {{error()}}</div>
+    <div data-testid="error-alert">Algo fue mal: {{error()}}</div>
     } @else { @if (products().length > 0 || !loading()) {
     <lib-ch-ui-pagination
       testId="product-list-pagination"

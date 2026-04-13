@@ -9,7 +9,11 @@
 }
 
 .ch-cart-drawer-container {
-  @apply fixed inset-0 overflow-hidden pointer-events-none z-50;
+  @apply fixed inset-0 overflow-hidden pointer-events-none z-50 invisible;
+}
+
+.ch-cart-drawer-container--open {
+  @apply visible;
 }
 
 .ch-cart-drawer-inner {
