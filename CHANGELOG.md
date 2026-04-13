@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.7.1](https://github.com/chdelucia/petsch/compare/v1.7.0...v1.7.1) (2026-04-13)
+
+
+### Bug Fixes
+
+* errors ([22d5d10](https://github.com/chdelucia/petsch/commit/22d5d102799a640e24b4c62873ac9befcce11606))
+* errors ([c7d3733](https://github.com/chdelucia/petsch/commit/c7d373332a1381ed2453dcca2b0cd302caf98df6))
+* errors ([f085815](https://github.com/chdelucia/petsch/commit/f085815664240f8716fdaec9df2e4d05fe1022ce))
+* errorsd etails ([e3e404a](https://github.com/chdelucia/petsch/commit/e3e404af8501d202da11350a4bed361e7f663a9f))
+* remove unused operators ([4d22c55](https://github.com/chdelucia/petsch/commit/4d22c5585f91fd2760e3774a3c66a7da84031f3f))
+* resolve E2E failures and implement product details error handling ([2f7d14d](https://github.com/chdelucia/petsch/commit/2f7d14dab74c9e1eade1d2a147871c0b2f6b20d2))
+* side panel ([73a7261](https://github.com/chdelucia/petsch/commit/73a72611f46c562c1439adef8f74daa6e87bc0b4))
+* styles ([bb73cc8](https://github.com/chdelucia/petsch/commit/bb73cc83d9aea53df4accd0821aeef684bc6826a))
+
 ## [1.7.0](https://github.com/chdelucia/petsch/compare/v1.6.3...v1.7.0) (2026-04-13)
 
 
