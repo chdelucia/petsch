@@ -38,7 +38,8 @@
         "outputDir": "dist/storybook/ui",
         "configDir": "libs/shared/ui/.storybook",
         "browserTarget": "ui:build-storybook",
-        "compodoc": false
+        "compodoc": false,
+        "styles": ["libs/shared/ui/src/tailwind.storybook.css"]
       },
       "configurations": {
         "ci": {
