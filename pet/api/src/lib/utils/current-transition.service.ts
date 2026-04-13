@@ -7,11 +7,6 @@ import { ActivatedRouteSnapshot, ViewTransitionInfo } from '@angular/router';
 export class CurrentTransitionService {
   readonly currentTransition = signal<ViewTransitionInfo | null>(null);
 
-  /**
-   * Optimization: Pre-calculate the IDs involved in the transition once per transition change.
-   * This avoids redundant recursive searches through the ActivatedRouteSnapshot tree
-   * for every product in the list during change detection.
-   */
   readonly activeTransitionIds = computed(() => {
     const transition = this.currentTransition();
     const ids = new Set<string>();
