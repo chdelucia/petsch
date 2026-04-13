@@ -55,8 +55,8 @@ export class FeatureFilters {
         key: 'name',
         type: 'input',
         options: [],
-        debounceTime: 0,
-        triggersLoad: false,
+        debounceTime: 300,
+        triggersLoad: true,
       },
       {
         key: 'kind',
@@ -78,11 +78,12 @@ export class FeatureFilters {
       (this.form.get(config.key as string) as FormControl).valueChanges
         .pipe(debounceTime(config.debounceTime), takeUntilDestroyed())
         .subscribe((value: string) => {
-          if (config.key === 'name') {
-            this.store.setFilterName(value || '');
-          }
           if (config.triggersLoad) {
-            this.store.applyFilters({ [config.key]: value || '' });
+            if (config.key === 'name') {
+              this.store.setFilterName(value || '');
+            } else {
+              this.store.applyFilters({ [config.key]: value || '' });
+            }
             this.store.loadProducts();
           }
         });
@@ -93,9 +94,14 @@ export class FeatureFilters {
     this.form.get(value)?.setValue('');
     const filterKey = value as keyof Filters;
     this.store.removeFilter(filterKey);
+    this.store.loadProducts();
   }
 
-  get activeFilters(): Partial<Filters> {
-    return this.form.value as Partial<Filters>;
-  }
+  readonly activeFilters = computed(() => {
+    const filters = this.store.filters();
+    return {
+      name: this.store.filterName(),
+      kind: filters.kind,
+    } as Partial<Filters>;
+  });
 }

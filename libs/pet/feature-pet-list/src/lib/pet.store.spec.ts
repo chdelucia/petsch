@@ -49,7 +49,7 @@ describe('PetsStore', () => {
     });
   });
 
-  it('should compute filteredProducts', async () => {
+  it('should compute filteredProducts as all products (server-side filtering)', async () => {
     const products = [
       { id: '1', name: 'Dog' },
       { id: '2', name: 'Cat' },
@@ -63,10 +63,7 @@ describe('PetsStore', () => {
     expect(store.products()).toEqual(products);
 
     store.setFilterName('dog');
-    expect(store.filteredProducts()).toEqual([{ id: '1', name: 'Dog' }]);
-
-    store.setFilterName('cat');
-    expect(store.filteredProducts()).toEqual([{ id: '2', name: 'Cat' }]);
+    expect(store.filteredProducts()).toEqual(products);
   });
 
   it('should update filters', () => {

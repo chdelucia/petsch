@@ -1,7 +1,7 @@
 <form [formGroup]="form" *transloco="let t">
   <lib-ch-ui-active-filters
     testId="active-filters"
-    [values]="activeFilters"
+    [values]="activeFilters()"
     (resetFilter)="resetFilter($event)"
   >
   </lib-ch-ui-active-filters>

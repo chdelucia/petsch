@@ -36,15 +36,9 @@ export const PetsStore = signalStore(
   withComputed((store) => ({
     query: () => ({
       ...store.filters(),
-      ...(store.filterName() ? { name: store.filterName() } : {}),
+      ...(store.filterName() ? { name_like: store.filterName() } : {}),
     }),
-    filteredProducts: computed(() => {
-      const filterName = store.filterName();
-      const products = store.products();
-      return products.filter((p) => {
-        return !filterName || p.name.toLocaleLowerCase().includes(filterName);
-      });
-    }),
+    filteredProducts: computed(() => store.products()),
   })),
 
   withMethods((store) => {
@@ -69,7 +63,10 @@ export const PetsStore = signalStore(
 
     return {
       setFilterName(value: string) {
-        patchState(store, { filterName: value });
+        patchState(store, {
+          filterName: value,
+          filters: { ...store.filters(), _page: 1 },
+        });
       },
 
       applyFilters(partial: Partial<Filters>) {
@@ -96,12 +93,15 @@ export const PetsStore = signalStore(
 
       removeFilter(key: keyof Filters) {
         if (key === 'name') {
-          patchState(store, { filterName: '' });
+          patchState(store, {
+            filterName: '',
+            filters: { ...store.filters(), _page: 1 },
+          });
           return;
         }
         const current = store.filters();
         const { [key]: _, ...rest } = current;
-        patchState(store, { filters: rest });
+        patchState(store, { filters: { ...rest, _page: 1 } });
       },
 
       clear() {
