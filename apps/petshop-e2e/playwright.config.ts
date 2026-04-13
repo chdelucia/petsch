@@ -24,9 +24,11 @@ export default defineConfig({
   },
   /* Run your local dev server before starting the tests */
   webServer: {
-    command: 'npx nx run petshop:serve',
+    command: process.env.CI
+      ? 'bun x nx run petshop:serve-static'
+      : 'bun x nx run petshop:serve',
     url: 'http://localhost:4200',
-    reuseExistingServer: true,
+    reuseExistingServer: !process.env.CI,
     cwd: workspaceRoot,
   },
   projects: process.env.CI
