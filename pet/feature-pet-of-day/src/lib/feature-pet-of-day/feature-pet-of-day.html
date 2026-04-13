@@ -13,6 +13,8 @@
             [name]="entry.pet.name"
             [day]="entry.date"
             [description]="entry.pet.description"
+            [showRemove]="true"
+            (remove)="potdStore.removePet(entry.date)"
           ></lib-ch-ui-cart-item>
         </li>
         }
