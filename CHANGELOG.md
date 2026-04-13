@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.8.5](https://github.com/chdelucia/petsch/compare/v1.8.4...v1.8.5) (2026-04-13)
+
+
+### Bug Fixes
+
+* badge ui ([19c3820](https://github.com/chdelucia/petsch/commit/19c3820f618c94113dc9207d5473d0109ad829f8))
+
 ### [1.8.4](https://github.com/chdelucia/petsch/compare/v1.8.3...v1.8.4) (2026-04-13)
 
 
