@@ -1,5 +1,9 @@
 @if (activeFilters()) {
-  <section class="ch-active-filters" *transloco="let t">
+  <section
+    class="ch-active-filters"
+    *transloco="let t"
+    [attr.data-testid]="testId()"
+  >
     <h3 class="ch-active-filters__title">{{ t('activeFilters') }}</h3>
     <div class="ch-active-filters__list">
       @for (item of values() | keyvalue; track $index) {
@@ -12,6 +16,7 @@
               type="button"
               class="ch-active-filters__remove"
               (click)="deleteFilter(item.key)"
+              [attr.data-testid]="testId() + '-remove-' + item.key"
             >
               <span class="ch-active-filters__sr">{{ t('close') }}</span>
               <svg

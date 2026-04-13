@@ -129,8 +129,18 @@ jobs:
       - run: bun install --frozen-lockfile
       - name: Install playwright
         run: npx playwright install --with-deps
-      - name: Run Nx E2E (non-blocking)
-        run: bun x nx e2e petshop-e2e
+
+      - name: Build app
+        run: bun x nx build petshop
+
+      - name: Serve app
+        run: npx serve dist/apps/petshop -l 4200 &
+
+      - name: Wait for server
+        run: npx wait-on http://localhost:4200
+
+      - name: Run E2E
+        run: CI=true bun x nx e2e petshop-e2e
         continue-on-error: true
 
   build:

@@ -7,8 +7,12 @@ import { NgOptimizedImage } from '@angular/common';
   imports: [RouterLink, NgOptimizedImage],
   templateUrl: './product-card.component.html',
   styleUrl: './product-card.component.css',
+  host: {
+    '[attr.data-testid]': 'testId()',
+  },
 })
 export class ChCard {
+  testId = input<string>('');
   id = input.required<number>();
   name = input.required<string>();
   imageUrl = input.required<string>();

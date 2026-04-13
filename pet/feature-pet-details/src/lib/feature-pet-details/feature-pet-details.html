@@ -1,6 +1,10 @@
-<div class="product-details" *transloco="let t">
+<div class="product-details" *transloco="let t" data-testid="product-details">
   <div class="product-details__back-link">
-    <lib-ch-ui-button (clicked)="goBack()" [variant]="'link'">
+    <lib-ch-ui-button
+      testId="product-details-back-button"
+      (clicked)="goBack()"
+      [variant]="'link'"
+    >
       &larr; {{ t('backToListing') }}
     </lib-ch-ui-button>
   </div>
