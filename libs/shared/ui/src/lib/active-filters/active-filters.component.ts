@@ -15,17 +15,13 @@ export class ChActiveFiltersComponent {
   resetFilter = output<string>();
 
   activeFilters = computed(() => {
-    const value = this.values();
-    return value ? this.countActiveFilters(value) : false;
+    const values = this.values() ?? {};
+    return Object.entries(values)
+      .filter(([key, value]) => !key.startsWith('_') && !!value)
+      .map(([key, value]) => ({ key, value }));
   });
 
   deleteFilter(value: string): void {
     this.resetFilter.emit(value);
-  }
-
-  countActiveFilters(value: Partial<Filters>): boolean {
-    const { name, kind } = value;
-    const atLeastOneFilled = name || kind;
-    return !!atLeastOneFilled;
   }
 }

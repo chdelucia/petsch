@@ -42,7 +42,7 @@ describe('ChInputFilter', () => {
       target: { value: 'input-value-test' },
     } as Partial<HTMLInputElement>;
     component.getValue(value as Event);
-    expect(component.value()).toBe('input-value-test');
+    expect(component.displayValue()).toBe('input-value-test');
     expect(spy).toHaveBeenCalledWith('input-value-test');
   });
 

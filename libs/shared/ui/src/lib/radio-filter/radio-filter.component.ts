@@ -1,4 +1,4 @@
-import { Component, forwardRef, input, signal } from '@angular/core';
+import { Component, forwardRef, input, model, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
@@ -21,7 +21,7 @@ export class ChRadioFilter implements ControlValueAccessor {
   options = input.required<{ value: string; text: string }[]>();
 
   isOpen = signal(true);
-  value = signal('');
+  value = model('');
 
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   onChange: (value: string) => void = () => {};

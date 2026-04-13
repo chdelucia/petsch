@@ -9,24 +9,24 @@ describe('FeatureFilters', () => {
   let component: FeatureFilters;
   let fixture: ComponentFixture<FeatureFilters>;
   let store: {
-    setFilterName: any;
     applyFilters: any;
     removeFilter: any;
     loadProducts: any;
     loading: any;
     products: any;
+    filters: any;
   };
 
   beforeEach(async () => {
     vi.useFakeTimers();
 
     store = {
-      setFilterName: vi.fn(),
       applyFilters: vi.fn(),
       removeFilter: vi.fn(),
       loadProducts: vi.fn(),
       loading: signal(false),
       products: signal([]),
+      filters: signal({}),
     };
 
     await TestBed.configureTestingModule({
@@ -56,60 +56,28 @@ describe('FeatureFilters', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should create form controls dynamically based on filterConfigs', () => {
-    expect(component.form.contains('name')).toBeTruthy();
-    expect(component.form.contains('kind')).toBeTruthy();
-
-    // ⚠️ computed signal -> hay que invocarlo
+  it('should have filterConfigs', () => {
     expect(component.filterConfigs().length).toBe(2);
   });
 
-  it('should call setFilterName when name filter changes', () => {
-    component.form.get('name')?.setValue('test');
-    vi.runAllTimers();
-
-    expect(store.setFilterName).toHaveBeenCalledWith('test');
-    expect(store.applyFilters).not.toHaveBeenCalled();
+  it('should call applyFilters when updateFilter is called', () => {
+    component.updateFilter('name', 'test');
+    expect(store.applyFilters).toHaveBeenCalledWith({ name: 'test' });
   });
 
-  it('should call applyFilters when kind filter changes', () => {
-    component.form.get('kind')?.setValue('dog');
-    vi.runAllTimers();
-
+  it('should call applyFilters and loadProducts when kind filter changes', () => {
+    component.updateFilter('kind', 'dog');
     expect(store.applyFilters).toHaveBeenCalledWith({ kind: 'dog' });
+    expect(store.loadProducts).toHaveBeenCalled();
   });
 
-  it('should reset name filter and call removeFilter', () => {
-    component.form.get('name')?.setValue('test');
-    store.setFilterName.mockClear();
-
+  it('should call removeFilter when resetFilter is called', () => {
     component.resetFilter('name');
-    vi.runAllTimers();
-
-    expect(component.form.get('name')?.value).toBe('');
     expect(store.removeFilter).toHaveBeenCalledWith('name');
-    expect(store.setFilterName).toHaveBeenCalledWith('');
   });
 
-  it('should reset kind filter and call applyFilters + removeFilter', () => {
-    component.form.get('kind')?.setValue('dog');
-    store.applyFilters.mockClear();
-
-    component.resetFilter('kind');
-    vi.runAllTimers();
-
-    expect(component.form.get('kind')?.value).toBe('');
-    expect(store.removeFilter).toHaveBeenCalledWith('kind');
-
-    expect(store.applyFilters).toHaveBeenCalledWith({
-      kind: '',
-    });
-  });
-
-  it('should return activeFilters', () => {
-    component.form.get('name')?.setValue('test');
-    component.form.get('kind')?.setValue('dog');
-
+  it('should return activeFilters from store', () => {
+    store.filters.set({ name: 'test', kind: 'dog' });
     expect(component.activeFilters).toEqual({
       name: 'test',
       kind: 'dog',

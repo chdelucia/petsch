@@ -7,7 +7,9 @@ import {
   forwardRef,
   inject,
   input,
+  model,
   signal,
+  effect,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
@@ -36,13 +38,20 @@ export class ChInputFilter implements ControlValueAccessor, OnInit {
   isfilterOpen = signal(true);
   isLastSearchOpen = signal(false);
 
-  value = signal('');
+  value = model('');
+  displayValue = signal('');
   lastSearch = signal<Array<string>>([]);
 
   private readonly searchText$ = new Subject<string>();
 
   private readonly elementRef = inject(ElementRef);
   private readonly destroyRef = inject(DestroyRef);
+
+  constructor() {
+    effect(() => {
+      this.displayValue.set(this.value());
+    });
+  }
 
   @HostListener('document:click', ['$event'])
   onClick(event: MouseEvent) {
@@ -65,6 +74,7 @@ export class ChInputFilter implements ControlValueAccessor, OnInit {
       )
       .subscribe((value) => {
         this.addSearch(value);
+        this.value.set(value);
         this.onChange(value);
         this.closeLastSearch();
       });
@@ -84,7 +94,7 @@ export class ChInputFilter implements ControlValueAccessor, OnInit {
 
   getValue(event: Event): void {
     const name = (event.target as HTMLInputElement).value;
-    this.value.set(name);
+    this.displayValue.set(name);
     this.searchText$.next(name);
   }
 

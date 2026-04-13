@@ -1,0 +1,28 @@
+
+> @petsch/source@1.8.5 start
+> nx serve petshop
+
+
+> nx run petshop:serve:development
+
+[33m❯[39m Building...
+[32m✔[39m Building...
+[37m[1mInitial chunk files[22m[2m | [22m[1mNames[22m        [2m | [22m [1mRaw size[22m
+[32mchunk-FPFVR4N2.js[37m  [2m | [22m[2m-[22m            [2m | [22m[36m218.01 kB[37m[2m | [22m
+[32mmain.js[37m            [2m | [22m[2mmain[22m         [2m | [22m [36m17.64 kB[37m[2m | [22m
+[32mstyles.css[37m         [2m | [22m[2mstyles[22m       [2m | [22m  [36m8.86 kB[37m[2m | [22m
+[32mchunk-MZEMSCV4.js[37m  [2m | [22m[2m-[22m            [2m | [22m  [36m1.77 kB[37m[2m | [22m
+[32mchunk-HFBNPKKE.js[37m  [2m | [22m[2m-[22m            [2m | [22m  [36m1.45 kB[37m[2m | [22m
+[32mchunk-6MAK2NK5.js[37m  [2m | [22m[2m-[22m            [2m | [22m[36m350 bytes[37m[2m | [22m
+[1m [22m                  [2m | [22m[1mInitial total[22m[2m | [22m[1m248.09 kB[22m
+[1mLazy chunk files[22m   [2m | [22m[1mNames[22m        [2m | [22m [1mRaw size[22m
+[32mchunk-BWXTUJTO.js[37m  [2m | [22m[2mindex[22m        [2m | [22m [36m29.46 kB[37m[2m | [22m
+[32mchunk-RFOV2MUS.js[37m  [2m | [22m[2m-[22m            [2m | [22m [36m28.07 kB[37m[2m | [22m
+[32mchunk-75J5XRJN.js[37m  [2m | [22m[2mindex[22m        [2m | [22m [36m20.76 kB[37m[2m | [22m
+[32mchunk-TA55QRVM.js[37m  [2m | [22m[2mindex[22m        [2m | [22m [36m16.39 kB[37m[2m | [22m
+[32mchunk-QRI7YNZA.js[37m  [2m | [22m[2mindex[22m        [2m | [22m  [36m1.28 kB[37m[2m | [22m
+Application bundle generation complete. [5.918 seconds] - 2026-04-13T18:03:53.020Z
+[39m
+[37mWatch mode enabled. Watching for file changes...[39m
+[37mNOTE: Raw file sizes do not reflect development server per-request transformations.[39m
+  [32m➜[39m  [1mLocal[22m:   [36mhttp://localhost:[1m4200[22m/[39m

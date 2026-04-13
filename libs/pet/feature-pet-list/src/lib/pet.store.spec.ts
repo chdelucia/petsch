@@ -62,10 +62,10 @@ describe('PetsStore', () => {
 
     expect(store.products()).toEqual(products);
 
-    store.setFilterName('dog');
+    store.applyFilters({ name: 'dog' });
     expect(store.filteredProducts()).toEqual([{ id: '1', name: 'Dog' }]);
 
-    store.setFilterName('cat');
+    store.applyFilters({ name: 'cat' });
     expect(store.filteredProducts()).toEqual([{ id: '2', name: 'Cat' }]);
   });
 
@@ -83,10 +83,10 @@ describe('PetsStore', () => {
     store.removeFilter('kind');
     expect(store.filters()).toEqual({ _page: 1, _limit: 12 });
 
-    store.setFilterName('test');
-    expect(store.filterName()).toBe('test');
+    store.applyFilters({ name: 'test' });
+    expect(store.filters().name).toBe('test');
     store.removeFilter('name');
-    expect(store.filterName()).toBe('');
+    expect(store.filters().name).toBeUndefined();
   });
 
   it('should clear products and reset state', () => {

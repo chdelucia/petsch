@@ -8,12 +8,10 @@ export interface PetsStoreContract {
   error: Signal<string | null>;
   pagination: Signal<PaginationLinks>;
   filters: Signal<Partial<Filters>>;
-  filterName: Signal<string>;
   loadProducts(): Promise<void>;
   applySort(sort: { key: string; order: string }): void;
   applyFilters(filters: Partial<Filters>): void;
   applyPagination(page: number): void;
-  setFilterName(value: string): void;
   removeFilter<K extends keyof Filters>(key: K): void;
 }
 

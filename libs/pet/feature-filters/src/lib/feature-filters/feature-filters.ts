@@ -1,9 +1,8 @@
-import { Component, inject, computed } from '@angular/core';
-import { takeUntilDestroyed, toSignal } from '@angular/core/rxjs-interop';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { Component, inject, computed, effect, untracked } from '@angular/core';
+import { toSignal } from '@angular/core/rxjs-interop';
 import { TranslocoService, TranslocoDirective } from '@jsverse/transloco';
 import { Filters, PETLIST_STORE } from '@petsch/api';
-import { debounceTime, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import {
   ChInputFilter,
   ChRadioFilter,
@@ -26,7 +25,6 @@ type KindKey = (typeof kindOptions)[number];
   imports: [
     ChRadioFilter,
     ChInputFilter,
-    ReactiveFormsModule,
     ChActiveFiltersComponent,
     TranslocoDirective,
   ],
@@ -35,8 +33,6 @@ type KindKey = (typeof kindOptions)[number];
 export class FeatureFilters {
   readonly store = inject(PETLIST_STORE);
   private readonly transloco = inject(TranslocoService);
-
-  form = new FormGroup({});
 
   private readonly kindOptions = kindOptions;
 
@@ -71,31 +67,20 @@ export class FeatureFilters {
     ];
   });
 
-  constructor() {
-    this.filterConfigs().forEach((config) => {
-      this.form.addControl(config.key as string, new FormControl(''));
-
-      (this.form.get(config.key as string) as FormControl).valueChanges
-        .pipe(debounceTime(config.debounceTime), takeUntilDestroyed())
-        .subscribe((value: string) => {
-          if (config.key === 'name') {
-            this.store.setFilterName(value || '');
-          }
-          if (config.triggersLoad) {
-            this.store.applyFilters({ [config.key]: value || '' });
-            this.store.loadProducts();
-          }
-        });
-    });
+  updateFilter(key: keyof Filters, value: string): void {
+    const config = this.filterConfigs().find((c) => c.key === key);
+    this.store.applyFilters({ [key]: value || '' });
+    if (config?.triggersLoad) {
+      this.store.loadProducts();
+    }
   }
 
   resetFilter(value: string): void {
-    this.form.get(value)?.setValue('');
     const filterKey = value as keyof Filters;
     this.store.removeFilter(filterKey);
   }
 
   get activeFilters(): Partial<Filters> {
-    return this.form.value as Partial<Filters>;
+    return this.store.filters();
   }
 }

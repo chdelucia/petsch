@@ -16,7 +16,6 @@ export interface PetsState {
   products: Pet[];
   pagination: PaginationLinks;
   filters: Partial<Filters>;
-  filterName: string;
   loading: boolean;
   error: string | null;
 }
@@ -25,7 +24,6 @@ const initialState: PetsState = {
   products: [],
   pagination: {},
   filters: { _page: 1, _limit: 12 },
-  filterName: '',
   loading: false,
   error: null,
 };
@@ -36,13 +34,15 @@ export const PetsStore = signalStore(
   withComputed((store) => ({
     query: () => ({
       ...store.filters(),
-      ...(store.filterName() ? { name: store.filterName() } : {}),
     }),
     filteredProducts: computed(() => {
-      const filterName = store.filterName();
+      const filterName = store.filters().name;
       const products = store.products();
       return products.filter((p) => {
-        return !filterName || p.name.toLocaleLowerCase().includes(filterName);
+        return (
+          !filterName ||
+          p.name.toLocaleLowerCase().includes(filterName.toLocaleLowerCase())
+        );
       });
     }),
   })),
@@ -68,10 +68,6 @@ export const PetsStore = signalStore(
       });
 
     return {
-      setFilterName(value: string) {
-        patchState(store, { filterName: value });
-      },
-
       applyFilters(partial: Partial<Filters>) {
         patchState(store, {
           filters: { ...store.filters(), ...partial, _page: 1 },
@@ -95,10 +91,6 @@ export const PetsStore = signalStore(
       },
 
       removeFilter(key: keyof Filters) {
-        if (key === 'name') {
-          patchState(store, { filterName: '' });
-          return;
-        }
         const current = store.filters();
         const { [key]: _, ...rest } = current;
         patchState(store, { filters: rest });
