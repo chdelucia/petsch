@@ -18,7 +18,7 @@ test.describe('Product Details', () => {
     await expect(productDetailsPage.page).toHaveURL(/\/pets$/);
   });
 
-  test.skip('should show error for non-existent product', async () => {
+  test('should show error for non-existent product', async () => {
     await productDetailsPage.gotoProduct(999999);
     await expect(
       productDetailsPage.page.getByTestId('error-alert'),

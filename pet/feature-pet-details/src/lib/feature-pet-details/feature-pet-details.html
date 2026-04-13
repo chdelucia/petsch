@@ -13,8 +13,8 @@
   <div class="product-details__loading">
     <div class="product-details__spinner"></div>
   </div>
-  } @else if (error()) {
-  <div class="product-details__error" role="alert">
+  } @else if (!product()?.length || error()) {
+  <div class="product-details__error" role="alert" data-testid="error-alert">
     <strong class="product-details__error-title">{{ t('error') }}</strong>
     <span class="product-details__error-msg"> {{ error() }}</span>
   </div>

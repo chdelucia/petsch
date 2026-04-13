@@ -41,5 +41,5 @@
 }
 
 .ch-filter-container__label {
-  @apply ml-3 text-sm text-gray-600 hover:cursor-pointer hover:text-indigo-600 hover:font-bold;
+  @apply ml-3 text-sm text-gray-600 hover:cursor-pointer hover:text-indigo-600 hover:font-bold w-full;
 }

@@ -5,6 +5,11 @@ import { PET_TOKEN } from '@petsch/api';
 import { of } from 'rxjs';
 import { provideRouter } from '@angular/router';
 import { LocalstorageService } from '@petsch/obs-data-access';
+import {
+  ANALYTICS_TOKEN,
+  MONITORING_TOKEN,
+  ObservabilityFacade,
+} from '@petsch/obs-api';
 
 describe('FeaturePetDetails', () => {
   let component: FeaturePetDetails;
@@ -33,6 +38,9 @@ describe('FeaturePetDetails', () => {
         { provide: PET_TOKEN, useValue: mockProductService },
         provideRouter([]),
         LocalstorageService,
+        ObservabilityFacade,
+        { provide: ANALYTICS_TOKEN, useValue: { trackEvent: vi.fn() } },
+        { provide: MONITORING_TOKEN, useValue: { trackError: vi.fn() } },
       ],
     }).compileComponents();
 

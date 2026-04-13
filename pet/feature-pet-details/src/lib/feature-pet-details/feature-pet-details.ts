@@ -23,7 +23,7 @@ export class FeaturePetDetails {
   private readonly router = inject(Router);
 
   id = input.required<string>();
-  product = input.required<Pet>();
+  product = input<Pet | null>();
 
   showPotdDrawer = signal(false);
 
