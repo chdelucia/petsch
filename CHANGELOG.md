@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.7.0](https://github.com/chdelucia/petsch/compare/v1.6.3...v1.7.0) (2026-04-13)
+
+
+### Features
+
+* improve pagination visibility and separate skeletons ([364c82f](https://github.com/chdelucia/petsch/commit/364c82f586cd4592d3f19698dc5e0a98facaf2a6))
+* improve pagination visibility during loading and filtering ([890733c](https://github.com/chdelucia/petsch/commit/890733cf0214749ad5354b1c9805c12625585060))
+
+
+### Bug Fixes
+
+* filter skeleton ([90e7545](https://github.com/chdelucia/petsch/commit/90e7545f5710334b28aa5d06fe825cb6c5de445c))
+* filters ([35d7707](https://github.com/chdelucia/petsch/commit/35d77079a2ec54950472d9e684de0b7822b5c2af))
+* linter ([18e79ac](https://github.com/chdelucia/petsch/commit/18e79aca233229ee49e02e8b37b3c490ced5a4e5))
+
 ### [1.6.3](https://github.com/chdelucia/petsch/compare/v1.6.2...v1.6.3) (2026-04-13)
 
 ### [1.6.2](https://github.com/chdelucia/petsch/compare/v1.6.1...v1.6.2) (2026-04-13)
