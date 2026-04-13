@@ -10,6 +10,7 @@ import {
   ChPagination,
   ChCard,
   ChCardSkeleton,
+  ChFilterSkeleton,
   ChBadge,
 } from '@petsch/ui';
 
@@ -19,6 +20,7 @@ import { TranslocoDirective } from '@jsverse/transloco';
   selector: 'lib-feature-pet-list',
   imports: [
     ChCardSkeleton,
+    ChFilterSkeleton,
     ChCard,
     ChPagination,
     ChButton,

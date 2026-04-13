@@ -1,4 +1,7 @@
 <form [formGroup]="form" *transloco="let t">
+  @if (store.loading() && store.products().length === 0) {
+  <lib-ch-ui-filter-skeleton></lib-ch-ui-filter-skeleton>
+  } @else {
   <lib-ch-ui-active-filters
     [values]="activeFilters"
     (resetFilter)="resetFilter($event)"
@@ -17,5 +20,5 @@
     [options]="config.options"
     [formControlName]="config.key"
   ></lib-ch-ui-radio-filter>
-  } }
+  } } }
 </form>
