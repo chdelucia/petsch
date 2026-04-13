@@ -5,7 +5,11 @@ import { PET_TOKEN } from '@petsch/api';
 import { of } from 'rxjs';
 import { provideRouter } from '@angular/router';
 import { LocalstorageService } from '@petsch/obs-data-access';
-import { ANALYTICS_TOKEN, MONITORING_TOKEN, ObservabilityFacade } from '@petsch/obs-api';
+import {
+  ANALYTICS_TOKEN,
+  MONITORING_TOKEN,
+  ObservabilityFacade,
+} from '@petsch/obs-api';
 
 describe('FeaturePetDetails', () => {
   let component: FeaturePetDetails;
