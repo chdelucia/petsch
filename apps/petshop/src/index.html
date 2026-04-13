@@ -5,6 +5,11 @@
     <title>petshop</title>
     <base href="/" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://cdn2.thedogapi.com https://cdn2.thecatapi.com; connect-src 'self' https://*.sentry.io https://www.google-analytics.com https://my-json-server.typicode.com; upgrade-insecure-requests;"
+    />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
     <link rel="preconnect" href="https://cdn2.thedogapi.com">
     <link rel="preconnect" href="https://cdn2.thecatapi.com">
