@@ -18,6 +18,7 @@ describe('FeaturePetList', () => {
       clearProducts: vi.fn(),
       showFilters: signal(true),
       gridView: signal(true),
+      products: signal([]),
       filteredProducts: signal([]),
       loading: signal(false),
       error: signal(null),
@@ -81,5 +82,39 @@ describe('FeaturePetList', () => {
     const spy = vi.spyOn(component['potdStore'], 'addPet');
     component.handlePotdClick(pet);
     expect(spy).toHaveBeenCalledWith(pet);
+  });
+
+  it('should show pagination if products are present even if loading', () => {
+    store.products.set([{ id: 1, name: 'Pet 1' }]);
+    store.filteredProducts.set([{ id: 1, name: 'Pet 1' }]);
+    store.loading.set(true);
+    fixture.detectChanges();
+
+    const pagination = fixture.nativeElement.querySelector(
+      'lib-ch-ui-pagination',
+    );
+    expect(pagination).toBeTruthy();
+  });
+
+  it('should hide pagination if no products and loading', () => {
+    store.products.set([]);
+    store.loading.set(true);
+    fixture.detectChanges();
+
+    const pagination = fixture.nativeElement.querySelector(
+      'lib-ch-ui-pagination',
+    );
+    expect(pagination).toBeFalsy();
+  });
+
+  it('should show pagination if not loading even if no products (e.g. initial state or empty result)', () => {
+    store.products.set([]);
+    store.loading.set(false);
+    fixture.detectChanges();
+
+    const pagination = fixture.nativeElement.querySelector(
+      'lib-ch-ui-pagination',
+    );
+    expect(pagination).toBeTruthy();
   });
 });

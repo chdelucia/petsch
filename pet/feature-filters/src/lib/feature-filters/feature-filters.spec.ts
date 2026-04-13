@@ -3,6 +3,7 @@ import { FeatureFilters } from './feature-filters';
 import { PETLIST_STORE, PET_TOKEN } from '@petsch/api';
 import { getTranslocoTestingModule } from '@petsch/shared-utils';
 import { of } from 'rxjs';
+import { signal } from '@angular/core';
 
 describe('FeatureFilters', () => {
   let component: FeatureFilters;
@@ -12,6 +13,8 @@ describe('FeatureFilters', () => {
     applyFilters: any;
     removeFilter: any;
     loadProducts: any;
+    loading: any;
+    products: any;
   };
 
   beforeEach(async () => {
@@ -22,6 +25,8 @@ describe('FeatureFilters', () => {
       applyFilters: vi.fn(),
       removeFilter: vi.fn(),
       loadProducts: vi.fn(),
+      loading: signal(false),
+      products: signal([]),
     };
 
     await TestBed.configureTestingModule({

@@ -10,6 +10,7 @@ import {
   ChPagination,
   ChCard,
   ChCardSkeleton,
+  ChFilterSkeleton,
   ChBadge,
 } from '@petsch/ui';
 
@@ -19,6 +20,7 @@ import { TranslocoDirective } from '@jsverse/transloco';
   selector: 'lib-feature-pet-list',
   imports: [
     ChCardSkeleton,
+    ChFilterSkeleton,
     ChCard,
     ChPagination,
     ChButton,
@@ -42,7 +44,7 @@ export class FeaturePetList {
   totalPages = computed(() => {
     const last = this.store.pagination().last;
     const match = last?.match(/_page=(\d+)(?:&|$)/);
-    return match ? Number(match[1]) : 10;
+    return match ? Number(match[1]) : this.currentPage();
   });
 
   loading = computed(() => this.store.loading());

@@ -2,7 +2,7 @@
   <div data-testid="product-list">
     @if(error()) {
     <div>Algo fue mal: {{error()}}</div>
-    } @else if (!loading()) {
+    } @else { @if (products().length > 0 || !loading()) {
     <lib-ch-ui-pagination
       testId="product-list-pagination"
       class="chars__list__pagination"
@@ -10,7 +10,11 @@
       [totalPages]="totalPages()"
       (pageChange)="handlePageChange($event)"
     ></lib-ch-ui-pagination>
-
+    } @if(!products().length && loading()) {
+    <lib-ch-ui-filter-skeleton></lib-ch-ui-filter-skeleton>
+    } @if (loading()) {
+    <lib-ch-ui-card-skeleton></lib-ch-ui-card-skeleton>
+    } @else {
     <section class="char-grid" [class.char-grid--no-filters]="!showFilters()">
       @for (item of products(); track item.id; let index = $index) {
       <lib-ch-ui-card
@@ -46,8 +50,6 @@
       </lib-ch-ui-card>
       }
     </section>
-    } @else {
-    <lib-ch-ui-card-skeleton></lib-ch-ui-card-skeleton>
-    }
+    } }
   </div>
 </ng-container>

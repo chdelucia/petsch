@@ -1,0 +1,9 @@
+@reference "../../tailwind.storybook.css";
+
+.ch-skeleton-filters {
+  @apply flex items-center mb-4 animate-pulse justify-end;
+}
+
+.ch-skeleton-filters__bar {
+  @apply min-h-10 w-80 bg-gray-300;
+}
