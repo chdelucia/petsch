@@ -1,5 +1,6 @@
 import {
   Component,
+  computed,
   ElementRef,
   HostListener,
   inject,
@@ -8,26 +9,43 @@ import {
   signal,
 } from '@angular/core';
 
+export interface SortOption {
+  key: string;
+  order: string;
+  text: string;
+}
+
 @Component({
   selector: 'lib-ch-ui-dropdown-filter',
   imports: [],
   templateUrl: './dropdown-filter.component.html',
   styleUrl: './dropdown-filter.component.css',
+  host: {
+    '[attr.data-testid]': 'testId()',
+  },
 })
 export class ChDropdownFilter {
-  sortby = signal({ key: 'id', order: 'asc', text: 'Most Popular' });
+  testId = input<string>('');
+  options = input.required<SortOption[]>();
 
-  options = input([
-    { key: 'id', order: 'asc', text: 'Most Popular' },
-    { key: 'name', order: 'asc', text: 'Name: Asc' },
-    { key: 'name', order: 'desc', text: 'Name: Desc' },
-    { key: 'weight', order: 'asc', text: 'Weight: Asc' },
-    { key: 'weight', order: 'desc', text: 'Weight: Desc' },
-    { key: 'height', order: 'asc', text: 'Height: Asc' },
-    { key: 'height', order: 'desc', text: 'Height: Desc' },
-    { key: 'length', order: 'asc', text: 'Length: Asc' },
-    { key: 'length', order: 'desc', text: 'Length: Desc' },
-  ]);
+  private readonly internalSortBy = signal<{ key: string; order: string } | null>(
+    null,
+  );
+
+  sortby = computed(() => {
+    const options = this.options();
+    const internal = this.internalSortBy();
+
+    if (!internal) {
+      return options[0];
+    }
+
+    return (
+      options.find(
+        (o) => o.key === internal.key && o.order === internal.order,
+      ) ?? options[0]
+    );
+  });
 
   sortbyChange = output<{ key: string; order: string }>();
 
@@ -44,10 +62,10 @@ export class ChDropdownFilter {
     }
   }
 
-  emitValue(option: { key: string; order: string; text: string }): void {
+  emitValue(option: SortOption): void {
     this.toggle();
-    this.sortby.set(option);
-    this.sortbyChange.emit(option);
+    this.internalSortBy.set({ key: option.key, order: option.order });
+    this.sortbyChange.emit({ key: option.key, order: option.order });
   }
 
   toggle(): void {

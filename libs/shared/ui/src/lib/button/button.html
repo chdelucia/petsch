@@ -9,6 +9,7 @@
         'ch-btn--disabled': disabled()
       }"
   (click)="handleClick()"
+  [attr.data-testid]="testId()"
 >
   <ng-content></ng-content>
 </button>

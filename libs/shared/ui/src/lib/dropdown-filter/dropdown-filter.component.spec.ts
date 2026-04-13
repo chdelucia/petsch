@@ -12,6 +12,9 @@ describe('ChDropdownFilter', () => {
 
     fixture = TestBed.createComponent(ChDropdownFilter);
     component = fixture.componentInstance;
+    fixture.componentRef.setInput('options', [
+      { key: 'id', order: 'asc', text: 'Most Popular' },
+    ]);
     fixture.detectChanges();
   });
 
@@ -23,6 +26,6 @@ describe('ChDropdownFilter', () => {
     const spy = vi.spyOn(component.sortbyChange, 'emit');
     const option = { key: 'gender', order: '', text: 'Gender' };
     component.emitValue(option);
-    expect(spy).toHaveBeenCalledWith(option);
+    expect(spy).toHaveBeenCalledWith({ key: 'gender', order: '' });
   });
 });
