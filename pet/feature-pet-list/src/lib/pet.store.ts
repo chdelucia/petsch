@@ -8,7 +8,8 @@ import {
   patchState,
 } from '@ngrx/signals';
 
-import { catchError, of } from 'rxjs';
+import { catchError, of, pipe, switchMap, tap } from 'rxjs';
+import { rxMethod } from '@ngrx/signals/rxjs-interop';
 import { PET_TOKEN, Filters, Pet, PaginationLinks } from '@petsch/api';
 
 export interface PetsState {
@@ -107,24 +108,31 @@ export const PetsStore = signalStore(
         patchState(store, initialState);
       },
 
-      loadProducts() {
-        setLoading(true);
-
-        const query = store.query();
-
-        productService
-          .getPets(query)
-          .pipe(
-            catchError((err) => {
-              setError(err?.message ?? 'Failed to load products');
-              return of(null);
-            }),
-          )
-          .subscribe((result) => {
-            if (!result) return;
-            setResult(result);
-          });
-      },
+      /**
+       * Performance optimization: use rxMethod with switchMap to handle product loading.
+       * This ensures that if multiple requests are fired in rapid succession (e.g., fast filtering
+       * or pagination), only the latest request is processed and previous ones are cancelled.
+       *
+       * Impact:
+       * - Reduces unnecessary network traffic.
+       * - Prevents race conditions where an older response might overwrite a newer one.
+       */
+      loadProducts: rxMethod<void>(
+        pipe(
+          tap(() => setLoading(true)),
+          switchMap(() =>
+            productService.getPets(store.query()).pipe(
+              catchError((err) => {
+                setError(err?.message ?? 'Failed to load products');
+                return of(null);
+              }),
+            )
+          ),
+          tap((result) => {
+            if (result) setResult(result);
+          }),
+        ),
+      ),
     };
   }),
 
