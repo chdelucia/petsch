@@ -2,7 +2,7 @@ import { Meta, StoryObj, moduleMetadata } from '@storybook/angular';
 import { ChBadge } from './badge';
 
 const meta: Meta<ChBadge> = {
-  title: 'Components/Badge',
+  title: 'atoms/Badge',
   component: ChBadge,
   decorators: [
     moduleMetadata({
