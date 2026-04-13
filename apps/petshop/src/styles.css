@@ -1,16 +1,16 @@
 @import 'tailwindcss';
 
 /* nx-tailwind-sources:start */
+@source "../../../libs/pet/api";
+@source "../../../libs/pet/data-access";
+@source "../../../libs/pet/feature-filters";
+@source "../../../libs/pet/feature-page";
+@source "../../../libs/pet/feature-pet-details";
+@source "../../../libs/pet/feature-pet-list";
+@source "../../../libs/pet/feature-pet-of-day";
+@source "../../../libs/pet/shell";
 @source "../../../libs/shared/feature-404";
 @source "../../../libs/shared/observability/api";
 @source "../../../libs/shared/observability/data-access";
 @source "../../../libs/shared/ui";
-@source "../../../pet/api";
-@source "../../../pet/data-access";
-@source "../../../pet/feature-filters";
-@source "../../../pet/feature-page";
-@source "../../../pet/feature-pet-details";
-@source "../../../pet/feature-pet-list";
-@source "../../../pet/feature-pet-of-day";
-@source "../../../pet/shell";
 /* nx-tailwind-sources:end */

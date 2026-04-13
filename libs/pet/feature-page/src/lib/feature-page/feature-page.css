@@ -1,0 +1,46 @@
+@reference "../../../../../../apps/petshop/src/styles.css";
+
+.chars {
+  @apply pb-12 pt-6;
+}
+
+.chars__grid {
+  @apply grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-10;
+}
+
+.chars__filters {
+  @apply col-span-2;
+}
+
+.chars__filters--hidden {
+  @apply hidden;
+}
+
+.chars__list {
+  @apply lg:col-span-8;
+}
+
+.chars__list--no-filters {
+  @apply lg:col-span-10;
+}
+
+.potd-actions {
+  @apply flex justify-end p-4;
+}
+
+.chars__list__pagination {
+  @apply flex items-center justify-end mb-4;
+}
+
+.char-grid {
+  @apply mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 xl:gap-x-8;
+  perspective: 1000px;
+}
+
+.char-grid--no-filters {
+  @apply lg:grid-cols-4 xl:grid-cols-5;
+}
+
+.card-effect {
+  transition: transform 1s;
+}
