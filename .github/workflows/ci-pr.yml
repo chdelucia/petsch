@@ -232,4 +232,4 @@ jobs:
         run: npx wait-on http://localhost:4200
 
       - name: Run E2E
-        run: CI=true BASE_URL=http://localhost:4200 bun x nx affected -t e2e --base=${{ needs.validate.outputs.base }} --baseUrl=http://localhost:4200
+        run: CI=true BASE_URL=http://localhost:4200 bun x nx affected -t e2e --base=${{ needs.validate.outputs.base }} --projects=petshop-e2e

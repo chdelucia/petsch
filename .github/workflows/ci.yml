@@ -158,7 +158,7 @@ jobs:
         run: npx wait-on http://localhost:4200
 
       - name: Run E2E
-        run: CI=true BASE_URL=http://localhost:4200 bun x nx e2e petshop-e2e --baseUrl=http://localhost:4200
+        run: CI=true BASE_URL=http://localhost:4200 bun x nx e2e petshop-e2e
 
   build:
     runs-on: ubuntu-latest
