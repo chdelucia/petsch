@@ -1,4 +1,4 @@
-import { Injectable, signal } from '@angular/core';
+import { Injectable, signal, computed } from '@angular/core';
 import { ActivatedRouteSnapshot, ViewTransitionInfo } from '@angular/router';
 
 @Injectable({
@@ -7,15 +7,25 @@ import { ActivatedRouteSnapshot, ViewTransitionInfo } from '@angular/router';
 export class CurrentTransitionService {
   readonly currentTransition = signal<ViewTransitionInfo | null>(null);
 
-  getViewTransitionName(id: string | number) {
+  /**
+   * Optimization: Pre-calculate the IDs involved in the transition once per transition change.
+   * This avoids redundant recursive searches through the ActivatedRouteSnapshot tree
+   * for every product in the list during change detection.
+   */
+  readonly activeTransitionIds = computed(() => {
     const transition = this.currentTransition();
-    const idStr = id.toString();
+    const ids = new Set<string>();
+    if (transition) {
+      const toId = this.findParam(transition.to ?? null, 'id');
+      if (toId) ids.add(toId);
+      const fromId = this.findParam(transition.from ?? null, 'id');
+      if (fromId) ids.add(fromId);
+    }
+    return ids;
+  });
 
-    const isBannerImg =
-      this.findParam(transition?.to ?? null, 'id') === idStr ||
-      this.findParam(transition?.from ?? null, 'id') === idStr;
-
-    return isBannerImg ? 'banner-img' : '';
+  getViewTransitionName(id: string | number) {
+    return this.activeTransitionIds().has(id.toString()) ? 'banner-img' : '';
   }
 
   private findParam(
