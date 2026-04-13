@@ -42,7 +42,7 @@ export class FeaturePetList {
   totalPages = computed(() => {
     const last = this.store.pagination().last;
     const match = last?.match(/_page=(\d+)(?:&|$)/);
-    return match ? Number(match[1]) : 10;
+    return match ? Number(match[1]) : this.currentPage();
   });
 
   loading = computed(() => this.store.loading());
