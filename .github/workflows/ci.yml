@@ -130,7 +130,7 @@ jobs:
       - name: Install playwright
         run: npx playwright install --with-deps
       - name: Run Nx E2E (non-blocking)
-        run: bun x nx e2e petshop-e2e
+        run: bun x nx e2e petshop-e2e --watch=false
         continue-on-error: true
 
   build:
