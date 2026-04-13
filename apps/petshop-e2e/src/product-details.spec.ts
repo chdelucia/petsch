@@ -17,4 +17,11 @@ test.describe('Product Details', () => {
     await productDetailsPage.goBack();
     await expect(productDetailsPage.page).toHaveURL(/\/pets$/);
   });
+
+  test('should show error for non-existent product', async () => {
+    await productDetailsPage.gotoProduct(999999);
+    await expect(
+      productDetailsPage.page.getByTestId('error-alert'),
+    ).toBeVisible();
+  });
 });
