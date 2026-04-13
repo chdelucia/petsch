@@ -134,10 +134,10 @@ jobs:
         run: bun x nx build petshop
 
       - name: Serve app
-        run: npx serve dist/apps/petshop -l 4200 &
+        run: npx serve dist/apps/petshop -l 4381 &
 
       - name: Wait for server
-        run: npx wait-on http://localhost:4200
+        run: npx wait-on http://localhost:4381
 
       - name: Run E2E
         run: CI=true bun x nx e2e petshop-e2e
