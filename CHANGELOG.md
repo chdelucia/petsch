@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.5.4](https://github.com/chdelucia/petsch/compare/v1.5.3...v1.5.4) (2026-04-13)
+
+
+### Bug Fixes
+
+* sync styles ([01cb15c](https://github.com/chdelucia/petsch/commit/01cb15ce5b7dc357cc45711ddfa925a5104c8ed9))
+
 ### [1.5.3](https://github.com/chdelucia/petsch/compare/v1.5.2...v1.5.3) (2026-04-13)
 
 ### [1.5.2](https://github.com/chdelucia/petsch/compare/v1.5.1...v1.5.2) (2026-04-12)
