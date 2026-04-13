@@ -12,6 +12,7 @@
     "build-storybook": "nx build-storybook ui",
     "e2e": "nx e2e petshop-e2e",
     "e2e:ui": "nx e2e petshop-e2e --ui",
+    "e2e:debug": "nx e2e petshop-e2e --headed --debug",
     "release": "standard-version",
     "mayor": "standard-version --release-as major"
   },
