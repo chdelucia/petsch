@@ -48,15 +48,13 @@ export class FeaturePetList {
   loading = computed(() => this.store.loading());
   error = this.store.error;
 
+  potdButtonText = computed(() =>
+    this.potdStore.isPetAddedToday() ? 'viewPetOfTheDay' : 'addAsPetOfTheDay',
+  );
+
   handlePageChange(page: number): void {
     this.store.applyPagination(page);
     this.store.loadProducts();
-  }
-
-  getButtonText(): string {
-    return this.potdStore.isPetAddedToday()
-      ? 'viewPetOfTheDay'
-      : 'addAsPetOfTheDay';
   }
 
   handlePotdClick(pet: Pet): void {
