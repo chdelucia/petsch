@@ -1,7 +1,12 @@
 @let pageI = page();
 @let total = totalPages();
 
-<ul class="ch-pagination" aria-label="Pagination" *transloco="let t">
+<ul
+  class="ch-pagination"
+  aria-label="Pagination"
+  *transloco="let t"
+  [attr.data-testid]="testId()"
+>
   <li
     class="ch-page-item ch-xs-hide"
     [ngClass]="{ 'ch-disabled': pageI === 1 }"
@@ -11,6 +16,7 @@
       (click)="emitPage(1)"
       data-cy="p-first"
       [disabled]="pageI === 1"
+      [attr.data-testid]="testId() + '-first'"
     >
       {{ t('first') }}
     </button>
@@ -21,12 +27,17 @@
       (click)="emitPage(pageI - 1)"
       data-cy="p-prev"
       [disabled]="pageI === 1"
+      [attr.data-testid]="testId() + '-prev'"
     >
       {{ t('prev') }}
     </button>
   </li>
   <li class="ch-page-item ch-active" aria-current="page">
-    <button class="ch-page-link" data-cy="p-number">
+    <button
+      class="ch-page-link"
+      data-cy="p-number"
+      [attr.data-testid]="testId() + '-number'"
+    >
       {{ page() }} {{ t('of') }} {{ total }}
     </button>
   </li>
@@ -36,6 +47,7 @@
       (click)="emitPage(pageI + 1)"
       data-cy="p-next"
       [disabled]="pageI === total"
+      [attr.data-testid]="testId() + '-next'"
     >
       {{ t('next') }}
     </button>
@@ -49,6 +61,7 @@
       (click)="emitPage(total)"
       data-cy="p-last"
       [disabled]="pageI === total"
+      [attr.data-testid]="testId() + '-last'"
     >
       {{ t('last') }}
     </button>

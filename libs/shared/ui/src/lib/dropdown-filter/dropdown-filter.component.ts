@@ -15,6 +15,7 @@ import {
   styleUrl: './dropdown-filter.component.css',
 })
 export class ChDropdownFilter {
+  testId = input<string>('');
   sortby = signal({ key: 'id', order: 'asc', text: 'Most Popular' });
 
   options = input([

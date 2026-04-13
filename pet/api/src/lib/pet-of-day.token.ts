@@ -9,6 +9,7 @@ export interface PetOfDayStoreContract {
   sortedEntries: Signal<PetOfTheDayEntry[]>;
   isPetAddedToday: Signal<boolean[]>;
   addPet(pet: Pet): void;
+  removePet(date: string): void;
   togglePoT(isOpen: boolean): void;
 }
 

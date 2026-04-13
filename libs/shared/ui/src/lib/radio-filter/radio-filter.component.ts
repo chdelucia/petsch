@@ -16,6 +16,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
   styleUrl: './radio-filter.component.css',
 })
 export class ChRadioFilter implements ControlValueAccessor {
+  testId = input<string>('');
   title = input.required<string>();
   options = input.required<{ value: string; text: string }[]>();
 

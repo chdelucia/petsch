@@ -8,6 +8,7 @@ import { TranslocoDirective } from '@jsverse/transloco';
   styleUrl: './cart-item.css',
 })
 export class ChCartItem {
+  testId = input<string>('');
   imageSrc = input.required<string>();
   name = input.required<string>();
   day = input<string>();

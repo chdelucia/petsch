@@ -10,8 +10,9 @@
 
 <div
   class="ch-cart-drawer-container"
-  [class.ch-cart-drawer-container--open]="open()"
   *transloco="let t"
+  [attr.data-testid]="testId()"
+  [class.ch-cart-drawer-container--open]="open()"
 >
   <div class="ch-cart-drawer-inner">
     <div class="ch-cart-drawer-panel-container">
@@ -28,6 +29,7 @@
                 class="ch-cart-drawer-close"
                 (click)="closeDrawer()"
                 [attr.aria-label]="t('close')"
+                [attr.data-testid]="testId() + '-close'"
               >
                 ✕
               </button>
