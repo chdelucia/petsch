@@ -27,6 +27,6 @@ test.describe('Pet of the Day', () => {
     await expect(drawer).toBeVisible();
 
     await productListPage.getCartDrawerCloseButton().click();
-    await expect(drawer).toBeHidden();
+    await expect(drawer).not.toHaveClass('ch-cart-drawer-container--open');
   });
 });

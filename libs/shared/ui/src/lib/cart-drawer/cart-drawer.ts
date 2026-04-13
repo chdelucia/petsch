@@ -9,7 +9,7 @@ import { TranslocoDirective } from '@jsverse/transloco';
   styleUrl: './cart-drawer.css',
 })
 export class ChCartDrawer {
-  testId = input<string>('');
+  testId = input<string>('cart-drawer');
   open = input<boolean>(false);
 
   titleLabel = input.required<string>();
