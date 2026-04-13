@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.8.4](https://github.com/chdelucia/petsch/compare/v1.8.3...v1.8.4) (2026-04-13)
+
+
+### Bug Fixes
+
+* **ui:** ensure Storybook build includes Tailwind CSS v4 ([3a2d208](https://github.com/chdelucia/petsch/commit/3a2d20869a3000eec3304ee83704e25e145e4d43))
+
 ### [1.8.3](https://github.com/chdelucia/petsch/compare/v1.8.2...v1.8.3) (2026-04-13)
 
 ### [1.8.2](https://github.com/chdelucia/petsch/compare/v1.8.1...v1.8.2) (2026-04-13)
