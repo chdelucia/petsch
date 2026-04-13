@@ -15,20 +15,24 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@petsch/api": ["pet/api/src/index.ts"],
-      "@petsch/data-access": ["pet/data-access/src/index.ts"],
-      "@petsch/shell": ["pet/shell/src/index.ts"],
-      "@petsch/feature-pet-list": ["pet/feature-pet-list/src/index.ts"],
-      "@petsch/feature-pet-details": ["pet/feature-pet-details/src/index.ts"],
+      "@petsch/api": ["libs/pet/api/src/index.ts"],
+      "@petsch/data-access": ["libs/pet/data-access/src/index.ts"],
+      "@petsch/shell": ["libs/pet/shell/src/index.ts"],
+      "@petsch/feature-pet-list": ["libs/pet/feature-pet-list/src/index.ts"],
+      "@petsch/feature-pet-details": [
+        "libs/pet/feature-pet-details/src/index.ts"
+      ],
       "@petsch/obs-api": ["libs/shared/observability/api/src/index.ts"],
       "@petsch/obs-data-access": [
         "libs/shared/observability/data-access/src/index.ts"
       ],
       "@petsch/ui": ["libs/shared/ui/src/index.ts"],
       "@petsch/shared-utils": ["libs/shared/utils/src/index.ts"],
-      "@petsch/feature-pet-of-day": ["pet/feature-pet-of-day/src/index.ts"],
-      "@petsch/feature-page": ["pet/feature-page/src/index.ts"],
-      "@petsch/feature-filters": ["pet/feature-filters/src/index.ts"],
+      "@petsch/feature-pet-of-day": [
+        "libs/pet/feature-pet-of-day/src/index.ts"
+      ],
+      "@petsch/feature-page": ["libs/pet/feature-page/src/index.ts"],
+      "@petsch/feature-filters": ["libs/pet/feature-filters/src/index.ts"],
       "@petsch/feature-404": ["libs/shared/feature-404/src/index.ts"]
     }
   },

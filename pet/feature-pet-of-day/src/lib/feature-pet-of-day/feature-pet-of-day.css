@@ -1,9 +1,0 @@
-@reference "../../../../../apps/petshop/src/styles.css";
-
-.ch-cart-list {
-  @apply flex-1 overflow-y-auto px-4 sm:px-6;
-}
-
-.ch-cart-list__items {
-  @apply divide-y divide-gray-200;
-}
