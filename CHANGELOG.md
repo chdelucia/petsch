@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.6.0](https://github.com/chdelucia/petsch/compare/v1.5.5...v1.6.0) (2026-04-13)
+
+
+### Features
+
+* 2e2 ([3b497be](https://github.com/chdelucia/petsch/commit/3b497be9257002257223f9c169f8fdb0d49ce2cd))
+* add e2e script ([74e1535](https://github.com/chdelucia/petsch/commit/74e1535c871824fd5399c6aebdcceee54fc1c498))
+
+
+### Bug Fixes
+
+* ci try 9 ([9e26ea1](https://github.com/chdelucia/petsch/commit/9e26ea1e748992bdceaf8625062251be1bcf1391))
+* linter ([c93f26a](https://github.com/chdelucia/petsch/commit/c93f26aa6948ef54ea6f226e1b4c7a9de00dced4))
+* linter ([79f20be](https://github.com/chdelucia/petsch/commit/79f20be0d9a2f95629b17357db3732f2fd8cd07e))
+* remove ([a905484](https://github.com/chdelucia/petsch/commit/a905484fb23876fcab8aff55cd789431b9c6de98))
+
 ### [1.5.5](https://github.com/chdelucia/petsch/compare/v1.5.4...v1.5.5) (2026-04-13)
 
 
