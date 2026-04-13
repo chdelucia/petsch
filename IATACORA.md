@@ -71,7 +71,7 @@ Esto es importante porque condiciona directamente su efectividad: la IA no se ut
 | API / dominio            | ⚠️ Parcial                   |
 | i18n (Transloco)         | ⚠️ Requiere guía manual      |
 | UI / optimización        | ✅ Útil con matices          |
-| E2E setup                | ✅ Muy efectivo              |
+| E2E setup                | ⚠️ efectivo excepto CI       |
 | Traducciones             | ✅ Correcto                  |
 
 ---
