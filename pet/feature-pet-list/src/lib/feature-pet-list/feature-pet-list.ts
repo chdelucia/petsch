@@ -48,10 +48,6 @@ export class FeaturePetList {
   loading = computed(() => this.store.loading());
   error = this.store.error;
 
-  /**
-   * Performance optimization: memoize the translation key for the POTD button.
-   * This prevents re-calculating the translation key on every change detection cycle.
-   */
   potdButtonText = computed(() =>
     this.potdStore.isPetAddedToday() ? 'viewPetOfTheDay' : 'addAsPetOfTheDay',
   );
