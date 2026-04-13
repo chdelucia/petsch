@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.8.0](https://github.com/chdelucia/petsch/compare/v1.7.1...v1.8.0) (2026-04-13)
+
+
+### Features
+
+* move libs ([a8dfb01](https://github.com/chdelucia/petsch/commit/a8dfb019ec402edc5675643a5509573b689c5236))
+
 ### [1.7.1](https://github.com/chdelucia/petsch/compare/v1.7.0...v1.7.1) (2026-04-13)
 
 
