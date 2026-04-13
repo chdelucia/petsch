@@ -108,15 +108,6 @@ export const PetsStore = signalStore(
         patchState(store, initialState);
       },
 
-      /**
-       * Performance optimization: use rxMethod with switchMap to handle product loading.
-       * This ensures that if multiple requests are fired in rapid succession (e.g., fast filtering
-       * or pagination), only the latest request is processed and previous ones are cancelled.
-       *
-       * Impact:
-       * - Reduces unnecessary network traffic.
-       * - Prevents race conditions where an older response might overwrite a newer one.
-       */
       loadProducts: rxMethod<void>(
         pipe(
           tap(() => setLoading(true)),
