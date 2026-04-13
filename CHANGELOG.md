@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.6.2](https://github.com/chdelucia/petsch/compare/v1.6.1...v1.6.2) (2026-04-13)
+
+
+### Bug Fixes
+
+* ci try 9 ([c2d1ac4](https://github.com/chdelucia/petsch/commit/c2d1ac42f205573e287dfb955ea7258b1dcca32a))
+* traducciones ([331e4ff](https://github.com/chdelucia/petsch/commit/331e4ff783cbad5afe575f36dac4983e4d3ad8e0))
+
 ### [1.6.1](https://github.com/chdelucia/petsch/compare/v1.6.0...v1.6.1) (2026-04-13)
 
 ## [1.6.0](https://github.com/chdelucia/petsch/compare/v1.5.5...v1.6.0) (2026-04-13)
