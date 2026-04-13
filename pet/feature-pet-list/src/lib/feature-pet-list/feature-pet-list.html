@@ -2,21 +2,16 @@
   <div>
     @if(error()) {
     <div>Algo fue mal: {{error()}}</div>
-    } @else {
-    @if (products().length > 0 || !loading()) {
+    } @else { @if (products().length > 0 || !loading()) {
     <lib-ch-ui-pagination
       class="chars__list__pagination"
       [page]="currentPage()"
       [totalPages]="totalPages()"
       (pageChange)="handlePageChange($event)"
     ></lib-ch-ui-pagination>
-    }
-
-    @if(!products().length || loading()) {
-      <lib-ch-ui-filter-skeleton></lib-ch-ui-filter-skeleton>
-    }
-
-    @if (loading()) {
+    } @if(!products().length || loading()) {
+    <lib-ch-ui-filter-skeleton></lib-ch-ui-filter-skeleton>
+    } @if (loading()) {
     <lib-ch-ui-card-skeleton></lib-ch-ui-card-skeleton>
     } @else {
     <section class="char-grid" [class.char-grid--no-filters]="!showFilters()">
@@ -50,7 +45,6 @@
       </lib-ch-ui-card>
       }
     </section>
-    }
-    }
+    } }
   </div>
 </ng-container>

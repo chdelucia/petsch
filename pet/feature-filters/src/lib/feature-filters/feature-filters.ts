@@ -7,7 +7,7 @@ import { debounceTime, Observable } from 'rxjs';
 import {
   ChInputFilter,
   ChRadioFilter,
-  ChActiveFiltersComponent
+  ChActiveFiltersComponent,
 } from '@petsch/ui';
 
 interface FilterConfig {
