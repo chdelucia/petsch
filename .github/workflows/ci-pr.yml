@@ -18,7 +18,7 @@ jobs:
       base: ${{ steps.compute_base.outputs.base }}
 
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 0
           ref: ${{ github.head_ref }}
@@ -53,7 +53,7 @@ jobs:
     needs: validate
 
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 0
           ref: ${{ github.head_ref }}
@@ -67,6 +67,7 @@ jobs:
         with:
           path: |
             node_modules
+            .nx/cache
             ~/.bun/install/cache
           key: ${{ runner.os }}-bun-${{ hashFiles('bun.lock') }}
 
@@ -81,7 +82,7 @@ jobs:
     needs: [install, validate]
 
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 0
           ref: ${{ github.head_ref }}
@@ -95,6 +96,7 @@ jobs:
         with:
           path: |
             node_modules
+            .nx/cache
             ~/.bun/install/cache
           key: ${{ runner.os }}-bun-${{ hashFiles('bun.lock') }}
 
@@ -106,7 +108,7 @@ jobs:
     needs: [install, validate]
 
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 0
           ref: ${{ github.head_ref }}
@@ -120,13 +122,14 @@ jobs:
         with:
           path: |
             node_modules
+            .nx/cache
             ~/.bun/install/cache
           key: ${{ runner.os }}-bun-${{ hashFiles('bun.lock') }}
 
       - run: bun install --frozen-lockfile
       - run: bun x nx affected -t test --coverage --coverageReporters=lcov --parallel --base=${{ needs.validate.outputs.base }}
       - name: Upload coverage artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: coverage
           path: coverage/
@@ -136,11 +139,11 @@ jobs:
     runs-on: ubuntu-latest
     needs: [test, validate]
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 0
       - name: Download coverage artifact
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           name: coverage
           path: coverage/
@@ -154,7 +157,7 @@ jobs:
     needs: [install, validate]
 
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 0
           ref: ${{ github.head_ref }}
@@ -168,6 +171,7 @@ jobs:
         with:
           path: |
             node_modules
+            .nx/cache
             ~/.bun/install/cache
           key: ${{ runner.os }}-bun-${{ hashFiles('bun.lock') }}
 
@@ -176,7 +180,7 @@ jobs:
         run: bun nx build petshop
 
       - name: Upload build artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: petshop-build-pr
           path: dist/apps/petshop
@@ -186,7 +190,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: [build, validate]
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 0
           ref: ${{ github.head_ref }}
@@ -195,15 +199,17 @@ jobs:
         run: git fetch origin '+refs/heads/*:refs/remotes/origin/*'
 
       - name: Download build artifact
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           name: petshop-build-pr
           path: dist/apps/petshop
+
       - uses: oven-sh/setup-bun@v2
       - uses: actions/cache@v5
         with:
           path: |
             node_modules
+            .nx/cache
             ~/.bun/install/cache
           key: ${{ runner.os }}-bun-${{ hashFiles('bun.lock') }}
       - run: bun install --frozen-lockfile
@@ -225,11 +231,5 @@ jobs:
         if: steps.playwright-cache.outputs.cache-hit != 'true'
         run: bun x playwright install chromium --with-deps
 
-      - name: Serve app
-        run: npx serve dist/apps/petshop/browser -l 4200 &
-
-      - name: Wait for server
-        run: npx wait-on http://localhost:4200
-
       - name: Run E2E
-        run: CI=true BASE_URL=http://localhost:4200 bun x nx affected -t e2e --base=${{ needs.validate.outputs.base }} --projects=petshop-e2e
+        run: CI=true BASE_URL=http://localhost:4200 bun x nx affected -t e2e --base=${{ needs.validate.outputs.base }}
