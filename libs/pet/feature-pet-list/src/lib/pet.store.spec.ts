@@ -30,6 +30,7 @@ describe('PetsStore', () => {
   });
 
   it('should load products on init', () => {
+    TestBed.flushEffects();
     expect(productServiceMock.getPets).toHaveBeenCalled();
   });
 

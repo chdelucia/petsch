@@ -1,4 +1,4 @@
-<form [formGroup]="form" *transloco="let t">
+<div *transloco="let t">
   <lib-ch-ui-active-filters
     testId="active-filters"
     [values]="activeFilters"
@@ -6,19 +6,23 @@
   >
   </lib-ch-ui-active-filters>
 
-  @for (config of filterConfigs(); track config.key) { @if (config.type ===
-  'input') {
-  <lib-ch-ui-input-filter
-    [testId]="'filter-' + config.key + '-input'"
-    [title]="t(config.key)"
-    [formControlName]="config.key"
-  ></lib-ch-ui-input-filter>
-  } @if (config.type === 'radio') {
-  <lib-ch-ui-radio-filter
-    [testId]="'filter-' + config.key + '-radio'"
-    [title]="t(config.key)"
-    [options]="config.options"
-    [formControlName]="config.key"
-  ></lib-ch-ui-radio-filter>
-  } }
-</form>
+  @for (config of filterConfigs(); track config.key) {
+    @if (config.type === 'input') {
+      <lib-ch-ui-input-filter
+        [testId]="'filter-' + config.key + '-input'"
+        [title]="t(config.key)"
+        [value]="filters()[config.key]"
+        (valueChange)="updateFilter(config.key, $event)"
+      ></lib-ch-ui-input-filter>
+    }
+    @if (config.type === 'radio') {
+      <lib-ch-ui-radio-filter
+        [testId]="'filter-' + config.key + '-radio'"
+        [title]="t(config.key)"
+        [options]="config.options"
+        [value]="filters()[config.key]"
+        (valueChange)="updateFilter(config.key, $event)"
+      ></lib-ch-ui-radio-filter>
+    }
+  }
+</div>

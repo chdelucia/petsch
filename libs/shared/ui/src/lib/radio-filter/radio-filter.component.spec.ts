@@ -29,9 +29,7 @@ describe('ChRadioFilter', () => {
     expect(component.isOpen()).toBeTruthy();
   });
 
-  it('should set value and call onChange when getValue is called', () => {
-    const spy = vi.fn();
-    component.registerOnChange(spy);
+  it('should set value when getValue is called', () => {
     const event = {
       target: { value: 'dog' } as HTMLInputElement,
     } as unknown as Event;
@@ -39,22 +37,10 @@ describe('ChRadioFilter', () => {
     component.getValue(event);
 
     expect(component.value()).toBe('dog');
-    expect(spy).toHaveBeenCalledWith('dog');
   });
 
-  it('should handle writeValue', () => {
-    component.writeValue('cat');
+  it('should handle value updates', () => {
+    component.value.set('cat');
     expect(component.value()).toBe('cat');
-  });
-
-  it('should handle writeValue with null/undefined', () => {
-    component.writeValue(null as unknown as string);
-    expect(component.value()).toBe('');
-  });
-
-  it('should register onTouched', () => {
-    const spy = vi.fn();
-    component.registerOnTouched(spy);
-    expect(component.onTouched).toBe(spy);
   });
 });

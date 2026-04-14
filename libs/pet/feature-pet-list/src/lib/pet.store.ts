@@ -1,4 +1,4 @@
-import { computed, inject } from '@angular/core';
+import { computed, inject, effect } from '@angular/core';
 import {
   signalStore,
   withState,
@@ -96,11 +96,11 @@ export const PetsStore = signalStore(
         patchState(store, initialState);
       },
 
-      loadProducts: rxMethod<void>(
+      loadProducts: rxMethod<Partial<Filters>>(
         pipe(
           tap(() => setLoading(true)),
-          switchMap(() =>
-            productService.getPets(store.query()).pipe(
+          switchMap((query) =>
+            productService.getPets(query).pipe(
               catchError((err) => {
                 setError(err?.message ?? 'Failed to load products');
                 return of(null);
@@ -117,7 +117,14 @@ export const PetsStore = signalStore(
 
   withHooks({
     onInit(store) {
-      store.loadProducts();
+      const effectRef = effect(
+        () => {
+          store.loadProducts(store.query());
+        },
+        { allowSignalWrites: true },
+      );
+
+      return () => effectRef.destroy();
     },
   }),
 );

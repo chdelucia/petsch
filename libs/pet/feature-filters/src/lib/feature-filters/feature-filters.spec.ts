@@ -14,6 +14,8 @@ describe('FeatureFilters', () => {
     loadProducts: any;
     loading: any;
     products: any;
+    filters: any;
+    query: any;
   };
 
   beforeEach(async () => {
@@ -25,6 +27,8 @@ describe('FeatureFilters', () => {
       loadProducts: vi.fn(),
       loading: signal(false),
       products: signal([]),
+      filters: signal({}),
+      query: signal({}),
     };
 
     await TestBed.configureTestingModule({
@@ -54,48 +58,35 @@ describe('FeatureFilters', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should create form controls dynamically based on filterConfigs', () => {
-    expect(component.form.contains('name_like')).toBeTruthy();
-    expect(component.form.contains('kind')).toBeTruthy();
-
+  it('should have filterConfigs', () => {
     expect(component.filterConfigs().length).toBe(2);
   });
 
   it('should call applyFilters when kind filter changes', () => {
-    component.form.get('kind')?.setValue('dog');
+    component.updateFilter('kind', 'dog');
+    fixture.detectChanges();
     vi.runAllTimers();
-
-    expect(store.applyFilters).toHaveBeenCalledWith({ kind: 'dog' });
-  });
-
-  it('should reset name filter and call removeFilter', () => {
-    component.form.get('name_like')?.setValue('test');
-
-    component.resetFilter('name_like');
-    vi.runAllTimers();
-
-    expect(component.form.get('name_like')?.value).toBe('');
-    expect(store.removeFilter).toHaveBeenCalledWith('name_like');
-  });
-
-  it('should reset kind filter and call applyFilters + removeFilter', () => {
-    component.form.get('kind')?.setValue('dog');
-    store.applyFilters.mockClear();
-
-    component.resetFilter('kind');
-    vi.runAllTimers();
-
-    expect(component.form.get('kind')?.value).toBe('');
-    expect(store.removeFilter).toHaveBeenCalledWith('kind');
 
     expect(store.applyFilters).toHaveBeenCalledWith({
-      kind: '',
+      name_like: undefined,
+      kind: 'dog',
     });
   });
 
-  it('should return activeFilters', () => {
-    component.form.get('name_like')?.setValue('test');
-    component.form.get('kind')?.setValue('dog');
+  it('should reset name filter', () => {
+    component.updateFilter('name_like', 'test');
+    fixture.detectChanges();
+
+    component.resetFilter('name_like');
+    fixture.detectChanges();
+    vi.runAllTimers();
+
+    expect(component.filters().name_like).toBe('');
+  });
+
+  it('should return activeFilters from store', () => {
+    store.filters.set({ name_like: 'test', kind: 'dog' });
+    fixture.detectChanges();
 
     expect(component.activeFilters).toEqual({
       name_like: 'test',

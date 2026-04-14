@@ -56,7 +56,6 @@ export class FeaturePetList {
 
   handlePageChange(page: number): void {
     this.store.applyPagination(page);
-    this.store.loadProducts();
   }
 
   handlePotdClick(pet: Pet): void {

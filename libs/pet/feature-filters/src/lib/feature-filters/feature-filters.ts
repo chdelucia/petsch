@@ -1,9 +1,8 @@
-import { Component, inject, computed } from '@angular/core';
-import { takeUntilDestroyed, toSignal } from '@angular/core/rxjs-interop';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { Component, inject, computed, linkedSignal, effect } from '@angular/core';
+import { toSignal } from '@angular/core/rxjs-interop';
 import { TranslocoService, TranslocoDirective } from '@jsverse/transloco';
 import { Filters, PETLIST_STORE } from '@petsch/api';
-import { debounceTime, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import {
   ChInputFilter,
   ChRadioFilter,
@@ -14,7 +13,6 @@ interface FilterConfig {
   key: keyof Filters;
   type: 'input' | 'radio';
   options: { value: string; text: string }[];
-  debounceTime: number;
 }
 
 const kindOptions = ['dog', 'cat'] as const;
@@ -25,7 +23,6 @@ type KindKey = (typeof kindOptions)[number];
   imports: [
     ChRadioFilter,
     ChInputFilter,
-    ReactiveFormsModule,
     ChActiveFiltersComponent,
     TranslocoDirective,
   ],
@@ -34,8 +31,6 @@ type KindKey = (typeof kindOptions)[number];
 export class FeatureFilters {
   readonly store = inject(PETLIST_STORE);
   private readonly transloco = inject(TranslocoService);
-
-  form = new FormGroup({});
 
   private readonly kindOptions = kindOptions;
 
@@ -46,6 +41,14 @@ export class FeatureFilters {
     { initialValue: {} as Record<KindKey, string> },
   );
 
+  readonly filters = linkedSignal<Record<string, string>>(() => {
+    const { name_like, kind } = this.store.filters();
+    return {
+      name_like: name_like ?? '',
+      kind: kind ?? '',
+    };
+  });
+
   readonly filterConfigs = computed<FilterConfig[]>(() => {
     const t = this.translations() ?? {};
 
@@ -54,7 +57,6 @@ export class FeatureFilters {
         key: 'name_like',
         type: 'input',
         options: [],
-        debounceTime: 200,
       },
       {
         key: 'kind',
@@ -63,31 +65,34 @@ export class FeatureFilters {
           value: key,
           text: t[key] ?? key,
         })),
-        debounceTime: 500,
       },
     ];
   });
 
   constructor() {
-    this.filterConfigs().forEach((config) => {
-      this.form.addControl(config.key as string, new FormControl(''));
+    effect(() => {
+      const { name_like, kind } = this.filters();
 
-      (this.form.get(config.key as string) as FormControl).valueChanges
-        .pipe(debounceTime(config.debounceTime), takeUntilDestroyed())
-        .subscribe((value: string) => {
-          this.store.applyFilters({ [config.key]: value || '' });
-          this.store.loadProducts();
-        });
+      this.store.applyFilters({
+        name_like: name_like || undefined,
+        kind: kind || undefined,
+      });
     });
+
   }
 
   resetFilter(value: string): void {
-    this.form.get(value)?.setValue('');
-    const filterKey = value as keyof Filters;
-    this.store.removeFilter(filterKey);
+    this.updateFilter(value as keyof Filters, '');
+  }
+
+  updateFilter(key: keyof Filters, value: string): void {
+    this.filters.update((current) => ({
+      ...current,
+      [key]: value,
+    }));
   }
 
   get activeFilters(): Partial<Filters> {
-    return this.form.value as Partial<Filters>;
+    return this.store.filters();
   }
 }
