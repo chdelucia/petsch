@@ -1,6 +1,10 @@
-import { Component, inject, computed } from '@angular/core';
-import { takeUntilDestroyed, toSignal } from '@angular/core/rxjs-interop';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { Component, inject, computed, signal } from '@angular/core';
+import {
+  takeUntilDestroyed,
+  toSignal,
+  toObservable,
+} from '@angular/core/rxjs-interop';
+import { form as angularForm, FormField } from '@angular/forms/signals';
 import { TranslocoService, TranslocoDirective } from '@jsverse/transloco';
 import { Filters, PETLIST_STORE } from '@petsch/api';
 import { debounceTime, Observable } from 'rxjs';
@@ -25,7 +29,7 @@ type KindKey = (typeof kindOptions)[number];
   imports: [
     ChRadioFilter,
     ChInputFilter,
-    ReactiveFormsModule,
+    FormField,
     ChActiveFiltersComponent,
     TranslocoDirective,
   ],
@@ -35,7 +39,12 @@ export class FeatureFilters {
   readonly store = inject(PETLIST_STORE);
   private readonly transloco = inject(TranslocoService);
 
-  form = new FormGroup({});
+  readonly form = signal({
+    name_like: '',
+    kind: '',
+  });
+
+  readonly formTree = angularForm(this.form);
 
   private readonly kindOptions = kindOptions;
 
@@ -69,25 +78,27 @@ export class FeatureFilters {
   });
 
   constructor() {
-    this.filterConfigs().forEach((config) => {
-      this.form.addControl(config.key as string, new FormControl(''));
+    toObservable(this.formTree.name_like().value)
+      .pipe(debounceTime(200), takeUntilDestroyed())
+      .subscribe((value) => {
+        this.store.applyFilters({ name_like: (value as string) || '' });
+        this.store.loadProducts();
+      });
 
-      (this.form.get(config.key as string) as FormControl).valueChanges
-        .pipe(debounceTime(config.debounceTime), takeUntilDestroyed())
-        .subscribe((value: string) => {
-          this.store.applyFilters({ [config.key]: value || '' });
-          this.store.loadProducts();
-        });
-    });
+    toObservable(this.formTree.kind().value)
+      .pipe(debounceTime(500), takeUntilDestroyed())
+      .subscribe((value) => {
+        this.store.applyFilters({ kind: (value as string) || '' });
+        this.store.loadProducts();
+      });
   }
 
-  resetFilter(value: string): void {
-    this.form.get(value)?.setValue('');
-    const filterKey = value as keyof Filters;
-    this.store.removeFilter(filterKey);
-  }
-
-  get activeFilters(): Partial<Filters> {
-    return this.form.value as Partial<Filters>;
+  resetFilter(key: string): void {
+    if (key === 'name_like') {
+      this.formTree.name_like().value.set('');
+    } else if (key === 'kind') {
+      this.formTree.kind().value.set('');
+    }
+    this.store.removeFilter(key as keyof Filters);
   }
 }

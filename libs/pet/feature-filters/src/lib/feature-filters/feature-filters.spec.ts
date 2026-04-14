@@ -54,38 +54,38 @@ describe('FeatureFilters', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should create form controls dynamically based on filterConfigs', () => {
-    expect(component.form.contains('name_like')).toBeTruthy();
-    expect(component.form.contains('kind')).toBeTruthy();
+  it('should create form controls based on filterConfigs', () => {
+    expect(component.formTree.name_like).toBeDefined();
+    expect(component.formTree.kind).toBeDefined();
 
     expect(component.filterConfigs().length).toBe(2);
   });
 
   it('should call applyFilters when kind filter changes', () => {
-    component.form.get('kind')?.setValue('dog');
+    component.formTree.kind().value.set('dog');
     vi.runAllTimers();
 
     expect(store.applyFilters).toHaveBeenCalledWith({ kind: 'dog' });
   });
 
   it('should reset name filter and call removeFilter', () => {
-    component.form.get('name_like')?.setValue('test');
+    component.formTree.name_like().value.set('test');
 
     component.resetFilter('name_like');
     vi.runAllTimers();
 
-    expect(component.form.get('name_like')?.value).toBe('');
+    expect(component.formTree.name_like().value()).toBe('');
     expect(store.removeFilter).toHaveBeenCalledWith('name_like');
   });
 
   it('should reset kind filter and call applyFilters + removeFilter', () => {
-    component.form.get('kind')?.setValue('dog');
+    component.formTree.kind().value.set('dog');
     store.applyFilters.mockClear();
 
     component.resetFilter('kind');
     vi.runAllTimers();
 
-    expect(component.form.get('kind')?.value).toBe('');
+    expect(component.formTree.kind().value()).toBe('');
     expect(store.removeFilter).toHaveBeenCalledWith('kind');
 
     expect(store.applyFilters).toHaveBeenCalledWith({
@@ -93,11 +93,11 @@ describe('FeatureFilters', () => {
     });
   });
 
-  it('should return activeFilters', () => {
-    component.form.get('name_like')?.setValue('test');
-    component.form.get('kind')?.setValue('dog');
+  it('should return form values', () => {
+    component.formTree.name_like().value.set('test');
+    component.formTree.kind().value.set('dog');
 
-    expect(component.activeFilters).toEqual({
+    expect(component.form()).toEqual({
       name_like: 'test',
       kind: 'dog',
     });
