@@ -10,7 +10,13 @@ import {
 
 import { catchError, of, pipe, switchMap, tap } from 'rxjs';
 import { rxMethod } from '@ngrx/signals/rxjs-interop';
-import { PET_TOKEN, Filters, Pet, PaginationLinks, GetPetsResponse } from '@petsch/api';
+import {
+  PET_TOKEN,
+  Filters,
+  Pet,
+  PaginationLinks,
+  GetPetsResponse,
+} from '@petsch/api';
 
 export interface PetsState {
   products: Pet[];

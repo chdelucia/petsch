@@ -75,8 +75,8 @@ export class FeatureFilters {
       (this.form.get(config.key as string) as FormControl).valueChanges
         .pipe(debounceTime(config.debounceTime), takeUntilDestroyed())
         .subscribe((value: string) => {
-            this.store.applyFilters({ [config.key]: value || '' });
-            this.store.loadProducts();
+          this.store.applyFilters({ [config.key]: value || '' });
+          this.store.loadProducts();
         });
     });
   }
