@@ -7,10 +7,14 @@
     <h3 class="ch-active-filters__title">{{ t('activeFilters') }}</h3>
     <div class="ch-active-filters__list">
       @for (item of values() | keyvalue; track $index) {
-        @if (item.key !== 'page' && item.value) {
+        @if (item.key !== 'page' && !item.key.startsWith('_') && item.value) {
           <div class="ch-active-filters__item">
             <div class="ch-active-filters__label">
-              <small>{{ item.key }}: </small>{{ item.value }}
+              <small
+                >{{
+                  t(item.key === 'name_like' ? 'name' : (item.key | lowercase))
+                }}: </small
+              >{{ item.value }}
             </div>
             <button
               type="button"

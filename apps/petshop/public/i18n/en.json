@@ -47,6 +47,11 @@
   "homeTitle": "Pet Shop - Find your best friend",
   "homeDescription": "Discover a wide variety of pets available for adoption. Find your perfect companion today.",
   "detailsTitle": "Pet Shop - {{name}}",
+  "noResultsFound": "No results found, please try other filters.",
+  "somethingWentWrong": "Something went wrong",
+  "notFoundTitle": "Page not found",
+  "notFoundMessage": "Sorry, we couldn’t find the page you’re looking for.",
+  "goBackHome": "Go back home",
   "sort": {
     "mostPopular": "Most Popular",
     "nameAsc": "Name: Asc",

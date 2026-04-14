@@ -1,7 +1,9 @@
 <ng-container *transloco="let t">
   <div data-testid="product-list">
     @if(error()) {
-    <div data-testid="error-alert">Algo fue mal: {{error()}}</div>
+    <div data-testid="error-alert">
+      {{ t('somethingWentWrong') }}: {{ error() }}
+    </div>
     } @else { @if (products().length > 0 || !loading()) {
     <lib-ch-ui-pagination
       testId="product-list-pagination"
@@ -48,6 +50,10 @@
           >{{ t(potdButtonText()) }}</lib-ch-ui-button
         >
       </lib-ch-ui-card>
+      } @empty {
+      <div class="col-span-full py-10 text-center">
+        <p class="text-xl text-gray-500">{{ t('noResultsFound') }}</p>
+      </div>
       }
     </section>
     } }

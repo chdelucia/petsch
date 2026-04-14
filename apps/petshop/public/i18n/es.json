@@ -47,6 +47,11 @@
   "homeTitle": "Pet Shop - Encuentra a tu mejor amigo",
   "homeDescription": "Descubre una amplia variedad de mascotas disponibles para adopción. Encuentra a tu compañero perfecto hoy mismo.",
   "detailsTitle": "Pet Shop - {{name}}",
+  "noResultsFound": "No hemos encontrado nada, pruebe otros filtros.",
+  "somethingWentWrong": "Algo salió mal",
+  "notFoundTitle": "Página no encontrada",
+  "notFoundMessage": "Lo sentimos, no pudimos encontrar la página que buscas.",
+  "goBackHome": "Volver al inicio",
   "sort": {
     "mostPopular": "Más popular",
     "nameAsc": "Nombre: Asc",
