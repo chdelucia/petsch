@@ -3,7 +3,7 @@ import { BasePage } from './base.po';
 
 export class FiltersPage extends BasePage {
   getNameFilter(): Locator {
-    return this.page.getByTestId('filter-name-input');
+    return this.page.getByTestId('filter-name_like-input');
   }
 
   getKindFilterOption(kind: string): Locator {
