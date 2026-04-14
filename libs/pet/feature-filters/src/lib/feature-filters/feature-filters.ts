@@ -4,7 +4,7 @@ import {
   toSignal,
   toObservable,
 } from '@angular/core/rxjs-interop';
-import { form, FormField } from '@angular/forms/signals';
+import { form as angularForm, FormField } from '@angular/forms/signals';
 import { TranslocoService, TranslocoDirective } from '@jsverse/transloco';
 import { Filters, PETLIST_STORE } from '@petsch/api';
 import { debounceTime, Observable } from 'rxjs';
@@ -39,12 +39,12 @@ export class FeatureFilters {
   readonly store = inject(PETLIST_STORE);
   private readonly transloco = inject(TranslocoService);
 
-  readonly #formModel = signal({
+  readonly form = signal({
     name_like: '',
     kind: '',
   });
 
-  readonly form = form(this.#formModel);
+  readonly formTree = angularForm(this.form);
 
   private readonly kindOptions = kindOptions;
 
@@ -78,29 +78,27 @@ export class FeatureFilters {
   });
 
   constructor() {
-    this.filterConfigs().forEach((config) => {
-      const field = (this.form as any)[config.key];
+    toObservable(this.formTree.name_like().value)
+      .pipe(debounceTime(200), takeUntilDestroyed())
+      .subscribe((value) => {
+        this.store.applyFilters({ name_like: (value as string) || '' });
+        this.store.loadProducts();
+      });
 
-      toObservable(field().value)
-        .pipe(debounceTime(config.debounceTime), takeUntilDestroyed())
-        .subscribe((value: unknown) => {
-          this.store.applyFilters({ [config.key]: (value as string) || '' });
-          this.store.loadProducts();
-        });
-    });
+    toObservable(this.formTree.kind().value)
+      .pipe(debounceTime(500), takeUntilDestroyed())
+      .subscribe((value) => {
+        this.store.applyFilters({ kind: (value as string) || '' });
+        this.store.loadProducts();
+      });
   }
 
   resetFilter(key: string): void {
-    const field = (this.form as any)[key];
-    field().value.set('');
+    if (key === 'name_like') {
+      this.formTree.name_like().value.set('');
+    } else if (key === 'kind') {
+      this.formTree.kind().value.set('');
+    }
     this.store.removeFilter(key as keyof Filters);
-  }
-
-  get activeFilters(): Partial<Filters> {
-    return this.#formModel();
-  }
-
-  getField(key: keyof Filters) {
-    return (this.form as any)[key];
   }
 }
