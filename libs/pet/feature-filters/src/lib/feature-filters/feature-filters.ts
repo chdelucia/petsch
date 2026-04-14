@@ -1,4 +1,4 @@
-import { Component, inject, computed, signal } from '@angular/core';
+import { Component, inject, computed, linkedSignal } from '@angular/core';
 import {
   takeUntilDestroyed,
   toSignal,
@@ -7,7 +7,7 @@ import {
 import { form as angularForm, FormField } from '@angular/forms/signals';
 import { TranslocoService, TranslocoDirective } from '@jsverse/transloco';
 import { Filters, PETLIST_STORE } from '@petsch/api';
-import { debounceTime, Observable } from 'rxjs';
+import { debounceTime, Observable, merge } from 'rxjs';
 import {
   ChInputFilter,
   ChRadioFilter,
@@ -39,9 +39,12 @@ export class FeatureFilters {
   readonly store = inject(PETLIST_STORE);
   private readonly transloco = inject(TranslocoService);
 
-  readonly form = signal({
-    name_like: '',
-    kind: '',
+  readonly form = linkedSignal({
+    source: () => this.store.filters(),
+    computation: (filters) => ({
+      name_like: filters.name_like ?? '',
+      kind: filters.kind ?? '',
+    }),
   });
 
   readonly formTree = angularForm(this.form);
@@ -78,17 +81,20 @@ export class FeatureFilters {
   });
 
   constructor() {
-    toObservable(this.formTree.name_like().value)
-      .pipe(debounceTime(200), takeUntilDestroyed())
-      .subscribe((value) => {
-        this.store.applyFilters({ name_like: (value as string) || '' });
-        this.store.loadProducts();
-      });
+    const nameChanges$ = toObservable(this.formTree.name_like().value).pipe(
+      debounceTime(200),
+    );
+    const kindChanges$ = toObservable(this.formTree.kind().value).pipe(
+      debounceTime(500),
+    );
 
-    toObservable(this.formTree.kind().value)
-      .pipe(debounceTime(500), takeUntilDestroyed())
-      .subscribe((value) => {
-        this.store.applyFilters({ kind: (value as string) || '' });
+    merge(nameChanges$, kindChanges$)
+      .pipe(takeUntilDestroyed())
+      .subscribe(() => {
+        this.store.applyFilters({
+          name_like: this.formTree.name_like().value() as string,
+          kind: this.formTree.kind().value() as string,
+        });
         this.store.loadProducts();
       });
   }

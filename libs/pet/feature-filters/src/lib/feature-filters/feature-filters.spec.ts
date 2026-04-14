@@ -14,6 +14,7 @@ describe('FeatureFilters', () => {
     loadProducts: any;
     loading: any;
     products: any;
+    filters: any;
   };
 
   beforeEach(async () => {
@@ -25,6 +26,7 @@ describe('FeatureFilters', () => {
       loadProducts: vi.fn(),
       loading: signal(false),
       products: signal([]),
+      filters: signal({}),
     };
 
     await TestBed.configureTestingModule({
@@ -65,7 +67,10 @@ describe('FeatureFilters', () => {
     component.formTree.kind().value.set('dog');
     vi.runAllTimers();
 
-    expect(store.applyFilters).toHaveBeenCalledWith({ kind: 'dog' });
+    expect(store.applyFilters).toHaveBeenCalledWith({
+      kind: 'dog',
+      name_like: '',
+    });
   });
 
   it('should reset name filter and call removeFilter', () => {
@@ -90,6 +95,7 @@ describe('FeatureFilters', () => {
 
     expect(store.applyFilters).toHaveBeenCalledWith({
       kind: '',
+      name_like: '',
     });
   });
 

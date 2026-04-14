@@ -1,4 +1,4 @@
-import { Component, inject, input, signal } from '@angular/core';
+import { Component, inject, input, signal, computed } from '@angular/core';
 import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { Router } from '@angular/router';
 import { TranslocoDirective } from '@jsverse/transloco';
@@ -27,8 +27,14 @@ export class FeaturePetDetails {
 
   showPotdDrawer = signal(false);
 
-  loading = () => false;
-  error = () => null;
+  loading = signal(false);
+  error = computed(() => {
+    const item = this.product();
+    if (!item && !this.loading()) {
+      return 'Product not found';
+    }
+    return null;
+  });
 
   goBack() {
     this.router.navigate([APP_ROUTES.PETS]);

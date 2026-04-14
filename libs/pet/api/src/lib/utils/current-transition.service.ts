@@ -1,4 +1,4 @@
-import { Injectable, signal } from '@angular/core';
+import { Injectable, signal, computed } from '@angular/core';
 import { ActivatedRouteSnapshot, ViewTransitionInfo } from '@angular/router';
 
 @Injectable({
@@ -7,13 +7,18 @@ import { ActivatedRouteSnapshot, ViewTransitionInfo } from '@angular/router';
 export class CurrentTransitionService {
   readonly currentTransition = signal<ViewTransitionInfo | null>(null);
 
+  private readonly toId = computed(() =>
+    this.findParam(this.currentTransition()?.to ?? null, 'id'),
+  );
+
+  private readonly fromId = computed(() =>
+    this.findParam(this.currentTransition()?.from ?? null, 'id'),
+  );
+
   getViewTransitionName(id: string | number) {
-    const transition = this.currentTransition();
     const idStr = id.toString();
 
-    const isBannerImg =
-      this.findParam(transition?.to ?? null, 'id') === idStr ||
-      this.findParam(transition?.from ?? null, 'id') === idStr;
+    const isBannerImg = this.toId() === idStr || this.fromId() === idStr;
 
     return isBannerImg ? 'banner-img' : '';
   }
