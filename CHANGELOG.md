@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.8.8](https://github.com/chdelucia/petsch/compare/v1.8.7...v1.8.8) (2026-04-14)
+
+
+### Bug Fixes
+
+* storybook ([9cf0caa](https://github.com/chdelucia/petsch/commit/9cf0caa63f73ed90d5f393e693dd08f900061197))
+
 ### [1.8.7](https://github.com/chdelucia/petsch/compare/v1.8.6...v1.8.7) (2026-04-14)
 
 
