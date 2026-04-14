@@ -13,7 +13,7 @@ type Story = StoryObj<ChActiveFiltersComponent>;
 export const Primary: Story = {
   args: {
     values: {
-      name: 'Buddy',
+      name_like: 'Buddy',
       kind: 'dog',
     },
   },
