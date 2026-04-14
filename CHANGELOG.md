@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.9.1](https://github.com/chdelucia/petsch/compare/v1.9.0...v1.9.1) (2026-04-14)
+
+
+### Bug Fixes
+
+* **e2e:** update name filter selector in Page Object ([1028240](https://github.com/chdelucia/petsch/commit/1028240bcf617aa3d1b574de8fbdbe741c87dd68))
+
 ## [1.9.0](https://github.com/chdelucia/petsch/compare/v1.8.8...v1.9.0) (2026-04-14)
 
 
