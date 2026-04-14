@@ -15,7 +15,6 @@ interface FilterConfig {
   type: 'input' | 'radio';
   options: { value: string; text: string }[];
   debounceTime: number;
-  triggersLoad: boolean;
 }
 
 const kindOptions = ['dog', 'cat'] as const;
@@ -52,11 +51,10 @@ export class FeatureFilters {
 
     return [
       {
-        key: 'name',
+        key: 'name_like',
         type: 'input',
         options: [],
-        debounceTime: 0,
-        triggersLoad: false,
+        debounceTime: 200,
       },
       {
         key: 'kind',
@@ -65,8 +63,7 @@ export class FeatureFilters {
           value: key,
           text: t[key] ?? key,
         })),
-        debounceTime: 0,
-        triggersLoad: true,
+        debounceTime: 500,
       },
     ];
   });
@@ -78,13 +75,8 @@ export class FeatureFilters {
       (this.form.get(config.key as string) as FormControl).valueChanges
         .pipe(debounceTime(config.debounceTime), takeUntilDestroyed())
         .subscribe((value: string) => {
-          if (config.key === 'name') {
-            this.store.setFilterName(value || '');
-          }
-          if (config.triggersLoad) {
             this.store.applyFilters({ [config.key]: value || '' });
             this.store.loadProducts();
-          }
         });
     });
   }

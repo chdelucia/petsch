@@ -36,7 +36,7 @@ describe('FeaturePage', () => {
           provide: PETLIST_STORE,
           useValue: {
             products: signal([]),
-            filteredProducts: signal([]),
+            products: signal([]),
             loading: signal(false),
             error: signal(null),
             pagination: signal({}),

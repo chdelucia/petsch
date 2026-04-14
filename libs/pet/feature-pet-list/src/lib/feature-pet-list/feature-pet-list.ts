@@ -37,7 +37,7 @@ export class FeaturePetList {
 
   showFilters = input.required<boolean>();
 
-  products = this.store.filteredProducts;
+  products = this.store.products;
 
   currentPage = computed(() => this.store.filters()._page ?? 1);
 

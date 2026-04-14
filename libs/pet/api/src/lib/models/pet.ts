@@ -33,7 +33,7 @@ export interface Filters {
   _limit: number;
   _sort: string;
   _order: string;
-  name: string;
+  name_like: string;
   kind: string;
   weight: number;
   length: number;

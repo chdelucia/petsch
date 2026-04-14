@@ -10,13 +10,12 @@ import {
 
 import { catchError, of, pipe, switchMap, tap } from 'rxjs';
 import { rxMethod } from '@ngrx/signals/rxjs-interop';
-import { PET_TOKEN, Filters, Pet, PaginationLinks } from '@petsch/api';
+import { PET_TOKEN, Filters, Pet, PaginationLinks, GetPetsResponse } from '@petsch/api';
 
 export interface PetsState {
   products: Pet[];
   pagination: PaginationLinks;
   filters: Partial<Filters>;
-  filterName: string;
   loading: boolean;
   error: string | null;
 }
@@ -25,7 +24,6 @@ const initialState: PetsState = {
   products: [],
   pagination: {},
   filters: { _page: 1, _limit: 12 },
-  filterName: '',
   loading: false,
   error: null,
 };
@@ -36,14 +34,6 @@ export const PetsStore = signalStore(
   withComputed((store) => ({
     query: () => ({
       ...store.filters(),
-      ...(store.filterName() ? { name: store.filterName() } : {}),
-    }),
-    filteredProducts: computed(() => {
-      const filterName = store.filterName();
-      const products = store.products();
-      return products.filter((p) => {
-        return !filterName || p.name.toLocaleLowerCase().includes(filterName);
-      });
     }),
   })),
 
@@ -60,7 +50,7 @@ export const PetsStore = signalStore(
         products: [],
       });
 
-    const setResult = (result: any) =>
+    const setResult = (result: GetPetsResponse) =>
       patchState(store, {
         products: result.products,
         pagination: result.pagination,
@@ -68,10 +58,6 @@ export const PetsStore = signalStore(
       });
 
     return {
-      setFilterName(value: string) {
-        patchState(store, { filterName: value });
-      },
-
       applyFilters(partial: Partial<Filters>) {
         patchState(store, {
           filters: { ...store.filters(), ...partial, _page: 1 },
@@ -95,10 +81,6 @@ export const PetsStore = signalStore(
       },
 
       removeFilter(key: keyof Filters) {
-        if (key === 'name') {
-          patchState(store, { filterName: '' });
-          return;
-        }
         const current = store.filters();
         const { [key]: _, ...rest } = current;
         patchState(store, { filters: rest });

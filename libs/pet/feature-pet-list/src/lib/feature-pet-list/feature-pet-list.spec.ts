@@ -19,7 +19,7 @@ describe('FeaturePetList', () => {
       showFilters: signal(true),
       gridView: signal(true),
       products: signal([]),
-      filteredProducts: signal([]),
+      products: signal([]),
       loading: signal(false),
       error: signal(null),
       pagination: signal({}),
@@ -86,7 +86,7 @@ describe('FeaturePetList', () => {
 
   it('should show pagination if products are present even if loading', () => {
     store.products.set([{ id: 1, name: 'Pet 1' }]);
-    store.filteredProducts.set([{ id: 1, name: 'Pet 1' }]);
+    store.products.set([{ id: 1, name: 'Pet 1' }]);
     store.loading.set(true);
     fixture.detectChanges();
 

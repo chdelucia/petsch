@@ -24,8 +24,8 @@ export class ChActiveFiltersComponent {
   }
 
   countActiveFilters(value: Partial<Filters>): boolean {
-    const { name, kind } = value;
-    const atLeastOneFilled = name || kind;
+    const { name_like, kind } = value;
+    const atLeastOneFilled = name_like || kind;
     return !!atLeastOneFilled;
   }
 }
