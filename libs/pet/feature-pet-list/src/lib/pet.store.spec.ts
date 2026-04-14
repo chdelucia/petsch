@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { PetsStore } from './pet.store';
 import { PET_TOKEN } from '@petsch/api';
-import { of, throwError } from 'rxjs';
+import { of } from 'rxjs';
 
 describe('PetsStore', () => {
   let store: any;
@@ -49,26 +49,6 @@ describe('PetsStore', () => {
     });
   });
 
-  it('should compute products', async () => {
-    const products = [
-      { id: '1', name: 'Dog' },
-      { id: '2', name: 'Cat' },
-    ];
-    productServiceMock.getPets.mockReturnValue(
-      of({ products, pagination: {} }),
-    );
-
-    await store.loadProducts({});
-
-    expect(store.products()).toEqual(products);
-
-    store.setFilterName('dog');
-    expect(store.products()).toEqual([{ id: '1', name: 'Dog' }]);
-
-    store.setFilterName('cat');
-    expect(store.products()).toEqual([{ id: '2', name: 'Cat' }]);
-  });
-
   it('should update filters', () => {
     store.applyFilters({ kind: 'dog' });
     expect(store.filters()).toEqual({
@@ -78,16 +58,6 @@ describe('PetsStore', () => {
     });
   });
 
-  it('should remove filter', () => {
-    store.applyFilters({ kind: 'dog' });
-    store.removeFilter('kind');
-    expect(store.filters()).toEqual({ _page: 1, _limit: 12 });
-
-    store.setFilterName('test');
-    expect(store.filterName()).toBe('test');
-    store.removeFilter('name');
-    expect(store.filterName()).toBe('');
-  });
 
   it('should clear products and reset state', () => {
     store.clear();

@@ -9,7 +9,6 @@ describe('FeatureFilters', () => {
   let component: FeatureFilters;
   let fixture: ComponentFixture<FeatureFilters>;
   let store: {
-    setFilterName: any;
     applyFilters: any;
     removeFilter: any;
     loadProducts: any;
@@ -21,7 +20,6 @@ describe('FeatureFilters', () => {
     vi.useFakeTimers();
 
     store = {
-      setFilterName: vi.fn(),
       applyFilters: vi.fn(),
       removeFilter: vi.fn(),
       loadProducts: vi.fn(),
@@ -57,19 +55,10 @@ describe('FeatureFilters', () => {
   });
 
   it('should create form controls dynamically based on filterConfigs', () => {
-    expect(component.form.contains('name')).toBeTruthy();
+    expect(component.form.contains('name_like')).toBeTruthy();
     expect(component.form.contains('kind')).toBeTruthy();
 
-    // ⚠️ computed signal -> hay que invocarlo
     expect(component.filterConfigs().length).toBe(2);
-  });
-
-  it('should call setFilterName when name filter changes', () => {
-    component.form.get('name')?.setValue('test');
-    vi.runAllTimers();
-
-    expect(store.setFilterName).toHaveBeenCalledWith('test');
-    expect(store.applyFilters).not.toHaveBeenCalled();
   });
 
   it('should call applyFilters when kind filter changes', () => {
@@ -80,15 +69,14 @@ describe('FeatureFilters', () => {
   });
 
   it('should reset name filter and call removeFilter', () => {
-    component.form.get('name')?.setValue('test');
-    store.setFilterName.mockClear();
+    component.form.get('name_like')?.setValue('test');
 
-    component.resetFilter('name');
+    component.resetFilter('name_like');
     vi.runAllTimers();
 
-    expect(component.form.get('name')?.value).toBe('');
-    expect(store.removeFilter).toHaveBeenCalledWith('name');
-    expect(store.setFilterName).toHaveBeenCalledWith('');
+    expect(component.form.get('name_like')?.value).toBe('');
+    expect(store.removeFilter).toHaveBeenCalledWith('name_like');
+
   });
 
   it('should reset kind filter and call applyFilters + removeFilter', () => {
@@ -107,11 +95,11 @@ describe('FeatureFilters', () => {
   });
 
   it('should return activeFilters', () => {
-    component.form.get('name')?.setValue('test');
+    component.form.get('name_like')?.setValue('test');
     component.form.get('kind')?.setValue('dog');
 
     expect(component.activeFilters).toEqual({
-      name: 'test',
+      name_like: 'test',
       kind: 'dog',
     });
   });

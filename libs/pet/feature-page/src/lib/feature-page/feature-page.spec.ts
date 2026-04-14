@@ -36,7 +36,6 @@ describe('FeaturePage', () => {
           provide: PETLIST_STORE,
           useValue: {
             products: signal([]),
-            products: signal([]),
             loading: signal(false),
             error: signal(null),
             pagination: signal({}),
@@ -45,7 +44,7 @@ describe('FeaturePage', () => {
             loadProducts: vi.fn(),
             applySort: vi.fn(),
             applyFilters: vi.fn(),
-            setFilterName: vi.fn(),
+
             removeFilter: vi.fn(),
           },
         },
