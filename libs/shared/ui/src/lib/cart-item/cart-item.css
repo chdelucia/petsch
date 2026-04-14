@@ -34,5 +34,5 @@
 }
 
 .ch-cart-item__remove {
-  @apply font-medium text-indigo-600 hover:text-indigo-500;
+  @apply font-medium text-indigo-600 hover:text-indigo-500 focus-visible:ring-2 focus:outline-none focus:ring-indigo-600 rounded cursor-pointer;
 }

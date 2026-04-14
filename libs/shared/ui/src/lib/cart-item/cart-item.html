@@ -10,5 +10,19 @@
 
     <p class="ch-cart-item__date">{{ day() }}</p>
     <p class="ch-cart-item__desc">{{ description() }}</p>
+
+    @if (showRemove()) {
+    <div class="ch-cart-item__footer">
+      <button
+        type="button"
+        class="ch-cart-item__remove"
+        (click)="handleRemove()"
+        [attr.aria-label]="t('remove')"
+        [attr.data-testid]="testId() + '-remove'"
+      >
+        {{ t('remove') }}
+      </button>
+    </div>
+    }
   </div>
 </div>
