@@ -76,7 +76,6 @@ describe('FeatureFilters', () => {
 
     expect(component.form.get('name_like')?.value).toBe('');
     expect(store.removeFilter).toHaveBeenCalledWith('name_like');
-
   });
 
   it('should reset kind filter and call applyFilters + removeFilter', () => {

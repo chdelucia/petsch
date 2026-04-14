@@ -58,7 +58,6 @@ describe('PetsStore', () => {
     });
   });
 
-
   it('should clear products and reset state', () => {
     store.clear();
     expect(store.products()).toEqual([]);
