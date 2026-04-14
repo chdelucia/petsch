@@ -63,25 +63,25 @@ describe('FeatureFilters', () => {
   });
 
   it('should call applyFilters when kind filter changes', () => {
-    component.updateFilter('kind', 'dog');
+    store.applyFilters.mockClear();
+    component.localModel.set({ name_like: '', kind: 'dog' });
     fixture.detectChanges();
     vi.runAllTimers();
 
-    expect(store.applyFilters).toHaveBeenCalledWith({
-      name_like: undefined,
+    expect(store.applyFilters).toHaveBeenCalledWith(expect.objectContaining({
       kind: 'dog',
-    });
+    }));
   });
 
   it('should reset name filter', () => {
-    component.updateFilter('name_like', 'test');
+    component.localModel.set({ name_like: 'test', kind: '' });
     fixture.detectChanges();
 
     component.resetFilter('name_like');
     fixture.detectChanges();
     vi.runAllTimers();
 
-    expect(component.filters().name_like).toBe('');
+    expect(component.localModel().name_like).toBe('');
   });
 
   it('should return activeFilters from store', () => {

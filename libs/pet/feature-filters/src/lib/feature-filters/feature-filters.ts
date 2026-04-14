@@ -1,4 +1,4 @@
-import { Component, inject, computed, linkedSignal, effect } from '@angular/core';
+import { Component, inject, computed, linkedSignal, effect, signal } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { TranslocoService, TranslocoDirective } from '@jsverse/transloco';
 import { Filters, PETLIST_STORE } from '@petsch/api';
@@ -8,6 +8,7 @@ import {
   ChRadioFilter,
   ChActiveFiltersComponent,
 } from '@petsch/ui';
+import { form, FormField, debounce } from '@angular/forms/signals';
 
 interface FilterConfig {
   key: keyof Filters;
@@ -25,6 +26,7 @@ type KindKey = (typeof kindOptions)[number];
     ChInputFilter,
     ChActiveFiltersComponent,
     TranslocoDirective,
+    FormField,
   ],
   templateUrl: './feature-filters.html',
 })
@@ -41,12 +43,16 @@ export class FeatureFilters {
     { initialValue: {} as Record<KindKey, string> },
   );
 
-  readonly filters = linkedSignal<Record<string, string>>(() => {
+  readonly localModel = linkedSignal(() => {
     const { name_like, kind } = this.store.filters();
     return {
       name_like: name_like ?? '',
       kind: kind ?? '',
     };
+  });
+
+  readonly filtersForm = form(this.localModel, (schema) => {
+    debounce(schema.name_like, 700);
   });
 
   readonly filterConfigs = computed<FilterConfig[]>(() => {
@@ -71,24 +77,19 @@ export class FeatureFilters {
 
   constructor() {
     effect(() => {
-      const { name_like, kind } = this.filters();
+      const { name_like, kind } = this.localModel();
 
       this.store.applyFilters({
         name_like: name_like || undefined,
         kind: kind || undefined,
       });
     });
-
   }
 
   resetFilter(value: string): void {
-    this.updateFilter(value as keyof Filters, '');
-  }
-
-  updateFilter(key: keyof Filters, value: string): void {
-    this.filters.update((current) => ({
+    this.localModel.update((current) => ({
       ...current,
-      [key]: value,
+      [value]: '',
     }));
   }
 

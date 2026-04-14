@@ -11,8 +11,7 @@
       <lib-ch-ui-input-filter
         [testId]="'filter-' + config.key + '-input'"
         [title]="t(config.key)"
-        [value]="filters()[config.key]"
-        (valueChange)="updateFilter(config.key, $event)"
+        [formField]="$any(filtersForm)[config.key]"
       ></lib-ch-ui-input-filter>
     }
     @if (config.type === 'radio') {
@@ -20,8 +19,7 @@
         [testId]="'filter-' + config.key + '-radio'"
         [title]="t(config.key)"
         [options]="config.options"
-        [value]="filters()[config.key]"
-        (valueChange)="updateFilter(config.key, $event)"
+        [formField]="$any(filtersForm)[config.key]"
       ></lib-ch-ui-radio-filter>
     }
   }

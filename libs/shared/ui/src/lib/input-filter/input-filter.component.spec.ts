@@ -34,14 +34,6 @@ describe('ChInputFilter', () => {
     expect(component.value()).toBe('test');
   });
 
-  it('should send value from input to searchText$', () => {
-    const spy = vi.spyOn(component['searchText$'] as any, 'next');
-    const value = {
-      target: { value: 'input-value-test' },
-    } as Partial<HTMLInputElement>;
-    component.getValue(value as Event);
-    expect(spy).toHaveBeenCalledWith('input-value-test');
-  });
 
   it('should add search to lastSearch', () => {
     component.addSearch('test-search');
@@ -107,16 +99,14 @@ describe('ChInputFilter', () => {
     expect(component.isLastSearchOpen()).toBeTruthy();
   });
 
-  it('should handle searchText$ emission and updates', () => {
-    vi.useFakeTimers();
+  it('should update component state when getValue is called', () => {
+    const event = {
+      target: { value: 'new-search' } as HTMLInputElement,
+    } as unknown as Event;
 
-    component.getValue({ target: { value: 'new-search' } } as any);
-
-    vi.advanceTimersByTime(700);
+    component.getValue(event);
 
     expect(component.lastSearch()).toContain('new-search');
     expect(component.value()).toBe('new-search');
-    expect(component.isLastSearchOpen()).toBeFalsy();
-    vi.useRealTimers();
   });
 });

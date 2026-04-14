@@ -1,19 +1,16 @@
 import {
   Component,
-  DestroyRef,
   ElementRef,
   HostListener,
-  OnInit,
   inject,
   input,
   model,
   signal,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Subject, debounceTime, distinctUntilChanged } from 'rxjs';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ChButton } from '../button/button';
 import { TranslocoDirective } from '@jsverse/transloco';
+import { FormValueControl } from '@angular/forms/signals';
 
 @Component({
   selector: 'lib-ch-ui-input-filter',
@@ -21,7 +18,7 @@ import { TranslocoDirective } from '@jsverse/transloco';
   templateUrl: './input-filter.component.html',
   styleUrl: './input-filter.component.css',
 })
-export class ChInputFilter implements OnInit {
+export class ChInputFilter implements FormValueControl<string> {
   testId = input<string>('');
   title = input.required<string>();
 
@@ -31,10 +28,7 @@ export class ChInputFilter implements OnInit {
   value = model('');
   lastSearch = signal<Array<string>>([]);
 
-  private readonly searchText$ = new Subject<string>();
-
   private readonly elementRef = inject(ElementRef);
-  private readonly destroyRef = inject(DestroyRef);
 
   @HostListener('document:click', ['$event'])
   onClick(event: MouseEvent) {
@@ -43,23 +37,10 @@ export class ChInputFilter implements OnInit {
     }
   }
 
-  ngOnInit(): void {
-    this.searchText$
-      .pipe(
-        debounceTime(700),
-        distinctUntilChanged(),
-        takeUntilDestroyed(this.destroyRef),
-      )
-      .subscribe((value) => {
-        this.addSearch(value);
-        this.value.set(value);
-        this.closeLastSearch();
-      });
-  }
-
   getValue(event: Event): void {
     const name = (event.target as HTMLInputElement).value;
-    this.searchText$.next(name);
+    this.value.set(name);
+    this.addSearch(name);
   }
 
   togleFilter() {

@@ -8,7 +8,7 @@ import {
   patchState,
 } from '@ngrx/signals';
 
-import { catchError, of, pipe, switchMap, tap } from 'rxjs';
+import { catchError, distinctUntilChanged, of, pipe, switchMap, tap } from 'rxjs';
 import { rxMethod } from '@ngrx/signals/rxjs-interop';
 import {
   PET_TOKEN,
@@ -98,6 +98,7 @@ export const PetsStore = signalStore(
 
       loadProducts: rxMethod<Partial<Filters>>(
         pipe(
+          distinctUntilChanged((a, b) => JSON.stringify(a) === JSON.stringify(b)),
           tap(() => setLoading(true)),
           switchMap((query) =>
             productService.getPets(query).pipe(

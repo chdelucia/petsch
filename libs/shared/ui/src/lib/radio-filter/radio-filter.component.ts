@@ -1,5 +1,6 @@
 import { Component, input, model, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormValueControl } from '@angular/forms/signals';
 
 @Component({
   selector: 'lib-ch-ui-radio-filter',
@@ -7,7 +8,7 @@ import { CommonModule } from '@angular/common';
   templateUrl: './radio-filter.component.html',
   styleUrl: './radio-filter.component.css',
 })
-export class ChRadioFilter {
+export class ChRadioFilter implements FormValueControl<string> {
   testId = input<string>('');
   title = input.required<string>();
   options = input.required<{ value: string; text: string }[]>();
