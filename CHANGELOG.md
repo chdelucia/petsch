@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.9.0](https://github.com/chdelucia/petsch/compare/v1.8.8...v1.9.0) (2026-04-14)
+
+
+### Features
+
+* adapt feature filters to use Angular Signal Forms ([b3e418a](https://github.com/chdelucia/petsch/commit/b3e418a4deae2b55d2ff3fe7c16437edd9a6dc58))
+* refactor FeatureFilters to use signal-based forms without getters or any ([96cc0d8](https://github.com/chdelucia/petsch/commit/96cc0d827f9c15009e01ed8dd2c2fca944675f57))
+
 ### [1.8.8](https://github.com/chdelucia/petsch/compare/v1.8.7...v1.8.8) (2026-04-14)
 
 
