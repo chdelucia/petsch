@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.8.7](https://github.com/chdelucia/petsch/compare/v1.8.6...v1.8.7) (2026-04-14)
+
+
+### Bug Fixes
+
+* linter ([89fd716](https://github.com/chdelucia/petsch/commit/89fd716d75dc40a21bc30ab40ec2fbe937381e8b))
+* linter ([9545cd9](https://github.com/chdelucia/petsch/commit/9545cd9ad0b2adb8e1f8b549e0040875d88a4179))
+
 ### [1.8.6](https://github.com/chdelucia/petsch/compare/v1.8.5...v1.8.6) (2026-04-13)
 
 ### [1.8.5](https://github.com/chdelucia/petsch/compare/v1.8.4...v1.8.5) (2026-04-13)
