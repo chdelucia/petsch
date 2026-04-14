@@ -6,21 +6,16 @@
   >
   </lib-ch-ui-active-filters>
 
-  @for (config of filterConfigs(); track config.key) {
-    @if (config.type === 'input') {
-      <lib-ch-ui-input-filter
-        [testId]="'filter-' + config.key + '-input'"
-        [title]="t(config.key)"
-        [formField]="$any(filtersForm)[config.key]"
-      ></lib-ch-ui-input-filter>
-    }
-    @if (config.type === 'radio') {
-      <lib-ch-ui-radio-filter
-        [testId]="'filter-' + config.key + '-radio'"
-        [title]="t(config.key)"
-        [options]="config.options"
-        [formField]="$any(filtersForm)[config.key]"
-      ></lib-ch-ui-radio-filter>
-    }
-  }
+  <lib-ch-ui-input-filter
+    testId="filter-name_like-input"
+    [title]="t('name_like')"
+    [formField]="filtersForm.name_like"
+  ></lib-ch-ui-input-filter>
+
+  <lib-ch-ui-radio-filter
+    testId="filter-kind-radio"
+    [title]="t('kind')"
+    [options]="filterConfigs().kindOptions"
+    [formField]="filtersForm.kind"
+  ></lib-ch-ui-radio-filter>
 </div>

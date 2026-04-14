@@ -118,14 +118,7 @@ export const PetsStore = signalStore(
 
   withHooks({
     onInit(store) {
-      const effectRef = effect(
-        () => {
-          store.loadProducts(store.query());
-        },
-        { allowSignalWrites: true },
-      );
-
-      return () => effectRef.destroy();
+      store.loadProducts(store.query);
     },
   }),
 );

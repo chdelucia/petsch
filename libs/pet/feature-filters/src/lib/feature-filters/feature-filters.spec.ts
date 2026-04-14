@@ -59,7 +59,7 @@ describe('FeatureFilters', () => {
   });
 
   it('should have filterConfigs', () => {
-    expect(component.filterConfigs().length).toBe(2);
+    expect(component.filterConfigs().kindOptions.length).toBe(2);
   });
 
   it('should call applyFilters when kind filter changes', () => {

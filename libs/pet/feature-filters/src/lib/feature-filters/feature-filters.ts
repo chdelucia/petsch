@@ -10,12 +10,6 @@ import {
 } from '@petsch/ui';
 import { form, FormField, debounce } from '@angular/forms/signals';
 
-interface FilterConfig {
-  key: keyof Filters;
-  type: 'input' | 'radio';
-  options: { value: string; text: string }[];
-}
-
 const kindOptions = ['dog', 'cat'] as const;
 type KindKey = (typeof kindOptions)[number];
 
@@ -55,24 +49,15 @@ export class FeatureFilters {
     debounce(schema.name_like, 700);
   });
 
-  readonly filterConfigs = computed<FilterConfig[]>(() => {
+  readonly filterConfigs = computed(() => {
     const t = this.translations() ?? {};
 
-    return [
-      {
-        key: 'name_like',
-        type: 'input',
-        options: [],
-      },
-      {
-        key: 'kind',
-        type: 'radio',
-        options: this.kindOptions.map((key) => ({
-          value: key,
-          text: t[key] ?? key,
-        })),
-      },
-    ];
+    return {
+      kindOptions: this.kindOptions.map((key) => ({
+        value: key,
+        text: t[key] ?? key,
+      })),
+    };
   });
 
   constructor() {
@@ -89,7 +74,7 @@ export class FeatureFilters {
   resetFilter(value: string): void {
     this.localModel.update((current) => ({
       ...current,
-      [value]: '',
+      [value as keyof typeof current]: '',
     }));
   }
 
