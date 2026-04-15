@@ -16,3 +16,11 @@
 .char-grid--no-filters {
   @apply lg:grid-cols-4 xl:grid-cols-5;
 }
+
+.char-grid__empty {
+  @apply flex flex-col items-center justify-center py-20 text-center text-gray-500;
+}
+
+.char-grid__empty-text {
+  @apply text-xl font-semibold;
+}
