@@ -37,6 +37,7 @@ describe('ChRadioFilter', () => {
     } as unknown as Event;
 
     component.getValue(event);
+    fixture.detectChanges();
 
     expect(component.value()).toBe('dog');
     expect(spy).toHaveBeenCalledWith('dog');

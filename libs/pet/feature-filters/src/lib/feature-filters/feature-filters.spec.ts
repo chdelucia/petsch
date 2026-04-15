@@ -61,49 +61,65 @@ describe('FeatureFilters', () => {
     expect(component.filterConfigs().length).toBe(2);
   });
 
-  it('should call applyFilters when kind filter changes', () => {
+  it('should call applyFilters when kind filter changes', async () => {
     component.formTree.kind().value.set('dog');
-    vi.runAllTimers();
+    fixture.detectChanges();
+    await vi.advanceTimersByTimeAsync(600);
+    fixture.detectChanges();
 
-    expect(store.applyFilters).toHaveBeenCalledWith({
-      kind: 'dog',
-      name_like: '',
-    });
+    expect(store.applyFilters).toHaveBeenCalledWith(
+      expect.objectContaining({
+        kind: 'dog',
+      }),
+    );
   });
 
-  it('should reset name filter and call removeFilter', () => {
+  it('should reset name filter and call removeFilter', async () => {
     component.formTree.name_like().value.set('test');
+    fixture.detectChanges();
+    await vi.advanceTimersByTimeAsync(600);
 
     component.resetFilter('name_like');
-    vi.runAllTimers();
+    fixture.detectChanges();
+    await vi.advanceTimersByTimeAsync(600);
 
     expect(component.formTree.name_like().value()).toBe('');
     expect(store.removeFilter).toHaveBeenCalledWith('name_like');
   });
 
-  it('should reset kind filter and call applyFilters + removeFilter', () => {
+  it('should reset kind filter and call applyFilters + removeFilter', async () => {
     component.formTree.kind().value.set('dog');
+    fixture.detectChanges();
+    await vi.advanceTimersByTimeAsync(1000);
+    fixture.detectChanges();
     store.applyFilters.mockClear();
 
     component.resetFilter('kind');
-    vi.runAllTimers();
+    fixture.detectChanges();
+    await vi.advanceTimersByTimeAsync(1000);
+    fixture.detectChanges();
 
     expect(component.formTree.kind().value()).toBe('');
     expect(store.removeFilter).toHaveBeenCalledWith('kind');
 
-    expect(store.applyFilters).toHaveBeenCalledWith({
-      kind: '',
-      name_like: '',
-    });
+    expect(store.applyFilters).toHaveBeenCalled();
+    expect(store.applyFilters).toHaveBeenCalledWith(
+      expect.objectContaining({
+        kind: '',
+      }),
+    );
   });
 
   it('should return form values', () => {
     component.formTree.name_like().value.set('test');
     component.formTree.kind().value.set('dog');
+    fixture.detectChanges();
 
-    expect(component.form()).toEqual({
-      name_like: 'test',
-      kind: 'dog',
-    });
+    expect(component.form()).toEqual(
+      expect.objectContaining({
+        name_like: 'test',
+        kind: 'dog',
+      }),
+    );
   });
 });

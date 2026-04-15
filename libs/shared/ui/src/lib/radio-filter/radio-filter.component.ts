@@ -1,4 +1,12 @@
-import { Component, forwardRef, input, signal } from '@angular/core';
+import {
+  Component,
+  forwardRef,
+  input,
+  model,
+  signal,
+  effect,
+  untracked,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
@@ -21,14 +29,30 @@ export class ChRadioFilter implements ControlValueAccessor {
   options = input.required<{ value: string; text: string }[]>();
 
   isOpen = signal(true);
-  value = signal('');
+  value = model('');
 
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  private isInteractive = false;
+
+  constructor() {
+    effect(() => {
+      const val = this.value();
+
+      if (!this.isInteractive) {
+        return;
+      }
+
+      untracked(() => {
+        this.onChange(val);
+        this.isInteractive = false;
+      });
+    });
+  }
+
   onChange: (value: string) => void = () => {};
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
   onTouched: () => void = () => {};
 
   writeValue(value: string): void {
+    this.isInteractive = false;
     this.value.set(value || '');
   }
 
@@ -42,8 +66,8 @@ export class ChRadioFilter implements ControlValueAccessor {
 
   getValue(event: Event): void {
     const name = (event.target as HTMLInputElement).value;
+    this.isInteractive = true;
     this.value.set(name);
-    this.onChange(name);
   }
 
   togleFilter() {

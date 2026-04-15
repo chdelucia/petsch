@@ -1,18 +1,17 @@
 import {
   Component,
-  DestroyRef,
   ElementRef,
   HostListener,
-  OnInit,
   forwardRef,
   inject,
   input,
+  model,
   signal,
+  effect,
+  untracked,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { Subject, debounceTime, distinctUntilChanged } from 'rxjs';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ChButton } from '../button/button';
 import { TranslocoDirective } from '@jsverse/transloco';
 
@@ -29,20 +28,39 @@ import { TranslocoDirective } from '@jsverse/transloco';
   templateUrl: './input-filter.component.html',
   styleUrl: './input-filter.component.css',
 })
-export class ChInputFilter implements ControlValueAccessor, OnInit {
+export class ChInputFilter implements ControlValueAccessor {
   testId = input<string>('');
   title = input.required<string>();
 
   isfilterOpen = signal(true);
   isLastSearchOpen = signal(false);
 
-  value = signal('');
+  value = model('');
   lastSearch = signal<Array<string>>([]);
 
-  private readonly searchText$ = new Subject<string>();
-
+  private isInteractive = false;
   private readonly elementRef = inject(ElementRef);
-  private readonly destroyRef = inject(DestroyRef);
+
+  constructor() {
+    effect((onCleanup) => {
+      const val = this.value();
+
+      if (!this.isInteractive) {
+        return;
+      }
+
+      const timeout = setTimeout(() => {
+        untracked(() => {
+          this.addSearch(val);
+          this.onChange(val);
+          this.closeLastSearch();
+          this.isInteractive = false;
+        });
+      }, 700);
+
+      onCleanup(() => clearTimeout(timeout));
+    });
+  }
 
   @HostListener('document:click', ['$event'])
   onClick(event: MouseEvent) {
@@ -51,26 +69,11 @@ export class ChInputFilter implements ControlValueAccessor, OnInit {
     }
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
   onChange: (value: string) => void = () => {};
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
   onTouched: () => void = () => {};
 
-  ngOnInit(): void {
-    this.searchText$
-      .pipe(
-        debounceTime(700),
-        distinctUntilChanged(),
-        takeUntilDestroyed(this.destroyRef),
-      )
-      .subscribe((value) => {
-        this.addSearch(value);
-        this.onChange(value);
-        this.closeLastSearch();
-      });
-  }
-
   writeValue(value: string): void {
+    this.isInteractive = false;
     this.value.set(value || '');
   }
 
@@ -84,8 +87,8 @@ export class ChInputFilter implements ControlValueAccessor, OnInit {
 
   getValue(event: Event): void {
     const name = (event.target as HTMLInputElement).value;
+    this.isInteractive = true;
     this.value.set(name);
-    this.searchText$.next(name);
   }
 
   togleFilter() {
@@ -121,10 +124,12 @@ export class ChInputFilter implements ControlValueAccessor, OnInit {
 
   searchByOldValue(value: string): void {
     if (value !== this.value()) {
+      this.isInteractive = false;
       this.value.set(value);
+      this.addSearch(value);
       this.onChange(value);
-      this.onTouched();
       this.closeLastSearch();
+      this.onTouched();
     }
   }
 }

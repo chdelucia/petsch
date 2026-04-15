@@ -1,13 +1,16 @@
-import { Component, inject, computed, signal } from '@angular/core';
 import {
-  takeUntilDestroyed,
-  toSignal,
-  toObservable,
-} from '@angular/core/rxjs-interop';
+  Component,
+  inject,
+  computed,
+  signal,
+  effect,
+  untracked,
+} from '@angular/core';
+import { toSignal } from '@angular/core/rxjs-interop';
 import { form as angularForm, FormField } from '@angular/forms/signals';
 import { TranslocoService, TranslocoDirective } from '@jsverse/transloco';
 import { Filters, PETLIST_STORE } from '@petsch/api';
-import { debounceTime, merge, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import {
   ChInputFilter,
   ChRadioFilter,
@@ -39,9 +42,16 @@ export class FeatureFilters {
   readonly store = inject(PETLIST_STORE);
   private readonly transloco = inject(TranslocoService);
 
-  readonly form = signal<Partial<Filters>>({
+  readonly form = signal<Filters>({
     name_like: '',
     kind: '',
+    _page: 1,
+    _limit: 10,
+    _sort: '',
+    _order: 'asc',
+    weight: 0,
+    length: 0,
+    height: 0,
   });
 
   readonly formTree = angularForm(this.form);
@@ -77,25 +87,25 @@ export class FeatureFilters {
   });
 
   constructor() {
-    const filterChanges$ = this.filterConfigs().map((config) => {
-      const field = (this.formTree as any)[config.key]();
-      return toObservable(field.value).pipe(
-        debounceTime(config.debounceTime),
-      );
-    });
+    effect((onCleanup) => {
+      const formValue = this.form();
+      const timeout = setTimeout(() => {
+        untracked(() => {
+          this.store.applyFilters(formValue);
+          this.store.loadProducts();
+        });
+      }, 500);
 
-    merge(...filterChanges$)
-      .pipe(takeUntilDestroyed())
-      .subscribe(() => {
-        this.store.applyFilters(this.form());
-        this.store.loadProducts();
+      onCleanup(() => {
+        clearTimeout(timeout);
       });
+    });
   }
 
   resetFilter(key: string): void {
-    const field = (this.formTree as any)[key];
-    if (field) {
-      field().value.set('');
+    const filters = this.form();
+    if (key in filters) {
+      this.form.update((f) => ({ ...f, [key]: '' }));
     }
     this.store.removeFilter(key as keyof Filters);
   }
