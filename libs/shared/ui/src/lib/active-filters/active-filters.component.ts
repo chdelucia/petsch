@@ -24,8 +24,8 @@ export class ChActiveFiltersComponent {
   }
 
   countActiveFilters(value: Partial<Filters>): boolean {
-    const { name_like, kind } = value;
-    const atLeastOneFilled = name_like || kind;
-    return !!atLeastOneFilled;
+    return Object.entries(value).some(
+      ([key, val]) => !key.startsWith('_') && key !== 'page' && !!val,
+    );
   }
 }

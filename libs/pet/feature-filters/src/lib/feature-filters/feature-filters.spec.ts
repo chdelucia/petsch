@@ -65,7 +65,10 @@ describe('FeatureFilters', () => {
     component.formTree.kind().value.set('dog');
     vi.runAllTimers();
 
-    expect(store.applyFilters).toHaveBeenCalledWith({ kind: 'dog' });
+    expect(store.applyFilters).toHaveBeenCalledWith({
+      kind: 'dog',
+      name_like: '',
+    });
   });
 
   it('should reset name filter and call removeFilter', () => {
@@ -90,6 +93,7 @@ describe('FeatureFilters', () => {
 
     expect(store.applyFilters).toHaveBeenCalledWith({
       kind: '',
+      name_like: '',
     });
   });
 

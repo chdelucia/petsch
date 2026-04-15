@@ -7,20 +7,20 @@
   </lib-ch-ui-active-filters>
 
   @for (config of filterConfigs(); track config.key) {
-    @switch (config.key) {
-      @case ('name_like') {
+    @switch (config.type) {
+      @case ('input') {
         <lib-ch-ui-input-filter
           [testId]="'filter-' + config.key + '-input'"
           [title]="t(config.key)"
-          [formField]="formTree.name_like"
+          [formField]="$any(formTree)[config.key]"
         ></lib-ch-ui-input-filter>
       }
-      @case ('kind') {
+      @case ('radio') {
         <lib-ch-ui-radio-filter
           [testId]="'filter-' + config.key + '-radio'"
           [title]="t(config.key)"
-          [options]="config.options"
-          [formField]="formTree.kind"
+          [options]="config.options ?? []"
+          [formField]="$any(formTree)[config.key]"
         ></lib-ch-ui-radio-filter>
       }
     }

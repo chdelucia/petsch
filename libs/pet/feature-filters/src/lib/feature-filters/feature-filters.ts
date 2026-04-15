@@ -7,7 +7,7 @@ import {
 import { form as angularForm, FormField } from '@angular/forms/signals';
 import { TranslocoService, TranslocoDirective } from '@jsverse/transloco';
 import { Filters, PETLIST_STORE } from '@petsch/api';
-import { debounceTime, Observable } from 'rxjs';
+import { debounceTime, merge, Observable } from 'rxjs';
 import {
   ChInputFilter,
   ChRadioFilter,
@@ -17,7 +17,7 @@ import {
 interface FilterConfig {
   key: keyof Filters;
   type: 'input' | 'radio';
-  options: { value: string; text: string }[];
+  options?: { value: string; text: string }[];
   debounceTime: number;
 }
 
@@ -39,7 +39,7 @@ export class FeatureFilters {
   readonly store = inject(PETLIST_STORE);
   private readonly transloco = inject(TranslocoService);
 
-  readonly form = signal({
+  readonly form = signal<Partial<Filters>>({
     name_like: '',
     kind: '',
   });
@@ -62,7 +62,6 @@ export class FeatureFilters {
       {
         key: 'name_like',
         type: 'input',
-        options: [],
         debounceTime: 200,
       },
       {
@@ -78,26 +77,25 @@ export class FeatureFilters {
   });
 
   constructor() {
-    toObservable(this.formTree.name_like().value)
-      .pipe(debounceTime(200), takeUntilDestroyed())
-      .subscribe((value) => {
-        this.store.applyFilters({ name_like: (value as string) || '' });
-        this.store.loadProducts();
-      });
+    const filterChanges$ = this.filterConfigs().map((config) => {
+      const field = (this.formTree as any)[config.key]();
+      return toObservable(field.value).pipe(
+        debounceTime(config.debounceTime),
+      );
+    });
 
-    toObservable(this.formTree.kind().value)
-      .pipe(debounceTime(500), takeUntilDestroyed())
-      .subscribe((value) => {
-        this.store.applyFilters({ kind: (value as string) || '' });
+    merge(...filterChanges$)
+      .pipe(takeUntilDestroyed())
+      .subscribe(() => {
+        this.store.applyFilters(this.form());
         this.store.loadProducts();
       });
   }
 
   resetFilter(key: string): void {
-    if (key === 'name_like') {
-      this.formTree.name_like().value.set('');
-    } else if (key === 'kind') {
-      this.formTree.kind().value.set('');
+    const field = (this.formTree as any)[key];
+    if (field) {
+      field().value.set('');
     }
     this.store.removeFilter(key as keyof Filters);
   }
