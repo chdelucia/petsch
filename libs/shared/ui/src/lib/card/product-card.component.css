@@ -14,32 +14,32 @@
 }
 
 .ch-product-card {
-  @apply relative;
+  @apply relative bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 overflow-hidden border border-slate-100;
 }
 
 .ch-product-card__img-container {
-  @apply w-full h-72 overflow-hidden rounded-md bg-gray-200 relative;
-  aspect-ratio: 1 / 1;
+  @apply w-full h-64 overflow-hidden relative bg-slate-100;
+  aspect-ratio: 4 / 3;
 }
 
 .ch-product-card__img {
-  @apply h-full w-full object-cover object-center transition-opacity;
+  @apply h-full w-full object-cover object-center transition-transform duration-500 ease-out;
 
   .ch-product-card:hover & {
-    @apply opacity-75;
+    @apply scale-105;
   }
 }
 
 .ch-product-card__info {
-  @apply mt-2 flex justify-between;
+  @apply p-4;
 }
 
 .ch-product-card__details {
-  @apply overflow-hidden pb-2;
+  @apply overflow-hidden;
 }
 
 .ch-product-card__title {
-  @apply text-2xl truncate text-gray-700 mb-3;
+  @apply text-xl font-semibold truncate text-slate-800 mb-1;
 }
 
 .ch-product-card__link-overlay {

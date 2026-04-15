@@ -29,19 +29,19 @@
 }
 
 .ch-cart-drawer-content {
-  @apply flex h-full flex-col overflow-y-auto bg-white shadow-xl;
+  @apply flex h-full flex-col overflow-y-auto bg-slate-50 shadow-2xl;
 }
 
 .ch-cart-drawer-body {
-  @apply flex-1 overflow-y-auto px-4 py-6 sm:px-6;
+  @apply flex-1 overflow-y-auto px-4 py-6 sm:px-6 bg-white rounded-t-3xl mt-4 shadow-inner;
 }
 
 .ch-cart-drawer-header {
-  @apply flex items-start justify-between border-b border-gray-200 pb-2;
+  @apply flex items-start justify-between px-4 py-6 sm:px-6;
 }
 
 .ch-cart-drawer-title {
-  @apply text-lg font-medium text-gray-900;
+  @apply text-xl font-bold text-slate-900;
 }
 
 .ch-cart-drawer-close {

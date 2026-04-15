@@ -9,10 +9,10 @@
 }
 
 .char-grid {
-  @apply mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 xl:gap-x-8;
+  @apply mt-8 grid grid-cols-1 gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8;
   perspective: 1000px;
 }
 
 .char-grid--no-filters {
-  @apply lg:grid-cols-4 xl:grid-cols-5;
+  @apply sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5;
 }

@@ -1,5 +1,22 @@
 @import 'tailwindcss';
 
+@theme {
+  --color-primary: var(--color-indigo-600);
+  --color-primary-hover: var(--color-indigo-700);
+  --color-bg-main: var(--color-slate-50);
+}
+
+@layer base {
+  html,
+  body {
+    @apply h-full bg-bg-main text-slate-900 antialiased;
+  }
+}
+
+.main-content {
+  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8;
+}
+
 /* nx-tailwind-sources:start */
 @source "../../../libs/pet/api";
 @source "../../../libs/pet/data-access";
