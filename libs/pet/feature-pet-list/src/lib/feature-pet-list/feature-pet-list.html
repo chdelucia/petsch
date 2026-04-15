@@ -20,6 +20,8 @@
       <lib-ch-ui-card
         testId="product-card"
         class="card-effect"
+        [style.--index]="$index"
+        [style.viewTransitionName]="'pet-card-' + item.id"
         [id]="item.id"
         [name]="item.name"
         [imageUrl]="item.photo_url"
