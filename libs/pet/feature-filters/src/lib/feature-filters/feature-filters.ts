@@ -42,9 +42,9 @@ export class FeatureFilters {
   readonly store = inject(PETLIST_STORE);
   private readonly transloco = inject(TranslocoService);
 
-  readonly form = signal<Filters>({
+  readonly form = signal<Partial<Filters>>({
     name_like: '',
-    kind: '',
+    kind: ''
   });
 
   readonly formTree = angularForm(this.form);
