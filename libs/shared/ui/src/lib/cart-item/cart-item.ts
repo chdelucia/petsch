@@ -14,4 +14,5 @@ export class ChCartItem {
   day = input<string>();
   remove = output<void>();
   description = input.required<string>();
+  showRemove = input<boolean>(true);
 }

@@ -25,4 +25,23 @@ describe('ChCartItem', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should emit remove when button is clicked', () => {
+    const spy = vi.spyOn(component.remove, 'emit');
+    const button = fixture.nativeElement.querySelector(
+      '[data-testid="cart-item-remove"]',
+    );
+    button.click();
+    expect(spy).toHaveBeenCalled();
+  });
+
+  it('should not show remove button if showRemove is false', async () => {
+    fixture.componentRef.setInput('showRemove', false);
+    await fixture.whenStable();
+    fixture.detectChanges();
+    const button = fixture.nativeElement.querySelector(
+      '[data-testid="cart-item-remove"]',
+    );
+    expect(button).toBeNull();
+  });
 });

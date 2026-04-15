@@ -10,5 +10,20 @@
 
     <p class="ch-cart-item__date">{{ day() }}</p>
     <p class="ch-cart-item__desc">{{ description() }}</p>
+
+    @if (showRemove()) {
+    <div class="ch-cart-item__footer">
+      <div class="flex">
+        <button
+          type="button"
+          class="ch-cart-item__remove rounded-md focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:outline-none"
+          (click)="remove.emit()"
+          data-testid="cart-item-remove"
+        >
+          {{ t('remove') }}
+        </button>
+      </div>
+    </div>
+    }
   </div>
 </div>
