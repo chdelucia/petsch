@@ -38,4 +38,11 @@ export interface Filters {
   weight: number;
   length: number;
   height: number;
+  weight_gte: number;
+  weight_lte: number;
+  length_gte: number;
+  length_lte: number;
+  height_gte: number;
+  height_lte: number;
+  health: HealthStatus | '';
 }

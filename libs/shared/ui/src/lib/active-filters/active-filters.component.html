@@ -7,10 +7,17 @@
     <h3 class="ch-active-filters__title">{{ t('activeFilters') }}</h3>
     <div class="ch-active-filters__list">
       @for (item of values() | keyvalue; track $index) {
-        @if (item.key !== 'page' && item.value) {
+        @if (
+          item.key !== 'page' &&
+          !['weight_gte', 'weight_lte', 'length_gte', 'length_lte'].includes(
+            item.key
+          ) &&
+          item.value
+        ) {
           <div class="ch-active-filters__item">
             <div class="ch-active-filters__label">
-              <small>{{ item.key }}: </small>{{ item.value }}
+              <small>{{ t(item.key === 'name_like' ? 'name' : item.key) }}: </small>
+              {{ t(item.value === 'very healthy' ? 'veryHealthy' : (item.value + '')) }}
             </div>
             <button
               type="button"

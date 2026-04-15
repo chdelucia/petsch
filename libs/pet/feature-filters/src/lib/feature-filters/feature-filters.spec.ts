@@ -57,18 +57,21 @@ describe('FeatureFilters', () => {
   it('should create form controls based on filterConfigs', () => {
     expect(component.formTree.name_like).toBeDefined();
     expect(component.formTree.kind).toBeDefined();
+    expect((component.formTree as any).health).toBeDefined();
 
-    expect(component.filterConfigs().length).toBe(2);
+    expect(component.filterConfigs().length).toBe(3);
   });
 
   it('should call applyFilters when kind filter changes', () => {
     component.formTree.kind().value.set('dog');
     vi.runAllTimers();
 
-    expect(store.applyFilters).toHaveBeenCalledWith({
-      kind: 'dog',
-      name_like: '',
-    });
+    expect(store.applyFilters).toHaveBeenCalledWith(
+      expect.objectContaining({
+        kind: 'dog',
+        name_like: '',
+      }),
+    );
   });
 
   it('should reset name filter and call removeFilter', () => {
@@ -91,19 +94,37 @@ describe('FeatureFilters', () => {
     expect(component.formTree.kind().value()).toBe('');
     expect(store.removeFilter).toHaveBeenCalledWith('kind');
 
-    expect(store.applyFilters).toHaveBeenCalledWith({
-      kind: '',
-      name_like: '',
-    });
+    expect(store.applyFilters).toHaveBeenCalledWith(
+      expect.objectContaining({
+        kind: '',
+        name_like: '',
+      }),
+    );
   });
 
   it('should return form values', () => {
     component.formTree.name_like().value.set('test');
     component.formTree.kind().value.set('dog');
 
-    expect(component.form()).toEqual({
-      name_like: 'test',
-      kind: 'dog',
-    });
+    expect(component.form()).toEqual(
+      expect.objectContaining({
+        name_like: 'test',
+        kind: 'dog',
+      }),
+    );
+  });
+
+  it('should apply health filter ranges when health changes', () => {
+    (component.formTree as any).health().value.set('very healthy');
+    vi.runAllTimers();
+
+    expect(store.applyFilters).toHaveBeenCalledWith(
+      expect.objectContaining({
+        weight_gte: 1000,
+        weight_lte: 2000,
+        length_gte: 30,
+        length_lte: 60,
+      }),
+    );
   });
 });

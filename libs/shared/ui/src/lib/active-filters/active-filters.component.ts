@@ -25,7 +25,13 @@ export class ChActiveFiltersComponent {
 
   countActiveFilters(value: Partial<Filters>): boolean {
     return Object.entries(value).some(
-      ([key, val]) => !key.startsWith('_') && key !== 'page' && !!val,
+      ([key, val]) =>
+        !key.startsWith('_') &&
+        key !== 'page' &&
+        !['weight_gte', 'weight_lte', 'length_gte', 'length_lte'].includes(
+          key,
+        ) &&
+        !!val,
     );
   }
 }

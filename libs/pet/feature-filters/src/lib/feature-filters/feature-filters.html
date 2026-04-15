@@ -23,6 +23,14 @@
           [formField]="$any(formTree)[config.key]"
         ></lib-ch-ui-radio-filter>
       }
+      @case ('health') {
+        <lib-ch-ui-health-filter
+          [testId]="'filter-' + config.key + '-health'"
+          [title]="t(config.key === 'health' ? 'health' : config.key)"
+          [options]="config.options ?? []"
+          [formField]="$any(formTree)[config.key]"
+        ></lib-ch-ui-health-filter>
+      }
     }
   }
 </div>
