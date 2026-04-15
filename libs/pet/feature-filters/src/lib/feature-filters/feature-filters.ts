@@ -45,13 +45,6 @@ export class FeatureFilters {
   readonly form = signal<Filters>({
     name_like: '',
     kind: '',
-    _page: 1,
-    _limit: 10,
-    _sort: '',
-    _order: 'asc',
-    weight: 0,
-    length: 0,
-    height: 0,
   });
 
   readonly formTree = angularForm(this.form);
