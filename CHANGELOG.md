@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.10.0](https://github.com/chdelucia/petsch/compare/v1.9.2...v1.10.0) (2026-04-15)
+
+
+### Features
+
+* add missing translations and empty state message ([88a6b88](https://github.com/chdelucia/petsch/commit/88a6b880b7782cfb0a431f9add6ff4abb490422e))
+* add missing translations and empty state message ([99f9eee](https://github.com/chdelucia/petsch/commit/99f9eeeabe86390856074abf31fc58f21a68fa75))
+
 ### [1.9.2](https://github.com/chdelucia/petsch/compare/v1.9.1...v1.9.2) (2026-04-15)
 
 ### [1.9.1](https://github.com/chdelucia/petsch/compare/v1.9.0...v1.9.1) (2026-04-14)
