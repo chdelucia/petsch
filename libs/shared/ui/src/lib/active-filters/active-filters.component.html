@@ -6,36 +6,34 @@
   >
     <h3 class="ch-active-filters__title">{{ t('activeFilters') }}</h3>
     <div class="ch-active-filters__list">
-      @for (item of values() | keyvalue; track $index) {
-        @if (item.key !== 'page' && item.value) {
-          <div class="ch-active-filters__item">
-            <div class="ch-active-filters__label">
-              <small>{{ item.key }}: </small>{{ item.value }}
-            </div>
-            <button
-              type="button"
-              class="ch-active-filters__remove"
-              (click)="deleteFilter(item.key)"
-              [attr.data-testid]="testId() + '-remove-' + item.key"
-            >
-              <span class="ch-active-filters__sr">{{ t('close') }}</span>
-              <svg
-                class="ch-active-filters__remove-icon"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                stroke="currentColor"
-                aria-hidden="true"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              </svg>
-            </button>
+      @for (item of items(); track item.key) {
+        <div class="ch-active-filters__item">
+          <div class="ch-active-filters__label">
+            <small>{{ t(item.label) }}: </small>{{ item.value }}
           </div>
-        }
+          <button
+            type="button"
+            class="ch-active-filters__remove"
+            (click)="deleteFilter(item.key)"
+            [attr.data-testid]="testId() + '-remove-' + item.key"
+          >
+            <span class="ch-active-filters__sr">{{ t('close') }}</span>
+            <svg
+              class="ch-active-filters__remove-icon"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              aria-hidden="true"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M6 18L18 6M6 6l12 12"
+              />
+            </svg>
+          </button>
+        </div>
       }
     </div>
   </section>

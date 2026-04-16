@@ -14,18 +14,28 @@ export class ChActiveFiltersComponent {
   values = input<Partial<Filters>>();
   resetFilter = output<string>();
 
-  activeFilters = computed(() => {
+  items = computed(() => {
     const value = this.values();
-    return value ? this.countActiveFilters(value) : false;
+    if (!value) return [];
+    return Object.entries(value)
+      .filter(
+        ([key, val]) =>
+          !key.startsWith('_') &&
+          key !== 'page' &&
+          !key.endsWith('_gte') &&
+          !key.endsWith('_lte') &&
+          !!val,
+      )
+      .map(([key, val]) => ({
+        key,
+        label: key === 'name_like' ? 'name' : key,
+        value: val,
+      }));
   });
+
+  activeFilters = computed(() => this.items().length > 0);
 
   deleteFilter(value: string): void {
     this.resetFilter.emit(value);
-  }
-
-  countActiveFilters(value: Partial<Filters>): boolean {
-    return Object.entries(value).some(
-      ([key, val]) => !key.startsWith('_') && key !== 'page' && !!val,
-    );
   }
 }
