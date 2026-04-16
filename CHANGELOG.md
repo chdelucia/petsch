@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.11.0](https://github.com/chdelucia/petsch/compare/v1.10.4...v1.11.0) (2026-04-16)
+
+
+### Features
+
+* allow removing today's pet of the day ([1c7cca4](https://github.com/chdelucia/petsch/commit/1c7cca4dccc11c7de497cc5f8f9810633ef1c068))
+
 ### [1.10.4](https://github.com/chdelucia/petsch/compare/v1.10.3...v1.10.4) (2026-04-16)
 
 ### [1.10.3](https://github.com/chdelucia/petsch/compare/v1.10.2...v1.10.3) (2026-04-16)
