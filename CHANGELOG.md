@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.10.2](https://github.com/chdelucia/petsch/compare/v1.10.1...v1.10.2) (2026-04-16)
+
+
+### Bug Fixes
+
+* **pet:** prevent redundant API calls in FeatureFilters ([c46bb69](https://github.com/chdelucia/petsch/commit/c46bb69a1026454784cf5c090a9d6dcc8363f174))
+* **pet:** prevent redundant API calls on filter initialization ([03b805a](https://github.com/chdelucia/petsch/commit/03b805a4de2fa3a2b4cfaa21ad1478d614f3cd44))
+
 ### [1.10.1](https://github.com/chdelucia/petsch/compare/v1.10.0...v1.10.1) (2026-04-16)
 
 ## [1.10.0](https://github.com/chdelucia/petsch/compare/v1.9.2...v1.10.0) (2026-04-15)
