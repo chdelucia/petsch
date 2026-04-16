@@ -101,18 +101,19 @@ export class FeatureFilters {
 
   resetFilter(key: string): void {
     const field = (this.formTree as any)[key];
+    const currentValue = field?.().value();
+
     if (field) {
       field().value.set('');
     }
+
     this.store.removeFilter(key as keyof Filters);
 
-    // If there is no field to reset (it was already empty or not in formTree),
-    // the observable won't emit, so we need to manually load.
-    // However, if the field is reset, it will trigger the observable after debounce.
-    // To avoid double calls and ensure immediate response, we can call it here
-    // IF we want immediate response, but we have to be careful about the observable.
-    // Given the previous code had only removeFilter, it probably relied on the observable
-    // if the field changed.
-    this.applyFiltersAndLoad();
+    // If the value was already empty, the observable won't emit.
+    // In that case, we must call applyFiltersAndLoad manually because
+    // removeFilter might have changed the store state (even if the local form didn't).
+    if (!field || currentValue === '') {
+      this.applyFiltersAndLoad();
+    }
   }
 }
