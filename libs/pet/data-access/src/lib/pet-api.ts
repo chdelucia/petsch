@@ -17,11 +17,11 @@ export class PetApi implements IPetService {
     'https://my-json-server.typicode.com/Feverup/fever_pets_data/pets';
 
   getPets(filters: Partial<Filters>): Observable<GetPetsResponse> {
-    let params = new HttpParams();
+    const cleanFilters = Object.fromEntries(
+      Object.entries(filters).filter(([_, v]) => !!v),
+    ) as Record<string, string | number | boolean | readonly string[]>;
 
-    Object.entries(filters).forEach(([key, value]) => {
-      if (value) params = params.set(key, value);
-    });
+    const params = new HttpParams({ fromObject: cleanFilters });
 
     return this.http
       .get<Pet[]>(this.baseUrlAPI, {

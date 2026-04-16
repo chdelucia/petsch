@@ -29,8 +29,12 @@ describe('PetsStore', () => {
     expect(store.error()).toBeNull();
   });
 
-  it('should load products on init', () => {
-    expect(productServiceMock.getPets).toHaveBeenCalled();
+  it('should load products on init', async () => {
+    await new Promise((resolve) => setTimeout(resolve, 0));
+    expect(productServiceMock.getPets).toHaveBeenCalledWith({
+      _page: 1,
+      _limit: 12,
+    });
   });
 
   it('should load products and update state on success', async () => {

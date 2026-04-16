@@ -22,6 +22,7 @@ export const PetOfTheDayStore = signalStore(
   withState(initialState),
   withProps(() => ({
     storageService: inject(LOCALSTORAGE_TOKEN),
+    today: new Date().toISOString().split('T')[0],
   })),
   withComputed((store) => {
     return {
@@ -31,22 +32,20 @@ export const PetOfTheDayStore = signalStore(
         );
       }),
       todayPet: computed(() => {
-        const today = new Date().toISOString().split('T')[0];
         return (
-          store.entries().find((entry) => entry.date === today)?.pet ?? null
+          store.entries().find((entry) => entry.date === store.today)?.pet ??
+          null
         );
       }),
       isPetAddedToday: computed(() => {
-        const today = new Date().toISOString().split('T')[0];
-        return store.entries().some((entry) => entry.date === today);
+        return store.entries().some((entry) => entry.date === store.today);
       }),
     };
   }),
   withMethods((store) => {
-    const { storageService } = store;
+    const { storageService, today } = store;
     return {
       addPet(pet: Pet) {
-        const today = new Date().toISOString().split('T')[0];
         const alreadyExists = store
           .entries()
           .some((entry) => entry.date === today);

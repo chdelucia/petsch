@@ -96,7 +96,6 @@ export class FeatureFilters {
     const currentForm = this.form();
 
     this.store.applyFilters(currentForm);
-    this.store.loadProducts();
   }
 
   resetFilter(key: string): void {
