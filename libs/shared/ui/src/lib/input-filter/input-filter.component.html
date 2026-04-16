@@ -2,10 +2,9 @@
   <h3 class="ch-input-filter__header">
     <button
       (click)="togleFilter()"
-      (keypress)="togleFilter()"
       type="button"
       class="ch-input-filter__button"
-      aria-controls="filter-section-0"
+      [attr.aria-controls]="testId() + '-section'"
       [attr.aria-expanded]="isfilterOpen()"
     >
       <span class="ch-input-filter__title"> {{ title() | uppercase }}</span>
@@ -40,7 +39,7 @@
   </h3>
 
   <div
-    id="filter-section-0"
+    [id]="testId() + '-section'"
     class="ch-input-filter__content"
     [class.hidden]="!isfilterOpen()"
   >
@@ -67,7 +66,7 @@
       (click)="openLastsearch()"
       autocomplete="off"
       [value]="value()"
-      name="price"
+      name="search"
       type="text"
       class="ch-input-filter__input"
       [placeholder]="t('searchByName')"
@@ -96,9 +95,10 @@
           <button
             type="button"
             class="ch-input-filter__last-search-remove"
+            [title]="t('remove')"
             (click)="removeSearch($index, $event)"
           >
-            <span class="ch-input-filter__sr">{{ t('close') }}</span>
+            <span class="ch-input-filter__sr">{{ t('remove') }}</span>
             <svg
               class="ch-input-filter__close-icon"
               fill="none"
