@@ -11,4 +11,5 @@ import { PETOFDAY_STORE } from '@petsch/api';
 })
 export class FeaturePetOfDay {
   protected readonly potdStore = inject(PETOFDAY_STORE);
+  protected readonly today = new Date().toISOString().split('T')[0];
 }

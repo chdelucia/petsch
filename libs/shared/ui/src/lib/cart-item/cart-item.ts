@@ -12,6 +12,7 @@ export class ChCartItem {
   imageSrc = input.required<string>();
   name = input.required<string>();
   day = input<string>();
+  showRemove = input<boolean>(false);
   remove = output<void>();
   description = input.required<string>();
 }

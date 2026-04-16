@@ -7,7 +7,7 @@ export interface PetOfDayStoreContract {
   isOpen: Signal<boolean>;
   entries: Signal<PetOfTheDayEntry[]>;
   sortedEntries: Signal<PetOfTheDayEntry[]>;
-  isPetAddedToday: Signal<boolean[]>;
+  isPetAddedToday: Signal<boolean>;
   addPet(pet: Pet): void;
   removePet(date: string): void;
   togglePoT(isOpen: boolean): void;

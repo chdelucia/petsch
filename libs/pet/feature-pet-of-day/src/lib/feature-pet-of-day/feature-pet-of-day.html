@@ -14,6 +14,7 @@
             [imageSrc]="entry.pet.photo_url"
             [name]="entry.pet.name"
             [day]="entry.date"
+            [showRemove]="entry.date === today"
             [description]="entry.pet.description"
             (remove)="potdStore.removePet(entry.date)"
           ></lib-ch-ui-cart-item>
