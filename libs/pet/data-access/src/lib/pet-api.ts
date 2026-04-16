@@ -17,10 +17,13 @@ export class PetApi implements IPetService {
     'https://my-json-server.typicode.com/Feverup/fever_pets_data/pets';
 
   getPets(filters: Partial<Filters>): Observable<GetPetsResponse> {
-    let params = new HttpParams();
-
-    Object.entries(filters).forEach(([key, value]) => {
-      if (value) params = params.set(key, value);
+    // Optimization: Use HttpParams({ fromObject: ... }) to create a single immutable instance
+    // instead of creating multiple instances through iterative .set() calls.
+    const params = new HttpParams({
+      fromObject: Object.entries(filters).reduce((acc, [key, value]) => {
+        if (value) acc[key] = value;
+        return acc;
+      }, {} as Record<string, any>),
     });
 
     return this.http
