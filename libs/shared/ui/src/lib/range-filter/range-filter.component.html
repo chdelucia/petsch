@@ -38,36 +38,27 @@
   </h3>
 
   <div class="ch-range-filter__content" [class.hidden]="!isOpen()">
-    <div class="ch-range-filter__inputs">
-      <div class="ch-range-filter__field">
-        <label [for]="testId() + '-min'" class="ch-range-filter__label">{{
-          t('min')
-        }}</label>
-        <input
-          [id]="testId() + '-min'"
-          type="number"
-          [value]="value().min"
-          (input)="updateMin($event)"
-          (blur)="onTouched()"
-          class="ch-range-filter__input"
-          [attr.data-testid]="testId() + '-min'"
-          placeholder="0"
-        />
+    <div class="ch-range-filter__container">
+      <div class="ch-range-filter__value-display">
+        <span class="ch-range-filter__current-value">
+          {{ value() ?? min() }}
+        </span>
       </div>
-      <div class="ch-range-filter__field">
-        <label [for]="testId() + '-max'" class="ch-range-filter__label">{{
-          t('max')
-        }}</label>
-        <input
-          [id]="testId() + '-max'"
-          type="number"
-          [value]="value().max"
-          (input)="updateMax($event)"
-          (blur)="onTouched()"
-          class="ch-range-filter__input"
-          [attr.data-testid]="testId() + '-max'"
-          placeholder="100"
-        />
+      <input
+        [id]="testId()"
+        type="range"
+        [min]="min()"
+        [max]="max()"
+        [step]="step()"
+        [value]="value() ?? min()"
+        (input)="updateValue($event)"
+        (blur)="onTouched()"
+        class="ch-range-filter__slider"
+        [attr.data-testid]="testId()"
+      />
+      <div class="ch-range-filter__range-labels">
+        <span>{{ min() }}</span>
+        <span>{{ max() }}</span>
       </div>
     </div>
   </div>

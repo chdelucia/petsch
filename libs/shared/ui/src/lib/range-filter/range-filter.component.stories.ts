@@ -12,7 +12,10 @@ type Story = StoryObj<ChRangeFilter>;
 
 export const Primary: Story = {
   args: {
-    title: 'Weight Range',
+    title: 'weight',
     testId: 'weight-range',
+    min: 0,
+    max: 100,
+    step: 5,
   },
 };

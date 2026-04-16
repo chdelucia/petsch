@@ -3,11 +3,6 @@ import { CommonModule } from '@angular/common';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { TranslocoDirective } from '@jsverse/transloco';
 
-export interface RangeValue {
-  min: number | null;
-  max: number | null;
-}
-
 @Component({
   selector: 'lib-ch-ui-range-filter',
   imports: [CommonModule, TranslocoDirective],
@@ -24,20 +19,23 @@ export interface RangeValue {
 export class ChRangeFilter implements ControlValueAccessor {
   testId = input<string>('');
   title = input.required<string>();
+  min = input<number>(0);
+  max = input<number>(100);
+  step = input<number>(1);
 
   isOpen = signal(true);
-  value = signal<RangeValue>({ min: null, max: null });
+  value = signal<number | null>(null);
 
   // eslint-disable-next-line @typescript-eslint/no-empty-function
-  onChange: (value: RangeValue) => void = () => {};
+  onChange: (value: number | null) => void = () => {};
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   onTouched: () => void = () => {};
 
-  writeValue(value: RangeValue): void {
-    this.value.set(value || { min: null, max: null });
+  writeValue(value: number | null): void {
+    this.value.set(value);
   }
 
-  registerOnChange(fn: (value: RangeValue) => void): void {
+  registerOnChange(fn: (value: number | null) => void): void {
     this.onChange = fn;
   }
 
@@ -45,16 +43,9 @@ export class ChRangeFilter implements ControlValueAccessor {
     this.onTouched = fn;
   }
 
-  updateMin(event: Event): void {
-    const min = (event.target as HTMLInputElement).value;
-    const newValue = { ...this.value(), min: min ? Number(min) : null };
-    this.value.set(newValue);
-    this.onChange(newValue);
-  }
-
-  updateMax(event: Event): void {
-    const max = (event.target as HTMLInputElement).value;
-    const newValue = { ...this.value(), max: max ? Number(max) : null };
+  updateValue(event: Event): void {
+    const val = (event.target as HTMLInputElement).value;
+    const newValue = val ? Number(val) : null;
     this.value.set(newValue);
     this.onChange(newValue);
   }
