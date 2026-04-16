@@ -1,7 +1,7 @@
 @reference "../../tailwind.storybook.css";
 
 .ch-filter-container {
-  @apply border-b border-gray-200 py-6;
+  @apply border-b border-forest-100 py-6;
 }
 
 .ch-filter-container__header {
@@ -9,11 +9,11 @@
 }
 
 .ch-filter-container__button {
-  @apply flex w-full items-center justify-between bg-white py-3 text-sm text-gray-400 hover:text-indigo-600 cursor-pointer;
+  @apply flex w-full items-center justify-between bg-white py-3 text-sm text-forest-400 hover:text-forest-600 cursor-pointer transition-colors;
 }
 
 .ch-filter-container__title {
-  @apply font-medium text-gray-900;
+  @apply font-bold text-forest-900;
 }
 
 .ch-filter-container__icon-container {
@@ -21,7 +21,7 @@
 }
 
 .ch-filter-container__icon {
-  @apply h-5 w-5;
+  @apply h-5 w-5 text-forest-300;
 }
 
 .ch-filter-container__section {
@@ -29,7 +29,7 @@
 }
 
 .ch-filter-container__list {
-  @apply space-y-4;
+  @apply space-y-3;
 }
 
 .ch-filter-container__item {
@@ -37,9 +37,9 @@
 }
 
 .ch-filter-container__input {
-  @apply h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500 hover:cursor-pointer accent-indigo-600;
+  @apply h-4 w-4 rounded-full border-forest-300 text-forest-600 focus:ring-forest-500 hover:cursor-pointer accent-forest-600 transition-all;
 }
 
 .ch-filter-container__label {
-  @apply ml-3 text-sm text-gray-600 hover:cursor-pointer hover:text-indigo-600 hover:font-bold w-full;
+  @apply ml-3 text-sm text-forest-600 hover:cursor-pointer hover:text-forest-800 font-medium transition-colors w-full;
 }

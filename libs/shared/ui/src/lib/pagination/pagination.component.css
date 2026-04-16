@@ -1,22 +1,22 @@
 @reference "../../tailwind.storybook.css";
 
 .ch-pagination {
-  @apply flex items-center justify-center gap-1 list-none text-sm py-4;
+  @apply flex items-center justify-center gap-1 list-none text-sm py-8;
 
   .ch-page-item {
     &.ch-disabled {
-      @apply opacity-40 pointer-events-none;
+      @apply opacity-30 pointer-events-none;
     }
 
     &.ch-active {
       @apply pointer-events-none;
       .ch-page-link {
-        @apply bg-indigo-50 text-indigo-700 border-indigo-200 font-semibold z-10;
+        @apply bg-forest-50 text-forest-700 border-forest-200 font-bold z-10;
       }
     }
 
     .ch-page-link {
-      @apply relative inline-flex items-center px-4 py-2 border border-slate-200 bg-white text-slate-600 font-medium rounded-lg hover:bg-slate-50 transition-all focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-1 cursor-pointer disabled:cursor-not-allowed;
+      @apply relative inline-flex items-center px-4 py-2 border border-forest-100 bg-white text-forest-600 font-medium rounded-lg hover:bg-forest-50 hover:text-forest-700 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-forest-500 cursor-pointer disabled:cursor-not-allowed;
     }
   }
 }

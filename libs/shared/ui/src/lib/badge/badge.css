@@ -1,17 +1,17 @@
-@reference "../../../../../../apps/petshop/src/styles.css";
+@reference "../../tailwind.storybook.css";
 
 .ch-badge {
-  @apply inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium;
+  @apply inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold uppercase tracking-wider;
 }
 
 .ch-badge--unhealthy {
-  @apply bg-red-100 text-red-800;
+  @apply bg-red-50 text-red-700 border border-red-100;
 }
 
 .ch-badge--healthy {
-  @apply bg-green-100 text-green-800;
+  @apply bg-sage-50 text-sage-700 border border-sage-100;
 }
 
 .ch-badge--very-healthy {
-  @apply bg-blue-100 text-blue-800;
+  @apply bg-forest-50 text-forest-700 border border-forest-100;
 }

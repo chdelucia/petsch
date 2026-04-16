@@ -1,11 +1,11 @@
 @reference "../../tailwind.storybook.css";
 
 .ch-cart-drawer-overlay {
-  @apply fixed inset-0 bg-gray-500/0 transition-all duration-500 pointer-events-none z-40;
+  @apply fixed inset-0 bg-forest-900/0 transition-all duration-500 pointer-events-none z-40 backdrop-blur-none;
 }
 
 .ch-cart-drawer-overlay--open {
-  @apply bg-gray-500/75 pointer-events-auto;
+  @apply bg-forest-900/40 pointer-events-auto backdrop-blur-sm;
 }
 
 .ch-cart-drawer-container {
@@ -17,7 +17,7 @@
 }
 
 .ch-cart-drawer-panel-container {
-  @apply pointer-events-none fixed inset-y-0 right-0 flex max-w-full pl-10 sm:pl-16;
+  @apply pointer-events-none fixed inset-y-0 right-0 flex max-w-full pl-10;
 }
 
 .ch-cart-drawer-panel {
@@ -29,7 +29,7 @@
 }
 
 .ch-cart-drawer-content {
-  @apply flex h-full flex-col overflow-y-auto bg-white shadow-xl;
+  @apply flex h-full flex-col overflow-y-auto bg-white shadow-2xl;
 }
 
 .ch-cart-drawer-body {
@@ -37,13 +37,13 @@
 }
 
 .ch-cart-drawer-header {
-  @apply flex items-start justify-between border-b border-gray-200 pb-2;
+  @apply flex items-center justify-between border-b border-forest-50 p-4 sm:px-6;
 }
 
 .ch-cart-drawer-title {
-  @apply text-lg font-medium text-gray-900;
+  @apply text-xl font-bold text-forest-900;
 }
 
 .ch-cart-drawer-close {
-  @apply ml-3 h-7 w-7 text-gray-400 hover:text-gray-500 cursor-pointer;
+  @apply p-2 -mr-2 text-forest-400 hover:text-forest-600 cursor-pointer rounded-full hover:bg-forest-50 transition-all;
 }

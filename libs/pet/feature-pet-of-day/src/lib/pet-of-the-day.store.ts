@@ -9,7 +9,7 @@ import {
   withProps,
 } from '@ngrx/signals';
 import { PetOfTheDayState, Pet, PetOfTheDayEntry } from '@petsch/api';
-import { LOCALSTORAGE_TOKEN } from '@petsch/obs-api';
+import { LOCALSTORAGE_TOKEN, ANALYTICS_TOKEN } from '@petsch/obs-api';
 
 const STORAGE_KEY = 'pet-of-the-day-entries';
 
@@ -22,6 +22,7 @@ export const PetOfTheDayStore = signalStore(
   withState(initialState),
   withProps(() => ({
     storageService: inject(LOCALSTORAGE_TOKEN),
+    analyticsService: inject(ANALYTICS_TOKEN),
   })),
   withComputed((store) => {
     return {
@@ -43,7 +44,7 @@ export const PetOfTheDayStore = signalStore(
     };
   }),
   withMethods((store) => {
-    const { storageService } = store;
+    const { storageService, analyticsService } = store;
     return {
       addPet(pet: Pet) {
         const today = new Date().toISOString().split('T')[0];
@@ -52,6 +53,7 @@ export const PetOfTheDayStore = signalStore(
           .some((entry) => entry.date === today);
 
         if (!alreadyExists) {
+          analyticsService.trackCart(pet.id.toString(), pet.name, pet.weight);
           const newEntries = [...store.entries(), { pet, date: today }];
           patchState(store, { entries: newEntries, isOpen: true });
           storageService.setValue(STORAGE_KEY, newEntries);

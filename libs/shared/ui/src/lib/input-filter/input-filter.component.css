@@ -1,7 +1,7 @@
 @reference "../../tailwind.storybook.css";
 
 .ch-input-filter {
-  @apply border-b border-gray-200 py-6 relative;
+  @apply border-b border-forest-100 py-6 relative;
 }
 
 .ch-input-filter__header {
@@ -9,11 +9,11 @@
 }
 
 .ch-input-filter__button {
-  @apply flex w-full items-center justify-between bg-white py-3 text-sm text-gray-400 hover:text-indigo-600 cursor-pointer;
+  @apply flex w-full items-center justify-between bg-white py-3 text-sm text-forest-400 hover:text-forest-600 cursor-pointer transition-colors;
 }
 
 .ch-input-filter__title {
-  @apply font-medium text-gray-900;
+  @apply font-bold text-forest-900;
 }
 
 .ch-input-filter__icon-container {
@@ -21,7 +21,7 @@
 }
 
 .ch-input-filter__icon {
-  @apply h-5 w-5;
+  @apply h-5 w-5 text-forest-300;
 }
 
 .ch-input-filter__content {
@@ -33,38 +33,38 @@
 }
 
 .ch-input-filter__search-icon {
-  @apply w-4 h-4 text-gray-500;
+  @apply w-4 h-4 text-forest-400;
 }
 
 .ch-input-filter__input {
-  @apply block w-full rounded-md border-0 py-1.5 pl-9 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6;
+  @apply block w-full rounded-lg border-0 py-2 pl-9 text-forest-900 ring-1 ring-inset ring-forest-200 placeholder:text-forest-400 focus:ring-2 focus:ring-inset focus:ring-forest-500 sm:text-sm sm:leading-6 transition-all bg-cream-50;
 }
 
 .ch-input-filter__last-searches {
-  @apply flex flex-col gap-2 py-2 rounded-b-md shadow-sm border-x-2 border-b-2 text-sm leading-6 absolute w-full bg-white z-50;
+  @apply flex flex-col gap-1 p-2 rounded-lg shadow-lg border border-forest-100 text-sm leading-6 absolute w-full bg-white z-50 mt-1;
   &.hidden {
     @apply hidden;
   }
 }
 
 .ch-input-filter__last-searches-title {
-  @apply text-center text-xs text-gray-500 uppercase;
+  @apply px-2 py-1 text-[10px] font-bold text-forest-400 uppercase tracking-widest;
 }
 
 .ch-input-filter__last-search-item {
-  @apply flex justify-between px-2 cursor-pointer;
+  @apply flex items-center justify-between px-2 py-1.5 cursor-pointer rounded-md hover:bg-forest-50 transition-colors;
 }
 
 .ch-input-filter__last-search-text {
-  @apply w-11/12 hover:text-indigo-600 hover:font-bold;
+  @apply flex-1 text-forest-700 font-medium;
 }
 
 .ch-input-filter__last-search-remove {
-  @apply text-gray-400 hover:text-indigo-600 hover:font-bold;
+  @apply p-1 text-forest-300 hover:text-red-500 transition-colors rounded-full hover:bg-red-50;
 }
 
 .ch-input-filter__close-icon {
-  @apply h-4 w-4;
+  @apply h-3.5 w-3.5;
 }
 
 .ch-input-filter__sr {
