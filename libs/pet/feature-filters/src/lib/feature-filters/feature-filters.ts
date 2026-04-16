@@ -7,7 +7,7 @@ import {
 import { form as angularForm, FormField } from '@angular/forms/signals';
 import { TranslocoService, TranslocoDirective } from '@jsverse/transloco';
 import { Filters, PETLIST_STORE } from '@petsch/api';
-import { debounceTime, merge, Observable } from 'rxjs';
+import { debounceTime, merge, Observable, skip } from 'rxjs';
 import {
   ChInputFilter,
   ChRadioFilter,
@@ -80,6 +80,7 @@ export class FeatureFilters {
     const filterChanges$ = this.filterConfigs().map((config) => {
       const field = (this.formTree as any)[config.key]();
       return toObservable(field.value).pipe(
+        skip(1),
         debounceTime(config.debounceTime),
       );
     });
@@ -87,9 +88,15 @@ export class FeatureFilters {
     merge(...filterChanges$)
       .pipe(takeUntilDestroyed())
       .subscribe(() => {
-        this.store.applyFilters(this.form());
-        this.store.loadProducts();
+        this.applyFiltersAndLoad();
       });
+  }
+
+  private applyFiltersAndLoad(): void {
+    const currentForm = this.form();
+
+    this.store.applyFilters(currentForm);
+    this.store.loadProducts();
   }
 
   resetFilter(key: string): void {
@@ -98,5 +105,14 @@ export class FeatureFilters {
       field().value.set('');
     }
     this.store.removeFilter(key as keyof Filters);
+
+    // If there is no field to reset (it was already empty or not in formTree),
+    // the observable won't emit, so we need to manually load.
+    // However, if the field is reset, it will trigger the observable after debounce.
+    // To avoid double calls and ensure immediate response, we can call it here
+    // IF we want immediate response, but we have to be careful about the observable.
+    // Given the previous code had only removeFilter, it probably relied on the observable
+    // if the field changed.
+    this.applyFiltersAndLoad();
   }
 }

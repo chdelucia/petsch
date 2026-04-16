@@ -106,4 +106,10 @@ describe('FeatureFilters', () => {
       kind: 'dog',
     });
   });
+
+  it('should not call loadProducts on initialization', () => {
+    store.loadProducts.mockClear();
+    vi.runAllTimers();
+    expect(store.loadProducts).not.toHaveBeenCalled();
+  });
 });
