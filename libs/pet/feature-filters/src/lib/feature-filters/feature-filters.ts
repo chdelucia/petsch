@@ -109,9 +109,6 @@ export class FeatureFilters {
 
     this.store.removeFilter(key as keyof Filters);
 
-    // If the value was already empty, the observable won't emit.
-    // In that case, we must call applyFiltersAndLoad manually because
-    // removeFilter might have changed the store state (even if the local form didn't).
     if (!field || currentValue === '') {
       this.applyFiltersAndLoad();
     }
