@@ -11,7 +11,7 @@
     >
       Sort: {{ selected.text }}
       <svg
-        [class.open]="isOpen()"
+        [class.dropdown-icon--open]="isOpen()"
         class="dropdown-icon"
         viewBox="0 0 20 20"
         fill="currentColor"
@@ -31,7 +31,7 @@
         <span
           tabindex="0"
           class="dropdown-item"
-          [class.selected]="
+          [class.dropdown-item--selected]="
             item.key === selected.key && item.order === selected.order
           "
           (click)="emitValue(item)"

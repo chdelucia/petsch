@@ -4,20 +4,12 @@
   @apply border-b border-forest-100 py-6 relative;
 }
 
-.ch-input-filter__header {
-  @apply -my-3 flow-root;
-}
-
 .ch-input-filter__button {
-  @apply flex w-full items-center justify-between bg-white py-3 text-sm text-forest-400 hover:text-forest-600 cursor-pointer transition-colors;
+  @apply flex w-full items-center justify-between bg-white py-3 text-sm text-forest-400 hover:text-forest-600 transition-colors;
 }
 
 .ch-input-filter__title {
   @apply font-bold text-forest-900;
-}
-
-.ch-input-filter__icon-container {
-  @apply ml-6 flex items-center;
 }
 
 .ch-input-filter__icon {
@@ -28,23 +20,16 @@
   @apply pt-6 relative;
 }
 
-.ch-input-filter__input-container {
-  @apply absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none mt-6;
-}
-
 .ch-input-filter__search-icon {
   @apply w-4 h-4 text-forest-400;
 }
 
 .ch-input-filter__input {
-  @apply block w-full rounded-lg border-0 py-2 pl-9 text-forest-900 ring-1 ring-inset ring-forest-200 placeholder:text-forest-400 focus:ring-2 focus:ring-inset focus:ring-forest-500 sm:text-sm sm:leading-6 transition-all bg-cream-50;
+  @apply block w-full rounded-lg border-0 py-2 pl-9 text-forest-900 ring-1 ring-inset ring-forest-200 placeholder:text-forest-400 focus:ring-2 focus:ring-forest-500 sm:text-sm transition-all bg-cream-50;
 }
 
 .ch-input-filter__last-searches {
-  @apply flex flex-col gap-1 p-2 rounded-lg shadow-lg border border-forest-100 text-sm leading-6 absolute w-full bg-white z-50 mt-1;
-  &.hidden {
-    @apply hidden;
-  }
+  @apply flex flex-col gap-1 p-2 rounded-lg shadow-lg border border-forest-100 text-sm absolute w-full bg-white z-50 mt-1;
 }
 
 .ch-input-filter__last-searches-title {
@@ -61,12 +46,4 @@
 
 .ch-input-filter__last-search-remove {
   @apply p-1 text-forest-300 hover:text-red-500 transition-colors rounded-full hover:bg-red-50;
-}
-
-.ch-input-filter__close-icon {
-  @apply h-3.5 w-3.5;
-}
-
-.ch-input-filter__sr {
-  @apply sr-only;
 }
