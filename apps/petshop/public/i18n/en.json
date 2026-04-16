@@ -44,6 +44,8 @@
   "cm": "cm",
   "g": "g",
   "remove": "Remove",
+  "min": "Min",
+  "max": "Max",
   "continueShopping": "Close",
   "searchByName": "Search by name",
   "toggleFilters": "Toggle filters",
