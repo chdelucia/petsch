@@ -17,8 +17,6 @@ export class PetApi implements IPetService {
     'https://my-json-server.typicode.com/Feverup/fever_pets_data/pets';
 
   getPets(filters: Partial<Filters>): Observable<GetPetsResponse> {
-    // Optimization: Use HttpParams({ fromObject: ... }) to create a single immutable instance
-    // instead of creating multiple instances through iterative .set() calls.
     const params = new HttpParams({
       fromObject: Object.entries(filters).reduce((acc, [key, value]) => {
         if (value) acc[key] = value;
