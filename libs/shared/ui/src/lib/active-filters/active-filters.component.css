@@ -21,7 +21,7 @@
 }
 
 .ch-active-filters__remove {
-  @apply text-gray-400 hover:text-indigo-600;
+  @apply text-gray-400 hover:text-forest-600;
 }
 
 .ch-active-filters__remove-icon {

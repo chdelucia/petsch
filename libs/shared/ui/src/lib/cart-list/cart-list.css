@@ -5,5 +5,5 @@
 }
 
 .ch-cart-list__items {
-  @apply divide-y divide-gray-200;
+  @apply divide-y divide-sage-200;
 }

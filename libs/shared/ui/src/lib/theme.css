@@ -1,0 +1,49 @@
+@theme {
+  --color-forest-50: #f4f9f4;
+  --color-forest-100: #e5f3e6;
+  --color-forest-200: #cbe7cd;
+  --color-forest-300: #a2d3a6;
+  --color-forest-400: #72b678;
+  --color-forest-500: #4e9955;
+  --color-forest-600: #3c7d42;
+  --color-forest-700: #346739;
+  --color-forest-800: #2b502f;
+  --color-forest-900: #254229;
+  --color-forest-950: #102313;
+
+  --color-sage-50: #f6faf5;
+  --color-sage-100: #e8f3e5;
+  --color-sage-200: #d4e8cd;
+  --color-sage-300: #b3d7a7;
+  --color-sage-400: #89bf79;
+  --color-sage-500: #79ae6f;
+  --color-sage-600: #5e8f55;
+  --color-sage-700: #4a7044;
+  --color-sage-800: #3e5a39;
+  --color-sage-900: #344c31;
+  --color-sage-950: #1a2918;
+
+  --color-mint-50: #f7faf7;
+  --color-mint-100: #e9f3ea;
+  --color-mint-200: #d5e9d6;
+  --color-mint-300: #b7d8b9;
+  --color-mint-400: #9fcb98;
+  --color-mint-500: #7eb575;
+  --color-mint-600: #62965b;
+  --color-mint-700: #4f784a;
+  --color-mint-800: #42633f;
+  --color-mint-900: #395536;
+  --color-mint-950: #1d2c1b;
+
+  --color-cream-50: #fefef7;
+  --color-cream-100: #fdfce7;
+  --color-cream-200: #fbf9cf;
+  --color-cream-300: #f7f2ab;
+  --color-cream-400: #f2edc2;
+  --color-cream-500: #e8e096;
+  --color-cream-600: #cfc469;
+  --color-cream-700: #ab9f4c;
+  --color-cream-800: #8a7f41;
+  --color-cream-900: #736a3a;
+  --color-cream-950: #423c1d;
+}

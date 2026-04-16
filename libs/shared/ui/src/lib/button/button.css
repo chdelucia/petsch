@@ -5,11 +5,11 @@
 }
 
 .ch-btn--primary {
-  @apply px-6 py-3 rounded-md bg-indigo-600 text-white hover:bg-indigo-700;
+  @apply px-6 py-3 rounded-md bg-forest-600 text-white hover:bg-forest-700;
 }
 
 .ch-btn--link {
-  @apply text-indigo-600 hover:text-indigo-500;
+  @apply text-forest-600 hover:text-forest-500;
 }
 
 .ch-btn--full-width {
@@ -17,5 +17,5 @@
 }
 
 .ch-btn--disabled {
-  @apply opacity-50 cursor-not-allowed bg-gray-500;
+  @apply opacity-50 cursor-not-allowed bg-forest-300;
 }

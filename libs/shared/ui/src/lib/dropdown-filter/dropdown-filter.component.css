@@ -7,7 +7,7 @@ svg {
   }
 }
 span.selected {
-  @apply font-medium text-indigo-600;
+  @apply font-medium text-forest-600;
 }
 
 .dropdown {
@@ -15,11 +15,11 @@ span.selected {
 }
 
 .dropdown-button {
-  @apply inline-flex justify-center text-sm font-medium text-gray-700 hover:text-gray-900 cursor-pointer;
+  @apply inline-flex justify-center text-sm font-medium text-forest-700 hover:text-forest-900 cursor-pointer;
 }
 
 .dropdown-icon {
-  @apply -mr-1 ml-1 h-5 w-5 shrink-0 text-gray-400 transition-transform duration-200;
+  @apply -mr-1 ml-1 h-5 w-5 shrink-0 text-sage-400 transition-transform duration-200;
 }
 
 .dropdown-icon.open {
@@ -35,9 +35,9 @@ span.selected {
 }
 
 .dropdown-item {
-  @apply text-gray-500 block px-4 py-2 text-sm cursor-pointer hover:bg-indigo-100;
+  @apply text-sage-500 block px-4 py-2 text-sm cursor-pointer hover:bg-forest-100;
 }
 
 .dropdown-item.selected {
-  @apply font-semibold text-gray-900 bg-indigo-50;
+  @apply font-semibold text-forest-900 bg-forest-50;
 }

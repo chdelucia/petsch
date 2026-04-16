@@ -5,7 +5,7 @@
 }
 
 .ch-cart-item__img-container {
-  @apply size-24 shrink-0 overflow-hidden rounded-md border border-gray-200;
+  @apply size-24 shrink-0 overflow-hidden rounded-md border border-sage-200;
 }
 
 .ch-cart-item__img {
@@ -17,12 +17,12 @@
 }
 
 .ch-cart-item__header {
-  @apply flex justify-between text-base font-medium text-gray-900;
+  @apply flex justify-between text-base font-medium text-forest-900;
 }
 
 .ch-cart-item__date,
 .ch-cart-item__desc {
-  @apply mt-1 text-sm text-gray-500;
+  @apply mt-1 text-sm text-sage-600;
 }
 
 .ch-cart-item__footer {
@@ -30,9 +30,9 @@
 }
 
 .ch-cart-item__qty {
-  @apply text-gray-500;
+  @apply text-sage-600;
 }
 
 .ch-cart-item__remove {
-  @apply font-medium text-indigo-600 hover:text-indigo-500;
+  @apply font-medium text-forest-600 hover:text-forest-500;
 }
