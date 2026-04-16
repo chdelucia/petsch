@@ -4,8 +4,8 @@
       (click)="togleFilter()"
       type="button"
       class="ch-filter-container__button"
-      aria-controls="filter-section-0"
-      aria-expanded="false"
+      [attr.aria-controls]="testId() + '-section'"
+      [attr.aria-expanded]="isOpen()"
     >
       <span class="ch-filter-container__title"> {{ title() | uppercase }}</span>
       <span class="ch-filter-container__icon-container">
@@ -40,7 +40,7 @@
 
   <div
     class="ch-filter-container__section"
-    id="filter-section-0"
+    [id]="testId() + '-section'"
     [class.hidden]="!isOpen()"
   >
     <div class="ch-filter-container__list">
@@ -50,16 +50,18 @@
             (click)="getValue($event)"
             (keydown)="getValue($event)"
             [checked]="item.value === value()"
-            [id]="title() + $index"
-            [name]="title()"
+            [id]="testId() + '-option-' + $index"
+            [name]="testId() + '-group'"
             [value]="item.value"
             type="radio"
             class="ch-filter-container__input"
             [attr.data-testid]="testId() + '-option-' + item.value"
           />
-          <label [for]="title() + $index" class="ch-filter-container__label">{{
-            item.text
-          }}</label>
+          <label
+            [for]="testId() + '-option-' + $index"
+            class="ch-filter-container__label"
+            >{{ item.text }}</label
+          >
         </div>
       }
     </div>
