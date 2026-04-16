@@ -7,7 +7,7 @@ import {
 import { form as angularForm, FormField } from '@angular/forms/signals';
 import { TranslocoService, TranslocoDirective } from '@jsverse/transloco';
 import { Filters, PETLIST_STORE } from '@petsch/api';
-import { debounceTime, merge, Observable } from 'rxjs';
+import { debounceTime, merge, Observable, skip } from 'rxjs';
 import {
   ChInputFilter,
   ChRadioFilter,
@@ -80,6 +80,7 @@ export class FeatureFilters {
     const filterChanges$ = this.filterConfigs().map((config) => {
       const field = (this.formTree as any)[config.key]();
       return toObservable(field.value).pipe(
+        skip(1),
         debounceTime(config.debounceTime),
       );
     });
@@ -87,16 +88,29 @@ export class FeatureFilters {
     merge(...filterChanges$)
       .pipe(takeUntilDestroyed())
       .subscribe(() => {
-        this.store.applyFilters(this.form());
-        this.store.loadProducts();
+        this.applyFiltersAndLoad();
       });
+  }
+
+  private applyFiltersAndLoad(): void {
+    const currentForm = this.form();
+
+    this.store.applyFilters(currentForm);
+    this.store.loadProducts();
   }
 
   resetFilter(key: string): void {
     const field = (this.formTree as any)[key];
+    const currentValue = field?.().value();
+
     if (field) {
       field().value.set('');
     }
+
     this.store.removeFilter(key as keyof Filters);
+
+    if (!field || currentValue === '') {
+      this.applyFiltersAndLoad();
+    }
   }
 }
