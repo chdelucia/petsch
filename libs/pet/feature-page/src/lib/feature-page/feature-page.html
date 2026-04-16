@@ -23,8 +23,19 @@
   </lib-ch-ui-product-list-header>
 </ng-container>
 
-<section aria-labelledby="products-heading" class="chars">
+<section aria-labelledby="products-heading" class="chars" *transloco="let t">
   <div class="chars__grid">
+    <lib-ch-ui-cart-drawer
+      class="chars__filters--mobile"
+      position="left"
+      [open]="showFilters()"
+      [titleLabel]="t('filters')"
+      [showFooter]="false"
+      (openChange)="showFilters.set($event)"
+    >
+      <lib-feature-filters></lib-feature-filters>
+    </lib-ch-ui-cart-drawer>
+
     <lib-feature-filters
       class="chars__filters"
       [class.chars__filters--hidden]="!showFilters()"

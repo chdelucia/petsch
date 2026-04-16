@@ -3,7 +3,7 @@ import { FeaturePetList } from '@petsch/feature-pet-list';
 import { PETLIST_STORE } from '@petsch/api';
 import { FeaturePetOfDay } from '@petsch/feature-pet-of-day';
 import { TranslocoDirective } from '@jsverse/transloco';
-import { ChDropdownFilter, ChListHeader } from '@petsch/ui';
+import { ChDropdownFilter, ChListHeader, ChCartDrawer } from '@petsch/ui';
 import { FeatureFilters } from '@petsch/feature-filters';
 
 @Component({
@@ -15,6 +15,7 @@ import { FeatureFilters } from '@petsch/feature-filters';
     ChListHeader,
     FeatureFilters,
     ChDropdownFilter,
+    ChCartDrawer,
   ],
   templateUrl: './feature-page.html',
   styleUrl: './feature-page.css',

@@ -9,11 +9,15 @@
 }
 
 .chars__filters {
-  @apply col-span-2;
+  @apply hidden lg:block lg:col-span-2;
 }
 
 .chars__filters--hidden {
-  @apply hidden;
+  @apply lg:hidden;
+}
+
+.chars__filters--mobile {
+  @apply lg:hidden;
 }
 
 .chars__list {
