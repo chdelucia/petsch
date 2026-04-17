@@ -4,15 +4,27 @@ import {
   HttpTestingController,
 } from '@angular/common/http/testing';
 import { PetApi } from './pet-api';
-import { Pet } from '@petsch/api';
+import { PET_API_CONFIG, PET_DATA_TRANSFORMER } from '@petsch/api';
 
 describe('Products', () => {
   let service: PetApi;
   let httpMock: HttpTestingController;
+  const baseUrl = 'https://api.example.com/pets';
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [PetApi, provideHttpClientTesting()],
+      providers: [
+        PetApi,
+        provideHttpClientTesting(),
+        {
+          provide: PET_API_CONFIG,
+          useValue: { baseUrl },
+        },
+        {
+          provide: PET_DATA_TRANSFORMER,
+          useValue: (item: any) => ({ ...item, health: 'healthy' }),
+        },
+      ],
     });
     service = TestBed.inject(PetApi);
     httpMock = TestBed.inject(HttpTestingController);
@@ -30,29 +42,25 @@ describe('Products', () => {
     const name = 'Batman';
     const page = 1;
 
-    service.getPets({ name, page }).subscribe((response) => {
+    service.getPets({ name, page } as any).subscribe((response) => {
       expect(response.products.length).toBe(1);
       expect(response.products[0].name).toBe('Batman');
     });
 
-    const req = httpMock.expectOne((req) =>
-      req.url.includes(service['baseUrlAPI']),
-    );
-    expect(req.request.url).toEqual(
-      'https://my-json-server.typicode.com/Feverup/fever_pets_data/pets',
-    );
+    const req = httpMock.expectOne((req) => req.url.includes(baseUrl));
+    expect(req.request.url).toEqual(baseUrl);
     expect(req.request.params.get('name')).toEqual('Batman');
     expect(req.request.params.get('page')).toEqual('1');
     expect(req.request.method).toBe('GET');
 
     req.flush([
       { name: 'Batman', kind: 'dog', weight: 10, height: 1, length: 1 },
-    ] as Pet[]);
+    ]);
   });
 
   it('should send a GET request with correct URL and return data', () => {
     const id = '123';
-    const testData: Partial<Pet> = {
+    const testData = {
       id: 3,
       kind: 'dog',
       weight: 10,
@@ -62,12 +70,10 @@ describe('Products', () => {
 
     service.getDetails(id).subscribe((pet) => {
       expect(pet.id).toBe(3);
-      expect(pet.health).toBeDefined();
+      expect(pet.health).toBe('healthy');
     });
-    const req = httpMock.expectOne(
-      `https://my-json-server.typicode.com/Feverup/fever_pets_data/pets/${id}`,
-    );
+    const req = httpMock.expectOne(`${baseUrl}/${id}`);
     expect(req.request.method).toBe('GET');
-    req.flush(testData as Pet);
+    req.flush(testData);
   });
 });

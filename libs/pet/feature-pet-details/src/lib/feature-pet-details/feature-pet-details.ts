@@ -3,7 +3,7 @@ import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { Router } from '@angular/router';
 import { TranslocoDirective } from '@jsverse/transloco';
 import { ChButton, ChBadge } from '@petsch/ui';
-import { Pet, CurrentTransitionService } from '@petsch/api';
+import { CurrentTransitionService } from '@petsch/api';
 import { APP_ROUTES } from '@petsch/shared-utils';
 
 @Component({
@@ -23,7 +23,7 @@ export class FeaturePetDetails {
   private readonly router = inject(Router);
 
   id = input.required<string>();
-  product = input<Pet | null>();
+  product = input<any | null>();
 
   showPotdDrawer = signal(false);
 

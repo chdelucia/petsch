@@ -1,6 +1,5 @@
 import { Component, inject, computed, input } from '@angular/core';
 import {
-  Pet,
   CurrentTransitionService,
   PETLIST_STORE,
   PETOFDAY_STORE,
@@ -39,7 +38,7 @@ export class FeaturePetList {
 
   products = this.store.products;
 
-  currentPage = computed(() => this.store.filters()._page ?? 1);
+  currentPage = computed(() => (this.store.filters() as any)._page ?? 1);
 
   totalPages = computed(() => {
     const last = this.store.pagination().last;
@@ -59,7 +58,7 @@ export class FeaturePetList {
     this.store.loadProducts();
   }
 
-  handlePotdClick(pet: Pet): void {
+  handlePotdClick(pet: any): void {
     if (this.potdStore.isPetAddedToday()) {
       this.potdStore.togglePoT(true);
     } else {

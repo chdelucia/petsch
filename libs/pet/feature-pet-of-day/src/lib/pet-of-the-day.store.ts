@@ -8,7 +8,7 @@ import {
   patchState,
   withProps,
 } from '@ngrx/signals';
-import { PetOfTheDayState, Pet, PetOfTheDayEntry } from '@petsch/api';
+import { PetOfTheDayState, PetOfTheDayEntry } from '@petsch/api';
 import { LOCALSTORAGE_TOKEN } from '@petsch/obs-api';
 
 const STORAGE_KEY = 'pet-of-the-day-entries';
@@ -45,7 +45,7 @@ export const PetOfTheDayStore = signalStore(
   withMethods((store) => {
     const { storageService } = store;
     return {
-      addPet(pet: Pet) {
+      addPet(pet: any) {
         const today = new Date().toISOString().split('T')[0];
         const alreadyExists = store
           .entries()

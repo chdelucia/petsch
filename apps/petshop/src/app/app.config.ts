@@ -20,7 +20,13 @@ import {
   OBSERVABILITY_ENV_PROVIDERS,
   LocalstorageService,
 } from '@petsch/obs-data-access';
-import { PET_TOKEN, CurrentTransitionService } from '@petsch/api';
+import {
+  PET_TOKEN,
+  CurrentTransitionService,
+  PET_API_CONFIG,
+  PET_DATA_TRANSFORMER,
+  enrichPetWithHealth,
+} from '@petsch/api';
 import { PetApi } from '@petsch/data-access';
 import { LOCALSTORAGE_TOKEN } from '@petsch/obs-api';
 import { provideHttpClient } from '@angular/common/http';
@@ -41,6 +47,17 @@ export const appConfig: ApplicationConfig = {
     provideZonelessChangeDetection(),
     ...OBSERVABILITY_PROVIDERS,
     ...OBSERVABILITY_ENV_PROVIDERS,
+    {
+      provide: PET_API_CONFIG,
+      useValue: {
+        baseUrl:
+          'https://my-json-server.typicode.com/Feverup/fever_pets_data/pets',
+      },
+    },
+    {
+      provide: PET_DATA_TRANSFORMER,
+      useValue: enrichPetWithHealth,
+    },
     {
       provide: PET_TOKEN,
       useClass: PetApi,

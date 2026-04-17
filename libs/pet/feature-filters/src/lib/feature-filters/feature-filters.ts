@@ -6,7 +6,7 @@ import {
 } from '@angular/core/rxjs-interop';
 import { form as angularForm, FormField } from '@angular/forms/signals';
 import { TranslocoService, TranslocoDirective } from '@jsverse/transloco';
-import { Filters, PETLIST_STORE } from '@petsch/api';
+import { PETLIST_STORE } from '@petsch/api';
 import { debounceTime, merge, Observable, skip } from 'rxjs';
 import {
   ChInputFilter,
@@ -15,7 +15,7 @@ import {
 } from '@petsch/ui';
 
 interface FilterConfig {
-  key: keyof Filters;
+  key: string;
   type: 'input' | 'radio';
   options?: { value: string; text: string }[];
   debounceTime: number;
@@ -39,7 +39,7 @@ export class FeatureFilters {
   readonly store = inject(PETLIST_STORE);
   private readonly transloco = inject(TranslocoService);
 
-  readonly form = signal<Partial<Filters>>({
+  readonly form = signal<Partial<any>>({
     name_like: '',
     kind: '',
   });
@@ -78,8 +78,8 @@ export class FeatureFilters {
 
   constructor() {
     const filterChanges$ = this.filterConfigs().map((config) => {
-      const field = (this.formTree as any)[config.key]();
-      return toObservable(field.value).pipe(
+      const field = (this.formTree as any)[config.key] as any;
+      return toObservable(field().value).pipe(
         skip(1),
         debounceTime(config.debounceTime),
       );
@@ -100,14 +100,14 @@ export class FeatureFilters {
   }
 
   resetFilter(key: string): void {
-    const field = (this.formTree as any)[key];
+    const field = (this.formTree as any)[key] as any;
     const currentValue = field?.().value();
 
     if (field) {
       field().value.set('');
     }
 
-    this.store.removeFilter(key as keyof Filters);
+    this.store.removeFilter(key);
 
     if (!field || currentValue === '') {
       this.applyFiltersAndLoad();

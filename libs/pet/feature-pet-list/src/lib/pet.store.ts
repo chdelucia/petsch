@@ -10,26 +10,20 @@ import {
 
 import { catchError, of, pipe, switchMap, tap } from 'rxjs';
 import { rxMethod } from '@ngrx/signals/rxjs-interop';
-import {
-  PET_TOKEN,
-  Filters,
-  Pet,
-  PaginationLinks,
-  GetPetsResponse,
-} from '@petsch/api';
+import { PET_TOKEN, PaginationLinks, GetPetsResponse } from '@petsch/api';
 
-export interface PetsState {
-  products: Pet[];
+export interface PetsState<T = any, F = any> {
+  products: T[];
   pagination: PaginationLinks;
-  filters: Partial<Filters>;
+  filters: Partial<F>;
   loading: boolean;
   error: string | null;
 }
 
-const initialState: PetsState = {
+const initialState: PetsState<any, any> = {
   products: [],
   pagination: {},
-  filters: { _page: 1, _limit: 12 },
+  filters: { _page: 1, _limit: 12 } as any,
   loading: false,
   error: null,
 };
@@ -64,7 +58,7 @@ export const PetsStore = signalStore(
       });
 
     return {
-      applyFilters(partial: Partial<Filters>) {
+      applyFilters(partial: Partial<any>) {
         patchState(store, {
           filters: { ...store.filters(), ...partial, _page: 1 },
         });
@@ -86,8 +80,8 @@ export const PetsStore = signalStore(
         });
       },
 
-      removeFilter(key: keyof Filters) {
-        const current = store.filters();
+      removeFilter(key: string) {
+        const current = store.filters() as any;
         const { [key]: _, ...rest } = current;
         patchState(store, { filters: rest });
       },

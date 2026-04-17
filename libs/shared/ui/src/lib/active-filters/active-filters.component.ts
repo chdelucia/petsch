@@ -1,6 +1,5 @@
 import { CommonModule } from '@angular/common';
 import { Component, computed, input, output } from '@angular/core';
-import { Filters } from '@petsch/api';
 import { TranslocoDirective } from '@jsverse/transloco';
 
 @Component({
@@ -11,7 +10,7 @@ import { TranslocoDirective } from '@jsverse/transloco';
 })
 export class ChActiveFiltersComponent {
   testId = input<string>('');
-  values = input<Partial<Filters>>();
+  values = input<Partial<any>>();
   resetFilter = output<string>();
 
   items = computed(() => {
