@@ -12,6 +12,7 @@ import { TranslocoDirective } from '@jsverse/transloco';
 export class ChCartDrawer {
   testId = input<string>('cart-drawer');
   open = input<boolean>(false);
+  position = input<'left' | 'right'>('right');
 
   titleLabel = input.required<string>();
 
