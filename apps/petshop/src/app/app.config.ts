@@ -52,6 +52,7 @@ export const appConfig: ApplicationConfig = {
       useValue: {
         baseUrl:
           'https://my-json-server.typicode.com/Feverup/fever_pets_data/pets',
+        listRoute: '/pets',
       },
     },
     {
