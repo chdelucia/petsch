@@ -1,4 +1,4 @@
-import { Component, inject, computed, signal } from '@angular/core';
+import { Component, inject, computed, signal, effect, untracked } from '@angular/core';
 import {
   takeUntilDestroyed,
   toSignal,
@@ -77,6 +77,16 @@ export class FeatureFilters {
   });
 
   constructor() {
+    effect(() => {
+      const storeFilters = this.store.filters();
+      untracked(() => {
+        this.form.set({
+          name_like: storeFilters.name_like ?? '',
+          kind: storeFilters.kind ?? '',
+        });
+      });
+    });
+
     const filterChanges$ = this.filterConfigs().map((config) => {
       const field = (this.formTree as any)[config.key]();
       return toObservable(field.value).pipe(

@@ -25,6 +25,7 @@ describe('FeatureFilters', () => {
       loadProducts: vi.fn(),
       loading: signal(false),
       products: signal([]),
+      filters: signal({}),
     };
 
     await TestBed.configureTestingModule({
@@ -105,6 +106,15 @@ describe('FeatureFilters', () => {
       name_like: 'test',
       kind: 'dog',
     });
+  });
+
+  it('should sync local form with store filters', () => {
+    // Simulate store update (e.g., from active filters reset)
+    store.filters.set({ name_like: 'corgi' });
+    fixture.detectChanges();
+
+    // Check if local form updated
+    expect(component.form().name_like).toBe('corgi');
   });
 
   it('should not call loadProducts on initialization', () => {
