@@ -1,3 +1,4 @@
+import { ChButton } from "../button/button";
 import { Component, input, output } from '@angular/core';
 
 export interface LanguageOption {
@@ -7,7 +8,7 @@ export interface LanguageOption {
 
 @Component({
   selector: 'lib-ch-ui-language-switcher',
-  imports: [],
+  imports: [ChButton],
   templateUrl: './language-switcher.html',
   styleUrl: './language-switcher.css',
 })

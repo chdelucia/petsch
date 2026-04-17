@@ -1,10 +1,11 @@
 import { Component, input, output } from '@angular/core';
 import { NgClass } from '@angular/common';
 import { TranslocoDirective } from '@jsverse/transloco';
+import { ChButton } from '../button/button';
 
 @Component({
   selector: 'lib-ch-ui-pagination',
-  imports: [NgClass, TranslocoDirective],
+  imports: [NgClass, TranslocoDirective, ChButton],
   templateUrl: './pagination.component.html',
   styleUrl: './pagination.component.css',
 })

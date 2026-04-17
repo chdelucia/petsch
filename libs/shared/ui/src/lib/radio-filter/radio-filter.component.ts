@@ -1,10 +1,11 @@
+import { ChButton } from "../button/button";
 import { Component, forwardRef, input, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
   selector: 'lib-ch-ui-radio-filter',
-  imports: [CommonModule],
+  imports: [CommonModule, ChButton],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,

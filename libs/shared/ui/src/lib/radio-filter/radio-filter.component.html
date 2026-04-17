@@ -1,41 +1,44 @@
 <div class="ch-filter-container">
   <h3 class="ch-filter-container__header">
-    <button
-      (click)="togleFilter()"
-      type="button"
-      class="ch-filter-container__button"
-      [attr.aria-controls]="testId() + '-section'"
-      [attr.aria-expanded]="isOpen()"
+    <lib-ch-ui-button
+      variant="ghost"
+      size="sm"
+      (clicked)="togleFilter()"
+      class="ch-filter-container__button-wrapper"
+      [fullWidth]="true"
+      [ariaLabel]="title()"
     >
-      <span class="ch-filter-container__title"> {{ title() | uppercase }}</span>
-      <span class="ch-filter-container__icon-container">
-        <svg
-          class="ch-filter-container__icon"
-          [class.hidden]="isOpen()"
-          viewBox="0 0 20 20"
-          fill="currentColor"
-          aria-hidden="true"
-        >
-          <path
-            d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z"
-          />
-        </svg>
+      <div class="flex items-center justify-between w-full">
+        <span class="ch-filter-container__title"> {{ title() | uppercase }}</span>
+        <span class="ch-filter-container__icon-container">
+          <svg
+            class="ch-filter-container__icon"
+            [class.hidden]="isOpen()"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+            aria-hidden="true"
+          >
+            <path
+              d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z"
+            />
+          </svg>
 
-        <svg
-          class="ch-filter-container__icon"
-          [class.hidden]="!isOpen()"
-          viewBox="0 0 20 20"
-          fill="currentColor"
-          aria-hidden="true"
-        >
-          <path
-            fill-rule="evenodd"
-            d="M4 10a.75.75 0 01.75-.75h10.5a.75.75 0 010 1.5H4.75A.75.75 0 014 10z"
-            clip-rule="evenodd"
-          />
-        </svg>
-      </span>
-    </button>
+          <svg
+            class="ch-filter-container__icon"
+            [class.hidden]="!isOpen()"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+            aria-hidden="true"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M4 10a.75.75 0 01.75-.75h10.5a.75.75 0 010 1.5H4.75A.75.75 0 014 10z"
+              clip-rule="evenodd"
+            />
+          </svg>
+        </span>
+      </div>
+    </lib-ch-ui-button>
   </h3>
 
   <div

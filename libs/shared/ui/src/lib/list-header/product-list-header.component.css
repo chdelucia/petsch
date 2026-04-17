@@ -12,10 +12,6 @@
   @apply flex items-center;
 }
 
-.ch-top-container__filters__btn {
-  @apply ml-4 pr-2 text-gray-400 hover:text-gray-500 sm:ml-4;
-}
-
 .ch-top-container__filters__toggleview,
 .ch-top-container__filters__togglefilters {
   @apply h-5 w-5 cursor-pointer;

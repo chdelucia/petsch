@@ -14,14 +14,14 @@
     @if (showRemove()) {
     <div class="ch-cart-item__footer">
       <div class="flex">
-        <button
-          type="button"
-          class="ch-cart-item__remove"
-          (click)="remove.emit()"
-          data-testid="cart-item-remove"
+        <lib-ch-ui-button
+          variant="ghost"
+          size="sm"
+          (clicked)="remove.emit()"
+          testId="cart-item-remove"
         >
           {{ t('remove') }}
-        </button>
+        </lib-ch-ui-button>
       </div>
     </div>
     }

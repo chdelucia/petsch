@@ -1,6 +1,9 @@
 import { booleanAttribute, Component, input, output } from '@angular/core';
 import { NgClass } from '@angular/common';
 
+export type ButtonVariant = 'primary' | 'secondary' | 'outline' | 'ghost' | 'link';
+export type ButtonSize = 'sm' | 'md' | 'lg';
+
 @Component({
   selector: 'lib-ch-ui-button',
   imports: [NgClass],
@@ -9,14 +12,17 @@ import { NgClass } from '@angular/common';
 })
 export class ChButton {
   testId = input<string>('');
-  variant = input<'primary' | 'link'>('primary');
+  variant = input<ButtonVariant>('primary');
+  size = input<ButtonSize>('md');
   fullWidth = input<boolean, unknown>(false, { transform: booleanAttribute });
   disabled = input<boolean>(false);
+  isActive = input<boolean, unknown>(false, { transform: booleanAttribute });
+  ariaLabel = input<string>('');
 
-  clicked = output<void>();
+  clicked = output<MouseEvent>();
 
-  handleClick() {
+  handleClick(event: MouseEvent) {
     if (this.disabled()) return;
-    this.clicked.emit();
+    this.clicked.emit(event);
   }
 }
