@@ -1,8 +1,9 @@
-import { Component, inject, computed, input } from '@angular/core';
+import { Component, inject, computed, input, Signal } from '@angular/core';
 import {
   CurrentTransitionService,
   PETLIST_STORE,
   PETOFDAY_STORE,
+  PET_API_CONFIG,
 } from '@petsch/api';
 import {
   ChButton,
@@ -31,18 +32,28 @@ import { TranslocoDirective } from '@jsverse/transloco';
 })
 export class FeaturePetList {
   private readonly store = inject(PETLIST_STORE);
+  private readonly config = inject(PET_API_CONFIG, { optional: true });
   protected readonly potdStore = inject(PETOFDAY_STORE);
   protected readonly transitionService = inject(CurrentTransitionService);
 
   showFilters = input.required<boolean>();
 
-  products = this.store.products;
+  products = this.store.products as Signal<unknown[]>;
 
-  currentPage = computed(() => (this.store.filters() as any)._page ?? 1);
+  currentPage = computed(() => {
+    const pageKey = this.config?.paginationKeys?.page ?? '_page';
+    return (this.store.filters() as Record<string, unknown>)[pageKey] as number ?? 1;
+  });
 
   totalPages = computed(() => {
-    const last = this.store.pagination().last;
-    const match = last?.match(/_page=(\d+)(?:&|$)/);
+    const pagination = this.store.pagination();
+    if (pagination.pages) {
+      return pagination.pages;
+    }
+    const last = pagination.last;
+    const pageKey = this.config?.paginationKeys?.page ?? '_page';
+    const regex = new RegExp(`${pageKey}=(\\d+)(?:&|$)`);
+    const match = last?.match(regex);
     return match ? Number(match[1]) : this.currentPage();
   });
 
@@ -58,7 +69,7 @@ export class FeaturePetList {
     this.store.loadProducts();
   }
 
-  handlePotdClick(pet: any): void {
+  handlePotdClick(pet: unknown): void {
     if (this.potdStore.isPetAddedToday()) {
       this.potdStore.togglePoT(true);
     } else {

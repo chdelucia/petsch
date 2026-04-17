@@ -1,0 +1,46 @@
+
+> nx run rickymorty:serve:development --port 4201
+
+[33m❯[39m Building...
+[32m✔[39m Building...
+[37m[1mInitial chunk files[22m[2m | [22m[1mNames[22m        [2m | [22m [1mRaw size[22m
+[32mchunk-3QVOGA64.js[37m  [2m | [22m[2m-[22m            [2m | [22m[36m266.82 kB[37m[2m | [22m
+[32mstyles.css[37m         [2m | [22m[2mstyles[22m       [2m | [22m [36m11.17 kB[37m[2m | [22m
+[32mmain.js[37m            [2m | [22m[2mmain[22m         [2m | [22m  [36m8.67 kB[37m[2m | [22m
+[1m [22m                  [2m | [22m[1mInitial total[22m[2m | [22m[1m286.66 kB[22m
+[1mLazy chunk files[22m   [2m | [22m[1mNames[22m        [2m | [22m [1mRaw size[22m
+[32mchunk-IUDD2IBA.js[37m  [2m | [22m[2mindex[22m        [2m | [22m [36m12.35 kB[37m[2m | [22m
+Application bundle generation complete. [5.028 seconds] - 2026-04-17T15:46:52.577Z
+[39m
+[37mWatch mode enabled. Watching for file changes...[39m
+[37mNOTE: Raw file sizes do not reflect development server per-request transformations.[39m
+[2m3:46:53 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m Re-optimizing dependencies because vite config has changed
+  [32m➜[39m  [1mLocal[22m:   [36mhttp://localhost:[1m4201[22m/[39m
+fatal error: all goroutines are asleep - deadlock!
+
+
+
+ NX   Successfully ran target serve for project rickymorty
+
+
+goroutine 1 [chan receive]:
+github.com/evanw/esbuild/internal/helpers.(*ThreadSafeWaitGroup).Wait(...)
+	github.com/evanw/esbuild/internal/helpers/waitgroup.go:36
+main.runService.func2()
+	github.com/evanw/esbuild/cmd/esbuild/service.go:114 +0x53
+main.runService(0x1)
+	github.com/evanw/esbuild/cmd/esbuild/service.go:160 +0x4c3
+main.main()
+	github.com/evanw/esbuild/cmd/esbuild/main.go:252 +0xb75
+goroutine 19 [chan receive]:
+main.runService.func1()
+	github.com/evanw/esbuild/cmd/esbuild/service.go:98 +0x45
+created by main.runService in goroutine 1
+	github.com/evanw/esbuild/cmd/esbuild/service.go:97 +0x1ce
+goroutine 20 [chan receive]:
+main.(*serviceType).sendRequest(0xc000110ea0, {0x9f48c0, 0xc001048150})
+	github.com/evanw/esbuild/cmd/esbuild/service.go:192 +0x12b
+main.runService.func3()
+	github.com/evanw/esbuild/cmd/esbuild/service.go:125 +0x3e
+created by main.runService in goroutine 1
+	github.com/evanw/esbuild/cmd/esbuild/service.go:122 +0x2d0

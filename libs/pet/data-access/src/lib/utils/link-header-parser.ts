@@ -24,7 +24,7 @@ export function parseLinkHeader(header: string): PaginationLinks {
 
     for (const rel of rels) {
       if (VALID_RELS.has(rel as keyof PaginationLinks)) {
-        acc[rel as keyof PaginationLinks] = url;
+        (acc as any)[rel] = url;
       }
     }
 

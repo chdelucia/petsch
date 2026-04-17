@@ -1,7 +1,7 @@
 import { InjectionToken, Signal } from '@angular/core';
 import { PetOfTheDayEntry } from './models/petofday';
 
-export interface PetOfDayStoreContract<T = any> {
+export interface PetOfDayStoreContract<T = unknown> {
   isOpen: Signal<boolean>;
   entries: Signal<PetOfTheDayEntry<T>[]>;
   sortedEntries: Signal<PetOfTheDayEntry<T>[]>;

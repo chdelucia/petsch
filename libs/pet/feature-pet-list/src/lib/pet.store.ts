@@ -10,9 +10,14 @@ import {
 
 import { catchError, of, pipe, switchMap, tap } from 'rxjs';
 import { rxMethod } from '@ngrx/signals/rxjs-interop';
-import { PET_TOKEN, PaginationLinks, GetPetsResponse } from '@petsch/api';
+import {
+  PET_TOKEN,
+  PaginationLinks,
+  GetPetsResponse,
+  PET_API_CONFIG,
+} from '@petsch/api';
 
-export interface PetsState<T = any, F = any> {
+export interface PetsState<T = unknown, F = Record<string, unknown>> {
   products: T[];
   pagination: PaginationLinks;
   filters: Partial<F>;
@@ -20,15 +25,16 @@ export interface PetsState<T = any, F = any> {
   error: string | null;
 }
 
-const initialState: PetsState<any, any> = {
+const initialState: PetsState<unknown, Record<string, unknown>> = {
   products: [],
   pagination: {},
-  filters: { _page: 1, _limit: 12 } as any,
+  filters: { _page: 1, _limit: 12 },
   loading: false,
   error: null,
 };
 
 export const PetsStore = signalStore(
+  { providedIn: 'root' },
   withState(initialState),
 
   withComputed((store) => ({
@@ -39,6 +45,9 @@ export const PetsStore = signalStore(
 
   withMethods((store) => {
     const productService = inject(PET_TOKEN);
+    const config = inject(PET_API_CONFIG, { optional: true });
+
+    const pageKey = config?.paginationKeys?.page ?? '_page';
 
     const setLoading = (loading: boolean) =>
       patchState(store, { loading, error: null });
@@ -50,7 +59,7 @@ export const PetsStore = signalStore(
         products: [],
       });
 
-    const setResult = (result: GetPetsResponse) =>
+    const setResult = (result: GetPetsResponse<unknown>) =>
       patchState(store, {
         products: result.products,
         pagination: result.pagination,
@@ -58,15 +67,15 @@ export const PetsStore = signalStore(
       });
 
     return {
-      applyFilters(partial: Partial<any>) {
+      applyFilters(partial: Partial<Record<string, unknown>>) {
         patchState(store, {
-          filters: { ...store.filters(), ...partial, _page: 1 },
+          filters: { ...store.filters(), ...partial, [pageKey]: 1 },
         });
       },
 
       applyPagination(page: number) {
         patchState(store, {
-          filters: { ...store.filters(), _page: page },
+          filters: { ...store.filters(), [pageKey]: page },
         });
       },
 
@@ -81,7 +90,7 @@ export const PetsStore = signalStore(
       },
 
       removeFilter(key: string) {
-        const current = store.filters() as any;
+        const current = store.filters() as Record<string, unknown>;
         const { [key]: _, ...rest } = current;
         patchState(store, { filters: rest });
       },

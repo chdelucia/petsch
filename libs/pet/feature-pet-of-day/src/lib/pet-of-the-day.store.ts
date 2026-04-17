@@ -45,7 +45,7 @@ export const PetOfTheDayStore = signalStore(
   withMethods((store) => {
     const { storageService } = store;
     return {
-      addPet(pet: any) {
+      addPet(pet: unknown) {
         const today = new Date().toISOString().split('T')[0];
         const alreadyExists = store
           .entries()

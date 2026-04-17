@@ -7,7 +7,7 @@
   >
     <div class="ch-cart-list">
       <ul class="ch-cart-list__items">
-        @for (entry of potdStore.sortedEntries(); track entry.date) {
+        @for (entry of $any(potdStore.sortedEntries()); track entry.date) {
         <li>
           <lib-ch-ui-cart-item
             testId="cart-item"

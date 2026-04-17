@@ -3,6 +3,9 @@ export interface PaginationLinks {
   prev?: string;
   next?: string;
   last?: string;
+  total?: number;
+  pages?: number;
+  current?: number;
 }
 
 export interface PaginatedResponse<T> {

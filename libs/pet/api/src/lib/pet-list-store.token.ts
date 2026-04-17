@@ -1,7 +1,7 @@
 import { InjectionToken, Signal } from '@angular/core';
 import { PaginationLinks } from './models/pet';
 
-export interface PetsStoreContract<T = any, F = any> {
+export interface PetsStoreContract<T = unknown, F = unknown> {
   products: Signal<T[]>;
   loading: Signal<boolean>;
   error: Signal<string | null>;
@@ -11,9 +11,9 @@ export interface PetsStoreContract<T = any, F = any> {
   applySort(sort: { key: string; order: string }): void;
   applyFilters(filters: Partial<F>): void;
   applyPagination(page: number): void;
-  removeFilter<K extends keyof F>(key: K): void;
+  removeFilter(key: string): void;
 }
 
-export const PETLIST_STORE = new InjectionToken<PetsStoreContract<any, any>>(
-  'PETLIST_STORE',
-);
+export const PETLIST_STORE = new InjectionToken<
+  PetsStoreContract<unknown, unknown>
+>('PETLIST_STORE');

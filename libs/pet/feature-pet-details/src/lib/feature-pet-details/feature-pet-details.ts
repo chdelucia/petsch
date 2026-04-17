@@ -3,8 +3,7 @@ import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { Router } from '@angular/router';
 import { TranslocoDirective } from '@jsverse/transloco';
 import { ChButton, ChBadge } from '@petsch/ui';
-import { CurrentTransitionService } from '@petsch/api';
-import { APP_ROUTES } from '@petsch/shared-utils';
+import { CurrentTransitionService, PET_API_CONFIG } from '@petsch/api';
 
 @Component({
   selector: 'lib-feature-pet-details',
@@ -21,9 +20,10 @@ import { APP_ROUTES } from '@petsch/shared-utils';
 export class FeaturePetDetails {
   protected readonly transitionService = inject(CurrentTransitionService);
   private readonly router = inject(Router);
+  private readonly config = inject(PET_API_CONFIG, { optional: true });
 
   id = input.required<string>();
-  product = input<any | null>();
+  product = input<unknown | null>();
 
   showPotdDrawer = signal(false);
 
@@ -31,6 +31,7 @@ export class FeaturePetDetails {
   error = () => null;
 
   goBack() {
-    this.router.navigate([APP_ROUTES.PETS]);
+    const listRoute = this.config?.listRoute ?? '/pets';
+    this.router.navigate([listRoute]);
   }
 }

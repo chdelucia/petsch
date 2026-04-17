@@ -1,15 +1,25 @@
 import { InjectionToken } from '@angular/core';
-import { IPetService } from './pet.repository';
+import { IPetService, GetPetsResponse } from './pet.repository';
+import { HttpResponse } from '@angular/common/http';
 
-export const PET_TOKEN = new InjectionToken<IPetService<any, any>>('PET');
+export const PET_TOKEN = new InjectionToken<IPetService<unknown, unknown>>(
+  'PET',
+);
 
-export interface PetApiConfig {
+export interface PetApiConfig<T = unknown, F = unknown> {
   baseUrl: string;
+  getDetailsUrl?: (id: string) => string;
+  mapResponse?: (response: HttpResponse<T[] | unknown>) => GetPetsResponse<T>;
+  paginationKeys?: {
+    page: string;
+    limit: string;
+  };
+  listRoute?: string;
 }
 
 export const PET_API_CONFIG = new InjectionToken<PetApiConfig>('PET_API_CONFIG');
 
-export type PetDataTransformer<T = any> = (item: T) => T;
+export type PetDataTransformer<T = unknown> = (item: T) => T;
 
 export const PET_DATA_TRANSFORMER = new InjectionToken<PetDataTransformer>(
   'PET_DATA_TRANSFORMER',

@@ -1,0 +1,118 @@
+
+> nx run petshop:serve:development
+
+[33m❯[39m Building...
+[32m✔[39m Building...
+[37m[1mInitial chunk files[22m[2m | [22m[1mNames[22m        [2m | [22m [1mRaw size[22m
+[32mchunk-UNV2TPEC.js[37m  [2m | [22m[2m-[22m            [2m | [22m[36m224.78 kB[37m[2m | [22m
+[32mmain.js[37m            [2m | [22m[2mmain[22m         [2m | [22m [36m19.58 kB[37m[2m | [22m
+[32mstyles.css[37m         [2m | [22m[2mstyles[22m       [2m | [22m [36m11.16 kB[37m[2m | [22m
+[32mchunk-MZEMSCV4.js[37m  [2m | [22m[2m-[22m            [2m | [22m  [36m1.77 kB[37m[2m | [22m
+[32mchunk-HFBNPKKE.js[37m  [2m | [22m[2m-[22m            [2m | [22m  [36m1.45 kB[37m[2m | [22m
+[32mchunk-6MAK2NK5.js[37m  [2m | [22m[2m-[22m            [2m | [22m[36m350 bytes[37m[2m | [22m
+[1m [22m                  [2m | [22m[1mInitial total[22m[2m | [22m[1m259.10 kB[22m
+[1mLazy chunk files[22m   [2m | [22m[1mNames[22m        [2m | [22m [1mRaw size[22m
+[32mchunk-PH77U7FY.js[37m  [2m | [22m[2m-[22m            [2m | [22m [36m31.16 kB[37m[2m | [22m
+[32mchunk-OJR6A353.js[37m  [2m | [22m[2mindex[22m        [2m | [22m [36m29.48 kB[37m[2m | [22m
+[32mchunk-XID2N5RM.js[37m  [2m | [22m[2mindex[22m        [2m | [22m [36m20.80 kB[37m[2m | [22m
+[32mchunk-ZOBT6CYZ.js[37m  [2m | [22m[2mindex[22m        [2m | [22m [36m16.91 kB[37m[2m | [22m
+[32mchunk-MBWRYEZP.js[37m  [2m | [22m[2mindex[22m        [2m | [22m  [36m1.28 kB[37m[2m | [22m
+Application bundle generation complete. [5.876 seconds] - 2026-04-17T17:09:33.758Z
+[39m
+[37mWatch mode enabled. Watching for file changes...[39m
+[37mNOTE: Raw file sizes do not reflect development server per-request transformations.[39m
+  [32m➜[39m  [1mLocal[22m:   [36mhttp://localhost:[1m4200[22m/[39m
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+[37m[1mInitial chunk files[22m[2m | [22m[1mNames[22m[2m | [22m[1mRaw size[22m
+[32mmain.js[37m            [2m | [22m[2mmain[22m [2m | [22m[36m19.58 kB[37m[2m | [22m
+[1mLazy chunk files[22m   [2m | [22m[1mNames[22m[2m | [22m[1mRaw size[22m
+[32mchunk-5GM2RXAZ.js[37m  [2m | [22m[2m-[22m    [2m | [22m[36m31.16 kB[37m[2m | [22m
+[32mchunk-SD2IOCPF.js[37m  [2m | [22m[2mindex[22m[2m | [22m[36m20.80 kB[37m[2m | [22m
+[32mchunk-N5C7C7DD.js[37m  [2m | [22m[2mindex[22m[2m | [22m [36m1.28 kB[37m[2m | [22m
+Application bundle generation complete. [2.201 seconds] - 2026-04-17T17:18:48.635Z
+[39m
+[37mPage reload sent to client(s).[39m
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+[37mApplication bundle generation failed. [1.324 seconds] - 2026-04-17T17:19:07.193Z
+[39m
+[1m[31m[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mTS2322: Type 'unknown' is not assignable to type 'Field<any, string | number>'.[0m [1m[35m[plugin angular-compiler][0m
+    libs/pet/feature-filters/src/lib/feature-filters/feature-filters.html:15:11:
+[37m      15 │           [[32mformField[37m]="getFormField(config.key)"
+         ╵            [32m~~~~~~~~~[0m
+  Error occurs in the template of component FeatureFilters.
+    libs/pet/feature-filters/src/lib/feature-filters/feature-filters.ts:63:15:
+[37m      63 │   templateUrl: [32m'./feature-filters.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mTS2322: Type 'unknown' is not assignable to type 'Field<any, string | number>'.[0m [1m[35m[plugin angular-compiler][0m
+    libs/pet/feature-filters/src/lib/feature-filters/feature-filters.html:23:11:
+[37m      23 │           [[32mformField[37m]="getFormField(config.key)"
+         ╵            [32m~~~~~~~~~[0m
+  Error occurs in the template of component FeatureFilters.
+    libs/pet/feature-filters/src/lib/feature-filters/feature-filters.ts:63:15:
+[37m      63 │   templateUrl: [32m'./feature-filters.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mTS2352: Conversion of type 'FieldTree<Partial<Record<string, unknown>>, string | number>' to type 'Record<string, { value: Signal<unknown>; }>' may be a mistake because neither type sufficiently overlaps with the other. If this was intentional, convert the expression to 'unknown' first.
+  'string' index signatures are incompatible.
+    Type 'MaybeFieldTree<unknown, string>' is not comparable to type '{ value: Signal<unknown>; }'.
+      Type 'FieldTree<unknown, string>' is not comparable to type '{ value: Signal<unknown>; }'.[0m [1m[35m[plugin angular-compiler][0m
+    libs/pet/feature-filters/src/lib/feature-filters/feature-filters.ts:97:21:
+[37m      97 │ ... fie[39m[22m[1m[31mld = ([32mthis.formTree as Record<string, { value: Signal<unkno[37m...
+         ╵              [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mTS2304: Cannot find name 'Signal'.[0m [1m[35m[plugin angular-compiler][0m
+    libs/pet/feature-filters/src/lib/feature-filters/feature-filters.ts:97:62:
+[37m      97 │ ...rmTree as Record<string, { value: [32mSignal[37m<unknown> }>)[config.key];
+         ╵                                      [32m~~~~~~[0m
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mTS2352: Conversion of type 'FieldTree<Partial<Record<string, unknown>>, string | number>' to type 'Record<string, { value: WritableSignal<unknown>; }>' may be a mistake because neither type sufficiently overlaps with the other. If this was intentional, convert the expression to 'unknown' first.
+  'string' index signatures are incompatible.
+    Type 'MaybeFieldTree<unknown, string>' is not comparable to type '{ value: WritableSignal<unknown>; }'.
+      Type 'FieldTree<unknown, string>' is not comparable to type '{ value: WritableSignal<unknown>; }'.[0m [1m[35m[plugin angular-compiler][0m
+    libs/pet/feature-filters/src/lib/feature-filters/feature-filters.ts:123:19:
+[37m      123 │ ... field = ([32mthis.formTree as Record<string, { value: WritableSig[37m...
+          ╵              [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mTS2304: Cannot find name 'WritableSignal'.[0m [1m[35m[plugin angular-compiler][0m
+    libs/pet/feature-filters/src/lib/feature-filters/feature-filters.ts:123:60:
+[37m      123 │ ...Tree as Record<string, { value: [32mWritableSignal[37m<unknown> }>)[key];
+          ╵                                    [32m~~~~~~~~~~~~~~[0m
+[39m[22m
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+[37mApplication bundle generation failed. [1.226 seconds] - 2026-04-17T17:20:33.667Z
+[39m
+[1m[31m[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mTS2322: Type 'unknown' is not assignable to type 'Field<any, string | number>'.[0m [1m[35m[plugin angular-compiler][0m
+    libs/pet/feature-filters/src/lib/feature-filters/feature-filters.html:15:11:
+[37m      15 │           [[32mformField[37m]="getFormField(config.key)"
+         ╵            [32m~~~~~~~~~[0m
+  Error occurs in the template of component FeatureFilters.
+    libs/pet/feature-filters/src/lib/feature-filters/feature-filters.ts:63:15:
+[37m      63 │   templateUrl: [32m'./feature-filters.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mTS2322: Type 'unknown' is not assignable to type 'Field<any, string | number>'.[0m [1m[35m[plugin angular-compiler][0m
+    libs/pet/feature-filters/src/lib/feature-filters/feature-filters.html:23:11:
+[37m      23 │           [[32mformField[37m]="getFormField(config.key)"
+         ╵            [32m~~~~~~~~~[0m
+  Error occurs in the template of component FeatureFilters.
+    libs/pet/feature-filters/src/lib/feature-filters/feature-filters.ts:63:15:
+[37m      63 │   templateUrl: [32m'./feature-filters.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[39m[22m
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+[37m[1mInitial chunk files[22m[2m | [22m[1mNames[22m        [2m | [22m [1mRaw size[22m
+[32mchunk-UNV2TPEC.js[37m  [2m | [22m[2m-[22m            [2m | [22m[36m224.78 kB[37m[2m | [22m
+[32mmain.js[37m            [2m | [22m[2mmain[22m         [2m | [22m [36m19.58 kB[37m[2m | [22m
+[32mstyles.css[37m         [2m | [22m[2mstyles[22m       [2m | [22m [36m11.16 kB[37m[2m | [22m
+[32mchunk-MZEMSCV4.js[37m  [2m | [22m[2m-[22m            [2m | [22m  [36m1.77 kB[37m[2m | [22m
+[32mchunk-HFBNPKKE.js[37m  [2m | [22m[2m-[22m            [2m | [22m  [36m1.45 kB[37m[2m | [22m
+[32mchunk-6MAK2NK5.js[37m  [2m | [22m[2m-[22m            [2m | [22m[36m350 bytes[37m[2m | [22m
+[1m [22m                  [2m | [22m[1mInitial total[22m[2m | [22m[1m259.10 kB[22m
+[1mLazy chunk files[22m   [2m | [22m[1mNames[22m        [2m | [22m [1mRaw size[22m
+[32mchunk-5GM2RXAZ.js[37m  [2m | [22m[2m-[22m            [2m | [22m [36m31.16 kB[37m[2m | [22m
+[32mchunk-OJR6A353.js[37m  [2m | [22m[2mindex[22m        [2m | [22m [36m29.48 kB[37m[2m | [22m
+[32mchunk-6NSP4A4S.js[37m  [2m | [22m[2mindex[22m        [2m | [22m [36m20.81 kB[37m[2m | [22m
+[32mchunk-ZOBT6CYZ.js[37m  [2m | [22m[2mindex[22m        [2m | [22m [36m16.91 kB[37m[2m | [22m
+[32mchunk-RRIKCK5G.js[37m  [2m | [22m[2mindex[22m        [2m | [22m  [36m1.28 kB[37m[2m | [22m
+Application bundle generation complete. [0.922 seconds] - 2026-04-17T17:24:50.840Z
+[39m
+[37mPage reload sent to client(s).[39m
