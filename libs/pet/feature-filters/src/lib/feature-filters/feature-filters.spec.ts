@@ -14,6 +14,7 @@ describe('FeatureFilters', () => {
     loadProducts: any;
     loading: any;
     products: any;
+    filters: any;
   };
 
   beforeEach(async () => {
@@ -82,7 +83,7 @@ describe('FeatureFilters', () => {
     expect(store.removeFilter).toHaveBeenCalledWith('name_like');
   });
 
-  it('should reset kind filter and call applyFilters + removeFilter', () => {
+  it('should reset kind filter and call removeFilter + loadProducts', () => {
     component.formTree.kind().value.set('dog');
     store.applyFilters.mockClear();
 
@@ -91,11 +92,7 @@ describe('FeatureFilters', () => {
 
     expect(component.formTree.kind().value()).toBe('');
     expect(store.removeFilter).toHaveBeenCalledWith('kind');
-
-    expect(store.applyFilters).toHaveBeenCalledWith({
-      kind: '',
-      name_like: '',
-    });
+    expect(store.loadProducts).toHaveBeenCalled();
   });
 
   it('should return form values', () => {
@@ -109,7 +106,7 @@ describe('FeatureFilters', () => {
   });
 
   it('should sync local form with store filters', () => {
-    // Simulate store update (e.g., from active filters reset)
+    // Simulate store update
     store.filters.set({ name_like: 'corgi' });
     fixture.detectChanges();
 
@@ -123,40 +120,87 @@ describe('FeatureFilters', () => {
     expect(store.loadProducts).not.toHaveBeenCalled();
   });
 
-  it('should only call loadProducts once when resetting a filter', () => {
-    // Set a value first
-    component.formTree.kind().value.set('dog');
-    fixture.detectChanges();
-    vi.runAllTimers();
+  it('should NOT call loadProducts twice when user changes a filter', async () => {
+    vi.useRealTimers();
     store.loadProducts.mockClear();
+    store.applyFilters.mockImplementation((filters: any) => {
+      // Simulate store updating its filters signal as a result of applyFilters
+      store.filters.set(filters);
+    });
 
-    // Reset the filter
-    component.resetFilter('kind');
+    // Simulate user interaction
+    component.formTree.kind().value.set('cat');
     fixture.detectChanges();
-    vi.runAllTimers();
 
+    // Allow any microtasks/effects to run
+    await new Promise(resolve => setTimeout(resolve, 0));
+    fixture.detectChanges();
+
+    // Wait for debounceTime (config has 500 for kind)
+    await new Promise(resolve => setTimeout(resolve, 600));
+
+    // It should only be called once.
     expect(store.loadProducts).toHaveBeenCalledTimes(1);
+
+    // Further ticks should not cause more calls
+    await new Promise(resolve => setTimeout(resolve, 600));
+    expect(store.loadProducts).toHaveBeenCalledTimes(1);
+
+    vi.useFakeTimers();
   });
 
-  it('should detect duplicate calls when resetting a filter', () => {
-    // Set a value first
-    component.formTree.kind().value.set('dog');
-    fixture.detectChanges();
-    vi.runAllTimers();
+  it('should NOT call loadProducts when syncing from store (unidirectional)', async () => {
+    vi.useRealTimers();
     store.loadProducts.mockClear();
 
-    // Reset the filter
-    component.resetFilter('kind');
+    // Simulate store update (unrelated to local change)
+    store.filters.set({ name_like: 'husky' });
     fixture.detectChanges();
 
-    // Check calls before timers (it should be 0 because we rely on the debounced observable)
-    // If we want it to be immediate, it would be 1.
-    // Currently, with my fix, it should be 0 here and 1 after timers.
-    expect(store.loadProducts).toHaveBeenCalledTimes(0);
+    // Allow any microtasks/effects to run
+    await new Promise(resolve => setTimeout(resolve, 0));
+    fixture.detectChanges();
 
-    // Run timers (observable triggers the call after debounce)
-    vi.runAllTimers();
+    // Check if local form updated
+    expect(component.form().name_like).toBe('husky');
 
+    // Wait for potential debounce triggers
+    await new Promise(resolve => setTimeout(resolve, 600));
+
+    // loadProducts should NOT be called by the filter component when syncing from store
+    expect(store.loadProducts).not.toHaveBeenCalled();
+
+    vi.useFakeTimers();
+  });
+
+  it('should NOT call loadProducts twice when two instances exist and one changes', async () => {
+    vi.useRealTimers();
+
+    // Create a second instance
+    const fixture2 = TestBed.createComponent(FeatureFilters);
+    fixture2.detectChanges();
+
+    store.loadProducts.mockClear();
+    store.applyFilters.mockImplementation((filters: any) => {
+      store.filters.set(filters);
+    });
+
+    // Simulate user interaction on instance 1
+    component.formTree.kind().value.set('dog');
+    fixture.detectChanges();
+
+    // Allow instance 1 to emit and update store
+    await new Promise(resolve => setTimeout(resolve, 600));
+    fixture.detectChanges();
+
+    // Now instance 2 should have synced via effect
+    fixture2.detectChanges();
+    // and should NOT have emitted via its own observable because its form matches store
+    await new Promise(resolve => setTimeout(resolve, 600));
+
+    // Only instance 1 should have called loadProducts
     expect(store.loadProducts).toHaveBeenCalledTimes(1);
+
+    vi.useFakeTimers();
   });
 });

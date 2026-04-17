@@ -7,7 +7,13 @@ import {
 import { form as angularForm, FormField } from '@angular/forms/signals';
 import { TranslocoService, TranslocoDirective } from '@jsverse/transloco';
 import { Filters, PETLIST_STORE } from '@petsch/api';
-import { debounceTime, merge, Observable, skip } from 'rxjs';
+import {
+  debounceTime,
+  distinctUntilChanged,
+  merge,
+  Observable,
+  skip,
+} from 'rxjs';
 import {
   ChInputFilter,
   ChRadioFilter,
@@ -77,20 +83,29 @@ export class FeatureFilters {
   });
 
   constructor() {
+    // Synchronize local form with store filters (Unidirectional: Store -> Form)
     effect(() => {
       const storeFilters = this.store.filters();
       untracked(() => {
-        this.form.set({
+        const current = this.form();
+        const next = {
           name_like: storeFilters.name_like ?? '',
           kind: storeFilters.kind ?? '',
-        });
+        };
+
+        if (JSON.stringify(current) !== JSON.stringify(next)) {
+          this.form.set(next);
+        }
       });
     });
 
-    const filterChanges$ = this.filterConfigs().map((config) => {
+    // Handle user input changes (Unidirectional: Form -> Store)
+    const filterConfigs = this.filterConfigs();
+    const filterChanges$ = filterConfigs.map((config) => {
       const field = (this.formTree as any)[config.key]();
       return toObservable(field.value).pipe(
         skip(1),
+        distinctUntilChanged(),
         debounceTime(config.debounceTime),
       );
     });
@@ -98,29 +113,36 @@ export class FeatureFilters {
     merge(...filterChanges$)
       .pipe(takeUntilDestroyed())
       .subscribe(() => {
-        this.applyFiltersAndLoad();
+        this.pushFiltersToStore();
       });
   }
 
-  private applyFiltersAndLoad(): void {
+  private pushFiltersToStore(): void {
     const currentForm = this.form();
+    const storeFilters = untracked(() => this.store.filters());
 
-    this.store.applyFilters(currentForm);
-    this.store.loadProducts();
+    // Only push if there are actual changes compared to the store to prevent loops
+    const managedKeys: (keyof Filters)[] = ['name_like', 'kind'];
+    const hasChanges = managedKeys.some((key) => {
+      const fVal = (currentForm as any)[key] ?? '';
+      const sVal = (storeFilters as any)[key] ?? '';
+      return fVal !== sVal;
+    });
+
+    if (hasChanges) {
+      this.store.applyFilters(currentForm);
+      this.store.loadProducts();
+    }
   }
 
   resetFilter(key: string): void {
     const field = (this.formTree as any)[key];
-    const currentValue = field?.().value();
 
     if (field) {
       field().value.set('');
     }
 
     this.store.removeFilter(key as keyof Filters);
-
-    if (!field || currentValue === '') {
-      this.applyFiltersAndLoad();
-    }
+    this.store.loadProducts();
   }
 }
