@@ -25,8 +25,8 @@ import {
   CurrentTransitionService,
   PET_API_CONFIG,
   PET_DATA_TRANSFORMER,
-  enrichPetWithHealth,
 } from '@petsch/api';
+import { enrichPetWithHealth } from './utils/health-adapter';
 import { PetApi } from '@petsch/data-access';
 import { LOCALSTORAGE_TOKEN } from '@petsch/obs-api';
 import { provideHttpClient } from '@angular/common/http';

@@ -1,4 +1,4 @@
-import { Pet } from '../models/product';
+import { Pet } from '../models/pet';
 import { enrichPetWithHealth } from './health-adapter';
 
 describe('HealthAdapter', () => {
