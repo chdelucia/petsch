@@ -56,6 +56,7 @@ export class FeatureFilters {
   readonly store = inject(PETLIST_STORE);
   private readonly transloco = inject(TranslocoService);
 
+  testId = input<string>('filters');
   autoApply = input(true);
   apply = output<void>();
 
@@ -65,6 +66,8 @@ export class FeatureFilters {
   });
 
   readonly formTree = angularForm(this.form);
+
+  private readonly lastSyncedFilters = signal<Partial<Filters>>({});
 
   private readonly kindOptions = kindOptions;
 
@@ -100,15 +103,18 @@ export class FeatureFilters {
     // Synchronize local form with store filters (Unidirectional: Store -> Form)
     effect(() => {
       const storeFilters = this.store.filters();
-      untracked(() => {
-        const current = this.form();
-        const next = {
-          name_like: storeFilters.name_like ?? '',
-          kind: storeFilters.kind ?? '',
-        };
+      const lastSynced = this.lastSyncedFilters();
 
-        if (JSON.stringify(current) !== JSON.stringify(next)) {
+      untracked(() => {
+        // Only update if the store filters have changed relative to the last synced state
+        // This prevents our local user changes from being immediately overwritten.
+        if (JSON.stringify(storeFilters) !== JSON.stringify(lastSynced)) {
+          const next = {
+            name_like: storeFilters.name_like ?? '',
+            kind: storeFilters.kind ?? '',
+          };
           this.form.set(next);
+          this.lastSyncedFilters.set(storeFilters);
         }
       });
     });
@@ -139,19 +145,23 @@ export class FeatureFilters {
   }
 
   private pushFiltersToStore(force = false): void {
-    const currentForm = this.form();
+    const currentValues = {
+      name_like: (this.formTree as any).name_like().value(),
+      kind: (this.formTree as any).kind().value(),
+    };
     const storeFilters = untracked(() => this.store.filters());
 
     // Only push if there are actual changes compared to the store to prevent loops
     const managedKeys: (keyof Filters)[] = ['name_like', 'kind'];
     const hasChanges = managedKeys.some((key) => {
-      const fVal = (currentForm as any)[key] ?? '';
+      const fVal = (currentValues as any)[key] ?? '';
       const sVal = (storeFilters as any)[key] ?? '';
       return fVal !== sVal;
     });
 
     if (hasChanges || force) {
-      this.store.applyFilters(currentForm);
+      this.store.applyFilters(currentValues);
+      this.lastSyncedFilters.set(this.store.filters());
       this.store.loadProducts();
     }
   }
@@ -164,6 +174,7 @@ export class FeatureFilters {
     }
 
     this.store.removeFilter(key as keyof Filters);
+    this.lastSyncedFilters.set(this.store.filters());
     this.store.loadProducts();
   }
 }

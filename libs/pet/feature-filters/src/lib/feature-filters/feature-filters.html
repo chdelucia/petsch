@@ -1,6 +1,6 @@
 <div *transloco="let t">
   <lib-ch-ui-active-filters
-    testId="active-filters"
+    [testId]="testId() + '-active'"
     [values]="store.filters()"
     (resetFilter)="resetFilter($event)"
   >
@@ -10,14 +10,14 @@
     @switch (config.type) {
       @case ('input') {
         <lib-ch-ui-input-filter
-          [testId]="'filter-' + config.key + '-input'"
+          [testId]="testId() + '-' + config.key + '-input'"
           [title]="t(config.key)"
           [formField]="$any(formTree)[config.key]"
         ></lib-ch-ui-input-filter>
       }
       @case ('radio') {
         <lib-ch-ui-radio-filter
-          [testId]="'filter-' + config.key + '-radio'"
+          [testId]="testId() + '-' + config.key + '-radio'"
           [title]="t(config.key)"
           [options]="config.options ?? []"
           [formField]="$any(formTree)[config.key]"
