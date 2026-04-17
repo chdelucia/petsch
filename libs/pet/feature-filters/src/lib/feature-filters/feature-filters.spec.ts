@@ -203,4 +203,23 @@ describe('FeatureFilters', () => {
 
     vi.useFakeTimers();
   });
+
+  it('should NOT call applyFilters immediately when autoApply is false', async () => {
+    vi.useRealTimers();
+    fixture.componentRef.setInput('autoApply', false);
+    fixture.detectChanges();
+
+    store.applyFilters.mockClear();
+    component.formTree.kind().value.set('dog');
+    fixture.detectChanges();
+
+    await new Promise(resolve => setTimeout(resolve, 600));
+
+    expect(store.applyFilters).not.toHaveBeenCalled();
+
+    component.manualApply();
+    expect(store.applyFilters).toHaveBeenCalled();
+
+    vi.useFakeTimers();
+  });
 });

@@ -25,4 +25,12 @@
       }
     }
   }
+
+  @if (!autoApply()) {
+    <div class="mt-6">
+      <lib-ch-ui-button fullWidth (clicked)="manualApply()">
+        {{ t('applyFilters') }}
+      </lib-ch-ui-button>
+    </div>
+  }
 </div>

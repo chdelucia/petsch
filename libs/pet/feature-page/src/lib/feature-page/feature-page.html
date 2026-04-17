@@ -33,7 +33,10 @@
       [showFooter]="false"
       (openChange)="showFilters.set($event)"
     >
-      <lib-feature-filters></lib-feature-filters>
+      <lib-feature-filters
+        [autoApply]="false"
+        (apply)="showFilters.set(false)"
+      ></lib-feature-filters>
     </lib-ch-ui-cart-drawer>
 
     <lib-feature-filters

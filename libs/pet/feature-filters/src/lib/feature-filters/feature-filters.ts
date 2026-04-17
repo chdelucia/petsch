@@ -1,4 +1,13 @@
-import { Component, inject, computed, signal, effect, untracked } from '@angular/core';
+import {
+  Component,
+  inject,
+  computed,
+  signal,
+  effect,
+  untracked,
+  input,
+  output,
+} from '@angular/core';
 import {
   takeUntilDestroyed,
   toSignal,
@@ -18,6 +27,7 @@ import {
   ChInputFilter,
   ChRadioFilter,
   ChActiveFiltersComponent,
+  ChButton,
 } from '@petsch/ui';
 
 interface FilterConfig {
@@ -38,12 +48,16 @@ type KindKey = (typeof kindOptions)[number];
     FormField,
     ChActiveFiltersComponent,
     TranslocoDirective,
+    ChButton,
   ],
   templateUrl: './feature-filters.html',
 })
 export class FeatureFilters {
   readonly store = inject(PETLIST_STORE);
   private readonly transloco = inject(TranslocoService);
+
+  autoApply = input(true);
+  apply = output<void>();
 
   readonly form = signal<Partial<Filters>>({
     name_like: '',
@@ -113,11 +127,18 @@ export class FeatureFilters {
     merge(...filterChanges$)
       .pipe(takeUntilDestroyed())
       .subscribe(() => {
-        this.pushFiltersToStore();
+        if (this.autoApply()) {
+          this.pushFiltersToStore();
+        }
       });
   }
 
-  private pushFiltersToStore(): void {
+  manualApply(): void {
+    this.pushFiltersToStore(true);
+    this.apply.emit();
+  }
+
+  private pushFiltersToStore(force = false): void {
     const currentForm = this.form();
     const storeFilters = untracked(() => this.store.filters());
 
@@ -129,7 +150,7 @@ export class FeatureFilters {
       return fVal !== sVal;
     });
 
-    if (hasChanges) {
+    if (hasChanges || force) {
       this.store.applyFilters(currentForm);
       this.store.loadProducts();
     }
