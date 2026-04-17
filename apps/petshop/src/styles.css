@@ -1,5 +1,23 @@
 @import 'tailwindcss';
 
+@theme {
+  --color-primary-50: #f0f7f0;
+  --color-primary-100: #dcf0dc;
+  --color-primary-200: #b9e0b9;
+  --color-primary-300: #8bc88b;
+  --color-primary-400: #5baa5b;
+  --color-primary-500: #346739;
+  --color-primary-600: #2d5a32;
+  --color-primary-700: #264b2a;
+  --color-primary-800: #1f3d22;
+  --color-primary-900: #19311b;
+  --color-primary-950: #0d1a0e;
+
+  --color-accent-sage: #79ae6f;
+  --color-accent-mint: #9fcb98;
+  --color-bg-cream: #f2edc2;
+}
+
 /* nx-tailwind-sources:start */
 @source "../../../libs/pet/api";
 @source "../../../libs/pet/data-access";
