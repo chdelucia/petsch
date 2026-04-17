@@ -29,7 +29,9 @@ describe('PetsStore', () => {
     expect(store.error()).toBeNull();
   });
 
-  it('should load products on init', () => {
+  it('should load products on init', async () => {
+    // Wait for the onInit hook effects to run
+    await new Promise((resolve) => setTimeout(resolve, 0));
     expect(productServiceMock.getPets).toHaveBeenCalled();
   });
 
@@ -50,17 +52,11 @@ describe('PetsStore', () => {
   });
 
   it('should update filters', () => {
-    store.applyFilters({ kind: 'dog' });
+    store.updateFilters({ kind: 'dog' });
     expect(store.filters()).toEqual({
       kind: 'dog',
       _page: 1,
       _limit: 12,
     });
-  });
-
-  it('should clear products and reset state', () => {
-    store.clear();
-    expect(store.products()).toEqual([]);
-    expect(store.filters()).toEqual({ _limit: 12, _page: 1 });
   });
 });

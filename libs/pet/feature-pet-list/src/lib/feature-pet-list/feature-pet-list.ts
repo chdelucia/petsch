@@ -1,4 +1,4 @@
-import { Component, inject, computed, input } from '@angular/core';
+import { Component, inject, computed, input, output } from '@angular/core';
 import {
   Pet,
   CurrentTransitionService,
@@ -37,6 +37,8 @@ export class FeaturePetList {
 
   showFilters = input.required<boolean>();
 
+  pageChange = output<number>();
+
   products = this.store.products;
 
   currentPage = computed(() => this.store.filters()._page ?? 1);
@@ -55,8 +57,7 @@ export class FeaturePetList {
   );
 
   handlePageChange(page: number): void {
-    this.store.applyPagination(page);
-    this.store.loadProducts();
+    this.pageChange.emit(page);
   }
 
   handlePotdClick(pet: Pet): void {

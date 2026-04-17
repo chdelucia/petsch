@@ -1,7 +1,7 @@
 import { getTranslocoTestingModule } from '@petsch/shared-utils';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FeaturePetList } from './feature-pet-list';
-import { provideRouter } from '@angular/router';
+import { provideRouter, Router } from '@angular/router';
 import { of } from 'rxjs';
 import { PETLIST_STORE, PETOFDAY_STORE, PET_TOKEN } from '@petsch/api';
 import { LOCALSTORAGE_TOKEN } from '@petsch/obs-api';
@@ -14,18 +14,15 @@ describe('FeaturePetList', () => {
 
   beforeEach(async () => {
     store = {
-      applyFilters: vi.fn(),
-      clearProducts: vi.fn(),
       showFilters: signal(true),
       gridView: signal(true),
-      products: signal([]),
       products: signal([]),
       loading: signal(false),
       error: signal(null),
       pagination: signal({}),
-      filters: signal({}),
+      filters: signal({ _page: 1 }),
       loadProducts: vi.fn(),
-      applyPagination: vi.fn(),
+      updateFilters: vi.fn(),
     };
 
     await TestBed.configureTestingModule({
@@ -71,10 +68,10 @@ describe('FeaturePetList', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should call handlePageChange and call store.loadProducts', () => {
-    store.filters.set({ name: 'test' });
+  it('should call handlePageChange and emit pageChange', () => {
+    const spy = vi.spyOn(component.pageChange, 'emit');
     component.handlePageChange(2);
-    expect(store.applyPagination).toHaveBeenCalledWith(2);
+    expect(spy).toHaveBeenCalledWith(2);
   });
 
   it('should call handlePotdClick and call potdStore.addPet if not added today', () => {

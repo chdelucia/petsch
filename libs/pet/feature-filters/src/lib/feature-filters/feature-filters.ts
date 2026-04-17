@@ -1,4 +1,13 @@
-import { Component, inject, computed, signal } from '@angular/core';
+import {
+  Component,
+  inject,
+  computed,
+  signal,
+  effect,
+  untracked,
+  output,
+  input,
+} from '@angular/core';
 import {
   takeUntilDestroyed,
   toSignal,
@@ -6,7 +15,7 @@ import {
 } from '@angular/core/rxjs-interop';
 import { form as angularForm, FormField } from '@angular/forms/signals';
 import { TranslocoService, TranslocoDirective } from '@jsverse/transloco';
-import { Filters, PETLIST_STORE } from '@petsch/api';
+import { Filters } from '@petsch/api';
 import { debounceTime, merge, Observable, skip } from 'rxjs';
 import {
   ChInputFilter,
@@ -36,8 +45,11 @@ type KindKey = (typeof kindOptions)[number];
   templateUrl: './feature-filters.html',
 })
 export class FeatureFilters {
-  readonly store = inject(PETLIST_STORE);
   private readonly transloco = inject(TranslocoService);
+
+  filters = input<Partial<Filters>>({});
+  filterChange = output<Partial<Filters>>();
+  filterReset = output<string>();
 
   readonly form = signal<Partial<Filters>>({
     name_like: '',
@@ -77,6 +89,18 @@ export class FeatureFilters {
   });
 
   constructor() {
+    // Sync input -> form
+    effect(() => {
+      const filters = this.filters();
+      untracked(() => {
+        this.form.update((f) => ({
+          ...f,
+          name_like: filters.name_like ?? '',
+          kind: filters.kind ?? '',
+        }));
+      });
+    });
+
     const filterChanges$ = this.filterConfigs().map((config) => {
       const field = (this.formTree as any)[config.key]();
       return toObservable(field.value).pipe(
@@ -93,24 +117,15 @@ export class FeatureFilters {
   }
 
   private applyFiltersAndLoad(): void {
-    const currentForm = this.form();
-
-    this.store.applyFilters(currentForm);
-    this.store.loadProducts();
+    this.filterChange.emit(this.form());
   }
 
   resetFilter(key: string): void {
     const field = (this.formTree as any)[key];
-    const currentValue = field?.().value();
-
     if (field) {
       field().value.set('');
     }
 
-    this.store.removeFilter(key as keyof Filters);
-
-    if (!field || currentValue === '') {
-      this.applyFiltersAndLoad();
-    }
+    this.filterReset.emit(key);
   }
 }

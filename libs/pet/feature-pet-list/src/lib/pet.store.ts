@@ -64,43 +64,15 @@ export const PetsStore = signalStore(
       });
 
     return {
-      applyFilters(partial: Partial<Filters>) {
-        patchState(store, {
-          filters: { ...store.filters(), ...partial, _page: 1 },
-        });
+      updateFilters(filters: Partial<Filters>) {
+        patchState(store, { filters: { ...initialState.filters, ...filters } });
       },
 
-      applyPagination(page: number) {
-        patchState(store, {
-          filters: { ...store.filters(), _page: page },
-        });
-      },
-
-      applySort(sort: { key: string; order: string }) {
-        patchState(store, {
-          filters: {
-            ...store.filters(),
-            _sort: sort.key,
-            _order: sort.order,
-          },
-        });
-      },
-
-      removeFilter(key: keyof Filters) {
-        const current = store.filters();
-        const { [key]: _, ...rest } = current;
-        patchState(store, { filters: rest });
-      },
-
-      clear() {
-        patchState(store, initialState);
-      },
-
-      loadProducts: rxMethod<void>(
+      loadProducts: rxMethod<Partial<Filters>>(
         pipe(
           tap(() => setLoading(true)),
-          switchMap(() =>
-            productService.getPets(store.query()).pipe(
+          switchMap((query) =>
+            productService.getPets(query).pipe(
               catchError((err) => {
                 setError(err?.message ?? 'Failed to load products');
                 return of(null);
@@ -117,7 +89,7 @@ export const PetsStore = signalStore(
 
   withHooks({
     onInit(store) {
-      store.loadProducts();
+      store.loadProducts(store.query);
     },
   }),
 );

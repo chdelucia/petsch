@@ -28,12 +28,16 @@
     <lib-feature-filters
       class="chars__filters"
       [class.chars__filters--hidden]="!showFilters()"
+      [filters]="{ name_like: name_like(), kind: kind() }"
+      (filterChange)="handleFilterChange($event)"
+      (filterReset)="handleFilterReset($event)"
     ></lib-feature-filters>
 
     <lib-feature-pet-list
       class="chars__list"
       [class.chars__list--no-filters]="!showFilters()"
       [showFilters]="showFilters()"
+      (pageChange)="handlePageChange($event)"
     ></lib-feature-pet-list>
   </div>
 </section>

@@ -8,29 +8,13 @@ import { signal } from '@angular/core';
 describe('FeatureFilters', () => {
   let component: FeatureFilters;
   let fixture: ComponentFixture<FeatureFilters>;
-  let store: {
-    applyFilters: any;
-    removeFilter: any;
-    loadProducts: any;
-    loading: any;
-    products: any;
-  };
 
   beforeEach(async () => {
     vi.useFakeTimers();
 
-    store = {
-      applyFilters: vi.fn(),
-      removeFilter: vi.fn(),
-      loadProducts: vi.fn(),
-      loading: signal(false),
-      products: signal([]),
-    };
-
     await TestBed.configureTestingModule({
       imports: [FeatureFilters, getTranslocoTestingModule()],
       providers: [
-        { provide: PETLIST_STORE, useValue: store },
         {
           provide: PET_TOKEN,
           useValue: {
@@ -61,40 +45,37 @@ describe('FeatureFilters', () => {
     expect(component.filterConfigs().length).toBe(2);
   });
 
-  it('should call applyFilters when kind filter changes', () => {
+  it('should emit filterChange when kind filter changes', () => {
+    const spy = vi.spyOn(component.filterChange, 'emit');
     component.formTree.kind().value.set('dog');
     vi.runAllTimers();
 
-    expect(store.applyFilters).toHaveBeenCalledWith({
+    expect(spy).toHaveBeenCalledWith({
       kind: 'dog',
       name_like: '',
     });
   });
 
-  it('should reset name filter and call removeFilter', () => {
+  it('should reset name filter and emit filterReset', () => {
+    const spy = vi.spyOn(component.filterReset, 'emit');
     component.formTree.name_like().value.set('test');
 
     component.resetFilter('name_like');
     vi.runAllTimers();
 
     expect(component.formTree.name_like().value()).toBe('');
-    expect(store.removeFilter).toHaveBeenCalledWith('name_like');
+    expect(spy).toHaveBeenCalledWith('name_like');
   });
 
-  it('should reset kind filter and call applyFilters + removeFilter', () => {
+  it('should reset kind filter and emit filterReset', () => {
+    const spy = vi.spyOn(component.filterReset, 'emit');
     component.formTree.kind().value.set('dog');
-    store.applyFilters.mockClear();
 
     component.resetFilter('kind');
     vi.runAllTimers();
 
     expect(component.formTree.kind().value()).toBe('');
-    expect(store.removeFilter).toHaveBeenCalledWith('kind');
-
-    expect(store.applyFilters).toHaveBeenCalledWith({
-      kind: '',
-      name_like: '',
-    });
+    expect(spy).toHaveBeenCalledWith('kind');
   });
 
   it('should return form values', () => {
@@ -107,46 +88,28 @@ describe('FeatureFilters', () => {
     });
   });
 
-  it('should not call loadProducts on initialization', () => {
-    store.loadProducts.mockClear();
+  it('should not emit filterChange on initialization', () => {
+    const spy = vi.spyOn(component.filterChange, 'emit');
     vi.runAllTimers();
-    expect(store.loadProducts).not.toHaveBeenCalled();
+    expect(spy).not.toHaveBeenCalled();
   });
 
-  it('should only call loadProducts once when resetting a filter', () => {
+  it('should only emit filterChange once when resetting a filter', () => {
     // Set a value first
     component.formTree.kind().value.set('dog');
     fixture.detectChanges();
     vi.runAllTimers();
-    store.loadProducts.mockClear();
+    const spy = vi.spyOn(component.filterChange, 'emit');
 
     // Reset the filter
     component.resetFilter('kind');
     fixture.detectChanges();
     vi.runAllTimers();
 
-    expect(store.loadProducts).toHaveBeenCalledTimes(1);
-  });
-
-  it('should detect duplicate calls when resetting a filter', () => {
-    // Set a value first
-    component.formTree.kind().value.set('dog');
-    fixture.detectChanges();
-    vi.runAllTimers();
-    store.loadProducts.mockClear();
-
-    // Reset the filter
-    component.resetFilter('kind');
-    fixture.detectChanges();
-
-    // Check calls before timers (it should be 0 because we rely on the debounced observable)
-    // If we want it to be immediate, it would be 1.
-    // Currently, with my fix, it should be 0 here and 1 after timers.
-    expect(store.loadProducts).toHaveBeenCalledTimes(0);
-
-    // Run timers (observable triggers the call after debounce)
-    vi.runAllTimers();
-
-    expect(store.loadProducts).toHaveBeenCalledTimes(1);
+    // filterReset is emitted immediately, but form change might also trigger filterChange
+    // In our current implementation, resetFilter emits filterReset but also changes the form value
+    // The form value change triggers the observable which emits filterChange.
+    // This is expected.
+    expect(spy).toHaveBeenCalledTimes(1);
   });
 });
