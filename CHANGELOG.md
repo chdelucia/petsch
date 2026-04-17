@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.12.0](https://github.com/chdelucia/petsch/compare/v1.11.6...v1.12.0) (2026-04-17)
+
+
+### Features
+
+* unify and enhance ChButton component across UI library ([8010a6d](https://github.com/chdelucia/petsch/commit/8010a6dcbc5755291f43eb990d4394eb50833a3f))
+
 ### [1.11.6](https://github.com/chdelucia/petsch/compare/v1.11.5...v1.11.6) (2026-04-16)
 
 ### [1.11.5](https://github.com/chdelucia/petsch/compare/v1.11.4...v1.11.5) (2026-04-16)
