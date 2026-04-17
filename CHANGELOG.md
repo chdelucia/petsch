@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.13.0](https://github.com/chdelucia/petsch/compare/v1.12.0...v1.13.0) (2026-04-17)
+
+
+### Features
+
+* **ui:** add position support to ChCartDrawer ([25fadfd](https://github.com/chdelucia/petsch/commit/25fadfddec86523910d76f9acceb09e56d4259eb))
+
 ## [1.12.0](https://github.com/chdelucia/petsch/compare/v1.11.6...v1.12.0) (2026-04-17)
 
 
