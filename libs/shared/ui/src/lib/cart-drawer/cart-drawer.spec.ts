@@ -26,4 +26,23 @@ describe('ChCartDrawer', () => {
     component.closeDrawer();
     expect(spy).toHaveBeenCalledWith(false);
   });
+
+  it('should have default position "right"', () => {
+    expect(component.position()).toBe('right');
+  });
+
+  it('should apply correct classes based on position', () => {
+    fixture.componentRef.setInput('position', 'left');
+    fixture.detectChanges();
+    const container = fixture.nativeElement.querySelector('.ch-cart-drawer-panel-container');
+    const panel = fixture.nativeElement.querySelector('.ch-cart-drawer-panel');
+
+    expect(container.classList.contains('ch-cart-drawer-panel-container--left')).toBe(true);
+    expect(panel.classList.contains('ch-cart-drawer-panel--left')).toBe(true);
+
+    fixture.componentRef.setInput('position', 'right');
+    fixture.detectChanges();
+    expect(container.classList.contains('ch-cart-drawer-panel-container--right')).toBe(true);
+    expect(panel.classList.contains('ch-cart-drawer-panel--right')).toBe(true);
+  });
 });
