@@ -1,4 +1,4 @@
-@reference "../../tailwind.storybook.css";
+@reference "../theme-reference.css";
 
 .ch-top-container {
   @apply flex items-end justify-between border-b border-gray-200 pb-3 pt-2.5;

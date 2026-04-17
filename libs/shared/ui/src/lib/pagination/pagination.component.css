@@ -1,4 +1,4 @@
-@reference "../../tailwind.storybook.css";
+@reference "../theme-reference.css";
 
 .ch-pagination {
   @apply flex items-center justify-center gap-1 list-none text-sm py-4;

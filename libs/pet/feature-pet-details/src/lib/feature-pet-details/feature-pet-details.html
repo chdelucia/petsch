@@ -26,7 +26,7 @@
           [ngSrc]="item.photo_url"
           [alt]="item.name"
           class="product-details__main-img"
-          [style.viewTransitionName]="transitionService.getViewTransitionName(id())"
+          [style.viewTransitionName]="viewTransitionName()"
           fill
           priority
         />

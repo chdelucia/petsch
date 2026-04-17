@@ -1,4 +1,4 @@
-@reference "../../tailwind.storybook.css";
+@reference "../theme-reference.css";
 
 .lang-switcher {
   @apply flex flex-wrap items-center gap-2;

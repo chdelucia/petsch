@@ -1,4 +1,4 @@
-@reference "../../../../../../apps/petshop/src/styles.css";
+@reference "../../../../../shared/ui/src/lib/theme-reference.css";
 
 .feature-404-host {
   @apply fixed inset-0 z-50 overflow-auto;

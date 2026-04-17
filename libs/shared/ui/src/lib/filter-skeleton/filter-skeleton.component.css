@@ -1,4 +1,4 @@
-@reference "../../tailwind.storybook.css";
+@reference "../theme-reference.css";
 
 .ch-skeleton-filters {
   @apply flex items-center mb-4 animate-pulse justify-end;

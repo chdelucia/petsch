@@ -1,4 +1,4 @@
-import { Component, inject, input, signal } from '@angular/core';
+import { Component, inject, input, signal, computed } from '@angular/core';
 import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { Router } from '@angular/router';
 import { TranslocoDirective } from '@jsverse/transloco';
@@ -24,6 +24,10 @@ export class FeaturePetDetails {
 
   id = input.required<string>();
   product = input<Pet | null>();
+
+  viewTransitionName = computed(() =>
+    this.transitionService.getViewTransitionName(this.id()),
+  );
 
   showPotdDrawer = signal(false);
 

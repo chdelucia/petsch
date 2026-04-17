@@ -1,4 +1,4 @@
-@reference "../../tailwind.storybook.css";
+@reference "../theme-reference.css";
 
 .ch-favorite-icon {
   @apply z-10 h-7 w-7 absolute top-2 right-2 text-transparent stroke-indigo-600 cursor-pointer;

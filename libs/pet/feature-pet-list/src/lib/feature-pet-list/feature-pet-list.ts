@@ -37,7 +37,12 @@ export class FeaturePetList {
 
   showFilters = input.required<boolean>();
 
-  products = this.store.products;
+  products = computed(() =>
+    this.store.products().map((item) => ({
+      ...item,
+      viewTransitionName: this.transitionService.getViewTransitionName(item.id),
+    })),
+  );
 
   currentPage = computed(() => this.store.filters()._page ?? 1);
 

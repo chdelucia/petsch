@@ -1,4 +1,4 @@
-@reference "../../tailwind.storybook.css";
+@reference "../theme-reference.css";
 
 .ch-input-filter {
   @apply border-b border-gray-200 py-6 relative;

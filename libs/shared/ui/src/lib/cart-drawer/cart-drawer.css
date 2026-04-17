@@ -1,4 +1,4 @@
-@reference "../../tailwind.storybook.css";
+@reference "../theme-reference.css";
 
 .ch-cart-drawer-overlay {
   @apply fixed inset-0 bg-gray-500/0 transition-all duration-500 pointer-events-none z-40;

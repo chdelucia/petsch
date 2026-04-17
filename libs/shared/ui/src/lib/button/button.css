@@ -1,4 +1,4 @@
-@reference "../../tailwind.storybook.css";
+@reference "../theme-reference.css";
 
 .ch-btn {
   @apply inline-flex items-center justify-center font-medium transition-all focus:outline-none hover:cursor-pointer rounded-lg;

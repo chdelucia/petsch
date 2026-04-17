@@ -1,4 +1,4 @@
-@reference "../../styles.css";
+@reference "../../../../../libs/shared/ui/src/lib/theme-reference.css";
 
 .lang-switcher-container {
   @apply max-w-7xl m-auto px-3.5;

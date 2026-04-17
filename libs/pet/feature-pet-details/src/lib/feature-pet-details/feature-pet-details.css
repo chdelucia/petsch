@@ -1,4 +1,4 @@
-@reference "../../../../../../apps/petshop/src/styles.css";
+@reference "../../../../../shared/ui/src/lib/theme-reference.css";
 
 .product-details {
   @apply container mx-auto px-4 py-8;
