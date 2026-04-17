@@ -11,13 +11,13 @@
           <div class="ch-active-filters__label">
             <small>{{ t(item.label) }}: </small>{{ item.value }}
           </div>
-          <button
-            type="button"
-            class="ch-active-filters__remove"
-            (click)="deleteFilter(item.key)"
-            [attr.data-testid]="testId() + '-remove-' + item.key"
+          <lib-ch-ui-button
+            variant="ghost"
+            size="sm"
+            (clicked)="deleteFilter(item.key)"
+            [testId]="testId() + '-remove-' + item.key"
+            [ariaLabel]="t('close')"
           >
-            <span class="ch-active-filters__sr">{{ t('close') }}</span>
             <svg
               class="ch-active-filters__remove-icon"
               fill="none"
@@ -32,7 +32,7 @@
                 d="M6 18L18 6M6 6l12 12"
               />
             </svg>
-          </button>
+          </lib-ch-ui-button>
         </div>
       }
     </div>

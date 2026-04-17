@@ -1,13 +1,12 @@
 <section class="lang-switcher">
   @for (language of languages(); track language.code) {
-  <button
-    type="button"
-    class="lang-switcher__button"
-    [class.lang-switcher__button--active]="selected() === language.code"
-    [attr.aria-current]="selected() === language.code ? 'page' : null"
-    (click)="selectLanguage(language.code)"
+  <lib-ch-ui-button
+    variant="ghost"
+    size="sm"
+    [isActive]="selected() === language.code"
+    (clicked)="selectLanguage(language.code)"
   >
     {{ language.label }}
-  </button>
+  </lib-ch-ui-button>
   }
 </section>

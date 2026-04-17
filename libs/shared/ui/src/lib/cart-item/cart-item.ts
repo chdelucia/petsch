@@ -1,9 +1,10 @@
+import { ChButton } from "../button/button";
 import { Component, input, output } from '@angular/core';
 import { TranslocoDirective } from '@jsverse/transloco';
 
 @Component({
   selector: 'lib-ch-ui-cart-item',
-  imports: [TranslocoDirective],
+  imports: [TranslocoDirective, ChButton],
   templateUrl: './cart-item.html',
   styleUrl: './cart-item.css',
 })

@@ -3,12 +3,13 @@
 
   <div class="ch-top-container__filters">
     <ng-content select="lib-ch-ui-dropdown-filter"></ng-content>
-    <button
-      [title]="t('toggleFilters')"
-      class="ch-top-container__filters__btn ch-top-container__filters__btn--mobile"
-      (click)="toggleFilters.emit()"
+    <lib-ch-ui-button
+      variant="ghost"
+      size="sm"
+      class="ch-top-container__filters__btn--mobile"
+      (clicked)="toggleFilters.emit()"
+      [ariaLabel]="t('filters')"
     >
-      <span class="ch-top-container__filters__sr">{{ t('filters') }}</span>
       <svg
         class="ch-top-container__filters__togglefilters"
         [class.ch-active]="showFilters()"
@@ -22,6 +23,6 @@
           clip-rule="evenodd"
         />
       </svg>
-    </button>
+    </lib-ch-ui-button>
   </div>
 </section>

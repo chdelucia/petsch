@@ -8,10 +8,6 @@
   @apply -my-3 flow-root;
 }
 
-.ch-filter-container__button {
-  @apply flex w-full items-center justify-between bg-white py-3 text-sm text-gray-400 hover:text-indigo-600 cursor-pointer;
-}
-
 .ch-filter-container__title {
   @apply font-medium text-gray-900;
 }

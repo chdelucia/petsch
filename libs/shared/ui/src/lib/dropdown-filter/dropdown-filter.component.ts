@@ -1,3 +1,4 @@
+import { ChButton } from "../button/button";
 import {
   Component,
   computed,
@@ -17,7 +18,7 @@ export interface SortOption {
 
 @Component({
   selector: 'lib-ch-ui-dropdown-filter',
-  imports: [],
+  imports: [ChButton],
   templateUrl: './dropdown-filter.component.html',
   styleUrl: './dropdown-filter.component.css',
   host: {

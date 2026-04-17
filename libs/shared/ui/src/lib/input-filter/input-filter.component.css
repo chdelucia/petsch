@@ -8,10 +8,6 @@
   @apply -my-3 flow-root;
 }
 
-.ch-input-filter__button {
-  @apply flex w-full items-center justify-between bg-white py-3 text-sm text-gray-400 hover:text-indigo-600 cursor-pointer;
-}
-
 .ch-input-filter__title {
   @apply font-medium text-gray-900;
 }
@@ -57,10 +53,6 @@
 
 .ch-input-filter__last-search-text {
   @apply w-11/12 hover:text-indigo-600 hover:font-bold;
-}
-
-.ch-input-filter__last-search-remove {
-  @apply text-gray-400 hover:text-indigo-600 hover:font-bold;
 }
 
 .ch-input-filter__close-icon {
