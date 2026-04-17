@@ -87,16 +87,6 @@ export class FeaturePage {
     });
   }
 
-  handleFilterReset(key: string): void {
-    this.router.navigate([], {
-      queryParams: {
-        [key]: null,
-        _page: 1,
-      },
-      queryParamsHandling: 'merge',
-    });
-  }
-
   handlePageChange(page: number): void {
     this.router.navigate([], {
       queryParams: { _page: page },

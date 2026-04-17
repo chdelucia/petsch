@@ -49,7 +49,6 @@ export class FeatureFilters {
 
   filters = input<Partial<Filters>>({});
   filterChange = output<Partial<Filters>>();
-  filterReset = output<string>();
 
   readonly form = signal<Partial<Filters>>({
     name_like: '',
@@ -117,7 +116,17 @@ export class FeatureFilters {
   }
 
   private applyFiltersAndLoad(): void {
-    this.filterChange.emit(this.form());
+    const currentForm = this.form();
+    const lastFilters = untracked(this.filters);
+
+    const hasChanged = Object.keys(currentForm).some(
+      (key) =>
+        (currentForm as any)[key] !== ((lastFilters as any)[key] ?? ''),
+    );
+
+    if (hasChanged) {
+      this.filterChange.emit(currentForm);
+    }
   }
 
   resetFilter(key: string): void {
@@ -126,6 +135,9 @@ export class FeatureFilters {
       field().value.set('');
     }
 
-    this.filterReset.emit(key);
+    this.filterChange.emit({
+      ...this.form(),
+      [key]: null,
+    });
   }
 }

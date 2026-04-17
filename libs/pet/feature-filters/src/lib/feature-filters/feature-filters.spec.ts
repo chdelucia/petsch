@@ -56,26 +56,36 @@ describe('FeatureFilters', () => {
     });
   });
 
-  it('should reset name filter and emit filterReset', () => {
-    const spy = vi.spyOn(component.filterReset, 'emit');
+  it('should reset name filter and emit filterChange', () => {
+    const spy = vi.spyOn(component.filterChange, 'emit');
     component.formTree.name_like().value.set('test');
+    vi.runAllTimers();
+    spy.mockClear();
 
     component.resetFilter('name_like');
     vi.runAllTimers();
 
     expect(component.formTree.name_like().value()).toBe('');
-    expect(spy).toHaveBeenCalledWith('name_like');
+    expect(spy).toHaveBeenCalledWith({
+      kind: '',
+      name_like: null,
+    });
   });
 
-  it('should reset kind filter and emit filterReset', () => {
-    const spy = vi.spyOn(component.filterReset, 'emit');
+  it('should reset kind filter and emit filterChange', () => {
+    const spy = vi.spyOn(component.filterChange, 'emit');
     component.formTree.kind().value.set('dog');
+    vi.runAllTimers();
+    spy.mockClear();
 
     component.resetFilter('kind');
     vi.runAllTimers();
 
     expect(component.formTree.kind().value()).toBe('');
-    expect(spy).toHaveBeenCalledWith('kind');
+    expect(spy).toHaveBeenCalledWith({
+      kind: null,
+      name_like: '',
+    });
   });
 
   it('should return form values', () => {

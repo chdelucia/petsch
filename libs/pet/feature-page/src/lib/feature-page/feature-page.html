@@ -30,7 +30,6 @@
       [class.chars__filters--hidden]="!showFilters()"
       [filters]="{ name_like: name_like(), kind: kind() }"
       (filterChange)="handleFilterChange($event)"
-      (filterReset)="handleFilterReset($event)"
     ></lib-feature-filters>
 
     <lib-feature-pet-list
