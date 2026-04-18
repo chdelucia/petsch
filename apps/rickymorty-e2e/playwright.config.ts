@@ -6,16 +6,14 @@ import { workspaceRoot } from '@nx/devkit';
 const baseURL = process.env['BASE_URL'] || 'http://localhost:4200';
 
 /**
- * Read environment variables from file.
- * https://github.com/motdotla/dotenv
- */
-// require('dotenv').config();
-
-/**
  * See https://playwright.dev/docs/test-configuration.
  */
 export default defineConfig({
   ...nxE2EPreset(__filename, { testDir: './src' }),
+  timeout: 60000,
+  expect: {
+    timeout: 20000,
+  },
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     baseURL,
@@ -44,25 +42,5 @@ export default defineConfig({
       name: 'webkit',
       use: { ...devices['Desktop Safari'] },
     },
-
-    // Uncomment for mobile browsers support
-    /* {
-      name: 'Mobile Chrome',
-      use: { ...devices['Pixel 5'] },
-    },
-    {
-      name: 'Mobile Safari',
-      use: { ...devices['iPhone 12'] },
-    }, */
-
-    // Uncomment for branded browsers
-    /* {
-      name: 'Microsoft Edge',
-      use: { ...devices['Desktop Edge'], channel: 'msedge' },
-    },
-    {
-      name: 'Google Chrome',
-      use: { ...devices['Desktop Chrome'], channel: 'chrome' },
-    } */
   ],
 });

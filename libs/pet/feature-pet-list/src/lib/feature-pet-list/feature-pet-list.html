@@ -13,7 +13,7 @@
     } @if(!products().length && loading()) {
     <lib-ch-ui-filter-skeleton></lib-ch-ui-filter-skeleton>
     } @if (loading()) {
-    <lib-ch-ui-card-skeleton></lib-ch-ui-card-skeleton>
+    <lib-ch-ui-card-skeleton data-testid="product-list-loading"></lib-ch-ui-card-skeleton>
     } @else {
     <section class="char-grid" [class.char-grid--no-filters]="!showFilters()">
       @for (item of $any(products()); track item.id; let index = $index) {

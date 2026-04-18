@@ -44,4 +44,10 @@ export class ProductListPage extends BasePage {
   async addPetToDay(index: number) {
     await this.getAddButton(index).click();
   }
+
+  async waitForLoadingToFinish() {
+    await this.page
+      .getByTestId('product-list-loading')
+      .waitFor({ state: 'detached' });
+  }
 }

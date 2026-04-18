@@ -2,7 +2,7 @@ import {
   ApplicationConfig,
   provideZonelessChangeDetection,
 } from '@angular/core';
-import { provideRouter } from '@angular/router';
+import { provideRouter, withComponentInputBinding } from '@angular/router';
 import { appRoutes } from './app.routes';
 import { provideHttpClient, HttpResponse } from '@angular/common/http';
 import {
@@ -26,7 +26,7 @@ import { APP_ROUTES } from './app.routes';
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    provideRouter(appRoutes),
+    provideRouter(appRoutes, withComponentInputBinding()),
     provideZonelessChangeDetection(),
     provideHttpClient(),
     {

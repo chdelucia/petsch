@@ -21,8 +21,10 @@
 @source "../../../libs/pet/data-access";
 @source "../../../libs/pet/feature-filters";
 @source "../../../libs/pet/feature-page";
+@source "../../../libs/pet/feature-pet-details";
 @source "../../../libs/pet/feature-pet-list";
 @source "../../../libs/pet/feature-pet-of-day";
+@source "../../../libs/pet/shell";
 @source "../../../libs/shared/observability/api";
 @source "../../../libs/shared/observability/data-access";
 @source "../../../libs/shared/ui";
