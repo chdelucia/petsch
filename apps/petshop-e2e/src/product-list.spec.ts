@@ -7,6 +7,7 @@ test.describe('Product List', () => {
   test.beforeEach(async ({ page }) => {
     productListPage = new ProductListPage(page);
     await productListPage.goto('/pets');
+    await productListPage.waitForLoadingToFinish();
   });
 
   test('should display product cards', async () => {

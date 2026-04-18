@@ -10,6 +10,7 @@ test.describe('Combined Filters', () => {
     filtersPage = new FiltersPage(page);
     productListPage = new ProductListPage(page);
     await filtersPage.goto('/pets');
+    await productListPage.waitForLoadingToFinish();
   });
 
   test('should apply name, kind and sort filters together', async () => {

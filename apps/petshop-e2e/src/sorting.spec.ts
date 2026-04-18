@@ -7,6 +7,7 @@ test.describe('Sorting', () => {
   test.beforeEach(async ({ page }) => {
     productListPage = new ProductListPage(page);
     await productListPage.goto('/pets');
+    await productListPage.waitForLoadingToFinish();
   });
 
   test('should sort by name ascending and descending', async () => {

@@ -10,6 +10,7 @@ test.describe('Product Details', () => {
 
   test('should display product details and navigate back', async () => {
     await productDetailsPage.gotoProduct(1);
+    await productDetailsPage.waitForLoadingToFinish();
     await expect(productDetailsPage.getProductDetails()).toBeVisible();
 
     await expect(productDetailsPage.page.locator('h1')).not.toBeEmpty();
@@ -20,6 +21,7 @@ test.describe('Product Details', () => {
 
   test('should show error for non-existent product', async () => {
     await productDetailsPage.gotoProduct(999999);
+    await productDetailsPage.waitForLoadingToFinish();
     await expect(
       productDetailsPage.page.getByTestId('error-alert'),
     ).toBeVisible();

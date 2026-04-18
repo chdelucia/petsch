@@ -10,7 +10,7 @@
   </div>
 
   @if (loading()) {
-  <div class="product-details__loading">
+  <div class="product-details__loading" data-testid="product-details-loading">
     <div class="product-details__spinner"></div>
   </div>
   } @else if (!product() || error()) {
