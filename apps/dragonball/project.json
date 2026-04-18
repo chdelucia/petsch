@@ -1,25 +1,25 @@
 {
-  "name": "rickymorty",
+  "name": "dragonball",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
   "prefix": "app",
-  "sourceRoot": "apps/rickymorty/src",
+  "sourceRoot": "apps/dragonball/src",
   "tags": ["scope:petshop", "type:main"],
   "targets": {
     "build": {
       "executor": "@angular/build:application",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/apps/rickymorty",
-        "browser": "apps/rickymorty/src/main.ts",
-        "tsConfig": "apps/rickymorty/tsconfig.app.json",
+        "outputPath": "dist/apps/dragonball",
+        "browser": "apps/dragonball/src/main.ts",
+        "tsConfig": "apps/dragonball/tsconfig.app.json",
         "assets": [
           {
             "glob": "**/*",
-            "input": "apps/rickymorty/public"
+            "input": "apps/dragonball/public"
           }
         ],
-        "styles": ["apps/rickymorty/src/styles.css"]
+        "styles": ["apps/dragonball/src/styles.css"]
       },
       "configurations": {
         "production": {
@@ -48,13 +48,13 @@
     "serve": {
       "continuous": true,
       "executor": "@angular/build:dev-server",
-      "options": { "port": 4201 },
+      "options": { "port": 4202 },
       "configurations": {
         "production": {
-          "buildTarget": "rickymorty:build:production"
+          "buildTarget": "dragonball:build:production"
         },
         "development": {
-          "buildTarget": "rickymorty:build:development"
+          "buildTarget": "dragonball:build:development"
         }
       },
       "defaultConfiguration": "development"
@@ -70,9 +70,9 @@
       "continuous": true,
       "executor": "@nx/web:file-server",
       "options": {
-        "buildTarget": "rickymorty:build",
-        "port": 4201,
-        "staticFilePath": "dist/apps/rickymorty/browser",
+        "buildTarget": "dragonball:build",
+        "port": 4202,
+        "staticFilePath": "dist/apps/dragonball/browser",
         "spa": true
       }
     }
