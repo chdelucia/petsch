@@ -1,6 +1,6 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, signal, computed } from '@angular/core';
 import { FeaturePetList } from '@petsch/feature-pet-list';
-import { PETLIST_STORE } from '@petsch/api';
+import { PETLIST_STORE, PET_API_CONFIG } from '@petsch/api';
 import { FeaturePetOfDay } from '@petsch/feature-pet-of-day';
 import { TranslocoDirective } from '@jsverse/transloco';
 import { ChDropdownFilter, ChListHeader } from '@petsch/ui';
@@ -25,6 +25,9 @@ export class FeaturePage {
   showPotdDrawer = signal(false);
 
   private readonly store = inject(PETLIST_STORE);
+  private readonly config = inject(PET_API_CONFIG, { optional: true });
+
+  hideSort = computed(() => this.config?.hideSort ?? false);
 
   toggleFilters(): void {
     this.showFilters.update((v) => !v);
