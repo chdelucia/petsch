@@ -6,6 +6,7 @@
     [titleLabel]="t('petOfTheDay')"
   >
     <div class="ch-cart-list">
+      @if (potdStore.entries().length > 0) {
       <ul class="ch-cart-list__items">
         @for (entry of potdStore.sortedEntries(); track entry.date) {
         <li>
@@ -21,6 +22,28 @@
         </li>
         }
       </ul>
+      } @else {
+      <div class="ch-cart-list__empty" data-testid="cart-empty-state">
+        <svg
+          class="ch-cart-list__empty-icon"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          aria-hidden="true"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="1.5"
+            d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"
+          />
+        </svg>
+        <h3 class="ch-cart-list__empty-title">{{ t('noPetsAddedYet') }}</h3>
+        <p class="ch-cart-list__empty-message">
+          {{ t('noPetsAddedYetMessage') }}
+        </p>
+      </div>
+      }
     </div>
   </lib-ch-ui-cart-drawer>
 </ng-container>
