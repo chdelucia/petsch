@@ -1,0 +1,19 @@
+{
+  "name": "dragonball-e2e",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "apps/dragonball-e2e/src",
+  "implicitDependencies": ["dragonball"],
+  "targets": {
+    "e2e": {
+      "executor": "@nx/playwright:playwright",
+      "outputs": ["{workspaceRoot}/dist/.playwright/apps/dragonball-e2e/test-output", "{workspaceRoot}/dist/.playwright/apps/dragonball-e2e/playwright-report"],
+      "options": {
+        "config": "apps/dragonball-e2e/playwright.config.ts"
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    }
+  }
+}
