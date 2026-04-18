@@ -15,6 +15,7 @@ export interface PetApiConfig<T = unknown, F = unknown> {
     limit: string;
   };
   listRoute?: string;
+  hideSort?: boolean;
 }
 
 export const PET_API_CONFIG = new InjectionToken<PetApiConfig>('PET_API_CONFIG');

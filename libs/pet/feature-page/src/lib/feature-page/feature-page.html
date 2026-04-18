@@ -4,6 +4,7 @@
     [showFilters]="showFilters()"
     (toggleFilters)="toggleFilters()"
   >
+    @if (!hideSort()) {
     <lib-ch-ui-dropdown-filter
       testId="product-sort-dropdown"
       [options]="[
@@ -20,6 +21,7 @@
       (sortbyChange)="sortBy($event)"
     >
     </lib-ch-ui-dropdown-filter>
+    }
   </lib-ch-ui-product-list-header>
 </ng-container>
 

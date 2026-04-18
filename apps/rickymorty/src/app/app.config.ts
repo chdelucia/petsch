@@ -51,6 +51,7 @@ export const appConfig: ApplicationConfig = {
           page: 'page',
           limit: 'limit',
         },
+        hideSort: true,
       },
     },
     {
@@ -87,6 +88,27 @@ export const appConfig: ApplicationConfig = {
           options: [
             { value: 'alive', text: 'Alive' },
             { value: 'dead', text: 'Dead' },
+            { value: 'unknown', text: 'unknown' },
+          ],
+          debounceTime: 300,
+        },
+        {
+          key: 'species',
+          type: 'input',
+          debounceTime: 300,
+        },
+        {
+          key: 'type',
+          type: 'input',
+          debounceTime: 300,
+        },
+        {
+          key: 'gender',
+          type: 'radio',
+          options: [
+            { value: 'female', text: 'Female' },
+            { value: 'male', text: 'Male' },
+            { value: 'genderless', text: 'Genderless' },
             { value: 'unknown', text: 'unknown' },
           ],
           debounceTime: 300,
