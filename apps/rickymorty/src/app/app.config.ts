@@ -21,6 +21,8 @@ import { provideTransloco } from '@jsverse/transloco';
 import { TranslocoHttpLoader } from './transloco-loader';
 import { LOCALSTORAGE_TOKEN } from '@petsch/obs-api';
 import { LocalstorageService } from '@petsch/obs-data-access';
+import { characterAdapter } from './utils/character-adapter';
+import { APP_ROUTES } from './app.routes';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -31,7 +33,7 @@ export const appConfig: ApplicationConfig = {
       provide: PET_API_CONFIG,
       useValue: {
         baseUrl: 'https://rickandmortyapi.com/api/character',
-        listRoute: '/rickymorty',
+        listRoute: `/${APP_ROUTES.PETS}`,
         getDetailsUrl: (id: string) =>
           `https://rickandmortyapi.com/api/character/${id}`,
         mapResponse: (response: HttpResponse<Character[] | unknown>) => {
@@ -53,16 +55,7 @@ export const appConfig: ApplicationConfig = {
     },
     {
       provide: PET_DATA_TRANSFORMER,
-      useValue: (item: Character) => ({
-        ...item,
-        photo_url: item.image,
-        health:
-          item.status === 'Alive'
-            ? 'healthy'
-            : item.status === 'Dead'
-            ? 'unhealthy'
-            : 'unknown',
-      }),
+      useValue: characterAdapter,
     },
     {
       provide: PET_TOKEN,

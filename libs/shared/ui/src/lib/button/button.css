@@ -5,11 +5,11 @@
 }
 
 .ch-btn--primary {
-  @apply px-6 py-3 rounded-md bg-indigo-600 text-white hover:bg-indigo-700;
+  @apply px-6 py-3 rounded-md bg-(--color-primary-600) text-white hover:bg-(--color-primary-700);
 }
 
 .ch-btn--link {
-  @apply text-indigo-600 hover:text-indigo-500;
+  @apply text-(--color-primary-600) hover:text-(--color-primary-500);
 }
 
 .ch-btn--full-width {

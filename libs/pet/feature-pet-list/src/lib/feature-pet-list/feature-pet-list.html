@@ -34,11 +34,17 @@
             </lib-ch-ui-badge>
           </div>
 
+          @if (item.height || item.length || item.weight) {
           <div class="text-xs text-gray-500">
+            @if (item.height) {
             <p>{{ t('height') }}: {{ item.height }}{{ t('cm') }}</p>
+            } @if (item.length) {
             <p>{{ t('width') }}: {{ item.length }}{{ t('cm') }}</p>
+            } @if (item.weight) {
             <p>{{ t('weight') }}: {{ item.weight }}{{ t('g') }}</p>
+            }
           </div>
+          }
         </div>
 
         <lib-ch-ui-button

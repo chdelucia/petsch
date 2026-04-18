@@ -1,5 +1,14 @@
 import { Route } from '@angular/router';
-import { APP_ROUTES } from '@petsch/shared-utils';
+
+export const APP_ROUTES = {
+  PETS: 'pets',
+  NOT_FOUND: '404',
+} as const;
+
+export const PRODUCT_ROUTES = {
+  LIST: '',
+  DETAILS: ':id',
+} as const;
 
 export const appRoutes: Route[] = [
   {

@@ -25,17 +25,22 @@ export interface PetsState<T = unknown, F = Record<string, unknown>> {
   error: string | null;
 }
 
-const initialState: PetsState<unknown, Record<string, unknown>> = {
-  products: [],
-  pagination: {},
-  filters: { _page: 1, _limit: 12 },
-  loading: false,
-  error: null,
-};
-
 export const PetsStore = signalStore(
   { providedIn: 'root' },
-  withState(initialState),
+  withState(() => {
+    const config = inject(PET_API_CONFIG, { optional: true });
+    const pageKey = config?.paginationKeys?.page ?? '_page';
+    const limitKey = config?.paginationKeys?.limit ?? '_limit';
+
+    const state: PetsState = {
+      products: [],
+      pagination: {},
+      filters: { [pageKey]: 1, [limitKey]: 12 } as Record<string, unknown>,
+      loading: false,
+      error: null,
+    };
+    return state;
+  }),
 
   withComputed((store) => ({
     query: () => ({
@@ -48,6 +53,7 @@ export const PetsStore = signalStore(
     const config = inject(PET_API_CONFIG, { optional: true });
 
     const pageKey = config?.paginationKeys?.page ?? '_page';
+    const limitKey = config?.paginationKeys?.limit ?? '_limit';
 
     const setLoading = (loading: boolean) =>
       patchState(store, { loading, error: null });
@@ -68,15 +74,15 @@ export const PetsStore = signalStore(
 
     return {
       applyFilters(partial: Partial<Record<string, unknown>>) {
-        patchState(store, {
-          filters: { ...store.filters(), ...partial, [pageKey]: 1 },
-        });
+        patchState(store, (state) => ({
+          filters: { ...state.filters, ...partial, [pageKey]: 1 },
+        }));
       },
 
       applyPagination(page: number) {
-        patchState(store, {
-          filters: { ...store.filters(), [pageKey]: page },
-        });
+        patchState(store, (state) => ({
+          filters: { ...state.filters, [pageKey]: page },
+        }));
       },
 
       applySort(sort: { key: string; order: string }) {
@@ -96,7 +102,14 @@ export const PetsStore = signalStore(
       },
 
       clear() {
-        patchState(store, initialState);
+        patchState(store, (state) => ({
+          ...state,
+          products: [],
+          pagination: {},
+          filters: { [pageKey]: 1, [limitKey]: 12 } as Record<string, unknown>,
+          loading: false,
+          error: null,
+        }));
       },
 
       loadProducts: rxMethod<void>(
