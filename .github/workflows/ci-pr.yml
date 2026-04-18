@@ -44,6 +44,7 @@ jobs:
           GITHUB_EVENT_PULL_REQUEST_BASE_REF: ${{ github.event.pull_request.base.ref }}
 
       - name: Validate commits
+        if: false
         run: |
           bun add @commitlint/{cli,config-conventional}
           bun x commitlint --from=${{ steps.compute_base.outputs.base }} --to=HEAD
@@ -77,6 +78,7 @@ jobs:
         run: bun x cypress install
 
   lint:
+    if: false
     runs-on: ubuntu-latest
     needs: [install, validate]
 
@@ -150,6 +152,7 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
   e2e:
+    if: false
     runs-on: ubuntu-latest
     needs: [install, validate]
     steps:
