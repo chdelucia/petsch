@@ -94,12 +94,19 @@ export const appConfig: ApplicationConfig = {
         },
         {
           key: 'species',
-          type: 'input',
-          debounceTime: 300,
-        },
-        {
-          key: 'type',
-          type: 'input',
+          type: 'radio',
+          options: [
+            { value: 'human', text: 'human' },
+            { value: 'humanoid', text: 'humanoid' },
+            { value: 'alien', text: 'alien' },
+            { value: 'disease', text: 'disease' },
+            { value: 'cronenberg', text: 'cronenberg' },
+            { value: 'poopybutthole', text: 'poopybutthole' },
+            { value: 'mythological', text: 'mythological' },
+            { value: 'robot', text: 'robot' },
+            { value: 'animal', text: 'animal' },
+            { value: 'unknown', text: 'unknown' },
+          ],
           debounceTime: 300,
         },
         {
