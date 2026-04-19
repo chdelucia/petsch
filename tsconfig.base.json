@@ -33,7 +33,10 @@
       ],
       "@petsch/feature-page": ["libs/pet/feature-page/src/index.ts"],
       "@petsch/feature-filters": ["libs/pet/feature-filters/src/index.ts"],
-      "@petsch/feature-404": ["libs/shared/feature-404/src/index.ts"]
+      "@petsch/feature-404": ["libs/shared/feature-404/src/index.ts"],
+      "@petsch/api-petshop": ["libs/pet/api-petshop/src/index.ts"],
+      "@petsch/api-rickymorty": ["libs/pet/api-rickymorty/src/index.ts"],
+      "@petsch/api-dragonball": ["libs/pet/api-dragonball/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

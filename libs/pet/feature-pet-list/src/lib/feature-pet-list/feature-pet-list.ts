@@ -3,7 +3,7 @@ import {
   CurrentTransitionService,
   PETLIST_STORE,
   PETOFDAY_STORE,
-  PET_API_CONFIG,
+  PET_UI_CONFIG,
 } from '@petsch/api';
 import {
   ChButton,
@@ -32,7 +32,7 @@ import { TranslocoDirective } from '@jsverse/transloco';
 })
 export class FeaturePetList {
   private readonly store = inject(PETLIST_STORE);
-  private readonly config = inject(PET_API_CONFIG, { optional: true });
+  private readonly config = inject(PET_UI_CONFIG, { optional: true });
   protected readonly potdStore = inject(PETOFDAY_STORE);
   protected readonly transitionService = inject(CurrentTransitionService);
 
