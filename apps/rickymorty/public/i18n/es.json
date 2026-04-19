@@ -1,4 +1,9 @@
 {
+  "navbar": {
+    "petshop": "Pet Shop",
+    "rickymorty": "Rick & Morty",
+    "dragonball": "Dragon Ball"
+  },
   "pets": "Mascotas",
   "name": "Nombre",
   "status": "Estado",
