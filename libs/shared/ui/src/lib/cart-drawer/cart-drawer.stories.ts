@@ -17,3 +17,12 @@ export const Primary: Story = {
     showFooter: true,
   },
 };
+
+export const Left: Story = {
+  args: {
+    open: true,
+    titleLabel: 'Filters',
+    showFooter: true,
+    position: 'left',
+  },
+};

@@ -15,24 +15,30 @@
   [class.ch-cart-drawer-container--open]="open()"
 >
   <div class="ch-cart-drawer-inner">
-    <div class="ch-cart-drawer-panel-container">
+    <div
+      class="ch-cart-drawer-panel-container"
+      [class.ch-cart-drawer-panel-container--left]="position() === 'left'"
+      [class.ch-cart-drawer-panel-container--right]="position() === 'right'"
+    >
       <div
         class="ch-cart-drawer-panel"
         [class.ch-cart-drawer-panel--open]="open()"
+        [class.ch-cart-drawer-panel--left]="position() === 'left'"
+        [class.ch-cart-drawer-panel--right]="position() === 'right'"
       >
         <div class="ch-cart-drawer-content">
           <div class="ch-cart-drawer-body">
             <div class="ch-cart-drawer-header">
               <h2 class="ch-cart-drawer-title">{{ titleLabel() }}</h2>
-              <button
-                type="button"
-                class="ch-cart-drawer-close"
-                (click)="closeDrawer()"
-                [attr.aria-label]="t('close')"
-                [attr.data-testid]="testId() + '-close'"
+              <lib-ch-ui-button
+                variant="ghost"
+                size="sm"
+                (clicked)="closeDrawer()"
+                [ariaLabel]="t('close')"
+                [testId]="testId() + '-close'"
               >
                 ✕
-              </button>
+              </lib-ch-ui-button>
             </div>
             <ng-content></ng-content>
           </div>

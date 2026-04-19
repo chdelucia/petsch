@@ -20,6 +20,8 @@
   "error": "¡Error!",
   "somethingWentWrong": "Algo salió mal",
   "noResultsFound": "No se encontraron resultados",
+  "noPetsAddedYet": "Aún no se han añadido mascotas",
+  "noPetsAddedYetMessage": "Tu lista de mascotas del día está vacía. ¡Empieza a añadir algunas!",
   "pageNotFound": "Página no encontrada",
   "pageNotFoundMessage": "Lo sentimos, no pudimos encontrar la página que estás buscando.",
   "goBackHome": "Volver al inicio",

@@ -2,12 +2,11 @@
 
 <div class="dropdown">
   <div>
-    <button
-      type="button"
-      (click)="toggle()"
-      class="dropdown-button"
-      id="menu-button"
-      [attr.data-testid]="testId() + '-button'"
+    <lib-ch-ui-button
+      variant="ghost"
+      size="sm"
+      (clicked)="toggle()"
+      [testId]="testId() + '-button'"
     >
       Sort: {{ selected.text }}
       <svg
@@ -22,7 +21,7 @@
           clip-rule="evenodd"
         />
       </svg>
-    </button>
+    </lib-ch-ui-button>
   </div>
 
   <div [class.hidden]="!isOpen()" class="dropdown-menu" role="menu">

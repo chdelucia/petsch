@@ -1,10 +1,11 @@
+import { ChButton } from "../button/button";
 import { CommonModule } from '@angular/common';
 import { Component, computed, input, output } from '@angular/core';
 import { TranslocoDirective } from '@jsverse/transloco';
 
 @Component({
   selector: 'lib-ch-ui-active-filters',
-  imports: [CommonModule, TranslocoDirective],
+  imports: [CommonModule, TranslocoDirective, ChButton],
   templateUrl: './active-filters.component.html',
   styleUrl: './active-filters.component.css',
 })

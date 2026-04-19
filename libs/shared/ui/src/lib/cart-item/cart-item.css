@@ -32,7 +32,3 @@
 .ch-cart-item__qty {
   @apply text-gray-500;
 }
-
-.ch-cart-item__remove {
-  @apply font-medium text-indigo-600 hover:text-indigo-500;
-}

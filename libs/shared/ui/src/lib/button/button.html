@@ -3,13 +3,21 @@
   [disabled]="disabled()"
   class="ch-btn"
   [ngClass]="{
-        'ch-btn--primary': variant() === 'primary',
-        'ch-btn--link': variant() === 'link',
-        'ch-btn--full-width': fullWidth(),
-        'ch-btn--disabled': disabled()
-      }"
-  (click)="handleClick()"
+    'ch-btn--primary': variant() === 'primary',
+    'ch-btn--secondary': variant() === 'secondary',
+    'ch-btn--outline': variant() === 'outline',
+    'ch-btn--ghost': variant() === 'ghost',
+    'ch-btn--link': variant() === 'link',
+    'ch-btn--sm': size() === 'sm',
+    'ch-btn--md': size() === 'md',
+    'ch-btn--lg': size() === 'lg',
+    'ch-btn--full-width': fullWidth(),
+    'ch-btn--disabled': disabled(),
+    'ch-btn--active': isActive()
+  }"
+  (click)="handleClick($event)"
   [attr.data-testid]="testId()"
+  [attr.aria-label]="ariaLabel() || null"
 >
   <ng-content></ng-content>
 </button>

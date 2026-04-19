@@ -1,21 +1,56 @@
 @reference "../../tailwind.storybook.css";
 
 .ch-btn {
-  @apply inline-flex items-center justify-center font-medium transition-colors focus:outline-none hover:cursor-pointer;
+  @apply inline-flex items-center justify-center font-medium transition-all focus:outline-none hover:cursor-pointer rounded-lg;
 }
 
+/* Variants */
 .ch-btn--primary {
-  @apply px-6 py-3 rounded-md bg-(--color-primary-600) text-white hover:bg-(--color-primary-700);
+  @apply px-6 py-3 rounded-md bg-(--color-primary-600) text-white hover:bg-(--color-primary-700) focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2;
 }
 
 .ch-btn--link {
   @apply text-(--color-primary-600) hover:text-(--color-primary-500);
 }
 
+.ch-btn--secondary {
+  @apply bg-slate-100 text-slate-900 hover:bg-slate-200 focus:ring-2 focus:ring-slate-500 focus:ring-offset-2;
+}
+
+.ch-btn--outline {
+  @apply border border-slate-200 bg-white text-slate-600 hover:bg-slate-50 focus:ring-2 focus:ring-indigo-500 focus:ring-offset-1;
+}
+
+.ch-btn--ghost {
+  @apply text-slate-600 hover:bg-slate-100 focus:ring-2 focus:ring-slate-500 focus:ring-offset-1;
+}
+
+.ch-btn--link {
+  @apply text-indigo-600 hover:text-indigo-500 p-0 rounded-none;
+}
+
+/* Sizes */
+.ch-btn--sm {
+  @apply px-3 py-1.5 text-xs;
+}
+
+.ch-btn--md {
+  @apply px-4 py-2 text-sm;
+}
+
+.ch-btn--lg {
+  @apply px-6 py-3 text-base;
+}
+
+/* States */
 .ch-btn--full-width {
   @apply w-full;
 }
 
 .ch-btn--disabled {
-  @apply opacity-50 cursor-not-allowed bg-gray-500;
+  @apply opacity-40 cursor-not-allowed pointer-events-none;
+}
+
+.ch-btn--active {
+  @apply bg-indigo-50 text-indigo-700 border-indigo-200 font-semibold z-10;
 }

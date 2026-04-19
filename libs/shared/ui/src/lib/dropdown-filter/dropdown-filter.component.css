@@ -14,10 +14,6 @@ span.selected {
   @apply relative inline-block text-left;
 }
 
-.dropdown-button {
-  @apply inline-flex justify-center text-sm font-medium text-gray-700 hover:text-gray-900 cursor-pointer;
-}
-
 .dropdown-icon {
   @apply -mr-1 ml-1 h-5 w-5 shrink-0 text-gray-400 transition-transform duration-200;
 }
