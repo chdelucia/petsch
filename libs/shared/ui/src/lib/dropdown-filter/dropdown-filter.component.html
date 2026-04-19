@@ -7,8 +7,11 @@
       size="sm"
       (clicked)="toggle()"
       [testId]="testId() + '-button'"
+      [ariaExpanded]="isOpen()"
+      [ariaHasPopup]="'listbox'"
+      [ariaControls]="testId() + '-menu'"
     >
-      Sort: {{ selected.text }}
+      {{ 'sortBy' | transloco }}: {{ selected.text }}
       <svg
         [class.open]="isOpen()"
         class="dropdown-icon"
@@ -24,17 +27,27 @@
     </lib-ch-ui-button>
   </div>
 
-  <div [class.hidden]="!isOpen()" class="dropdown-menu" role="menu">
+  <div
+    [class.hidden]="!isOpen()"
+    class="dropdown-menu"
+    role="listbox"
+    [id]="testId() + '-menu'"
+  >
     <div class="dropdown-list">
       @for (item of options(); track $index) {
         <span
           tabindex="0"
           class="dropdown-item"
+          role="option"
+          [attr.aria-selected]="
+            item.key === selected.key && item.order === selected.order
+          "
           [class.selected]="
             item.key === selected.key && item.order === selected.order
           "
           (click)="emitValue(item)"
-          (keypress)="emitValue(item)"
+          (keydown.enter)="emitValue(item)"
+          (keydown.space)="emitValue(item)"
           [attr.data-testid]="
             testId() + '-option-' + item.key + '-' + item.order
           "

@@ -18,6 +18,9 @@ export class ChButton {
   disabled = input<boolean>(false);
   isActive = input<boolean, unknown>(false, { transform: booleanAttribute });
   ariaLabel = input<string>('');
+  ariaExpanded = input<boolean | null>(null);
+  ariaHasPopup = input<boolean | string | null>(null);
+  ariaControls = input<string | null>(null);
 
   clicked = output<MouseEvent>();
 

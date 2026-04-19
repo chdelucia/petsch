@@ -9,6 +9,7 @@ import {
   output,
   signal,
 } from '@angular/core';
+import { TranslocoPipe } from '@jsverse/transloco';
 
 export interface SortOption {
   key: string;
@@ -18,7 +19,7 @@ export interface SortOption {
 
 @Component({
   selector: 'lib-ch-ui-dropdown-filter',
-  imports: [ChButton],
+  imports: [ChButton, TranslocoPipe],
   templateUrl: './dropdown-filter.component.html',
   styleUrl: './dropdown-filter.component.css',
   host: {

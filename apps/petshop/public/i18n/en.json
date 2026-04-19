@@ -52,6 +52,7 @@
   "homeTitle": "Pet Shop - Find your best friend",
   "homeDescription": "Discover a wide variety of pets available for adoption. Find your perfect companion today.",
   "detailsTitle": "Pet Shop - {{name}}",
+  "sortBy": "Sort by",
   "sort": {
     "mostPopular": "Most Popular",
     "nameAsc": "Name: Asc",

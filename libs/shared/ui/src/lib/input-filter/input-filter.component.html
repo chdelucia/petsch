@@ -7,6 +7,8 @@
       class="ch-input-filter__button-wrapper"
       [fullWidth]="true"
       [ariaLabel]="title()"
+      [ariaExpanded]="isfilterOpen()"
+      [ariaControls]="testId() + '-section'"
     >
       <div class="flex items-center justify-between w-full">
         <span class="ch-input-filter__title"> {{ title() | uppercase }}</span>
