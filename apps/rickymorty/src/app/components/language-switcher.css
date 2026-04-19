@@ -1,0 +1,9 @@
+@reference "../../styles.css";
+
+.lang-switcher-container {
+  @apply max-w-7xl m-auto px-3.5;
+}
+
+.lang-switcher {
+  @apply flex items-center justify-end gap-4 flex-wrap py-5;
+}
