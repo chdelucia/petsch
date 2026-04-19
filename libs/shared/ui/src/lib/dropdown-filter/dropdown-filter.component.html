@@ -11,7 +11,10 @@
       [ariaHasPopup]="'listbox'"
       [ariaControls]="testId() + '-menu'"
     >
-      {{ 'sortBy' | transloco }}: {{ selected.text }}
+      @if (label()) {
+        {{ label() }}:
+      }
+      {{ selected.text }}
       <svg
         [class.open]="isOpen()"
         class="dropdown-icon"
