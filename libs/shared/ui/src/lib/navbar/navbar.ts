@@ -13,10 +13,27 @@ export class ChNavbar {
   currentApp = input.required<string>();
   isMenuOpen = signal(false);
 
+  private isLocal =
+    typeof window !== 'undefined' &&
+    (window.location.hostname === 'localhost' ||
+      window.location.hostname === '127.0.0.1');
+
   apps = [
-    { id: 'petshop', name: 'navbar.petshop', url: 'https://petsch.vercel.app/' },
-    { id: 'rickymorty', name: 'navbar.rickymorty', url: 'https://rickymorty.vercel.app/' },
-    { id: 'dragonball', name: 'navbar.dragonball', url: 'https://dbch.vercel.app/' },
+    {
+      id: 'petshop',
+      name: 'navbar.petshop',
+      url: this.isLocal ? 'http://localhost:4200/' : 'https://petsch.vercel.app/',
+    },
+    {
+      id: 'rickymorty',
+      name: 'navbar.rickymorty',
+      url: this.isLocal ? 'http://localhost:4201/' : 'https://rickymorty.vercel.app/',
+    },
+    {
+      id: 'dragonball',
+      name: 'navbar.dragonball',
+      url: this.isLocal ? 'http://localhost:4202/' : 'https://dbch.vercel.app/',
+    },
   ];
 
   toggleMenu() {
