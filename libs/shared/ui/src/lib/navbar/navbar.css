@@ -1,0 +1,57 @@
+@reference "../../tailwind.storybook.css";
+
+.ch-navbar {
+  @apply sticky top-0 z-40 w-full border-b border-slate-200 bg-white/80 backdrop-blur-sm;
+}
+
+.ch-navbar__container {
+  @apply mx-auto max-w-7xl px-4 sm:px-6 lg:px-8;
+}
+
+.ch-navbar__main {
+  @apply flex h-16 items-center justify-between;
+}
+
+.ch-navbar__brand {
+  @apply flex flex-shrink-0 items-center;
+}
+
+.ch-navbar__logo {
+  @apply flex items-center;
+}
+
+.ch-navbar__desktop-links {
+  @apply hidden md:flex md:space-x-8;
+}
+
+.ch-navbar__link {
+  @apply inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-slate-500 transition-colors hover:border-slate-300 hover:text-slate-700;
+}
+
+.ch-navbar__link--active {
+  @apply border-indigo-600 text-slate-900;
+}
+
+.ch-navbar__actions {
+  @apply flex items-center gap-4;
+}
+
+.ch-navbar__lang-switcher {
+  @apply flex items-center;
+}
+
+.ch-navbar__mobile-menu-button {
+  @apply flex items-center md:hidden;
+}
+
+.ch-navbar__mobile-links {
+  @apply space-y-1 pb-3 pt-2 md:hidden;
+}
+
+.ch-navbar__mobile-link {
+  @apply block border-l-4 border-transparent py-2 pl-3 pr-4 text-base font-medium text-slate-500 transition-colors hover:border-slate-300 hover:bg-slate-50 hover:text-slate-700;
+}
+
+.ch-navbar__mobile-link--active {
+  @apply border-indigo-600 bg-indigo-50 text-indigo-700;
+}
