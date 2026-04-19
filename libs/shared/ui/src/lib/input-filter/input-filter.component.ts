@@ -66,7 +66,6 @@ export class ChInputFilter implements ControlValueAccessor, OnInit {
       .subscribe((value) => {
         this.addSearch(value);
         this.onChange(value);
-        this.closeLastSearch();
       });
   }
 
@@ -88,7 +87,13 @@ export class ChInputFilter implements ControlValueAccessor, OnInit {
     this.searchText$.next(name);
   }
 
-  togleFilter() {
+  clearSearch(): void {
+    this.value.set('');
+    this.searchText$.next('');
+    this.closeLastSearch();
+  }
+
+  toggleFilter() {
     this.isfilterOpen.update((open) => !open);
   }
 

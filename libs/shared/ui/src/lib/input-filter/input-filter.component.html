@@ -3,7 +3,7 @@
     <lib-ch-ui-button
       variant="ghost"
       size="sm"
-      (clicked)="togleFilter()"
+      (clicked)="toggleFilter()"
       class="ch-input-filter__button-wrapper"
       [fullWidth]="true"
       [ariaLabel]="title()"
@@ -63,18 +63,44 @@
         />
       </svg>
     </div>
-    <input
-      (input)="getValue($event)"
-      (focus)="openLastsearch()"
-      (click)="openLastsearch()"
-      autocomplete="off"
-      [value]="value()"
-      name="search"
-      type="text"
-      class="ch-input-filter__input"
-      [placeholder]="t('searchByName')"
-      [attr.data-testid]="testId()"
-    />
+    <div class="relative flex items-center w-full">
+      <input
+        (input)="getValue($event)"
+        (focus)="openLastsearch()"
+        (click)="openLastsearch()"
+        autocomplete="off"
+        [value]="value()"
+        name="search"
+        type="text"
+        class="ch-input-filter__input"
+        [placeholder]="t('searchByName')"
+        [attr.data-testid]="testId()"
+      />
+      @if (value()) {
+        <lib-ch-ui-button
+          variant="ghost"
+          size="sm"
+          class="ch-input-filter__clear-button"
+          (clicked)="clearSearch()"
+          [ariaLabel]="t('clearSearch')"
+        >
+          <svg
+            class="ch-input-filter__close-icon-small"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            aria-hidden="true"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M6 18L18 6M6 6l12 12"
+            />
+          </svg>
+        </lib-ch-ui-button>
+      }
+    </div>
   </div>
 
   @if (lastSearch().length) {

@@ -23,9 +23,9 @@ describe('ChInputFilter', () => {
 
   it('should toggle filter', () => {
     component.isfilterOpen.set(true);
-    component.togleFilter();
+    component.toggleFilter();
     expect(component.isfilterOpen()).toBeFalsy();
-    component.togleFilter();
+    component.toggleFilter();
     expect(component.isfilterOpen()).toBeTruthy();
   });
 
@@ -128,6 +128,13 @@ describe('ChInputFilter', () => {
     expect(onChangeSpy).toHaveBeenCalledWith('new-search');
     expect(component.isLastSearchOpen()).toBeFalsy();
     vi.useRealTimers();
+  });
+
+  it('should clear search', () => {
+    component.value.set('test');
+    component.clearSearch();
+    expect(component.value()).toBe('');
+    expect(component.isLastSearchOpen()).toBeFalsy();
   });
 
   it('should register onTouched', () => {
