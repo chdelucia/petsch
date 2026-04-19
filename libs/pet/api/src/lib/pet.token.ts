@@ -1,15 +1,15 @@
 import { InjectionToken } from '@angular/core';
-import { IPetService, GetPetsResponse } from './pet.repository';
+import { IProductService, GetProductsResponse } from './pet.repository';
 import { HttpResponse } from '@angular/common/http';
 
-export const PET_TOKEN = new InjectionToken<IPetService<unknown, unknown>>(
-  'PET',
+export const PRODUCT_TOKEN = new InjectionToken<IProductService<unknown, unknown>>(
+  'PRODUCT',
 );
 
-export interface PetApiConfig<T = unknown, F = unknown> {
+export interface ProductApiConfig<T = unknown, F = unknown> {
   baseUrl: string;
   getDetailsUrl?: (id: string) => string;
-  mapResponse?: (response: HttpResponse<T[] | unknown>) => GetPetsResponse<T>;
+  mapResponse?: (response: HttpResponse<T[] | unknown>) => GetProductsResponse<T>;
   paginationKeys?: {
     page: string;
     limit: string;
@@ -17,10 +17,10 @@ export interface PetApiConfig<T = unknown, F = unknown> {
   listRoute?: string;
 }
 
-export const PET_API_CONFIG = new InjectionToken<PetApiConfig>('PET_API_CONFIG');
+export const PRODUCT_API_CONFIG = new InjectionToken<ProductApiConfig>('PRODUCT_API_CONFIG');
 
-export type PetDataTransformer<T = unknown> = (item: T) => T;
+export type ProductDataTransformer<T = unknown> = (item: T) => T;
 
-export const PET_DATA_TRANSFORMER = new InjectionToken<PetDataTransformer>(
-  'PET_DATA_TRANSFORMER',
+export const PRODUCT_DATA_TRANSFORMER = new InjectionToken<ProductDataTransformer>(
+  'PRODUCT_DATA_TRANSFORMER',
 );

@@ -1,26 +1,26 @@
 import { TestBed } from '@angular/core/testing';
-import { PetsStore } from './pet.store';
-import { PET_TOKEN } from '@petsch/api';
+import { ProductsStore } from './pet.store';
+import { PRODUCT_TOKEN } from '@petsch/api';
 import { of } from 'rxjs';
 
-describe('PetsStore', () => {
+describe('ProductsStore', () => {
   let store: any;
   let productServiceMock: any;
 
   beforeEach(() => {
     productServiceMock = {
-      getPets: vi.fn(() => of({ products: [], pagination: {} })),
+      getProducts: vi.fn(() => of({ products: [], pagination: {} })),
       getDetails: vi.fn((id: string) => of({ id })),
     };
 
     TestBed.configureTestingModule({
       providers: [
-        PetsStore,
-        { provide: PET_TOKEN, useValue: productServiceMock },
+        ProductsStore,
+        { provide: PRODUCT_TOKEN, useValue: productServiceMock },
       ],
     });
 
-    store = TestBed.inject(PetsStore);
+    store = TestBed.inject(ProductsStore);
   });
 
   it('should have initial state', () => {
@@ -30,13 +30,13 @@ describe('PetsStore', () => {
   });
 
   it('should load products on init', () => {
-    expect(productServiceMock.getPets).toHaveBeenCalled();
+    expect(productServiceMock.getProducts).toHaveBeenCalled();
   });
 
   it('should load products and update state on success', async () => {
-    const products = [{ id: '1', name: 'Pet 1' }];
+    const products = [{ id: '1', name: 'product 1' }];
     const pagination = { next: 'url' };
-    productServiceMock.getPets.mockReturnValue(of({ products, pagination }));
+    productServiceMock.getProducts.mockReturnValue(of({ products, pagination }));
 
     await store.loadProducts({ name: 'test' });
 

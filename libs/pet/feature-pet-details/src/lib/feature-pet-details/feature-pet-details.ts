@@ -3,10 +3,10 @@ import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { Router } from '@angular/router';
 import { TranslocoDirective } from '@jsverse/transloco';
 import { ChButton, ChBadge } from '@petsch/ui';
-import { CurrentTransitionService, PET_API_CONFIG } from '@petsch/api';
+import { CurrentTransitionService, PRODUCT_API_CONFIG } from '@petsch/api';
 
 @Component({
-  selector: 'lib-feature-pet-details',
+  selector: 'lib-feature-product-details',
   imports: [
     CommonModule,
     ChButton,
@@ -17,21 +17,21 @@ import { CurrentTransitionService, PET_API_CONFIG } from '@petsch/api';
   templateUrl: './feature-pet-details.html',
   styleUrl: './feature-pet-details.css',
 })
-export class FeaturePetDetails {
-  protected readonly transitionService = inject(CurrentTransitionService);
+export class FeatureProductDetails {
+  private readonly config = inject(PRODUCT_API_CONFIG, { optional: true });
   private readonly router = inject(Router);
-  private readonly config = inject(PET_API_CONFIG, { optional: true });
+  protected readonly transitionService = inject(CurrentTransitionService);
 
   id = input.required<string>();
   product = input<unknown | null>();
 
-  showPotdDrawer = signal(false);
+  showIotdDrawer = signal(false);
 
   loading = () => false;
   error = () => null;
 
   goBack() {
-    const listRoute = this.config?.listRoute ?? '/pets';
+    const listRoute = this.config?.listRoute ?? '/products';
     this.router.navigate([listRoute]);
   }
 }

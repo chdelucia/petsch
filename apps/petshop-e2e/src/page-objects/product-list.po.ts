@@ -41,7 +41,7 @@ export class ProductListPage extends BasePage {
     await this.getSortOption(key, order).click();
   }
 
-  async addPetToDay(index: number) {
+  async addProductToDay(index: number) {
     await this.getAddButton(index).click();
   }
 }

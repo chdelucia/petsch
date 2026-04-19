@@ -1,24 +1,24 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import {
-  IPetService,
-  GetPetsResponse,
-  PET_API_CONFIG,
-  PET_DATA_TRANSFORMER,
-  PetDataTransformer,
+  IProductService,
+  GetProductsResponse,
+  PRODUCT_API_CONFIG,
+  PRODUCT_DATA_TRANSFORMER,
+  ProductDataTransformer,
 } from '@petsch/api';
 import { Observable, map } from 'rxjs';
 import { parseLinkHeader } from './utils/link-header-parser';
 
 @Injectable()
-export class PetApi<T = unknown, F = unknown> implements IPetService<T, F> {
+export class ProductApi<T = unknown, F = unknown> implements IProductService<T, F> {
   private readonly http = inject(HttpClient);
-  private readonly config = inject(PET_API_CONFIG);
-  private readonly transformer = inject(PET_DATA_TRANSFORMER, {
+  private readonly config = inject(PRODUCT_API_CONFIG);
+  private readonly transformer = inject(PRODUCT_DATA_TRANSFORMER, {
     optional: true,
-  }) as PetDataTransformer<T> | null;
+  }) as ProductDataTransformer<T> | null;
 
-  getPets(filters: Partial<F>): Observable<GetPetsResponse<T>> {
+  getProducts(filters: Partial<F>): Observable<GetProductsResponse<T>> {
     const params = new HttpParams({
       fromObject: Object.entries(filters).reduce(
         (acc, [key, value]) => {
@@ -46,7 +46,7 @@ export class PetApi<T = unknown, F = unknown> implements IPetService<T, F> {
       .pipe(
         map((response) => {
           if (this.config.mapResponse) {
-            const mapped = this.config.mapResponse(response) as GetPetsResponse<T>;
+            const mapped = this.config.mapResponse(response) as GetProductsResponse<T>;
             if (this.transformer) {
               mapped.products = mapped.products.map((item) =>
                 this.transformer!(item),

@@ -6,16 +6,16 @@ import { provideRouter } from '@angular/router';
 import { appRoutes } from './app.routes';
 import { provideHttpClient, HttpResponse } from '@angular/common/http';
 import {
-  PET_API_CONFIG,
-  PET_TOKEN,
-  PETLIST_STORE,
-  PETOFDAY_STORE,
-  PET_DATA_TRANSFORMER,
+  PRODUCT_API_CONFIG,
+  PRODUCT_TOKEN,
+  PRODUCT_LIST_STORE,
+  ITEMOFDAY_STORE,
+  PRODUCT_DATA_TRANSFORMER,
 } from '@petsch/api';
-import { PetApi } from '@petsch/data-access';
-import { PetsStore } from '@petsch/feature-pet-list';
-import { PetOfTheDayStore } from '@petsch/feature-pet-of-day';
-import { PET_FILTER_CONFIG } from '@petsch/feature-filters';
+import { ProductApi } from '@petsch/data-access';
+import { ProductsStore } from '@petsch/feature-pet-list';
+import { ItemOfTheDayStore } from '@petsch/feature-pet-of-day';
+import { PRODUCT_FILTER_CONFIG } from '@petsch/feature-filters';
 import { Character, CharactersDto } from './models/character';
 import { provideTransloco } from '@jsverse/transloco';
 import { TranslocoHttpLoader } from './transloco-loader';
@@ -30,10 +30,10 @@ export const appConfig: ApplicationConfig = {
     provideZonelessChangeDetection(),
     provideHttpClient(),
     {
-      provide: PET_API_CONFIG,
+      provide: PRODUCT_API_CONFIG,
       useValue: {
         baseUrl: 'https://rickandmortyapi.com/api/character',
-        listRoute: `/${APP_ROUTES.PETS}`,
+        listRoute: `/${APP_ROUTES.LIST}`,
         getDetailsUrl: (id: string) =>
           `https://rickandmortyapi.com/api/character/${id}`,
         mapResponse: (response: HttpResponse<Character[] | unknown>) => {
@@ -54,27 +54,27 @@ export const appConfig: ApplicationConfig = {
       },
     },
     {
-      provide: PET_DATA_TRANSFORMER,
+      provide: PRODUCT_DATA_TRANSFORMER,
       useValue: characterAdapter,
     },
     {
-      provide: PET_TOKEN,
-      useClass: PetApi,
+      provide: PRODUCT_TOKEN,
+      useClass: ProductApi,
     },
     {
-      provide: PETLIST_STORE,
-      useClass: PetsStore,
+      provide: PRODUCT_LIST_STORE,
+      useClass: ProductsStore,
     },
     {
-      provide: PETOFDAY_STORE,
-      useClass: PetOfTheDayStore,
+      provide: ITEMOFDAY_STORE,
+      useClass: ItemOfTheDayStore,
     },
     {
       provide: LOCALSTORAGE_TOKEN,
       useClass: LocalstorageService,
     },
     {
-      provide: PET_FILTER_CONFIG,
+      provide: PRODUCT_FILTER_CONFIG,
       useValue: [
         {
           key: 'name',

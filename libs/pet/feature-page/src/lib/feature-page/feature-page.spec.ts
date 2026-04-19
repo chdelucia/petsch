@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FeaturePage } from './feature-page';
 import { getTranslocoTestingModule } from '@petsch/shared-utils';
-import { PETLIST_STORE, PETOFDAY_STORE, PET_TOKEN } from '@petsch/api';
+import { PRODUCT_LIST_STORE, ITEMOFDAY_STORE, PRODUCT_TOKEN } from '@petsch/api';
 import { of } from 'rxjs';
 import { provideRouter } from '@angular/router';
 import { LOCALSTORAGE_TOKEN } from '@petsch/obs-api';
@@ -17,9 +17,9 @@ describe('FeaturePage', () => {
       providers: [
         provideRouter([]),
         {
-          provide: PET_TOKEN,
+          provide: PRODUCT_TOKEN,
           useValue: {
-            getPets: () => of({ products: [], pagination: {} }),
+            getProducts: () => of({ products: [], pagination: {} }),
             getDetails: () => of({}),
           },
         },
@@ -33,7 +33,7 @@ describe('FeaturePage', () => {
           },
         },
         {
-          provide: PETLIST_STORE,
+          provide: PRODUCT_LIST_STORE,
           useValue: {
             products: signal([]),
             loading: signal(false),
@@ -49,15 +49,15 @@ describe('FeaturePage', () => {
           },
         },
         {
-          provide: PETOFDAY_STORE,
+          provide: ITEMOFDAY_STORE,
           useValue: {
             products: signal([]),
             isOpen: signal(false),
             entries: signal([]),
             sortedEntries: signal([]),
-            isPetAddedToday: signal([]),
-            addPet: vi.fn(),
-            togglePoT: vi.fn(),
+            isItemAddedToday: signal([]),
+            addItem: vi.fn(),
+            toggleIotd: vi.fn(),
           },
         },
       ],

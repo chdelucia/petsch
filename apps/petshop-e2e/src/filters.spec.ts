@@ -9,7 +9,7 @@ test.describe('Filters', () => {
   test.beforeEach(async ({ page }) => {
     filtersPage = new FiltersPage(page);
     productListPage = new ProductListPage(page);
-    await filtersPage.goto('/pets');
+    await filtersPage.goto('/products');
   });
 
   test('should filter by name', async () => {

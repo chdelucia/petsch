@@ -1,7 +1,7 @@
 import { Component, input, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { NgOptimizedImage } from '@angular/common';
-import { PET_API_CONFIG } from '@petsch/api';
+import { PRODUCT_API_CONFIG } from '@petsch/api';
 
 @Component({
   selector: 'lib-ch-ui-card',
@@ -13,7 +13,7 @@ import { PET_API_CONFIG } from '@petsch/api';
   },
 })
 export class ChCard {
-  private readonly config = inject(PET_API_CONFIG, { optional: true });
+  private readonly config = inject(PRODUCT_API_CONFIG, { optional: true });
 
   testId = input<string>('');
   id = input.required<number>();
@@ -23,7 +23,7 @@ export class ChCard {
   priority = input<boolean>(false);
 
   get detailRoute(): string[] {
-    const listRoute = this.config?.listRoute ?? '/pets';
+    const listRoute = this.config?.listRoute ?? '/products';
     return [listRoute, this.id().toString()];
   }
 }

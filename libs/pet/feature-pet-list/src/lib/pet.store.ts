@@ -11,13 +11,13 @@ import {
 import { catchError, of, pipe, switchMap, tap } from 'rxjs';
 import { rxMethod } from '@ngrx/signals/rxjs-interop';
 import {
-  PET_TOKEN,
+  PRODUCT_TOKEN,
   PaginationLinks,
-  GetPetsResponse,
-  PET_API_CONFIG,
+  GetProductsResponse,
+  PRODUCT_API_CONFIG,
 } from '@petsch/api';
 
-export interface PetsState<T = unknown, F = Record<string, unknown>> {
+export interface ProductsState<T = unknown, F = Record<string, unknown>> {
   products: T[];
   pagination: PaginationLinks;
   filters: Partial<F>;
@@ -25,14 +25,14 @@ export interface PetsState<T = unknown, F = Record<string, unknown>> {
   error: string | null;
 }
 
-export const PetsStore = signalStore(
+export const ProductsStore = signalStore(
   { providedIn: 'root' },
   withState(() => {
-    const config = inject(PET_API_CONFIG, { optional: true });
+    const config = inject(PRODUCT_API_CONFIG, { optional: true });
     const pageKey = config?.paginationKeys?.page ?? '_page';
     const limitKey = config?.paginationKeys?.limit ?? '_limit';
 
-    const state: PetsState = {
+    const state: ProductsState = {
       products: [],
       pagination: {},
       filters: { [pageKey]: 1, [limitKey]: 12 } as Record<string, unknown>,
@@ -49,8 +49,8 @@ export const PetsStore = signalStore(
   })),
 
   withMethods((store) => {
-    const productService = inject(PET_TOKEN);
-    const config = inject(PET_API_CONFIG, { optional: true });
+    const productService = inject(PRODUCT_TOKEN);
+    const config = inject(PRODUCT_API_CONFIG, { optional: true });
 
     const pageKey = config?.paginationKeys?.page ?? '_page';
     const limitKey = config?.paginationKeys?.limit ?? '_limit';
@@ -65,7 +65,7 @@ export const PetsStore = signalStore(
         products: [],
       });
 
-    const setResult = (result: GetPetsResponse<unknown>) =>
+    const setResult = (result: GetProductsResponse<unknown>) =>
       patchState(store, {
         products: result.products,
         pagination: result.pagination,
@@ -116,7 +116,7 @@ export const PetsStore = signalStore(
         pipe(
           tap(() => setLoading(true)),
           switchMap(() =>
-            productService.getPets(store.query()).pipe(
+            productService.getProducts(store.query()).pipe(
               catchError((err) => {
                 setError(err?.message ?? 'Failed to load products');
                 return of(null);

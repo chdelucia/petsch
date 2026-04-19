@@ -1,9 +1,9 @@
 export const APP_ROUTES = {
-  PETS: 'pets',
+  LIST: 'products',
   NOT_FOUND: '404',
 } as const;
 
 export const PRODUCT_ROUTES = {
-  LIST: '',
+  LIST: 'products',
   DETAILS: ':id',
 } as const;

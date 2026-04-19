@@ -9,7 +9,7 @@ test.describe('Combined Filters', () => {
   test.beforeEach(async ({ page }) => {
     filtersPage = new FiltersPage(page);
     productListPage = new ProductListPage(page);
-    await filtersPage.goto('/pets');
+    await filtersPage.goto('/products');
   });
 
   test('should apply name, kind and sort filters together', async () => {

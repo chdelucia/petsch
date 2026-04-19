@@ -15,7 +15,7 @@ test.describe('Product Details', () => {
     await expect(productDetailsPage.page.locator('h1')).not.toBeEmpty();
 
     await productDetailsPage.goBack();
-    await expect(productDetailsPage.page).toHaveURL(/\/pets$/);
+    await expect(productDetailsPage.page).toHaveURL(/\/products$/);
   });
 
   test('should show error for non-existent product', async () => {

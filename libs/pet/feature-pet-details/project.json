@@ -1,17 +1,14 @@
 {
   "name": "feature-pet-details",
-  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/pet/feature-pet-details/src",
   "prefix": "lib",
+  "tags": ["scope:pet", "type:feature"],
   "projectType": "library",
-  "tags": ["scope:product", "type:feature"],
   "targets": {
     "test": {
-      "executor": "@nx/vitest:test",
-      "outputs": ["{options.reportsDirectory}"],
-      "options": {
-        "reportsDirectory": "coverage/libs/pet/feature-pet-details"
-      }
+      "executor": "@angular/build:unit-test",
+      "options": {}
     },
     "lint": {
       "executor": "@nx/eslint:lint"

@@ -1,7 +1,7 @@
 {
   "name": "data-access",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "libs/pet/data-access/src",
+  "sourceRoot": "libs/product/data-access/src",
   "prefix": "lib",
   "projectType": "library",
   "tags": ["scope:product", "type:data-access"],
@@ -10,7 +10,7 @@
       "executor": "@nx/vitest:test",
       "outputs": ["{options.reportsDirectory}"],
       "options": {
-        "reportsDirectory": "coverage/libs/pet/data-access",
+        "reportsDirectory": "coverage/libs/product/data-access",
         "passWithNoTests": true
       }
     },

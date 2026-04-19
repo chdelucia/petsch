@@ -1,7 +1,7 @@
-# feature-pet-list
+# feature-product-list
 
 This library was generated with [Nx](https://nx.dev).
 
 ## Running unit tests
 
-Run `nx test feature-pet-list` to execute the unit tests.
+Run `nx test feature-product-list` to execute the unit tests.

@@ -6,7 +6,7 @@ test.describe('Pagination', () => {
 
   test.beforeEach(async ({ page }) => {
     productListPage = new ProductListPage(page);
-    await productListPage.goto('/pets');
+    await productListPage.goto('/products');
   });
 
   test('should navigate to next and previous pages', async () => {

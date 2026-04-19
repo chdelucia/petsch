@@ -24,7 +24,7 @@
   @apply lg:col-span-10;
 }
 
-.potd-actions {
+.iotd-actions {
   @apply flex justify-end p-4;
 }
 

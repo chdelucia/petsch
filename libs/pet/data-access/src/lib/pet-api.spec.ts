@@ -3,30 +3,30 @@ import {
   provideHttpClientTesting,
   HttpTestingController,
 } from '@angular/common/http/testing';
-import { PetApi } from './pet-api';
-import { PET_API_CONFIG, PET_DATA_TRANSFORMER } from '@petsch/api';
+import { ProductApi } from './pet-api';
+import { PRODUCT_API_CONFIG, PRODUCT_DATA_TRANSFORMER } from '@petsch/api';
 
-describe('Products', () => {
-  let service: PetApi;
+describe('products', () => {
+  let service: ProductApi;
   let httpMock: HttpTestingController;
-  const baseUrl = 'https://api.example.com/pets';
+  const baseUrl = 'https://api.example.com/products';
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [
-        PetApi,
+        ProductApi,
         provideHttpClientTesting(),
         {
-          provide: PET_API_CONFIG,
+          provide: PRODUCT_API_CONFIG,
           useValue: { baseUrl },
         },
         {
-          provide: PET_DATA_TRANSFORMER,
+          provide: PRODUCT_DATA_TRANSFORMER,
           useValue: (item: any) => ({ ...item, health: 'healthy' }),
         },
       ],
     });
-    service = TestBed.inject(PetApi);
+    service = TestBed.inject(ProductApi);
     httpMock = TestBed.inject(HttpTestingController);
   });
 
@@ -42,7 +42,7 @@ describe('Products', () => {
     const name = 'Batman';
     const page = 1;
 
-    service.getPets({ name, page } as any).subscribe((response) => {
+    service.getProducts({ name, page } as any).subscribe((response) => {
       expect(response.products.length).toBe(1);
       expect(response.products[0].name).toBe('Batman');
     });
@@ -68,9 +68,9 @@ describe('Products', () => {
       length: 1,
     };
 
-    service.getDetails(id).subscribe((pet) => {
-      expect(pet.id).toBe(3);
-      expect(pet.health).toBe('healthy');
+    service.getDetails(id).subscribe((product) => {
+      expect(product.id).toBe(3);
+      expect(product.health).toBe('healthy');
     });
     const req = httpMock.expectOne(`${baseUrl}/${id}`);
     expect(req.request.method).toBe('GET');

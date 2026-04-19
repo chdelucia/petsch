@@ -1,22 +1,22 @@
 <ng-container *transloco="let t">
   <lib-ch-ui-cart-drawer
     testId="cart-drawer"
-    [open]="potdStore.isOpen()"
-    (openChange)="potdStore.togglePoT($event)"
-    [titleLabel]="t('petOfTheDay')"
+    [open]="iotdStore.isOpen()"
+    (openChange)="iotdStore.toggleIotd($event)"
+    [titleLabel]="t('productOfTheDay')"
   >
     <div class="ch-cart-list">
       <ul class="ch-cart-list__items">
-        @for (entry of $any(potdStore.sortedEntries()); track entry.date) {
+        @for (entry of $any(iotdStore.sortedEntries()); track entry.date) {
         <li>
           <lib-ch-ui-cart-item
             testId="cart-item"
-            [imageSrc]="entry.pet.photo_url"
-            [name]="entry.pet.name"
+            [imageSrc]="entry.product.photo_url"
+            [name]="entry.product.name"
             [day]="entry.date"
             [showRemove]="entry.date === today"
-            [description]="entry.pet.description"
-            (remove)="potdStore.removePet(entry.date)"
+            [description]="entry.product.description"
+            (remove)="iotdStore.removeItem(entry.date)"
           ></lib-ch-ui-cart-item>
         </li>
         }

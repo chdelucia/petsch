@@ -1,7 +1,7 @@
 {
   "name": "api",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "libs/pet/api/src",
+  "sourceRoot": "libs/product/api/src",
   "prefix": "lib",
   "projectType": "library",
   "tags": ["scope:product", "type:api"],
@@ -10,7 +10,7 @@
       "executor": "@nx/vitest:test",
       "outputs": ["{options.reportsDirectory}"],
       "options": {
-        "reportsDirectory": "coverage/libs/pet/api",
+        "reportsDirectory": "coverage/libs/product/api",
         "passWithNoTests": true
       }
     },
