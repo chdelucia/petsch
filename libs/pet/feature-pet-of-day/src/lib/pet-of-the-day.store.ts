@@ -26,9 +26,9 @@ export const PetOfTheDayStore = signalStore(
   withComputed((store) => {
     return {
       sortedEntries: computed(() => {
-        return [...store.entries()].sort(
-          (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
-        );
+        // Optimization: ISO dates (YYYY-MM-DD) can be compared directly as strings using operators,
+        // which is faster than localeCompare and avoids expensive Date object instantiation.
+        return [...store.entries()].sort((a, b) => (b.date > a.date ? 1 : -1));
       }),
       todayPet: computed(() => {
         const today = new Date().toISOString().split('T')[0];
