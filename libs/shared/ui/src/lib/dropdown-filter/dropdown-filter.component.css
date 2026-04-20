@@ -7,7 +7,7 @@ svg {
   }
 }
 span.selected {
-  @apply font-medium text-indigo-600;
+  @apply font-medium text-primary-600;
 }
 
 .dropdown {
@@ -31,9 +31,9 @@ span.selected {
 }
 
 .dropdown-item {
-  @apply text-gray-500 block px-4 py-2 text-sm cursor-pointer hover:bg-indigo-100;
+  @apply text-gray-500 block px-4 py-2 text-sm cursor-pointer hover:bg-primary-100;
 }
 
 .dropdown-item.selected {
-  @apply font-semibold text-gray-900 bg-indigo-50;
+  @apply font-semibold text-gray-900 bg-primary-50;
 }

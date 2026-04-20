@@ -33,7 +33,7 @@
 }
 
 .ch-input-filter__input {
-  @apply block w-full rounded-md border-0 py-1.5 pl-9 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6;
+  @apply block w-full rounded-md border-0 py-1.5 pl-9 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6;
 }
 
 .ch-input-filter__last-searches {
@@ -52,7 +52,7 @@
 }
 
 .ch-input-filter__last-search-text {
-  @apply w-11/12 hover:text-indigo-600 hover:font-bold;
+  @apply w-11/12 hover:text-primary-600 hover:font-bold;
 }
 
 .ch-input-filter__close-icon {
