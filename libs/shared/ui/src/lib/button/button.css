@@ -1,4 +1,4 @@
-@reference "../../tailwind.storybook.css";
+@reference "../../theme-reference.css";
 
 .ch-btn {
   @apply inline-flex items-center justify-center font-medium transition-all focus:outline-none hover:cursor-pointer rounded-lg;
@@ -6,11 +6,11 @@
 
 /* Variants */
 .ch-btn--primary {
-  @apply px-6 py-3 rounded-md bg-indigo-600 text-white hover:bg-indigo-700 focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2;
+  @apply px-6 py-3 rounded-md bg-primary-600 text-white hover:bg-primary-700 focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2;
 }
 
 .ch-btn--link {
-  @apply text-indigo-600 hover:text-indigo-500 p-0 rounded-none;
+  @apply text-primary-600 hover:text-primary-500 p-0 rounded-none;
 }
 
 .ch-btn--secondary {

@@ -1,4 +1,4 @@
-@reference "../../../../../../apps/petshop/src/styles.css";
+@reference "../../theme-reference.css";
 
 .ch-badge {
   @apply inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium;
@@ -9,9 +9,9 @@
 }
 
 .ch-badge--healthy {
-  @apply bg-(--color-primary-100) text-(--color-primary-800);
+  @apply bg-primary-100 text-primary-800;
 }
 
 .ch-badge--very-healthy {
-  @apply bg-(--color-primary-200) text-(--color-primary-900);
+  @apply bg-primary-200 text-primary-900;
 }
