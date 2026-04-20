@@ -23,9 +23,9 @@ describe('ChRadioFilter', () => {
 
   it('should toggle filter', () => {
     component.isOpen.set(true);
-    component.togleFilter();
+    component.toggleFilter();
     expect(component.isOpen()).toBeFalsy();
-    component.togleFilter();
+    component.toggleFilter();
     expect(component.isOpen()).toBeTruthy();
   });
 

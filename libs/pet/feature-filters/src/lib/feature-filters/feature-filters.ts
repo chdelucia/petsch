@@ -66,8 +66,10 @@ export class FeatureFilters {
   readonly store = inject(PRODUCT_LIST_STORE);
   private readonly transloco = inject(TranslocoService);
   private readonly config = inject(PRODUCT_FILTER_CONFIG, { optional: true });
+  private readonly lang = toSignal(this.transloco.langChanges$);
 
   readonly filterConfigs = computed<FilterConfig[]>(() => {
+    this.lang();
     const baseConfig = (this.config ?? DEFAULT_PRODUCT_FILTERS) as FilterConfig[];
     return baseConfig.map((c: FilterConfig) => ({
       ...c,

@@ -47,7 +47,7 @@ export class ChRadioFilter implements ControlValueAccessor {
     this.onChange(name);
   }
 
-  togleFilter() {
+  toggleFilter() {
     this.isOpen.update((current) => !current);
   }
 }
