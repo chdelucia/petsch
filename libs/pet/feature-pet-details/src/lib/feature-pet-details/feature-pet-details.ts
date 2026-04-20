@@ -3,7 +3,7 @@ import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { Router } from '@angular/router';
 import { TranslocoDirective } from '@jsverse/transloco';
 import { ChButton, ChBadge } from '@petsch/ui';
-import { CurrentTransitionService, PET_API_CONFIG } from '@petsch/api';
+import { CurrentTransitionService, PET_UI_CONFIG } from '@petsch/api';
 
 @Component({
   selector: 'lib-feature-pet-details',
@@ -20,7 +20,7 @@ import { CurrentTransitionService, PET_API_CONFIG } from '@petsch/api';
 export class FeaturePetDetails {
   protected readonly transitionService = inject(CurrentTransitionService);
   private readonly router = inject(Router);
-  private readonly config = inject(PET_API_CONFIG, { optional: true });
+  private readonly config = inject(PET_UI_CONFIG, { optional: true });
 
   id = input.required<string>();
   product = input<unknown | null>();

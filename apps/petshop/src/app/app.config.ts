@@ -21,13 +21,12 @@ import {
   LocalstorageService,
 } from '@petsch/obs-data-access';
 import {
-  PET_TOKEN,
   CurrentTransitionService,
-  PET_API_CONFIG,
+  PET_UI_CONFIG,
   PET_DATA_TRANSFORMER,
 } from '@petsch/api';
 import { enrichPetWithHealth } from './utils/health-adapter';
-import { PetApi } from '@petsch/data-access';
+import { providePetShopPetApi } from '@petsch/api-petshop';
 import { LOCALSTORAGE_TOKEN } from '@petsch/obs-api';
 import { provideHttpClient } from '@angular/common/http';
 import { TranslocoHttpLoader } from './transloco-loader';
@@ -48,10 +47,8 @@ export const appConfig: ApplicationConfig = {
     ...OBSERVABILITY_PROVIDERS,
     ...OBSERVABILITY_ENV_PROVIDERS,
     {
-      provide: PET_API_CONFIG,
+      provide: PET_UI_CONFIG,
       useValue: {
-        baseUrl:
-          'https://my-json-server.typicode.com/Feverup/fever_pets_data/pets',
         listRoute: '/pets',
       },
     },
@@ -59,10 +56,7 @@ export const appConfig: ApplicationConfig = {
       provide: PET_DATA_TRANSFORMER,
       useValue: enrichPetWithHealth,
     },
-    {
-      provide: PET_TOKEN,
-      useClass: PetApi,
-    },
+    providePetShopPetApi(),
     {
       provide: LOCALSTORAGE_TOKEN,
       useClass: LocalstorageService,

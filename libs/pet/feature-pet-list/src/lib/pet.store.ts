@@ -14,7 +14,7 @@ import {
   PET_TOKEN,
   PaginationLinks,
   GetPetsResponse,
-  PET_API_CONFIG,
+  PET_UI_CONFIG,
 } from '@petsch/api';
 
 export interface PetsState<T = unknown, F = Record<string, unknown>> {
@@ -28,7 +28,7 @@ export interface PetsState<T = unknown, F = Record<string, unknown>> {
 export const PetsStore = signalStore(
   { providedIn: 'root' },
   withState(() => {
-    const config = inject(PET_API_CONFIG, { optional: true });
+    const config = inject(PET_UI_CONFIG, { optional: true });
     const pageKey = config?.paginationKeys?.page ?? '_page';
     const limitKey = config?.paginationKeys?.limit ?? '_limit';
 
@@ -50,7 +50,7 @@ export const PetsStore = signalStore(
 
   withMethods((store) => {
     const productService = inject(PET_TOKEN);
-    const config = inject(PET_API_CONFIG, { optional: true });
+    const config = inject(PET_UI_CONFIG, { optional: true });
 
     const pageKey = config?.paginationKeys?.page ?? '_page';
     const limitKey = config?.paginationKeys?.limit ?? '_limit';

@@ -6,17 +6,15 @@ import { provideRouter, withComponentInputBinding } from '@angular/router';
 import { appRoutes } from './app.routes';
 import { provideHttpClient, HttpResponse } from '@angular/common/http';
 import {
-  PET_API_CONFIG,
-  PET_TOKEN,
+  PET_UI_CONFIG,
   PETLIST_STORE,
   PETOFDAY_STORE,
   PET_DATA_TRANSFORMER,
 } from '@petsch/api';
-import { PetApi } from '@petsch/data-access';
+import { provideDragonBallPetApi } from '@petsch/api-dragonball';
 import { PetsStore } from '@petsch/feature-pet-list';
 import { PetOfTheDayStore } from '@petsch/feature-pet-of-day';
 import { PET_FILTER_CONFIG } from '@petsch/feature-filters';
-import { Character, DragonballDto } from './models/character';
 import { provideTransloco } from '@jsverse/transloco';
 import { TranslocoHttpLoader } from './transloco-loader';
 import { LOCALSTORAGE_TOKEN } from '@petsch/obs-api';
@@ -30,31 +28,9 @@ export const appConfig: ApplicationConfig = {
     provideZonelessChangeDetection(),
     provideHttpClient(),
     {
-      provide: PET_API_CONFIG,
+      provide: PET_UI_CONFIG,
       useValue: {
-        baseUrl: 'https://dragonball-api.com/api/characters',
         listRoute: `/${APP_ROUTES.PETS}`,
-        getDetailsUrl: (id: string) =>
-          `https://dragonball-api.com/api/characters/${id}`,
-        mapResponse: (response: HttpResponse<Character[] | DragonballDto | unknown>) => {
-          if (Array.isArray(response.body)) {
-             return {
-                products: response.body,
-                pagination: {
-                  pages: 1,
-                }
-             }
-          }
-          const body = response.body as DragonballDto;
-          return {
-            products: body.items,
-            pagination: {
-              pages: body.meta.totalPages,
-              next: body.links.next || undefined,
-              prev: body.links.previous || undefined,
-            },
-          };
-        },
         paginationKeys: {
           page: 'page',
           limit: 'limit',
@@ -65,10 +41,7 @@ export const appConfig: ApplicationConfig = {
       provide: PET_DATA_TRANSFORMER,
       useValue: characterAdapter,
     },
-    {
-      provide: PET_TOKEN,
-      useClass: PetApi,
-    },
+    provideDragonBallPetApi(),
     {
       provide: PETLIST_STORE,
       useClass: PetsStore,
