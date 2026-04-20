@@ -1,15 +1,15 @@
 import { getTranslocoTestingModule } from '@petsch/shared-utils';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { FeaturePetList } from './feature-pet-list';
+import { FeatureProductList } from './feature-pet-list';
 import { provideRouter } from '@angular/router';
 import { of } from 'rxjs';
-import { PETLIST_STORE, PETOFDAY_STORE, PET_TOKEN } from '@petsch/api';
+import { PRODUCT_LIST_STORE, ITEM_OF_DAY_STORE, PRODUCT_TOKEN } from '@petsch/api';
 import { LOCALSTORAGE_TOKEN } from '@petsch/obs-api';
 import { signal } from '@angular/core';
 
-describe('FeaturePetList', () => {
-  let component: FeaturePetList;
-  let fixture: ComponentFixture<FeaturePetList>;
+describe('FeatureProductList', () => {
+  let component: FeatureProductList;
+  let fixture: ComponentFixture<FeatureProductList>;
   let store: any;
 
   beforeEach(async () => {
@@ -29,9 +29,9 @@ describe('FeaturePetList', () => {
     };
 
     await TestBed.configureTestingModule({
-      imports: [getTranslocoTestingModule(), FeaturePetList],
+      imports: [getTranslocoTestingModule(), FeatureProductList],
       providers: [
-        { provide: PETLIST_STORE, useValue: store },
+        { provide: PRODUCT_LIST_STORE, useValue: store },
         provideRouter([]),
         {
           provide: LOCALSTORAGE_TOKEN,
@@ -43,25 +43,25 @@ describe('FeaturePetList', () => {
           },
         },
         {
-          provide: PET_TOKEN,
+          provide: PRODUCT_TOKEN,
           useValue: {
-            getPets: () => of({ products: [], pagination: {} }),
+            getProducts: () => of({ products: [], pagination: {} }),
             getDetails: () => of({}),
           },
         },
         {
-          provide: PETOFDAY_STORE,
+          provide: ITEM_OF_DAY_STORE,
           useValue: {
             entries: signal([]),
-            isPetAddedToday: signal(false),
-            addPet: vi.fn(),
-            removePet: vi.fn(),
+            isItemAddedToday: signal(false),
+            addItem: vi.fn(),
+            removeItem: vi.fn(),
           },
         },
       ],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(FeaturePetList);
+    fixture = TestBed.createComponent(FeatureProductList);
     component = fixture.componentInstance;
     fixture.componentRef.setInput('showFilters', true);
     await fixture.whenStable();
@@ -77,16 +77,16 @@ describe('FeaturePetList', () => {
     expect(store.applyPagination).toHaveBeenCalledWith(2);
   });
 
-  it('should call handlePotdClick and call potdStore.addPet if not added today', () => {
+  it('should call handleIotdClick and call iotdStore.addItem if not added today', () => {
     const pet = { id: '1' } as any;
-    const spy = vi.spyOn(component['potdStore'], 'addPet');
-    component.handlePotdClick(pet);
+    const spy = vi.spyOn(component['iotdStore'], 'addItem');
+    component.handleIotdClick(pet);
     expect(spy).toHaveBeenCalledWith(pet);
   });
 
   it('should show pagination if products are present even if loading', () => {
-    store.products.set([{ id: 1, name: 'Pet 1' }]);
-    store.products.set([{ id: 1, name: 'Pet 1' }]);
+    store.products.set([{ id: 1, name: 'Product 1' }]);
+    store.products.set([{ id: 1, name: 'Product 1' }]);
     store.loading.set(true);
     fixture.detectChanges();
 

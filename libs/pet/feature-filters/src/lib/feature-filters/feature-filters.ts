@@ -12,7 +12,7 @@ import {
 } from '@angular/core/rxjs-interop';
 import { form as angularForm, FormField } from '@angular/forms/signals';
 import { TranslocoService, TranslocoDirective } from '@jsverse/transloco';
-import { PETLIST_STORE } from '@petsch/api';
+import { PRODUCT_LIST_STORE } from '@petsch/api';
 import { debounceTime, merge, Observable, skip } from 'rxjs';
 import {
   ChInputFilter,
@@ -28,11 +28,11 @@ export interface FilterConfig {
   initialValue?: string | number | boolean;
 }
 
-export const PET_FILTER_CONFIG = new InjectionToken<FilterConfig[]>(
-  'PET_FILTER_CONFIG',
+export const PRODUCT_FILTER_CONFIG = new InjectionToken<FilterConfig[]>(
+  'PRODUCT_FILTER_CONFIG',
 );
 
-const DEFAULT_PET_FILTERS: FilterConfig[] = [
+const DEFAULT_PRODUCT_FILTERS: FilterConfig[] = [
   {
     key: 'name_like',
     type: 'input',
@@ -63,12 +63,12 @@ const DEFAULT_PET_FILTERS: FilterConfig[] = [
   templateUrl: './feature-filters.html',
 })
 export class FeatureFilters {
-  readonly store = inject(PETLIST_STORE);
+  readonly store = inject(PRODUCT_LIST_STORE);
   private readonly transloco = inject(TranslocoService);
-  private readonly config = inject(PET_FILTER_CONFIG, { optional: true });
+  private readonly config = inject(PRODUCT_FILTER_CONFIG, { optional: true });
 
   readonly filterConfigs = computed<FilterConfig[]>(() => {
-    const baseConfig = (this.config ?? DEFAULT_PET_FILTERS) as FilterConfig[];
+    const baseConfig = (this.config ?? DEFAULT_PRODUCT_FILTERS) as FilterConfig[];
     return baseConfig.map((c: FilterConfig) => ({
       ...c,
       options: c.options?.map((o: { value: string; text: string }) => ({
@@ -79,7 +79,7 @@ export class FeatureFilters {
   });
 
   readonly form = signal<Partial<Record<string, unknown>>>(
-    ((this.config ?? DEFAULT_PET_FILTERS) as FilterConfig[]).reduce(
+    ((this.config ?? DEFAULT_PRODUCT_FILTERS) as FilterConfig[]).reduce(
       (acc: Record<string, unknown>, c: FilterConfig) => ({
         ...acc,
         [c.key]: c.initialValue ?? '',
@@ -92,7 +92,7 @@ export class FeatureFilters {
 
   constructor() {
     const filterChanges$ = (
-      (this.config ?? DEFAULT_PET_FILTERS) as FilterConfig[]
+      (this.config ?? DEFAULT_PRODUCT_FILTERS) as FilterConfig[]
     ).map((config: FilterConfig) => {
       const field = (this.formTree as Record<string, any>)[config.key]();
       return toObservable(field.value).pipe(

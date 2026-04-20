@@ -1,5 +1,5 @@
 export const APP_ROUTES = {
-  PETS: 'pets',
+  PRODUCTS: 'pets',
   NOT_FOUND: '404',
 } as const;
 

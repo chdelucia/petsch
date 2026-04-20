@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 
 export const APP_ROUTES = {
-  PETS: 'dragonball',
+  PRODUCTS: 'dragonball',
   NOT_FOUND: '404',
 } as const;
 
@@ -13,11 +13,11 @@ export const PRODUCT_ROUTES = {
 export const appRoutes: Routes = [
   {
     path: '',
-    redirectTo: APP_ROUTES.PETS,
+    redirectTo: APP_ROUTES.PRODUCTS,
     pathMatch: 'full',
   },
   {
-    path: APP_ROUTES.PETS,
+    path: APP_ROUTES.PRODUCTS,
     loadChildren: () => import('@petsch/shell').then((m) => m.shellRoutes),
   },
 ];

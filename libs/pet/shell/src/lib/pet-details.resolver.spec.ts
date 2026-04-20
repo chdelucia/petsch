@@ -1,19 +1,19 @@
 import { TestBed } from '@angular/core/testing';
-import { petResolver } from './pet-details.resolver';
-import { PET_TOKEN } from '@petsch/api';
+import { productResolver } from './pet-details.resolver';
+import { PRODUCT_TOKEN } from '@petsch/api';
 import { of } from 'rxjs';
 import { ActivatedRouteSnapshot, convertToParamMap } from '@angular/router';
 
-describe('petResolver', () => {
+describe('productResolver', () => {
   let productServiceMock: any;
 
   beforeEach(() => {
     productServiceMock = {
-      getDetails: vi.fn((id: string) => of({ id, name: 'Test Pet' })),
+      getDetails: vi.fn((id: string) => of({ id, name: 'Test Product' })),
     };
 
     TestBed.configureTestingModule({
-      providers: [{ provide: PET_TOKEN, useValue: productServiceMock }],
+      providers: [{ provide: PRODUCT_TOKEN, useValue: productServiceMock }],
     });
   });
 
@@ -23,12 +23,12 @@ describe('petResolver', () => {
     } as unknown as ActivatedRouteSnapshot;
 
     const result = TestBed.runInInjectionContext(() =>
-      petResolver(route, {} as any),
+      productResolver(route, {} as any),
     );
 
     expect(productServiceMock.getDetails).toHaveBeenCalledWith('123');
     result.subscribe((data) => {
-      expect(data).toEqual({ id: '123', name: 'Test Pet' });
+      expect(data).toEqual({ id: '123', name: 'Test Product' });
     });
   });
 });

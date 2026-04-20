@@ -1,10 +1,10 @@
 {
   "navbar": {
-    "petshop": "Pet Shop",
+    "petshop": "Store",
     "rickymorty": "Rick & Morty",
     "dragonball": "Dragon Ball"
   },
-  "pets": "Pets",
+  "products": "Products",
   "name": "Name",
   "status": "Status",
   "species": "Species",
@@ -21,9 +21,9 @@
   "lastSearches": "Last searches",
   "close": "Close",
   "activeFilters": "Active filters",
-  "addAsPetOfTheDay": "Add favorite",
-  "petOfTheDay": "Favorite",
-  "viewPetOfTheDay": "View favorite",
+  "addItemToDay": "Add favorite",
+  "itemOfTheDay": "Favorite",
+  "viewItemOfTheDay": "View favorite",
   "backToListing": "Back to listing",
   "error": "Error!",
   "somethingWentWrong": "Something went wrong",
@@ -70,9 +70,9 @@
   "continueShopping": "Close",
   "searchByName": "Search by name",
   "toggleFilters": "Toggle filters",
-  "homeTitle": "Pet Shop - Find your best friend",
-  "homeDescription": "Discover a wide variety of pets available for adoption. Find your perfect companion today.",
-  "detailsTitle": "Pet Shop - {{name}}",
+  "homeTitle": "Store - Find your best friend",
+  "homeDescription": "Discover a wide variety available for adoption. Find what you are looking for today.",
+  "detailsTitle": "Store - {{name}}",
   "sort": {
     "mostPopular": "Most Popular",
     "nameAsc": "Name: Asc",

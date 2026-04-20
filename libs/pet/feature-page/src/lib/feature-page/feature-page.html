@@ -1,6 +1,6 @@
 <ng-container *transloco="let t">
   <lib-ch-ui-product-list-header
-    [text]="t('pets')"
+    [text]="t('products')"
     [showFilters]="showFilters()"
     (toggleFilters)="toggleFilters()"
   >
@@ -32,11 +32,11 @@
       [class.chars__filters--hidden]="!showFilters()"
     ></lib-feature-filters>
 
-    <lib-feature-pet-list
+    <lib-feature-product-list
       class="chars__list"
       [class.chars__list--no-filters]="!showFilters()"
       [showFilters]="showFilters()"
-    ></lib-feature-pet-list>
+    ></lib-feature-product-list>
   </div>
 </section>
-<lib-feature-pet-of-day></lib-feature-pet-of-day>
+<lib-feature-item-of-day></lib-feature-item-of-day>

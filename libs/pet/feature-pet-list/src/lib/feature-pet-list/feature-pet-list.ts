@@ -1,9 +1,9 @@
 import { Component, inject, computed, input, Signal } from '@angular/core';
 import {
   CurrentTransitionService,
-  PETLIST_STORE,
-  PETOFDAY_STORE,
-  PET_UI_CONFIG,
+  PRODUCT_LIST_STORE,
+  ITEM_OF_DAY_STORE,
+  PRODUCT_UI_CONFIG,
 } from '@petsch/api';
 import {
   ChButton,
@@ -17,7 +17,7 @@ import {
 import { TranslocoDirective } from '@jsverse/transloco';
 
 @Component({
-  selector: 'lib-feature-pet-list',
+  selector: 'lib-feature-product-list',
   imports: [
     ChCardSkeleton,
     ChFilterSkeleton,
@@ -30,10 +30,10 @@ import { TranslocoDirective } from '@jsverse/transloco';
   templateUrl: './feature-pet-list.html',
   styleUrl: './feature-pet-list.css',
 })
-export class FeaturePetList {
-  private readonly store = inject(PETLIST_STORE);
-  private readonly config = inject(PET_UI_CONFIG, { optional: true });
-  protected readonly potdStore = inject(PETOFDAY_STORE);
+export class FeatureProductList {
+  private readonly store = inject(PRODUCT_LIST_STORE);
+  private readonly config = inject(PRODUCT_UI_CONFIG, { optional: true });
+  protected readonly iotdStore = inject(ITEM_OF_DAY_STORE);
   protected readonly transitionService = inject(CurrentTransitionService);
 
   showFilters = input.required<boolean>();
@@ -60,8 +60,8 @@ export class FeaturePetList {
   loading = computed(() => this.store.loading());
   error = this.store.error;
 
-  potdButtonText = computed(() =>
-    this.potdStore.isPetAddedToday() ? 'viewPetOfTheDay' : 'addAsPetOfTheDay',
+  iotdButtonText = computed(() =>
+    this.iotdStore.isItemAddedToday() ? 'viewItemOfTheDay' : 'addItemToDay',
   );
 
   handlePageChange(page: number): void {
@@ -69,11 +69,11 @@ export class FeaturePetList {
     this.store.loadProducts();
   }
 
-  handlePotdClick(pet: unknown): void {
-    if (this.potdStore.isPetAddedToday()) {
-      this.potdStore.togglePoT(true);
+  handleIotdClick(product: unknown): void {
+    if (this.iotdStore.isItemAddedToday()) {
+      this.iotdStore.toggleIotd(true);
     } else {
-      this.potdStore.addPet(pet);
+      this.iotdStore.addItem(product);
     }
   }
 }

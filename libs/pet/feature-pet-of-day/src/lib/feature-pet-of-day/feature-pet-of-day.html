@@ -1,23 +1,23 @@
 <ng-container *transloco="let t">
   <lib-ch-ui-cart-drawer
     testId="cart-drawer"
-    [open]="potdStore.isOpen()"
-    (openChange)="potdStore.togglePoT($event)"
-    [titleLabel]="t('petOfTheDay')"
+    [open]="iotdStore.isOpen()"
+    (openChange)="iotdStore.toggleIotd($event)"
+    [titleLabel]="t('itemOfTheDay')"
   >
     <div class="ch-cart-list">
-      @if (potdStore.entries().length > 0) {
+      @if (iotdStore.entries().length > 0) {
       <ul class="ch-cart-list__items">
-        @for (entry of $any(potdStore.sortedEntries()); track entry.date) {
+        @for (entry of $any(iotdStore.sortedEntries()); track entry.date) {
         <li>
           <lib-ch-ui-cart-item
             testId="cart-item"
-            [imageSrc]="entry.pet.photo_url"
-            [name]="entry.pet.name"
+            [imageSrc]="entry.product.photo_url"
+            [name]="entry.product.name"
             [day]="entry.date"
             [showRemove]="entry.date === today"
-            [description]="entry.pet.description"
-            (remove)="potdStore.removePet(entry.date)"
+            [description]="entry.product.description"
+            (remove)="iotdStore.removeItem(entry.date)"
           ></lib-ch-ui-cart-item>
         </li>
         }
@@ -38,9 +38,9 @@
             d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"
           />
         </svg>
-        <h3 class="ch-cart-list__empty-title">{{ t('noPetsAddedYet') }}</h3>
+        <h3 class="ch-cart-list__empty-title">{{ t('noItemsAddedYet') }}</h3>
         <p class="ch-cart-list__empty-message">
-          {{ t('noPetsAddedYetMessage') }}
+          {{ t('noItemsAddedYetMessage') }}
         </p>
       </div>
       }

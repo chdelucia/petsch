@@ -21,6 +21,7 @@
 /* nx-tailwind-sources:start */
 @source "../../../libs/pet/api";
 @source "../../../libs/pet/api-petshop";
+@source "../../../libs/pet/data-access";
 @source "../../../libs/pet/feature-filters";
 @source "../../../libs/pet/feature-page";
 @source "../../../libs/pet/feature-pet-details";

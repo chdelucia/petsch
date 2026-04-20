@@ -1,6 +1,6 @@
 import { InjectionToken } from '@angular/core';
 
-export interface PetUiConfig {
+export interface ProductUiConfig {
   paginationKeys?: {
     page: string;
     limit: string;
@@ -9,4 +9,6 @@ export interface PetUiConfig {
   hideSort?: boolean;
 }
 
-export const PET_UI_CONFIG = new InjectionToken<PetUiConfig>('PET_UI_CONFIG');
+export const PRODUCT_UI_CONFIG = new InjectionToken<ProductUiConfig>(
+  'PRODUCT_UI_CONFIG',
+);

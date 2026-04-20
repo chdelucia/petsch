@@ -1,7 +1,7 @@
 import { Component, input, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { NgOptimizedImage } from '@angular/common';
-import { PET_UI_CONFIG } from '@petsch/api';
+import { PRODUCT_UI_CONFIG } from '@petsch/api';
 
 @Component({
   selector: 'lib-ch-ui-card',
@@ -13,7 +13,7 @@ import { PET_UI_CONFIG } from '@petsch/api';
   },
 })
 export class ChCard {
-  private readonly config = inject(PET_UI_CONFIG, { optional: true });
+  private readonly config = inject(PRODUCT_UI_CONFIG, { optional: true });
 
   testId = input<string>('');
   id = input.required<number>();

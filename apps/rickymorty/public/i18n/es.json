@@ -1,10 +1,10 @@
 {
   "navbar": {
-    "petshop": "Pet Shop",
+    "petshop": "Store",
     "rickymorty": "Rick & Morty",
     "dragonball": "Dragon Ball"
   },
-  "pets": "Mascotas",
+  "products": "Productos",
   "name": "Nombre",
   "status": "Estado",
   "species": "Especie",
@@ -21,9 +21,9 @@
   "lastSearches": "Últimas búsquedas",
   "close": "Cerrar",
   "activeFilters": "Filtros activos",
-  "addAsPetOfTheDay": "Añadir favorito",
-  "petOfTheDay": "Favorito",
-  "viewPetOfTheDay": "Ver favorito",
+  "addItemToDay": "Añadir favorito",
+  "itemOfTheDay": "Favorito",
+  "viewItemOfTheDay": "Ver favorito",
   "backToListing": "Volver al listado",
   "error": "¡Error!",
   "somethingWentWrong": "Algo salió mal",
@@ -70,9 +70,9 @@
   "continueShopping": "Volver",
   "searchByName": "Buscar por nombre",
   "toggleFilters": "Alternar filtros",
-  "homeTitle": "Pet Shop - Encuentra a tu mejor amigo",
+  "homeTitle": "Store - Encuentra lo que buscas",
   "homeDescription": "Descubre una amplia variedad de mascotas disponibles para adopción. Encuentra a tu compañero perfecto hoy mismo.",
-  "detailsTitle": "Pet Shop - {{name}}",
+  "detailsTitle": "Store - {{name}}",
   "sort": {
     "mostPopular": "Más popular",
     "nameAsc": "Nombre: Asc",
