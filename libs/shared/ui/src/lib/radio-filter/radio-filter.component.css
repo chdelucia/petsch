@@ -33,9 +33,9 @@
 }
 
 .ch-filter-container__input {
-  @apply h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500 hover:cursor-pointer accent-indigo-600;
+  @apply h-4 w-4 rounded border-gray-300 text-primary-600 focus:ring-primary-500 hover:cursor-pointer accent-primary-600;
 }
 
 .ch-filter-container__label {
-  @apply ml-3 text-sm text-gray-600 hover:cursor-pointer hover:text-indigo-600 hover:font-bold w-full;
+  @apply ml-3 text-sm text-gray-600 hover:cursor-pointer hover:text-primary-600 hover:font-bold w-full;
 }

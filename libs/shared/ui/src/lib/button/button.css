@@ -6,7 +6,7 @@
 
 /* Variants */
 .ch-btn--primary {
-  @apply px-6 py-3 rounded-md bg-primary-600 text-white hover:bg-primary-700 focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2;
+  @apply px-6 py-3 rounded-md bg-primary-600 text-white hover:bg-primary-700 focus:ring-2 focus:ring-primary-500 focus:ring-offset-2;
 }
 
 .ch-btn--link {
@@ -18,7 +18,7 @@
 }
 
 .ch-btn--outline {
-  @apply border border-slate-200 bg-white text-slate-600 hover:bg-slate-50 focus:ring-2 focus:ring-indigo-500 focus:ring-offset-1;
+  @apply border border-slate-200 bg-white text-slate-600 hover:bg-slate-50 focus:ring-2 focus:ring-primary-500 focus:ring-offset-1;
 }
 
 .ch-btn--ghost {
@@ -48,5 +48,5 @@
 }
 
 .ch-btn--active {
-  @apply bg-indigo-50 text-indigo-700 border-indigo-200 font-semibold z-10;
+  @apply bg-primary-50 text-primary-700 border-primary-200 font-semibold z-10;
 }

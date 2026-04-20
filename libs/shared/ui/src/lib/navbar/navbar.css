@@ -29,7 +29,7 @@
 }
 
 .ch-navbar__link--active {
-  @apply border-indigo-600 text-slate-900;
+  @apply border-primary-600 text-slate-900;
 }
 
 .ch-navbar__actions {
@@ -53,5 +53,5 @@
 }
 
 .ch-navbar__mobile-link--active {
-  @apply border-indigo-600 bg-indigo-50 text-indigo-700;
+  @apply border-primary-600 bg-primary-50 text-primary-700;
 }

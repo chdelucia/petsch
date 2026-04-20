@@ -1,14 +1,14 @@
 @reference "../../tailwind.storybook.css";
 
 .ch-favorite-icon {
-  @apply z-10 h-7 w-7 absolute top-2 right-2 text-transparent stroke-indigo-600 cursor-pointer;
+  @apply z-10 h-7 w-7 absolute top-2 right-2 text-transparent stroke-primary-600 cursor-pointer;
   &:hover {
-    @apply text-indigo-600;
+    @apply text-primary-600;
   }
   &.active {
-    @apply text-indigo-600;
+    @apply text-primary-600;
     &:hover {
-      @apply text-indigo-200;
+      @apply text-primary-200;
     }
   }
 }

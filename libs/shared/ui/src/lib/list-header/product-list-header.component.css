@@ -19,7 +19,7 @@
 
 .ch-top-container__filters__toggleview.ch-active,
 .ch-top-container__filters__togglefilters.ch-active {
-  @apply fill-indigo-600;
+  @apply fill-primary-600;
 }
 
 .ch-top-container__filters__sr {
