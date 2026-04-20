@@ -2,6 +2,26 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.15.0](https://github.com/chdelucia/petsch/compare/v1.14.2...v1.15.0) (2026-04-20)
+
+
+### Features
+
+* add Dragon Ball app and reconfigure Rick & Morty ports ([b78ccf2](https://github.com/chdelucia/petsch/commit/b78ccf24d03d49c6fddb56eef5a0e1fdf158efc3))
+* add shared responsive navbar with app links and i18n ([3a8a4f2](https://github.com/chdelucia/petsch/commit/3a8a4f287a549165536224bcfa3d2cceb0da3b4a))
+* align dragonball and rickymorty apps with petshop layout and preconnects ([7136895](https://github.com/chdelucia/petsch/commit/7136895ab0ce3b8d3bcb94dcf6ab912eb14edeb1))
+* enhance rickymorty app with details, pagination, and theming ([09d1cea](https://github.com/chdelucia/petsch/commit/09d1ceae6442c9dc9ef8b5d6ea22e0c7d8a44663))
+* refactor pet library to be domain-agnostic and add rickymorty app ([64e5df5](https://github.com/chdelucia/petsch/commit/64e5df57c6818ee1b2026e60d383fdb7b65cae2a))
+* **rickymorty:** hide sort and add new character filters ([b4ad225](https://github.com/chdelucia/petsch/commit/b4ad225555a606d8513fcfa7e1f52732cedb7970))
+* **rickymorty:** hide sort and update filters ([8d1400c](https://github.com/chdelucia/petsch/commit/8d1400c987441d5bb3748d2af258e7214fc2e430))
+
+
+### Bug Fixes
+
+* resolve E2E test failures and flakiness across apps ([55b2da2](https://github.com/chdelucia/petsch/commit/55b2da2009326153c4b743637d2e069306d18e4a))
+* **rickymorty:** update pet of the day translations to favorite ([0484431](https://github.com/chdelucia/petsch/commit/0484431c8eb95a26ff4d5fc8518f54c523797c49))
+* use local URLs for navbar links when running on localhost ([a451a1a](https://github.com/chdelucia/petsch/commit/a451a1a08bf83c8985dde528269069242a91d865))
+
 ### [1.14.2](https://github.com/chdelucia/petsch/compare/v1.14.0...v1.14.2) (2026-04-18)
 
 ### [1.14.1](https://github.com/chdelucia/petsch/compare/v1.14.0...v1.14.1) (2026-04-18)
