@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.15.1](https://github.com/chdelucia/petsch/compare/v1.15.0...v1.15.1) (2026-04-20)
+
+
+### Bug Fixes
+
+* **shared-ui:** update Rick and Morty production URL ([5e635a6](https://github.com/chdelucia/petsch/commit/5e635a631637c815667530106a0660db82f96f64))
+
 ## [1.15.0](https://github.com/chdelucia/petsch/compare/v1.14.2...v1.15.0) (2026-04-20)
 
 
