@@ -27,7 +27,7 @@ export class ChNavbar {
     {
       id: 'rickymorty',
       name: 'navbar.rickymorty',
-      url: this.isLocal ? 'http://localhost:4201/' : 'https://rickymorty.vercel.app/',
+      url: this.isLocal ? 'http://localhost:4201/' : 'https://rickymorty-liard.vercel.app/',
     },
     {
       id: 'dragonball',
