@@ -1,14 +1,14 @@
 @let selected = sortby();
 
 <div class="dropdown">
-  <div>
+  <div *transloco="let t">
     <lib-ch-ui-button
       variant="ghost"
       size="sm"
       (clicked)="toggle()"
       [testId]="testId() + '-button'"
     >
-      Sort: {{ selected.text }}
+      {{ t('sortLabel') }}: {{ selected.text }}
       <svg
         [class.open]="isOpen()"
         class="dropdown-icon"

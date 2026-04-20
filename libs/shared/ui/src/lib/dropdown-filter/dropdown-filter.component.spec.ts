@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ChDropdownFilter } from './dropdown-filter.component';
+import { getTranslocoTestingModule } from '@petsch/shared-utils';
 
 describe('ChDropdownFilter', () => {
   let component: ChDropdownFilter;
@@ -7,7 +8,7 @@ describe('ChDropdownFilter', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ChDropdownFilter],
+      imports: [ChDropdownFilter, getTranslocoTestingModule()],
     }).compileComponents();
 
     fixture = TestBed.createComponent(ChDropdownFilter);

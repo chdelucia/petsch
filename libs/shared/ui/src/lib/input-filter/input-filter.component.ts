@@ -88,7 +88,7 @@ export class ChInputFilter implements ControlValueAccessor, OnInit {
     this.searchText$.next(name);
   }
 
-  togleFilter() {
+  toggleFilter() {
     this.isfilterOpen.update((open) => !open);
   }
 

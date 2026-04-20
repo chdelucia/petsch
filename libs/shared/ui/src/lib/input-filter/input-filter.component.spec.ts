@@ -23,9 +23,9 @@ describe('ChInputFilter', () => {
 
   it('should toggle filter', () => {
     component.isfilterOpen.set(true);
-    component.togleFilter();
+    component.toggleFilter();
     expect(component.isfilterOpen()).toBeFalsy();
-    component.togleFilter();
+    component.toggleFilter();
     expect(component.isfilterOpen()).toBeTruthy();
   });
 

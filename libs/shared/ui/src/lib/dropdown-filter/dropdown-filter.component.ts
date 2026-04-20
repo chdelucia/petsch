@@ -1,4 +1,5 @@
 import { ChButton } from "../button/button";
+import { TranslocoDirective } from "@jsverse/transloco";
 import {
   Component,
   computed,
@@ -18,7 +19,7 @@ export interface SortOption {
 
 @Component({
   selector: 'lib-ch-ui-dropdown-filter',
-  imports: [ChButton],
+  imports: [ChButton, TranslocoDirective],
   templateUrl: './dropdown-filter.component.html',
   styleUrl: './dropdown-filter.component.css',
   host: {
