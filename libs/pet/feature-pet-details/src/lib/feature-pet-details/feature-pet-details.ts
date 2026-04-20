@@ -1,4 +1,10 @@
-import { Component, inject, input, signal } from '@angular/core';
+import {
+  Component,
+  inject,
+  input,
+  signal,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { Router } from '@angular/router';
 import { TranslocoDirective } from '@jsverse/transloco';
@@ -16,6 +22,7 @@ import { CurrentTransitionService, PRODUCT_UI_CONFIG } from '@petsch/api';
   ],
   templateUrl: './feature-pet-details.html',
   styleUrl: './feature-pet-details.css',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FeatureProductDetails {
   protected readonly transitionService = inject(CurrentTransitionService);
