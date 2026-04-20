@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.16.0](https://github.com/chdelucia/petsch/compare/v1.15.1...v1.16.0) (2026-04-20)
+
+
+### Features
+
+* complete and adapt translations for all projects ([def64c2](https://github.com/chdelucia/petsch/commit/def64c231412e0f5d9fa4e2b9d49118ffe083ce0))
+
 ### [1.15.1](https://github.com/chdelucia/petsch/compare/v1.15.0...v1.15.1) (2026-04-20)
 
 
