@@ -1,13 +1,12 @@
 import { InjectionToken } from '@angular/core';
-import { IPetService, GetPetsResponse } from './pet.repository';
-import { HttpResponse } from '@angular/common/http';
+import { IProductService } from './pet.repository';
 
-export const PET_TOKEN = new InjectionToken<IPetService<unknown, unknown>>(
-  'PET',
+export const PRODUCT_TOKEN = new InjectionToken<IProductService<unknown, unknown>>(
+  'PRODUCT',
 );
 
-export type PetDataTransformer<T = unknown> = (item: T) => T;
+export type ProductDataTransformer<T = unknown> = (item: T) => T;
 
-export const PET_DATA_TRANSFORMER = new InjectionToken<PetDataTransformer>(
-  'PET_DATA_TRANSFORMER',
+export const PRODUCT_DATA_TRANSFORMER = new InjectionToken<ProductDataTransformer>(
+  'PRODUCT_DATA_TRANSFORMER',
 );

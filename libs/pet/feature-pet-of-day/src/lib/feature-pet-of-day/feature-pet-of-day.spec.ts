@@ -1,31 +1,31 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { FeaturePetOfDay } from './feature-pet-of-day';
-import { PETOFDAY_STORE } from '@petsch/api';
+import { FeatureItemOfDay } from './feature-pet-of-day';
+import { ITEM_OF_DAY_STORE } from '@petsch/api';
 import { getTranslocoTestingModule } from '@petsch/shared-utils';
 import { signal } from '@angular/core';
 
-describe('FeaturePetOfDay', () => {
-  let component: FeaturePetOfDay;
-  let fixture: ComponentFixture<FeaturePetOfDay>;
+describe('FeatureItemOfDay', () => {
+  let component: FeatureItemOfDay;
+  let fixture: ComponentFixture<FeatureItemOfDay>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [FeaturePetOfDay, getTranslocoTestingModule()],
+      imports: [FeatureItemOfDay, getTranslocoTestingModule()],
       providers: [
         {
-          provide: PETOFDAY_STORE,
+          provide: ITEM_OF_DAY_STORE,
           useValue: {
             entries: signal([]),
             sortedEntries: signal([]),
             isOpen: signal(false),
-            togglePoT: vi.fn(),
-            removePet: vi.fn(),
+            toggleIotd: vi.fn(),
+            removeItem: vi.fn(),
           },
         },
       ],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(FeaturePetOfDay);
+    fixture = TestBed.createComponent(FeatureItemOfDay);
     component = fixture.componentInstance;
     await fixture.whenStable();
   });

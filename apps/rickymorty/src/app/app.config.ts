@@ -6,15 +6,15 @@ import { provideRouter, withComponentInputBinding } from '@angular/router';
 import { appRoutes } from './app.routes';
 import { provideHttpClient, HttpResponse } from '@angular/common/http';
 import {
-  PET_UI_CONFIG,
-  PETLIST_STORE,
-  PETOFDAY_STORE,
-  PET_DATA_TRANSFORMER,
+  PRODUCT_UI_CONFIG,
+  PRODUCT_LIST_STORE,
+  ITEM_OF_DAY_STORE,
+  PRODUCT_DATA_TRANSFORMER,
 } from '@petsch/api';
-import { provideRickAndMortyPetApi } from '@petsch/api-rickymorty';
-import { PetsStore } from '@petsch/feature-pet-list';
-import { PetOfTheDayStore } from '@petsch/feature-pet-of-day';
-import { PET_FILTER_CONFIG } from '@petsch/feature-filters';
+import { provideRickAndMortyProductApi } from '@petsch/api-rickymorty';
+import { ProductsStore } from '@petsch/feature-pet-list';
+import { ItemOfDayStore } from '@petsch/feature-pet-of-day';
+import { PRODUCT_FILTER_CONFIG } from '@petsch/feature-filters';
 import { provideTransloco } from '@jsverse/transloco';
 import { TranslocoHttpLoader } from './transloco-loader';
 import { LOCALSTORAGE_TOKEN } from '@petsch/obs-api';
@@ -28,9 +28,9 @@ export const appConfig: ApplicationConfig = {
     provideZonelessChangeDetection(),
     provideHttpClient(),
     {
-      provide: PET_UI_CONFIG,
+      provide: PRODUCT_UI_CONFIG,
       useValue: {
-        listRoute: `/${APP_ROUTES.PETS}`,
+        listRoute: `/${APP_ROUTES.PRODUCTS}`,
         paginationKeys: {
           page: 'page',
           limit: 'limit',
@@ -39,24 +39,24 @@ export const appConfig: ApplicationConfig = {
       },
     },
     {
-      provide: PET_DATA_TRANSFORMER,
+      provide: PRODUCT_DATA_TRANSFORMER,
       useValue: characterAdapter,
     },
-    provideRickAndMortyPetApi(),
+    provideRickAndMortyProductApi(),
     {
-      provide: PETLIST_STORE,
-      useClass: PetsStore,
+      provide: PRODUCT_LIST_STORE,
+      useClass: ProductsStore,
     },
     {
-      provide: PETOFDAY_STORE,
-      useClass: PetOfTheDayStore,
+      provide: ITEM_OF_DAY_STORE,
+      useClass: ItemOfDayStore,
     },
     {
       provide: LOCALSTORAGE_TOKEN,
       useClass: LocalstorageService,
     },
     {
-      provide: PET_FILTER_CONFIG,
+      provide: PRODUCT_FILTER_CONFIG,
       useValue: [
         {
           key: 'name',

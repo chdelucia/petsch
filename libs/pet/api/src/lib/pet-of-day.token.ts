@@ -1,17 +1,17 @@
 import { InjectionToken, Signal } from '@angular/core';
-import { PetOfTheDayEntry } from './models/petofday';
+import { ItemOfDayEntry } from './models/petofday';
 
-export interface PetOfDayStoreContract<T = unknown> {
+export interface ItemOfDayStoreContract<T = unknown> {
   isOpen: Signal<boolean>;
-  entries: Signal<PetOfTheDayEntry<T>[]>;
-  sortedEntries: Signal<PetOfTheDayEntry<T>[]>;
-  isPetAddedToday: Signal<boolean>;
-  todayPet: Signal<T | null>;
-  addPet(pet: T): void;
-  removePet(date: string): void;
-  togglePoT(isOpen: boolean): void;
+  entries: Signal<ItemOfDayEntry<T>[]>;
+  sortedEntries: Signal<ItemOfDayEntry<T>[]>;
+  isItemAddedToday: Signal<boolean>;
+  todayItem: Signal<T | null>;
+  addItem(product: T): void;
+  removeItem(date: string): void;
+  toggleIotd(isOpen: boolean): void;
 }
 
-export const PETOFDAY_STORE = new InjectionToken<PetOfDayStoreContract>(
-  'PETOFDAY_STORE',
+export const ITEM_OF_DAY_STORE = new InjectionToken<ItemOfDayStoreContract>(
+  'ITEM_OF_DAY_STORE',
 );

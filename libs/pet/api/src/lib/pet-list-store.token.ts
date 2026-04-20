@@ -1,7 +1,7 @@
 import { InjectionToken, Signal } from '@angular/core';
 import { PaginationLinks } from './models/pet';
 
-export interface PetsStoreContract<T = unknown, F = unknown> {
+export interface ProductsStoreContract<T = unknown, F = unknown> {
   products: Signal<T[]>;
   loading: Signal<boolean>;
   error: Signal<string | null>;
@@ -14,6 +14,6 @@ export interface PetsStoreContract<T = unknown, F = unknown> {
   removeFilter(key: string): void;
 }
 
-export const PETLIST_STORE = new InjectionToken<
-  PetsStoreContract<unknown, unknown>
->('PETLIST_STORE');
+export const PRODUCT_LIST_STORE = new InjectionToken<
+  ProductsStoreContract<unknown, unknown>
+>('PRODUCT_LIST_STORE');

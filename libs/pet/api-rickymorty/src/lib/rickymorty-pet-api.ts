@@ -1,11 +1,11 @@
 import { Injectable, inject, Provider } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {
-  IPetService,
-  GetPetsResponse,
-  PET_TOKEN,
-  PET_DATA_TRANSFORMER,
-  PetDataTransformer,
+  IProductService,
+  GetProductsResponse,
+  PRODUCT_TOKEN,
+  PRODUCT_DATA_TRANSFORMER,
+  ProductDataTransformer,
 } from '@petsch/api';
 import { buildHttpParams } from '@petsch/data-access';
 import { Observable, map } from 'rxjs';
@@ -31,16 +31,16 @@ export interface CharactersDto {
 }
 
 @Injectable()
-export class RickAndMortyPetApi<T = unknown, F = Record<string, unknown>>
-  implements IPetService<T, F>
+export class RickAndMortyProductApi<T = unknown, F = Record<string, unknown>>
+  implements IProductService<T, F>
 {
   private readonly http = inject(HttpClient);
   private readonly baseUrl = 'https://rickandmortyapi.com/api/character';
-  private readonly transformer = inject(PET_DATA_TRANSFORMER, {
+  private readonly transformer = inject(PRODUCT_DATA_TRANSFORMER, {
     optional: true,
-  }) as PetDataTransformer<T> | null;
+  }) as ProductDataTransformer<T> | null;
 
-  getPets(filters: Partial<F>): Observable<GetPetsResponse<T>> {
+  getProducts(filters: Partial<F>): Observable<GetProductsResponse<T>> {
     const params = buildHttpParams(filters as Record<string, unknown>);
 
     return this.http
@@ -77,11 +77,11 @@ export class RickAndMortyPetApi<T = unknown, F = Record<string, unknown>>
   }
 }
 
-export function provideRickAndMortyPetApi(): Provider[] {
+export function provideRickAndMortyProductApi(): Provider[] {
   return [
     {
-      provide: PET_TOKEN,
-      useClass: RickAndMortyPetApi,
+      provide: PRODUCT_TOKEN,
+      useClass: RickAndMortyProductApi,
     },
   ];
 }

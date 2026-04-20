@@ -1,27 +1,27 @@
 import { Injectable, inject, Provider } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {
-  IPetService,
-  GetPetsResponse,
-  PET_TOKEN,
-  PET_DATA_TRANSFORMER,
-  PetDataTransformer,
+  IProductService,
+  GetProductsResponse,
+  PRODUCT_TOKEN,
+  PRODUCT_DATA_TRANSFORMER,
+  ProductDataTransformer,
 } from '@petsch/api';
 import { buildHttpParams, parseLinkHeader } from '@petsch/data-access';
 import { Observable, map } from 'rxjs';
 
 @Injectable()
-export class PetShopPetApi<T = unknown, F = Record<string, unknown>>
-  implements IPetService<T, F>
+export class ProductShopApi<T = unknown, F = Record<string, unknown>>
+  implements IProductService<T, F>
 {
   private readonly http = inject(HttpClient);
   private readonly baseUrl =
     'https://my-json-server.typicode.com/Feverup/fever_pets_data/pets';
-  private readonly transformer = inject(PET_DATA_TRANSFORMER, {
+  private readonly transformer = inject(PRODUCT_DATA_TRANSFORMER, {
     optional: true,
-  }) as PetDataTransformer<T> | null;
+  }) as ProductDataTransformer<T> | null;
 
-  getPets(filters: Partial<F>): Observable<GetPetsResponse<T>> {
+  getProducts(filters: Partial<F>): Observable<GetProductsResponse<T>> {
     const params = buildHttpParams(filters as Record<string, unknown>);
 
     return this.http
@@ -57,11 +57,11 @@ export class PetShopPetApi<T = unknown, F = Record<string, unknown>>
   }
 }
 
-export function providePetShopPetApi(): Provider[] {
+export function provideProductShopApi(): Provider[] {
   return [
     {
-      provide: PET_TOKEN,
-      useClass: PetShopPetApi,
+      provide: PRODUCT_TOKEN,
+      useClass: ProductShopApi,
     },
   ];
 }

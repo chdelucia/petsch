@@ -1,12 +1,12 @@
 import { Observable } from 'rxjs';
 import { PaginationLinks } from './models/pet';
 
-export interface GetPetsResponse<T = unknown> {
+export interface GetProductsResponse<T = unknown> {
   products: T[];
   pagination: PaginationLinks;
 }
 
-export interface IPetService<T = unknown, F = unknown> {
-  getPets(filters: Partial<F>): Observable<GetPetsResponse<T>>;
+export interface IProductService<T = unknown, F = unknown> {
+  getProducts(filters: Partial<F>): Observable<GetProductsResponse<T>>;
   getDetails(id: string): Observable<T>;
 }
