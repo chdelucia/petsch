@@ -1,0 +1,80 @@
+{
+  "name": "dragonball",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "prefix": "app",
+  "sourceRoot": "apps/dragonball/src",
+  "tags": ["scope:petshop", "type:main"],
+  "targets": {
+    "build": {
+      "executor": "@angular/build:application",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/dragonball",
+        "browser": "apps/dragonball/src/main.ts",
+        "tsConfig": "apps/dragonball/tsconfig.app.json",
+        "assets": [
+          {
+            "glob": "**/*",
+            "input": "apps/dragonball/public"
+          }
+        ],
+        "styles": ["apps/dragonball/src/styles.css"]
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "4kb",
+              "maximumError": "8kb"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "optimization": false,
+          "extractLicenses": false,
+          "sourceMap": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "continuous": true,
+      "executor": "@angular/build:dev-server",
+      "options": { "port": 4202 },
+      "configurations": {
+        "production": {
+          "buildTarget": "dragonball:build:production"
+        },
+        "development": {
+          "buildTarget": "dragonball:build:development"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    },
+    "test": {
+      "executor": "@angular/build:unit-test",
+      "options": {}
+    },
+    "serve-static": {
+      "continuous": true,
+      "executor": "@nx/web:file-server",
+      "options": {
+        "buildTarget": "dragonball:build",
+        "port": 4202,
+        "staticFilePath": "dist/apps/dragonball/browser",
+        "spa": true
+      }
+    }
+  }
+}

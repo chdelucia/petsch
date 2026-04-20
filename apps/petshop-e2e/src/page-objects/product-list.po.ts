@@ -41,7 +41,13 @@ export class ProductListPage extends BasePage {
     await this.getSortOption(key, order).click();
   }
 
-  async addPetToDay(index: number) {
+  async addItemToDay(index: number) {
     await this.getAddButton(index).click();
+  }
+
+  async waitForLoadingToFinish() {
+    await this.page
+      .getByTestId('product-list-loading')
+      .waitFor({ state: 'detached' });
   }
 }

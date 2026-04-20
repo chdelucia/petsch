@@ -1,4 +1,10 @@
-import { Component, inject, computed, signal } from '@angular/core';
+import {
+  Component,
+  inject,
+  computed,
+  signal,
+  InjectionToken,
+} from '@angular/core';
 import {
   takeUntilDestroyed,
   toSignal,
@@ -6,7 +12,7 @@ import {
 } from '@angular/core/rxjs-interop';
 import { form as angularForm, FormField } from '@angular/forms/signals';
 import { TranslocoService, TranslocoDirective } from '@jsverse/transloco';
-import { Filters, PETLIST_STORE } from '@petsch/api';
+import { PRODUCT_LIST_STORE } from '@petsch/api';
 import { debounceTime, merge, Observable, skip } from 'rxjs';
 import {
   ChInputFilter,
@@ -14,15 +20,36 @@ import {
   ChActiveFiltersComponent,
 } from '@petsch/ui';
 
-interface FilterConfig {
-  key: keyof Filters;
+export interface FilterConfig {
+  key: string;
   type: 'input' | 'radio';
   options?: { value: string; text: string }[];
   debounceTime: number;
+  initialValue?: string | number | boolean;
 }
 
-const kindOptions = ['dog', 'cat'] as const;
-type KindKey = (typeof kindOptions)[number];
+export const PRODUCT_FILTER_CONFIG = new InjectionToken<FilterConfig[]>(
+  'PRODUCT_FILTER_CONFIG',
+);
+
+const DEFAULT_PRODUCT_FILTERS: FilterConfig[] = [
+  {
+    key: 'name_like',
+    type: 'input',
+    debounceTime: 200,
+    initialValue: '',
+  },
+  {
+    key: 'kind',
+    type: 'radio',
+    options: [
+      { value: 'dog', text: 'dog' },
+      { value: 'cat', text: 'cat' },
+    ],
+    debounceTime: 500,
+    initialValue: '',
+  },
+];
 
 @Component({
   selector: 'lib-feature-filters',
@@ -36,49 +63,38 @@ type KindKey = (typeof kindOptions)[number];
   templateUrl: './feature-filters.html',
 })
 export class FeatureFilters {
-  readonly store = inject(PETLIST_STORE);
+  readonly store = inject(PRODUCT_LIST_STORE);
   private readonly transloco = inject(TranslocoService);
+  private readonly config = inject(PRODUCT_FILTER_CONFIG, { optional: true });
 
-  readonly form = signal<Partial<Filters>>({
-    name_like: '',
-    kind: '',
+  readonly filterConfigs = computed<FilterConfig[]>(() => {
+    const baseConfig = (this.config ?? DEFAULT_PRODUCT_FILTERS) as FilterConfig[];
+    return baseConfig.map((c: FilterConfig) => ({
+      ...c,
+      options: c.options?.map((o: { value: string; text: string }) => ({
+        ...o,
+        text: this.transloco.translate(o.text),
+      })),
+    }));
   });
+
+  readonly form = signal<Partial<Record<string, unknown>>>(
+    ((this.config ?? DEFAULT_PRODUCT_FILTERS) as FilterConfig[]).reduce(
+      (acc: Record<string, unknown>, c: FilterConfig) => ({
+        ...acc,
+        [c.key]: c.initialValue ?? '',
+      }),
+      {},
+    ),
+  );
 
   readonly formTree = angularForm(this.form);
 
-  private readonly kindOptions = kindOptions;
-
-  private readonly translations = toSignal(
-    this.transloco.selectTranslateObject(
-      this.kindOptions,
-    ) as unknown as Observable<Record<KindKey, string>>,
-    { initialValue: {} as Record<KindKey, string> },
-  );
-
-  readonly filterConfigs = computed<FilterConfig[]>(() => {
-    const t = this.translations() ?? {};
-
-    return [
-      {
-        key: 'name_like',
-        type: 'input',
-        debounceTime: 200,
-      },
-      {
-        key: 'kind',
-        type: 'radio',
-        options: this.kindOptions.map((key) => ({
-          value: key,
-          text: t[key] ?? key,
-        })),
-        debounceTime: 500,
-      },
-    ];
-  });
-
   constructor() {
-    const filterChanges$ = this.filterConfigs().map((config) => {
-      const field = (this.formTree as any)[config.key]();
+    const filterChanges$ = (
+      (this.config ?? DEFAULT_PRODUCT_FILTERS) as FilterConfig[]
+    ).map((config: FilterConfig) => {
+      const field = (this.formTree as Record<string, any>)[config.key]();
       return toObservable(field.value).pipe(
         skip(1),
         debounceTime(config.debounceTime),
@@ -99,15 +115,19 @@ export class FeatureFilters {
     this.store.loadProducts();
   }
 
+  getFormField(key: string): unknown {
+    return (this.formTree as Record<string, unknown>)[key];
+  }
+
   resetFilter(key: string): void {
-    const field = (this.formTree as any)[key];
-    const currentValue = field?.().value();
+    const field = (this.formTree as Record<string, any>)[key]();
+    const currentValue = field?.value();
 
     if (field) {
-      field().value.set('');
+      field.value.set('');
     }
 
-    this.store.removeFilter(key as keyof Filters);
+    this.store.removeFilter(key);
 
     if (!field || currentValue === '') {
       this.applyFiltersAndLoad();

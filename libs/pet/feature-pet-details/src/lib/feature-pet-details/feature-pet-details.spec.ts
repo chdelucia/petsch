@@ -1,7 +1,7 @@
 import { getTranslocoTestingModule } from '@petsch/shared-utils';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { FeaturePetDetails } from './feature-pet-details';
-import { PET_TOKEN } from '@petsch/api';
+import { FeatureProductDetails } from './feature-pet-details';
+import { PRODUCT_TOKEN } from '@petsch/api';
 import { of } from 'rxjs';
 import { provideRouter } from '@angular/router';
 import { LocalstorageService } from '@petsch/obs-data-access';
@@ -11,9 +11,9 @@ import {
   ObservabilityFacade,
 } from '@petsch/obs-api';
 
-describe('FeaturePetDetails', () => {
-  let component: FeaturePetDetails;
-  let fixture: ComponentFixture<FeaturePetDetails>;
+describe('FeatureProductDetails', () => {
+  let component: FeatureProductDetails;
+  let fixture: ComponentFixture<FeatureProductDetails>;
   const mockProduct = {
     id: 1,
     name: 'Test Product',
@@ -28,14 +28,14 @@ describe('FeaturePetDetails', () => {
 
   const mockProductService = {
     getDetails: vi.fn().mockReturnValue(of(mockProduct)),
-    getPets: vi.fn(),
+    getProducts: vi.fn(),
   };
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [getTranslocoTestingModule(), FeaturePetDetails],
+      imports: [getTranslocoTestingModule(), FeatureProductDetails],
       providers: [
-        { provide: PET_TOKEN, useValue: mockProductService },
+        { provide: PRODUCT_TOKEN, useValue: mockProductService },
         provideRouter([]),
         LocalstorageService,
         ObservabilityFacade,
@@ -44,7 +44,7 @@ describe('FeaturePetDetails', () => {
       ],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(FeaturePetDetails);
+    fixture = TestBed.createComponent(FeatureProductDetails);
     component = fixture.componentInstance;
     fixture.componentRef.setInput('id', '1');
     fixture.componentRef.setInput('product', mockProduct);

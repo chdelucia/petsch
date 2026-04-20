@@ -34,6 +34,16 @@ export default [
               ],
             },
             {
+              sourceTag: 'type:main',
+              onlyDependOnLibsWithTags: [
+                'type:api',
+                'type:ui',
+                'type:data-access',
+                'type:feature',
+                'type:shell',
+              ],
+            },
+            {
               sourceTag: 'scope:*',
               onlyDependOnLibsWithTags: ['scope:*'],
             },

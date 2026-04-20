@@ -1,0 +1,32 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-primary-50: #e0f7fa;
+  --color-primary-100: #b2ebf2;
+  --color-primary-200: #80deea;
+  --color-primary-300: #4dd0e1;
+  --color-primary-400: #26c6da;
+  --color-primary-500: #00b0c8;
+  --color-primary-600: #00acc1;
+  --color-primary-700: #0097a7;
+  --color-primary-800: #00838f;
+  --color-primary-900: #006064;
+  --color-primary-950: #00363a;
+
+  --color-secondary-500: #ff9800;
+}
+
+/* nx-tailwind-sources:start */
+@source "../../../libs/pet/api";
+@source "../../../libs/pet/api-rickymorty";
+@source "../../../libs/pet/data-access";
+@source "../../../libs/pet/feature-filters";
+@source "../../../libs/pet/feature-page";
+@source "../../../libs/pet/feature-pet-details";
+@source "../../../libs/pet/feature-pet-list";
+@source "../../../libs/pet/feature-pet-of-day";
+@source "../../../libs/pet/shell";
+@source "../../../libs/shared/observability/api";
+@source "../../../libs/shared/observability/data-access";
+@source "../../../libs/shared/ui";
+/* nx-tailwind-sources:end */

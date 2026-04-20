@@ -17,4 +17,10 @@ export class ProductDetailsPage extends BasePage {
   async goBack() {
     await this.getBackButton().click();
   }
+
+  async waitForLoadingToFinish() {
+    await this.page
+      .getByTestId('product-details-loading')
+      .waitFor({ state: 'detached' });
+  }
 }

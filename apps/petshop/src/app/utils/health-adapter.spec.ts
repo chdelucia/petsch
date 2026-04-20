@@ -1,9 +1,9 @@
-import { Pet } from '../models/product';
-import { enrichPetWithHealth } from './health-adapter';
+import { Product } from '../models/pet';
+import { enrichProductWithHealth } from './health-adapter';
 
 describe('HealthAdapter', () => {
   it('should calculate healthy status correctly', () => {
-    const pet: Pet = {
+    const product: Product = {
       id: 1,
       name: 'Dog',
       kind: 'dog',
@@ -14,12 +14,12 @@ describe('HealthAdapter', () => {
       photo_url: '',
     };
     // score = 12 / (2 * 2) = 3 -> healthy (3 to 5)
-    const enriched = enrichPetWithHealth(pet);
+    const enriched = enrichProductWithHealth(product);
     expect(enriched.health).toBe('healthy');
   });
 
   it('should calculate very healthy status correctly', () => {
-    const pet: Pet = {
+    const product: Product = {
       id: 1,
       name: 'Dog',
       kind: 'dog',
@@ -30,12 +30,12 @@ describe('HealthAdapter', () => {
       photo_url: '',
     };
     // score = 10 / (2 * 2) = 2.5 -> very healthy (2 to 3)
-    const enriched = enrichPetWithHealth(pet);
+    const enriched = enrichProductWithHealth(product);
     expect(enriched.health).toBe('very healthy');
   });
 
   it('should calculate unhealthy status correctly', () => {
-    const pet: Pet = {
+    const product: Product = {
       id: 1,
       name: 'Dog',
       kind: 'dog',
@@ -46,12 +46,12 @@ describe('HealthAdapter', () => {
       photo_url: '',
     };
     // score = 4 / (2 * 2) = 1 -> unhealthy (< 2)
-    const enriched = enrichPetWithHealth(pet);
+    const enriched = enrichProductWithHealth(product);
     expect(enriched.health).toBe('unhealthy');
   });
 
   it('should calculate cat with 1 life as unhealthy', () => {
-    const pet: Pet = {
+    const product: Product = {
       id: 1,
       name: 'Cat',
       kind: 'cat',
@@ -62,12 +62,12 @@ describe('HealthAdapter', () => {
       description: '',
       photo_url: '',
     };
-    const enriched = enrichPetWithHealth(pet);
+    const enriched = enrichProductWithHealth(product);
     expect(enriched.health).toBe('unhealthy');
   });
 
   it('should calculate cat with more lives normally', () => {
-    const pet: Pet = {
+    const product: Product = {
       id: 1,
       name: 'Cat',
       kind: 'cat',
@@ -78,7 +78,7 @@ describe('HealthAdapter', () => {
       description: '',
       photo_url: '',
     };
-    const enriched = enrichPetWithHealth(pet);
+    const enriched = enrichProductWithHealth(product);
     expect(enriched.health).toBe('healthy');
   });
 });

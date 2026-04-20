@@ -11,31 +11,36 @@ import {
 import { catchError, of, pipe, switchMap, tap } from 'rxjs';
 import { rxMethod } from '@ngrx/signals/rxjs-interop';
 import {
-  PET_TOKEN,
-  Filters,
-  Pet,
+  PRODUCT_TOKEN,
   PaginationLinks,
-  GetPetsResponse,
+  GetProductsResponse,
+  PRODUCT_UI_CONFIG,
 } from '@petsch/api';
 
-export interface PetsState {
-  products: Pet[];
+export interface ProductsState<T = unknown, F = Record<string, unknown>> {
+  products: T[];
   pagination: PaginationLinks;
-  filters: Partial<Filters>;
+  filters: Partial<F>;
   loading: boolean;
   error: string | null;
 }
 
-const initialState: PetsState = {
-  products: [],
-  pagination: {},
-  filters: { _page: 1, _limit: 12 },
-  loading: false,
-  error: null,
-};
+export const ProductsStore = signalStore(
+  { providedIn: 'root' },
+  withState(() => {
+    const config = inject(PRODUCT_UI_CONFIG, { optional: true });
+    const pageKey = config?.paginationKeys?.page ?? '_page';
+    const limitKey = config?.paginationKeys?.limit ?? '_limit';
 
-export const PetsStore = signalStore(
-  withState(initialState),
+    const state: ProductsState = {
+      products: [],
+      pagination: {},
+      filters: { [pageKey]: 1, [limitKey]: 12 } as Record<string, unknown>,
+      loading: false,
+      error: null,
+    };
+    return state;
+  }),
 
   withComputed((store) => ({
     query: () => ({
@@ -44,7 +49,11 @@ export const PetsStore = signalStore(
   })),
 
   withMethods((store) => {
-    const productService = inject(PET_TOKEN);
+    const productService = inject(PRODUCT_TOKEN);
+    const config = inject(PRODUCT_UI_CONFIG, { optional: true });
+
+    const pageKey = config?.paginationKeys?.page ?? '_page';
+    const limitKey = config?.paginationKeys?.limit ?? '_limit';
 
     const setLoading = (loading: boolean) =>
       patchState(store, { loading, error: null });
@@ -56,7 +65,7 @@ export const PetsStore = signalStore(
         products: [],
       });
 
-    const setResult = (result: GetPetsResponse) =>
+    const setResult = (result: GetProductsResponse<unknown>) =>
       patchState(store, {
         products: result.products,
         pagination: result.pagination,
@@ -64,16 +73,16 @@ export const PetsStore = signalStore(
       });
 
     return {
-      applyFilters(partial: Partial<Filters>) {
-        patchState(store, {
-          filters: { ...store.filters(), ...partial, _page: 1 },
-        });
+      applyFilters(partial: Partial<Record<string, unknown>>) {
+        patchState(store, (state) => ({
+          filters: { ...state.filters, ...partial, [pageKey]: 1 },
+        }));
       },
 
       applyPagination(page: number) {
-        patchState(store, {
-          filters: { ...store.filters(), _page: page },
-        });
+        patchState(store, (state) => ({
+          filters: { ...state.filters, [pageKey]: page },
+        }));
       },
 
       applySort(sort: { key: string; order: string }) {
@@ -86,21 +95,28 @@ export const PetsStore = signalStore(
         });
       },
 
-      removeFilter(key: keyof Filters) {
-        const current = store.filters();
+      removeFilter(key: string) {
+        const current = store.filters() as Record<string, unknown>;
         const { [key]: _, ...rest } = current;
         patchState(store, { filters: rest });
       },
 
       clear() {
-        patchState(store, initialState);
+        patchState(store, (state) => ({
+          ...state,
+          products: [],
+          pagination: {},
+          filters: { [pageKey]: 1, [limitKey]: 12 } as Record<string, unknown>,
+          loading: false,
+          error: null,
+        }));
       },
 
       loadProducts: rxMethod<void>(
         pipe(
           tap(() => setLoading(true)),
           switchMap(() =>
-            productService.getPets(store.query()).pipe(
+            productService.getProducts(store.query()).pipe(
               catchError((err) => {
                 setError(err?.message ?? 'Failed to load products');
                 return of(null);

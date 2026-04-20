@@ -13,10 +13,10 @@
     } @if(!products().length && loading()) {
     <lib-ch-ui-filter-skeleton></lib-ch-ui-filter-skeleton>
     } @if (loading()) {
-    <lib-ch-ui-card-skeleton></lib-ch-ui-card-skeleton>
+    <lib-ch-ui-card-skeleton data-testid="product-list-loading"></lib-ch-ui-card-skeleton>
     } @else {
     <section class="char-grid" [class.char-grid--no-filters]="!showFilters()">
-      @for (item of products(); track item.id; let index = $index) {
+      @for (item of $any(products()); track item.id; let index = $index) {
       <lib-ch-ui-card
         testId="product-card"
         class="card-effect"
@@ -34,18 +34,24 @@
             </lib-ch-ui-badge>
           </div>
 
+          @if (item.height || item.length || item.weight) {
           <div class="text-xs text-gray-500">
+            @if (item.height) {
             <p>{{ t('height') }}: {{ item.height }}{{ t('cm') }}</p>
+            } @if (item.length) {
             <p>{{ t('width') }}: {{ item.length }}{{ t('cm') }}</p>
+            } @if (item.weight) {
             <p>{{ t('weight') }}: {{ item.weight }}{{ t('g') }}</p>
+            }
           </div>
+          }
         </div>
 
         <lib-ch-ui-button
           testId="product-add-button"
           fullWidth
-          (clicked)="handlePotdClick(item)"
-          >{{ t(potdButtonText()) }}</lib-ch-ui-button
+          (clicked)="handleIotdClick(item)"
+          >{{ t(iotdButtonText()) }}</lib-ch-ui-button
         >
       </lib-ch-ui-card>
       } @empty {

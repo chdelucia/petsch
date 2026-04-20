@@ -1,14 +1,23 @@
 import { Route } from '@angular/router';
-import { APP_ROUTES } from '@petsch/shared-utils';
+
+export const APP_ROUTES = {
+  PRODUCTS: 'pets',
+  NOT_FOUND: '404',
+} as const;
+
+export const PRODUCT_ROUTES = {
+  LIST: '',
+  DETAILS: ':id',
+} as const;
 
 export const appRoutes: Route[] = [
   {
     path: '',
-    redirectTo: APP_ROUTES.PETS,
+    redirectTo: APP_ROUTES.PRODUCTS,
     pathMatch: 'full',
   },
   {
-    path: APP_ROUTES.PETS,
+    path: APP_ROUTES.PRODUCTS,
     loadChildren: () => import('@petsch/shell').then((m) => m.shellRoutes),
   },
   {

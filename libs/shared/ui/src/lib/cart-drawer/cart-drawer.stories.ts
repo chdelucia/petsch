@@ -13,7 +13,7 @@ type Story = StoryObj<ChCartDrawer>;
 export const Primary: Story = {
   args: {
     open: true,
-    titleLabel: 'Pet of the day',
+    titleLabel: 'Item of the day',
     showFooter: true,
   },
 };

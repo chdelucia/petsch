@@ -12,7 +12,7 @@
         <lib-ch-ui-input-filter
           [testId]="'filter-' + config.key + '-input'"
           [title]="t(config.key)"
-          [formField]="$any(formTree)[config.key]"
+          [formField]="$any(getFormField(config.key))"
         ></lib-ch-ui-input-filter>
       }
       @case ('radio') {
@@ -20,7 +20,7 @@
           [testId]="'filter-' + config.key + '-radio'"
           [title]="t(config.key)"
           [options]="config.options ?? []"
-          [formField]="$any(formTree)[config.key]"
+          [formField]="$any(getFormField(config.key))"
         ></lib-ch-ui-radio-filter>
       }
     }

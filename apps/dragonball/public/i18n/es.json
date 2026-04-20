@@ -1,0 +1,24 @@
+{
+  "navbar": {
+    "petshop": "Store",
+    "rickymorty": "Rick & Morty",
+    "dragonball": "Dragon Ball"
+  },
+  "name": "Dragon Ball",
+  "gender": "Género",
+  "race": "Raza",
+  "Male": "Masculino",
+  "Female": "Femenino",
+  "Unknown": "Desconocido",
+  "Other": "Otro",
+  "Human": "Humano",
+  "Saiyan": "Saiyayin",
+  "Namekian": "Namekiano",
+  "Majin": "Majin",
+  "Frieza Race": "Raza de Freezer",
+  "Android": "Androide",
+  "Jiren Race": "Raza de Jiren",
+  "God": "Dios",
+  "Angel": "Ángel",
+  "Evil": "Malvado"
+}

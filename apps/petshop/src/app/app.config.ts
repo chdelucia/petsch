@@ -20,8 +20,13 @@ import {
   OBSERVABILITY_ENV_PROVIDERS,
   LocalstorageService,
 } from '@petsch/obs-data-access';
-import { PET_TOKEN, CurrentTransitionService } from '@petsch/api';
-import { PetApi } from '@petsch/data-access';
+import {
+  CurrentTransitionService,
+  PRODUCT_UI_CONFIG,
+  PRODUCT_DATA_TRANSFORMER,
+} from '@petsch/api';
+import { enrichProductWithHealth } from './utils/health-adapter';
+import { provideProductShopApi } from '@petsch/api-petshop';
 import { LOCALSTORAGE_TOKEN } from '@petsch/obs-api';
 import { provideHttpClient } from '@angular/common/http';
 import { TranslocoHttpLoader } from './transloco-loader';
@@ -42,9 +47,16 @@ export const appConfig: ApplicationConfig = {
     ...OBSERVABILITY_PROVIDERS,
     ...OBSERVABILITY_ENV_PROVIDERS,
     {
-      provide: PET_TOKEN,
-      useClass: PetApi,
+      provide: PRODUCT_UI_CONFIG,
+      useValue: {
+        listRoute: '/pets',
+      },
     },
+    {
+      provide: PRODUCT_DATA_TRANSFORMER,
+      useValue: enrichProductWithHealth,
+    },
+    provideProductShopApi(),
     {
       provide: LOCALSTORAGE_TOKEN,
       useClass: LocalstorageService,

@@ -10,6 +10,7 @@ test.describe('Filters', () => {
     filtersPage = new FiltersPage(page);
     productListPage = new ProductListPage(page);
     await filtersPage.goto('/pets');
+    await productListPage.waitForLoadingToFinish();
   });
 
   test('should filter by name', async () => {
