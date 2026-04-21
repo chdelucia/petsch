@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.17.0](https://github.com/chdelucia/petsch/compare/v1.16.0...v1.17.0) (2026-04-21)
+
+
+### Features
+
+* **obs:** implement trackAddToCart for favorites and pet of the day ([3f2d8e9](https://github.com/chdelucia/petsch/commit/3f2d8e91c384402ac88b135046b209b15d741210))
+* **obs:** implement trackAddToFavorites on button click ([869409a](https://github.com/chdelucia/petsch/commit/869409a823d452136525f7270ddbf85690e6b6c5))
+* **ui:** implement app-specific color palettes for all 3 apps ([da93959](https://github.com/chdelucia/petsch/commit/da93959aa4c07c2221aa0ebaa80913dc710b3bc6))
+
+
+### Bug Fixes
+
+* ensure pet dimensions (length, height, weight) handle 0 correctly ([f0577e1](https://github.com/chdelucia/petsch/commit/f0577e118d5bc6d14ea3d5df77aa132aa5b1335b))
+* restore primary and link button variants to indigo-600 ([75d6eaf](https://github.com/chdelucia/petsch/commit/75d6eaf4008fcd76b9a86b7db685581ed2ceb74c))
+* **ui:** restore badge and button colors for Tailwind v4 ([cb0f3c9](https://github.com/chdelucia/petsch/commit/cb0f3c9cc89347409ff384039b2147102578bdb0))
+
 ## [1.16.0](https://github.com/chdelucia/petsch/compare/v1.15.1...v1.16.0) (2026-04-20)
 
 
