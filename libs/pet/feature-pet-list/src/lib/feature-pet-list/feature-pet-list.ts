@@ -5,6 +5,7 @@ import {
   ITEM_OF_DAY_STORE,
   PRODUCT_UI_CONFIG,
 } from '@petsch/api';
+import { ANALYTICS_TOKEN } from '@petsch/obs-api';
 import {
   ChButton,
   ChPagination,
@@ -33,6 +34,7 @@ import { TranslocoDirective } from '@jsverse/transloco';
 export class FeatureProductList {
   private readonly store = inject(PRODUCT_LIST_STORE);
   private readonly config = inject(PRODUCT_UI_CONFIG, { optional: true });
+  private readonly analytics = inject(ANALYTICS_TOKEN);
   protected readonly iotdStore = inject(ITEM_OF_DAY_STORE);
   protected readonly transitionService = inject(CurrentTransitionService);
 
@@ -69,10 +71,15 @@ export class FeatureProductList {
     this.store.loadProducts();
   }
 
-  handleIotdClick(product: unknown): void {
+  handleIotdClick(product: any): void {
     if (this.iotdStore.isItemAddedToday()) {
       this.iotdStore.toggleIotd(true);
     } else {
+      this.analytics.trackAddToFavorites(
+        product?.id?.toString() ?? '',
+        product?.name ?? 'Unknown',
+        0,
+      );
       this.iotdStore.addItem(product);
     }
   }

@@ -11,7 +11,7 @@ describe('ObservabilityFacade', () => {
   beforeEach(() => {
     analyticsMock = {
       sendEvent: vi.fn(),
-      trackAddToCart: vi.fn(),
+      trackAddToFavorites: vi.fn(),
     };
     monitoringMock = {
       captureException: vi.fn(),
@@ -39,9 +39,9 @@ describe('ObservabilityFacade', () => {
     expect(monitoringMock.captureException).toHaveBeenCalledWith(error);
   });
 
-  it('should call analytics.trackAddToCart when trackAddToCart is called', () => {
-    facade.trackAddToCart('1', 'title', 100);
-    expect(analyticsMock.trackAddToCart).toHaveBeenCalledWith('1', 'title', 100);
+  it('should call analytics.trackAddToFavorites when trackAddToFavorites is called', () => {
+    facade.trackAddToFavorites('1', 'title', 100);
+    expect(analyticsMock.trackAddToFavorites).toHaveBeenCalledWith('1', 'title', 100);
   });
 
   it('should call trackEvent with purchase when trackPurchase is called', () => {

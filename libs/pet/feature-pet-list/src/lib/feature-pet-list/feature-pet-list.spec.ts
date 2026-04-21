@@ -4,7 +4,7 @@ import { FeatureProductList } from './feature-pet-list';
 import { provideRouter } from '@angular/router';
 import { of } from 'rxjs';
 import { PRODUCT_LIST_STORE, ITEM_OF_DAY_STORE, PRODUCT_TOKEN } from '@petsch/api';
-import { LOCALSTORAGE_TOKEN } from '@petsch/obs-api';
+import { LOCALSTORAGE_TOKEN, ANALYTICS_TOKEN } from '@petsch/obs-api';
 import { signal } from '@angular/core';
 
 describe('FeatureProductList', () => {
@@ -32,6 +32,10 @@ describe('FeatureProductList', () => {
       imports: [getTranslocoTestingModule(), FeatureProductList],
       providers: [
         { provide: PRODUCT_LIST_STORE, useValue: store },
+        {
+          provide: ANALYTICS_TOKEN,
+          useValue: { trackAddToFavorites: vi.fn() },
+        },
         provideRouter([]),
         {
           provide: LOCALSTORAGE_TOKEN,
@@ -77,10 +81,14 @@ describe('FeatureProductList', () => {
     expect(store.applyPagination).toHaveBeenCalledWith(2);
   });
 
-  it('should call handleIotdClick and call iotdStore.addItem if not added today', () => {
-    const pet = { id: '1' } as any;
+  it('should call handleIotdClick, track event and call iotdStore.addItem if not added today', () => {
+    const pet = { id: '1', name: 'Test Pet' } as any;
     const spy = vi.spyOn(component['iotdStore'], 'addItem');
+    const analyticsSpy = vi.spyOn(component['analytics'], 'trackAddToFavorites');
+
     component.handleIotdClick(pet);
+
+    expect(analyticsSpy).toHaveBeenCalledWith('1', 'Test Pet', 0);
     expect(spy).toHaveBeenCalledWith(pet);
   });
 

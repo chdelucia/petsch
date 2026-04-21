@@ -15,8 +15,8 @@ export class ObservabilityFacade {
     this.monitoring.captureException(error);
   }
 
-  trackAddToCart(id: string, title: string, price: number): void {
-    this.analytics.trackAddToCart(id, title, price);
+  trackAddToFavorites(id: string, title: string, price: number): void {
+    this.analytics.trackAddToFavorites(id, title, price);
   }
 
   trackPurchase(total: number) {
