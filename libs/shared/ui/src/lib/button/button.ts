@@ -1,4 +1,4 @@
-import { booleanAttribute, Component, input, output } from '@angular/core';
+import { booleanAttribute, ChangeDetectionStrategy, Component, input, output } from '@angular/core';
 import { NgClass } from '@angular/common';
 
 export type ButtonVariant = 'primary' | 'secondary' | 'outline' | 'ghost' | 'link';
@@ -9,6 +9,11 @@ export type ButtonSize = 'sm' | 'md' | 'lg';
   imports: [NgClass],
   templateUrl: './button.html',
   styleUrl: './button.css',
+  /**
+   * Performance Optimization: OnPush change detection reduces unnecessary checks.
+   * Since this component uses Signals for inputs and state, it remains reactive.
+   */
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ChButton {
   testId = input<string>('');

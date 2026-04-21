@@ -1,4 +1,4 @@
-import { Component, input, inject } from '@angular/core';
+import { Component, input, inject, ChangeDetectionStrategy } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { NgOptimizedImage } from '@angular/common';
 import { PRODUCT_UI_CONFIG } from '@petsch/api';
@@ -8,6 +8,11 @@ import { PRODUCT_UI_CONFIG } from '@petsch/api';
   imports: [RouterLink, NgOptimizedImage],
   templateUrl: './product-card.component.html',
   styleUrl: './product-card.component.css',
+  /**
+   * Performance Optimization: OnPush change detection reduces unnecessary checks.
+   * Since this component uses Signals for inputs and state, it remains reactive.
+   */
+  changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
     '[attr.data-testid]': 'testId()',
   },

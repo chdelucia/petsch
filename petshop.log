@@ -1,0 +1,30 @@
+
+> nx run petshop:serve:development
+
+[33m❯[39m Building...
+[32m✔[39m Building...
+[37m[1mInitial chunk files[22m[2m | [22m[1mNames[22m        [2m | [22m [1mRaw size[22m
+[32mchunk-XTHCBTA5.js[37m  [2m | [22m[2m-[22m            [2m | [22m[36m257.85 kB[37m[2m | [22m
+[32mmain.js[37m            [2m | [22m[2mmain[22m         [2m | [22m [36m19.91 kB[37m[2m | [22m
+[32mstyles.css[37m         [2m | [22m[2mstyles[22m       [2m | [22m [36m12.79 kB[37m[2m | [22m
+[32mchunk-NU36L66R.js[37m  [2m | [22m[2m-[22m            [2m | [22m  [36m1.79 kB[37m[2m | [22m
+[32mchunk-HFBNPKKE.js[37m  [2m | [22m[2m-[22m            [2m | [22m  [36m1.45 kB[37m[2m | [22m
+[1m [22m                  [2m | [22m[1mInitial total[22m[2m | [22m[1m293.80 kB[22m
+[1mLazy chunk files[22m   [2m | [22m[1mNames[22m        [2m | [22m [1mRaw size[22m
+[32mchunk-UL7WPFQG.js[37m  [2m | [22m[2m-[22m            [2m | [22m [36m39.91 kB[37m[2m | [22m
+[32mchunk-NPJHSQEM.js[37m  [2m | [22m[2mindex[22m        [2m | [22m [36m31.15 kB[37m[2m | [22m
+[32mchunk-GZ3AU6QS.js[37m  [2m | [22m[2mindex[22m        [2m | [22m [36m21.77 kB[37m[2m | [22m
+[32mchunk-EKMD7MYE.js[37m  [2m | [22m[2mindex[22m        [2m | [22m [36m16.76 kB[37m[2m | [22m
+[32mchunk-TLB2MHD3.js[37m  [2m | [22m[2mindex[22m        [2m | [22m  [36m1.47 kB[37m[2m | [22m
+Application bundle generation complete. [5.567 seconds] - 2026-04-21T20:20:07.059Z
+[39m
+[37mWatch mode enabled. Watching for file changes...[39m
+[37mNOTE: Raw file sizes do not reflect development server per-request transformations.[39m
+  [32m➜[39m  [1mLocal[22m:   [36mhttp://localhost:[1m4200[22m/[39m
+
+
+
+ NX   Successfully ran target serve for project petshop
+
+
+error: Failed to run "nx" due to exit code 130
