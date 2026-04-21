@@ -52,10 +52,10 @@ describe('AnalyticsService', () => {
   });
 
   it('should track achievement unlocked', () => {
-    service.trackCart('ach_1', 'First Achievement', 99);
+    service.trackAddToFavorites('ach_1', 'First Achievement', 99);
     expect(globalThis.gtag).toHaveBeenCalledWith(
       'event',
-      'add_to_cart',
+      'add_to_favorites',
       expect.objectContaining({
         item_id: 'ach_1',
         item_name: 'First Achievement',
