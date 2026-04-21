@@ -23,10 +23,10 @@
 }
 
 .ch-product-card__img {
-  @apply h-full w-full object-cover object-center transition-opacity;
+  @apply h-full w-full object-cover object-center transition-all duration-300;
 
   .ch-product-card:hover & {
-    @apply opacity-75;
+    @apply scale-110;
   }
 }
 
@@ -43,7 +43,7 @@
 }
 
 .ch-product-card__link-overlay {
-  @apply absolute inset-0;
+  @apply absolute inset-0 rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-600 focus-visible:ring-offset-4;
 }
 
 .ch-product-card__meta {
