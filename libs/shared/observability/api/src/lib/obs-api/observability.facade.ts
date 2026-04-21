@@ -16,7 +16,7 @@ export class ObservabilityFacade {
   }
 
   trackAddToCart(id: string, title: string, price: number): void {
-    this.analytics.trackCart(id, title, price);
+    this.analytics.trackAddToCart(id, title, price);
   }
 
   trackPurchase(total: number) {

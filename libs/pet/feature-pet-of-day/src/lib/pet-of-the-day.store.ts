@@ -9,7 +9,7 @@ import {
   withProps,
 } from '@ngrx/signals';
 import { ItemOfDayState, ItemOfDayEntry } from '@petsch/api';
-import { LOCALSTORAGE_TOKEN } from '@petsch/obs-api';
+import { LOCALSTORAGE_TOKEN, ANALYTICS_TOKEN } from '@petsch/obs-api';
 
 const STORAGE_KEY = 'item-of-the-day-entries';
 
@@ -22,6 +22,7 @@ export const ItemOfDayStore = signalStore(
   withState(initialState),
   withProps(() => ({
     storageService: inject(LOCALSTORAGE_TOKEN),
+    analytics: inject(ANALYTICS_TOKEN),
   })),
   withComputed((store) => {
     return {
@@ -43,15 +44,20 @@ export const ItemOfDayStore = signalStore(
     };
   }),
   withMethods((store) => {
-    const { storageService } = store;
+    const { storageService, analytics } = store;
     return {
-      addItem(product: unknown) {
+      addItem(product: any) {
         const today = new Date().toISOString().split('T')[0];
         const alreadyExists = store
           .entries()
           .some((entry) => entry.date === today);
 
-        if (!alreadyExists) {
+        if (!alreadyExists && product) {
+          analytics.trackAddToCart(
+            product.id?.toString() ?? '',
+            product.name || 'Unknown',
+            0,
+          );
           const newEntries = [...store.entries(), { product, date: today }];
           patchState(store, { entries: newEntries, isOpen: true });
           storageService.setValue(STORAGE_KEY, newEntries);

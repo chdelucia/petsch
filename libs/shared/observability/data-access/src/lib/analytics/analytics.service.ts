@@ -39,7 +39,7 @@ export class AnalyticsService implements IAnalyticsService {
     gtag('event', eventName, params || {});
   }
 
-  public trackCart(id: string, title: string, price: number): void {
+  public trackAddToCart(id: string, title: string, price: number): void {
     this.sendEvent('add_to_cart', {
       item_id: id,
       item_name: title,

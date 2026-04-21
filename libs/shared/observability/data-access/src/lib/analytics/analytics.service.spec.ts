@@ -52,7 +52,7 @@ describe('AnalyticsService', () => {
   });
 
   it('should track achievement unlocked', () => {
-    service.trackCart('ach_1', 'First Achievement', 99);
+    service.trackAddToCart('ach_1', 'First Achievement', 99);
     expect(globalThis.gtag).toHaveBeenCalledWith(
       'event',
       'add_to_cart',
