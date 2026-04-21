@@ -7,7 +7,9 @@ export interface HealthStrategy {
 export class DefaultHealthStrategy implements HealthStrategy {
   calculate(product: any): HealthStatus {
     const { weight, height, length } = product;
-    if (!weight || !height || !length) return 'unhealthy';
+    if (weight == null || height == null || length == null) return 'unhealthy';
+
+    if (height === 0 || length === 0) return 'unhealthy';
 
     const score = weight / (height * length);
 

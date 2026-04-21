@@ -54,4 +54,20 @@ describe('FeatureProductDetails', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should display length/height/weight even if they are 0', () => {
+    const productWithZeros = {
+      ...mockProduct,
+      height: 0,
+      length: 0,
+      weight: 0,
+    };
+    fixture.componentRef.setInput('product', productWithZeros);
+    fixture.detectChanges();
+
+    const content = fixture.nativeElement.textContent.toLowerCase();
+    expect(content).toContain('height: 0 centimeters');
+    expect(content).toContain('width: 0 centimeters');
+    expect(content).toContain('weight: 0 grams');
+  });
 });

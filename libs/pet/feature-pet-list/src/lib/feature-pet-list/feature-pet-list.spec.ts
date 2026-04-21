@@ -125,4 +125,25 @@ describe('FeatureProductList', () => {
     );
     expect(pagination).toBeTruthy();
   });
+
+  it('should display length/height/weight even if they are 0', () => {
+    store.products.set([
+      {
+        id: 1,
+        name: 'Pet 0',
+        length: 0,
+        height: 0,
+        weight: 0,
+        health: 'healthy',
+        photo_url: 'http://example.com/photo.jpg',
+      },
+    ]);
+    store.loading.set(false);
+    fixture.detectChanges();
+
+    const content = fixture.nativeElement.textContent;
+    expect(content).toContain('height: 0cm');
+    expect(content).toContain('width: 0cm');
+    expect(content).toContain('weight: 0g');
+  });
 });

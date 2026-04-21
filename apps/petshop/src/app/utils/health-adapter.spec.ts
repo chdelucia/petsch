@@ -81,4 +81,36 @@ describe('HealthAdapter', () => {
     const enriched = enrichProductWithHealth(product);
     expect(enriched.health).toBe('healthy');
   });
+
+  it('should return unhealthy if weight, height or length are 0 due to truthiness check (repro)', () => {
+    const product: Product = {
+      id: 1,
+      name: 'Dog',
+      kind: 'dog',
+      weight: 12,
+      height: 2,
+      length: 0,
+      description: '',
+      photo_url: '',
+    };
+    const enriched = enrichProductWithHealth(product);
+    // Now it returns 'unhealthy' because length is 0 (division by zero protection)
+    expect(enriched.health).toBe('unhealthy');
+  });
+
+  it('should return healthy if weight is 0 and it is valid (edge case check)', () => {
+    const product: Product = {
+      id: 1,
+      name: 'Dog',
+      kind: 'dog',
+      weight: 0,
+      height: 2,
+      length: 2,
+      description: '',
+      photo_url: '',
+    };
+    const enriched = enrichProductWithHealth(product);
+    // score = 0 / (2 * 2) = 0 -> unhealthy (< 2)
+    expect(enriched.health).toBe('unhealthy');
+  });
 });

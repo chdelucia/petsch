@@ -45,18 +45,22 @@
         <h3 class="product-details__sr">{{ t('description') }}</h3>
         <div class="product-details__description">
           <p class="mb-4">{{ item.description }}</p>
+          @if (item.height != null) {
           <p>
             <strong>{{ t('height') }}:</strong> {{ item.height }} {{
             t('centimeters') }}
           </p>
+          } @if (item.length != null) {
           <p>
             <strong>{{ t('width') }}:</strong> {{ item.length }} {{
             t('centimeters') }}
           </p>
+          } @if (item.weight != null) {
           <p>
             <strong>{{ t('weight') }}:</strong> {{ item.weight }} {{ t('grams')
             }}
           </p>
+          }
           @if (item.number_of_lives) {
           <p><strong>{{ t('lives') }}:</strong> {{ item.number_of_lives }}</p>
           }
