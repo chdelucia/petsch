@@ -7,6 +7,8 @@
       class="ch-filter-container__button-wrapper"
       [fullWidth]="true"
       [ariaLabel]="title()"
+      [ariaExpanded]="isOpen()"
+      [ariaControls]="testId() + '-section'"
     >
       <div class="flex items-center justify-between w-full">
         <span class="ch-filter-container__title"> {{ title() | uppercase }}</span>

@@ -64,6 +64,13 @@ export class ChDropdownFilter {
     }
   }
 
+  @HostListener('keydown.escape')
+  onEscape() {
+    if (this.isOpen()) {
+      this.isOpen.set(false);
+    }
+  }
+
   emitValue(option: SortOption): void {
     this.toggle();
     this.internalSortBy.set({ key: option.key, order: option.order });
