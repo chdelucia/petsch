@@ -43,4 +43,15 @@ describe('ItemOfDayStore', () => {
     expect(store.entries().length).toBe(1);
     expect(store.entries()[0].product.name).toBe('Product 1');
   });
+
+  it('should use local date (YYYY-MM-DD format) for entries', () => {
+    const product = { id: 1, name: 'Local Product' };
+    const localToday = new Date().toLocaleDateString('sv-SE');
+
+    store.addItem(product);
+
+    expect(store.entries()[0].date).toBe(localToday);
+    // Ensure it's YYYY-MM-DD
+    expect(store.entries()[0].date).toMatch(/^\d{4}-\d{2}-\d{2}$/);
+  });
 });

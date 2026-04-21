@@ -1,4 +1,5 @@
 import { computed, inject } from '@angular/core';
+import { getLocalIsoDate } from '@petsch/shared-utils';
 import {
   signalStore,
   withComputed,
@@ -31,13 +32,13 @@ export const ItemOfDayStore = signalStore(
         );
       }),
       todayItem: computed(() => {
-        const today = new Date().toISOString().split('T')[0];
+        const today = getLocalIsoDate();
         return (
           store.entries().find((entry) => entry.date === today)?.product ?? null
         );
       }),
       isItemAddedToday: computed(() => {
-        const today = new Date().toISOString().split('T')[0];
+        const today = getLocalIsoDate();
         return store.entries().some((entry) => entry.date === today);
       }),
     };
@@ -46,7 +47,7 @@ export const ItemOfDayStore = signalStore(
     const { storageService } = store;
     return {
       addItem(product: unknown) {
-        const today = new Date().toISOString().split('T')[0];
+        const today = getLocalIsoDate();
         const alreadyExists = store
           .entries()
           .some((entry) => entry.date === today);
