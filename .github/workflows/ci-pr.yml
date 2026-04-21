@@ -74,9 +74,6 @@ jobs:
       - name: Install dependencies
         run: bun install --frozen-lockfile
 
-      - name: Install Cypress
-        run: bun x cypress install
-
   lint:
     if: false
     runs-on: ubuntu-latest
