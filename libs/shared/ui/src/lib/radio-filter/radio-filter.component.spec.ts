@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ChRadioFilter } from './radio-filter.component';
+import { By } from '@angular/platform-browser';
 
 describe('ChRadioFilter', () => {
   let component: ChRadioFilter;
@@ -13,7 +14,11 @@ describe('ChRadioFilter', () => {
     fixture = TestBed.createComponent(ChRadioFilter);
     component = fixture.componentInstance;
     fixture.componentRef.setInput('title', 'gender');
-    fixture.componentRef.setInput('options', [{ value: 'dog', text: 'DOG' }]);
+    fixture.componentRef.setInput('options', [
+      { value: 'dog', text: 'DOG' },
+      { value: 'cat', text: 'CAT' }
+    ]);
+    fixture.componentRef.setInput('testId', 'radio-filter');
     fixture.detectChanges();
   });
 
@@ -56,5 +61,27 @@ describe('ChRadioFilter', () => {
     const spy = vi.fn();
     component.registerOnTouched(spy);
     expect(component.onTouched).toBe(spy);
+  });
+
+  it('should emit filterChange when radio option is clicked', () => {
+    const spy = vi.fn();
+    component.registerOnChange(spy);
+    const radioOption = fixture.debugElement.query(By.css('[data-testid="radio-filter-option-dog"]'));
+
+    radioOption.triggerEventHandler('click', { target: radioOption.nativeElement });
+
+    expect(component.value()).toBe('dog');
+    expect(spy).toHaveBeenCalledWith('dog');
+  });
+
+  it('should mark the correct radio option as checked', () => {
+    component.writeValue('cat');
+    fixture.detectChanges();
+
+    const dogRadio = fixture.debugElement.query(By.css('[data-testid="radio-filter-option-dog"]')).nativeElement as HTMLInputElement;
+    const catRadio = fixture.debugElement.query(By.css('[data-testid="radio-filter-option-cat"]')).nativeElement as HTMLInputElement;
+
+    expect(dogRadio.checked).toBe(false);
+    expect(catRadio.checked).toBe(true);
   });
 });
