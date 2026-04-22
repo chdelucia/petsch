@@ -18,6 +18,9 @@
   (click)="handleClick($event)"
   [attr.data-testid]="testId()"
   [attr.aria-label]="ariaLabel() || null"
+  [attr.aria-expanded]="ariaExpanded() ?? null"
+  [attr.aria-haspopup]="ariaHasPopup() || null"
+  [attr.aria-controls]="ariaControls() || null"
 >
   <ng-content></ng-content>
 </button>
