@@ -7,6 +7,8 @@ export interface ProductsStoreContract<T = unknown, F = unknown> {
   error: Signal<string | null>;
   pagination: Signal<PaginationLinks>;
   filters: Signal<Partial<F>>;
+  currentPage: Signal<number>;
+  totalPages: Signal<number>;
   loadProducts(): Promise<void>;
   applySort(sort: { key: string; order: string }): void;
   applyFilters(filters: Partial<F>): void;
