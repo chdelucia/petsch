@@ -18,7 +18,11 @@ import { PRODUCT_FILTER_CONFIG } from '@petsch/feature-filters';
 import { provideTransloco } from '@jsverse/transloco';
 import { TranslocoHttpLoader } from './transloco-loader';
 import { LOCALSTORAGE_TOKEN } from '@petsch/obs-api';
-import { LocalstorageService } from '@petsch/obs-data-access';
+import {
+  LocalstorageService,
+  OBSERVABILITY_PROVIDERS,
+  OBSERVABILITY_ENV_PROVIDERS,
+} from '@petsch/obs-data-access';
 import { characterAdapter } from './utils/character-adapter';
 import { APP_ROUTES } from './app.routes';
 
@@ -43,6 +47,8 @@ export const appConfig: ApplicationConfig = {
       useValue: characterAdapter,
     },
     provideRickAndMortyProductApi(),
+    ...OBSERVABILITY_PROVIDERS,
+    ...OBSERVABILITY_ENV_PROVIDERS,
     {
       provide: PRODUCT_LIST_STORE,
       useClass: ProductsStore,
