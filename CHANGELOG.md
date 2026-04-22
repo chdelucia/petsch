@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.17.4](https://github.com/chdelucia/petsch/compare/v1.17.3...v1.17.4) (2026-04-22)
+
+
+### Bug Fixes
+
+* resolve character listing breakage across all applications ([3234315](https://github.com/chdelucia/petsch/commit/3234315c35ac3399df156d34017a2ebbba612fe5))
+
 ### [1.17.3](https://github.com/chdelucia/petsch/compare/v1.17.2...v1.17.3) (2026-04-21)
 
 ### [1.17.2](https://github.com/chdelucia/petsch/compare/v1.17.1...v1.17.2) (2026-04-21)
