@@ -5,6 +5,10 @@ export interface ProductUiConfig {
     page: string;
     limit: string;
   };
+  sortKeys?: {
+    sort: string;
+    order: string;
+  };
   listRoute?: string;
   hideSort?: boolean;
 }

@@ -24,6 +24,8 @@ describe('FeatureProductList', () => {
       error: signal(null),
       pagination: signal({}),
       filters: signal({}),
+      currentPage: signal(1),
+      totalPages: signal(1),
       loadProducts: vi.fn(),
       applyPagination: vi.fn(),
     };

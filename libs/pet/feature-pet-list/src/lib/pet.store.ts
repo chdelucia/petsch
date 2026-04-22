@@ -42,11 +42,29 @@ export const ProductsStore = signalStore(
     return state;
   }),
 
-  withComputed((store) => ({
-    query: () => ({
-      ...store.filters(),
-    }),
-  })),
+  withComputed((store) => {
+    const config = inject(PRODUCT_UI_CONFIG, { optional: true });
+    const pageKey = config?.paginationKeys?.page ?? '_page';
+
+    return {
+      query: () => ({
+        ...store.filters(),
+      }),
+      currentPage: computed(() => {
+        return (store.filters() as Record<string, unknown>)[pageKey] as number ?? 1;
+      }),
+      totalPages: computed(() => {
+        const pagination = store.pagination();
+        if (pagination.pages) {
+          return pagination.pages;
+        }
+        const last = pagination.last;
+        const regex = new RegExp(`${pageKey}=(\\d+)(?:&|$)`);
+        const match = last?.match(regex);
+        return match ? Number(match[1]) : ((store.filters() as Record<string, unknown>)[pageKey] as number ?? 1);
+      }),
+    };
+  }),
 
   withMethods((store) => {
     const productService = inject(PRODUCT_TOKEN);
@@ -54,6 +72,8 @@ export const ProductsStore = signalStore(
 
     const pageKey = config?.paginationKeys?.page ?? '_page';
     const limitKey = config?.paginationKeys?.limit ?? '_limit';
+    const sortKey = config?.sortKeys?.sort ?? '_sort';
+    const orderKey = config?.sortKeys?.order ?? '_order';
 
     const setLoading = (loading: boolean) =>
       patchState(store, { loading, error: null });
@@ -89,8 +109,8 @@ export const ProductsStore = signalStore(
         patchState(store, {
           filters: {
             ...store.filters(),
-            _sort: sort.key,
-            _order: sort.order,
+            [sortKey]: sort.key,
+            [orderKey]: sort.order,
           },
         });
       },

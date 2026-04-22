@@ -44,6 +44,8 @@ describe('FeaturePage', () => {
             error: signal(null),
             pagination: signal({}),
             filters: signal({}),
+            currentPage: signal(1),
+            totalPages: signal(1),
             filterName: signal(''),
             loadProducts: vi.fn(),
             applySort: vi.fn(),

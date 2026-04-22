@@ -41,23 +41,8 @@ export class FeatureProductList {
   showFilters = input.required<boolean>();
 
   products = this.store.products as Signal<unknown[]>;
-
-  currentPage = computed(() => {
-    const pageKey = this.config?.paginationKeys?.page ?? '_page';
-    return (this.store.filters() as Record<string, unknown>)[pageKey] as number ?? 1;
-  });
-
-  totalPages = computed(() => {
-    const pagination = this.store.pagination();
-    if (pagination.pages) {
-      return pagination.pages;
-    }
-    const last = pagination.last;
-    const pageKey = this.config?.paginationKeys?.page ?? '_page';
-    const regex = new RegExp(`${pageKey}=(\\d+)(?:&|$)`);
-    const match = last?.match(regex);
-    return match ? Number(match[1]) : this.currentPage();
-  });
+  currentPage = this.store.currentPage;
+  totalPages = this.store.totalPages;
 
   loading = computed(() => this.store.loading());
   error = this.store.error;
