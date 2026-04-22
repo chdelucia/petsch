@@ -1,4 +1,10 @@
-import { Component, input, inject } from '@angular/core';
+import {
+  Component,
+  input,
+  inject,
+  computed,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { NgOptimizedImage } from '@angular/common';
 import { PRODUCT_UI_CONFIG } from '@petsch/api';
@@ -11,6 +17,8 @@ import { PRODUCT_UI_CONFIG } from '@petsch/api';
   host: {
     '[attr.data-testid]': 'testId()',
   },
+  // Optimization: Use OnPush to reduce change detection cycles in lists.
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ChCard {
   private readonly config = inject(PRODUCT_UI_CONFIG, { optional: true });
@@ -22,8 +30,11 @@ export class ChCard {
   viewTransitionName = input<string>('');
   priority = input<boolean>(false);
 
-  get detailRoute(): string[] {
+  // Optimization: Use computed signal to memoize the detail route array.
+  // This avoids re-allocating a new array on every change detection cycle,
+  // which prevents unnecessary downstream updates in RouterLink.
+  detailRoute = computed(() => {
     const listRoute = this.config?.listRoute ?? '/pets';
     return [listRoute, this.id().toString()];
-  }
+  });
 }

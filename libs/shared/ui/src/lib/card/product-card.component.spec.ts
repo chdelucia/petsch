@@ -44,7 +44,7 @@ describe('ChCard', () => {
   });
 
   it('should have the correct detail route', () => {
-    expect(component.detailRoute).toEqual(['/test-route', '1']);
+    expect(component.detailRoute()).toEqual(['/test-route', '1']);
   });
 
   it('should use default detail route if config is missing', () => {
@@ -61,6 +61,6 @@ describe('ChCard', () => {
     fixture.componentRef.setInput('imageUrl', 'https://placehold.co/600x400');
     fixture.detectChanges();
 
-    expect(component.detailRoute).toEqual(['/pets', '1']);
+    expect(component.detailRoute()).toEqual(['/pets', '1']);
   });
 });
