@@ -77,4 +77,12 @@ describe('ChDropdownFilter', () => {
     component.emitValue({ key: 'name', order: 'asc', text: 'Name' });
     expect(component.sortby()).toEqual({ key: 'name', order: 'asc', text: 'Name' });
   });
+
+  it('should close the dropdown when Escape key is pressed', () => {
+    component.isOpen.set(true);
+    fixture.detectChanges();
+
+    document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape' }));
+    expect(component.isOpen()).toBe(false);
+  });
 });
