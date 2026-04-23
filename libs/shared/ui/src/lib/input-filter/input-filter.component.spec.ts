@@ -57,6 +57,14 @@ describe('ChInputFilter', () => {
     expect(component.lastSearch().length).toBe(1);
   });
 
+  it('should limit lastSearch to 10 items', () => {
+    for (let i = 0; i < 15; i++) {
+      component.addSearch(`test-${i}`);
+    }
+    expect(component.lastSearch().length).toBe(10);
+    expect(component.lastSearch()[0]).toBe('test-14');
+  });
+
   it('should remove search from lastSearch', () => {
     component.lastSearch.set(['test1', 'test2']);
     const event = new MouseEvent('click');
