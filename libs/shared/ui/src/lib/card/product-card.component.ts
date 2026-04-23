@@ -1,4 +1,10 @@
-import { Component, input, inject } from '@angular/core';
+import {
+  Component,
+  input,
+  inject,
+  computed,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { NgOptimizedImage } from '@angular/common';
 import { PRODUCT_UI_CONFIG } from '@petsch/api';
@@ -11,6 +17,7 @@ import { PRODUCT_UI_CONFIG } from '@petsch/api';
   host: {
     '[attr.data-testid]': 'testId()',
   },
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ChCard {
   private readonly config = inject(PRODUCT_UI_CONFIG, { optional: true });
@@ -22,8 +29,8 @@ export class ChCard {
   viewTransitionName = input<string>('');
   priority = input<boolean>(false);
 
-  get detailRoute(): string[] {
+  detailRoute = computed(() => {
     const listRoute = this.config?.listRoute ?? '/pets';
     return [listRoute, this.id().toString()];
-  }
+  });
 }
