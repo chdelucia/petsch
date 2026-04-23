@@ -5,6 +5,9 @@ import { PRODUCT_TOKEN } from '@petsch/api';
 
 export const productResolver: ResolveFn<unknown | null> = (route) => {
   const productService = inject(PRODUCT_TOKEN);
-  const id = route.paramMap.get('id')!;
+  const id = route.paramMap.get('id');
+  if (!id) {
+    return of(null);
+  }
   return productService.getDetails(id).pipe(catchError(() => of(null)));
 };

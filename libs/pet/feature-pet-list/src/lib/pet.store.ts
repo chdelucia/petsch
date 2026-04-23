@@ -117,6 +117,7 @@ export const ProductsStore = signalStore(
 
       removeFilter(key: string) {
         const current = store.filters() as Record<string, unknown>;
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         const { [key]: _, ...rest } = current;
         patchState(store, { filters: rest });
       },

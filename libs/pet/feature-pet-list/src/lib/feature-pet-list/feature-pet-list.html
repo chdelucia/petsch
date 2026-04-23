@@ -34,13 +34,13 @@
             </lib-ch-ui-badge>
           </div>
 
-          @if (item.height != null || item.length != null || item.weight != null) {
+          @if ((item.height !== null && item.height !== undefined) || (item.length !== null && item.length !== undefined) || (item.weight !== null && item.weight !== undefined)) {
           <div class="text-xs text-gray-500">
-            @if (item.height != null) {
+            @if (item.height !== null && item.height !== undefined) {
             <p>{{ t('height') }}: {{ item.height }}{{ t('cm') }}</p>
-            } @if (item.length != null) {
+            } @if (item.length !== null && item.length !== undefined) {
             <p>{{ t('width') }}: {{ item.length }}{{ t('cm') }}</p>
-            } @if (item.weight != null) {
+            } @if (item.weight !== null && item.weight !== undefined) {
             <p>{{ t('weight') }}: {{ item.weight }}{{ t('g') }}</p>
             }
           </div>

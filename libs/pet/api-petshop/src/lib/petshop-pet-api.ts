@@ -32,8 +32,9 @@ export class ProductShopApi<T = unknown, F = Record<string, unknown>>
       .pipe(
         map((response) => {
           let products = response.body || [];
-          if (this.transformer) {
-            products = products.map((item) => this.transformer!(item));
+          const transformer = this.transformer;
+          if (transformer) {
+            products = products.map((item) => transformer(item));
           }
           const linkHeader = response.headers.get('Link');
           const pagination = linkHeader ? parseLinkHeader(linkHeader) : {};

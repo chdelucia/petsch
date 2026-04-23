@@ -13,7 +13,7 @@ import {
 import { form as angularForm, FormField } from '@angular/forms/signals';
 import { TranslocoService, TranslocoDirective } from '@jsverse/transloco';
 import { PRODUCT_LIST_STORE } from '@petsch/api';
-import { debounceTime, merge, Observable, skip } from 'rxjs';
+import { debounceTime, merge, skip } from 'rxjs';
 import {
   ChInputFilter,
   ChRadioFilter,

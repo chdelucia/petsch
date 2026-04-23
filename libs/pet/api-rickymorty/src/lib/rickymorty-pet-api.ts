@@ -50,8 +50,9 @@ export class RickAndMortyProductApi<T = unknown, F = Record<string, unknown>>
       .pipe(
         map((body) => {
           let products = (body.results as unknown as T[]) || [];
-          if (this.transformer) {
-            products = products.map((item) => this.transformer!(item));
+          const transformer = this.transformer;
+          if (transformer) {
+            products = products.map((item) => transformer(item));
           }
           return {
             products,
