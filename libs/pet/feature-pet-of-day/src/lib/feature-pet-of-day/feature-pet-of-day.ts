@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { ChCartDrawer, ChCartItem } from '@petsch/ui';
 import { TranslocoDirective } from '@jsverse/transloco';
 import { ITEM_OF_DAY_STORE } from '@petsch/api';
+import { getLocalIsoDate } from '@petsch/shared-utils';
 
 @Component({
   selector: 'lib-feature-item-of-day',
@@ -11,5 +12,5 @@ import { ITEM_OF_DAY_STORE } from '@petsch/api';
 })
 export class FeatureItemOfDay {
   protected readonly iotdStore = inject(ITEM_OF_DAY_STORE);
-  protected readonly today = new Date().toISOString().split('T')[0];
+  protected readonly today = getLocalIsoDate();
 }
