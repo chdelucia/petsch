@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.17.13](https://github.com/chdelucia/petsch/compare/v1.17.12...v1.17.13) (2026-04-23)
+
+
+### Bug Fixes
+
+* **pet:** ensure Pet of the Day uses local timezone ([d968356](https://github.com/chdelucia/petsch/commit/d96835637683d8c3c002b41dda2101d0df35a18d))
+
 ### [1.17.12](https://github.com/chdelucia/petsch/compare/v1.17.11...v1.17.12) (2026-04-23)
 
 ### [1.17.11](https://github.com/chdelucia/petsch/compare/v1.17.10...v1.17.11) (2026-04-23)
