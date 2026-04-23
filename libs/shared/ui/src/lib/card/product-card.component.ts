@@ -17,7 +17,6 @@ import { PRODUCT_UI_CONFIG } from '@petsch/api';
   host: {
     '[attr.data-testid]': 'testId()',
   },
-  // Optimization: Use OnPush to reduce change detection cycles in lists.
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ChCard {
@@ -30,9 +29,6 @@ export class ChCard {
   viewTransitionName = input<string>('');
   priority = input<boolean>(false);
 
-  // Optimization: Use computed signal to memoize the detail route array.
-  // This avoids re-allocating a new array on every change detection cycle,
-  // which prevents unnecessary downstream updates in RouterLink.
   detailRoute = computed(() => {
     const listRoute = this.config?.listRoute ?? '/pets';
     return [listRoute, this.id().toString()];
