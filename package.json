@@ -71,7 +71,7 @@
     "@tailwindcss/vite": "^4.2.2",
     "@types/node": "20.19.9",
     "@typescript-eslint/utils": "^8.58.2",
-    "@vitest/coverage-v8": "~4.1.0",
+    "@vitest/coverage-v8": "~4.1.5",
     "@vitest/ui": "~4.1.0",
     "angular-eslint": "^21.2.0",
     "autoprefixer": "^10.4.27",
