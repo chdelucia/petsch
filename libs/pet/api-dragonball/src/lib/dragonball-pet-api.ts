@@ -46,10 +46,11 @@ export class DragonBallProductApi<T = unknown, F = Record<string, unknown>>
       })
       .pipe(
         map((body) => {
+          const transformer = this.transformer;
           if (Array.isArray(body)) {
             let products = body as T[];
-            if (this.transformer) {
-              products = products.map((item) => this.transformer!(item));
+            if (transformer) {
+              products = products.map((item) => transformer(item));
             }
             return {
               products,
@@ -60,8 +61,8 @@ export class DragonBallProductApi<T = unknown, F = Record<string, unknown>>
           }
 
           let products = (body.items as unknown as T[]) || [];
-          if (this.transformer) {
-            products = products.map((item) => this.transformer!(item));
+          if (transformer) {
+            products = products.map((item) => transformer(item));
           }
           return {
             products,

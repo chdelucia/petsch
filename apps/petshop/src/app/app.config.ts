@@ -1,7 +1,5 @@
 import {
   ApplicationConfig,
-  ENVIRONMENT_INITIALIZER,
-  EnvironmentInjector,
   inject,
   provideBrowserGlobalErrorListeners,
   provideZonelessChangeDetection,
@@ -35,8 +33,6 @@ import { LOCALSTORAGE_TOKEN } from '@petsch/obs-api';
 import { provideHttpClient } from '@angular/common/http';
 import { TranslocoHttpLoader } from './transloco-loader';
 import { provideTransloco } from '@jsverse/transloco';
-
-let appInjector: EnvironmentInjector;
 
 export const appConfig: ApplicationConfig = {
   providers: [

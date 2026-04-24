@@ -5,13 +5,13 @@ import { AnalyticsService } from './analytics.service';
 
 describe('AnalyticsService', () => {
   let service: AnalyticsService;
-  let routerEvents: Subject<any>;
-  let routerMock: any;
+  let routerEvents: Subject<unknown>;
+  let routerMock: Partial<Router>;
 
   beforeEach(() => {
-    routerEvents = new Subject<any>();
+    routerEvents = new Subject<unknown>();
     routerMock = {
-      events: routerEvents.asObservable(),
+      events: routerEvents.asObservable() as any,
     };
 
     (globalThis as any).gtag = vitest.fn();

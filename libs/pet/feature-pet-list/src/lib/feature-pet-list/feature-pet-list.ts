@@ -56,13 +56,14 @@ export class FeatureProductList {
     this.store.loadProducts();
   }
 
-  handleIotdClick(product: any): void {
+  handleIotdClick(product: unknown): void {
+    const item = product as { id?: string | number; name?: string };
     if (this.iotdStore.isItemAddedToday()) {
       this.iotdStore.toggleIotd(true);
     } else {
       this.analytics.trackAddToFavorites(
-        product?.id?.toString() ?? '',
-        product?.name ?? 'Unknown',
+        item?.id?.toString() ?? '',
+        item?.name ?? 'Unknown',
         0,
       );
       this.iotdStore.addItem(product);

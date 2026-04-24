@@ -4,7 +4,7 @@ import {
 } from '@angular/core';
 import { provideRouter, withComponentInputBinding } from '@angular/router';
 import { appRoutes } from './app.routes';
-import { provideHttpClient, HttpResponse } from '@angular/common/http';
+import { provideHttpClient } from '@angular/common/http';
 import {
   PRODUCT_UI_CONFIG,
   PRODUCT_LIST_STORE,

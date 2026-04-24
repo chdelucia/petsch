@@ -1,11 +1,19 @@
 export type HealthStatus = 'unhealthy' | 'healthy' | 'very healthy';
 
+export interface PetProduct {
+  weight?: number;
+  height?: number;
+  length?: number;
+  kind?: string;
+  number_of_lives?: number;
+}
+
 export interface HealthStrategy {
-  calculate(product: any): HealthStatus;
+  calculate(product: PetProduct): HealthStatus;
 }
 
 export class DefaultHealthStrategy implements HealthStrategy {
-  calculate(product: any): HealthStatus {
+  calculate(product: PetProduct): HealthStatus {
     const { weight, height, length } = product;
     if (weight == null || height == null || length == null) return 'unhealthy';
 
@@ -24,7 +32,7 @@ export class DefaultHealthStrategy implements HealthStrategy {
 }
 
 export class CatHealthStrategy extends DefaultHealthStrategy {
-  override calculate(product: any): HealthStatus {
+  override calculate(product: PetProduct): HealthStatus {
     if (product.number_of_lives === 1) {
       return 'unhealthy';
     }
@@ -41,8 +49,8 @@ export function getHealthStrategy(kind: string): HealthStrategy {
   return strategies[kind.toLowerCase()] || strategies['default'];
 }
 
-export function enrichProductWithHealth(product: any): any {
-  const strategy = getHealthStrategy(product.kind);
+export function enrichProductWithHealth(product: PetProduct): PetProduct & { health: HealthStatus } {
+  const strategy = getHealthStrategy(product.kind || '');
   return {
     ...product,
     health: strategy.calculate(product),

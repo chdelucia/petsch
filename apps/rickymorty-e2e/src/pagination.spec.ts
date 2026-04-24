@@ -11,7 +11,7 @@ test.describe('Rick & Morty Pagination', () => {
   });
 
   test('should navigate to next page', async ({ page }) => {
-    const firstPageFirstCharacter = await page.locator('[data-testid="product-card"]').first().textContent();
+    const firstPageFirstCharacter = page.locator('[data-testid="product-card"]').first();
 
     const nextBtn = page.getByTestId('product-list-pagination-next');
     await nextBtn.click();
@@ -21,7 +21,7 @@ test.describe('Rick & Morty Pagination', () => {
 
     const secondPageFirstCharacter = await page.locator('[data-testid="product-card"]').first().textContent();
 
-    expect(firstPageFirstCharacter).not.toBe(secondPageFirstCharacter);
+    await expect(firstPageFirstCharacter).not.toHaveText(secondPageFirstCharacter);
     await expect(page).toHaveURL(/page=2/);
   });
 });
