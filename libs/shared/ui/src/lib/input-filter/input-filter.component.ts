@@ -1,4 +1,5 @@
 import {
+  ChangeDetectionStrategy,
   Component,
   DestroyRef,
   ElementRef,
@@ -28,6 +29,7 @@ import { TranslocoDirective } from '@jsverse/transloco';
   ],
   templateUrl: './input-filter.component.html',
   styleUrl: './input-filter.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ChInputFilter implements ControlValueAccessor, OnInit {
   testId = input<string>('');

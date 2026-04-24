@@ -1,4 +1,9 @@
-import { Component, input, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  input,
+  signal,
+} from '@angular/core';
 import { TranslocoModule } from '@jsverse/transloco';
 import { ChButton } from '../button/button';
 
@@ -8,6 +13,7 @@ import { ChButton } from '../button/button';
   imports: [TranslocoModule, ChButton],
   templateUrl: './navbar.html',
   styleUrl: './navbar.css',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ChNavbar {
   currentApp = input.required<string>();
