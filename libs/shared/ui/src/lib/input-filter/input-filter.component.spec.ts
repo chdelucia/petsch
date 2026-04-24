@@ -57,6 +57,19 @@ describe('ChInputFilter', () => {
     expect(component.lastSearch().length).toBe(1);
   });
 
+  it('should trim and add search to lastSearch', () => {
+    component.addSearch('  trimmed-search  ');
+    expect(component.lastSearch()).toContain('trimmed-search');
+    expect(component.lastSearch()).not.toContain('  trimmed-search  ');
+  });
+
+  it('should limit search term length to 100 characters', () => {
+    const longSearch = 'a'.repeat(150);
+    component.addSearch(longSearch);
+    expect(component.lastSearch()[0].length).toBe(100);
+    expect(component.lastSearch()[0]).toBe('a'.repeat(100));
+  });
+
   it('should limit lastSearch to 10 items', () => {
     for (let i = 0; i < 15; i++) {
       component.addSearch(`test-${i}`);

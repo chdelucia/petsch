@@ -83,9 +83,12 @@ export class ChInputFilter implements ControlValueAccessor, OnInit {
   }
 
   getValue(event: Event): void {
-    const name = (event.target as HTMLInputElement).value;
-    this.value.set(name);
-    this.searchText$.next(name);
+    const target = event.target as HTMLInputElement;
+    if (target) {
+      const name = target.value;
+      this.value.set(name);
+      this.searchText$.next(name);
+    }
   }
 
   toggleFilter() {
@@ -103,9 +106,14 @@ export class ChInputFilter implements ControlValueAccessor, OnInit {
   }
 
   addSearch(value: string): void {
-    const alreadyExists = this.lastSearch().find((item) => item === value);
-    if (!alreadyExists && value) {
-      this.lastSearch.update((searches) => [value, ...searches].slice(0, 10));
+    const trimmedValue = value?.trim().slice(0, 100);
+    if (!trimmedValue) return;
+
+    const alreadyExists = this.lastSearch().find((item) => item === trimmedValue);
+    if (!alreadyExists) {
+      this.lastSearch.update((searches) =>
+        [trimmedValue, ...searches].slice(0, 10),
+      );
     }
   }
 
