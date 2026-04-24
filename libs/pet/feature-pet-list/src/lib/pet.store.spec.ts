@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { ProductsStore } from './pet.store';
-import { PRODUCT_TOKEN } from '@petsch/api';
-import { of } from 'rxjs';
+import { PRODUCT_TOKEN, PRODUCT_UI_CONFIG } from '@petsch/api';
+import { of, throwError } from 'rxjs';
 
 describe('ProductsStore', () => {
   let store: any;
@@ -62,5 +62,86 @@ describe('ProductsStore', () => {
     store.clear();
     expect(store.products()).toEqual([]);
     expect(store.filters()).toEqual({ _limit: 12, _page: 1 });
+  });
+
+  it('should apply sort', () => {
+    store.applySort({ key: 'name', order: 'asc' });
+    expect(store.filters()).toEqual({
+      _page: 1,
+      _limit: 12,
+      _sort: 'name',
+      _order: 'asc',
+    });
+  });
+
+  it('should remove filter', () => {
+    store.applyFilters({ kind: 'dog' });
+    store.removeFilter('kind');
+    expect(store.filters()).not.toHaveProperty('kind');
+    expect(store.filters()).toEqual({ _page: 1, _limit: 12 });
+  });
+
+  it('should apply pagination', () => {
+    store.applyPagination(2);
+    expect(store.filters()).toEqual({ _page: 2, _limit: 12 });
+  });
+
+  it('should compute totalPages correctly from last link', () => {
+    store.clear();
+    const products = [{ id: '1' }];
+    const pagination = { last: 'http://api.example.com/products?_page=5&_limit=12' };
+    productServiceMock.getProducts.mockReturnValue(of({ products, pagination }));
+
+    store.loadProducts();
+
+    expect(store.totalPages()).toBe(5);
+  });
+
+  it('should compute totalPages correctly from pages property', () => {
+    store.clear();
+    const products = [{ id: '1' }];
+    const pagination = { pages: 10 };
+    productServiceMock.getProducts.mockReturnValue(of({ products, pagination }));
+
+    store.loadProducts();
+
+    expect(store.totalPages()).toBe(10);
+  });
+
+  it('should handle load error', async () => {
+    productServiceMock.getProducts.mockReturnValue(throwError(() => new Error('API Error')));
+
+    store.loadProducts();
+
+    expect(store.error()).toBe('API Error');
+    expect(store.products()).toEqual([]);
+  });
+
+  describe('with custom config', () => {
+    let customStore: any;
+
+    beforeEach(() => {
+      TestBed.resetTestingModule();
+      TestBed.configureTestingModule({
+        providers: [
+          ProductsStore,
+          { provide: PRODUCT_TOKEN, useValue: productServiceMock },
+          {
+            provide: PRODUCT_UI_CONFIG,
+            useValue: {
+              paginationKeys: { page: 'p', limit: 'l' },
+              sortKeys: { sort: 's', order: 'o' },
+            },
+          },
+        ],
+      });
+      customStore = TestBed.inject(ProductsStore);
+    });
+
+    it('should use custom keys', () => {
+      expect(customStore.filters()).toEqual({ p: 1, l: 12 });
+      customStore.applySort({ key: 'price', order: 'desc' });
+      expect(customStore.filters()).toEqual({ p: 1, l: 12, s: 'price', o: 'desc' });
+    });
   });
 });

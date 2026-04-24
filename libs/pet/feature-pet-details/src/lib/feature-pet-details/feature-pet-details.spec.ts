@@ -1,9 +1,9 @@
 import { getTranslocoTestingModule } from '@petsch/shared-utils';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FeatureProductDetails } from './feature-pet-details';
-import { PRODUCT_TOKEN } from '@petsch/api';
+import { PRODUCT_TOKEN, PRODUCT_UI_CONFIG } from '@petsch/api';
 import { of } from 'rxjs';
-import { provideRouter } from '@angular/router';
+import { provideRouter, Router } from '@angular/router';
 import { LocalstorageService } from '@petsch/obs-data-access';
 import {
   ANALYTICS_TOKEN,
@@ -69,5 +69,39 @@ describe('FeatureProductDetails', () => {
     expect(content).toContain('height: 0 centimeters');
     expect(content).toContain('width: 0 centimeters');
     expect(content).toContain('weight: 0 grams');
+  });
+
+  it('should go back to default list route', () => {
+    const router = TestBed.inject(Router);
+    const spy = vi.spyOn(router, 'navigate');
+
+    component.goBack();
+
+    expect(spy).toHaveBeenCalledWith(['/pets']);
+  });
+
+  it('should go back to custom list route from config', () => {
+    TestBed.resetTestingModule();
+    TestBed.configureTestingModule({
+      imports: [getTranslocoTestingModule(), FeatureProductDetails],
+      providers: [
+        { provide: PRODUCT_TOKEN, useValue: mockProductService },
+        { provide: PRODUCT_UI_CONFIG, useValue: { listRoute: '/custom-pets' } },
+        provideRouter([]),
+        LocalstorageService,
+        ObservabilityFacade,
+        { provide: ANALYTICS_TOKEN, useValue: { trackEvent: vi.fn() } },
+        { provide: MONITORING_TOKEN, useValue: { trackError: vi.fn() } },
+      ],
+    }).compileComponents();
+
+    const customFixture = TestBed.createComponent(FeatureProductDetails);
+    const customComponent = customFixture.componentInstance;
+    const router = TestBed.inject(Router);
+    const spy = vi.spyOn(router, 'navigate');
+
+    customComponent.goBack();
+
+    expect(spy).toHaveBeenCalledWith(['/custom-pets']);
   });
 });
