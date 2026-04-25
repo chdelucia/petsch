@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.18.0](https://github.com/chdelucia/petsch/compare/v1.17.14...v1.18.0) (2026-04-25)
+
+
+### Features
+
+* increase unit test coverage to >80% across core libraries ([942339c](https://github.com/chdelucia/petsch/commit/942339c87cc0c5f71f8b27077b8ae3e41690c723))
+
 ### [1.17.14](https://github.com/chdelucia/petsch/compare/v1.17.13...v1.17.14) (2026-04-24)
 
 ### [1.17.13](https://github.com/chdelucia/petsch/compare/v1.17.12...v1.17.13) (2026-04-23)
