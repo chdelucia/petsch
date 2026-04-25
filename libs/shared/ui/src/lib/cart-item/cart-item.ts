@@ -1,5 +1,10 @@
 import { ChButton } from "../button/button";
-import { Component, input, output } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  input,
+  output,
+} from '@angular/core';
 import { TranslocoDirective } from '@jsverse/transloco';
 
 @Component({
@@ -7,6 +12,11 @@ import { TranslocoDirective } from '@jsverse/transloco';
   imports: [TranslocoDirective, ChButton],
   templateUrl: './cart-item.html',
   styleUrl: './cart-item.css',
+  /**
+   * Performance Optimization: Enabled OnPush to improve rendering performance
+   * in lists of items.
+   */
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ChCartItem {
   testId = input<string>('');
