@@ -1,6 +1,12 @@
 import { ChButton } from "../button/button";
 import { CommonModule } from '@angular/common';
-import { Component, computed, input, output } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  input,
+  output,
+} from '@angular/core';
 import { TranslocoDirective } from '@jsverse/transloco';
 
 @Component({
@@ -8,6 +14,11 @@ import { TranslocoDirective } from '@jsverse/transloco';
   imports: [CommonModule, TranslocoDirective, ChButton],
   templateUrl: './active-filters.component.html',
   styleUrl: './active-filters.component.css',
+  /**
+   * Performance Optimization: OnPush is used to optimize the rendering of the
+   * active filters list, which can change frequently during user interaction.
+   */
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ChActiveFiltersComponent {
   testId = input<string>('');
