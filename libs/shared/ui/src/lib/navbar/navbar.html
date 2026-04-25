@@ -15,6 +15,7 @@
         @for (app of apps; track app.id) {
         <a
           [href]="app.url"
+          rel="noopener"
           class="ch-navbar__link"
           [class.ch-navbar__link--active]="currentApp() === app.id"
         >
@@ -52,6 +53,7 @@
       @for (app of apps; track app.id) {
       <a
         [href]="app.url"
+        rel="noopener"
         class="ch-navbar__mobile-link"
         [class.ch-navbar__mobile-link--active]="currentApp() === app.id"
       >

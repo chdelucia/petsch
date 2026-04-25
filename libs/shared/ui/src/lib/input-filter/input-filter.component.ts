@@ -103,9 +103,14 @@ export class ChInputFilter implements ControlValueAccessor, OnInit {
   }
 
   addSearch(value: string): void {
-    const alreadyExists = this.lastSearch().find((item) => item === value);
-    if (!alreadyExists && value) {
-      this.lastSearch.update((searches) => [value, ...searches].slice(0, 10));
+    const trimmedValue = value.trim().slice(0, 100);
+    const alreadyExists = this.lastSearch().find(
+      (item) => item === trimmedValue,
+    );
+    if (!alreadyExists && trimmedValue) {
+      this.lastSearch.update((searches) =>
+        [trimmedValue, ...searches].slice(0, 10),
+      );
     }
   }
 

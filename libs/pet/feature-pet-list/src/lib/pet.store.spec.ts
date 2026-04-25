@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { ProductsStore } from './pet.store';
 import { PRODUCT_TOKEN } from '@petsch/api';
-import { of } from 'rxjs';
+import { of, Observable } from 'rxjs';
 
 describe('ProductsStore', () => {
   let store: any;
@@ -62,5 +62,20 @@ describe('ProductsStore', () => {
     store.clear();
     expect(store.products()).toEqual([]);
     expect(store.filters()).toEqual({ _limit: 12, _page: 1 });
+  });
+
+  it('should handle error when loading products', async () => {
+    const error = new Error('API Error');
+    productServiceMock.getProducts.mockReturnValue(
+      new Observable((subscriber) => {
+        subscriber.error(error);
+      }),
+    );
+
+    await store.loadProducts();
+
+    expect(store.error()).toBe('Failed to load products');
+    expect(store.products()).toEqual([]);
+    expect(store.loading()).toBeFalsy();
   });
 });
