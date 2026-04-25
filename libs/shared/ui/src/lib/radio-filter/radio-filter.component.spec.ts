@@ -84,4 +84,14 @@ describe('ChRadioFilter', () => {
     expect(dogRadio.checked).toBe(false);
     expect(catRadio.checked).toBe(true);
   });
+
+  it('should call onTouched when a radio option is clicked', () => {
+    const spy = vi.fn();
+    component.registerOnTouched(spy);
+    const radioOption = fixture.debugElement.query(By.css('[data-testid="radio-filter-option-dog"]'));
+
+    radioOption.nativeElement.click();
+
+    expect(spy).toHaveBeenCalled();
+  });
 });

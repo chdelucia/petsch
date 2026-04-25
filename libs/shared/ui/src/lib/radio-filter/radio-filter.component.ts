@@ -45,6 +45,7 @@ export class ChRadioFilter implements ControlValueAccessor {
     const name = (event.target as HTMLInputElement).value;
     this.value.set(name);
     this.onChange(name);
+    this.onTouched();
   }
 
   toggleFilter() {

@@ -91,13 +91,16 @@ describe('ChInputFilter', () => {
     expect(component.isLastSearchOpen()).toBeFalsy();
   });
 
-  it('should search by old value', () => {
-    const spy = vi.fn();
-    component.registerOnChange(spy);
+  it('should search by old value and call onTouched', () => {
+    const changeSpy = vi.fn();
+    const touchSpy = vi.fn();
+    component.registerOnChange(changeSpy);
+    component.registerOnTouched(touchSpy);
     component.value.set('old');
     component.searchByOldValue('new');
     expect(component.value()).toBe('new');
-    expect(spy).toHaveBeenCalledWith('new');
+    expect(changeSpy).toHaveBeenCalledWith('new');
+    expect(touchSpy).toHaveBeenCalled();
     expect(component.isLastSearchOpen()).toBeFalsy();
   });
 
@@ -142,5 +145,18 @@ describe('ChInputFilter', () => {
     const spy = vi.fn();
     component.registerOnTouched(spy);
     expect(component.onTouched).toBe(spy);
+  });
+
+  it('should handle removeSearch and prevent default', () => {
+    component.lastSearch.set(['test1']);
+    const event = new MouseEvent('click');
+    const stopSpy = vi.spyOn(event, 'stopPropagation');
+    const preventSpy = vi.spyOn(event, 'preventDefault');
+
+    component.removeSearch(0, event);
+
+    expect(component.lastSearch()).toEqual([]);
+    expect(stopSpy).toHaveBeenCalled();
+    expect(preventSpy).toHaveBeenCalled();
   });
 });
