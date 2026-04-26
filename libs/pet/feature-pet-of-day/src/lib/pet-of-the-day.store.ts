@@ -27,9 +27,12 @@ export const ItemOfDayStore = signalStore(
   withComputed((store) => {
     return {
       sortedEntries: computed(() => {
-        return [...store.entries()].sort(
-          (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
-        );
+        // Optimized sorting: comparing ISO date strings directly is faster than creating Date objects
+        return [...store.entries()].sort((a, b) => {
+          if (b.date > a.date) return 1;
+          if (b.date < a.date) return -1;
+          return 0;
+        });
       }),
       todayItem: computed(() => {
         const today = getLocalIsoDate();
