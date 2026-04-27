@@ -16,6 +16,7 @@ import {
   GetProductsResponse,
   PRODUCT_UI_CONFIG,
 } from '@petsch/api';
+import { MONITORING_TOKEN } from '@petsch/obs-api';
 
 export interface ProductsState<T = unknown, F = Record<string, unknown>> {
   products: T[];
@@ -68,6 +69,7 @@ export const ProductsStore = signalStore(
 
   withMethods((store) => {
     const productService = inject(PRODUCT_TOKEN);
+    const monitoring = inject(MONITORING_TOKEN);
     const config = inject(PRODUCT_UI_CONFIG, { optional: true });
 
     const pageKey = config?.paginationKeys?.page ?? '_page';
@@ -139,7 +141,10 @@ export const ProductsStore = signalStore(
           switchMap(() =>
             productService.getProducts(store.query()).pipe(
               catchError((err) => {
-                setError(err?.message ?? 'Failed to load products');
+                // Security: Log full error to internal monitoring but show generic message to user
+                // to prevent leaking implementation details.
+                monitoring.captureException(err);
+                setError('Failed to load products');
                 return of(null);
               }),
             ),
