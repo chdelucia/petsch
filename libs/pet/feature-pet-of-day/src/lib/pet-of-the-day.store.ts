@@ -25,21 +25,21 @@ export const ItemOfDayStore = signalStore(
     storageService: inject(LOCALSTORAGE_TOKEN),
   })),
   withComputed((store) => {
+    const todayEntry = computed(() => {
+      const today = getLocalIsoDate();
+      return store.entries().find((entry) => entry.date === today) ?? null;
+    });
+
     return {
       sortedEntries: computed(() => {
-        return [...store.entries()].sort(
-          (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
-        );
+        // Optimization: Use direct ISO date string comparison to avoid expensive new Date() allocations
+        // as ISO strings (YYYY-MM-DD) sort correctly lexicographically.
+        return [...store.entries()].sort((a, b) => b.date.localeCompare(a.date));
       }),
-      todayItem: computed(() => {
-        const today = getLocalIsoDate();
-        return (
-          store.entries().find((entry) => entry.date === today)?.product ?? null
-        );
-      }),
+      todayItem: computed(() => todayEntry()?.product ?? null),
       isItemAddedToday: computed(() => {
-        const today = getLocalIsoDate();
-        return store.entries().some((entry) => entry.date === today);
+        // Optimization: Reuse todayEntry to avoid redundant array traversal and date string generation
+        return todayEntry() !== null;
       }),
     };
   }),
