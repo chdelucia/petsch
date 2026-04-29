@@ -1,11 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 import { ProductsStore } from './pet.store';
 import { PRODUCT_TOKEN, PRODUCT_UI_CONFIG } from '@petsch/api';
+import { MONITORING_TOKEN } from '@petsch/obs-api';
 import { of, throwError } from 'rxjs';
 
 describe('ProductsStore', () => {
   let store: any;
   let productServiceMock: any;
+  let monitoringMock: any;
 
   beforeEach(() => {
     productServiceMock = {
@@ -13,10 +15,16 @@ describe('ProductsStore', () => {
       getDetails: vi.fn((id: string) => of({ id })),
     };
 
+    monitoringMock = {
+      captureException: vi.fn(),
+      captureMessage: vi.fn(),
+    };
+
     TestBed.configureTestingModule({
       providers: [
         ProductsStore,
         { provide: PRODUCT_TOKEN, useValue: productServiceMock },
+        { provide: MONITORING_TOKEN, useValue: monitoringMock },
       ],
     });
 
@@ -109,11 +117,13 @@ describe('ProductsStore', () => {
   });
 
   it('should handle load error', async () => {
-    productServiceMock.getProducts.mockReturnValue(throwError(() => new Error('API Error')));
+    const error = new Error('API Error');
+    productServiceMock.getProducts.mockReturnValue(throwError(() => error));
 
     store.loadProducts();
 
-    expect(store.error()).toBe('API Error');
+    expect(monitoringMock.captureException).toHaveBeenCalledWith(error);
+    expect(store.error()).toBe('Failed to load products');
     expect(store.products()).toEqual([]);
   });
 
@@ -126,6 +136,7 @@ describe('ProductsStore', () => {
         providers: [
           ProductsStore,
           { provide: PRODUCT_TOKEN, useValue: productServiceMock },
+          { provide: MONITORING_TOKEN, useValue: monitoringMock },
           {
             provide: PRODUCT_UI_CONFIG,
             useValue: {
