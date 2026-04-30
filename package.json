@@ -63,7 +63,7 @@
     "@schematics/angular": "~21.2.0",
     "@storybook/addon-a11y": "10.3.4",
     "@storybook/addon-docs": "10.3.5",
-    "@storybook/angular": "10.3.4",
+    "@storybook/angular": "10.3.6",
     "@storybook/test-runner": "^0.24.3",
     "@swc-node/register": "~1.11.1",
     "@swc/core": "~1.15.5",
