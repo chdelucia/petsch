@@ -1,6 +1,7 @@
 import { ChButton } from "../button/button";
 import { TranslocoDirective } from "@jsverse/transloco";
 import {
+  ChangeDetectionStrategy,
   Component,
   computed,
   ElementRef,
@@ -25,6 +26,7 @@ export interface SortOption {
   host: {
     '[attr.data-testid]': 'testId()',
   },
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ChDropdownFilter {
   testId = input<string>('');
