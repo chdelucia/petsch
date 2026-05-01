@@ -1,4 +1,10 @@
-import { Component, input, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  input,
+  signal,
+} from '@angular/core';
 import { TranslocoModule } from '@jsverse/transloco';
 import { ChButton } from '../button/button';
 
@@ -8,6 +14,7 @@ import { ChButton } from '../button/button';
   imports: [TranslocoModule, ChButton],
   templateUrl: './navbar.html',
   styleUrl: './navbar.css',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ChNavbar {
   currentApp = input.required<string>();
@@ -18,7 +25,9 @@ export class ChNavbar {
     (window.location.hostname === 'localhost' ||
       window.location.hostname === '127.0.0.1');
 
-  apps = [
+  // Optimization: Move apps to a computed signal to ensure memoization
+  // and align with the project's signal-based architecture.
+  apps = computed(() => [
     {
       id: 'petshop',
       name: 'navbar.petshop',
@@ -34,7 +43,7 @@ export class ChNavbar {
       name: 'navbar.dragonball',
       url: this.isLocal ? 'http://localhost:4202/' : 'https://dbch.vercel.app/',
     },
-  ];
+  ]);
 
   toggleMenu() {
     this.isMenuOpen.set(!this.isMenuOpen());
