@@ -45,23 +45,26 @@ export const ProductsStore = signalStore(
   withComputed((store) => {
     const config = inject(PRODUCT_UI_CONFIG, { optional: true });
     const pageKey = config?.paginationKeys?.page ?? '_page';
+    const lastPageRegex = new RegExp(`${pageKey}=(\\d+)(?:&|$)`);
+
+    const currentPage = computed(
+      () => (store.filters() as Record<string, unknown>)[pageKey] as number ?? 1,
+    );
 
     return {
       query: () => ({
         ...store.filters(),
       }),
-      currentPage: computed(() => {
-        return (store.filters() as Record<string, unknown>)[pageKey] as number ?? 1;
-      }),
+      currentPage,
       totalPages: computed(() => {
         const pagination = store.pagination();
         if (pagination.pages) {
           return pagination.pages;
         }
         const last = pagination.last;
-        const regex = new RegExp(`${pageKey}=(\\d+)(?:&|$)`);
-        const match = last?.match(regex);
-        return match ? Number(match[1]) : ((store.filters() as Record<string, unknown>)[pageKey] as number ?? 1);
+        const match = last?.match(lastPageRegex);
+        // Optimization: Reuse currentPage() signal and avoid repeated RegExp instantiation in computed logic.
+        return match ? Number(match[1]) : currentPage();
       }),
     };
   }),
