@@ -30,7 +30,7 @@ describe('ChNavbar', () => {
   });
 
   it('should have app URLs', () => {
-    const apps = component.apps;
+    const apps = component.apps();
     expect(apps.length).toBe(3);
     expect(apps[0].id).toBe('petshop');
     expect(apps[1].id).toBe('rickymorty');

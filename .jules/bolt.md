@@ -5,3 +5,7 @@
 ## 2026-04-27 - [Store Optimization]
 **Learning:** Reusing computed signals in NgRx SignalStore (like sharing a `todayEntry` between `todayItem` and `isItemAddedToday`) reduces redundant array traversals and date string generations. Additionally, ISO date strings (YYYY-MM-DD) sort correctly lexicographically, allowing for efficient sorting using `localeCompare` without the overhead of `new Date()` allocations.
 **Action:** Always check for redundant logic in computed signals and prefer string comparisons for ISO dates in sort functions.
+
+## 2026-05-15 - [Component Optimization with OnPush and Signals]
+**Learning:** In a zoneless Angular application, implementing `ChangeDetectionStrategy.OnPush` is essential for minimizing change detection cycles. Components that use Signals for state (like `isMenuOpen` and `currentApp`) are perfect candidates for `OnPush`. Additionally, wrapping static arrays in `computed` signals, while having minor overhead, aligns with a consistent reactive architecture and benefits from memoization if the source inputs were to become reactive in the future.
+**Action:** Default to `OnPush` for all new components and refactor existing ones that use Signals to use `OnPush`.
