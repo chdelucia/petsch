@@ -1,4 +1,10 @@
-import { Component, inject, signal, computed } from '@angular/core';
+import {
+  Component,
+  inject,
+  signal,
+  computed,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 import { FeatureProductList } from '@petsch/feature-pet-list';
 import { PRODUCT_LIST_STORE, PRODUCT_UI_CONFIG } from '@petsch/api';
 import { FeatureItemOfDay } from '@petsch/feature-pet-of-day';
@@ -18,6 +24,7 @@ import { FeatureFilters } from '@petsch/feature-filters';
   ],
   templateUrl: './feature-page.html',
   styleUrl: './feature-page.css',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FeaturePage {
   showFilters = signal(true);

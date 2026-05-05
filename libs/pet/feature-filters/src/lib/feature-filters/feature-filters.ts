@@ -4,6 +4,7 @@ import {
   computed,
   signal,
   InjectionToken,
+  ChangeDetectionStrategy,
 } from '@angular/core';
 import {
   takeUntilDestroyed,
@@ -61,6 +62,7 @@ const DEFAULT_PRODUCT_FILTERS: FilterConfig[] = [
     TranslocoDirective,
   ],
   templateUrl: './feature-filters.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FeatureFilters {
   readonly store = inject(PRODUCT_LIST_STORE);
