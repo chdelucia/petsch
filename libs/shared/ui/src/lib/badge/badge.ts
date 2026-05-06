@@ -1,4 +1,9 @@
-import { Component, computed, input } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  input,
+} from '@angular/core';
 import { NgClass } from '@angular/common';
 
 @Component({
@@ -6,6 +11,7 @@ import { NgClass } from '@angular/common';
   imports: [NgClass],
   templateUrl: './badge.html',
   styleUrl: './badge.css',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ChBadge {
   status = input.required<'unhealthy' | 'healthy' | 'very healthy'>();

@@ -1,4 +1,4 @@
-import { Component, input, output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input, output } from '@angular/core';
 import { ChButton } from '../button/button';
 import { TranslocoDirective } from '@jsverse/transloco';
 
@@ -7,6 +7,7 @@ import { TranslocoDirective } from '@jsverse/transloco';
   imports: [ChButton, TranslocoDirective],
   templateUrl: './cart-footer.html',
   styleUrl: './cart-footer.css',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ChCartFooter {
   closeLabel = input<string>();

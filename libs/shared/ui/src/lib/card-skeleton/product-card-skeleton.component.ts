@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -6,5 +6,6 @@ import { CommonModule } from '@angular/common';
   imports: [CommonModule],
   templateUrl: './product-card-skeleton.component.html',
   styleUrl: './product-card-skeleton.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ChCardSkeleton {}

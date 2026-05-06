@@ -1,7 +1,18 @@
-import { booleanAttribute, Component, input, output } from '@angular/core';
+import {
+  booleanAttribute,
+  ChangeDetectionStrategy,
+  Component,
+  input,
+  output,
+} from '@angular/core';
 import { NgClass } from '@angular/common';
 
-export type ButtonVariant = 'primary' | 'secondary' | 'outline' | 'ghost' | 'link';
+export type ButtonVariant =
+  | 'primary'
+  | 'secondary'
+  | 'outline'
+  | 'ghost'
+  | 'link';
 export type ButtonSize = 'sm' | 'md' | 'lg';
 
 @Component({
@@ -9,6 +20,7 @@ export type ButtonSize = 'sm' | 'md' | 'lg';
   imports: [NgClass],
   templateUrl: './button.html',
   styleUrl: './button.css',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ChButton {
   testId = input<string>('');
