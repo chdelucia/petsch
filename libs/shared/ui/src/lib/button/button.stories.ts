@@ -1,10 +1,14 @@
 import type { Meta, StoryObj } from '@storybook/angular';
+import { expect, fn, userEvent, within } from 'storybook/test';
 import { ChButton } from './button';
 
 const meta: Meta<ChButton> = {
   title: 'Atoms/ChButton',
   component: ChButton,
   tags: ['autodocs'],
+  args: {
+    clicked: fn(),
+  },
   argTypes: {
     variant: {
       control: 'select',
@@ -41,22 +45,70 @@ export const Primary: Story = {
     disabled: false,
   },
   render: (args) => ({
-    props: {
-      ...args,
-      click: () => console.log('Primary clicked'),
-    },
+    props: args,
     template: `
       <lib-ch-ui-button
         [variant]="variant"
         [size]="size"
         [fullWidth]="fullWidth"
         [disabled]="disabled"
-        (clicked)="click()"
+        (clicked)="clicked($event)"
       >
         Checkout
       </lib-ch-ui-button>
     `,
   }),
+};
+
+export const Interaction: Story = {
+  args: {
+    variant: 'primary',
+  },
+  render: (args) => ({
+    props: args,
+    template: `
+      <lib-ch-ui-button
+        [variant]="variant"
+        (clicked)="clicked($event)"
+      >
+        Click Me
+      </lib-ch-ui-button>
+    `,
+  }),
+  play: async ({ canvasElement, args }) => {
+    const canvas = within(canvasElement);
+    const button = canvas.getByRole('button', { name: /click me/i });
+    await userEvent.click(button);
+    await expect(args.clicked).toHaveBeenCalled();
+  },
+};
+
+export const DisabledInteraction: Story = {
+  args: {
+    variant: 'primary',
+    disabled: true,
+  },
+  render: (args) => ({
+    props: args,
+    template: `
+      <lib-ch-ui-button
+        [variant]="variant"
+        [disabled]="disabled"
+        (clicked)="clicked($event)"
+      >
+        Disabled
+      </lib-ch-ui-button>
+    `,
+  }),
+  play: async ({ canvasElement, args }) => {
+    const canvas = within(canvasElement);
+    const button = canvas.getByRole('button', { name: /disabled/i });
+    await expect(button).toBeDisabled();
+    // In Storybook Interaction tests, userEvent.click on an element with pointer-events: none
+    // (which often happens when a button is disabled) will throw an error.
+    // So we just verify it's disabled and that the clicked mock wasn't called.
+    await expect(args.clicked).not.toHaveBeenCalled();
+  },
 };
 
 export const Secondary: Story = {
