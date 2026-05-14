@@ -48,5 +48,5 @@
 }
 
 .ch-btn--active {
-  @apply bg-primary-50 text-primary-700 border-primary-200 font-semibold z-10;
+  @apply bg-primary-600 text-white border-primary-600 font-semibold z-10;
 }
