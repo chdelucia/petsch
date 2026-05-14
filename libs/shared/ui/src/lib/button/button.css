@@ -18,11 +18,11 @@
 }
 
 .ch-btn--outline {
-  @apply border border-slate-200 bg-white text-slate-600 hover:bg-slate-50 focus:ring-2 focus:ring-primary-500 focus:ring-offset-1;
+  @apply border border-primary-200 bg-white text-primary-600 hover:bg-primary-50 focus:ring-2 focus:ring-primary-500 focus:ring-offset-1;
 }
 
 .ch-btn--ghost {
-  @apply text-slate-600 hover:bg-slate-100 focus:ring-2 focus:ring-slate-500 focus:ring-offset-1;
+  @apply text-primary-600 hover:bg-primary-100 focus:ring-2 focus:ring-primary-500 focus:ring-offset-1;
 }
 
 /* Sizes */
