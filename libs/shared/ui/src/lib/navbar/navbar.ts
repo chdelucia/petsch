@@ -12,6 +12,7 @@ import { ChButton } from '../button/button';
 })
 export class ChNavbar {
   currentApp = input.required<string>();
+  logoCustom = input<string>();
   isMenuOpen = signal(false);
 
   private isLocal =
