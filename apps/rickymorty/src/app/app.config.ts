@@ -12,6 +12,7 @@ import { appRoutes } from './app.routes';
 import { provideHttpClient } from '@angular/common/http';
 import {
   PRODUCT_UI_CONFIG,
+  PRODUCT_API_URL,
   PRODUCT_LIST_STORE,
   ITEM_OF_DAY_STORE,
   PRODUCT_DATA_TRANSFORMER,
@@ -41,6 +42,10 @@ export const appConfig: ApplicationConfig = {
     ),
     provideZonelessChangeDetection(),
     provideHttpClient(),
+    {
+      provide: PRODUCT_API_URL,
+      useValue: 'https://rickandmortyapi.com/api/character',
+    },
     {
       provide: PRODUCT_UI_CONFIG,
       useValue: {

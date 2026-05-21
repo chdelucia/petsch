@@ -1,1 +1,1 @@
-export * from './lib/petshop-pet-api';
+export * from './lib/petshop-product-api';

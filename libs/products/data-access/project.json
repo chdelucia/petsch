@@ -4,7 +4,7 @@
   "sourceRoot": "libs/products/data-access/src",
   "prefix": "lib",
   "projectType": "library",
-  "tags": ["scope:product", "type:data-access"],
+  "tags": ["scope:product", "type:api"],
   "targets": {
     "test": {
       "executor": "@nx/vitest:test",

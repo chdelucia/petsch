@@ -19,13 +19,14 @@ import {
 } from '@petsch/obs-data-access';
 import {
   PRODUCT_UI_CONFIG,
+  PRODUCT_API_URL,
   PRODUCT_DATA_TRANSFORMER,
   PRODUCT_LIST_STORE,
   ITEM_OF_DAY_STORE,
   onViewTransitionCreated,
 } from '@petsch/api';
 import { enrichProductWithHealth } from './utils/health-adapter';
-import { providePetShopApi } from '@petsch/api-petshop';
+import { providePetShopProductApi } from '@petsch/api-petshop';
 import { ProductsStore } from '@petsch/feature-product-list';
 import { ItemOfDayStore } from '@petsch/feature-item-of-day';
 import { LOCALSTORAGE_TOKEN } from '@petsch/obs-api';
@@ -46,6 +47,10 @@ export const appConfig: ApplicationConfig = {
     ...OBSERVABILITY_PROVIDERS,
     ...OBSERVABILITY_ENV_PROVIDERS,
     {
+      provide: PRODUCT_API_URL,
+      useValue: 'https://my-json-server.typicode.com/Feverup/fever_pets_data/pets',
+    },
+    {
       provide: PRODUCT_UI_CONFIG,
       useValue: {
         listRoute: '/pets',
@@ -55,7 +60,7 @@ export const appConfig: ApplicationConfig = {
       provide: PRODUCT_DATA_TRANSFORMER,
       useValue: enrichProductWithHealth,
     },
-    providePetShopApi(),
+    providePetShopProductApi(),
     {
       provide: PRODUCT_LIST_STORE,
       useClass: ProductsStore,

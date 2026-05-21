@@ -4,35 +4,20 @@ import {
   IProductService,
   GetProductsResponse,
   PRODUCT_TOKEN,
+  PRODUCT_API_URL,
   PRODUCT_DATA_TRANSFORMER,
   ProductDataTransformer,
 } from '@petsch/api';
 import { buildHttpParams } from '@petsch/data-access';
 import { Observable, map } from 'rxjs';
-
-export interface DragonballDto {
-  items: unknown[];
-  meta: {
-    totalItems: number;
-    itemCount: number;
-    itemsPerPage: number;
-    totalPages: number;
-    currentPage: number;
-  };
-  links: {
-    first: string;
-    previous: string;
-    next: string;
-    last: string;
-  };
-}
+import { DragonballDto } from './models/dragonball';
 
 @Injectable()
 export class DragonBallProductApi<T = unknown, F = Record<string, unknown>>
   implements IProductService<T, F>
 {
   private readonly http = inject(HttpClient);
-  private readonly baseUrl = 'https://dragonball-api.com/api/characters';
+  private readonly baseUrl = inject(PRODUCT_API_URL);
   private readonly transformer = inject(PRODUCT_DATA_TRANSFORMER, {
     optional: true,
   }) as ProductDataTransformer<T> | null;

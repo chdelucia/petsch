@@ -4,6 +4,7 @@ import {
   IProductService,
   GetProductsResponse,
   PRODUCT_TOKEN,
+  PRODUCT_API_URL,
   PRODUCT_DATA_TRANSFORMER,
   ProductDataTransformer,
 } from '@petsch/api';
@@ -11,12 +12,11 @@ import { buildHttpParams, parseLinkHeader } from '@petsch/data-access';
 import { Observable, map } from 'rxjs';
 
 @Injectable()
-export class PetShopApi<T = unknown, F = Record<string, unknown>>
+export class PetShopProductApi<T = unknown, F = Record<string, unknown>>
   implements IProductService<T, F>
 {
   private readonly http = inject(HttpClient);
-  private readonly baseUrl =
-    'https://my-json-server.typicode.com/Feverup/fever_pets_data/pets';
+  private readonly baseUrl = inject(PRODUCT_API_URL);
   private readonly transformer = inject(PRODUCT_DATA_TRANSFORMER, {
     optional: true,
   }) as ProductDataTransformer<T> | null;
@@ -58,11 +58,11 @@ export class PetShopApi<T = unknown, F = Record<string, unknown>>
   }
 }
 
-export function providePetShopApi(): Provider[] {
+export function providePetShopProductApi(): Provider[] {
   return [
     {
       provide: PRODUCT_TOKEN,
-      useClass: PetShopApi,
+      useClass: PetShopProductApi,
     },
   ];
 }
