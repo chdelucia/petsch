@@ -1,4 +1,4 @@
-import { getTranslocoTestingModule } from '@petsch/shared-utils';
+import { getTranslocoTestingModule, IMAGE_PLACEHOLDER } from '@petsch/shared-utils';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ChCard } from './product-card.component';
 import { provideRouter } from '@angular/router';
@@ -62,5 +62,12 @@ describe('ChCard', () => {
     fixture.detectChanges();
 
     expect(component.detailRoute()).toEqual(['/pets', '1']);
+  });
+
+  it('should fallback to placeholder on image error', () => {
+    component.handleImageError();
+    fixture.detectChanges();
+    const imgElement = fixture.debugElement.query(By.css('img')).nativeElement as HTMLImageElement;
+    expect(imgElement.src).toBe(IMAGE_PLACEHOLDER);
   });
 });

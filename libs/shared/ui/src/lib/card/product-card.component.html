@@ -1,8 +1,9 @@
 <div class="ch-product-card">
   <div class="ch-product-card__img-container">
     <img
-      [ngSrc]="imageUrl()"
+      [ngSrc]="currentImageUrl()"
       [alt]="name()"
+      (error)="handleImageError()"
       [style.viewTransitionName]="viewTransitionName()"
       [priority]="priority()"
       fill

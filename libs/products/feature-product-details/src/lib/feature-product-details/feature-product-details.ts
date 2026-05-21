@@ -1,9 +1,10 @@
-import { Component, inject, input, signal } from '@angular/core';
+import { Component, inject, input, signal, computed } from '@angular/core';
 import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { Router } from '@angular/router';
 import { TranslocoDirective } from '@jsverse/transloco';
 import { ChButton, ChBadge } from '@petsch/ui';
 import { CurrentTransitionService, PRODUCT_UI_CONFIG } from '@petsch/api';
+import { IMAGE_PLACEHOLDER } from '@petsch/shared-utils';
 
 @Component({
   selector: 'lib-feature-product-details',
@@ -29,6 +30,21 @@ export class FeatureProductDetails {
 
   loading = () => false;
   error = () => null;
+
+  private readonly fallbackUrl = signal<string | null>(null);
+
+  currentImageUrl = computed(() => {
+    const fallback = this.fallbackUrl();
+    if (fallback) {
+      return fallback;
+    }
+    const product = this.product() as { photo_url?: string } | null;
+    return product?.photo_url ?? IMAGE_PLACEHOLDER;
+  });
+
+  handleImageError() {
+    this.fallbackUrl.set(IMAGE_PLACEHOLDER);
+  }
 
   goBack() {
     const listRoute = this.config?.listRoute ?? '/products';

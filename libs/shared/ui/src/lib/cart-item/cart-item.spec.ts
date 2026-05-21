@@ -25,4 +25,14 @@ describe('ChCartItem', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should fallback to placeholder on image error', () => {
+    fixture.componentRef.setInput('imageSrc', 'invalid-url');
+    fixture.detectChanges();
+
+    component.handleImageError();
+    fixture.detectChanges();
+
+    expect(component.currentImageSrc()).toContain('data:image/svg+xml');
+  });
 });
