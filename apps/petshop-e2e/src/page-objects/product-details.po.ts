@@ -3,7 +3,7 @@ import { BasePage } from './base.po';
 
 export class ProductDetailsPage extends BasePage {
   async gotoProduct(id: number) {
-    await this.goto(`/pets/${id}`);
+    await this.goto(`/products/${id}`);
   }
 
   getProductDetails(): Locator {

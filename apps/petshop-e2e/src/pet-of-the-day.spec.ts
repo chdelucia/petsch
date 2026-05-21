@@ -6,11 +6,11 @@ test.describe('Item of the Day', () => {
 
   test.beforeEach(async ({ page }) => {
     productListPage = new ProductListPage(page);
-    await productListPage.goto('/pets');
+    await productListPage.goto('/products');
     await productListPage.waitForLoadingToFinish();
   });
 
-  test('should add a pet to pet of the day and open drawer', async () => {
+  test('should add a product to product of the day and open drawer', async () => {
     await expect(productListPage.getProductCards().first()).toBeVisible();
     await productListPage.addItemToDay(0);
 

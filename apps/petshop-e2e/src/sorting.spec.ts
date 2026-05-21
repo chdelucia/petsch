@@ -6,7 +6,7 @@ test.describe('Sorting', () => {
 
   test.beforeEach(async ({ page }) => {
     productListPage = new ProductListPage(page);
-    await productListPage.goto('/pets');
+    await productListPage.goto('/products');
     await productListPage.waitForLoadingToFinish();
   });
 

@@ -12,8 +12,8 @@ import {
   PRODUCT_DATA_TRANSFORMER,
 } from '@petsch/api';
 import { provideRickAndMortyProductApi } from '@petsch/api-rickymorty';
-import { ProductsStore } from '@petsch/feature-pet-list';
-import { ItemOfDayStore } from '@petsch/feature-pet-of-day';
+import { ProductsStore } from '@petsch/feature-product-list';
+import { ItemOfDayStore } from '@petsch/feature-item-of-day';
 import { PRODUCT_FILTER_CONFIG } from '@petsch/feature-filters';
 import { provideTransloco } from '@jsverse/transloco';
 import { TranslocoHttpLoader } from './transloco-loader';
