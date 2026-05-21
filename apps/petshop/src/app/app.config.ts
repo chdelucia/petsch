@@ -26,9 +26,9 @@ import {
   ITEM_OF_DAY_STORE,
 } from '@petsch/api';
 import { enrichProductWithHealth } from './utils/health-adapter';
-import { provideProductShopApi } from '@petsch/api-petshop';
-import { ProductsStore } from '@petsch/feature-pet-list';
-import { ItemOfDayStore } from '@petsch/feature-pet-of-day';
+import { providePetShopApi } from '@petsch/api-petshop';
+import { ProductsStore } from '@petsch/feature-product-list';
+import { ItemOfDayStore } from '@petsch/feature-item-of-day';
 import { LOCALSTORAGE_TOKEN } from '@petsch/obs-api';
 import { provideHttpClient } from '@angular/common/http';
 import { TranslocoHttpLoader } from './transloco-loader';
@@ -56,7 +56,7 @@ export const appConfig: ApplicationConfig = {
       provide: PRODUCT_DATA_TRANSFORMER,
       useValue: enrichProductWithHealth,
     },
-    provideProductShopApi(),
+    providePetShopApi(),
     {
       provide: PRODUCT_LIST_STORE,
       useClass: ProductsStore,

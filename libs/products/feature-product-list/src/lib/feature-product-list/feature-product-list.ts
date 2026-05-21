@@ -1,0 +1,72 @@
+import { Component, inject, computed, input, Signal } from '@angular/core';
+import {
+  CurrentTransitionService,
+  PRODUCT_LIST_STORE,
+  ITEM_OF_DAY_STORE,
+  PRODUCT_UI_CONFIG,
+} from '@petsch/api';
+import { ANALYTICS_TOKEN } from '@petsch/obs-api';
+import {
+  ChButton,
+  ChPagination,
+  ChCard,
+  ChCardSkeleton,
+  ChFilterSkeleton,
+  ChBadge,
+} from '@petsch/ui';
+
+import { TranslocoDirective } from '@jsverse/transloco';
+
+@Component({
+  selector: 'lib-feature-product-list',
+  imports: [
+    ChCardSkeleton,
+    ChFilterSkeleton,
+    ChCard,
+    ChPagination,
+    ChButton,
+    ChBadge,
+    TranslocoDirective,
+  ],
+  templateUrl: './feature-product-list.html',
+  styleUrl: './feature-product-list.css',
+})
+export class FeatureProductList {
+  private readonly store = inject(PRODUCT_LIST_STORE);
+  private readonly config = inject(PRODUCT_UI_CONFIG, { optional: true });
+  private readonly analytics = inject(ANALYTICS_TOKEN);
+  protected readonly iotdStore = inject(ITEM_OF_DAY_STORE);
+  protected readonly transitionService = inject(CurrentTransitionService);
+
+  showFilters = input.required<boolean>();
+
+  products = this.store.products as Signal<unknown[]>;
+  currentPage = this.store.currentPage;
+  totalPages = this.store.totalPages;
+
+  loading = computed(() => this.store.loading());
+  error = this.store.error;
+
+  iotdButtonText = computed(() =>
+    this.iotdStore.isItemAddedToday() ? 'viewItemOfTheDay' : 'addItemToDay',
+  );
+
+  handlePageChange(page: number): void {
+    this.store.applyPagination(page);
+    this.store.loadProducts();
+  }
+
+  handleIotdClick(product: unknown): void {
+    const item = product as { id?: string | number; name?: string };
+    if (this.iotdStore.isItemAddedToday()) {
+      this.iotdStore.toggleIotd(true);
+    } else {
+      this.analytics.trackAddToFavorites(
+        item?.id?.toString() ?? '',
+        item?.name ?? 'Unknown',
+        0,
+      );
+      this.iotdStore.addItem(product);
+    }
+  }
+}

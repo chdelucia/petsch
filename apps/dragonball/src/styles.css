@@ -17,15 +17,15 @@
 }
 
 /* nx-tailwind-sources:start */
-@source "../../../libs/pet/api";
-@source "../../../libs/pet/api-dragonball";
-@source "../../../libs/pet/data-access";
-@source "../../../libs/pet/feature-filters";
-@source "../../../libs/pet/feature-page";
-@source "../../../libs/pet/feature-pet-details";
-@source "../../../libs/pet/feature-pet-list";
-@source "../../../libs/pet/feature-pet-of-day";
-@source "../../../libs/pet/shell";
+@source "../../../libs/products/api";
+@source "../../../libs/products/api-dragonball";
+@source "../../../libs/products/data-access";
+@source "../../../libs/products/feature-filters";
+@source "../../../libs/products/feature-item-of-day";
+@source "../../../libs/products/feature-page";
+@source "../../../libs/products/feature-product-details";
+@source "../../../libs/products/feature-product-list";
+@source "../../../libs/products/shell";
 @source "../../../libs/shared/observability/api";
 @source "../../../libs/shared/observability/data-access";
 @source "../../../libs/shared/ui";

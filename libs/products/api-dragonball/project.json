@@ -1,0 +1,13 @@
+{
+  "name": "api-dragonball",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/products/api-dragonball/src",
+  "prefix": "lib",
+  "projectType": "library",
+  "tags": ["scope:product", "type:api"],
+  "targets": {
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    }
+  }
+}
