@@ -2,7 +2,12 @@ import {
   ApplicationConfig,
   provideZonelessChangeDetection,
 } from '@angular/core';
-import { provideRouter, withComponentInputBinding } from '@angular/router';
+import {
+  provideRouter,
+  withComponentInputBinding,
+  withViewTransitions,
+  ViewTransitionInfo,
+} from '@angular/router';
 import { appRoutes } from './app.routes';
 import { provideHttpClient } from '@angular/common/http';
 import {
@@ -10,6 +15,7 @@ import {
   PRODUCT_LIST_STORE,
   ITEM_OF_DAY_STORE,
   PRODUCT_DATA_TRANSFORMER,
+  onViewTransitionCreated,
 } from '@petsch/api';
 import { provideRickAndMortyProductApi } from '@petsch/api-rickymorty';
 import { ProductsStore } from '@petsch/feature-product-list';
@@ -28,7 +34,11 @@ import { APP_ROUTES } from './app.routes';
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    provideRouter(appRoutes, withComponentInputBinding()),
+    provideRouter(
+      appRoutes,
+      withComponentInputBinding(),
+      withViewTransitions({ onViewTransitionCreated }),
+    ),
     provideZonelessChangeDetection(),
     provideHttpClient(),
     {
