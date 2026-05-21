@@ -37,27 +37,15 @@ describe('ChNavbar', () => {
     expect(apps[2].id).toBe('dragonball');
   });
 
-  it('should render the petshop logo when currentApp is petshop', () => {
-    fixture.componentRef.setInput('currentApp', 'petshop');
-    fixture.detectChanges();
+  it('should render the default logo when no custom logo is provided', () => {
     const svg = fixture.nativeElement.querySelector('.ch-navbar__logo svg');
-    // The petshop logo path starts with M12 2C15.3137
-    expect(svg.innerHTML).toContain('M12 2C15.3137');
+    expect(svg.innerHTML).toContain('M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5');
   });
 
-  it('should render the rickymorty logo when currentApp is rickymorty', () => {
-    fixture.componentRef.setInput('currentApp', 'rickymorty');
+  it('should render the custom logo when provided', () => {
+    fixture.componentRef.setInput('logoCustom', 'path/to/logo.svg');
     fixture.detectChanges();
-    const svg = fixture.nativeElement.querySelector('.ch-navbar__logo svg');
-    // The rickymorty logo path starts with M19,20.41
-    expect(svg.innerHTML).toContain('M19,20.41');
-  });
-
-  it('should render the dragonball logo when currentApp is dragonball', () => {
-    fixture.componentRef.setInput('currentApp', 'dragonball');
-    fixture.detectChanges();
-    const svg = fixture.nativeElement.querySelector('.ch-navbar__logo svg');
-    // The dragonball logo path starts with M12 17.27
-    expect(svg.innerHTML).toContain('M12 17.27');
+    const img = fixture.nativeElement.querySelector('.ch-navbar__logo img');
+    expect(img.src).toContain('path/to/logo.svg');
   });
 });

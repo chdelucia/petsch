@@ -1,5 +1,13 @@
-import { Injectable, signal, computed } from '@angular/core';
+import { Injectable, signal, computed, inject } from '@angular/core';
 import { ActivatedRouteSnapshot, ViewTransitionInfo } from '@angular/router';
+
+export function onViewTransitionCreated(info: ViewTransitionInfo) {
+  const currentTransitionService = inject(CurrentTransitionService);
+  currentTransitionService.currentTransition.set(info);
+  info.transition.finished.finally(() => {
+    currentTransitionService.currentTransition.set(null);
+  });
+}
 
 @Injectable({
   providedIn: 'root',

@@ -1,6 +1,5 @@
 import {
   ApplicationConfig,
-  inject,
   provideBrowserGlobalErrorListeners,
   provideZonelessChangeDetection,
   isDevMode,
@@ -19,11 +18,11 @@ import {
   LocalstorageService,
 } from '@petsch/obs-data-access';
 import {
-  CurrentTransitionService,
   PRODUCT_UI_CONFIG,
   PRODUCT_DATA_TRANSFORMER,
   PRODUCT_LIST_STORE,
   ITEM_OF_DAY_STORE,
+  onViewTransitionCreated,
 } from '@petsch/api';
 import { enrichProductWithHealth } from './utils/health-adapter';
 import { providePetShopApi } from '@petsch/api-petshop';
@@ -82,11 +81,3 @@ export const appConfig: ApplicationConfig = {
     }),
   ],
 };
-
-function onViewTransitionCreated(info: ViewTransitionInfo) {
-  const currentTransitionService = inject(CurrentTransitionService);
-  currentTransitionService.currentTransition.set(info);
-  info.transition.finished.finally(() => {
-    currentTransitionService.currentTransition.set(null);
-  });
-}
