@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.19.1](https://github.com/chdelucia/petsch/compare/v1.19.0...v1.19.1) (2026-05-21)
+
+
+### Bug Fixes
+
+* **dragonball:** implement image fallback for character images ([cb3ec58](https://github.com/chdelucia/petsch/commit/cb3ec58b1735aeb833d9990fe965001be253bf3a))
+
 ## [1.19.0](https://github.com/chdelucia/petsch/compare/v1.18.8...v1.19.0) (2026-05-21)
 
 
