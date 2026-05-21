@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.19.0](https://github.com/chdelucia/petsch/compare/v1.18.8...v1.19.0) (2026-05-21)
+
+
+### Features
+
+* customize branding and SEO for each application ([e3d0d88](https://github.com/chdelucia/petsch/commit/e3d0d88a27c3e10d1e26917ba52736512082d572))
+* enable view transitions in dragonball and rickymorty apps ([de354c5](https://github.com/chdelucia/petsch/commit/de354c5e763fe348691df64826b1a7b11a4e3ef3))
+* **navbar,seo:** add unique branding and SEO for each application ([a93cfe4](https://github.com/chdelucia/petsch/commit/a93cfe40abb846c6e05ef82f1d88c42abaaba500))
+* **shared-ui:** adapt pagination active state to app primary palette ([28ea96c](https://github.com/chdelucia/petsch/commit/28ea96c9e6548d6e430deba50ad71e54d4b82cf8))
+* **ui:** make pagination adapt to application color palette ([7d90b0f](https://github.com/chdelucia/petsch/commit/7d90b0f71f8710741219c90065bc37df79903574))
+
 ### [1.18.8](https://github.com/chdelucia/petsch/compare/v1.18.7...v1.18.8) (2026-05-07)
 
 ### [1.18.7](https://github.com/chdelucia/petsch/compare/v1.18.6...v1.18.7) (2026-05-07)
