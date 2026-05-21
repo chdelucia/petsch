@@ -32,7 +32,7 @@
         "@angular/build": "~21.2.0",
         "@angular/cli": "~21.2.10",
         "@angular/compiler-cli": "~21.2.0",
-        "@angular/language-service": "~21.2.0",
+        "@angular/language-service": "~21.2.14",
         "@eslint/js": "^10.0.1",
         "@nx/angular": "22.6.5",
         "@nx/devkit": "22.6.5",
@@ -159,7 +159,7 @@
 
     "@angular/forms": ["@angular/forms@21.2.13", "", { "dependencies": { "@standard-schema/spec": "^1.0.0", "tslib": "^2.3.0" }, "peerDependencies": { "@angular/common": "21.2.13", "@angular/core": "21.2.13", "@angular/platform-browser": "21.2.13", "rxjs": "^6.5.3 || ^7.4.0" } }, "sha512-efAKdL8eVRlGvcJWrUFcYyRE/togWfopUTw2D5TIkDAndnmmRaWA70wD4n/E1FFV5UdxSBxoyEYE0qVlPiewtQ=="],
 
-    "@angular/language-service": ["@angular/language-service@21.2.13", "", {}, "sha512-6WDw77DdxaQjze+4EL3ySZx5CCY1jxIymTNsEZvAxQXP5jc6/f+h4bHbFCv4QCyYHGTCLDCZmL+jeT1LngmGng=="],
+    "@angular/language-service": ["@angular/language-service@21.2.14", "", {}, "sha512-weSWgdToOIfPUTXoMDG/MHnL2qCx/vZ8/96K38ygm8TIItDPaBXidolwQctXc1xtdm1YrgJpOSayzGwC83o3jQ=="],
 
     "@angular/platform-browser": ["@angular/platform-browser@21.2.13", "", { "dependencies": { "tslib": "^2.3.0" }, "peerDependencies": { "@angular/animations": "21.2.13", "@angular/common": "21.2.13", "@angular/core": "21.2.13" }, "optionalPeers": ["@angular/animations"] }, "sha512-96rcwLHsklqAYRuS2SEBOUdQS5PLkuUIEEIjpYu4rxU2PVvOMapJEImM/QBxrbwjnCgRbj/CivkgfjiR0R0wSA=="],
 
