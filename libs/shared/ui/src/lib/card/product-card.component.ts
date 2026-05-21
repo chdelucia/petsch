@@ -4,10 +4,12 @@ import {
   inject,
   computed,
   ChangeDetectionStrategy,
+  signal,
 } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { NgOptimizedImage } from '@angular/common';
 import { PRODUCT_UI_CONFIG } from '@petsch/api';
+import { IMAGE_PLACEHOLDER } from '@petsch/shared-utils';
 
 @Component({
   selector: 'lib-ch-ui-card',
@@ -28,6 +30,14 @@ export class ChCard {
   imageUrl = input.required<string>();
   viewTransitionName = input<string>('');
   priority = input<boolean>(false);
+
+  private readonly fallbackUrl = signal<string | null>(null);
+
+  currentImageUrl = computed(() => this.fallbackUrl() ?? this.imageUrl());
+
+  handleImageError() {
+    this.fallbackUrl.set(IMAGE_PLACEHOLDER);
+  }
 
   detailRoute = computed(() => {
     const listRoute = this.config?.listRoute ?? '/pets';

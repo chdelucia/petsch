@@ -104,4 +104,11 @@ describe('FeatureProductDetails', () => {
 
     expect(spy).toHaveBeenCalledWith(['/custom-products']);
   });
+
+  it('should fallback to placeholder on image error', () => {
+    component.handleImageError();
+    fixture.detectChanges();
+
+    expect(component.currentImageUrl()).toContain('data:image/svg+xml');
+  });
 });

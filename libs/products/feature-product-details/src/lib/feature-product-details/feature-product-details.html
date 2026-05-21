@@ -23,8 +23,9 @@
     <div class="product-details__gallery">
       <div class="product-details__main-img-container banner-img">
         <img
-          [ngSrc]="item.photo_url"
+          [ngSrc]="currentImageUrl()"
           [alt]="item.name"
+          (error)="handleImageError()"
           class="product-details__main-img"
           [style.viewTransitionName]="transitionService.getViewTransitionName(id())"
           fill

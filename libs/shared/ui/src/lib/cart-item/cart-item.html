@@ -1,6 +1,11 @@
 <div class="ch-cart-item" *transloco="let t" [attr.data-testid]="testId()">
   <div class="ch-cart-item__img-container">
-    <img [src]="imageSrc()" [alt]="name()" class="ch-cart-item__img" />
+    <img
+      [src]="currentImageSrc()"
+      [alt]="name()"
+      (error)="handleImageError()"
+      class="ch-cart-item__img"
+    />
   </div>
 
   <div class="ch-cart-item__content">
