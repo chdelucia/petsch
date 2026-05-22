@@ -2,10 +2,13 @@ import { TestBed } from '@angular/core/testing';
 import { ProductsStore } from './product.store';
 import { PRODUCT_TOKEN, PRODUCT_UI_CONFIG } from '@petsch/api';
 import { of, throwError } from 'rxjs';
+import { ActivatedRoute, Router } from '@angular/router';
 
 describe('ProductsStore', () => {
   let store: any;
   let productServiceMock: any;
+  let activatedRouteMock: any;
+  let routerMock: any;
 
   beforeEach(() => {
     productServiceMock = {
@@ -13,10 +16,20 @@ describe('ProductsStore', () => {
       getDetails: vi.fn((id: string) => of({ id })),
     };
 
+    activatedRouteMock = {
+      snapshot: { queryParams: {} },
+    };
+
+    routerMock = {
+      navigate: vi.fn(),
+    };
+
     TestBed.configureTestingModule({
       providers: [
         ProductsStore,
         { provide: PRODUCT_TOKEN, useValue: productServiceMock },
+        { provide: ActivatedRoute, useValue: activatedRouteMock },
+        { provide: Router, useValue: routerMock },
       ],
     });
 
@@ -29,7 +42,9 @@ describe('ProductsStore', () => {
     expect(store.error()).toBeNull();
   });
 
-  it('should load products on init', () => {
+  it('should load products on init', async () => {
+    // Need to trigger effect or wait for rxMethod
+    await new Promise((resolve) => setTimeout(resolve, 0));
     expect(productServiceMock.getProducts).toHaveBeenCalled();
   });
 
@@ -81,29 +96,40 @@ describe('ProductsStore', () => {
     expect(store.filters()).toEqual({ _page: 1, _limit: 12 });
   });
 
+  it('should only call getProducts once when filter is removed', async () => {
+    productServiceMock.getProducts.mockClear();
+    store.applyFilters({ kind: 'dog' });
+    // Simulate what happens in FeatureFilters: removeFilter then maybe applyFilters (though we removed that)
+    store.removeFilter('kind');
+
+    await new Promise((resolve) => setTimeout(resolve, 0));
+
+    expect(productServiceMock.getProducts).toHaveBeenCalledTimes(1);
+  });
+
   it('should apply pagination', () => {
     store.applyPagination(2);
     expect(store.filters()).toEqual({ _page: 2, _limit: 12 });
   });
 
-  it('should compute totalPages correctly from last link', () => {
+  it('should compute totalPages correctly from last link', async () => {
     store.clear();
     const products = [{ id: '1' }];
     const pagination = { last: 'http://api.example.com/products?_page=5&_limit=12' };
     productServiceMock.getProducts.mockReturnValue(of({ products, pagination }));
 
-    store.loadProducts();
+    await store.loadProducts(store.query());
 
     expect(store.totalPages()).toBe(5);
   });
 
-  it('should compute totalPages correctly from pages property', () => {
+  it('should compute totalPages correctly from pages property', async () => {
     store.clear();
     const products = [{ id: '1' }];
     const pagination = { pages: 10 };
     productServiceMock.getProducts.mockReturnValue(of({ products, pagination }));
 
-    store.loadProducts();
+    await store.loadProducts(store.query());
 
     expect(store.totalPages()).toBe(10);
   });
@@ -111,7 +137,7 @@ describe('ProductsStore', () => {
   it('should handle load error', async () => {
     productServiceMock.getProducts.mockReturnValue(throwError(() => new Error('API Error')));
 
-    store.loadProducts();
+    await store.loadProducts(store.query());
 
     expect(store.error()).toBe('API Error');
     expect(store.products()).toEqual([]);
@@ -126,6 +152,8 @@ describe('ProductsStore', () => {
         providers: [
           ProductsStore,
           { provide: PRODUCT_TOKEN, useValue: productServiceMock },
+          { provide: ActivatedRoute, useValue: activatedRouteMock },
+          { provide: Router, useValue: routerMock },
           {
             provide: PRODUCT_UI_CONFIG,
             useValue: {

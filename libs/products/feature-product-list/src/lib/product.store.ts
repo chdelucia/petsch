@@ -1,4 +1,5 @@
-import { computed, inject } from '@angular/core';
+import { computed, effect, inject, untracked } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import {
   signalStore,
   withState,
@@ -8,7 +9,7 @@ import {
   patchState,
 } from '@ngrx/signals';
 
-import { catchError, of, pipe, switchMap, tap } from 'rxjs';
+import { catchError, distinctUntilChanged, of, pipe, switchMap, tap } from 'rxjs';
 import { rxMethod } from '@ngrx/signals/rxjs-interop';
 import {
   PRODUCT_TOKEN,
@@ -47,9 +48,9 @@ export const ProductsStore = signalStore(
     const pageKey = config?.paginationKeys?.page ?? '_page';
 
     return {
-      query: () => ({
+      query: computed(() => ({
         ...store.filters(),
-      }),
+      })),
       currentPage: computed(() => {
         return (store.filters() as Record<string, unknown>)[pageKey] as number ?? 1;
       }),
@@ -69,6 +70,8 @@ export const ProductsStore = signalStore(
   withMethods((store) => {
     const productService = inject(PRODUCT_TOKEN);
     const config = inject(PRODUCT_UI_CONFIG, { optional: true });
+    const router = inject(Router);
+    const route = inject(ActivatedRoute);
 
     const pageKey = config?.paginationKeys?.page ?? '_page';
     const limitKey = config?.paginationKeys?.limit ?? '_limit';
@@ -92,10 +95,19 @@ export const ProductsStore = signalStore(
         loading: false,
       });
 
+    const cleanFilters = (filters: Record<string, unknown>) => {
+      return Object.entries(filters).reduce((acc, [key, value]) => {
+        if (value !== '' && value !== null && value !== undefined) {
+          acc[key] = value;
+        }
+        return acc;
+      }, {} as Record<string, unknown>);
+    };
+
     return {
       applyFilters(partial: Partial<Record<string, unknown>>) {
         patchState(store, (state) => ({
-          filters: { ...state.filters, ...partial, [pageKey]: 1 },
+          filters: cleanFilters({ ...state.filters, ...partial, [pageKey]: 1 }),
         }));
       },
 
@@ -133,11 +145,12 @@ export const ProductsStore = signalStore(
         }));
       },
 
-      loadProducts: rxMethod<void>(
+      loadProducts: rxMethod<Record<string, unknown>>(
         pipe(
+          distinctUntilChanged((prev, curr) => JSON.stringify(prev) === JSON.stringify(curr)),
           tap(() => setLoading(true)),
-          switchMap(() =>
-            productService.getProducts(store.query()).pipe(
+          switchMap((query) =>
+            productService.getProducts(query).pipe(
               catchError((err) => {
                 setError(err?.message ?? 'Failed to load products');
                 return of(null);
@@ -154,7 +167,41 @@ export const ProductsStore = signalStore(
 
   withHooks({
     onInit(store) {
-      store.loadProducts();
+      const route = inject(ActivatedRoute);
+      const router = inject(Router);
+
+      const queryParams = route.snapshot.queryParams;
+      if (Object.keys(queryParams).length > 0) {
+        patchState(store, (state) => ({
+          filters: { ...state.filters, ...queryParams },
+        }));
+      }
+
+      store.loadProducts(store.query);
+
+      effect(() => {
+        const query = store.query();
+        untracked(() => {
+          const currentParams = route.snapshot.queryParams;
+          const merged = { ...currentParams, ...query };
+
+          // Identify keys that were removed from store but exist in URL
+          Object.keys(currentParams).forEach(key => {
+            if (!(key in query)) {
+              merged[key] = null;
+            }
+          });
+
+          if (JSON.stringify(currentParams) !== JSON.stringify(query)) {
+            router.navigate([], {
+              relativeTo: route,
+              queryParams: merged,
+              queryParamsHandling: 'merge',
+              replaceUrl: true,
+            });
+          }
+        });
+      });
     },
   }),
 );

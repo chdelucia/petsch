@@ -82,10 +82,15 @@ export class FeatureFilters {
 
   readonly form = signal<Partial<Record<string, unknown>>>(
     ((this.config ?? DEFAULT_PRODUCT_FILTERS) as FilterConfig[]).reduce(
-      (acc: Record<string, unknown>, c: FilterConfig) => ({
-        ...acc,
-        [c.key]: c.initialValue ?? '',
-      }),
+      (acc: Record<string, unknown>, c: FilterConfig) => {
+        const storeValue = (this.store.filters() as Record<string, unknown>)[
+          c.key
+        ];
+        return {
+          ...acc,
+          [c.key]: storeValue ?? c.initialValue ?? '',
+        };
+      },
       {},
     ),
   );
@@ -114,7 +119,6 @@ export class FeatureFilters {
     const currentForm = this.form();
 
     this.store.applyFilters(currentForm);
-    this.store.loadProducts();
   }
 
   getFormField(key: string): unknown {
@@ -130,9 +134,5 @@ export class FeatureFilters {
     }
 
     this.store.removeFilter(key);
-
-    if (!field || currentValue === '') {
-      this.applyFiltersAndLoad();
-    }
   }
 }
