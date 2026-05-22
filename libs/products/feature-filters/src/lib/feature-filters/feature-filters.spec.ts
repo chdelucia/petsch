@@ -14,6 +14,7 @@ describe('FeatureFilters', () => {
     loadProducts: any;
     loading: any;
     products: any;
+    filters: any;
   };
 
   beforeEach(async () => {
@@ -25,6 +26,7 @@ describe('FeatureFilters', () => {
       loadProducts: vi.fn(),
       loading: signal(false),
       products: signal([]),
+      filters: signal({}),
     };
 
     await TestBed.configureTestingModule({
@@ -108,12 +110,13 @@ describe('FeatureFilters', () => {
   });
 
   it('should not call loadProducts on initialization', () => {
+    // With reactive store, we no longer call loadProducts manually in the component
     store.loadProducts.mockClear();
     vi.runAllTimers();
     expect(store.loadProducts).not.toHaveBeenCalled();
   });
 
-  it('should only call loadProducts once when resetting a filter', () => {
+  it('should not call loadProducts when resetting a filter (reactive)', () => {
     // Set a value first
     component.formTree.kind().value.set('dog');
     fixture.detectChanges();
@@ -125,28 +128,7 @@ describe('FeatureFilters', () => {
     fixture.detectChanges();
     vi.runAllTimers();
 
-    expect(store.loadProducts).toHaveBeenCalledTimes(1);
-  });
-
-  it('should detect duplicate calls when resetting a filter', () => {
-    // Set a value first
-    component.formTree.kind().value.set('dog');
-    fixture.detectChanges();
-    vi.runAllTimers();
-    store.loadProducts.mockClear();
-
-    // Reset the filter
-    component.resetFilter('kind');
-    fixture.detectChanges();
-
-    // Check calls before timers (it should be 0 because we rely on the debounced observable)
-    // If we want it to be immediate, it would be 1.
-    // Currently, with my fix, it should be 0 here and 1 after timers.
+    // The component no longer calls loadProducts()
     expect(store.loadProducts).toHaveBeenCalledTimes(0);
-
-    // Run timers (observable triggers the call after debounce)
-    vi.runAllTimers();
-
-    expect(store.loadProducts).toHaveBeenCalledTimes(1);
   });
 });
