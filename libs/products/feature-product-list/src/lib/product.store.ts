@@ -9,7 +9,7 @@ import {
   patchState,
 } from '@ngrx/signals';
 
-import { catchError, of, pipe, switchMap, tap } from 'rxjs';
+import { catchError, distinctUntilChanged, of, pipe, switchMap, tap } from 'rxjs';
 import { rxMethod } from '@ngrx/signals/rxjs-interop';
 import {
   PRODUCT_TOKEN,
@@ -95,10 +95,19 @@ export const ProductsStore = signalStore(
         loading: false,
       });
 
+    const cleanFilters = (filters: Record<string, unknown>) => {
+      return Object.entries(filters).reduce((acc, [key, value]) => {
+        if (value !== '' && value !== null && value !== undefined) {
+          acc[key] = value;
+        }
+        return acc;
+      }, {} as Record<string, unknown>);
+    };
+
     return {
       applyFilters(partial: Partial<Record<string, unknown>>) {
         patchState(store, (state) => ({
-          filters: { ...state.filters, ...partial, [pageKey]: 1 },
+          filters: cleanFilters({ ...state.filters, ...partial, [pageKey]: 1 }),
         }));
       },
 
@@ -138,6 +147,7 @@ export const ProductsStore = signalStore(
 
       loadProducts: rxMethod<Record<string, unknown>>(
         pipe(
+          distinctUntilChanged((prev, curr) => JSON.stringify(prev) === JSON.stringify(curr)),
           tap(() => setLoading(true)),
           switchMap((query) =>
             productService.getProducts(query).pipe(
@@ -172,12 +182,24 @@ export const ProductsStore = signalStore(
       effect(() => {
         const query = store.query();
         untracked(() => {
-          router.navigate([], {
-            relativeTo: route,
-            queryParams: query,
-            queryParamsHandling: 'merge',
-            replaceUrl: true,
+          const currentParams = route.snapshot.queryParams;
+          const merged = { ...currentParams, ...query };
+
+          // Identify keys that were removed from store but exist in URL
+          Object.keys(currentParams).forEach(key => {
+            if (!(key in query)) {
+              merged[key] = null;
+            }
           });
+
+          if (JSON.stringify(currentParams) !== JSON.stringify(query)) {
+            router.navigate([], {
+              relativeTo: route,
+              queryParams: merged,
+              queryParamsHandling: 'merge',
+              replaceUrl: true,
+            });
+          }
         });
       });
     },

@@ -96,6 +96,17 @@ describe('ProductsStore', () => {
     expect(store.filters()).toEqual({ _page: 1, _limit: 12 });
   });
 
+  it('should only call getProducts once when filter is removed', async () => {
+    productServiceMock.getProducts.mockClear();
+    store.applyFilters({ kind: 'dog' });
+    // Simulate what happens in FeatureFilters: removeFilter then maybe applyFilters (though we removed that)
+    store.removeFilter('kind');
+
+    await new Promise((resolve) => setTimeout(resolve, 0));
+
+    expect(productServiceMock.getProducts).toHaveBeenCalledTimes(1);
+  });
+
   it('should apply pagination', () => {
     store.applyPagination(2);
     expect(store.filters()).toEqual({ _page: 2, _limit: 12 });

@@ -134,9 +134,5 @@ export class FeatureFilters {
     }
 
     this.store.removeFilter(key);
-
-    if (!field || currentValue === '') {
-      this.applyFiltersAndLoad();
-    }
   }
 }
