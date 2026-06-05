@@ -26,6 +26,7 @@ import {
 } from '@petsch/api';
 import { enrichProductWithHealth } from './utils/health-adapter';
 import { providePetShopApi } from '@petsch/api-petshop';
+import { PRODUCT_FILTER_CONFIG } from '@petsch/feature-filters';
 import { ProductsStore } from '@petsch/feature-product-list';
 import { ItemOfDayStore } from '@petsch/feature-item-of-day';
 import { LOCALSTORAGE_TOKEN } from '@petsch/obs-api';
@@ -56,6 +57,27 @@ export const appConfig: ApplicationConfig = {
       useValue: enrichProductWithHealth,
     },
     providePetShopApi(),
+    {
+      provide: PRODUCT_FILTER_CONFIG,
+      useValue: [
+        {
+          key: 'name_like',
+          type: 'input',
+          debounceTime: 200,
+          initialValue: '',
+        },
+        {
+          key: 'kind',
+          type: 'radio',
+          options: [
+            { value: 'dog', text: 'dog' },
+            { value: 'cat', text: 'cat' },
+          ],
+          debounceTime: 500,
+          initialValue: '',
+        },
+      ],
+    },
     {
       provide: PRODUCT_LIST_STORE,
       useClass: ProductsStore,

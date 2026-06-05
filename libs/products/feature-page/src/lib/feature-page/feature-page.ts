@@ -39,6 +39,5 @@ export class FeaturePage {
 
   sortBy(value: { key: string; order: string }): void {
     this.store.applySort(value);
-    this.store.loadProducts();
   }
 }

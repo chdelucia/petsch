@@ -29,7 +29,8 @@ describe('ProductsStore', () => {
     expect(store.error()).toBeNull();
   });
 
-  it('should load products on init', () => {
+  it('should load products on init', async () => {
+    await new Promise((resolve) => setTimeout(resolve, 0));
     expect(productServiceMock.getProducts).toHaveBeenCalled();
   });
 

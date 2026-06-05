@@ -8,13 +8,14 @@ import {
   patchState,
 } from '@ngrx/signals';
 
-import { catchError, of, pipe, switchMap, tap } from 'rxjs';
+import { catchError, distinctUntilChanged, of, pipe, switchMap, tap } from 'rxjs';
 import { rxMethod } from '@ngrx/signals/rxjs-interop';
 import {
   PRODUCT_TOKEN,
   PaginationLinks,
   GetProductsResponse,
   PRODUCT_UI_CONFIG,
+  parseTotalPages,
 } from '@petsch/api';
 
 export interface ProductsState<T = unknown, F = Record<string, unknown>> {
@@ -58,10 +59,10 @@ export const ProductsStore = signalStore(
         if (pagination.pages) {
           return pagination.pages;
         }
-        const last = pagination.last;
-        const regex = new RegExp(`${pageKey}=(\\d+)(?:&|$)`);
-        const match = last?.match(regex);
-        return match ? Number(match[1]) : ((store.filters() as Record<string, unknown>)[pageKey] as number ?? 1);
+        return (
+          parseTotalPages(pagination.last, pageKey) ??
+          ((store.filters() as Record<string, unknown>)[pageKey] as number ?? 1)
+        );
       }),
     };
   }),
@@ -133,11 +134,12 @@ export const ProductsStore = signalStore(
         }));
       },
 
-      loadProducts: rxMethod<void>(
+      loadProducts: rxMethod<Record<string, unknown>>(
         pipe(
+          distinctUntilChanged((prev, curr) => JSON.stringify(prev) === JSON.stringify(curr)),
           tap(() => setLoading(true)),
-          switchMap(() =>
-            productService.getProducts(store.query()).pipe(
+          switchMap((query) =>
+            productService.getProducts(query).pipe(
               catchError((err) => {
                 setError(err?.message ?? 'Failed to load products');
                 return of(null);
@@ -154,7 +156,7 @@ export const ProductsStore = signalStore(
 
   withHooks({
     onInit(store) {
-      store.loadProducts();
+      store.loadProducts(store.query);
     },
   }),
 );
