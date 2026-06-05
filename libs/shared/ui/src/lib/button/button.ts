@@ -1,4 +1,4 @@
-import { booleanAttribute, Component, input, output } from '@angular/core';
+import { booleanAttribute, Component, input, output, ChangeDetectionStrategy } from '@angular/core';
 import { NgClass } from '@angular/common';
 
 export type ButtonVariant = 'primary' | 'secondary' | 'outline' | 'ghost' | 'link';
@@ -8,6 +8,7 @@ export type ButtonSize = 'sm' | 'md' | 'lg';
   selector: 'lib-ch-ui-button',
   imports: [NgClass],
   templateUrl: './button.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './button.css',
 })
 export class ChButton {

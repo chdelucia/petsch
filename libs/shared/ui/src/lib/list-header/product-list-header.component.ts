@@ -1,5 +1,5 @@
 import { ChButton } from "../button/button";
-import { Component, input, output } from '@angular/core';
+import { Component, input, output, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TranslocoDirective } from '@jsverse/transloco';
 
@@ -7,6 +7,7 @@ import { TranslocoDirective } from '@jsverse/transloco';
   selector: 'lib-ch-ui-product-list-header',
   imports: [CommonModule, TranslocoDirective, ChButton],
   templateUrl: './product-list-header.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './product-list-header.component.css',
 })
 export class ChListHeader {

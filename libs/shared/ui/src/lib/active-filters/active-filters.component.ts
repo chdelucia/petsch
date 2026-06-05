@@ -1,12 +1,13 @@
 import { ChButton } from "../button/button";
 import { CommonModule } from '@angular/common';
-import { Component, computed, input, output } from '@angular/core';
+import { Component, computed, input, output, ChangeDetectionStrategy } from '@angular/core';
 import { TranslocoDirective } from '@jsverse/transloco';
 
 @Component({
   selector: 'lib-ch-ui-active-filters',
   imports: [CommonModule, TranslocoDirective, ChButton],
   templateUrl: './active-filters.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './active-filters.component.css',
 })
 export class ChActiveFiltersComponent {

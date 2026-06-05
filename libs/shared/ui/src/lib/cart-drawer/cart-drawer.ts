@@ -1,5 +1,5 @@
 import { ChButton } from "../button/button";
-import { Component, output, input } from '@angular/core';
+import { Component, output, input, ChangeDetectionStrategy } from '@angular/core';
 import { ChCartFooter } from '../cart-footer/cart-footer';
 import { TranslocoDirective } from '@jsverse/transloco';
 
@@ -7,6 +7,7 @@ import { TranslocoDirective } from '@jsverse/transloco';
   selector: 'lib-ch-ui-cart-drawer',
   imports: [ChCartFooter, TranslocoDirective, ChButton],
   templateUrl: './cart-drawer.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './cart-drawer.css',
 })
 export class ChCartDrawer {

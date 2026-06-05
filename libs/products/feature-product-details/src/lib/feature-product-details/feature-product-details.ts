@@ -1,4 +1,4 @@
-import { Component, inject, input, signal, computed } from '@angular/core';
+import { Component, inject, input, signal, computed, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { Router } from '@angular/router';
 import { TranslocoDirective } from '@jsverse/transloco';
@@ -16,6 +16,7 @@ import { IMAGE_PLACEHOLDER } from '@petsch/shared-utils';
     NgOptimizedImage,
   ],
   templateUrl: './feature-product-details.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './feature-product-details.css',
 })
 export class FeatureProductDetails {

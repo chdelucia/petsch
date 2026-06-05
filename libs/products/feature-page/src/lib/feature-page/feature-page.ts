@@ -1,4 +1,4 @@
-import { Component, inject, signal, computed } from '@angular/core';
+import { Component, inject, signal, computed, ChangeDetectionStrategy } from '@angular/core';
 import { FeatureProductList } from '@petsch/feature-product-list';
 import { PRODUCT_LIST_STORE, PRODUCT_UI_CONFIG } from '@petsch/api';
 import { FeatureItemOfDay } from '@petsch/feature-item-of-day';
@@ -17,6 +17,7 @@ import { FeatureFilters } from '@petsch/feature-filters';
     ChDropdownFilter,
   ],
   templateUrl: './feature-page.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './feature-page.css',
 })
 export class FeaturePage {

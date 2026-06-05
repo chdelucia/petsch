@@ -1,5 +1,5 @@
 import { ChButton } from "../button/button";
-import { Component, input, output, signal, computed } from '@angular/core';
+import { Component, input, output, signal, computed, ChangeDetectionStrategy } from '@angular/core';
 import { TranslocoDirective } from '@jsverse/transloco';
 import { IMAGE_PLACEHOLDER } from '@petsch/shared-utils';
 
@@ -7,6 +7,7 @@ import { IMAGE_PLACEHOLDER } from '@petsch/shared-utils';
   selector: 'lib-ch-ui-cart-item',
   imports: [TranslocoDirective, ChButton],
   templateUrl: './cart-item.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './cart-item.css',
 })
 export class ChCartItem {

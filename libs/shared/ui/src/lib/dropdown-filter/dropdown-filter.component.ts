@@ -9,6 +9,7 @@ import {
   input,
   output,
   signal,
+  ChangeDetectionStrategy
 } from '@angular/core';
 
 export interface SortOption {
@@ -22,6 +23,7 @@ export interface SortOption {
   imports: [ChButton, TranslocoDirective],
   templateUrl: './dropdown-filter.component.html',
   styleUrl: './dropdown-filter.component.css',
+  changeDetection: ChangeDetectionStrategy.Eager,
   host: {
     '[attr.data-testid]': 'testId()',
   },
