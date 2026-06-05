@@ -48,7 +48,7 @@
     "@angular/language-service": "~21.2.14",
     "@eslint/js": "^10.0.1",
     "@nx/angular": "22.6.5",
-    "@nx/devkit": "22.6.5",
+    "@nx/devkit": "22.7.5",
     "@nx/eslint": "22.6.5",
     "@nx/eslint-plugin": "22.7.5",
     "@nx/js": "22.6.5",
