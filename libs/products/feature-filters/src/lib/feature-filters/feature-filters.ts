@@ -32,24 +32,7 @@ export const PRODUCT_FILTER_CONFIG = new InjectionToken<FilterConfig[]>(
   'PRODUCT_FILTER_CONFIG',
 );
 
-const DEFAULT_PRODUCT_FILTERS: FilterConfig[] = [
-  {
-    key: 'name_like',
-    type: 'input',
-    debounceTime: 200,
-    initialValue: '',
-  },
-  {
-    key: 'kind',
-    type: 'radio',
-    options: [
-      { value: 'dog', text: 'dog' },
-      { value: 'cat', text: 'cat' },
-    ],
-    debounceTime: 500,
-    initialValue: '',
-  },
-];
+const DEFAULT_PRODUCT_FILTERS: FilterConfig[] = [];
 
 @Component({
   selector: 'lib-feature-filters',
@@ -114,7 +97,6 @@ export class FeatureFilters {
     const currentForm = this.form();
 
     this.store.applyFilters(currentForm);
-    this.store.loadProducts();
   }
 
   getFormField(key: string): unknown {

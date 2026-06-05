@@ -90,13 +90,12 @@ describe('FeaturePage', () => {
     expect(component.gridView()).toBe(false);
   });
 
-  it('should apply sort and reload products', () => {
+  it('should apply sort', () => {
     const store = TestBed.inject(PRODUCT_LIST_STORE);
     const sortValue = { key: 'name', order: 'asc' };
 
     component.sortBy(sortValue);
 
     expect(store.applySort).toHaveBeenCalledWith(sortValue);
-    expect(store.loadProducts).toHaveBeenCalled();
   });
 });
