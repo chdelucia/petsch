@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FeatureItemOfDay } from './feature-item-of-day';
 import { ITEM_OF_DAY_STORE } from '@petsch/api';
 import { getTranslocoTestingModule } from '@petsch/shared-utils';
-import { signal } from '@angular/core';
+import { ChangeDetectionStrategy, signal } from '@angular/core';
 
 describe('FeatureItemOfDay', () => {
   let component: FeatureItemOfDay;

@@ -1,4 +1,4 @@
-import { InjectionToken } from '@angular/core';
+import { ChangeDetectionStrategy, InjectionToken } from '@angular/core';
 import { IProductService } from './product.repository';
 
 export const PRODUCT_TOKEN = new InjectionToken<IProductService<unknown, unknown>>(

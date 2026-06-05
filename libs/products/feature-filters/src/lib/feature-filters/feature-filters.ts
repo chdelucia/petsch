@@ -1,13 +1,11 @@
-import {
-  Component,
+import {   Component,
   inject,
   computed,
   signal,
   InjectionToken,
   ChangeDetectionStrategy
 } from '@angular/core';
-import {
-  takeUntilDestroyed,
+import {   takeUntilDestroyed,
   toSignal,
   toObservable,
 } from '@angular/core/rxjs-interop';
@@ -15,8 +13,7 @@ import { form as angularForm, FormField } from '@angular/forms/signals';
 import { TranslocoService, TranslocoDirective } from '@jsverse/transloco';
 import { PRODUCT_LIST_STORE } from '@petsch/api';
 import { debounceTime, merge, skip } from 'rxjs';
-import {
-  ChInputFilter,
+import {   ChInputFilter,
   ChRadioFilter,
   ChActiveFiltersComponent,
 } from '@petsch/ui';
@@ -61,7 +58,7 @@ const DEFAULT_PRODUCT_FILTERS: FilterConfig[] = [
     ChActiveFiltersComponent,
     TranslocoDirective,
   ],
-  changeDetection: ChangeDetectionStrategy.Eager,
+
   templateUrl: './feature-filters.html',
 })
 export class FeatureFilters {

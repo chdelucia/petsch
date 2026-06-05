@@ -18,11 +18,11 @@ export default [
           depConstraints: [
             {
               sourceTag: 'type:api',
-              onlyDependOnLibsWithTags: ['type:api'],
+              onlyDependOnLibsWithTags: ['type:api', 'type:data-access'],
             },
             {
               sourceTag: 'type:data-access',
-              onlyDependOnLibsWithTags: ['type:api'],
+              onlyDependOnLibsWithTags: ['type:api', 'type:data-access'],
             },
             {
               sourceTag: 'type:feature',

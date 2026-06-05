@@ -7,7 +7,7 @@ import { TranslocoDirective } from '@jsverse/transloco';
   selector: 'lib-ch-ui-product-list-header',
   imports: [CommonModule, TranslocoDirective, ChButton],
   templateUrl: './product-list-header.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
+
   styleUrl: './product-list-header.component.css',
 })
 export class ChListHeader {

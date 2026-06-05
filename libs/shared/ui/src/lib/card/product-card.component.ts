@@ -1,5 +1,4 @@
-import {
-  Component,
+import {   Component,
   input,
   inject,
   computed,

@@ -1,4 +1,4 @@
-import { InjectionToken } from '@angular/core';
+import { ChangeDetectionStrategy, InjectionToken } from '@angular/core';
 
 export interface ProductUiConfig {
   paginationKeys?: {

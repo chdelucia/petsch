@@ -7,7 +7,7 @@ import { ChButton } from '../button/button';
   selector: 'lib-ch-ui-pagination',
   imports: [NgClass, TranslocoDirective, ChButton],
   templateUrl: './pagination.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
+
   styleUrl: './pagination.component.css',
 })
 export class ChPagination {

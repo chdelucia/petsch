@@ -7,7 +7,7 @@ import { TranslocoDirective } from '@jsverse/transloco';
   selector: 'lib-ch-ui-cart-drawer',
   imports: [ChCartFooter, TranslocoDirective, ChButton],
   templateUrl: './cart-drawer.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
+
   styleUrl: './cart-drawer.css',
 })
 export class ChCartDrawer {

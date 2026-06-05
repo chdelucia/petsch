@@ -1,4 +1,4 @@
-import { Injectable, signal, computed, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Injectable, signal, computed, inject } from '@angular/core';
 import { ActivatedRouteSnapshot, ViewTransitionInfo } from '@angular/router';
 
 export function onViewTransitionCreated(info: ViewTransitionInfo) {

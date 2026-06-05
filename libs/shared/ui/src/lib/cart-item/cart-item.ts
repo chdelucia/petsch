@@ -7,7 +7,7 @@ import { IMAGE_PLACEHOLDER } from '@petsch/shared-utils';
   selector: 'lib-ch-ui-cart-item',
   imports: [TranslocoDirective, ChButton],
   templateUrl: './cart-item.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
+
   styleUrl: './cart-item.css',
 })
 export class ChCartItem {

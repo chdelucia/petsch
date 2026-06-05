@@ -10,7 +10,7 @@ export interface LanguageOption {
   selector: 'lib-ch-ui-language-switcher',
   imports: [ChButton],
   templateUrl: './language-switcher.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
+
   styleUrl: './language-switcher.css',
 })
 export class ChLanguageSwitcher {

@@ -3,7 +3,7 @@ import { FeatureFilters } from './feature-filters';
 import { PRODUCT_LIST_STORE, PRODUCT_TOKEN } from '@petsch/api';
 import { getTranslocoTestingModule } from '@petsch/shared-utils';
 import { of } from 'rxjs';
-import { signal } from '@angular/core';
+import { ChangeDetectionStrategy, signal } from '@angular/core';
 
 describe('FeatureFilters', () => {
   let component: FeatureFilters;

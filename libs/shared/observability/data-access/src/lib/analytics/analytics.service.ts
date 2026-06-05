@@ -1,4 +1,4 @@
-import { Injectable, isDevMode, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Injectable, isDevMode, inject } from '@angular/core';
 import { IAnalyticsService } from '@petsch/obs-api';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { Router, NavigationEnd } from '@angular/router';

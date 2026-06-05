@@ -6,7 +6,7 @@ import { TranslocoDirective } from '@jsverse/transloco';
   selector: 'lib-ch-ui-cart-footer',
   imports: [ChButton, TranslocoDirective],
   templateUrl: './cart-footer.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
+
   styleUrl: './cart-footer.css',
 })
 export class ChCartFooter {

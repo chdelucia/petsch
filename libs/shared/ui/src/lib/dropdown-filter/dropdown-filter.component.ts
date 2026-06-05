@@ -1,7 +1,6 @@
 import { ChButton } from "../button/button";
 import { TranslocoDirective } from "@jsverse/transloco";
-import {
-  Component,
+import {   Component,
   computed,
   ElementRef,
   HostListener,
@@ -23,7 +22,7 @@ export interface SortOption {
   imports: [ChButton, TranslocoDirective],
   templateUrl: './dropdown-filter.component.html',
   styleUrl: './dropdown-filter.component.css',
-  changeDetection: ChangeDetectionStrategy.Eager,
+
   host: {
     '[attr.data-testid]': 'testId()',
   },

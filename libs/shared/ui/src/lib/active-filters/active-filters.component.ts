@@ -7,7 +7,7 @@ import { TranslocoDirective } from '@jsverse/transloco';
   selector: 'lib-ch-ui-active-filters',
   imports: [CommonModule, TranslocoDirective, ChButton],
   templateUrl: './active-filters.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
+
   styleUrl: './active-filters.component.css',
 })
 export class ChActiveFiltersComponent {

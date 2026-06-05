@@ -14,7 +14,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
     },
   ],
   templateUrl: './radio-filter.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
+
   styleUrl: './radio-filter.component.css',
 })
 export class ChRadioFilter implements ControlValueAccessor {

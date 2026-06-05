@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { App } from './app';
 import { getTranslocoTestingModule } from '@petsch/shared-utils';
-import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { ChangeDetectionStrategy, NO_ERRORS_SCHEMA } from '@angular/core';
 
 describe('App', () => {
   beforeEach(async () => {

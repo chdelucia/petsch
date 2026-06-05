@@ -1,4 +1,4 @@
-import { computed, inject } from '@angular/core';
+import { ChangeDetectionStrategy, computed, inject } from '@angular/core';
 import { getLocalIsoDate } from '@petsch/shared-utils';
 import {
   signalStore,

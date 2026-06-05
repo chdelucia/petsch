@@ -8,7 +8,7 @@ export type ButtonSize = 'sm' | 'md' | 'lg';
   selector: 'lib-ch-ui-button',
   imports: [NgClass],
   templateUrl: './button.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
+
   styleUrl: './button.css',
 })
 export class ChButton {

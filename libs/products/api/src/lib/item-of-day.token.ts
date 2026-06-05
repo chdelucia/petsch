@@ -1,4 +1,4 @@
-import { InjectionToken, Signal } from '@angular/core';
+import { ChangeDetectionStrategy, InjectionToken, Signal } from '@angular/core';
 import { ItemOfDayEntry } from './models/item-of-the-day';
 
 export interface ItemOfDayStoreContract<T = unknown> {

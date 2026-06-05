@@ -5,7 +5,7 @@ import { NgClass } from '@angular/common';
   selector: 'lib-ch-ui-badge',
   imports: [NgClass],
   templateUrl: './badge.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
+
   styleUrl: './badge.css',
 })
 export class ChBadge {

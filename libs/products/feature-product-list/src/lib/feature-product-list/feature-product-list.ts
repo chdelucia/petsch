@@ -29,7 +29,7 @@ import { TranslocoDirective } from '@jsverse/transloco';
     TranslocoDirective,
   ],
   templateUrl: './feature-product-list.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
+
   styleUrl: './feature-product-list.css',
 })
 export class FeatureProductList {

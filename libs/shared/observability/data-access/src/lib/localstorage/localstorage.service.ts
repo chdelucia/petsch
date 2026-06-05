@@ -1,4 +1,4 @@
-import { Injectable, isDevMode } from '@angular/core';
+import { ChangeDetectionStrategy, Injectable, isDevMode } from '@angular/core';
 
 @Injectable()
 export class LocalstorageService {

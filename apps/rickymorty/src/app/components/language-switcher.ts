@@ -6,7 +6,7 @@ import { ChLanguageSwitcher, LanguageOption } from '@petsch/ui';
   imports: [ChLanguageSwitcher],
   selector: 'app-lang-switcher',
   templateUrl: './language-switcher.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
+
   styleUrl: './language-switcher.css',
 })
 export class LanguageSwitcher {

@@ -17,7 +17,7 @@ import { FeatureFilters } from '@petsch/feature-filters';
     ChDropdownFilter,
   ],
   templateUrl: './feature-page.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
+
   styleUrl: './feature-page.css',
 })
 export class FeaturePage {

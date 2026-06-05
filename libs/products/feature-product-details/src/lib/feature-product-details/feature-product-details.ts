@@ -16,7 +16,7 @@ import { IMAGE_PLACEHOLDER } from '@petsch/shared-utils';
     NgOptimizedImage,
   ],
   templateUrl: './feature-product-details.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
+
   styleUrl: './feature-product-details.css',
 })
 export class FeatureProductDetails {

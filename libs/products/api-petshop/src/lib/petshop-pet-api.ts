@@ -1,4 +1,4 @@
-import { Injectable, inject, Provider } from '@angular/core';
+import { ChangeDetectionStrategy, Injectable, inject, Provider } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {
   IProductService,

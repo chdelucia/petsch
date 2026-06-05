@@ -5,7 +5,7 @@ import { provideRouter } from '@angular/router';
 import { of } from 'rxjs';
 import { PRODUCT_LIST_STORE, ITEM_OF_DAY_STORE, PRODUCT_TOKEN } from '@petsch/api';
 import { LOCALSTORAGE_TOKEN, ANALYTICS_TOKEN } from '@petsch/obs-api';
-import { signal } from '@angular/core';
+import { ChangeDetectionStrategy, signal } from '@angular/core';
 
 describe('FeatureProductList', () => {
   let component: FeatureProductList;

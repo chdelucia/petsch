@@ -2,7 +2,7 @@ import { beforeEach, describe, it, expect, vi } from 'vitest';
 import { TestBed } from '@angular/core/testing';
 import { SentryService } from './sentry.service';
 import * as Sentry from '@sentry/angular';
-import { isDevMode } from '@angular/core';
+import { ChangeDetectionStrategy, isDevMode } from '@angular/core';
 
 vi.mock('@sentry/angular', () => ({
   setTag: vi.fn(),

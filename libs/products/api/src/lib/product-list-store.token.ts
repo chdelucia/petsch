@@ -1,4 +1,4 @@
-import { InjectionToken, Signal } from '@angular/core';
+import { ChangeDetectionStrategy, InjectionToken, Signal } from '@angular/core';
 import { PaginationLinks } from './models/product';
 
 export interface ProductsStoreContract<T = unknown, F = unknown> {
