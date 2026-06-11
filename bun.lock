@@ -45,7 +45,7 @@
         "@nx/vitest": "22.6.5",
         "@nx/web": "22.6.5",
         "@nx/workspace": "22.7.5",
-        "@oxc-project/runtime": "^0.115.0",
+        "@oxc-project/runtime": "^0.135.0",
         "@playwright/test": "^1.36.0",
         "@schematics/angular": "~21.2.0",
         "@storybook/addon-a11y": "10.4.0",
@@ -865,7 +865,7 @@
 
     "@nx/workspace": ["@nx/workspace@22.7.5", "", { "dependencies": { "@nx/devkit": "22.7.5", "@zkochan/js-yaml": "0.0.7", "chalk": "^4.1.0", "enquirer": "~2.3.6", "nx": "22.7.5", "picomatch": "4.0.4", "semver": "^7.6.3", "tslib": "^2.3.0", "yargs-parser": "21.1.1" } }, "sha512-f3zx8EAOl0ANd2UXZIniBoHfDvNvi2Uy65R9Rp6emdcx7rxsuTU5Eaidryleo9wIQ5cZAcMx7Wvzp5Srj8diKA=="],
 
-    "@oxc-project/runtime": ["@oxc-project/runtime@0.115.0", "", {}, "sha512-Rg8Wlt5dCbXhQnsXPrkOjL1DTSvXLgb2R/KYfnf1/K+R0k6UMLEmbQXPM+kwrWqSmWA2t0B1EtHy2/3zikQpvQ=="],
+    "@oxc-project/runtime": ["@oxc-project/runtime@0.135.0", "", {}, "sha512-8yGQ16YWfPbu7AZnShbHdx+cJ/3Xn/k3OrwZVykI+V4RKe9pJqJr5r70Z1wVB+vjye6QaOFCL3N5iyrBKL4gNQ=="],
 
     "@oxc-project/types": ["@oxc-project/types@0.113.0", "", {}, "sha512-Tp3XmgxwNQ9pEN9vxgJBAqdRamHibi76iowQ38O2I4PMpcvNRQNVsU2n1x1nv9yh0XoTrGFzf7cZSGxmixxrhA=="],
 
