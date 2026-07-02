@@ -8,6 +8,7 @@ import {
   inject,
   input,
   signal,
+  ChangeDetectionStrategy
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
@@ -27,6 +28,7 @@ import { TranslocoDirective } from '@jsverse/transloco';
     },
   ],
   templateUrl: './input-filter.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrl: './input-filter.component.css',
 })
 export class ChInputFilter implements ControlValueAccessor, OnInit {

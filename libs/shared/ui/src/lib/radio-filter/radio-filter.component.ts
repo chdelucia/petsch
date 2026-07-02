@@ -1,5 +1,5 @@
 import { ChButton } from "../button/button";
-import { Component, forwardRef, input, signal } from '@angular/core';
+import { Component, forwardRef, input, signal, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
@@ -14,6 +14,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
     },
   ],
   templateUrl: './radio-filter.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrl: './radio-filter.component.css',
 })
 export class ChRadioFilter implements ControlValueAccessor {

@@ -4,6 +4,7 @@ import {
   computed,
   signal,
   InjectionToken,
+  ChangeDetectionStrategy
 } from '@angular/core';
 import {
   takeUntilDestroyed,
@@ -60,6 +61,7 @@ const DEFAULT_PRODUCT_FILTERS: FilterConfig[] = [
     ChActiveFiltersComponent,
     TranslocoDirective,
   ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './feature-filters.html',
 })
 export class FeatureFilters {

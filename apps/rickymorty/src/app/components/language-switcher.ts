@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import { TranslocoService } from '@jsverse/transloco';
 import { ChLanguageSwitcher, LanguageOption } from '@petsch/ui';
 
@@ -6,6 +6,7 @@ import { ChLanguageSwitcher, LanguageOption } from '@petsch/ui';
   imports: [ChLanguageSwitcher],
   selector: 'app-lang-switcher',
   templateUrl: './language-switcher.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrl: './language-switcher.css',
 })
 export class LanguageSwitcher {

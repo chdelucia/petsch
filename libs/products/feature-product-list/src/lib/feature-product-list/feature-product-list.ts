@@ -1,4 +1,4 @@
-import { Component, inject, computed, input, Signal } from '@angular/core';
+import { Component, inject, computed, input, Signal, ChangeDetectionStrategy } from '@angular/core';
 import {
   CurrentTransitionService,
   PRODUCT_LIST_STORE,
@@ -29,6 +29,7 @@ import { TranslocoDirective } from '@jsverse/transloco';
     TranslocoDirective,
   ],
   templateUrl: './feature-product-list.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrl: './feature-product-list.css',
 })
 export class FeatureProductList {
