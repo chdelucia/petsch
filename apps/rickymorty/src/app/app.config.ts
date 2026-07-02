@@ -15,9 +15,10 @@ import {
   PRODUCT_LIST_STORE,
   ITEM_OF_DAY_STORE,
   PRODUCT_DATA_TRANSFORMER,
+  PRODUCT_API_URL,
   onViewTransitionCreated,
 } from '@petsch/api';
-import { provideRickAndMortyProductApi } from '@petsch/api-rickymorty';
+import { provideRickAndMortyProductApi } from './api/rickymorty-product-api';
 import { ProductsStore } from '@petsch/feature-product-list';
 import { ItemOfDayStore } from '@petsch/feature-item-of-day';
 import { PRODUCT_FILTER_CONFIG } from '@petsch/feature-filters';
@@ -55,6 +56,10 @@ export const appConfig: ApplicationConfig = {
     {
       provide: PRODUCT_DATA_TRANSFORMER,
       useValue: characterAdapter,
+    },
+    {
+      provide: PRODUCT_API_URL,
+      useValue: 'https://rickandmortyapi.com/api/character',
     },
     provideRickAndMortyProductApi(),
     ...OBSERVABILITY_PROVIDERS,

@@ -6,36 +6,34 @@ import {
   PRODUCT_TOKEN,
   PRODUCT_DATA_TRANSFORMER,
   ProductDataTransformer,
+  PRODUCT_API_URL,
 } from '@petsch/api';
 import { buildHttpParams } from '@petsch/data-access';
 import { Observable, map } from 'rxjs';
 
-export interface Character {
-  id: number;
-  name: string;
-  status: string;
-  species: string;
-  type: string;
-  gender: string;
-  image: string;
-}
-
-export interface CharactersDto {
-  info: {
-    count: number;
-    pages: number;
-    next: string | null;
-    prev: string | null;
+export interface DragonballDto {
+  items: unknown[];
+  meta: {
+    totalItems: number;
+    itemCount: number;
+    itemsPerPage: number;
+    totalPages: number;
+    currentPage: number;
   };
-  results: Character[];
+  links: {
+    first: string;
+    previous: string;
+    next: string;
+    last: string;
+  };
 }
 
 @Injectable()
-export class RickAndMortyProductApi<T = unknown, F = Record<string, unknown>>
+export class DragonBallProductApi<T = unknown, F = Record<string, unknown>>
   implements IProductService<T, F>
 {
   private readonly http = inject(HttpClient);
-  private readonly baseUrl = 'https://rickandmortyapi.com/api/character';
+  private readonly baseUrl = inject(PRODUCT_API_URL);
   private readonly transformer = inject(PRODUCT_DATA_TRANSFORMER, {
     optional: true,
   }) as ProductDataTransformer<T> | null;
@@ -44,22 +42,35 @@ export class RickAndMortyProductApi<T = unknown, F = Record<string, unknown>>
     const params = buildHttpParams(filters as Record<string, unknown>);
 
     return this.http
-      .get<CharactersDto>(this.baseUrl, {
+      .get<T[] | DragonballDto>(this.baseUrl, {
         params,
       })
       .pipe(
         map((body) => {
-          let products = (body.results as unknown as T[]) || [];
           const transformer = this.transformer;
+          if (Array.isArray(body)) {
+            let products = body as T[];
+            if (transformer) {
+              products = products.map((item) => transformer(item));
+            }
+            return {
+              products,
+              pagination: {
+                pages: 1,
+              },
+            };
+          }
+
+          let products = (body.items as unknown as T[]) || [];
           if (transformer) {
             products = products.map((item) => transformer(item));
           }
           return {
             products,
             pagination: {
-              pages: body.info.pages,
-              next: body.info.next || undefined,
-              prev: body.info.prev || undefined,
+              pages: body.meta.totalPages,
+              next: body.links.next || undefined,
+              prev: body.links.previous || undefined,
             },
           };
         }),
@@ -78,11 +89,11 @@ export class RickAndMortyProductApi<T = unknown, F = Record<string, unknown>>
   }
 }
 
-export function provideRickAndMortyProductApi(): Provider[] {
+export function provideDragonBallProductApi(): Provider[] {
   return [
     {
       provide: PRODUCT_TOKEN,
-      useClass: RickAndMortyProductApi,
+      useClass: DragonBallProductApi,
     },
   ];
 }
