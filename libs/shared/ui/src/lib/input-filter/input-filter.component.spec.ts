@@ -29,11 +29,9 @@ describe('ChInputFilter', () => {
     expect(component.isfilterOpen()).toBeTruthy();
   });
 
-  it('should write value', () => {
-    component.writeValue('test');
+  it('should update value', () => {
+    component.value.set('test');
     expect(component.value()).toBe('test');
-    component.writeValue(null as unknown as string);
-    expect(component.value()).toBe('');
   });
 
   it('should send value from input to searchText$', () => {
@@ -91,22 +89,17 @@ describe('ChInputFilter', () => {
     expect(component.isLastSearchOpen()).toBeFalsy();
   });
 
-  it('should search by old value and call onTouched', () => {
-    const changeSpy = vi.fn();
-    const touchSpy = vi.fn();
-    component.registerOnChange(changeSpy);
-    component.registerOnTouched(touchSpy);
+  it('should search by old value', () => {
+    const spy = vi.spyOn(component['searchText$'] as any, 'next');
     component.value.set('old');
     component.searchByOldValue('new');
     expect(component.value()).toBe('new');
-    expect(changeSpy).toHaveBeenCalledWith('new');
-    expect(touchSpy).toHaveBeenCalled();
+    expect(spy).toHaveBeenCalledWith('new');
     expect(component.isLastSearchOpen()).toBeFalsy();
   });
 
   it('should NOT search by old value if it is the same', () => {
-    const spy = vi.fn();
-    component.registerOnChange(spy);
+    const spy = vi.spyOn(component['searchText$'] as any, 'next');
     component.value.set('same');
     component.searchByOldValue('same');
     expect(spy).not.toHaveBeenCalled();
@@ -128,23 +121,14 @@ describe('ChInputFilter', () => {
 
   it('should handle searchText$ emission and updates', () => {
     vi.useFakeTimers();
-    const onChangeSpy = vi.fn();
-    component.registerOnChange(onChangeSpy);
 
     component.getValue({ target: { value: 'new-search' } } as any);
 
     vi.advanceTimersByTime(700);
 
     expect(component.lastSearch()).toContain('new-search');
-    expect(onChangeSpy).toHaveBeenCalledWith('new-search');
     expect(component.isLastSearchOpen()).toBeFalsy();
     vi.useRealTimers();
-  });
-
-  it('should register onTouched', () => {
-    const spy = vi.fn();
-    component.registerOnTouched(spy);
-    expect(component.onTouched).toBe(spy);
   });
 
   it('should handle removeSearch and prevent default', () => {

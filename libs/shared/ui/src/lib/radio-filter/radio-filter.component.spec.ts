@@ -34,9 +34,7 @@ describe('ChRadioFilter', () => {
     expect(component.isOpen()).toBeTruthy();
   });
 
-  it('should set value and call onChange when getValue is called', () => {
-    const spy = vi.fn();
-    component.registerOnChange(spy);
+  it('should set value when getValue is called', () => {
     const event = {
       target: { value: 'dog' } as HTMLInputElement,
     } as unknown as Event;
@@ -44,38 +42,23 @@ describe('ChRadioFilter', () => {
     component.getValue(event);
 
     expect(component.value()).toBe('dog');
-    expect(spy).toHaveBeenCalledWith('dog');
   });
 
-  it('should handle writeValue', () => {
-    component.writeValue('cat');
+  it('should update value', () => {
+    component.value.set('cat');
     expect(component.value()).toBe('cat');
   });
 
-  it('should handle writeValue with null/undefined', () => {
-    component.writeValue(null as unknown as string);
-    expect(component.value()).toBe('');
-  });
-
-  it('should register onTouched', () => {
-    const spy = vi.fn();
-    component.registerOnTouched(spy);
-    expect(component.onTouched).toBe(spy);
-  });
-
-  it('should emit filterChange when radio option is clicked', () => {
-    const spy = vi.fn();
-    component.registerOnChange(spy);
+  it('should handle radio option click', () => {
     const radioOption = fixture.debugElement.query(By.css('[data-testid="radio-filter-option-dog"]'));
 
     radioOption.triggerEventHandler('click', { target: radioOption.nativeElement });
 
     expect(component.value()).toBe('dog');
-    expect(spy).toHaveBeenCalledWith('dog');
   });
 
   it('should mark the correct radio option as checked', () => {
-    component.writeValue('cat');
+    component.value.set('cat');
     fixture.detectChanges();
 
     const dogRadio = fixture.debugElement.query(By.css('[data-testid="radio-filter-option-dog"]')).nativeElement as HTMLInputElement;
@@ -83,15 +66,5 @@ describe('ChRadioFilter', () => {
 
     expect(dogRadio.checked).toBe(false);
     expect(catRadio.checked).toBe(true);
-  });
-
-  it('should call onTouched when a radio option is clicked', () => {
-    const spy = vi.fn();
-    component.registerOnTouched(spy);
-    const radioOption = fixture.debugElement.query(By.css('[data-testid="radio-filter-option-dog"]'));
-
-    radioOption.nativeElement.click();
-
-    expect(spy).toHaveBeenCalled();
   });
 });

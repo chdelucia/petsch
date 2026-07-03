@@ -1,52 +1,25 @@
 import { ChButton } from "../button/button";
-import { Component, forwardRef, input, signal, ChangeDetectionStrategy } from '@angular/core';
+import { Component, input, signal, ChangeDetectionStrategy, model } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
   selector: 'lib-ch-ui-radio-filter',
   imports: [CommonModule, ChButton],
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => ChRadioFilter),
-      multi: true,
-    },
-  ],
   templateUrl: './radio-filter.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrl: './radio-filter.component.css',
 })
-export class ChRadioFilter implements ControlValueAccessor {
+export class ChRadioFilter {
   testId = input<string>('');
   title = input.required<string>();
   options = input.required<{ value: string; text: string }[]>();
 
   isOpen = signal(true);
-  value = signal('');
-
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
-  onChange: (value: string) => void = () => {};
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
-  onTouched: () => void = () => {};
-
-  writeValue(value: string): void {
-    this.value.set(value || '');
-  }
-
-  registerOnChange(fn: (value: string) => void): void {
-    this.onChange = fn;
-  }
-
-  registerOnTouched(fn: () => void): void {
-    this.onTouched = fn;
-  }
+  value = model('');
 
   getValue(event: Event): void {
     const name = (event.target as HTMLInputElement).value;
     this.value.set(name);
-    this.onChange(name);
-    this.onTouched();
   }
 
   toggleFilter() {
