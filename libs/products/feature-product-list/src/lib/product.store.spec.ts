@@ -2,6 +2,7 @@ import { TestBed } from '@angular/core/testing';
 import { ProductsStore } from './product.store';
 import { PRODUCT_TOKEN, PRODUCT_UI_CONFIG } from '@petsch/api';
 import { of, throwError } from 'rxjs';
+import { provideRouter } from '@angular/router';
 
 describe('ProductsStore', () => {
   let store: any;
@@ -15,6 +16,7 @@ describe('ProductsStore', () => {
 
     TestBed.configureTestingModule({
       providers: [
+        provideRouter([]),
         ProductsStore,
         { provide: PRODUCT_TOKEN, useValue: productServiceMock },
       ],
@@ -29,8 +31,12 @@ describe('ProductsStore', () => {
     expect(store.error()).toBeNull();
   });
 
-  it('should load products on init', () => {
-    expect(productServiceMock.getProducts).toHaveBeenCalled();
+  it('should load products on init', async () => {
+    await new Promise((resolve) => setTimeout(resolve, 0));
+    expect(productServiceMock.getProducts).toHaveBeenCalledWith({
+      _page: 1,
+      _limit: 12,
+    });
   });
 
   it('should load products and update state on success', async () => {
@@ -124,6 +130,7 @@ describe('ProductsStore', () => {
       TestBed.resetTestingModule();
       TestBed.configureTestingModule({
         providers: [
+          provideRouter([]),
           ProductsStore,
           { provide: PRODUCT_TOKEN, useValue: productServiceMock },
           {

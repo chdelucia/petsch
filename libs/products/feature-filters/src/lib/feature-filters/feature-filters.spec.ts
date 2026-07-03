@@ -14,6 +14,7 @@ describe('FeatureFilters', () => {
     loadProducts: any;
     loading: any;
     products: any;
+    filters: any;
   };
 
   beforeEach(async () => {
@@ -25,6 +26,7 @@ describe('FeatureFilters', () => {
       loadProducts: vi.fn(),
       loading: signal(false),
       products: signal([]),
+      filters: signal({}),
     };
 
     await TestBed.configureTestingModule({
@@ -114,19 +116,19 @@ describe('FeatureFilters', () => {
     expect(store.loadProducts).not.toHaveBeenCalled();
   });
 
-  it('should only call loadProducts once when resetting a filter', () => {
+  it('should call applyFilters once when resetting a filter', () => {
     // Set a value first
     component.formTree.kind().value.set('dog');
     fixture.detectChanges();
     vi.runAllTimers();
-    store.loadProducts.mockClear();
+    store.applyFilters.mockClear();
 
     // Reset the filter
     component.resetFilter('kind');
     fixture.detectChanges();
     vi.runAllTimers();
 
-    expect(store.loadProducts).toHaveBeenCalledTimes(1);
+    expect(store.applyFilters).toHaveBeenCalledTimes(1);
   });
 
   it('should detect immediate calls when resetting a filter', () => {
@@ -134,13 +136,13 @@ describe('FeatureFilters', () => {
     component.formTree.kind().value.set('dog');
     fixture.detectChanges();
     vi.runAllTimers();
-    store.loadProducts.mockClear();
+    store.applyFilters.mockClear();
 
     // Reset the filter
     component.resetFilter('kind');
     fixture.detectChanges();
 
     // effect() is scheduled and runs after change detection
-    expect(store.loadProducts).toHaveBeenCalledTimes(1);
+    expect(store.applyFilters).toHaveBeenCalledTimes(1);
   });
 });

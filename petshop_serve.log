@@ -1,0 +1,45 @@
+
+> nx run petshop:serve:development
+
+[33m❯[39m Building...
+[32m✔[39m Building...
+[37m[1mInitial chunk files[22m[2m | [22m[1mNames[22m        [2m | [22m [1mRaw size[22m
+[32mchunk-BMZXP5NT.js[37m  [2m | [22m[2m-[22m            [2m | [22m[36m258.57 kB[37m[2m | [22m
+[32mchunk-2DL5QBNV.js[37m  [2m | [22m[2m-[22m            [2m | [22m [36m43.39 kB[37m[2m | [22m
+[32mmain.js[37m            [2m | [22m[2mmain[22m         [2m | [22m [36m20.29 kB[37m[2m | [22m
+[32mstyles.css[37m         [2m | [22m[2mstyles[22m       [2m | [22m [36m12.74 kB[37m[2m | [22m
+[32mchunk-DM2EGGTU.js[37m  [2m | [22m[2m-[22m            [2m | [22m  [36m5.09 kB[37m[2m | [22m
+[32mchunk-HFBNPKKE.js[37m  [2m | [22m[2m-[22m            [2m | [22m  [36m1.45 kB[37m[2m | [22m
+[1m [22m                  [2m | [22m[1mInitial total[22m[2m | [22m[1m341.53 kB[22m
+[1mLazy chunk files[22m   [2m | [22m[1mNames[22m        [2m | [22m [1mRaw size[22m
+[32mchunk-FZUBV3D3.js[37m  [2m | [22m[2mindex[22m        [2m | [22m [36m32.25 kB[37m[2m | [22m
+[32mchunk-UFURYAJ4.js[37m  [2m | [22m[2mindex[22m        [2m | [22m [36m21.88 kB[37m[2m | [22m
+[32mchunk-GXXYZ34Y.js[37m  [2m | [22m[2mindex[22m        [2m | [22m [36m16.68 kB[37m[2m | [22m
+[32mchunk-IUVTTQQT.js[37m  [2m | [22m[2mindex[22m        [2m | [22m[36m995 bytes[37m[2m | [22m
+Application bundle generation complete. [5.888 seconds] - 2026-07-03T08:45:33.289Z
+[39m
+[37mWatch mode enabled. Watching for file changes...[39m
+[37mNOTE: Raw file sizes do not reflect development server per-request transformations.[39m
+  [32m➜[39m  [1mLocal[22m:   [36mhttp://localhost:[1m4200[22m/[39m
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+[37m[1mInitial chunk files[22m[2m | [22m[1mNames[22m[2m | [22m [1mRaw size[22m
+[32mchunk-GAAV5V3N.js[37m  [2m | [22m[2m-[22m    [2m | [22m [36m43.44 kB[37m[2m | [22m
+[32mmain.js[37m            [2m | [22m[2mmain[22m [2m | [22m [36m20.29 kB[37m[2m | [22m
+[1mLazy chunk files[22m   [2m | [22m[1mNames[22m[2m | [22m [1mRaw size[22m
+[32mchunk-5NOSEPX2.js[37m  [2m | [22m[2mindex[22m[2m | [22m [36m21.88 kB[37m[2m | [22m
+[32mchunk-7NJKG65I.js[37m  [2m | [22m[2mindex[22m[2m | [22m[36m995 bytes[37m[2m | [22m
+Application bundle generation complete. [1.972 seconds] - 2026-07-03T08:48:41.585Z
+[39m
+[37mPage reload sent to client(s).[39m
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+[37m[1mInitial chunk files[22m[2m | [22m[1mNames[22m[2m | [22m [1mRaw size[22m
+[32mchunk-WSJNXBD7.js[37m  [2m | [22m[2m-[22m    [2m | [22m [36m43.26 kB[37m[2m | [22m
+[32mmain.js[37m            [2m | [22m[2mmain[22m [2m | [22m [36m20.29 kB[37m[2m | [22m
+[1mLazy chunk files[22m   [2m | [22m[1mNames[22m[2m | [22m [1mRaw size[22m
+[32mchunk-KUGH5H35.js[37m  [2m | [22m[2mindex[22m[2m | [22m [36m21.88 kB[37m[2m | [22m
+[32mchunk-6EOCS4TB.js[37m  [2m | [22m[2mindex[22m[2m | [22m[36m995 bytes[37m[2m | [22m
+Application bundle generation complete. [1.161 seconds] - 2026-07-03T08:49:21.846Z
+[39m
+[37mPage reload sent to client(s).[39m

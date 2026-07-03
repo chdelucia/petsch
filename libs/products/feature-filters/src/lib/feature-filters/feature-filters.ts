@@ -82,10 +82,13 @@ export class FeatureFilters {
 
   readonly form = signal<Partial<Record<string, unknown>>>(
     ((this.config ?? DEFAULT_PRODUCT_FILTERS) as FilterConfig[]).reduce(
-      (acc: Record<string, unknown>, c: FilterConfig) => ({
-        ...acc,
-        [c.key]: c.initialValue ?? '',
-      }),
+      (acc: Record<string, unknown>, c: FilterConfig) => {
+        const storeFilters = this.store.filters() as Record<string, unknown>;
+        return {
+          ...acc,
+          [c.key]: storeFilters[c.key] ?? c.initialValue ?? '',
+        };
+      },
       {},
     ),
   );
@@ -103,7 +106,6 @@ export class FeatureFilters {
     effect(() => {
       const filters = this.form();
       this.store.applyFilters(filters);
-      this.store.loadProducts();
     });
   }
 

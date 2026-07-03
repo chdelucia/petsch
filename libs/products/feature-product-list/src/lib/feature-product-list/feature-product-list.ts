@@ -54,7 +54,6 @@ export class FeatureProductList {
 
   handlePageChange(page: number): void {
     this.store.applyPagination(page);
-    this.store.loadProducts();
   }
 
   handleIotdClick(product: unknown): void {

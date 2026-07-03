@@ -1,4 +1,4 @@
-import { computed, inject } from '@angular/core';
+import { inject, effect } from '@angular/core';
 import {
   signalStore,
   withState,
@@ -7,14 +7,17 @@ import {
   withHooks,
   patchState,
 } from '@ngrx/signals';
+import { Router, ActivatedRoute } from '@angular/router';
 
-import { catchError, of, pipe, switchMap, tap } from 'rxjs';
+import { catchError, of, pipe, switchMap, tap, distinctUntilChanged } from 'rxjs';
 import { rxMethod } from '@ngrx/signals/rxjs-interop';
 import {
   PRODUCT_TOKEN,
   PaginationLinks,
   GetProductsResponse,
   PRODUCT_UI_CONFIG,
+  cleanFilters,
+  parseTotalPages,
 } from '@petsch/api';
 
 export interface ProductsState<T = unknown, F = Record<string, unknown>> {
@@ -47,28 +50,24 @@ export const ProductsStore = signalStore(
     const pageKey = config?.paginationKeys?.page ?? '_page';
 
     return {
-      query: () => ({
-        ...store.filters(),
-      }),
-      currentPage: computed(() => {
+      query: () => cleanFilters(store.filters()),
+      currentPage: () => {
         return (store.filters() as Record<string, unknown>)[pageKey] as number ?? 1;
-      }),
-      totalPages: computed(() => {
-        const pagination = store.pagination();
-        if (pagination.pages) {
-          return pagination.pages;
-        }
-        const last = pagination.last;
-        const regex = new RegExp(`${pageKey}=(\\d+)(?:&|$)`);
-        const match = last?.match(regex);
-        return match ? Number(match[1]) : ((store.filters() as Record<string, unknown>)[pageKey] as number ?? 1);
-      }),
+      },
+      totalPages: () => {
+        return parseTotalPages(
+          store.pagination(),
+          pageKey,
+          (store.filters() as Record<string, unknown>)[pageKey] as number ?? 1
+        );
+      },
     };
   }),
 
   withMethods((store) => {
     const productService = inject(PRODUCT_TOKEN);
     const config = inject(PRODUCT_UI_CONFIG, { optional: true });
+    const router = inject(Router);
 
     const pageKey = config?.paginationKeys?.page ?? '_page';
     const limitKey = config?.paginationKeys?.limit ?? '_limit';
@@ -91,6 +90,24 @@ export const ProductsStore = signalStore(
         pagination: result.pagination,
         loading: false,
       });
+
+    const loadProducts = rxMethod<unknown>(
+      pipe(
+        distinctUntilChanged((a, b) => JSON.stringify(a) === JSON.stringify(b)),
+        tap(() => setLoading(true)),
+        switchMap((query) =>
+          productService.getProducts(query as Record<string, unknown>).pipe(
+            catchError((err) => {
+              setError(err?.message ?? 'Failed to load products');
+              return of(null);
+            }),
+          ),
+        ),
+        tap((result) => {
+          if (result) setResult(result);
+        }),
+      ),
+    );
 
     return {
       applyFilters(partial: Partial<Record<string, unknown>>) {
@@ -133,28 +150,41 @@ export const ProductsStore = signalStore(
         }));
       },
 
-      loadProducts: rxMethod<void>(
-        pipe(
-          tap(() => setLoading(true)),
-          switchMap(() =>
-            productService.getProducts(store.query()).pipe(
-              catchError((err) => {
-                setError(err?.message ?? 'Failed to load products');
-                return of(null);
-              }),
-            ),
-          ),
-          tap((result) => {
-            if (result) setResult(result);
-          }),
-        ),
-      ),
+      loadProducts,
+
+      syncToUrl() {
+        effect(() => {
+          const filters = store.filters();
+          const cleaned = cleanFilters(filters);
+          const queryParams = { ...cleaned };
+
+          router.navigate([], {
+            queryParams,
+            queryParamsHandling: 'merge',
+            replaceUrl: true,
+          });
+        });
+      },
     };
   }),
 
   withHooks({
     onInit(store) {
-      store.loadProducts();
+      const route = inject(ActivatedRoute);
+      const config = inject(PRODUCT_UI_CONFIG, { optional: true });
+      const pageKey = config?.paginationKeys?.page ?? '_page';
+
+      const params = route.snapshot.queryParams;
+      if (Object.keys(params).length > 0) {
+        const filters = { ...params };
+        if (filters[pageKey]) {
+          filters[pageKey] = Number(filters[pageKey]);
+        }
+        patchState(store, { filters });
+      }
+
+      store.loadProducts(store.query);
+      store.syncToUrl();
     },
   }),
 );

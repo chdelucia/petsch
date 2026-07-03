@@ -6,3 +6,5 @@ export * from './lib/utils/current-transition.service';
 export * from './lib/product-list-store.token';
 export * from './lib/item-of-day.token';
 export * from './lib/models/item-of-the-day';
+export * from './lib/utils/pagination.utils';
+export * from './lib/utils/filter.utils';
