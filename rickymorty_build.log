@@ -1,0 +1,32 @@
+
+> nx run rickymorty:build:production
+
+[33m❯[39m Building...
+[32m✔[39m Building...
+[37m[1mInitial chunk files[22m[2m | [22m[1mNames[22m        [2m | [22m [1mRaw size[22m[2m | [22m[1mEstimated transfer size[22m
+[32mmain-6W5LIWAG.js[37m   [2m | [22m[2mmain[22m         [2m | [22m[36m768.36 kB[37m[2m | [22m              [36m191.69 kB[37m
+[32mstyles-VLCJE56R.css[37m[2m | [22m[2mstyles[22m       [2m | [22m [36m10.09 kB[37m[2m | [22m                [36m2.35 kB[37m
+[1m [22m                  [2m | [22m[1mInitial total[22m[2m | [22m[1m[93m778.46 kB[37m[22m[2m | [22m              [1m194.04 kB[22m
+[1mLazy chunk files[22m   [2m | [22m[1mNames[22m        [2m | [22m [1mRaw size[22m[2m | [22m[1mEstimated transfer size[22m
+[32mchunk-Dt-VI3v9.js[37m  [2m | [22m[2mindex[22m        [2m | [22m [36m11.24 kB[37m[2m | [22m                [36m2.73 kB[37m
+[32mchunk-BH2nUIW1.js[37m  [2m | [22m[2mindex[22m        [2m | [22m  [36m4.48 kB[37m[2m | [22m                [36m1.37 kB[37m
+[32mchunk-JHwG3biG.js[37m  [2m | [22m[2mindex[22m        [2m | [22m[36m429 bytes[37m[2m | [22m              [36m429 bytes[37m
+Application bundle generation complete. [10.875 seconds] - 2026-07-02T15:31:26.159Z
+[39m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mbundle initial exceeded maximum budget. Budget 500.00 kB was not met by 278.46 kB with a total of 778.46 kB.[0m
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mlibs/shared/ui/src/lib/language-switcher/language-switcher.css exceeded maximum budget. Budget 4.00 kB was not met by 276 bytes with a total of 4.28 kB.[0m
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mangular:styles/component:css;8052d53e1ae4d631b2ede52bbd2e26187318fec0b66f51c5fbf7e891e53c748d;/app/apps/rickymorty/src/app/nx-welcome.ts exceeded maximum budget. Budget 4.00 kB was not met by 3.03 kB with a total of 7.03 kB.[0m
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mlibs/shared/ui/src/lib/button/button.css exceeded maximum budget. Budget 4.00 kB was not met by 2.79 kB with a total of 6.79 kB.[0m
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mlibs/shared/ui/src/lib/input-filter/input-filter.component.css exceeded maximum budget. Budget 4.00 kB was not met by 2.58 kB with a total of 6.58 kB.[0m
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mlibs/shared/ui/src/lib/cart-drawer/cart-drawer.css exceeded maximum budget. Budget 4.00 kB was not met by 2.72 kB with a total of 6.72 kB.[0m
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mlibs/shared/ui/src/lib/dropdown-filter/dropdown-filter.component.css exceeded maximum budget. Budget 4.00 kB was not met by 12 bytes with a total of 4.01 kB.[0m
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mlibs/shared/ui/src/lib/card/product-card.component.css exceeded maximum budget. Budget 4.00 kB was not met by 732 bytes with a total of 4.73 kB.[0m
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mlibs/shared/ui/src/lib/navbar/navbar.css exceeded maximum budget. Budget 4.00 kB was not met by 2.60 kB with a total of 6.60 kB.[0m
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mlibs/products/feature-product-details/src/lib/feature-product-details/feature-product-details.css exceeded maximum bud[39m[22m[1m[33mget. Budget 4.00 kB was not met by 1.96 kB with a total of 5.96 kB.[0m
+[39m[22m
+[37mOutput location: /app/dist/apps/rickymorty
+[39m
+
+
+
+ NX   Successfully ran target build for project rickymorty

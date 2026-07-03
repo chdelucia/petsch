@@ -1,5 +1,5 @@
 import { ChButton } from "../button/button";
-import { Component, input, output } from '@angular/core';
+import { Component, input, output, ChangeDetectionStrategy } from '@angular/core';
 
 export interface LanguageOption {
   code: string;
@@ -10,6 +10,7 @@ export interface LanguageOption {
   selector: 'lib-ch-ui-language-switcher',
   imports: [ChButton],
   templateUrl: './language-switcher.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrl: './language-switcher.css',
 })
 export class ChLanguageSwitcher {

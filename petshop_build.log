@@ -1,0 +1,33 @@
+
+> nx run petshop:build:production
+
+[33m❯[39m Building...
+[32m✔[39m Building...
+[37m[1mInitial chunk files[22m[2m | [22m[1mNames[22m        [2m | [22m [1mRaw size[22m[2m | [22m[1mEstimated transfer size[22m
+[32mmain-PK2WF6CO.js[37m   [2m | [22m[2mmain[22m         [2m | [22m[36m729.01 kB[37m[2m | [22m              [36m182.99 kB[37m
+[32mstyles-XPU5MTQR.css[37m[2m | [22m[2mstyles[22m       [2m | [22m [36m10.09 kB[37m[2m | [22m                [36m2.35 kB[37m
+[1m [22m                  [2m | [22m[1mInitial total[22m[2m | [22m[1m[93m739.10 kB[37m[22m[2m | [22m              [1m185.34 kB[22m
+[1mLazy chunk files[22m   [2m | [22m[1mNames[22m        [2m | [22m [1mRaw size[22m[2m | [22m[1mEstimated transfer size[22m
+[32mchunk-D5mxV4nP.js[37m  [2m | [22m[2mindex[22m        [2m | [22m [36m43.77 kB[37m[2m | [22m               [36m11.80 kB[37m
+[32mchunk-DQwq2eNV.js[37m  [2m | [22m[2mindex[22m        [2m | [22m [36m11.24 kB[37m[2m | [22m                [36m2.73 kB[37m
+[32mchunk-Dus3vUk6.js[37m  [2m | [22m[2mindex[22m        [2m | [22m  [36m6.40 kB[37m[2m | [22m                [36m1.46 kB[37m
+[32mchunk-k6CXDciM.js[37m  [2m | [22m[2mindex[22m        [2m | [22m[36m432 bytes[37m[2m | [22m              [36m432 bytes[37m
+Application bundle generation complete. [12.653 seconds] - 2026-07-02T15:30:53.983Z
+[39m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mbundle initial exceeded maximum budget. Budget 500.00 kB was not met by 239.10 kB with a total of 739.10 kB.[0m
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mlibs/shared/ui/src/lib/language-switcher/language-switcher.css exceeded maximum budget. Budget 4.00 kB was not met by 276 bytes with a total of 4.28 kB.[0m
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mlibs/shared/ui/src/lib/button/button.css exceeded maximum budget. Budget 4.00 kB was not met by 2.79 kB with a total of 6.79 kB.[0m
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mlibs/shared/ui/src/lib/cart-drawer/cart-drawer.css exceeded maximum budget. Budget 4.00 kB was not met by 2.72 kB with a total of 6.72 kB.[0m
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mlibs/shared/feature-404/src/lib/feature-404/feature-404.css exceeded maximum budget. Budget 4.00 kB was not met by 1.13 kB with a total of 5.13 kB.[0m
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mlibs/shared/ui/src/lib/dropdown-filter/dropdown-filter.component.css exceeded maximum budget. Budget 4.00 kB was not met by 12 bytes with a total of 4.01 kB.[0m
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mlibs/products/feature-product-details/src/lib/feature-product-details/feature-product-details.css exceeded maximum budget. Budget 4.00 kB was not met by 1.96 kB with a total of 5.96 kB.[0m
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mlibs/shared/ui/src/lib/navbar/navbar.css exceeded maximum budget. Budget 4.00 kB was not met by 2.60 kB with a total of 6.60 kB.[0m
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mlibs/shared/ui/src/lib/card/product-card.component.css exceeded maximum budget. Budget 4.00 kB was not met by 732 bytes with a total of 4.73 kB.[0m
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mlibs/shared/ui/src/lib/input-filter/input-filter.component.css exceeded maximum budget. Budget 4.00 kB was not met by 2.58 kB with a total of 6.58 kB.[0m
+[39m[22m
+[37mOutput location: /app/dist/apps/petshop
+[39m
+
+
+
+ NX   Successfully ran target build for project petshop

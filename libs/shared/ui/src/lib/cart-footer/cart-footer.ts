@@ -1,4 +1,4 @@
-import { Component, input, output } from '@angular/core';
+import { Component, input, output, ChangeDetectionStrategy } from '@angular/core';
 import { ChButton } from '../button/button';
 import { TranslocoDirective } from '@jsverse/transloco';
 
@@ -6,6 +6,7 @@ import { TranslocoDirective } from '@jsverse/transloco';
   selector: 'lib-ch-ui-cart-footer',
   imports: [ChButton, TranslocoDirective],
   templateUrl: './cart-footer.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrl: './cart-footer.css',
 })
 export class ChCartFooter {

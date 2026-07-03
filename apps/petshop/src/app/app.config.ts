@@ -29,7 +29,7 @@ import { providePetShopApi } from '@petsch/api-petshop';
 import { ProductsStore } from '@petsch/feature-product-list';
 import { ItemOfDayStore } from '@petsch/feature-item-of-day';
 import { LOCALSTORAGE_TOKEN } from '@petsch/obs-api';
-import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClient, withXhr } from '@angular/common/http';
 import { TranslocoHttpLoader } from './transloco-loader';
 import { provideTransloco } from '@jsverse/transloco';
 
@@ -68,7 +68,7 @@ export const appConfig: ApplicationConfig = {
       provide: LOCALSTORAGE_TOKEN,
       useClass: LocalstorageService,
     },
-    provideHttpClient(),
+    provideHttpClient(withXhr()),
     provideTransloco({
       config: {
         availableLangs: ['en', 'es'],
