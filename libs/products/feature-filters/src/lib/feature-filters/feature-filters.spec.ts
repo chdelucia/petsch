@@ -63,6 +63,7 @@ describe('FeatureFilters', () => {
 
   it('should call applyFilters when kind filter changes', () => {
     component.formTree.kind().value.set('dog');
+    fixture.detectChanges();
     vi.runAllTimers();
 
     expect(store.applyFilters).toHaveBeenCalledWith({
@@ -128,7 +129,7 @@ describe('FeatureFilters', () => {
     expect(store.loadProducts).toHaveBeenCalledTimes(1);
   });
 
-  it('should detect duplicate calls when resetting a filter', () => {
+  it('should detect immediate calls when resetting a filter', () => {
     // Set a value first
     component.formTree.kind().value.set('dog');
     fixture.detectChanges();
@@ -139,14 +140,7 @@ describe('FeatureFilters', () => {
     component.resetFilter('kind');
     fixture.detectChanges();
 
-    // Check calls before timers (it should be 0 because we rely on the debounced observable)
-    // If we want it to be immediate, it would be 1.
-    // Currently, with my fix, it should be 0 here and 1 after timers.
-    expect(store.loadProducts).toHaveBeenCalledTimes(0);
-
-    // Run timers (observable triggers the call after debounce)
-    vi.runAllTimers();
-
+    // effect() is scheduled and runs after change detection
     expect(store.loadProducts).toHaveBeenCalledTimes(1);
   });
 });
