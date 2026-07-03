@@ -4,17 +4,15 @@ import {
   computed,
   signal,
   InjectionToken,
-  ChangeDetectionStrategy
+  ChangeDetectionStrategy,
+  effect,
 } from '@angular/core';
 import {
-  takeUntilDestroyed,
   toSignal,
-  toObservable,
 } from '@angular/core/rxjs-interop';
-import { form as angularForm, FormField } from '@angular/forms/signals';
+import { form as angularForm, FormField, debounce } from '@angular/forms/signals';
 import { TranslocoService, TranslocoDirective } from '@jsverse/transloco';
 import { PRODUCT_LIST_STORE } from '@petsch/api';
-import { debounceTime, merge, skip } from 'rxjs';
 import {
   ChInputFilter,
   ChRadioFilter,
@@ -92,31 +90,21 @@ export class FeatureFilters {
     ),
   );
 
-  readonly formTree = angularForm(this.form);
+  readonly formTree = angularForm(this.form, (form: any) => {
+    const configs = (this.config ?? DEFAULT_PRODUCT_FILTERS) as FilterConfig[];
+    configs.forEach((config) => {
+      if (config.debounceTime > 0) {
+        debounce(form[config.key], config.debounceTime);
+      }
+    });
+  });
 
   constructor() {
-    const filterChanges$ = (
-      (this.config ?? DEFAULT_PRODUCT_FILTERS) as FilterConfig[]
-    ).map((config: FilterConfig) => {
-      const field = (this.formTree as Record<string, any>)[config.key]();
-      return toObservable(field.value).pipe(
-        skip(1),
-        debounceTime(config.debounceTime),
-      );
+    effect(() => {
+      const filters = this.form();
+      this.store.applyFilters(filters);
+      this.store.loadProducts();
     });
-
-    merge(...filterChanges$)
-      .pipe(takeUntilDestroyed())
-      .subscribe(() => {
-        this.applyFiltersAndLoad();
-      });
-  }
-
-  private applyFiltersAndLoad(): void {
-    const currentForm = this.form();
-
-    this.store.applyFilters(currentForm);
-    this.store.loadProducts();
   }
 
   getFormField(key: string): unknown {
@@ -125,16 +113,11 @@ export class FeatureFilters {
 
   resetFilter(key: string): void {
     const field = (this.formTree as Record<string, any>)[key]();
-    const currentValue = field?.value();
 
     if (field) {
       field.value.set('');
     }
 
     this.store.removeFilter(key);
-
-    if (!field || currentValue === '') {
-      this.applyFiltersAndLoad();
-    }
   }
 }
