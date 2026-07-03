@@ -34,10 +34,7 @@
       ],
       "@petsch/feature-page": ["libs/products/feature-page/src/index.ts"],
       "@petsch/feature-filters": ["libs/products/feature-filters/src/index.ts"],
-      "@petsch/feature-404": ["libs/shared/feature-404/src/index.ts"],
-      "@petsch/api-petshop": ["libs/products/api-petshop/src/index.ts"],
-      "@petsch/api-rickymorty": ["libs/products/api-rickymorty/src/index.ts"],
-      "@petsch/api-dragonball": ["libs/products/api-dragonball/src/index.ts"]
+      "@petsch/feature-404": ["libs/shared/feature-404/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

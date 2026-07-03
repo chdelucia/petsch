@@ -22,10 +22,11 @@ import {
   PRODUCT_DATA_TRANSFORMER,
   PRODUCT_LIST_STORE,
   ITEM_OF_DAY_STORE,
+  PRODUCT_API_URL,
   onViewTransitionCreated,
 } from '@petsch/api';
 import { enrichProductWithHealth } from './utils/health-adapter';
-import { providePetShopApi } from '@petsch/api-petshop';
+import { providePetShopApi } from './api/petshop-pet-api';
 import { ProductsStore } from '@petsch/feature-product-list';
 import { ItemOfDayStore } from '@petsch/feature-item-of-day';
 import { LOCALSTORAGE_TOKEN } from '@petsch/obs-api';
@@ -54,6 +55,10 @@ export const appConfig: ApplicationConfig = {
     {
       provide: PRODUCT_DATA_TRANSFORMER,
       useValue: enrichProductWithHealth,
+    },
+    {
+      provide: PRODUCT_API_URL,
+      useValue: 'https://my-json-server.typicode.com/Feverup/fever_pets_data/pets',
     },
     providePetShopApi(),
     {

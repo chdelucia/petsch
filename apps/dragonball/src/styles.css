@@ -18,7 +18,6 @@
 
 /* nx-tailwind-sources:start */
 @source "../../../libs/products/api";
-@source "../../../libs/products/api-dragonball";
 @source "../../../libs/products/data-access";
 @source "../../../libs/products/feature-filters";
 @source "../../../libs/products/feature-item-of-day";

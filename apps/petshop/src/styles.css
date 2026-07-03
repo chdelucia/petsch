@@ -20,7 +20,6 @@
 
 /* nx-tailwind-sources:start */
 @source "../../../libs/products/api";
-@source "../../../libs/products/api-petshop";
 @source "../../../libs/products/data-access";
 @source "../../../libs/products/feature-filters";
 @source "../../../libs/products/feature-item-of-day";
