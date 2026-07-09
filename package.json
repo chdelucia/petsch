@@ -59,7 +59,7 @@
     "@nx/web": "23.0.1",
     "@nx/workspace": "23.0.1",
     "@oxc-project/runtime": "0.138.0",
-    "@playwright/test": "^1.36.0",
+    "@playwright/test": "^1.61.1",
     "@schematics/angular": "22.0.5",
     "@storybook/addon-a11y": "10.4.6",
     "@storybook/addon-docs": "10.4.6",
