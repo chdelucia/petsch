@@ -13,7 +13,7 @@ export default defineConfig(() => ({
   //   plugins: () => [ nxViteTsPaths() ],
   // },
   test: {
-    name: 'obs-api',
+    name: 'shared-obs-api',
     watch: false,
     globals: true,
     environment: 'jsdom',

@@ -4,7 +4,7 @@ import { getTranslocoTestingModule } from '@petsch/shared-utils';
 import { PRODUCT_LIST_STORE, ITEM_OF_DAY_STORE, PRODUCT_TOKEN } from '@petsch/api';
 import { of } from 'rxjs';
 import { provideRouter } from '@angular/router';
-import { LOCALSTORAGE_TOKEN, ANALYTICS_TOKEN } from '@petsch/obs-api';
+import { LOCALSTORAGE_TOKEN, ANALYTICS_TOKEN } from '@petsch/shared-obs-api';
 import { signal } from '@angular/core';
 
 describe('FeaturePage', () => {

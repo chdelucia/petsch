@@ -1,16 +1,19 @@
 {
-  "name": "shared-feature-404",
+  "name": "shared-utils",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "libs/shared/feature-404/src",
-  "prefix": "petsch",
+  "sourceRoot": "libs/shared/utils/src",
+  "prefix": "lib",
   "projectType": "library",
-  "tags": ["scope:shared", "type:feature"],
+  "tags": ["scope:shared", "type:utils"],
   "targets": {
     "test": {
       "executor": "@nx/vitest:test",
       "outputs": ["{options.reportsDirectory}"],
       "options": {
-        "reportsDirectory": "coverage/libs/shared/feature-404"
+        "coverage": true,
+        "coverageReporters": ["lcov", "text"],
+        "reportsDirectory": "coverage/libs/shared/utils",
+        "passWithNoTests": true
       }
     },
     "lint": {

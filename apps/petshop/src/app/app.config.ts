@@ -16,7 +16,7 @@ import {
   OBSERVABILITY_PROVIDERS,
   OBSERVABILITY_ENV_PROVIDERS,
   LocalstorageService,
-} from '@petsch/obs-data-access';
+} from '@petsch/shared-obs-data-access';
 import {
   PRODUCT_UI_CONFIG,
   PRODUCT_DATA_TRANSFORMER,
@@ -29,7 +29,7 @@ import { enrichProductWithHealth } from './utils/health-adapter';
 import { providePetShopApi } from './api/petshop-pet-api';
 import { ProductsStore } from '@petsch/feature-product-list';
 import { ItemOfDayStore } from '@petsch/feature-item-of-day';
-import { LOCALSTORAGE_TOKEN } from '@petsch/obs-api';
+import { LOCALSTORAGE_TOKEN } from '@petsch/shared-obs-api';
 import { provideHttpClient, withXhr } from '@angular/common/http';
 import { TranslocoHttpLoader } from './transloco-loader';
 import { provideTransloco } from '@jsverse/transloco';

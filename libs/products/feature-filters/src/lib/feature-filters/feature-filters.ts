@@ -17,7 +17,7 @@ import {
   ChInputFilter,
   ChRadioFilter,
   ChActiveFiltersComponent,
-} from '@petsch/ui';
+} from '@petsch/shared-ui';
 
 export interface FilterConfig {
   key: string;

@@ -10,7 +10,7 @@ import {
   withProps,
 } from '@ngrx/signals';
 import { ItemOfDayState, ItemOfDayEntry } from '@petsch/api';
-import { LOCALSTORAGE_TOKEN } from '@petsch/obs-api';
+import { LOCALSTORAGE_TOKEN } from '@petsch/shared-obs-api';
 
 const STORAGE_KEY = 'item-of-the-day-entries';
 

@@ -2,7 +2,7 @@ import { Component, inject, input, signal, computed, ChangeDetectionStrategy } f
 import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { Router } from '@angular/router';
 import { TranslocoDirective } from '@jsverse/transloco';
-import { ChButton, ChBadge } from '@petsch/ui';
+import { ChButton, ChBadge } from '@petsch/shared-ui';
 import { CurrentTransitionService, PRODUCT_UI_CONFIG } from '@petsch/api';
 import { IMAGE_PLACEHOLDER } from '@petsch/shared-utils';
 

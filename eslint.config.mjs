@@ -18,11 +18,11 @@ export default [
           depConstraints: [
             {
               sourceTag: 'type:api',
-              onlyDependOnLibsWithTags: ['type:api', 'type:data-access'],
+              onlyDependOnLibsWithTags: ['type:api', 'type:data-access', 'type:utils'],
             },
             {
               sourceTag: 'type:data-access',
-              onlyDependOnLibsWithTags: ['type:api'],
+              onlyDependOnLibsWithTags: ['type:api', 'type:utils'],
             },
             {
               sourceTag: 'type:feature',
@@ -31,6 +31,7 @@ export default [
                 'type:ui',
                 'type:data-access',
                 'type:feature',
+                'type:utils',
               ],
             },
             {
@@ -41,6 +42,7 @@ export default [
                 'type:data-access',
                 'type:feature',
                 'type:shell',
+                'type:utils',
               ],
             },
             {

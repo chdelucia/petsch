@@ -24,12 +24,12 @@ import { ItemOfDayStore } from '@petsch/feature-item-of-day';
 import { PRODUCT_FILTER_CONFIG } from '@petsch/feature-filters';
 import { provideTransloco } from '@jsverse/transloco';
 import { TranslocoHttpLoader } from './transloco-loader';
-import { LOCALSTORAGE_TOKEN } from '@petsch/obs-api';
+import { LOCALSTORAGE_TOKEN } from '@petsch/shared-obs-api';
 import {
   LocalstorageService,
   OBSERVABILITY_PROVIDERS,
   OBSERVABILITY_ENV_PROVIDERS,
-} from '@petsch/obs-data-access';
+} from '@petsch/shared-obs-data-access';
 import { characterAdapter } from './utils/character-adapter';
 import { APP_ROUTES } from './app.routes';
 

@@ -1,5 +1,5 @@
 import { Injectable, isDevMode, inject } from '@angular/core';
-import { IAnalyticsService } from '@petsch/obs-api';
+import { IAnalyticsService } from '@petsch/shared-obs-api';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';

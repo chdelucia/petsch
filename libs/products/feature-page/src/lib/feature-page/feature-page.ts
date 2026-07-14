@@ -3,7 +3,7 @@ import { FeatureProductList } from '@petsch/feature-product-list';
 import { PRODUCT_LIST_STORE, PRODUCT_UI_CONFIG } from '@petsch/api';
 import { FeatureItemOfDay } from '@petsch/feature-item-of-day';
 import { TranslocoDirective } from '@jsverse/transloco';
-import { ChDropdownFilter, ChListHeader } from '@petsch/ui';
+import { ChDropdownFilter, ChListHeader } from '@petsch/shared-ui';
 import { FeatureFilters } from '@petsch/feature-filters';
 
 @Component({

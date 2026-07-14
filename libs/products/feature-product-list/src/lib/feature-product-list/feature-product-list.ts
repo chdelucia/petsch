@@ -5,7 +5,7 @@ import {
   ITEM_OF_DAY_STORE,
   PRODUCT_UI_CONFIG,
 } from '@petsch/api';
-import { ANALYTICS_TOKEN } from '@petsch/obs-api';
+import { ANALYTICS_TOKEN } from '@petsch/shared-obs-api';
 import {
   ChButton,
   ChPagination,
@@ -13,7 +13,7 @@ import {
   ChCardSkeleton,
   ChFilterSkeleton,
   ChBadge,
-} from '@petsch/ui';
+} from '@petsch/shared-ui';
 
 import { TranslocoDirective } from '@jsverse/transloco';
 

@@ -28,4 +28,5 @@
 @source "../../../libs/shared/observability/api";
 @source "../../../libs/shared/observability/data-access";
 @source "../../../libs/shared/ui";
+@source "../../../libs/shared/utils";
 /* nx-tailwind-sources:end */

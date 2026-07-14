@@ -23,7 +23,7 @@ export const appRoutes: Route[] = [
   {
     path: APP_ROUTES.NOT_FOUND,
     loadComponent: () =>
-      import('@petsch/feature-404').then((m) => m.Feature404),
+      import('@petsch/shared-feature-404').then((m) => m.Feature404),
   },
   {
     path: '**',

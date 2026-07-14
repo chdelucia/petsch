@@ -13,7 +13,7 @@ export default defineConfig(() => ({
   //   plugins: () => [ nxViteTsPaths() ],
   // },
   test: {
-    name: 'feature-404',
+    name: 'shared-feature-404',
     watch: false,
     globals: true,
     environment: 'jsdom',

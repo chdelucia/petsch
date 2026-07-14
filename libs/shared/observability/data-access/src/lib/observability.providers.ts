@@ -10,7 +10,7 @@ import {
   ANALYTICS_TOKEN,
   IMonitoringService,
   MONITORING_TOKEN,
-} from '@petsch/obs-api';
+} from '@petsch/shared-obs-api';
 import { AnalyticsService } from './analytics/analytics.service';
 import { SentryService } from './monitoring/sentry.service';
 

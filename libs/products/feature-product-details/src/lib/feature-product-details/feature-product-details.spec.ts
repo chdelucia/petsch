@@ -4,12 +4,12 @@ import { FeatureProductDetails } from './feature-product-details';
 import { PRODUCT_TOKEN, PRODUCT_UI_CONFIG } from '@petsch/api';
 import { of } from 'rxjs';
 import { provideRouter, Router } from '@angular/router';
-import { LocalstorageService } from '@petsch/obs-data-access';
+import { LocalstorageService } from '@petsch/shared-obs-data-access';
 import {
   ANALYTICS_TOKEN,
   MONITORING_TOKEN,
   ObservabilityFacade,
-} from '@petsch/obs-api';
+} from '@petsch/shared-obs-api';
 
 describe('FeatureProductDetails', () => {
   let component: FeatureProductDetails;

@@ -14,7 +14,7 @@ export default defineConfig(() => ({
   //   plugins: () => [ nxViteTsPaths() ],
   // },
   test: {
-    name: 'obs-data-access',
+    name: 'shared-obs-data-access',
     watch: false,
     globals: true,
     environment: 'jsdom',

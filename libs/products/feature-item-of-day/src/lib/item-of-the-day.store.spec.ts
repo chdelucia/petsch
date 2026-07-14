@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 import { ItemOfDayStore } from './item-of-the-day.store';
-import { LOCALSTORAGE_TOKEN } from '@petsch/obs-api';
+import { LOCALSTORAGE_TOKEN } from '@petsch/shared-obs-api';
 import { patchState } from '@ngrx/signals';
 
 describe('ItemOfDayStore', () => {

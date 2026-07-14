@@ -1,6 +1,6 @@
 import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import { TranslocoService } from '@jsverse/transloco';
-import { ChLanguageSwitcher, LanguageOption } from '@petsch/ui';
+import { ChLanguageSwitcher, LanguageOption } from '@petsch/shared-ui';
 
 @Component({
   imports: [ChLanguageSwitcher],

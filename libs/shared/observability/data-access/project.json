@@ -1,5 +1,5 @@
 {
-  "name": "obs-data-access",
+  "name": "shared-obs-data-access",
   "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/shared/observability/data-access/src",
   "prefix": "lib",

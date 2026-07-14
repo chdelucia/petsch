@@ -1,5 +1,5 @@
 import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
-import { ChCartDrawer, ChCartItem } from '@petsch/ui';
+import { ChCartDrawer, ChCartItem } from '@petsch/shared-ui';
 import { TranslocoDirective } from '@jsverse/transloco';
 import { ITEM_OF_DAY_STORE } from '@petsch/api';
 import { getLocalIsoDate } from '@petsch/shared-utils';
