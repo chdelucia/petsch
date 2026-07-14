@@ -34,14 +34,12 @@ describe('ChInputFilter', () => {
     expect(component.value()).toBe('test');
   });
 
-  it('should send value from input to searchText$', () => {
-    const spy = vi.spyOn(component['searchText$'] as any, 'next');
+  it('should send value from input to the value signal', () => {
     const value = {
       target: { value: 'input-value-test' },
     } as Partial<HTMLInputElement>;
     component.getValue(value as Event);
     expect(component.value()).toBe('input-value-test');
-    expect(spy).toHaveBeenCalledWith('input-value-test');
   });
 
   it('should add search to lastSearch', () => {
@@ -90,19 +88,16 @@ describe('ChInputFilter', () => {
   });
 
   it('should search by old value', () => {
-    const spy = vi.spyOn(component['searchText$'] as any, 'next');
     component.value.set('old');
     component.searchByOldValue('new');
     expect(component.value()).toBe('new');
-    expect(spy).toHaveBeenCalledWith('new');
     expect(component.isLastSearchOpen()).toBeFalsy();
   });
 
   it('should NOT search by old value if it is the same', () => {
-    const spy = vi.spyOn(component['searchText$'] as any, 'next');
     component.value.set('same');
     component.searchByOldValue('same');
-    expect(spy).not.toHaveBeenCalled();
+    expect(component.value()).toBe('same');
   });
 
   it('should handle document click to close last search', () => {
@@ -123,6 +118,7 @@ describe('ChInputFilter', () => {
     vi.useFakeTimers();
 
     component.getValue({ target: { value: 'new-search' } } as any);
+    fixture.detectChanges();
 
     vi.advanceTimersByTime(700);
 

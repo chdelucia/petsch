@@ -11,8 +11,8 @@ import {
   model
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Subject, debounceTime, distinctUntilChanged } from 'rxjs';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { debounceTime, distinctUntilChanged, skip } from 'rxjs';
+import { takeUntilDestroyed, toObservable } from '@angular/core/rxjs-interop';
 import { ChButton } from '../button/button';
 import { TranslocoDirective } from '@jsverse/transloco';
 
@@ -33,7 +33,7 @@ export class ChInputFilter implements OnInit {
   value = model('');
   lastSearch = signal<Array<string>>([]);
 
-  private readonly searchText$ = new Subject<string>();
+  private readonly value$ = toObservable(this.value);
 
   private readonly elementRef = inject(ElementRef);
   private readonly destroyRef = inject(DestroyRef);
@@ -46,8 +46,9 @@ export class ChInputFilter implements OnInit {
   }
 
   ngOnInit(): void {
-    this.searchText$
+    this.value$
       .pipe(
+        skip(1),
         debounceTime(700),
         distinctUntilChanged(),
         takeUntilDestroyed(this.destroyRef),
@@ -61,7 +62,6 @@ export class ChInputFilter implements OnInit {
   getValue(event: Event): void {
     const name = (event.target as HTMLInputElement).value;
     this.value.set(name);
-    this.searchText$.next(name);
   }
 
   toggleFilter() {
@@ -98,7 +98,6 @@ export class ChInputFilter implements OnInit {
   searchByOldValue(value: string): void {
     if (value !== this.value()) {
       this.value.set(value);
-      this.searchText$.next(value);
       this.closeLastSearch();
     }
   }
