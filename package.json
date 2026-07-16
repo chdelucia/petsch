@@ -61,7 +61,7 @@
     "@oxc-project/runtime": "0.138.0",
     "@playwright/test": "^1.61.1",
     "@schematics/angular": "22.0.5",
-    "@storybook/addon-a11y": "10.4.6",
+    "@storybook/addon-a11y": "10.5.0",
     "@storybook/addon-docs": "10.4.6",
     "@storybook/angular": "10.4.6",
     "@storybook/test-runner": "0.24.4",
