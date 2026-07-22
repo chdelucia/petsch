@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.19.23](https://github.com/chdelucia/petsch/compare/v1.19.21...v1.19.23) (2026-07-22)
+
 ### [1.19.22](https://github.com/chdelucia/petsch/compare/v1.19.21...v1.19.22) (2026-07-22)
 
 ### [1.19.21](https://github.com/chdelucia/petsch/compare/v1.19.20...v1.19.21) (2026-07-21)
