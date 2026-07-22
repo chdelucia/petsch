@@ -10,7 +10,7 @@ import {
 import {
   toSignal,
 } from '@angular/core/rxjs-interop';
-import { form as angularForm, FormField, debounce } from '@angular/forms/signals';
+import { form, FormField, debounce } from '@angular/forms/signals';
 import { TranslocoService, TranslocoDirective } from '@jsverse/transloco';
 import { PRODUCT_LIST_STORE } from '@petsch/api';
 import {
@@ -90,7 +90,7 @@ export class FeatureFilters {
     ),
   );
 
-  readonly formTree = angularForm(this.form, (form: any) => {
+  readonly formTree = form(this.form, (form: any) => {
     const configs = (this.config ?? DEFAULT_PRODUCT_FILTERS) as FilterConfig[];
     configs.forEach((config) => {
       if (config.debounceTime > 0) {
