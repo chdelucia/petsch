@@ -1,5 +1,6 @@
-import { Injectable, inject, Provider } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Injectable, inject, Provider, Injector, runInInjectionContext } from '@angular/core';
+import { httpResource } from '@angular/common/http';
+import { toObservable } from '@angular/core/rxjs-interop';
 import {
   IProductService,
   GetProductsResponse,
@@ -9,7 +10,7 @@ import {
   PRODUCT_API_URL,
 } from '@petsch/api';
 import { buildHttpParams } from '@petsch/data-access';
-import { Observable, map } from 'rxjs';
+import { Observable, map, filter } from 'rxjs';
 
 export interface DragonballDto {
   items: unknown[];
@@ -32,8 +33,8 @@ export interface DragonballDto {
 export class DragonBallProductApi<T = unknown, F = Record<string, unknown>>
   implements IProductService<T, F>
 {
-  private readonly http = inject(HttpClient);
   private readonly baseUrl = inject(PRODUCT_API_URL);
+  private readonly injector = inject(Injector);
   private readonly transformer = inject(PRODUCT_DATA_TRANSFORMER, {
     optional: true,
   }) as ProductDataTransformer<T> | null;
@@ -41,11 +42,14 @@ export class DragonBallProductApi<T = unknown, F = Record<string, unknown>>
   getProducts(filters: Partial<F>): Observable<GetProductsResponse<T>> {
     const params = buildHttpParams(filters as Record<string, unknown>);
 
-    return this.http
-      .get<T[] | DragonballDto>(this.baseUrl, {
+    return runInInjectionContext(this.injector, () => {
+      const resource = httpResource<T[] | DragonballDto>(() => ({
+        url: this.baseUrl,
         params,
-      })
-      .pipe(
+      }));
+
+      return toObservable(resource.value).pipe(
+        filter((body): body is T[] | DragonballDto => body !== undefined),
         map((body) => {
           const transformer = this.transformer;
           if (Array.isArray(body)) {
@@ -75,17 +79,23 @@ export class DragonBallProductApi<T = unknown, F = Record<string, unknown>>
           };
         }),
       );
+    });
   }
 
   getDetails(id: string): Observable<T> {
-    return this.http.get<T>(`${this.baseUrl}/${id}`).pipe(
-      map((item) => {
-        if (this.transformer) {
-          return this.transformer(item);
-        }
-        return item;
-      }),
-    );
+    return runInInjectionContext(this.injector, () => {
+      const resource = httpResource<T>(() => `${this.baseUrl}/${id}`);
+
+      return toObservable(resource.value).pipe(
+        filter((item): item is T => item !== undefined),
+        map((item) => {
+          if (this.transformer) {
+            return this.transformer(item);
+          }
+          return item;
+        }),
+      );
+    });
   }
 }
 

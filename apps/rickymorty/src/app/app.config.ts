@@ -9,7 +9,7 @@ import {
   ViewTransitionInfo,
 } from '@angular/router';
 import { appRoutes } from './app.routes';
-import { provideHttpClient, withXhr } from '@angular/common/http';
+import { provideHttpClient } from '@angular/common/http';
 import {
   PRODUCT_UI_CONFIG,
   PRODUCT_LIST_STORE,
@@ -41,7 +41,7 @@ export const appConfig: ApplicationConfig = {
       withViewTransitions({ onViewTransitionCreated }),
     ),
     provideZonelessChangeDetection(),
-    provideHttpClient(withXhr()),
+    provideHttpClient(),
     {
       provide: PRODUCT_UI_CONFIG,
       useValue: {
