@@ -69,7 +69,7 @@
         "nx": "23.0.1",
         "postcss": "8.5.16",
         "prettier": "3.9.4",
-        "storybook": "10.5.0",
+        "storybook": "10.5.3",
         "tailwindcss": "4.3.2",
         "ts-node": "10.9.2",
         "tslib": "^2.3.0",
@@ -3099,7 +3099,7 @@
 
     "stdin-discarder": ["stdin-discarder@0.3.2", "", {}, "sha512-eCPu1qRxPVkl5605OTWF8Wz40b4Mf45NY5LQmVPQ599knfs5QhASUm9GbJ5BDMDOXgrnh0wyEdvzmL//YMlw0A=="],
 
-    "storybook": ["storybook@10.5.0", "", { "dependencies": { "@storybook/global": "^5.0.0", "@storybook/icons": "^2.0.2", "@testing-library/dom": "^10.4.1", "@testing-library/jest-dom": "^6.9.1", "@testing-library/user-event": "^14.6.1", "@vitest/expect": "3.2.4", "@vitest/spy": "3.2.4", "@webcontainer/env": "^1.1.1", "esbuild": "^0.18.0 || ^0.19.0 || ^0.20.0 || ^0.21.0 || ^0.22.0 || ^0.23.0 || ^0.24.0 || ^0.25.0 || ^0.26.0 || ^0.27.0 || ^0.28.0", "jsonc-parser": "^3.3.1", "open": "^10.2.0", "oxc-parser": "^0.127.0", "oxc-resolver": "^11.19.1", "recast": "^0.23.5", "semver": "^7.7.3", "use-sync-external-store": "^1.5.0", "ws": "^8.18.0" }, "peerDependencies": { "@types/react": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0", "prettier": "^2 || ^3", "vite-plus": "^0.1.15 || ^0.2.0" }, "optionalPeers": ["@types/react", "prettier", "vite-plus"], "bin": "./dist/bin/dispatcher.js" }, "sha512-dRhM/kSSvHQR8DmZO41v5sJuz9U6zDjjR2gRBTgZN2RBSXbmF0Brvgszrvvxyx2VfxuYKzhB+xumKwWkwlBtig=="],
+    "storybook": ["storybook@10.5.3", "", { "dependencies": { "@storybook/global": "^5.0.0", "@storybook/icons": "^2.0.2", "@testing-library/dom": "^10.4.1", "@testing-library/jest-dom": "^6.9.1", "@testing-library/user-event": "^14.6.1", "@vitest/expect": "3.2.4", "@vitest/spy": "3.2.4", "@webcontainer/env": "^1.1.1", "esbuild": "^0.18.0 || ^0.19.0 || ^0.20.0 || ^0.21.0 || ^0.22.0 || ^0.23.0 || ^0.24.0 || ^0.25.0 || ^0.26.0 || ^0.27.0 || ^0.28.0", "jsonc-parser": "^3.3.1", "open": "^10.2.0", "oxc-parser": "^0.127.0", "oxc-resolver": "^11.19.1", "recast": "^0.23.5", "semver": "^7.7.3", "use-sync-external-store": "^1.5.0", "ws": "^8.18.0" }, "peerDependencies": { "@types/react": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0", "prettier": "^2 || ^3", "vite-plus": "^0.1.15 || ^0.2.0" }, "optionalPeers": ["@types/react", "prettier", "vite-plus"], "bin": "./dist/bin/dispatcher.js" }, "sha512-c8Wumu5qz0N2fnzWBxcPzUsY+8BpKBKChNyl4BEh9qhMV6KW587gL8il8emRB+4Hay+zMjDHA7cIeTkl4FKYuw=="],
 
     "string-length": ["string-length@6.0.0", "", { "dependencies": { "strip-ansi": "^7.1.0" } }, "sha512-1U361pxZHEQ+FeSjzqRpV+cu2vTzYeWeafXFLykiFlv4Vc0n3njgU8HrMbyik5uwm77naWMuVG8fhEF+Ovb1Kg=="],
 
@@ -4183,7 +4183,7 @@
 
     "storybook/oxc-parser": ["oxc-parser@0.127.0", "", { "dependencies": { "@oxc-project/types": "^0.127.0" }, "optionalDependencies": { "@oxc-parser/binding-android-arm-eabi": "0.127.0", "@oxc-parser/binding-android-arm64": "0.127.0", "@oxc-parser/binding-darwin-arm64": "0.127.0", "@oxc-parser/binding-darwin-x64": "0.127.0", "@oxc-parser/binding-freebsd-x64": "0.127.0", "@oxc-parser/binding-linux-arm-gnueabihf": "0.127.0", "@oxc-parser/binding-linux-arm-musleabihf": "0.127.0", "@oxc-parser/binding-linux-arm64-gnu": "0.127.0", "@oxc-parser/binding-linux-arm64-musl": "0.127.0", "@oxc-parser/binding-linux-ppc64-gnu": "0.127.0", "@oxc-parser/binding-linux-riscv64-gnu": "0.127.0", "@oxc-parser/binding-linux-riscv64-musl": "0.127.0", "@oxc-parser/binding-linux-s390x-gnu": "0.127.0", "@oxc-parser/binding-linux-x64-gnu": "0.127.0", "@oxc-parser/binding-linux-x64-musl": "0.127.0", "@oxc-parser/binding-openharmony-arm64": "0.127.0", "@oxc-parser/binding-wasm32-wasi": "0.127.0", "@oxc-parser/binding-win32-arm64-msvc": "0.127.0", "@oxc-parser/binding-win32-ia32-msvc": "0.127.0", "@oxc-parser/binding-win32-x64-msvc": "0.127.0" } }, "sha512-bkgD4qHlN7WxLdX8bLXdaU54TtQtAIg/ZBAfm0aje/mo3MRDo3P0hZSgr4U7O3xfX+fQmR5AP04JS/TGcZLcFA=="],
 
-    "storybook/semver": ["semver@7.8.0", "", { "bin": { "semver": "bin/semver.js" } }, "sha512-AcM7dV/5ul4EekoQ29Agm5vri8JNqRyj39o0qpX6vDF2GZrtutZl5RwgD1XnZjiTAfncsJhMI48QQH3sN87YNA=="],
+    "storybook/semver": ["semver@7.8.4", "", { "bin": { "semver": "bin/semver.js" } }, "sha512-rUCObTnP32Q08R2uuIrt7r9PlEonuTmtuXYcW6s5kjdlj3xbnwe+21yXptAUYcMAABLkYYTtnmzb3w3EDZfueA=="],
 
     "string-length/strip-ansi": ["strip-ansi@7.2.0", "", { "dependencies": { "ansi-regex": "^6.2.2" } }, "sha512-yDPMNjp4WyfYBkHnjIRLfca1i6KMyGCtsVgoKe/z1+6vukgaENdgGBZt+ZmKPc4gavvEZ5OgHfHdrazhgNyG7w=="],
 
