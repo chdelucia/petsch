@@ -10,7 +10,7 @@ import {
 import {
   toSignal,
 } from '@angular/core/rxjs-interop';
-import { form, FormField, debounce } from '@angular/forms/signals';
+import { form, FormField, debounce, Field, FieldTree } from '@angular/forms/signals';
 import { TranslocoService, TranslocoDirective } from '@jsverse/transloco';
 import { PRODUCT_LIST_STORE } from '@petsch/api';
 import {
@@ -81,38 +81,54 @@ export class FeatureFilters {
   });
 
   readonly form = signal<Partial<Record<string, unknown>>>(
-    ((this.config ?? DEFAULT_PRODUCT_FILTERS) as FilterConfig[]).reduce(
-      (acc: Record<string, unknown>, c: FilterConfig) => ({
-        ...acc,
-        [c.key]: c.initialValue ?? '',
-      }),
-      {},
-    ),
+    (() => {
+      const configs = (this.config ?? DEFAULT_PRODUCT_FILTERS) as FilterConfig[];
+      const storeFilters = this.store.filters() as Record<string, unknown>;
+      return configs.reduce(
+        (acc: Record<string, unknown>, c: FilterConfig) => ({
+          ...acc,
+          [c.key]: storeFilters[c.key] ?? c.initialValue ?? '',
+        }),
+        {},
+      );
+    })()
   );
 
-  readonly formTree = form(this.form, (form: any) => {
+  readonly formTree: FieldTree<Partial<Record<string, unknown>>> = form(this.form, (f) => {
     const configs = (this.config ?? DEFAULT_PRODUCT_FILTERS) as FilterConfig[];
+    const formFields = f as unknown as Record<string, Field<unknown>>;
     configs.forEach((config) => {
       if (config.debounceTime > 0) {
-        debounce(form[config.key], config.debounceTime);
+        const field = formFields[config.key];
+        if (field) {
+          debounce(field, config.debounceTime);
+        }
       }
     });
   });
 
   constructor() {
+    let isFirstRun = true;
     effect(() => {
       const filters = this.form();
+      if (isFirstRun) {
+        isFirstRun = false;
+        return;
+      }
+
       this.store.applyFilters(filters);
       this.store.loadProducts();
     });
   }
 
-  getFormField(key: string): unknown {
-    return (this.formTree as Record<string, unknown>)[key];
+  getFormField(key: string): Field<unknown> {
+    const fields = this.formTree as unknown as Record<string, Field<unknown>>;
+    return fields[key];
   }
 
   resetFilter(key: string): void {
-    const field = (this.formTree as Record<string, any>)[key]();
+    const fields = this.formTree as unknown as Record<string, Field<unknown>>;
+    const field = fields[key]();
 
     if (field) {
       field.value.set('');

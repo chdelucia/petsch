@@ -3,28 +3,37 @@ import { FeatureFilters } from './feature-filters';
 import { PRODUCT_LIST_STORE, PRODUCT_TOKEN } from '@petsch/api';
 import { getTranslocoTestingModule } from '@petsch/shared-utils';
 import { of } from 'rxjs';
-import { signal } from '@angular/core';
+import { signal, Signal } from '@angular/core';
+import { Mock } from 'vitest';
 
 describe('FeatureFilters', () => {
   let component: FeatureFilters;
   let fixture: ComponentFixture<FeatureFilters>;
   let store: {
-    applyFilters: any;
-    removeFilter: any;
-    loadProducts: any;
-    loading: any;
-    products: any;
+    applyFilters: Mock<[Partial<Record<string, unknown>>], void>;
+    removeFilter: Mock<[string], void>;
+    loadProducts: Mock<[], void>;
+    loading: Signal<boolean>;
+    products: Signal<unknown[]>;
+    filters: Signal<Record<string, unknown>>;
   };
 
   beforeEach(async () => {
     vi.useFakeTimers();
 
+    const filtersSignal = signal<Record<string, unknown>>({});
     store = {
-      applyFilters: vi.fn(),
-      removeFilter: vi.fn(),
+      applyFilters: vi.fn((val) => filtersSignal.set(val)),
+      removeFilter: vi.fn((key) => {
+        const current = filtersSignal();
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        const { [key]: _, ...rest } = current;
+        filtersSignal.set(rest);
+      }),
       loadProducts: vi.fn(),
       loading: signal(false),
       products: signal([]),
+      filters: filtersSignal,
     };
 
     await TestBed.configureTestingModule({
