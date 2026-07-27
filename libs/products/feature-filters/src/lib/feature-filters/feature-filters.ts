@@ -96,7 +96,7 @@ export class FeatureFilters {
 
   readonly formTree: FieldTree<Partial<Record<string, unknown>>> = form(this.form, (f) => {
     const configs = (this.config ?? DEFAULT_PRODUCT_FILTERS) as FilterConfig[];
-    const formFields = f as unknown as Record<string, Field<unknown>>;
+    const formFields = f as unknown as Record<string, any>;
     configs.forEach((config) => {
       if (config.debounceTime > 0) {
         const field = formFields[config.key];
@@ -121,13 +121,14 @@ export class FeatureFilters {
     });
   }
 
-  getFormField(key: string): Field<unknown> {
-    const fields = this.formTree as unknown as Record<string, Field<unknown>>;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  getFormField(key: string): Field<any> {
+    const fields = this.formTree as unknown as Record<string, Field<any>>;
     return fields[key];
   }
 
   resetFilter(key: string): void {
-    const fields = this.formTree as unknown as Record<string, Field<unknown>>;
+    const fields = this.formTree as unknown as Record<string, Field<any>>;
     const field = fields[key]();
 
     if (field) {
