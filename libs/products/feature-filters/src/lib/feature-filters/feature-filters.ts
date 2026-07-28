@@ -68,10 +68,11 @@ export class FeatureFilters {
   private readonly config = inject(PRODUCT_FILTER_CONFIG, { optional: true });
   private readonly lang = toSignal(this.transloco.langChanges$);
 
+  private readonly activeConfigs = (this.config ?? DEFAULT_PRODUCT_FILTERS) as FilterConfig[];
+
   readonly filterConfigs = computed<FilterConfig[]>(() => {
     this.lang();
-    const baseConfig = (this.config ?? DEFAULT_PRODUCT_FILTERS) as FilterConfig[];
-    return baseConfig.map((c: FilterConfig) => ({
+    return this.activeConfigs.map((c: FilterConfig) => ({
       ...c,
       options: c.options?.map((o: { value: string; text: string }) => ({
         ...o,
@@ -81,23 +82,18 @@ export class FeatureFilters {
   });
 
   readonly form = signal<Partial<Record<string, unknown>>>(
-    (() => {
-      const configs = (this.config ?? DEFAULT_PRODUCT_FILTERS) as FilterConfig[];
-      const storeFilters = this.store.filters() as Record<string, unknown>;
-      return configs.reduce(
-        (acc: Record<string, unknown>, c: FilterConfig) => ({
-          ...acc,
-          [c.key]: storeFilters[c.key] ?? c.initialValue ?? '',
-        }),
-        {},
-      );
-    })()
+    this.activeConfigs.reduce(
+      (acc: Record<string, unknown>, c: FilterConfig) => ({
+        ...acc,
+        [c.key]: (this.store.filters() as Record<string, unknown>)[c.key] ?? c.initialValue ?? '',
+      }),
+      {}
+    )
   );
 
   readonly formTree: FieldTree<Partial<Record<string, unknown>>> = form(this.form, (f) => {
-    const configs = (this.config ?? DEFAULT_PRODUCT_FILTERS) as FilterConfig[];
-    const formFields = f as unknown as Record<string, any>;
-    configs.forEach((config) => {
+    const formFields = f as unknown as Record<string, unknown>;
+    this.activeConfigs.forEach((config) => {
       if (config.debounceTime > 0) {
         const field = formFields[config.key];
         if (field) {
@@ -121,14 +117,13 @@ export class FeatureFilters {
     });
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  getFormField(key: string): Field<any> {
-    const fields = this.formTree as unknown as Record<string, Field<any>>;
+  getFormField(key: string): Field<unknown> {
+    const fields = this.formTree as unknown as Record<string, Field<unknown>>;
     return fields[key];
   }
 
   resetFilter(key: string): void {
-    const fields = this.formTree as unknown as Record<string, Field<any>>;
+    const fields = this.formTree as unknown as Record<string, Field<unknown>>;
     const field = fields[key]();
 
     if (field) {
