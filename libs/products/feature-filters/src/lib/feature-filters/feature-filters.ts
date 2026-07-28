@@ -81,18 +81,19 @@ export class FeatureFilters {
     }));
   });
 
-  readonly form = signal<Partial<Record<string, unknown>>>(
+  readonly form = signal<Record<string, string>>(
     this.activeConfigs.reduce(
-      (acc: Record<string, unknown>, c: FilterConfig) => ({
+      (acc: Record<string, string>, c: FilterConfig) => ({
         ...acc,
-        [c.key]: (this.store.filters() as Record<string, unknown>)[c.key] ?? c.initialValue ?? '',
+        [c.key]: (this.store.filters() as Record<string, string>)[c.key] ?? (c.initialValue as string) ?? '',
       }),
       {}
     )
   );
 
-  readonly formTree: FieldTree<Partial<Record<string, unknown>>> = form(this.form, (f) => {
-    const formFields = f as unknown as Record<string, unknown>;
+  readonly formTree: FieldTree<Record<string, string>> = form(this.form, (f) => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const formFields = f as unknown as Record<string, any>;
     this.activeConfigs.forEach((config) => {
       if (config.debounceTime > 0) {
         const field = formFields[config.key];
@@ -117,13 +118,13 @@ export class FeatureFilters {
     });
   }
 
-  getFormField(key: string): Field<unknown> {
-    const fields = this.formTree as unknown as Record<string, Field<unknown>>;
+  getFormField(key: string): Field<string> {
+    const fields = this.formTree as unknown as Record<string, Field<string>>;
     return fields[key];
   }
 
   resetFilter(key: string): void {
-    const fields = this.formTree as unknown as Record<string, Field<unknown>>;
+    const fields = this.formTree as unknown as Record<string, Field<string>>;
     const field = fields[key]();
 
     if (field) {
