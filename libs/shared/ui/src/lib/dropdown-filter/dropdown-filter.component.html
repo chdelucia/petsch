@@ -1,5 +1,3 @@
-@let selected = sortby();
-
 <div class="dropdown">
   <div *transloco="let t">
     <lib-ch-ui-button
@@ -8,7 +6,7 @@
       (clicked)="toggle()"
       [testId]="testId() + '-button'"
     >
-      {{ t('sortLabel') }}: {{ selected.text }}
+      {{ title() ? title() + ': ' : t('sortLabel') + ': ' }}{{ selectedText() }}
       <svg
         [class.open]="isOpen()"
         class="dropdown-icon"
@@ -31,12 +29,13 @@
           tabindex="0"
           class="dropdown-item"
           [class.selected]="
-            item.key === selected.key && item.order === selected.order
+            (item.value && item.value === value()) ||
+            (item.key === sortby().key && item.order === sortby().order)
           "
           (click)="emitValue(item)"
           (keypress)="emitValue(item)"
           [attr.data-testid]="
-            testId() + '-option-' + item.key + '-' + item.order
+            testId() + '-option-' + (item.value ?? item.key ?? $index)
           "
         >
           {{ item.text }}

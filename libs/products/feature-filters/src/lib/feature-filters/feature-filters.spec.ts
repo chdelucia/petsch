@@ -1,5 +1,7 @@
+import '@angular/compiler';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { FeatureFilters } from './feature-filters';
+import { provideRouter } from '@angular/router';
+import { FeatureFilters, PRODUCT_FILTER_CONFIG } from './feature-filters';
 import { PRODUCT_LIST_STORE, PRODUCT_TOKEN } from '@petsch/api';
 import { getTranslocoTestingModule } from '@petsch/shared-utils';
 import { of } from 'rxjs';
@@ -19,8 +21,6 @@ describe('FeatureFilters', () => {
   };
 
   beforeEach(async () => {
-    vi.useFakeTimers();
-
     const filtersSignal = signal<Record<string, unknown>>({});
     store = {
       applyFilters: vi.fn((val) => filtersSignal.set(val)),
@@ -39,7 +39,39 @@ describe('FeatureFilters', () => {
     await TestBed.configureTestingModule({
       imports: [FeatureFilters, getTranslocoTestingModule()],
       providers: [
+        provideRouter([]),
         { provide: PRODUCT_LIST_STORE, useValue: store },
+        {
+          provide: PRODUCT_FILTER_CONFIG,
+          useValue: [
+            {
+              key: 'name_like',
+              type: 'input',
+              debounceTime: 0,
+              initialValue: '',
+            },
+            {
+              key: 'kind',
+              type: 'radio',
+              options: [
+                { value: 'dog', text: 'dog' },
+                { value: 'cat', text: 'cat' },
+              ],
+              debounceTime: 0,
+              initialValue: '',
+            },
+            {
+              key: 'status',
+              type: 'dropdown',
+              options: [
+                { value: 'active', text: 'Active' },
+                { value: 'inactive', text: 'Inactive' },
+              ],
+              debounceTime: 0,
+              initialValue: '',
+            },
+          ],
+        },
         {
           provide: PRODUCT_TOKEN,
           useValue: {
@@ -55,101 +87,112 @@ describe('FeatureFilters', () => {
     fixture.detectChanges();
   });
 
-  afterEach(() => {
-    vi.useRealTimers();
-  });
-
   it('should create', () => {
     expect(component).toBeTruthy();
   });
 
   it('should create form controls based on filterConfigs', () => {
-    expect(component.formTree.name_like).toBeDefined();
-    expect(component.formTree.kind).toBeDefined();
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const tree = component.formTree as Record<string, any>;
+    expect(tree['name_like']).toBeDefined();
+    expect(tree['kind']).toBeDefined();
+    expect(tree['status']).toBeDefined();
 
-    expect(component.filterConfigs().length).toBe(2);
+    expect(component.filterConfigs().length).toBe(3);
+  });
+
+  it('should return form field using getFormField', () => {
+    const field = component.getFormField('status');
+    expect(field).toBeDefined();
   });
 
   it('should call applyFilters when kind filter changes', () => {
-    component.formTree.kind().value.set('dog');
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const tree = component.formTree as Record<string, any>;
+    tree['kind']().value.set('dog');
     fixture.detectChanges();
-    vi.runAllTimers();
 
     expect(store.applyFilters).toHaveBeenCalledWith({
       kind: 'dog',
       name_like: '',
+      status: '',
     });
   });
 
+  it('should reset dropdown filter and update store', () => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const tree = component.formTree as Record<string, any>;
+    tree['status']().value.set('active');
+    fixture.detectChanges();
+
+    component.resetFilter('status');
+    fixture.detectChanges();
+
+    expect(tree['status']().value()).toBe('');
+    expect(store.removeFilter).toHaveBeenCalledWith('status');
+  });
+
   it('should reset name filter and call removeFilter', () => {
-    component.formTree.name_like().value.set('test');
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const tree = component.formTree as Record<string, any>;
+    tree['name_like']().value.set('test');
 
     component.resetFilter('name_like');
-    vi.runAllTimers();
+    fixture.detectChanges();
 
-    expect(component.formTree.name_like().value()).toBe('');
+    expect(tree['name_like']().value()).toBe('');
     expect(store.removeFilter).toHaveBeenCalledWith('name_like');
   });
 
   it('should reset kind filter and call applyFilters + removeFilter', () => {
-    component.formTree.kind().value.set('dog');
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const tree = component.formTree as Record<string, any>;
+    tree['kind']().value.set('dog');
     store.applyFilters.mockClear();
 
     component.resetFilter('kind');
-    vi.runAllTimers();
+    fixture.detectChanges();
 
-    expect(component.formTree.kind().value()).toBe('');
+    expect(tree['kind']().value()).toBe('');
     expect(store.removeFilter).toHaveBeenCalledWith('kind');
 
     expect(store.applyFilters).toHaveBeenCalledWith({
       kind: '',
       name_like: '',
+      status: '',
     });
   });
 
   it('should return form values', () => {
-    component.formTree.name_like().value.set('test');
-    component.formTree.kind().value.set('dog');
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const tree = component.formTree as Record<string, any>;
+    tree['name_like']().value.set('test');
+    tree['kind']().value.set('dog');
+    tree['status']().value.set('active');
 
     expect(component.form()).toEqual({
       name_like: 'test',
       kind: 'dog',
+      status: 'active',
     });
   });
 
   it('should not call loadProducts on initialization', () => {
     store.loadProducts.mockClear();
-    vi.runAllTimers();
+    fixture.detectChanges();
     expect(store.loadProducts).not.toHaveBeenCalled();
   });
 
-  it('should only call loadProducts once when resetting a filter', () => {
-    // Set a value first
-    component.formTree.kind().value.set('dog');
+  it('should call loadProducts when resetting a filter', () => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const tree = component.formTree as Record<string, any>;
+    tree['kind']().value.set('dog');
     fixture.detectChanges();
-    vi.runAllTimers();
     store.loadProducts.mockClear();
 
-    // Reset the filter
-    component.resetFilter('kind');
-    fixture.detectChanges();
-    vi.runAllTimers();
-
-    expect(store.loadProducts).toHaveBeenCalledTimes(1);
-  });
-
-  it('should detect immediate calls when resetting a filter', () => {
-    // Set a value first
-    component.formTree.kind().value.set('dog');
-    fixture.detectChanges();
-    vi.runAllTimers();
-    store.loadProducts.mockClear();
-
-    // Reset the filter
     component.resetFilter('kind');
     fixture.detectChanges();
 
-    // effect() is scheduled and runs after change detection
     expect(store.loadProducts).toHaveBeenCalledTimes(1);
   });
 });
