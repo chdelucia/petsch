@@ -1,5 +1,6 @@
 import { ChButton } from "../button/button";
 import { TranslocoDirective } from "@jsverse/transloco";
+import { CommonModule } from '@angular/common';
 import {
   Component,
   computed,
@@ -9,18 +10,22 @@ import {
   input,
   output,
   signal,
-  ChangeDetectionStrategy
+  ChangeDetectionStrategy,
+  model,
 } from '@angular/core';
 
-export interface SortOption {
-  key: string;
-  order: string;
+export interface DropdownOption {
+  key?: string;
+  order?: string;
+  value?: string;
   text: string;
 }
 
+export type SortOption = DropdownOption;
+
 @Component({
   selector: 'lib-ch-ui-dropdown-filter',
-  imports: [ChButton, TranslocoDirective],
+  imports: [ChButton, TranslocoDirective, CommonModule],
   templateUrl: './dropdown-filter.component.html',
   styleUrl: './dropdown-filter.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -30,7 +35,10 @@ export interface SortOption {
 })
 export class ChDropdownFilter {
   testId = input<string>('');
-  options = input.required<SortOption[]>();
+  title = input<string>('');
+  options = input.required<DropdownOption[]>();
+
+  value = model<string>('');
 
   private readonly internalSortBy = signal<{ key: string; order: string } | null>(
     null,
@@ -41,14 +49,23 @@ export class ChDropdownFilter {
     const internal = this.internalSortBy();
 
     if (!internal) {
-      return options[0];
+      return options[0] ?? { text: '' };
     }
 
     return (
       options.find(
         (o) => o.key === internal.key && o.order === internal.order,
-      ) ?? options[0]
+      ) ?? options[0] ?? { text: '' }
     );
+  });
+
+  selectedText = computed(() => {
+    const val = this.value();
+    if (val) {
+      const match = this.options().find((o) => (o.value ?? o.key) === val);
+      if (match) return match.text;
+    }
+    return this.sortby().text;
   });
 
   sortbyChange = output<{ key: string; order: string }>();
@@ -66,10 +83,15 @@ export class ChDropdownFilter {
     }
   }
 
-  emitValue(option: SortOption): void {
+  emitValue(option: DropdownOption): void {
     this.toggle();
-    this.internalSortBy.set({ key: option.key, order: option.order });
-    this.sortbyChange.emit({ key: option.key, order: option.order });
+    const val = option.value ?? option.key ?? '';
+    this.value.set(val);
+
+    if (option.key && option.order) {
+      this.internalSortBy.set({ key: option.key, order: option.order });
+      this.sortbyChange.emit({ key: option.key, order: option.order });
+    }
   }
 
   toggle(): void {

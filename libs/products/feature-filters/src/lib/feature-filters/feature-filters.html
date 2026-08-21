@@ -23,6 +23,21 @@
           [formField]="getFormField(config.key)"
         ></lib-ch-ui-radio-filter>
       }
+      @case ('dropdown') {
+        <lib-ch-ui-dropdown-filter
+          [testId]="'filter-' + config.key + '-dropdown'"
+          [title]="t(config.key)"
+          [options]="config.options ?? []"
+          [formField]="getFormField(config.key)"
+        ></lib-ch-ui-dropdown-filter>
+      }
+      @default {
+        <lib-ch-ui-input-filter
+          [testId]="'filter-' + config.key + '-input'"
+          [title]="t(config.key)"
+          [formField]="getFormField(config.key)"
+        ></lib-ch-ui-input-filter>
+      }
     }
   }
 </div>

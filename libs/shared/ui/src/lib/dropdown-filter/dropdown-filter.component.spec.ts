@@ -1,3 +1,4 @@
+import '@angular/compiler';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ChDropdownFilter } from './dropdown-filter.component';
 import { getTranslocoTestingModule } from '@petsch/shared-utils';
@@ -15,10 +16,11 @@ describe('ChDropdownFilter', () => {
     fixture = TestBed.createComponent(ChDropdownFilter);
     component = fixture.componentInstance;
     fixture.componentRef.setInput('options', [
-      { key: 'id', order: 'asc', text: 'Most Popular' },
-      { key: 'name', order: 'asc', text: 'Name' },
+      { key: 'id', order: 'asc', value: '1', text: 'Most Popular' },
+      { key: 'name', order: 'asc', value: '2', text: 'Name' },
     ]);
     fixture.componentRef.setInput('testId', 'dropdown');
+    fixture.componentRef.setInput('title', 'Status');
     fixture.detectChanges();
   });
 
@@ -26,11 +28,18 @@ describe('ChDropdownFilter', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should emit value', () => {
+  it('should display custom title and selected option text', () => {
+    component.value.set('2');
+    fixture.detectChanges();
+    expect(component.selectedText()).toBe('Name');
+  });
+
+  it('should emit value and update value model when emitValue is called', () => {
     const spy = vi.spyOn(component.sortbyChange, 'emit');
-    const option = { key: 'gender', order: 'asc', text: 'Gender' };
+    const option = { key: 'gender', order: 'asc', value: 'male', text: 'Male' };
     component.emitValue(option);
     expect(spy).toHaveBeenCalledWith({ key: 'gender', order: 'asc' });
+    expect(component.value()).toBe('male');
   });
 
   it('should toggle the dropdown when toggle is called', () => {
@@ -46,7 +55,7 @@ describe('ChDropdownFilter', () => {
     component.isOpen.set(true);
     fixture.detectChanges();
 
-    const option = fixture.debugElement.query(By.css('[data-testid="dropdown-option-name-asc"]'));
+    const option = fixture.debugElement.query(By.css('[data-testid="dropdown-option-2"]'));
     option.triggerEventHandler('click', null);
 
     expect(spy).toHaveBeenCalledWith({ key: 'name', order: 'asc' });
@@ -70,11 +79,11 @@ describe('ChDropdownFilter', () => {
   });
 
   it('should return the first option by default', () => {
-    expect(component.sortby()).toEqual({ key: 'id', order: 'asc', text: 'Most Popular' });
+    expect(component.sortby()).toEqual({ key: 'id', order: 'asc', value: '1', text: 'Most Popular' });
   });
 
   it('should return the selected option', () => {
-    component.emitValue({ key: 'name', order: 'asc', text: 'Name' });
-    expect(component.sortby()).toEqual({ key: 'name', order: 'asc', text: 'Name' });
+    component.emitValue({ key: 'name', order: 'asc', value: '2', text: 'Name' });
+    expect(component.sortby()).toEqual({ key: 'name', order: 'asc', value: '2', text: 'Name' });
   });
 });
