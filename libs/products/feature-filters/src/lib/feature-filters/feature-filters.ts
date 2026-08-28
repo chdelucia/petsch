@@ -16,13 +16,14 @@ import { PRODUCT_LIST_STORE } from '@petsch/api';
 import {
   ChInputFilter,
   ChRadioFilter,
+  ChDropdownFilter,
   ChActiveFiltersComponent,
 } from '@petsch/ui';
 
 export interface FilterConfig {
   key: string;
-  type: 'input' | 'radio';
-  options?: { value: string; text: string }[];
+  type: 'input' | 'radio' | 'dropdown';
+  options?: { value: string; text: string; key?: string; order?: string }[];
   debounceTime: number;
   initialValue?: string | number | boolean;
 }
@@ -33,19 +34,9 @@ export const PRODUCT_FILTER_CONFIG = new InjectionToken<FilterConfig[]>(
 
 const DEFAULT_PRODUCT_FILTERS: FilterConfig[] = [
   {
-    key: 'name_like',
+    key: 'search',
     type: 'input',
-    debounceTime: 200,
-    initialValue: '',
-  },
-  {
-    key: 'kind',
-    type: 'radio',
-    options: [
-      { value: 'dog', text: 'dog' },
-      { value: 'cat', text: 'cat' },
-    ],
-    debounceTime: 500,
+    debounceTime: 300,
     initialValue: '',
   },
 ];
@@ -55,6 +46,7 @@ const DEFAULT_PRODUCT_FILTERS: FilterConfig[] = [
   imports: [
     ChRadioFilter,
     ChInputFilter,
+    ChDropdownFilter,
     FormField,
     ChActiveFiltersComponent,
     TranslocoDirective,
@@ -74,7 +66,7 @@ export class FeatureFilters {
     this.lang();
     return this.activeConfigs.map((c: FilterConfig) => ({
       ...c,
-      options: c.options?.map((o: { value: string; text: string }) => ({
+      options: c.options?.map((o) => ({
         ...o,
         text: this.transloco.translate(o.text),
       })),

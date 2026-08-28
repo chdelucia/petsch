@@ -1,16 +1,9 @@
-import { Injectable, inject, Provider, Injector, runInInjectionContext } from '@angular/core';
-import { httpResource } from '@angular/common/http';
-import { toObservable } from '@angular/core/rxjs-interop';
+import { Injectable, Provider } from '@angular/core';
 import {
-  IProductService,
-  GetProductsResponse,
-  PRODUCT_TOKEN,
-  PRODUCT_DATA_TRANSFORMER,
-  ProductDataTransformer,
-  PRODUCT_API_URL,
-} from '@petsch/api';
-import { buildHttpParams } from '@petsch/data-access';
-import { Observable, map, filter } from 'rxjs';
+  GenericProductApi,
+  provideGenericProductApi,
+  createNestedApiMapper,
+} from '@petsch/data-access';
 
 export interface Character {
   id: number;
@@ -32,68 +25,19 @@ export interface CharactersDto {
   results: Character[];
 }
 
+const rickAndMortyMapper = createNestedApiMapper<Character>({
+  resultsPath: 'results',
+  pagesPath: 'info.pages',
+  nextPath: 'info.next',
+  prevPath: 'info.prev',
+});
+
 @Injectable()
-export class RickAndMortyProductApi<T = unknown, F = Record<string, unknown>>
-  implements IProductService<T, F>
-{
-  private readonly baseUrl = inject(PRODUCT_API_URL);
-  private readonly injector = inject(Injector);
-  private readonly transformer = inject(PRODUCT_DATA_TRANSFORMER, {
-    optional: true,
-  }) as ProductDataTransformer<T> | null;
-
-  getProducts(filters: Partial<F>): Observable<GetProductsResponse<T>> {
-    const params = buildHttpParams(filters as Record<string, unknown>);
-
-    return runInInjectionContext(this.injector, () => {
-      const resource = httpResource<CharactersDto>(() => ({
-        url: this.baseUrl,
-        params,
-      }));
-
-      return toObservable(resource.value).pipe(
-        filter((body): body is CharactersDto => body !== undefined),
-        map((body) => {
-          let products = (body.results as unknown as T[]) || [];
-          const transformer = this.transformer;
-          if (transformer) {
-            products = products.map((item) => transformer(item));
-          }
-          return {
-            products,
-            pagination: {
-              pages: body.info.pages,
-              next: body.info.next || undefined,
-              prev: body.info.prev || undefined,
-            },
-          };
-        }),
-      );
-    });
-  }
-
-  getDetails(id: string): Observable<T> {
-    return runInInjectionContext(this.injector, () => {
-      const resource = httpResource<T>(() => `${this.baseUrl}/${id}`);
-
-      return toObservable(resource.value).pipe(
-        filter((item): item is T => item !== undefined),
-        map((item) => {
-          if (this.transformer) {
-            return this.transformer(item);
-          }
-          return item;
-        }),
-      );
-    });
-  }
-}
+export class RickAndMortyProductApi<
+  T = unknown,
+  F = Record<string, unknown>,
+> extends GenericProductApi<T, F> {}
 
 export function provideRickAndMortyProductApi(): Provider[] {
-  return [
-    {
-      provide: PRODUCT_TOKEN,
-      useClass: RickAndMortyProductApi,
-    },
-  ];
+  return provideGenericProductApi(rickAndMortyMapper);
 }
