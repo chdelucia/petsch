@@ -1,6 +1,6 @@
 {
   "name": "@petsch/source",
-  "version": "1.19.44",
+  "version": "1.19.45",
   "license": "MIT",
   "scripts": {
     "start": "nx serve petshop",
