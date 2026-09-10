@@ -55,7 +55,7 @@
     "@nx/playwright": "23.0.1",
     "@nx/storybook": "23.0.1",
     "@nx/vite": "23.1.0",
-    "@nx/vitest": "23.0.1",
+    "@nx/vitest": "23.2.0",
     "@nx/web": "23.1.0",
     "@nx/workspace": "23.0.1",
     "@oxc-project/runtime": "0.138.0",
